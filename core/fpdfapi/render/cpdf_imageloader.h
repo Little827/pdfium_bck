@@ -12,7 +12,7 @@
 
 class CFX_DIBBase;
 class CPDF_ImageObject;
-class CPDF_PageRenderCache;
+class CPDF_PageImageCache;
 class CPDF_RenderStatus;
 class CPDF_TransferFunc;
 class PauseIndicatorIface;
@@ -25,7 +25,7 @@ class CPDF_ImageLoader {
   bool Start(const CPDF_ImageObject* pImage,
              const CPDF_RenderStatus* pRenderStatus,
              bool bStdCS);
-  bool Continue(PauseIndicatorIface* pPause, CPDF_RenderStatus* pRenderStatus);
+  bool Continue(PauseIndicatorIface* pPause);
 
   RetainPtr<CFX_DIBBase> TranslateImage(
       RetainPtr<CPDF_TransferFunc> pTransferFunc);
@@ -41,7 +41,7 @@ class CPDF_ImageLoader {
   bool m_bCached = false;
   RetainPtr<CFX_DIBBase> m_pBitmap;
   RetainPtr<CFX_DIBBase> m_pMask;
-  UnownedPtr<CPDF_PageRenderCache> m_pCache;
+  UnownedPtr<CPDF_PageImageCache> m_pCache;
   UnownedPtr<const CPDF_ImageObject> m_pImageObject;
 };
 
