@@ -1,3 +1,4 @@
+VALHALLA
 Alert: PASS: this.constructor(): illegal constructor
 Alert: PASS: new this.constructor: not a dynamic object
 Alert: PASS: globalThis.constructor(): illegal constructor
