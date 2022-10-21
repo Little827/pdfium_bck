@@ -16,6 +16,75 @@
       "message": "Lei, I fixed test expectations, you can review it.",
       "revId": "8e143e11a64e547a768f04b9fb18fa0e1c6c38ad",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7ea441f_06dc48a1",
+        "filename": "core/fpdfdoc/cpdf_annot.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-21T17:47:18Z",
+      "side": 1,
+      "message": "top-left",
+      "range": {
+        "startLine": 59,
+        "startChar": 39,
+        "endLine": 59,
+        "endChar": 47
+      },
+      "revId": "8e143e11a64e547a768f04b9fb18fa0e1c6c38ad",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc869c44_81790504",
+        "filename": "core/fpdfdoc/cpdf_annot.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-21T17:47:18Z",
+      "side": 1,
+      "message": "Rotate",
+      "range": {
+        "startLine": 59,
+        "startChar": 7,
+        "endLine": 59,
+        "endChar": 15
+      },
+      "revId": "8e143e11a64e547a768f04b9fb18fa0e1c6c38ad",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f734ac0_d6660302",
+        "filename": "core/fpdfdoc/cpdf_annot.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-21T17:47:18Z",
+      "side": 1,
+      "message": "No trailing space please. (They show up as pink in the Gerrit UI to be more visible.)",
+      "range": {
+        "startLine": 59,
+        "startChar": 68,
+        "endLine": 59,
+        "endChar": 72
+      },
+      "revId": "8e143e11a64e547a768f04b9fb18fa0e1c6c38ad",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }

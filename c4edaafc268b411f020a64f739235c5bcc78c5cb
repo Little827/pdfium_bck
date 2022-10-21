@@ -204,6 +204,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "35500b19_c8a683af",
+        "filename": "core/fpdfdoc/cpdf_annot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-21T17:47:18Z",
+      "side": 1,
+      "message": "It may be helpful to take the \"compensate for the page rotation\" comment in Gerrit and copy it into the code.",
+      "parentUuid": "d51c7d75_cb2c3213",
+      "range": {
+        "startLine": 57,
+        "startChar": 6,
+        "endLine": 57,
+        "endChar": 64
+      },
+      "revId": "c4edaafc268b411f020a64f739235c5bcc78c5cb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "62fda6f5_b7ec7e44",
         "filename": "core/fpdfdoc/cpdf_annot.cpp",
         "patchSetId": 2
