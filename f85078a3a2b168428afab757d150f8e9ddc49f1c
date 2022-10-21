@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9e29c60_fb5ffa85",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8606
+      },
+      "writtenOn": "2022-10-21T18:58:00Z",
+      "side": 1,
+      "message": "Lei, can you explain what is the peculiarity of this test? What is the reason for different fonts in some test cases (maybe it results from different machines)?",
+      "revId": "f85078a3a2b168428afab757d150f8e9ddc49f1c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
