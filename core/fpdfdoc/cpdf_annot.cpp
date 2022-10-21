@@ -13,13 +13,13 @@
 #include "constants/annotation_flags.h"
 #include "core/fpdfapi/page/cpdf_form.h"
 #include "core/fpdfapi/page/cpdf_page.h"
+#include "core/fpdfapi/page/cpdf_pageimagecache.h"
 #include "core/fpdfapi/parser/cpdf_array.h"
 #include "core/fpdfapi/parser/cpdf_boolean.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/parser/cpdf_document.h"
 #include "core/fpdfapi/parser/cpdf_stream.h"
 #include "core/fpdfapi/parser/fpdf_parser_utility.h"
-#include "core/fpdfapi/render/cpdf_pagerendercache.h"
 #include "core/fpdfapi/render/cpdf_rendercontext.h"
 #include "core/fpdfapi/render/cpdf_renderoptions.h"
 #include "core/fpdfdoc/cpdf_generateap.h"
@@ -412,9 +412,9 @@ bool CPDF_Annot::DrawAppearance(CPDF_Page* pPage,
   if (!pForm)
     return false;
 
-  CPDF_RenderContext context(
-      pPage->GetDocument(), pPage->GetMutablePageResources(),
-      static_cast<CPDF_PageRenderCache*>(pPage->GetRenderCache()));
+  CPDF_RenderContext context(pPage->GetDocument(),
+                             pPage->GetMutablePageResources(),
+                             pPage->GetPageImageCache());
   context.AppendLayer(pForm, matrix);
   context.Render(pDevice, nullptr, nullptr, nullptr);
   return true;

@@ -4,8 +4,8 @@
 
 // Original code copyright 2014 Foxit Software Inc. http://www.foxitsoftware.com
 
-#ifndef CORE_FPDFAPI_RENDER_CPDF_PAGERENDERCACHE_H_
-#define CORE_FPDFAPI_RENDER_CPDF_PAGERENDERCACHE_H_
+#ifndef CORE_FPDFAPI_PAGE_CPDF_PAGEIMAGECACHE_H_
+#define CORE_FPDFAPI_PAGE_CPDF_PAGEIMAGECACHE_H_
 
 #include <stdint.h>
 
@@ -20,30 +20,29 @@
 #include "core/fxcrt/unowned_ptr.h"
 
 class CPDF_Dictionary;
-class CPDF_Document;
 class CPDF_Image;
 class CPDF_Page;
-class CPDF_RenderStatus;
 class CPDF_Stream;
 class PauseIndicatorIface;
 
-class CPDF_PageRenderCache final : public CPDF_Page::RenderCacheIface {
+class CPDF_PageImageCache {
  public:
-  explicit CPDF_PageRenderCache(CPDF_Page* pPage);
-  ~CPDF_PageRenderCache() override;
+  explicit CPDF_PageImageCache(CPDF_Page* pPage);
+  ~CPDF_PageImageCache();
 
-  // CPDF_Page::RenderCacheIface:
-  void ResetBitmapForImage(RetainPtr<CPDF_Image> pImage) override;
-
+  void ResetBitmapForImage(RetainPtr<CPDF_Image> pImage);
   void CacheOptimization(int32_t dwLimitCacheSize);
   uint32_t GetTimeCount() const { return m_nTimeCount; }
   CPDF_Page* GetPage() const { return m_pPage.Get(); }
 
   bool StartGetCachedBitmap(RetainPtr<CPDF_Image> pImage,
-                            const CPDF_RenderStatus* pRenderStatus,
-                            bool bStdCS);
+                            const CPDF_Dictionary* pFormResources,
+                            const CPDF_Dictionary* pPageResources,
+                            bool bStdCS,
+                            CPDF_ColorSpace::Family eFamily,
+                            bool bLoadMask);
 
-  bool Continue(PauseIndicatorIface* pPause, CPDF_RenderStatus* pRenderStatus);
+  bool Continue(PauseIndicatorIface* pPause);
 
   uint32_t GetCurMatteColor() const;
   RetainPtr<CFX_DIBBase> DetachCurBitmap();
@@ -52,7 +51,7 @@ class CPDF_PageRenderCache final : public CPDF_Page::RenderCacheIface {
  private:
   class ImageCacheEntry {
    public:
-    ImageCacheEntry(CPDF_Document* pDoc, RetainPtr<CPDF_Image> pImage);
+    explicit ImageCacheEntry(RetainPtr<CPDF_Image> pImage);
     ~ImageCacheEntry();
 
     void Reset();
@@ -63,25 +62,27 @@ class CPDF_PageRenderCache final : public CPDF_Page::RenderCacheIface {
     CPDF_Image* GetImage() const { return m_pImage.Get(); }
 
     CPDF_DIB::LoadState StartGetCachedBitmap(
+        CPDF_PageImageCache* pPageImageCache,
+        const CPDF_Dictionary* pFormResources,
         const CPDF_Dictionary* pPageResources,
-        const CPDF_RenderStatus* pRenderStatus,
-        bool bStdCS);
+        bool bStdCS,
+        CPDF_ColorSpace::Family eFamily,
+        bool bLoadMask);
 
     // Returns whether to Continue() or not.
     bool Continue(PauseIndicatorIface* pPause,
-                  CPDF_RenderStatus* pRenderStatus);
+                  CPDF_PageImageCache* pPageImageCache);
 
     RetainPtr<CFX_DIBBase> DetachBitmap();
     RetainPtr<CFX_DIBBase> DetachMask();
 
    private:
-    void ContinueGetCachedBitmap(const CPDF_RenderStatus* pRenderStatus);
+    void ContinueGetCachedBitmap(CPDF_PageImageCache* pPageImageCache);
     void CalcSize();
 
     uint32_t m_dwTimeCount = 0;
     uint32_t m_MatteColor = 0;
     uint32_t m_dwCacheSize = 0;
-    UnownedPtr<CPDF_Document> const m_pDocument;
     RetainPtr<CPDF_Image> const m_pImage;
     RetainPtr<CFX_DIBBase> m_pCurBitmap;
     RetainPtr<CFX_DIBBase> m_pCurMask;
@@ -102,4 +103,4 @@ class CPDF_PageRenderCache final : public CPDF_Page::RenderCacheIface {
   bool m_bCurFindCache = false;
 };
 
-#endif  // CORE_FPDFAPI_RENDER_CPDF_PAGERENDERCACHE_H_
+#endif  // CORE_FPDFAPI_PAGE_CPDF_PAGEIMAGECACHE_H_

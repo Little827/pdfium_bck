@@ -18,6 +18,7 @@
 #include "core/fpdfapi/page/cpdf_form.h"
 #include "core/fpdfapi/page/cpdf_formobject.h"
 #include "core/fpdfapi/page/cpdf_page.h"
+#include "core/fpdfapi/page/cpdf_pageimagecache.h"
 #include "core/fpdfapi/page/cpdf_pageobject.h"
 #include "core/fpdfapi/parser/cpdf_array.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
@@ -30,7 +31,6 @@
 #include "core/fpdfapi/parser/cpdf_stream_acc.h"
 #include "core/fpdfapi/parser/cpdf_string.h"
 #include "core/fpdfapi/parser/fpdf_parser_utility.h"
-#include "core/fpdfapi/render/cpdf_pagerendercache.h"
 #include "core/fxcrt/fx_safe_types.h"
 #include "core/fxcrt/fx_string_wrappers.h"
 #include "core/fxcrt/retain_ptr.h"
@@ -564,8 +564,8 @@ bool CPDF_NPageToOneExporter::ExportNPagesToOne(
         return false;
 
       auto pSrcPage = pdfium::MakeRetain<CPDF_Page>(src(), pSrcPageDict);
-      pSrcPage->SetRenderCache(
-          std::make_unique<CPDF_PageRenderCache>(pSrcPage.Get()));
+      pSrcPage->SetPageImageCache(
+          std::make_unique<CPDF_PageImageCache>(pSrcPage.Get()));
       NupPageSettings settings =
           nupState.CalculateNewPagePosition(pSrcPage->GetPageSize());
       bsContent += AddSubPage(pSrcPage, settings);
