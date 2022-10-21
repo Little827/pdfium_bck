@@ -46,6 +46,30 @@
       },
       "revId": "c43dae45aeca2fc7e3b09a0232768911142c96c6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a046eb17_3645316d",
+        "filename": "core/fxge/dib/cfx_dibitmap.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 9016
+      },
+      "writtenOn": "2022-10-21T16:40:24Z",
+      "side": 1,
+      "message": "Now that I understand this code a bit more, the change I made is bad and may have some side effects.\n\nI don\u0027t think anything is wrong with indexing, but in this part of the code (https://source.chromium.org/chromium/chromium/src/+/main:third_party/pdfium/core/fxge/cfx_renderdevice.cpp;drc\u003d4424a54c6cbfb9a61ddcb4af74bdf0eb2ca4ccb3;l\u003d1154), we shouldn\u0027t be using the TransferBitmap method to achieve the end-result.\n\nNothing is wrong with this method, we take the bits of the glyph and write them on the destination region, regardless if the destination region is zeroed or not.\n- this fine for individual glyphs\n- this also fine for individual glyphs with no overlap\n\nIf there is an overlap, current glyph transfers will clear any bits previously set in the overlap region if they\u0027re not set in the current glyph.\n\nSo the right solution is to compose the two glyphs. Maybe (not sure), a method similar to ComposeMask, but this one will not work for the 1bpp mask.\n\nI need some guidance and what I should I do next, is introducing a new method Composit1BppMask a good solution",
+      "parentUuid": "d5cdf7ad_2aa8a7d7",
+      "range": {
+        "startLine": 288,
+        "startChar": 7,
+        "endLine": 288,
+        "endChar": 33
+      },
+      "revId": "c43dae45aeca2fc7e3b09a0232768911142c96c6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }

@@ -95,6 +95,54 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac6e36c4_d52b4423",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 9016
+      },
+      "writtenOn": "2022-10-21T16:40:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8383e42b_10cf58a3",
+      "range": {
+        "startLine": 7,
+        "startChar": 18,
+        "endLine": 7,
+        "endChar": 24
+      },
+      "revId": "9040f8f1dca11eb470f43555347c27bef9b53802",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "365de6ba_846127f5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 9016
+      },
+      "writtenOn": "2022-10-21T16:40:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "423fa139_30fdbc38",
+      "range": {
+        "startLine": 7,
+        "startChar": 51,
+        "endLine": 7,
+        "endChar": 52
+      },
+      "revId": "9040f8f1dca11eb470f43555347c27bef9b53802",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "289ef301_b0ff471a",
@@ -143,6 +191,24 @@
       "writtenOn": "2022-10-18T23:40:17Z",
       "side": 1,
       "message": "Please also change the equal sign to match the preferred format.",
+      "parentUuid": "3c320f4b_804f2f6d",
+      "revId": "9040f8f1dca11eb470f43555347c27bef9b53802",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17e77716_7fd20e37",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 9016
+      },
+      "writtenOn": "2022-10-21T16:40:24Z",
+      "side": 1,
+      "message": "Done",
       "parentUuid": "3c320f4b_804f2f6d",
       "revId": "9040f8f1dca11eb470f43555347c27bef9b53802",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
