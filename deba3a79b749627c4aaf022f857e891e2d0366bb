@@ -22,6 +22,30 @@
       },
       "revId": "deba3a79b749627c4aaf022f857e891e2d0366bb",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bebad8a_5289fcf9",
+        "filename": "testing/tools/test_runner.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-10-21T22:34:50Z",
+      "side": 0,
+      "message": "I think it gets delivered to the main process the same as before, but it doesn\u0027t really matter. What the old code did was:\n\n1. Catch KeyboardInterrupt in worker processes\n2. Wrap it in KeyboardInterruptedError\n3. Raise the new KeyboardInterruptedError\n\nEither way, an exception gets propagated up to the multiprocessing pool worker\u0027s code, which will handle it generically.",
+      "parentUuid": "78c0577e_48571379",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 40
+      },
+      "revId": "deba3a79b749627c4aaf022f857e891e2d0366bb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
