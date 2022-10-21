@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ec8f84e_1916d55f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-21T18:40:32Z",
+      "side": 1,
+      "message": "Red bots are optional bots that don\u0027t work yet. Triggered them by accident because the CQ was (is still?) acting weird.",
+      "revId": "79ba79264b70ab455dee18f16fcba6a7d1f5c1a9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
