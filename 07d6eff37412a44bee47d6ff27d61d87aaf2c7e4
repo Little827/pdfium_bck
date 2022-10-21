@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee0e6573_38806263",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-21T18:16:09Z",
+      "side": 1,
+      "message": "Please also add yourself to the AUTHORS file.",
+      "revId": "07d6eff37412a44bee47d6ff27d61d87aaf2c7e4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "746326df_5d4295c4",
+        "filename": "core/fpdfdoc/cpdf_annot.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-21T18:16:09Z",
+      "side": 1,
+      "message": "Compensate for",
+      "range": {
+        "startLine": 57,
+        "startChar": 5,
+        "endLine": 57,
+        "endChar": 20
+      },
+      "revId": "07d6eff37412a44bee47d6ff27d61d87aaf2c7e4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
