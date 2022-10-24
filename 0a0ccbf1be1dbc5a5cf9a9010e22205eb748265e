@@ -112,6 +112,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e3850130_34a42180",
+        "filename": "core/fpdfapi/page/cpdf_image.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-24T21:42:11Z",
+      "side": 1,
+      "message": "Especially considering this method only has 1 caller. In general, all the methods in this CL that have default arguments can just have regular parameters. Just update the few callers with the extra argument(s). Maybe use a CFX_Size instead of 2 separate parameters.",
+      "parentUuid": "5cba0daa_ca69bcf5",
+      "range": {
+        "startLine": 63,
+        "startChar": 24,
+        "endLine": 64,
+        "endChar": 49
+      },
+      "revId": "0a0ccbf1be1dbc5a5cf9a9010e22205eb748265e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c62d9e29_a3340155",
         "filename": "core/fpdfapi/render/cpdf_imageloader.cpp",
         "patchSetId": 3
