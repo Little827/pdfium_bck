@@ -59,7 +59,9 @@ class CPDF_Image final : public Retainable {
                         const CPDF_Dictionary* pPageResource,
                         bool bStdCS,
                         CPDF_ColorSpace::Family GroupFamily,
-                        bool bLoadMask);
+                        bool bLoadMask,
+                        uint32_t deviceWidth = 0,
+                        uint32_t deviceHeight = 0);
 
   // Returns whether to Continue() or not.
   bool Continue(PauseIndicatorIface* pPause);

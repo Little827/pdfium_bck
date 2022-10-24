@@ -39,7 +39,8 @@ class CJPX_Decoder {
 
   static std::unique_ptr<CJPX_Decoder> Create(
       pdfium::span<const uint8_t> src_span,
-      CJPX_Decoder::ColorSpaceOption option);
+      CJPX_Decoder::ColorSpaceOption option,
+      uint8_t reduce = 0);
 
   static void Sycc420ToRgbForTesting(opj_image_t* img);
 
@@ -55,7 +56,7 @@ class CJPX_Decoder {
   // Use Create() to instantiate.
   explicit CJPX_Decoder(ColorSpaceOption option);
 
-  bool Init(pdfium::span<const uint8_t> src_data);
+  bool Init(pdfium::span<const uint8_t> src_data, uint8_t reduce);
 
   const ColorSpaceOption m_ColorSpaceOption;
   pdfium::span<const uint8_t> m_SrcData;

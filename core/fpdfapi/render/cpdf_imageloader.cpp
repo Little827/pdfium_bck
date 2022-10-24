@@ -15,6 +15,7 @@
 #include "core/fpdfapi/page/cpdf_transferfunc.h"
 #include "core/fpdfapi/render/cpdf_rendercontext.h"
 #include "core/fpdfapi/render/cpdf_renderstatus.h"
+#include "core/fxge/cfx_renderdevice.h"
 #include "core/fxge/dib/cfx_dibitmap.h"
 #include "third_party/base/check.h"
 
@@ -32,11 +33,15 @@ bool CPDF_ImageLoader::Start(const CPDF_ImageObject* pImage,
     ret = m_pCache->StartGetCachedBitmap(
         m_pImageObject->GetImage(), pRenderStatus->GetFormResource(),
         pRenderStatus->GetPageResource(), bStdCS,
-        pRenderStatus->GetGroupFamily(), pRenderStatus->GetLoadMask());
+        pRenderStatus->GetGroupFamily(), pRenderStatus->GetLoadMask(),
+        pRenderStatus->GetRenderDevice()->GetWidth(),
+        pRenderStatus->GetRenderDevice()->GetHeight());
   } else {
     ret = m_pImageObject->GetImage()->StartLoadDIBBase(
         pRenderStatus->GetFormResource(), pRenderStatus->GetPageResource(),
-        bStdCS, pRenderStatus->GetGroupFamily(), pRenderStatus->GetLoadMask());
+        bStdCS, pRenderStatus->GetGroupFamily(), pRenderStatus->GetLoadMask(),
+        pRenderStatus->GetRenderDevice()->GetWidth(),
+        pRenderStatus->GetRenderDevice()->GetHeight());
   }
   if (!ret)
     HandleFailure();
