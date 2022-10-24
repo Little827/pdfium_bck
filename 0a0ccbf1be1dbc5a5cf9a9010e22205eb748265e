@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cf3be73_e4364294",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-10-24T19:06:44Z",
+      "side": 1,
+      "message": "Thanks for the explanation, that make sense.  One little issue is that in our endless tinkering, some of this code is moving around so you\u0027ll have to re-generate this patch in a few days.",
+      "revId": "0a0ccbf1be1dbc5a5cf9a9010e22205eb748265e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a571c8ee_fdd2291a",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-10-24T19:06:44Z",
+      "side": 1,
+      "message": "There\u0027s a little bit of a layering violation going on here in that the DI in DIB stands for Device Independent, so it shouldn\u0027t be taking this parameter or making the caclucation at line 231 - the caller would need to pass in a value to set for m-reduce.",
+      "range": {
+        "startLine": 218,
+        "startChar": 13,
+        "endLine": 218,
+        "endChar": 24
+      },
+      "revId": "0a0ccbf1be1dbc5a5cf9a9010e22205eb748265e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "289001f3_cd89c8ff",
+        "filename": "core/fpdfapi/page/cpdf_dib.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-10-24T19:06:44Z",
+      "side": 1,
+      "message": "nit: should probably call this m_ResolutionLevelsToSkip",
+      "range": {
+        "startLine": 139,
+        "startChar": 10,
+        "endLine": 139,
+        "endChar": 18
+      },
+      "revId": "0a0ccbf1be1dbc5a5cf9a9010e22205eb748265e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cba0daa_ca69bcf5",
+        "filename": "core/fpdfapi/page/cpdf_image.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-10-24T19:06:44Z",
+      "side": 1,
+      "message": "nit: Once upon a time, the style guide used to frown on optional arguments, but it may be reasonable if there aren\u0027t workarounds.",
+      "range": {
+        "startLine": 63,
+        "startChar": 24,
+        "endLine": 64,
+        "endChar": 49
+      },
+      "revId": "0a0ccbf1be1dbc5a5cf9a9010e22205eb748265e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c62d9e29_a3340155",
+        "filename": "core/fpdfapi/render/cpdf_imageloader.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-10-24T19:06:44Z",
+      "side": 1,
+      "message": "there will be merge conflicts here as I\u0027ve recently unpacked the dictionaries from here, but shouldn\u0027t be a big deal.",
+      "range": {
+        "startLine": 27,
+        "startChar": 28,
+        "endLine": 27,
+        "endChar": 68
+      },
+      "revId": "0a0ccbf1be1dbc5a5cf9a9010e22205eb748265e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
