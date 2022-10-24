@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "114e54e0_a766df43",
+        "filename": "core/fxge/skia/fx_skia_device_embeddertest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-24T19:36:33Z",
+      "side": 1,
+      "message": "Not needed then?",
+      "revId": "16a0c1727ad8a70275f03ab2eaf0c7ad32af040b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e88f0e46_59bf8b32",
+        "filename": "core/fxge/skia/fx_skia_device_embeddertest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-24T19:36:33Z",
+      "side": 1,
+      "message": "Dead code now?",
+      "revId": "16a0c1727ad8a70275f03ab2eaf0c7ad32af040b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
