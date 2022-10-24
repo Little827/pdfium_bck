@@ -43,6 +43,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1b7010df_2da57833",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-10-24T19:12:05Z",
+      "side": 1,
+      "message": "Alternatively, we might be able to cheat and call this max_width_required or some suc.",
+      "range": {
+        "startLine": 219,
+        "startChar": 13,
+        "endLine": 219,
+        "endChar": 25
+      },
+      "revId": "0a0ccbf1be1dbc5a5cf9a9010e22205eb748265e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "289001f3_cd89c8ff",
         "filename": "core/fpdfapi/page/cpdf_dib.h",
         "patchSetId": 3
