@@ -82,7 +82,9 @@ bool CPDF_PageImageCache::StartGetCachedBitmap(
     const CPDF_Dictionary* pPageResources,
     bool bStdCS,
     CPDF_ColorSpace::Family eFamily,
-    bool bLoadMask) {
+    bool bLoadMask,
+    uint32_t deviceWidth,
+    uint32_t deviceHeight) {
   // A cross-document image may have come from the embedder.
   if (m_pPage->GetDocument() != pImage->GetDocument())
     return false;
@@ -96,7 +98,8 @@ bool CPDF_PageImageCache::StartGetCachedBitmap(
     m_pCurImageCacheEntry = std::make_unique<Entry>(std::move(pImage));
   }
   CPDF_DIB::LoadState ret = m_pCurImageCacheEntry->StartGetCachedBitmap(
-      this, pFormResources, pPageResources, bStdCS, eFamily, bLoadMask);
+      this, pFormResources, pPageResources, bStdCS, eFamily, bLoadMask,
+      deviceWidth, deviceHeight);
   if (ret == CPDF_DIB::LoadState::kContinue)
     return true;
 
@@ -172,7 +175,9 @@ CPDF_DIB::LoadState CPDF_PageImageCache::Entry::StartGetCachedBitmap(
     const CPDF_Dictionary* pPageResources,
     bool bStdCS,
     CPDF_ColorSpace::Family eFamily,
-    bool bLoadMask) {
+    bool bLoadMask,
+    uint32_t deviceWidth,
+    uint32_t deviceHeight) {
   if (m_pCachedBitmap) {
     m_pCurBitmap = m_pCachedBitmap;
     m_pCurMask = m_pCachedMask;
@@ -181,7 +186,8 @@ CPDF_DIB::LoadState CPDF_PageImageCache::Entry::StartGetCachedBitmap(
 
   m_pCurBitmap = m_pImage->CreateNewDIB();
   CPDF_DIB::LoadState ret = m_pCurBitmap.As<CPDF_DIB>()->StartLoadDIBBase(
-      true, pFormResources, pPageResources, bStdCS, eFamily, bLoadMask);
+      true, pFormResources, pPageResources, bStdCS, eFamily, bLoadMask,
+      deviceWidth, deviceHeight);
   if (ret == CPDF_DIB::LoadState::kContinue)
     return CPDF_DIB::LoadState::kContinue;
 

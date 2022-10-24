@@ -39,7 +39,9 @@ class CPDF_PageImageCache {
                             const CPDF_Dictionary* pPageResources,
                             bool bStdCS,
                             CPDF_ColorSpace::Family eFamily,
-                            bool bLoadMask);
+                            bool bLoadMask,
+                            uint32_t deviceWidth,
+                            uint32_t deviceHeight);
 
   bool Continue(PauseIndicatorIface* pPause);
 
@@ -66,7 +68,9 @@ class CPDF_PageImageCache {
         const CPDF_Dictionary* pPageResources,
         bool bStdCS,
         CPDF_ColorSpace::Family eFamily,
-        bool bLoadMask);
+        bool bLoadMask,
+        uint32_t deviceWidth,
+        uint32_t deviceHeight);
 
     // Returns whether to Continue() or not.
     bool Continue(PauseIndicatorIface* pPause,
