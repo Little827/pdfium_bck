@@ -39,6 +39,69 @@
       "message": "Nice, let\u0027s see what the bots think.",
       "revId": "902b7307c50f3fff2a4c0448ada4ab55c9f2e971",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcdd17cd_6e6d9275",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8606
+      },
+      "writtenOn": "2022-10-24T18:14:17Z",
+      "side": 1,
+      "message": "Tom, I tried to answer your question with comments in the appropriate places in the code.",
+      "revId": "902b7307c50f3fff2a4c0448ada4ab55c9f2e971",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd4151fa_ebb89e8c",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 8606
+      },
+      "writtenOn": "2022-10-24T18:14:17Z",
+      "side": 1,
+      "message": "And here we calculate the number of layers that can be ignored.\nWe ignore all layers that are larger than the page size (in pixels).",
+      "range": {
+        "startLine": 232,
+        "startChar": 4,
+        "endLine": 233,
+        "endChar": 72
+      },
+      "revId": "902b7307c50f3fff2a4c0448ada4ab55c9f2e971",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c49d1cd_8441e9a6",
+        "filename": "core/fxcodec/jpx/cjpx_decoder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 8606
+      },
+      "writtenOn": "2022-10-24T18:14:17Z",
+      "side": 1,
+      "message": "The JPG image is presented as a set of layers of different scales. With the cp_reduce parameter, we tell OpenJPEG to ignore \u003ccp_reduce\u003e of the largest scales.\nBasically, this is all optimization.",
+      "range": {
+        "startLine": 435,
+        "startChar": 2,
+        "endLine": 435,
+        "endChar": 34
+      },
+      "revId": "902b7307c50f3fff2a4c0448ada4ab55c9f2e971",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
