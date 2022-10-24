@@ -214,7 +214,9 @@ CPDF_DIB::LoadState CPDF_DIB::StartLoadDIBBase(
     const CPDF_Dictionary* pPageResources,
     bool bStdCS,
     CPDF_ColorSpace::Family GroupFamily,
-    bool bLoadMask) {
+    bool bLoadMask,
+    uint32_t deviceWidth,
+    uint32_t deviceHeight) {
   m_bStdCS = bStdCS;
   m_bHasMask = bHasMask;
   m_GroupFamily = GroupFamily;
@@ -225,6 +227,10 @@ CPDF_DIB::LoadState CPDF_DIB::StartLoadDIBBase(
 
   if (!LoadInternal(pFormResources, pPageResources))
     return LoadState::kFail;
+
+  if (deviceWidth != 0 && deviceHeight != 0)
+    m_reduce = static_cast<uint8_t>(std::log2(std::max(
+        1u, std::min(m_Width / deviceWidth, m_Height / deviceHeight))));
 
   LoadState iCreatedDecoder = CreateDecoder();
   if (iCreatedDecoder == LoadState::kFail)
@@ -564,11 +570,14 @@ bool CPDF_DIB::CreateDCTDecoder(pdfium::span<const uint8_t> src_span,
 }
 
 RetainPtr<CFX_DIBitmap> CPDF_DIB::LoadJpxBitmap() {
-  std::unique_ptr<CJPX_Decoder> decoder =
-      CJPX_Decoder::Create(m_pStreamAcc->GetSpan(),
-                           ColorSpaceOptionFromColorSpace(m_pColorSpace.Get()));
+  std::unique_ptr<CJPX_Decoder> decoder = CJPX_Decoder::Create(
+      m_pStreamAcc->GetSpan(),
+      ColorSpaceOptionFromColorSpace(m_pColorSpace.Get()), m_reduce);
   if (!decoder)
     return nullptr;
+
+  m_Height >>= m_reduce;
+  m_Width >>= m_reduce;
 
   if (!decoder->StartDecode())
     return nullptr;

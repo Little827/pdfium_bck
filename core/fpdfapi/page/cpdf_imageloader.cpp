@@ -26,17 +26,20 @@ bool CPDF_ImageLoader::Start(const CPDF_ImageObject* pImage,
                              const CPDF_Dictionary* pPageResource,
                              bool bStdCS,
                              CPDF_ColorSpace::Family eFamily,
-                             bool bLoadMask) {
+                             bool bLoadMask,
+                             uint32_t deviceWidth,
+                             uint32_t deviceHeight) {
   m_pCache = pPageImageCache;
   m_pImageObject = pImage;
   bool ret;
   if (m_pCache) {
-    ret = m_pCache->StartGetCachedBitmap(m_pImageObject->GetImage(),
-                                         pFormResource, pPageResource, bStdCS,
-                                         eFamily, bLoadMask);
+    ret = m_pCache->StartGetCachedBitmap(
+        m_pImageObject->GetImage(), pFormResource, pPageResource, bStdCS,
+        eFamily, bLoadMask, deviceWidth, deviceHeight);
   } else {
     ret = m_pImageObject->GetImage()->StartLoadDIBBase(
-        pFormResource, pPageResource, bStdCS, eFamily, bLoadMask);
+        pFormResource, pPageResource, bStdCS, eFamily, bLoadMask, deviceWidth,
+        deviceHeight);
   }
   if (!ret)
     HandleFailure();

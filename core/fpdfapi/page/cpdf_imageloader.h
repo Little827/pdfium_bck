@@ -29,7 +29,9 @@ class CPDF_ImageLoader {
              const CPDF_Dictionary* pPageResource,
              bool bStdCS,
              CPDF_ColorSpace::Family eFamily,
-             bool bLoadMask);
+             bool bLoadMask,
+             uint32_t deviceWidth,
+             uint32_t deviceHeight);
   bool Continue(PauseIndicatorIface* pPause);
 
   RetainPtr<CFX_DIBBase> TranslateImage(
