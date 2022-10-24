@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f99be37_e565c2a1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-10-24T15:58:54Z",
+      "side": 1,
+      "message": "Can you give an explanation of why this is the case (the \"we do not use\" part)? Pointing to a location of code, for example, where this is called and then ignored, downscaled, etc. would be helpful in evaulating the change.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 52
+      },
+      "revId": "902b7307c50f3fff2a4c0448ada4ab55c9f2e971",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc264134_84871f7e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-10-24T15:58:54Z",
+      "side": 1,
+      "message": "Nice, let\u0027s see what the bots think.",
+      "revId": "902b7307c50f3fff2a4c0448ada4ab55c9f2e971",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
