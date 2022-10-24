@@ -60,7 +60,9 @@ class CPDF_DIB final : public CFX_DIBBase {
                              const CPDF_Dictionary* pPageResources,
                              bool bStdCS,
                              CPDF_ColorSpace::Family GroupFamily,
-                             bool bLoadMask);
+                             bool bLoadMask,
+                             uint32_t deviceWidth = 0,
+                             uint32_t deviceHeight = 0);
   LoadState ContinueLoadDIBBase(PauseIndicatorIface* pPause);
   RetainPtr<CPDF_DIB> DetachMask();
 
@@ -132,6 +134,9 @@ class CPDF_DIB final : public CFX_DIBBase {
   RetainPtr<CPDF_StreamAcc> m_pGlobalAcc;
   std::unique_ptr<fxcodec::ScanlineDecoder> m_pDecoder;
   JpxSMaskInlineData m_JpxInlineData;
+  // Reduce factor.
+  // Number of skipped levels with the maximum resolution.
+  uint8_t m_reduce = 0;
 
   // Must come after |m_pCachedBitmap|.
   std::unique_ptr<fxcodec::Jbig2Context> m_pJbig2Context;
