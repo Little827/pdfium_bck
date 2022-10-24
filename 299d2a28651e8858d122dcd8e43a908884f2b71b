@@ -22,6 +22,30 @@
       },
       "revId": "299d2a28651e8858d122dcd8e43a908884f2b71b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d05de889_cb150220",
+        "filename": "core/fpdfapi/page/cpdf_page.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-10-24T19:34:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d2255fe2_736474e4",
+      "range": {
+        "startLine": 83,
+        "startChar": 43,
+        "endLine": 83,
+        "endChar": 48
+      },
+      "revId": "299d2a28651e8858d122dcd8e43a908884f2b71b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
