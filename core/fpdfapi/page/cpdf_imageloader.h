@@ -29,7 +29,8 @@ class CPDF_ImageLoader {
              const CPDF_Dictionary* pPageResource,
              bool bStdCS,
              CPDF_ColorSpace::Family eFamily,
-             bool bLoadMask);
+             bool bLoadMask,
+             CFX_Size maxSizeRequired);
   bool Continue(PauseIndicatorIface* pPause);
 
   RetainPtr<CFX_DIBBase> TranslateImage(

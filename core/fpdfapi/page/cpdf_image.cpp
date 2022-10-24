@@ -368,10 +368,12 @@ bool CPDF_Image::StartLoadDIBBase(const CPDF_Dictionary* pFormResource,
                                   const CPDF_Dictionary* pPageResource,
                                   bool bStdCS,
                                   CPDF_ColorSpace::Family GroupFamily,
-                                  bool bLoadMask) {
+                                  bool bLoadMask,
+                                  CFX_Size maxSizeRequired) {
   RetainPtr<CPDF_DIB> source = CreateNewDIB();
-  CPDF_DIB::LoadState ret = source->StartLoadDIBBase(
-      true, pFormResource, pPageResource, bStdCS, GroupFamily, bLoadMask);
+  CPDF_DIB::LoadState ret =
+      source->StartLoadDIBBase(true, pFormResource, pPageResource, bStdCS,
+                               GroupFamily, bLoadMask, maxSizeRequired);
   if (ret == CPDF_DIB::LoadState::kFail) {
     m_pDIBBase.Reset();
     return false;

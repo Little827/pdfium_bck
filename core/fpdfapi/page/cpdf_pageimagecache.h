@@ -39,7 +39,8 @@ class CPDF_PageImageCache {
                             const CPDF_Dictionary* pPageResources,
                             bool bStdCS,
                             CPDF_ColorSpace::Family eFamily,
-                            bool bLoadMask);
+                            bool bLoadMask,
+                            CFX_Size maxSizeRequired);
 
   bool Continue(PauseIndicatorIface* pPause);
 
@@ -66,7 +67,8 @@ class CPDF_PageImageCache {
         const CPDF_Dictionary* pPageResources,
         bool bStdCS,
         CPDF_ColorSpace::Family eFamily,
-        bool bLoadMask);
+        bool bLoadMask,
+        CFX_Size maxSizeRequired);
 
     // Returns whether to Continue() or not.
     bool Continue(PauseIndicatorIface* pPause,
