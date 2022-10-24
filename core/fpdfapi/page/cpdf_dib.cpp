@@ -214,7 +214,8 @@ CPDF_DIB::LoadState CPDF_DIB::StartLoadDIBBase(
     const CPDF_Dictionary* pPageResources,
     bool bStdCS,
     CPDF_ColorSpace::Family GroupFamily,
-    bool bLoadMask) {
+    bool bLoadMask,
+    const CFX_Size& max_size_required) {
   m_bStdCS = bStdCS;
   m_bHasMask = bHasMask;
   m_GroupFamily = GroupFamily;
@@ -225,6 +226,11 @@ CPDF_DIB::LoadState CPDF_DIB::StartLoadDIBBase(
 
   if (!LoadInternal(pFormResources, pPageResources))
     return LoadState::kFail;
+
+  if (max_size_required.width != 0 && max_size_required.height != 0)
+    m_ResolutionLevelsToSkip = static_cast<uint8_t>(
+        std::log2(std::max(1, std::min(m_Width / max_size_required.width,
+                                       m_Height / max_size_required.height))));
 
   LoadState iCreatedDecoder = CreateDecoder();
   if (iCreatedDecoder == LoadState::kFail)
@@ -566,9 +572,13 @@ bool CPDF_DIB::CreateDCTDecoder(pdfium::span<const uint8_t> src_span,
 RetainPtr<CFX_DIBitmap> CPDF_DIB::LoadJpxBitmap() {
   std::unique_ptr<CJPX_Decoder> decoder =
       CJPX_Decoder::Create(m_pStreamAcc->GetSpan(),
-                           ColorSpaceOptionFromColorSpace(m_pColorSpace.Get()));
+                           ColorSpaceOptionFromColorSpace(m_pColorSpace.Get()),
+                           m_ResolutionLevelsToSkip);
   if (!decoder)
     return nullptr;
+
+  m_Height >>= m_ResolutionLevelsToSkip;
+  m_Width >>= m_ResolutionLevelsToSkip;
 
   if (!decoder->StartDecode())
     return nullptr;
@@ -802,8 +812,9 @@ CPDF_DIB::LoadState CPDF_DIB::StartLoadMaskDIB(
     RetainPtr<const CPDF_Stream> mask_stream) {
   m_pMask =
       pdfium::MakeRetain<CPDF_DIB>(m_pDocument.Get(), std::move(mask_stream));
-  LoadState ret = m_pMask->StartLoadDIBBase(
-      false, nullptr, nullptr, true, CPDF_ColorSpace::Family::kUnknown, false);
+  LoadState ret = m_pMask->StartLoadDIBBase(false, nullptr, nullptr, true,
+                                            CPDF_ColorSpace::Family::kUnknown,
+                                            false, {0, 0});
   if (ret == LoadState::kContinue) {
     if (m_Status == LoadState::kFail)
       m_Status = LoadState::kContinue;
