@@ -79,8 +79,10 @@ class CPDF_Page final : public IPDF_Page, public CPDF_PageObjectHolder {
   RetainPtr<CPDF_Array> GetMutableAnnotsArray();
   RetainPtr<const CPDF_Array> GetAnnotsArray() const;
 
-  CPDF_PageImageCache* GetPageImageCache() { return m_pPageImageCache.get(); }
-  void SetPageImageCache(std::unique_ptr<CPDF_PageImageCache> pCache);
+  void AddPageImageCache();
+  CPDF_PageImageCache* GetPageImageCache() const {
+    return m_pPageImageCache.get();
+  }
 
   RenderContextIface* GetRenderContext() const {
     return m_pRenderContext.get();
