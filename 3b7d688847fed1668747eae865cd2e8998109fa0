@@ -16,6 +16,23 @@
       "message": "Tom, will it be possible to check first that this file does not broke anything (locally I checked the correctness only of the pixel test)? \nAnd if the tests show that everything is fine, I will correct your remarks on the code.",
       "revId": "3b7d688847fed1668747eae865cd2e8998109fa0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea1fa4f0_c55f5989",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-10-24T19:28:19Z",
+      "side": 1,
+      "message": "I guess the question I have for Lei, is what happens when the user zooms in on the page? Do we regenerate a page with different dimensions?",
+      "revId": "3b7d688847fed1668747eae865cd2e8998109fa0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
