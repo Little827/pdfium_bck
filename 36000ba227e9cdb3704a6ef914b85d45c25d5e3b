@@ -35,6 +35,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "888e7274_bf6dd4dc",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 8606
+      },
+      "writtenOn": "2022-10-25T19:35:31Z",
+      "side": 1,
+      "message": "it may look strange, but it\u0027s clang-formatting",
+      "parentUuid": "f9c2cef6_43d7a8ed",
+      "revId": "36000ba227e9cdb3704a6ef914b85d45c25d5e3b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "43723d23_2a2f70a6",
@@ -81,6 +99,54 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a088e925_582a142e",
+        "filename": "core/fpdfapi/page/cpdf_dib.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 8606
+      },
+      "writtenOn": "2022-10-25T19:35:31Z",
+      "side": 1,
+      "message": "renamed",
+      "parentUuid": "1390eea3_95e5bd31",
+      "range": {
+        "startLine": 64,
+        "startChar": 38,
+        "endLine": 64,
+        "endChar": 53
+      },
+      "revId": "36000ba227e9cdb3704a6ef914b85d45c25d5e3b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "887b3bb5_f1764569",
+        "filename": "core/fpdfapi/page/cpdf_dib.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 8606
+      },
+      "writtenOn": "2022-10-25T19:35:31Z",
+      "side": 1,
+      "message": "Oh, really, fixed it",
+      "parentUuid": "43723d23_2a2f70a6",
+      "range": {
+        "startLine": 64,
+        "startChar": 29,
+        "endLine": 64,
+        "endChar": 37
+      },
+      "revId": "36000ba227e9cdb3704a6ef914b85d45c25d5e3b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93d53bfe_ebddd6fb",
@@ -94,6 +160,30 @@
       "writtenOn": "2022-10-25T18:51:58Z",
       "side": 1,
       "message": "Can this be named \"resolution_levels_to_skip\" to match the variable name CPDF_DIB? While \"reduce\" more closely matches what\u0027s in libopenjpeg, it\u0027s a bit cryptic.",
+      "range": {
+        "startLine": 43,
+        "startChar": 14,
+        "endLine": 43,
+        "endChar": 20
+      },
+      "revId": "36000ba227e9cdb3704a6ef914b85d45c25d5e3b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5508b9f_ed0730ab",
+        "filename": "core/fxcodec/jpx/cjpx_decoder.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 8606
+      },
+      "writtenOn": "2022-10-25T19:35:31Z",
+      "side": 1,
+      "message": "probably resolution_levels_to_skip would be an appropriate name in this context, fixed",
+      "parentUuid": "93d53bfe_ebddd6fb",
       "range": {
         "startLine": 43,
         "startChar": 14,
