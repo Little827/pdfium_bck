@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8fd67c4_e9c3b327",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-10-25T17:51:39Z",
+      "side": 1,
+      "message": "I\u0027m OK with this, Lei?",
+      "revId": "36000ba227e9cdb3704a6ef914b85d45c25d5e3b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
