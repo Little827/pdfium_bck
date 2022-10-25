@@ -22,6 +22,30 @@
       },
       "revId": "b7dc5394d406bdb6698cdae3e907b19f9a02a12a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8031b00_626c2a4f",
+        "filename": "testing/test.gni",
+        "patchSetId": 4
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-25T21:48:30Z",
+      "side": 1,
+      "message": "The reason these visibility rules exist is because //BUILD.gn has the \"pdfium_embeddertests\" target that has to depend on all the targets that use the pdfium_embeddertest_source_set template. Until this CL, nobody else had any need for additional visibility.\n\nWhat this CL does differently is having inter-dependencies between pdfium_embeddertest_source_set template based targets.",
+      "parentUuid": "d1ffe3fc_eccc198b",
+      "range": {
+        "startLine": 271,
+        "startChar": 0,
+        "endLine": 271,
+        "endChar": 44
+      },
+      "revId": "b7dc5394d406bdb6698cdae3e907b19f9a02a12a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
