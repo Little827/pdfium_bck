@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "9049b5d0_36bc8547",
+        "filename": "fpdfsdk/pwl/BUILD.gn",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-25T21:56:33Z",
+      "side": 1,
+      "message": "An alternative would be to move cpwl_combo_box_embeddertest.* into its own test_support source_set, and then set up deps / public_deps for that.",
+      "revId": "b7dc5394d406bdb6698cdae3e907b19f9a02a12a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "d1ffe3fc_eccc198b",
