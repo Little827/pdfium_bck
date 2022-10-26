@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8428cad6_5120cfba",
+        "filename": "fpdfsdk/formfiller/cffl_combobox.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-26T01:08:52Z",
+      "side": 1,
+      "message": "Should this say \"exposed for testing\", or provide a ForTesting() wrapper, or just have a new friend?",
+      "revId": "ed1dd1d39ebcfcb402cb1e3ddb40bc59d92a9f47",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30a2672b_6eeccf2b",
+        "filename": "fpdfsdk/formfiller/cffl_combobox_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-26T01:08:52Z",
+      "side": 1,
+      "message": "Want to ASSERT_TRUE(pComboBox)?",
+      "revId": "ed1dd1d39ebcfcb402cb1e3ddb40bc59d92a9f47",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
