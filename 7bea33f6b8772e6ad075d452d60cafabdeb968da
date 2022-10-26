@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63b62f51_1c1edad8",
+        "filename": "fpdfsdk/pwl/cpwl_combo_box_edit_embeddertest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-26T01:00:23Z",
+      "side": 1,
+      "message": "Not used?",
+      "revId": "7bea33f6b8772e6ad075d452d60cafabdeb968da",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3819e745_afc02537",
+        "filename": "fpdfsdk/pwl/cpwl_combo_box_embeddertest.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-26T01:00:23Z",
+      "side": 1,
+      "message": "Forward declare and move this to the .cpp file?",
+      "revId": "7bea33f6b8772e6ad075d452d60cafabdeb968da",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae7d4da4_8eeda99d",
+        "filename": "fpdfsdk/pwl/cpwl_combo_box_embeddertest.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-26T01:00:23Z",
+      "side": 1,
+      "message": "Do these all need to be initialized?",
+      "revId": "7bea33f6b8772e6ad075d452d60cafabdeb968da",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
