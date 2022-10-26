@@ -296,8 +296,8 @@ void CPDF_Dictionary::ConvertToIndirectObjectFor(
   if (it == m_Map.end() || it->second->IsReference())
     return;
 
-  CPDF_Object* pObj = pHolder->AddIndirectObject(std::move(it->second));
-  it->second = pObj->MakeReference(pHolder);
+  it->second = pHolder->CreateReference(
+      pHolder->AddIndirectObject(std::move(it->second)));
 }
 
 RetainPtr<CPDF_Object> CPDF_Dictionary::RemoveFor(ByteStringView key) {

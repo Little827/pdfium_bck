@@ -552,12 +552,11 @@ RetainPtr<CPDF_Font> CPDF_DocPageData::AddFont(std::unique_ptr<CFX_Font> pFont,
         nStemV = width;
     }
   }
-  CPDF_Dictionary* pFontDesc =
-      ToDictionary(GetDocument()->AddIndirectObject(CalculateFontDesc(
-          GetDocument(), basefont, flags, italicangle, pFont->GetAscent(),
-          pFont->GetDescent(), std::move(pBBox), nStemV)));
+  uint32_t fontdesc_objnum = GetDocument()->AddIndirectObject(CalculateFontDesc(
+      GetDocument(), basefont, flags, italicangle, pFont->GetAscent(),
+      pFont->GetDescent(), std::move(pBBox), nStemV));
   pFontDict->SetNewFor<CPDF_Reference>("FontDescriptor", GetDocument(),
-                                       pFontDesc->GetObjNum());
+                                       fontdesc_objnum);
   return GetFont(pBaseDict);
 }
 
