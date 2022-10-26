@@ -358,11 +358,9 @@ uint32_t CPDF_PageOrganizer::GetNewObjId(CPDF_Reference* pRef) {
       return 0;
   }
 
-  RetainPtr<CPDF_Object> pIndirectClone(
-      dest()->AddIndirectObject(std::move(pClone)));
-  dwNewObjNum = pIndirectClone->GetObjNum();
+  dwNewObjNum = dest()->AddIndirectObject(std::move(pClone));
   AddObjectMapping(dwObjnum, dwNewObjNum);
-  if (!UpdateReference(std::move(pIndirectClone)))
+  if (!UpdateReference(dest()->CreateReference(dwNewObjNum)))
     return 0;
 
   return dwNewObjNum;

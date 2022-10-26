@@ -26,6 +26,7 @@ class CPDF_IndirectObjectHolder {
   CPDF_IndirectObjectHolder();
   virtual ~CPDF_IndirectObjectHolder();
 
+  RetainPtr<CPDF_Reference> CreateReference(uint32_t objnum);
   RetainPtr<CPDF_Object> GetOrParseIndirectObject(uint32_t objnum);
   RetainPtr<const CPDF_Object> GetIndirectObject(uint32_t objnum) const;
   RetainPtr<CPDF_Object> GetMutableIndirectObject(uint32_t objnum);
@@ -37,14 +38,14 @@ class CPDF_IndirectObjectHolder {
   template <typename T, typename... Args>
   typename std::enable_if<!CanInternStrings<T>::value, RetainPtr<T>>::type
   NewIndirect(Args&&... args) {
-    return pdfium::WrapRetain(static_cast<T*>(
-        AddIndirectObject(pdfium::MakeRetain<T>(std::forward<Args>(args)...))));
+    return pdfium::WrapRetain(static_cast<T*>(AddIndirectObjectInternal(
+        pdfium::MakeRetain<T>(std::forward<Args>(args)...))));
   }
   template <typename T, typename... Args>
   typename std::enable_if<CanInternStrings<T>::value, RetainPtr<T>>::type
   NewIndirect(Args&&... args) {
     return pdfium::WrapRetain(
-        static_cast<T*>(AddIndirectObject(pdfium::MakeRetain<T>(
+        static_cast<T*>(AddIndirectObjectInternal(pdfium::MakeRetain<T>(
             m_pByteStringPool, std::forward<Args>(args)...))));
   }
 
@@ -57,8 +58,8 @@ class CPDF_IndirectObjectHolder {
                                  std::forward<Args>(args)...);
   }
 
-  // Takes ownership of |pObj|, returns unowned pointer to it.
-  CPDF_Object* AddIndirectObject(RetainPtr<CPDF_Object> pObj);
+  // Retains a reference to |pObj|, returns its new object number.
+  uint32_t AddIndirectObject(RetainPtr<CPDF_Object> pObj);
 
   // Always takes ownership of |pObj|, return true if higher generation number.
   bool ReplaceIndirectObjectIfHigherGeneration(uint32_t objnum,
@@ -82,6 +83,7 @@ class CPDF_IndirectObjectHolder {
 
   const CPDF_Object* GetIndirectObjectInternal(uint32_t objnum) const;
   CPDF_Object* GetOrParseIndirectObjectInternal(uint32_t objnum);
+  CPDF_Object* AddIndirectObjectInternal(RetainPtr<CPDF_Object> pObj);
 
   uint32_t m_LastObjNum = 0;
   std::map<uint32_t, RetainPtr<CPDF_Object>> m_IndirectObjs;

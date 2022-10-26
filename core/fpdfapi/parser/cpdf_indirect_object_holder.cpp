@@ -12,6 +12,7 @@
 
 #include "core/fpdfapi/parser/cpdf_object.h"
 #include "core/fpdfapi/parser/cpdf_parser.h"
+#include "core/fpdfapi/parser/cpdf_reference.h"
 #include "third_party/base/check.h"
 
 namespace {
@@ -27,6 +28,11 @@ CPDF_IndirectObjectHolder::CPDF_IndirectObjectHolder()
 
 CPDF_IndirectObjectHolder::~CPDF_IndirectObjectHolder() {
   m_pByteStringPool.DeleteObject();  // Make weak.
+}
+
+RetainPtr<CPDF_Reference> CPDF_IndirectObjectHolder::CreateReference(
+    uint32_t objnum) {
+  return pdfium::MakeRetain<CPDF_Reference>(this, objnum);
 }
 
 RetainPtr<const CPDF_Object> CPDF_IndirectObjectHolder::GetIndirectObject(
@@ -84,7 +90,12 @@ RetainPtr<CPDF_Object> CPDF_IndirectObjectHolder::ParseIndirectObject(
   return nullptr;
 }
 
-CPDF_Object* CPDF_IndirectObjectHolder::AddIndirectObject(
+uint32_t CPDF_IndirectObjectHolder::AddIndirectObject(
+    RetainPtr<CPDF_Object> pObj) {
+  return AddIndirectObjectInternal(std::move(pObj))->GetObjNum();
+}
+
+CPDF_Object* CPDF_IndirectObjectHolder::AddIndirectObjectInternal(
     RetainPtr<CPDF_Object> pObj) {
   CHECK(!pObj->GetObjNum());
   pObj->SetObjNum(++m_LastObjNum);
