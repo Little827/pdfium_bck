@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f86584b7_968513e2",
+        "filename": "fpdfsdk/pwl/cpwl_combo_box_edit_embeddertest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-10-26T13:49:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63b62f51_1c1edad8",
+      "revId": "7bea33f6b8772e6ad075d452d60cafabdeb968da",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3819e745_afc02537",
@@ -35,6 +53,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "39e5a3f8_306fffbb",
+        "filename": "fpdfsdk/pwl/cpwl_combo_box_embeddertest.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-10-26T13:49:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3819e745_afc02537",
+      "revId": "7bea33f6b8772e6ad075d452d60cafabdeb968da",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ae7d4da4_8eeda99d",
@@ -48,6 +84,24 @@
       "writtenOn": "2022-10-26T01:00:23Z",
       "side": 1,
       "message": "Do these all need to be initialized?",
+      "revId": "7bea33f6b8772e6ad075d452d60cafabdeb968da",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36b6cac1_f1443851",
+        "filename": "fpdfsdk/pwl/cpwl_combo_box_embeddertest.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-10-26T13:49:59Z",
+      "side": 1,
+      "message": "They are initialized in the SetUp() routine, but will give then initializers, just because. (They are invalidated in TearDown(), but not destructed until each test completes, so they would need explicit releases there if they were Unowned\u003c\u003e).",
+      "parentUuid": "ae7d4da4_8eeda99d",
       "revId": "7bea33f6b8772e6ad075d452d60cafabdeb968da",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
