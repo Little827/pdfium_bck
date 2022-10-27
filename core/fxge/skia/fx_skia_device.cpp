@@ -720,6 +720,7 @@ bool Upsample(const RetainPtr<CFX_DIBBase>& pSource,
   SkColorType colorType = forceAlpha || pSource->IsMaskFormat()
                               ? SkColorType::kAlpha_8_SkColorType
                               : SkColorType::kGray_8_SkColorType;
+  printf("ia_mask = %s\n", pSource->IsMaskFormat() ? "true" : "false");
   SkAlphaType alphaType =
       pSource->IsMaskFormat() ? kPremul_SkAlphaType : kOpaque_SkAlphaType;
   int width = pSource->GetWidth();
@@ -2667,8 +2668,12 @@ void CFX_DIBitmap::PreMultiply() {
 
   Format priorFormat = m_nFormat;
   m_nFormat = Format::kPreMultiplied;
-  if (priorFormat == Format::kPreMultiplied)
+  if (priorFormat == Format::kCleared)
+    printf("kCleared\n");
+  if (priorFormat == Format::kPreMultiplied) {
+    printf("the format is already premultiplied, do NOTHING\n");
     return;
+  }
 
   int height = this->GetHeight();
   int width = this->GetWidth();

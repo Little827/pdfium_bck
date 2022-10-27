@@ -807,6 +807,9 @@ bool CFX_DIBitmap::CompositeBitmap(int dest_left,
                                         dst_scan_extra_alpha);
     }
   }
+#if defined(_SKIA_SUPPORT_)
+  pSrcBitmap->DebugVerifyBufferIsPreMultiplied(pSrcBitmap->GetBuffer());
+#endif
   return true;
 }
 

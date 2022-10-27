@@ -118,7 +118,8 @@ class CPDF_RenderStatus {
                          FX_ARGB mask_argb,
                          int bitmap_alpha,
                          BlendMode blend_mode,
-                         const CPDF_Transparency& transparency);
+                         const CPDF_Transparency& transparency,
+                         bool colored_pattern);
 
   static std::unique_ptr<CPDF_GraphicStates> CloneObjStates(
       const CPDF_GraphicStates* pSrcStates,

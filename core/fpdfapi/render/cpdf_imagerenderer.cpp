@@ -488,7 +488,7 @@ bool CPDF_ImageRenderer::StartDIBBase() {
   if (pStretched) {
     m_pRenderStatus->CompositeDIBitmap(pStretched, dest_rect.left,
                                        dest_rect.top, m_FillArgb, m_BitmapAlpha,
-                                       m_BlendType, CPDF_Transparency());
+                                       m_BlendType, CPDF_Transparency(), false);
   }
   return false;
 }

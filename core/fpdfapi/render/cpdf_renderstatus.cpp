@@ -745,7 +745,7 @@ bool CPDF_RenderStatus::ProcessTransparency(CPDF_PageObject* pPageObj,
     transparency.SetGroup();
   }
   CompositeDIBitmap(bitmap, rect.left, rect.top, 0, 255, blend_type,
-                    transparency);
+                    transparency, false);
 #if defined(_SKIA_SUPPORT_)
   DebugVerifyDeviceIsPreMultiplied();
 #endif
@@ -1210,8 +1210,10 @@ void CPDF_RenderStatus::DrawTilingPattern(CPDF_TilingPattern* pattern,
   if (!pScreen)
     return;
 
+  // printf("pattern->colored() = %s\n", pattern->colored() ? "true" : "false");
   CompositeDIBitmap(pScreen, clip_box.left, clip_box.top, 0, 255,
-                    BlendMode::kNormal, CPDF_Transparency());
+                    BlendMode::kNormal, CPDF_Transparency(),
+                    pattern->colored());
 }
 
 void CPDF_RenderStatus::DrawPathWithPattern(CPDF_PathObject* path_obj,
@@ -1267,7 +1269,8 @@ void CPDF_RenderStatus::CompositeDIBitmap(
     FX_ARGB mask_argb,
     int bitmap_alpha,
     BlendMode blend_mode,
-    const CPDF_Transparency& transparency) {
+    const CPDF_Transparency& transparency,
+    bool colored_pattern) {
   if (!pDIBitmap)
     return;
 
@@ -1285,7 +1288,8 @@ void CPDF_RenderStatus::CompositeDIBitmap(
         pDIBitmap->MultiplyAlpha(bitmap_alpha);
       }
 #if defined(_SKIA_SUPPORT_)
-      if (CFX_DefaultRenderDevice::SkiaIsDefaultRenderer())
+      // xxxxxx
+      if (CFX_DefaultRenderDevice::SkiaIsDefaultRenderer() && !colored_pattern)
         CFX_SkiaDeviceDriver::PreMultiply(pDIBitmap);
 #endif
       if (m_pDevice->SetDIBits(pDIBitmap, left, top)) {
