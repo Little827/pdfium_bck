@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a837855_b955bded",
+        "filename": "fpdfsdk/pwl/BUILD.gn",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-27T18:00:00Z",
+      "side": 0,
+      "message": "Bad rebased?",
+      "revId": "2bd16e8c979ffd780500d8fa052d787a5e43096b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04a44431_e56b0bb6",
+        "filename": "testing/test.gni",
+        "patchSetId": 5
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-27T18:00:00Z",
+      "side": 0,
+      "message": "Bad rebased?",
+      "revId": "2bd16e8c979ffd780500d8fa052d787a5e43096b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
