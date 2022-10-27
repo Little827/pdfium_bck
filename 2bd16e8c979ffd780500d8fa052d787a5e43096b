@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1de638e2_b0422a1c",
+        "filename": "fpdfsdk/pwl/BUILD.gn",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-10-27T18:15:02Z",
+      "side": 0,
+      "message": "Indeed. Thanks!.",
+      "parentUuid": "8a837855_b955bded",
+      "revId": "2bd16e8c979ffd780500d8fa052d787a5e43096b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "04a44431_e56b0bb6",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-10-27T18:00:00Z",
       "side": 0,
       "message": "Bad rebased?",
+      "revId": "2bd16e8c979ffd780500d8fa052d787a5e43096b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c4ed164_79beeb00",
+        "filename": "testing/test.gni",
+        "patchSetId": 5
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-10-27T18:15:02Z",
+      "side": 0,
+      "message": "yep, removed.",
+      "parentUuid": "04a44431_e56b0bb6",
       "revId": "2bd16e8c979ffd780500d8fa052d787a5e43096b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
