@@ -37,6 +37,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0f45360b_08628beb",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-27T19:32:06Z",
+      "side": 1,
+      "message": "Needs curly braces when the conditional block is longer than 1 line.",
+      "revId": "4bbe35d5258eac59bdbb5f9c45c64b0aaad8485f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c6909c3_d16d490f",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-27T19:32:06Z",
+      "side": 1,
+      "message": "An alternative is to just pass the value into CreateDecoder(), instead of storing it in the class. WDYT?",
+      "revId": "4bbe35d5258eac59bdbb5f9c45c64b0aaad8485f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "71b04b97_24e50807",
         "filename": "core/fpdfapi/render/cpdf_imagerenderer.cpp",
         "patchSetId": 6
