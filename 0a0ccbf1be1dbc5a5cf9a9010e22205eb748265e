@@ -64,6 +64,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5236705_8b77364f",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-27T18:52:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b7010df_2da57833",
+      "range": {
+        "startLine": 219,
+        "startChar": 13,
+        "endLine": 219,
+        "endChar": 25
+      },
+      "revId": "0a0ccbf1be1dbc5a5cf9a9010e22205eb748265e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "289001f3_cd89c8ff",
@@ -77,6 +101,30 @@
       "writtenOn": "2022-10-24T19:06:44Z",
       "side": 1,
       "message": "nit: should probably call this m_ResolutionLevelsToSkip",
+      "range": {
+        "startLine": 139,
+        "startChar": 10,
+        "endLine": 139,
+        "endChar": 18
+      },
+      "revId": "0a0ccbf1be1dbc5a5cf9a9010e22205eb748265e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be23bd97_27dceb19",
+        "filename": "core/fpdfapi/page/cpdf_dib.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-27T18:52:05Z",
+      "side": 1,
+      "message": "It is now.",
+      "parentUuid": "289001f3_cd89c8ff",
       "range": {
         "startLine": 139,
         "startChar": 10,
@@ -134,6 +182,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b80e6a3_2feb29e9",
+        "filename": "core/fpdfapi/page/cpdf_image.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-27T18:52:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3850130_34a42180",
+      "range": {
+        "startLine": 63,
+        "startChar": 24,
+        "endLine": 64,
+        "endChar": 49
+      },
+      "revId": "0a0ccbf1be1dbc5a5cf9a9010e22205eb748265e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c62d9e29_a3340155",
@@ -147,6 +219,30 @@
       "writtenOn": "2022-10-24T19:06:44Z",
       "side": 1,
       "message": "there will be merge conflicts here as I\u0027ve recently unpacked the dictionaries from here, but shouldn\u0027t be a big deal.",
+      "range": {
+        "startLine": 27,
+        "startChar": 28,
+        "endLine": 27,
+        "endChar": 68
+      },
+      "revId": "0a0ccbf1be1dbc5a5cf9a9010e22205eb748265e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7c521ba_733f6b94",
+        "filename": "core/fpdfapi/render/cpdf_imageloader.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-27T18:52:05Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c62d9e29_a3340155",
       "range": {
         "startLine": 27,
         "startChar": 28,

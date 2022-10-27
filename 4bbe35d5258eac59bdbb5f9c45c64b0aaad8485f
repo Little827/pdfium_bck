@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76d1ee0f_1d70b665",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-27T18:52:05Z",
+      "side": 1,
+      "message": "Please also wrap at 72 columns.",
+      "revId": "4bbe35d5258eac59bdbb5f9c45c64b0aaad8485f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3e66131_b13b5248",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-27T18:52:05Z",
+      "side": 1,
+      "message": "Just marking some of the unresolved comments as resolved on the CL author\u0027s behalf.",
+      "revId": "4bbe35d5258eac59bdbb5f9c45c64b0aaad8485f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
