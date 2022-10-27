@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e025f0d_228c852a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-27T23:20:33Z",
+      "side": 1,
+      "message": "JPEG2000",
+      "range": {
+        "startLine": 10,
+        "startChar": 4,
+        "endLine": 10,
+        "endChar": 7
+      },
+      "revId": "c9a1e6505194dbbbcdd736a1bbe39f36b50a1e76",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74c623f6_be181f55",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-27T23:20:33Z",
+      "side": 1,
+      "message": "\"to decode\"\n\nor\n\n\"when decoding\"",
+      "range": {
+        "startLine": 15,
+        "startChar": 33,
+        "endLine": 15,
+        "endChar": 44
+      },
+      "revId": "c9a1e6505194dbbbcdd736a1bbe39f36b50a1e76",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "104d5e8c_b49ad5e1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-27T23:20:33Z",
+      "side": 1,
+      "message": "Did you by any chance mean \"small pictures\" here?",
+      "range": {
+        "startLine": 15,
+        "startChar": 61,
+        "endLine": 16,
+        "endChar": 8
+      },
+      "revId": "c9a1e6505194dbbbcdd736a1bbe39f36b50a1e76",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
