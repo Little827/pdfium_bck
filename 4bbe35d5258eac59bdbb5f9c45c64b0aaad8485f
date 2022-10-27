@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "2e052bff_458b8582",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 8606
+      },
+      "writtenOn": "2022-10-27T20:55:48Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "76d1ee0f_1d70b665",
+      "revId": "4bbe35d5258eac59bdbb5f9c45c64b0aaad8485f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "f3e66131_b13b5248",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 6
@@ -52,6 +70,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b6fee9e_aa3aaa6c",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 8606
+      },
+      "writtenOn": "2022-10-27T20:55:48Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "0f45360b_08628beb",
+      "revId": "4bbe35d5258eac59bdbb5f9c45c64b0aaad8485f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9c6909c3_d16d490f",
@@ -69,6 +105,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1318410d_5d669b92",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 8606
+      },
+      "writtenOn": "2022-10-27T20:55:48Z",
+      "side": 1,
+      "message": "Are you suggesting adding one argument each to the LoadJpxBitmap() and CreateDecoder() methods? Let\u0027s do that.",
+      "parentUuid": "9c6909c3_d16d490f",
+      "revId": "4bbe35d5258eac59bdbb5f9c45c64b0aaad8485f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "71b04b97_24e50807",
@@ -82,6 +136,24 @@
       "writtenOn": "2022-10-27T19:14:33Z",
       "side": 1,
       "message": "This doesn\u0027t compile.",
+      "revId": "4bbe35d5258eac59bdbb5f9c45c64b0aaad8485f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e61716ed_4b775d38",
+        "filename": "core/fpdfapi/render/cpdf_imagerenderer.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 8606
+      },
+      "writtenOn": "2022-10-27T20:55:48Z",
+      "side": 1,
+      "message": "The bracket is in the wrong place, hurried and did not check it.",
+      "parentUuid": "71b04b97_24e50807",
       "revId": "4bbe35d5258eac59bdbb5f9c45c64b0aaad8485f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
