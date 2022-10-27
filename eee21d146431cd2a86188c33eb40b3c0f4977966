@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95f7a5cc_ed6c59a3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-10-27T21:58:07Z",
+      "side": 1,
+      "message": "You can query for \"RStatus:SKIP\" to find examples of image diffs that failed.",
+      "revId": "eee21d146431cd2a86188c33eb40b3c0f4977966",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
