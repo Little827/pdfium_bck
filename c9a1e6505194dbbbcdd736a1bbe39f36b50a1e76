@@ -140,6 +140,30 @@
       },
       "revId": "c9a1e6505194dbbbcdd736a1bbe39f36b50a1e76",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a8b4d44_02c7bca8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 8606
+      },
+      "writtenOn": "2022-10-28T19:27:45Z",
+      "side": 1,
+      "message": "Not really, I meant large images (its real size) when rasterizing a small pages. \nIt sounds confusing, but I hope it\u0027s clear what I\u0027m talking about.",
+      "parentUuid": "104d5e8c_b49ad5e1",
+      "range": {
+        "startLine": 15,
+        "startChar": 61,
+        "endLine": 16,
+        "endChar": 8
+      },
+      "revId": "c9a1e6505194dbbbcdd736a1bbe39f36b50a1e76",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
