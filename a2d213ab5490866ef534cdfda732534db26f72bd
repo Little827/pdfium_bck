@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4efa9ecb_16f14399",
+        "filename": "core/fpdfapi/parser/cpdf_document_unittest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-10-28T23:17:14Z",
+      "side": 1,
+      "message": "Done (there\u0027s still some lingering remnants from when these were unique_ptr).",
+      "parentUuid": "963900eb_b3fe859f",
+      "revId": "a2d213ab5490866ef534cdfda732534db26f72bd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "755161e2_eb683160",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-10-28T23:06:20Z",
       "side": 1,
       "message": "Can these 2 lines become: `dwNewObjNum \u003d dest()-\u003eAddIndirectObject(pClone);`?",
+      "revId": "a2d213ab5490866ef534cdfda732534db26f72bd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b42d29a1_ea840828",
+        "filename": "fpdfsdk/fpdf_ppo.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-10-28T23:17:14Z",
+      "side": 1,
+      "message": "Yep, that\u0027s what I probably meant to write.",
+      "parentUuid": "755161e2_eb683160",
       "revId": "a2d213ab5490866ef534cdfda732534db26f72bd",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
