@@ -16,6 +16,24 @@
       "message": "Got red bots.",
       "revId": "fbe7d2fa95fb68e2587b8013dea635c4618115db",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58b9c3d2_6c0f9492",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-10-28T18:33:05Z",
+      "side": 1,
+      "message": "The failed pixel tests are updated.\n\nThe updated embeddertests Skia expectations are uploaded https://bugs.chromium.org/p/pdfium/issues/detail?id\u003d1818#c3\nand their old expectations are uploaded at \nhttps://bugs.chromium.org/p/pdfium/issues/detail?id\u003d1818#c4.",
+      "parentUuid": "775487c4_0fd044a4",
+      "revId": "fbe7d2fa95fb68e2587b8013dea635c4618115db",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
