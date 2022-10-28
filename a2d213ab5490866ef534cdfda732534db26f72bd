@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "963900eb_b3fe859f",
+        "filename": "core/fpdfapi/parser/cpdf_document_unittest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-28T23:06:20Z",
+      "side": 1,
+      "message": "Just get rid of this and use `kids` instead?",
+      "revId": "a2d213ab5490866ef534cdfda732534db26f72bd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "755161e2_eb683160",
+        "filename": "fpdfsdk/fpdf_ppo.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-28T23:06:20Z",
+      "side": 1,
+      "message": "Can these 2 lines become: `dwNewObjNum \u003d dest()-\u003eAddIndirectObject(pClone);`?",
+      "revId": "a2d213ab5490866ef534cdfda732534db26f72bd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
