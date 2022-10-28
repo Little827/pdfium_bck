@@ -22,6 +22,30 @@
       },
       "revId": "37b1b67e8a0a818e14760fd72fc171f6670d0ca5",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "faaab982_70a1d6d3",
+        "filename": "public/fpdf_text.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-28T20:57:46Z",
+      "side": 1,
+      "message": "Agreed. It\u0027s what it is. Alternatively, we can rename it FPDFText_HasUnicodeMapError? Do you think that\u0027s clearer?",
+      "parentUuid": "6f3b925a_0da44aa1",
+      "range": {
+        "startLine": 93,
+        "startChar": 24,
+        "endLine": 93,
+        "endChar": 30
+      },
+      "revId": "37b1b67e8a0a818e14760fd72fc171f6670d0ca5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
