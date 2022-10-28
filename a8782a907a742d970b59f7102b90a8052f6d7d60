@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "549ff016_b637e17a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-10-28T20:39:26Z",
+      "side": 1,
+      "message": "FYI: The style guide suggests only including the shebang on scripts, not on modules:\nhttps://google.github.io/styleguide/pyguide.html#37-shebang-line",
+      "revId": "a8782a907a742d970b59f7102b90a8052f6d7d60",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
