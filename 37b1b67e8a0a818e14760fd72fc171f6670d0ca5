@@ -87,6 +87,30 @@
       },
       "revId": "37b1b67e8a0a818e14760fd72fc171f6670d0ca5",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15514d56_2d170292",
+        "filename": "public/fpdf_text.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-28T21:15:13Z",
+      "side": 1,
+      "message": "Renamed.",
+      "parentUuid": "b775d134_5cf7ab9d",
+      "range": {
+        "startLine": 93,
+        "startChar": 24,
+        "endLine": 93,
+        "endChar": 30
+      },
+      "revId": "37b1b67e8a0a818e14760fd72fc171f6670d0ca5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
