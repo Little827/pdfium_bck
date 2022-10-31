@@ -34,6 +34,41 @@
       "parentUuid": "ae6591f8_00dc87cd",
       "revId": "d4f9e2311381bccd3f96a519716605d8b0893a12",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b8f7af3_76ea6ce4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-10-31T18:10:51Z",
+      "side": 1,
+      "message": "I\u0027ll leave it disabled, then. A quick `git grep` suggests 2439 instances of this (the PRESUBMIT missed a few) are not including \"The\" before \"PDFium Authors\", so that would be an easy sed. Maybe make the regex a bit longer to conform to the latest legal language.",
+      "parentUuid": "a6ccfa7c_70dce359",
+      "revId": "d4f9e2311381bccd3f96a519716605d8b0893a12",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec737fc5_c92b833f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-10-31T18:10:51Z",
+      "side": 1,
+      "message": "Thanks for the review!",
+      "revId": "d4f9e2311381bccd3f96a519716605d8b0893a12",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
