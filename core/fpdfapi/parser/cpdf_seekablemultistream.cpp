@@ -33,9 +33,8 @@ FX_FILESIZE CPDF_SeekableMultiStream::GetSize() {
   return dwSize.ValueOrDie();
 }
 
-bool CPDF_SeekableMultiStream::ReadBlockAtOffset(void* buffer,
-                                                 FX_FILESIZE offset,
-                                                 size_t size) {
+bool CPDF_SeekableMultiStream::ReadBlockAtOffset(pdfium::span<uint8_t> buffer,
+                                                 FX_FILESIZE offset) {
   int32_t iCount = fxcrt::CollectionSize<int32_t>(m_Data);
   int32_t index = 0;
   while (index < iCount) {
@@ -47,7 +46,7 @@ bool CPDF_SeekableMultiStream::ReadBlockAtOffset(void* buffer,
     offset -= dwSize;
     index++;
   }
-  auto buffer_span = pdfium::make_span(static_cast<uint8_t*>(buffer), size);
+  auto buffer_span = buffer;
   while (index < iCount) {
     auto acc_span = m_Data[index]->GetSpan();
     size_t dwRead =
