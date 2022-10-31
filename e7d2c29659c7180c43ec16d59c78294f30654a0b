@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19b22a5f_698a620c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-10-31T19:50:41Z",
+      "side": 1,
+      "message": "Thanks for the review! I found a couple of unusual cases on self-review, but on closer inspection, they\u0027re fine.",
+      "revId": "e7d2c29659c7180c43ec16d59c78294f30654a0b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "962a9419_33e1da93",
@@ -14,6 +31,58 @@
       "writtenOn": "2022-10-31T19:22:15Z",
       "side": 1,
       "message": "This is the only non-mechanical change in this CL.",
+      "revId": "e7d2c29659c7180c43ec16d59c78294f30654a0b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7a67e9d_f5ec4284",
+        "filename": "PRESUBMIT.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-10-31T19:50:41Z",
+      "side": 1,
+      "message": "Resolved",
+      "parentUuid": "962a9419_33e1da93",
+      "revId": "e7d2c29659c7180c43ec16d59c78294f30654a0b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a396be4_e75d0e4c",
+        "filename": "navbar.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-10-31T19:50:41Z",
+      "side": 1,
+      "message": "Enclosed in HTML comments.",
+      "revId": "e7d2c29659c7180c43ec16d59c78294f30654a0b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1ff042a_be6c1e8f",
+        "filename": "third_party/libopenjpeg/0034-opj_malloc.patch",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-10-31T19:50:41Z",
+      "side": 1,
+      "message": "This is a patch, rather than a source file, but it re-applies idempotently.",
       "revId": "e7d2c29659c7180c43ec16d59c78294f30654a0b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
