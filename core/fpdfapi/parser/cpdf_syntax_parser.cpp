@@ -44,10 +44,10 @@ enum class ReadStatus {
 
 class ReadableSubStream final : public IFX_SeekableReadStream {
  public:
-  ReadableSubStream(const RetainPtr<IFX_SeekableReadStream>& pFileRead,
+  ReadableSubStream(RetainPtr<IFX_SeekableReadStream> pFileRead,
                     FX_FILESIZE part_offset,
                     FX_FILESIZE part_size)
-      : m_pFileRead(pFileRead),
+      : m_pFileRead(std::move(pFileRead)),
         m_PartOffset(part_offset),
         m_PartSize(part_size) {}
 
@@ -82,17 +82,18 @@ int CPDF_SyntaxParser::s_CurrentRecursionDepth = 0;
 
 // static
 std::unique_ptr<CPDF_SyntaxParser> CPDF_SyntaxParser::CreateForTesting(
-    const RetainPtr<IFX_SeekableReadStream>& pFileAccess,
+    RetainPtr<IFX_SeekableReadStream> pFileAccess,
     FX_FILESIZE HeaderOffset) {
   return std::make_unique<CPDF_SyntaxParser>(
-      pdfium::MakeRetain<CPDF_ReadValidator>(pFileAccess, nullptr),
+      pdfium::MakeRetain<CPDF_ReadValidator>(std::move(pFileAccess), nullptr),
       HeaderOffset);
 }
 
 CPDF_SyntaxParser::CPDF_SyntaxParser(
-    const RetainPtr<IFX_SeekableReadStream>& pFileAccess)
+    RetainPtr<IFX_SeekableReadStream> pFileAccess)
     : CPDF_SyntaxParser(
-          pdfium::MakeRetain<CPDF_ReadValidator>(pFileAccess, nullptr),
+          pdfium::MakeRetain<CPDF_ReadValidator>(std::move(pFileAccess),
+                                                 nullptr),
           0) {}
 
 CPDF_SyntaxParser::CPDF_SyntaxParser(RetainPtr<CPDF_ReadValidator> validator,
