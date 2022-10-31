@@ -22,6 +22,23 @@
       },
       "revId": "975fb84fca5bf8dc7b28f71e4da5057f1c1230dc",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e2a6889_58467558",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-10-31T18:00:21Z",
+      "side": 1,
+      "message": "So lets finish off this string of CLs with a follow-up disabling the test due to performance. At least we\u0027ve shown that the fix does what it claims to do at this point in time.",
+      "revId": "975fb84fca5bf8dc7b28f71e4da5057f1c1230dc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
