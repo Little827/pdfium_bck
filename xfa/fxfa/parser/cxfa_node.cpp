@@ -511,8 +511,8 @@ RetainPtr<CFX_DIBitmap> XFA_LoadImageData(CXFA_FFDoc* pDoc,
     return nullptr;
 
   bNameImage = false;
-  RetainPtr<CFX_DIBitmap> pBitmap =
-      XFA_LoadImageFromBuffer(pImageFileRead, type, iImageXDpi, iImageYDpi);
+  RetainPtr<CFX_DIBitmap> pBitmap = XFA_LoadImageFromBuffer(
+      std::move(pImageFileRead), type, iImageXDpi, iImageYDpi);
   return pBitmap;
 }
 
