@@ -55,6 +55,7 @@ class FixedSizeDataVector {
     return pdfium::make_span(data_.get(), size_);
   }
 
+  T* data() { return data_.get(); }
   size_t size() const { return size_; }
   bool empty() const { return size_ == 0; }
 
