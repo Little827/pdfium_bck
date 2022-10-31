@@ -74,10 +74,11 @@ CPDF_DataAvail::FileAvail::~FileAvail() = default;
 
 CPDF_DataAvail::DownloadHints::~DownloadHints() = default;
 
-CPDF_DataAvail::CPDF_DataAvail(FileAvail* pFileAvail,
-                               RetainPtr<IFX_SeekableReadStream> pFileRead)
-    : m_pFileRead(pdfium::MakeRetain<CPDF_ReadValidator>(std::move(pFileRead),
-                                                         pFileAvail)),
+CPDF_DataAvail::CPDF_DataAvail(
+    FileAvail* pFileAvail,
+    const RetainPtr<IFX_SeekableReadStream>& pFileRead)
+    : m_pFileRead(
+          pdfium::MakeRetain<CPDF_ReadValidator>(pFileRead, pFileAvail)),
       m_dwFileLen(m_pFileRead->GetSize()) {}
 
 CPDF_DataAvail::~CPDF_DataAvail() {

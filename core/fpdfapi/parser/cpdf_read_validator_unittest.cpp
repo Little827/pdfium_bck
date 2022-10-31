@@ -72,8 +72,7 @@ TEST(ReadValidatorTest, UnavailableData) {
   auto file =
       pdfium::MakeRetain<CFX_ReadOnlyVectorStream>(std::move(test_data));
   MockFileAvail file_avail;
-  auto validator =
-      pdfium::MakeRetain<CPDF_ReadValidator>(std::move(file), &file_avail);
+  auto validator = pdfium::MakeRetain<CPDF_ReadValidator>(file, &file_avail);
 
   DataVector<uint8_t> read_buffer(100);
   EXPECT_FALSE(validator->ReadBlockAtOffset(read_buffer.data(), 5000,
@@ -97,8 +96,7 @@ TEST(ReadValidatorTest, UnavailableDataWithHints) {
   auto file =
       pdfium::MakeRetain<CFX_ReadOnlyVectorStream>(std::move(test_data));
   MockFileAvail file_avail;
-  auto validator =
-      pdfium::MakeRetain<CPDF_ReadValidator>(std::move(file), &file_avail);
+  auto validator = pdfium::MakeRetain<CPDF_ReadValidator>(file, &file_avail);
 
   MockDownloadHints hints;
   validator->SetDownloadHints(&hints);
@@ -139,8 +137,7 @@ TEST(ReadValidatorTest, UnavailableDataWithHints) {
 
 TEST(ReadValidatorTest, ReadError) {
   auto file = pdfium::MakeRetain<InvalidSeekableReadStream>(kTestDataSize);
-  auto validator =
-      pdfium::MakeRetain<CPDF_ReadValidator>(std::move(file), nullptr);
+  auto validator = pdfium::MakeRetain<CPDF_ReadValidator>(file, nullptr);
 
   static const uint32_t kBufferSize = 3 * 1000;
   DataVector<uint8_t> buffer(kBufferSize);
@@ -155,8 +152,7 @@ TEST(ReadValidatorTest, IntOverflow) {
   auto file =
       pdfium::MakeRetain<CFX_ReadOnlyVectorStream>(std::move(test_data));
   MockFileAvail file_avail;
-  auto validator =
-      pdfium::MakeRetain<CPDF_ReadValidator>(std::move(file), &file_avail);
+  auto validator = pdfium::MakeRetain<CPDF_ReadValidator>(file, &file_avail);
 
   DataVector<uint8_t> read_buffer(100);
 
@@ -176,8 +172,7 @@ TEST(ReadValidatorTest, Session) {
   auto file = pdfium::MakeRetain<InvalidSeekableReadStream>(kTestDataSize);
   MockFileAvail file_avail;
   MockDownloadHints hints;
-  auto validator =
-      pdfium::MakeRetain<CPDF_ReadValidator>(std::move(file), &file_avail);
+  auto validator = pdfium::MakeRetain<CPDF_ReadValidator>(file, &file_avail);
   validator->SetDownloadHints(&hints);
 
   CPDF_ReadValidator::ScopedSession read_session(validator);
@@ -215,8 +210,7 @@ TEST(ReadValidatorTest, SessionReset) {
   auto file = pdfium::MakeRetain<InvalidSeekableReadStream>(kTestDataSize);
   MockFileAvail file_avail;
   MockDownloadHints hints;
-  auto validator =
-      pdfium::MakeRetain<CPDF_ReadValidator>(std::move(file), &file_avail);
+  auto validator = pdfium::MakeRetain<CPDF_ReadValidator>(file, &file_avail);
   validator->SetDownloadHints(&hints);
 
   CPDF_ReadValidator::ScopedSession read_session(validator);
@@ -257,8 +251,7 @@ TEST(ReadValidatorTest, CheckDataRangeAndRequestIfUnavailable) {
   auto file =
       pdfium::MakeRetain<CFX_ReadOnlyVectorStream>(std::move(test_data));
   MockFileAvail file_avail;
-  auto validator =
-      pdfium::MakeRetain<CPDF_ReadValidator>(std::move(file), &file_avail);
+  auto validator = pdfium::MakeRetain<CPDF_ReadValidator>(file, &file_avail);
 
   MockDownloadHints hints;
   validator->SetDownloadHints(&hints);

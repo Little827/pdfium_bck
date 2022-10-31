@@ -37,10 +37,11 @@ class CPDF_SyntaxParser {
   };
 
   static std::unique_ptr<CPDF_SyntaxParser> CreateForTesting(
-      const RetainPtr<IFX_SeekableReadStream> pFileAccess,
+      const RetainPtr<IFX_SeekableReadStream>& pFileAccess,
       FX_FILESIZE HeaderOffset);
 
-  explicit CPDF_SyntaxParser(RetainPtr<IFX_SeekableReadStream> pFileAccess);
+  explicit CPDF_SyntaxParser(
+      const RetainPtr<IFX_SeekableReadStream>& pFileAccess);
   CPDF_SyntaxParser(RetainPtr<CPDF_ReadValidator> pValidator,
                     FX_FILESIZE HeaderOffset);
   ~CPDF_SyntaxParser();
@@ -53,6 +54,7 @@ class CPDF_SyntaxParser {
   void SetPos(FX_FILESIZE pos);
 
   RetainPtr<CPDF_Object> GetObjectBody(CPDF_IndirectObjectHolder* pObjList);
+
   RetainPtr<CPDF_Object> GetIndirectObject(CPDF_IndirectObjectHolder* pObjList,
                                            ParseType parse_type);
 

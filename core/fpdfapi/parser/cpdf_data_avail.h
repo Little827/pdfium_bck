@@ -71,7 +71,7 @@ class CPDF_DataAvail final : public Observable::ObserverIface {
   };
 
   CPDF_DataAvail(FileAvail* pFileAvail,
-                 RetainPtr<IFX_SeekableReadStream> pFileRead);
+                 const RetainPtr<IFX_SeekableReadStream>& pFileRead);
   ~CPDF_DataAvail() override;
 
   // Observable::ObserverIface:
