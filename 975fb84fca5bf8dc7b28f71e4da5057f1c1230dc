@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c50cbcf_d577ada1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-10-31T17:55:58Z",
+      "side": 1,
+      "message": "As is, I can\u0027t get a pixel test to work. It may work if pixel tests know how to run pdfium_test with --scale. It\u0027ll still be slow to render, but at least pixel tests are parallelized.",
+      "range": {
+        "startLine": 12,
+        "startChar": 56,
+        "endLine": 13,
+        "endChar": 23
+      },
+      "revId": "975fb84fca5bf8dc7b28f71e4da5057f1c1230dc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
