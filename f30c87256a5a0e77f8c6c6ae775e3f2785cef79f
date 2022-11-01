@@ -22,6 +22,30 @@
       },
       "revId": "f30c87256a5a0e77f8c6c6ae775e3f2785cef79f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "302015fb_4a9da879",
+        "filename": "third_party/base/span.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-11-01T17:21:08Z",
+      "side": 1,
+      "message": "Chromium\u0027s span has CHECKs in their ctors.",
+      "parentUuid": "26e1c034_ce36f608",
+      "range": {
+        "startLine": 193,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 32
+      },
+      "revId": "f30c87256a5a0e77f8c6c6ae775e3f2785cef79f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
