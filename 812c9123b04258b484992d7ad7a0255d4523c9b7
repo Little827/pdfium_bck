@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "244ad10f_734654fc",
+        "filename": "core/fpdfapi/parser/cpdf_seekablemultistream.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-11-01T19:46:45Z",
+      "side": 1,
+      "message": "Just use `buffer` directly and delete `buffer_span`?",
+      "revId": "812c9123b04258b484992d7ad7a0255d4523c9b7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3dfe8260_30475ace",
+        "filename": "core/fxcodec/tiff/tiff_decoder.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-11-01T19:46:45Z",
+      "side": 1,
+      "message": "Curious, is tsize_t not a size_t?",
+      "range": {
+        "startLine": 123,
+        "startChar": 39,
+        "endLine": 123,
+        "endChar": 58
+      },
+      "revId": "812c9123b04258b484992d7ad7a0255d4523c9b7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43a4cf64_f1dfeb15",
+        "filename": "core/fxcrt/cfx_memorystream.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-11-01T19:46:45Z",
+      "side": 1,
+      "message": "Curly braces.",
+      "revId": "812c9123b04258b484992d7ad7a0255d4523c9b7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
