@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1e4433e_ff18986a",
+        "filename": "core/fpdfapi/parser/cpdf_seekablemultistream.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-11-01T19:59:19Z",
+      "side": 1,
+      "message": "Done. Yep, I was just operating mechanically, but this should go.",
+      "parentUuid": "244ad10f_734654fc",
+      "revId": "812c9123b04258b484992d7ad7a0255d4523c9b7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3dfe8260_30475ace",
@@ -41,6 +59,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8aeaee64_46620313",
+        "filename": "core/fxcodec/tiff/tiff_decoder.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-11-01T19:59:19Z",
+      "side": 1,
+      "message": "No, it is signed for one.",
+      "parentUuid": "3dfe8260_30475ace",
+      "range": {
+        "startLine": 123,
+        "startChar": 39,
+        "endLine": 123,
+        "endChar": 58
+      },
+      "revId": "812c9123b04258b484992d7ad7a0255d4523c9b7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "43a4cf64_f1dfeb15",
@@ -54,6 +96,24 @@
       "writtenOn": "2022-11-01T19:46:45Z",
       "side": 1,
       "message": "Curly braces.",
+      "revId": "812c9123b04258b484992d7ad7a0255d4523c9b7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd0b0f3e_ba1e5b24",
+        "filename": "core/fxcrt/cfx_memorystream.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-11-01T19:59:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43a4cf64_f1dfeb15",
       "revId": "812c9123b04258b484992d7ad7a0255d4523c9b7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
