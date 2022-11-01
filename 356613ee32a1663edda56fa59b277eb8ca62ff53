@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e2667ac_d91fe151",
+        "filename": "xfa/fxfa/parser/cxfa_node.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-11-01T20:49:34Z",
+      "side": 1,
+      "message": "BTW, remove `pBitmap` and just return directly?",
+      "revId": "356613ee32a1663edda56fa59b277eb8ca62ff53",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
