@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff9eedb0_327c2c80",
+        "filename": "core/fpdfapi/parser/cpdf_page_object_avail_unittest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-11-01T18:32:04Z",
+      "side": 0,
+      "message": "can\u0027t create a 1-length span with a null data member without violating invariants nowdays.",
+      "range": {
+        "startLine": 28,
+        "startChar": 59,
+        "endLine": 28,
+        "endChar": 60
+      },
+      "revId": "732e38a1751d63ca42380e47dbca7f0f52e132b0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
