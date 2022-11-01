@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26e1c034_ce36f608",
+        "filename": "third_party/base/span.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-11-01T17:16:53Z",
+      "side": 1,
+      "message": "So is this legit inside a constexpr method?",
+      "range": {
+        "startLine": 193,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 32
+      },
+      "revId": "f30c87256a5a0e77f8c6c6ae775e3f2785cef79f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
