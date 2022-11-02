@@ -7,6 +7,7 @@
 #include <limits>
 
 #include "build/build_config.h"
+#include "core/fxcrt/autorestorer.h"
 #include "testing/gtest/include/gtest/gtest.h"
 
 namespace {
@@ -68,6 +69,29 @@ TEST(fxcrt, DISABLED_FX_TryAllocOOM) {
   EXPECT_FALSE(FX_TryRealloc(int, ptr, kMaxIntAlloc));
   FX_Free(ptr);
 }
+
+#if !defined(NDEBUG)
+TEST(fxcrt, SimulatedFXTryAllocOOM) {
+  {
+    AutoRestorer<bool> restorer(&pdfium::internal::g_calloc_fails_for_testing);
+    pdfium::internal::g_calloc_fails_for_testing = true;
+
+    EXPECT_FALSE(FX_TryAlloc(int, kMaxIntAlloc));
+  }
+
+  int* ptr = FX_Alloc(int, 1);
+  EXPECT_TRUE(ptr);
+
+  {
+    AutoRestorer<bool> restorer(&pdfium::internal::g_calloc_fails_for_testing);
+    pdfium::internal::g_calloc_fails_for_testing = true;
+
+    EXPECT_FALSE(FX_TryRealloc(int, ptr, kMaxIntAlloc));
+  }
+
+  FX_Free(ptr);
+}
+#endif
 
 #if !defined(COMPILER_GCC)
 TEST(fxcrt, FX_TryAllocOverflow) {

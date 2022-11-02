@@ -87,6 +87,10 @@ void* ReallocOrDie(void* ptr, size_t num_members, size_t member_size);
 void* StringAlloc(size_t num_members, size_t member_size);
 void* StringAllocOrDie(size_t num_members, size_t member_size);
 
+#if !defined(NDEBUG)
+extern bool g_calloc_fails_for_testing;
+#endif
+
 }  // namespace internal
 }  // namespace pdfium
 
