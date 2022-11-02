@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7aee12e9_9563cb52",
+        "filename": "core/fxcrt/fixed_try_alloc_zeroed_data_vector_unittest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-11-02T18:08:57Z",
+      "side": 1,
+      "message": "so presumably we tried here allocating size_t max bytes which is sure to fail, but that took too long ?",
+      "range": {
+        "startLine": 39,
+        "startChar": 36,
+        "endLine": 39,
+        "endChar": 57
+      },
+      "revId": "8d9b615fb9618146b91f17b373dd1806f643efdc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
