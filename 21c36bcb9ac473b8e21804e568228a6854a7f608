@@ -39,6 +39,29 @@
       "message": "Redundant.",
       "revId": "21c36bcb9ac473b8e21804e568228a6854a7f608",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de444449_df74524b",
+        "filename": "core/fxcrt/fx_stream.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-11-02T16:27:19Z",
+      "side": 1,
+      "message": "str.raw_span() ?",
+      "range": {
+        "startLine": 48,
+        "startChar": 20,
+        "endLine": 48,
+        "endChar": 51
+      },
+      "revId": "21c36bcb9ac473b8e21804e568228a6854a7f608",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
