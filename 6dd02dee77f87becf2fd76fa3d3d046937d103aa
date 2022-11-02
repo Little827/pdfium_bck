@@ -39,6 +39,30 @@
       },
       "revId": "6dd02dee77f87becf2fd76fa3d3d046937d103aa",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16a15b3b_3e4669d6",
+        "filename": "core/fxcrt/fx_memory.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-11-02T16:46:46Z",
+      "side": 1,
+      "message": "fx_memory_pa.cpp needs access to the variable. Do you think it\u0027s worth it to add a function on top of this, just so callers don\u0027t have to access something in an internal namespace?",
+      "parentUuid": "85f606b1_059dc7be",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 39
+      },
+      "revId": "6dd02dee77f87becf2fd76fa3d3d046937d103aa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
