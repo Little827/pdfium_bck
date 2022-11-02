@@ -63,6 +63,30 @@
       },
       "revId": "6dd02dee77f87becf2fd76fa3d3d046937d103aa",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff3b0f71_8789dfe8",
+        "filename": "core/fxcrt/fx_memory.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-11-02T18:19:28Z",
+      "side": 1,
+      "message": "yes, I\u0027d prefer setters/getters.\n\nIt dawns on me that we might not need this if we try to allocate size_t max bytes in the test which is sure to fail.  Too slow?",
+      "parentUuid": "16a15b3b_3e4669d6",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 39
+      },
+      "revId": "6dd02dee77f87becf2fd76fa3d3d046937d103aa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
