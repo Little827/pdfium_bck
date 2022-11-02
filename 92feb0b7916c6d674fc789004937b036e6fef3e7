@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a987504e_d39c54be",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-11-02T17:12:50Z",
+      "side": 1,
+      "message": "Is it possible to coerce Skia\u0027s internal dash drawing code to draw how other PDF renderers draw? I don\u0027t think drawing an extra dash is \"acceptable\" as there are now an extra element in the rendering. It\u0027s no longer just pixel color channel values being off by 1 or some other barely distinguishable difference.",
+      "revId": "92feb0b7916c6d674fc789004937b036e6fef3e7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
