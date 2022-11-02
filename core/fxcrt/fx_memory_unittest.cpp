@@ -28,9 +28,7 @@ TEST(fxcrt, FX_AllocZero) {
   FX_Free(ptr);
 }
 
-// TODO(tsepez): re-enable OOM tests if we can find a way to
-// prevent it from hosing the bots.
-TEST(fxcrt, DISABLED_FX_AllocOOM) {
+TEST(fxcrt, FXAllocOOM) {
   EXPECT_DEATH_IF_SUPPORTED((void)FX_Alloc(int, kMaxIntAlloc), "");
 
   int* ptr = FX_Alloc(int, 1);
@@ -60,7 +58,7 @@ TEST(fxcrt, FX_AllocOverflow2D) {
       << ptr;
 }
 
-TEST(fxcrt, DISABLED_FX_TryAllocOOM) {
+TEST(fxcrt, FXTryAllocOOM) {
   EXPECT_FALSE(FX_TryAlloc(int, kMaxIntAlloc));
 
   int* ptr = FX_Alloc(int, 1);
@@ -85,7 +83,7 @@ TEST(fxcrt, FX_TryAllocOverflow) {
 }
 #endif
 
-TEST(fxcrt, DISABLED_FXMEM_DefaultOOM) {
+TEST(fxcrt, FXMEMDefaultOOM) {
   EXPECT_FALSE(FXMEM_DefaultAlloc(kMaxByteAlloc));
 
   void* ptr = FXMEM_DefaultAlloc(1);
