@@ -100,6 +100,11 @@ void* StringAllocOrDie(size_t num_members, size_t member_size) {
 
   return result;
 }
+
+#if !defined(NDEBUG)
+bool g_calloc_fails_for_testing = false;
+#endif
+
 }  // namespace internal
 }  // namespace pdfium
 

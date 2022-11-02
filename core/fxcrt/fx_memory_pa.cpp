@@ -57,6 +57,11 @@ void* Alloc(size_t num_members, size_t member_size) {
 }
 
 void* Calloc(size_t num_members, size_t member_size) {
+#if !defined(NDEBUG)
+  if (g_calloc_fails_for_testing)
+    return nullptr;
+#endif
+
   FX_SAFE_SIZE_T total = member_size;
   total *= num_members;
   if (!total.IsValid())
