@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64091d3e_a339cbbf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-11-02T16:24:38Z",
+      "side": 1,
+      "message": "LG otherwise.",
+      "revId": "6dd02dee77f87becf2fd76fa3d3d046937d103aa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85f606b1_059dc7be",
+        "filename": "core/fxcrt/fx_memory.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-11-02T16:24:38Z",
+      "side": 1,
+      "message": "Can we make this a function that sets the variable, and make the variable private to fx_alloc.cpp ?",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 39
+      },
+      "revId": "6dd02dee77f87becf2fd76fa3d3d046937d103aa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
