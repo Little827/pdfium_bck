@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4a2ffb6_6db72fef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-11-02T17:58:50Z",
+      "side": 1,
+      "message": "I did an exhaustive check of other \"non-source\" files, but only the GN files came up.",
+      "revId": "abc858004656e66183533cf4d0b5a0afa655aa59",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
