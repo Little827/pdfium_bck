@@ -6,6 +6,7 @@
 
 #include <utility>
 
+#include "core/fxcrt/fixed_try_alloc_zeroed_data_vector.h"
 #include "core/fxcrt/fixed_zeroed_data_vector.h"
 #include "core/fxcrt/span_util.h"
 #include "testing/gmock/include/gmock/gmock.h"
@@ -67,6 +68,20 @@ TEST(FixedUninitDataVector, AssignFromFixedZeroedDataVector) {
   FixedUninitDataVector<int> vec;
 
   FixedZeroedDataVector<int> vec2(4);
+  constexpr int kData[] = {1, 2, 3, 4};
+  ASSERT_EQ(4u, vec2.writable_span().size());
+  fxcrt::spancpy(vec2.writable_span(), pdfium::make_span(kData));
+
+  vec = std::move(vec2);
+  EXPECT_TRUE(vec2.empty());
+  EXPECT_EQ(4u, vec.span().size());
+  EXPECT_THAT(vec.span(), testing::ElementsAre(1, 2, 3, 4));
+}
+
+TEST(FixedUninitDataVector, AssignFromFixedTryAllocZeroedDataVector) {
+  FixedUninitDataVector<int> vec;
+
+  FixedTryAllocZeroedDataVector<int> vec2(4);
   constexpr int kData[] = {1, 2, 3, 4};
   ASSERT_EQ(4u, vec2.writable_span().size());
   fxcrt::spancpy(vec2.writable_span(), pdfium::make_span(kData));
