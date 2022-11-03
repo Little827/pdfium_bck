@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ada06e0_8a4c9581",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-11-03T19:31:49Z",
+      "side": 1,
+      "message": "FTR, the first error I saw was:\n\n```\n../../base/allocator/partition_allocator/partition_page.h:417:24: error: ‘offsetof’ within non-standard-layout type ‘partition_alloc::internal::PartitionPage\u003ctrue\u003e’ is conditionally-supported [-Werror\u003dinvalid-offsetof]\n  417 | static_assert(offsetof(PartitionPage\u003cThreadSafe\u003e, slot_span_metadata) \u003d\u003d 0, \"\");\n      |                        ^\n../../base/allocator/partition_allocator/partition_page.h:418:24: error: ‘offsetof’ within non-standard-layout type ‘partition_alloc::internal::PartitionPage\u003ctrue\u003e’ is conditionally-supported [-Werror\u003dinvalid-offsetof]\n  418 | static_assert(offsetof(PartitionPage\u003cThreadSafe\u003e, subsequent_page_metadata) \u003d\u003d\n      |                        ^\n\n```",
+      "revId": "d84474be8075767f83b3c6c8d88d07d196acb283",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
