@@ -59,7 +59,6 @@ class CPDF_Object : public Retainable {
   // copied to the object it points to directly.
   virtual RetainPtr<CPDF_Object> CloneDirectObject() const;
 
-  virtual RetainPtr<CPDF_Object> GetMutableDirect();
   virtual ByteString GetString() const;
   virtual WideString GetUnicodeText() const;
   virtual float GetNumber() const;
@@ -97,6 +96,7 @@ class CPDF_Object : public Retainable {
       CPDF_IndirectObjectHolder* holder) const;
 
   RetainPtr<const CPDF_Object> GetDirect() const;  // Wraps virtual method.
+  RetainPtr<CPDF_Object> GetMutableDirect();       // Wraps virtual method.
   RetainPtr<CPDF_Dictionary> GetMutableDict();     // Wraps virtual method.
 
   // Const methods wrapping non-const virtual As*() methods.
@@ -122,10 +122,13 @@ class CPDF_Object : public Retainable {
   bool IsString() const { return !!AsString(); }
 
  protected:
+  friend class CPDF_Dictionary;
+
   CPDF_Object() = default;
   CPDF_Object(const CPDF_Object& src) = delete;
   ~CPDF_Object() override;
 
+  virtual const CPDF_Object* GetDirectInternal() const;
   RetainPtr<CPDF_Object> CloneObjectNonCyclic(bool bDirect) const;
 
   uint32_t m_ObjNum = 0;

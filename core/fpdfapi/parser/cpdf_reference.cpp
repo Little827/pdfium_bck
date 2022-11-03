@@ -75,8 +75,8 @@ void CPDF_Reference::SetRef(CPDF_IndirectObjectHolder* pDoc, uint32_t objnum) {
   m_RefObjNum = objnum;
 }
 
-RetainPtr<CPDF_Object> CPDF_Reference::GetMutableDirect() {
-  return m_pObjList ? m_pObjList->GetOrParseIndirectObject(m_RefObjNum)
+const CPDF_Object* CPDF_Reference::GetDirectInternal() const {
+  return m_pObjList ? m_pObjList->GetOrParseIndirectObjectInternal(m_RefObjNum)
                     : nullptr;
 }
 

@@ -22,7 +22,6 @@ class CPDF_Reference final : public CPDF_Object {
   // CPDF_Object:
   Type GetType() const override;
   RetainPtr<CPDF_Object> Clone() const override;
-  RetainPtr<CPDF_Object> GetMutableDirect() override;
   ByteString GetString() const override;
   float GetNumber() const override;
   int GetInteger() const override;
@@ -32,6 +31,7 @@ class CPDF_Reference final : public CPDF_Object {
                const CPDF_Encryptor* encryptor) const override;
   RetainPtr<CPDF_Reference> MakeReference(
       CPDF_IndirectObjectHolder* holder) const override;
+  const CPDF_Object* GetDirectInternal() const override;
 
   uint32_t GetRefObjNum() const { return m_RefObjNum; }
   void SetRef(CPDF_IndirectObjectHolder* pDoc, uint32_t objnum);

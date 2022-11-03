@@ -91,7 +91,7 @@ RetainPtr<CPDF_Object> CPDF_Dictionary::GetMutableObjectFor(
 const CPDF_Object* CPDF_Dictionary::GetDirectObjectForInternal(
     const ByteString& key) const {
   const CPDF_Object* p = GetObjectForInternal(key);
-  return p ? const_cast<CPDF_Object*>(p)->GetMutableDirect().Get() : nullptr;
+  return p ? p->GetDirectInternal() : nullptr;
 }
 
 RetainPtr<const CPDF_Object> CPDF_Dictionary::GetDirectObjectFor(
