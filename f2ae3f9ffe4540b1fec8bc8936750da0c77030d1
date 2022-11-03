@@ -41,6 +41,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4eea9f6e_4e426f43",
+        "filename": "core/fxcrt/fixed_try_alloc_zeroed_data_vector.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-11-03T00:11:41Z",
+      "side": 1,
+      "message": "Well, we don\u0027t have FX_TryAllocUninit() yet. But maybe eventually?",
+      "parentUuid": "0f17bbf0_ccaa6afc",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 35
+      },
+      "revId": "f2ae3f9ffe4540b1fec8bc8936750da0c77030d1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "300a6732_01225d72",
