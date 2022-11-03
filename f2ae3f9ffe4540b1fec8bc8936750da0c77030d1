@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ffdb968_070ad2f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-11-03T00:02:44Z",
+      "side": 1,
+      "message": "LG % test idea.",
+      "revId": "f2ae3f9ffe4540b1fec8bc8936750da0c77030d1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f17bbf0_ccaa6afc",
+        "filename": "core/fxcrt/fixed_try_alloc_zeroed_data_vector.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-11-03T00:02:44Z",
+      "side": 1,
+      "message": "Will we need FixedTryAllocUninitializeDataVector ?",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 35
+      },
+      "revId": "f2ae3f9ffe4540b1fec8bc8936750da0c77030d1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "300a6732_01225d72",
+        "filename": "core/fxcrt/fixed_try_alloc_zeroed_data_vector_unittest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-11-03T00:02:44Z",
+      "side": 1,
+      "message": "We need a test that pre-move vec.span().data() \u003d\u003d post-move vec2.span().data(), in other words that we schlepped over the old buffer, and didn\u0027t allocate a  new buffer, copy byte by byte under the covers and then just delete the old one.",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 29
+      },
+      "revId": "f2ae3f9ffe4540b1fec8bc8936750da0c77030d1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
