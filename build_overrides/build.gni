@@ -14,6 +14,9 @@ default_android_ndk_major_version = 16
 # PDFium builds don't support building java targets.
 enable_java_templates = false
 
+# TODO(crbug.com/pdfium/1932): Remove this when C++17 is no longer supported.
+msvc_use_cxx17 = true
+
 # Whether to use the neon FPU instruction set or not.
 if (current_cpu == "arm") {
   arm_use_neon = true
