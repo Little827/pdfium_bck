@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d6f6daf_6890b4a7",
+        "filename": "core/fpdfapi/parser/cpdf_dictionary.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-11-04T15:50:02Z",
+      "side": 0,
+      "message": "Replace this with a trip through the equivalent virtual mechanism.",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 0
+      },
+      "revId": "d89d2e00ff5e467cd4ad2b4752d8e41b8ebb14df",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
