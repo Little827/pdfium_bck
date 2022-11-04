@@ -22,16 +22,15 @@ class CPDF_Reference final : public CPDF_Object {
   // CPDF_Object:
   Type GetType() const override;
   RetainPtr<CPDF_Object> Clone() const override;
-  RetainPtr<CPDF_Object> GetMutableDirect() override;
   ByteString GetString() const override;
   float GetNumber() const override;
   int GetInteger() const override;
-  RetainPtr<const CPDF_Dictionary> GetDict() const override;
   CPDF_Reference* AsMutableReference() override;
   bool WriteTo(IFX_ArchiveStream* archive,
                const CPDF_Encryptor* encryptor) const override;
   RetainPtr<CPDF_Reference> MakeReference(
       CPDF_IndirectObjectHolder* holder) const override;
+  const CPDF_Object* GetDirectInternal() const override;
 
   uint32_t GetRefObjNum() const { return m_RefObjNum; }
   void SetRef(CPDF_IndirectObjectHolder* pDoc, uint32_t objnum);
@@ -40,6 +39,7 @@ class CPDF_Reference final : public CPDF_Object {
   CPDF_Reference(CPDF_IndirectObjectHolder* pDoc, uint32_t objnum);
   ~CPDF_Reference() override;
 
+  const CPDF_Dictionary* GetDictInternal() const override;
   RetainPtr<CPDF_Object> CloneNonCyclic(
       bool bDirect,
       std::set<const CPDF_Object*>* pVisited) const override;
