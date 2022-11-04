@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04003ed3_3a0567f8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-11-04T21:18:43Z",
+      "side": 1,
+      "message": "Analyzer again cant ref-count properly, but realizes a moved object has nothing to destroy and hence current stays valid for the next loop iteration.",
+      "revId": "125950e899f178206df62f7aaa394fd0bde4d169",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
