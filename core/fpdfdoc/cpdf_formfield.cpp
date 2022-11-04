@@ -324,11 +324,13 @@ WideString CPDF_FormField::GetValue(bool bDefault) const {
     case CPDF_Object::kString:
     case CPDF_Object::kStream:
       return pValue->GetUnicodeText();
-    case CPDF_Object::kArray:
-      pValue = pValue->AsArray()->GetDirectObjectAt(0).Get();
-      if (pValue)
-        return pValue->GetUnicodeText();
+    case CPDF_Object::kArray: {
+      RetainPtr<const CPDF_Object> pNewValue =
+          pValue->AsArray()->GetDirectObjectAt(0).Get();
+      if (pNewValue)
+        return pNewValue->GetUnicodeText();
       break;
+    }
     default:
       break;
   }
