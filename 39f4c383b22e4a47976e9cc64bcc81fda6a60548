@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2da825d9_74715102",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-11-04T23:31:09Z",
+      "side": 1,
+      "message": "Red bots.",
+      "revId": "39f4c383b22e4a47976e9cc64bcc81fda6a60548",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20c38dd1_a6fd6b8d",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2878,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-11-04T23:31:09Z",
+      "side": 1,
+      "message": "Combine with next line?",
+      "revId": "39f4c383b22e4a47976e9cc64bcc81fda6a60548",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7998963c_bcb48687",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-11-04T23:31:09Z",
+      "side": 1,
+      "message": "Is this needed if `recorder` is never dereferenced?",
+      "revId": "39f4c383b22e4a47976e9cc64bcc81fda6a60548",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0f71263_e567d03d",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-11-04T23:31:09Z",
+      "side": 1,
+      "message": "Then if CreateRecorder() takes ints like before, maybe we don\u0027t need fpdfsdk to depend on skia?",
+      "revId": "39f4c383b22e4a47976e9cc64bcc81fda6a60548",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
