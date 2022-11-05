@@ -34,7 +34,6 @@ class CPDF_TrueTypeFont final : public CPDF_SimpleFont {
 
   bool HasAnyGlyphIndex() const;
   CharmapType DetermineCharmapType() const;
-  FontEncoding DetermineEncoding() const;
   void SetGlyphIndicesFromFirstChar();
 };
 

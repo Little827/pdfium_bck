@@ -39,7 +39,6 @@
 #define FXFONT_USEEXTERNATTR 0x80000
 
 // These numbers come from the OpenType name table specification.
-constexpr uint16_t kNamePlatformAppleUnicode = 0;
 constexpr uint16_t kNamePlatformMac = 1;
 constexpr uint16_t kNamePlatformWindows = 3;
 
