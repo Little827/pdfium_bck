@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4edebc03_b63add58",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-11-05T07:18:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2da825d9_74715102",
+      "revId": "39f4c383b22e4a47976e9cc64bcc81fda6a60548",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "20c38dd1_a6fd6b8d",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-11-04T23:31:09Z",
       "side": 1,
       "message": "Combine with next line?",
+      "revId": "39f4c383b22e4a47976e9cc64bcc81fda6a60548",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dccfd079_531a9d05",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2878,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-11-05T07:18:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20c38dd1_a6fd6b8d",
       "revId": "39f4c383b22e4a47976e9cc64bcc81fda6a60548",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -52,6 +88,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcf61199_2fe26220",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-11-05T07:18:01Z",
+      "side": 1,
+      "message": "The std::unique_ptr\u003cSkPictureRecorder\u003e requires the destructor.\n\nI do think it\u0027s of questionable value to define FPDF_RECORDER as SkPictureRecorder* in the first place, but I didn\u0027t want to change the FPDF_RenderPageSkp() API in this CL.",
+      "parentUuid": "7998963c_bcb48687",
+      "revId": "39f4c383b22e4a47976e9cc64bcc81fda6a60548",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a0f71263_e567d03d",
@@ -65,6 +119,24 @@
       "writtenOn": "2022-11-04T23:31:09Z",
       "side": 1,
       "message": "Then if CreateRecorder() takes ints like before, maybe we don\u0027t need fpdfsdk to depend on skia?",
+      "revId": "39f4c383b22e4a47976e9cc64bcc81fda6a60548",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3141e894_accfbc64",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-11-05T07:18:01Z",
+      "side": 1,
+      "message": "Given the SkPictureRecorder dependency is required, there doesn\u0027t seem to be any gain in avoiding this.\n\nI considered using something like FX_RECT or CFX_Size, but given that CreateRecorder() is a Skia-specific internal API anyway, it seemed more elegant to just pass through the Skia type.",
+      "parentUuid": "a0f71263_e567d03d",
       "revId": "39f4c383b22e4a47976e9cc64bcc81fda6a60548",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
