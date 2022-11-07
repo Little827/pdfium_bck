@@ -461,11 +461,14 @@ void ProgressiveDecoder::GifReadScanline(int32_t row_num, uint8_t* row_buf) {
   if (m_GifTransIndex != -1 && m_pDeviceBitmap->IsAlphaFormat()) {
     pal_index = m_GifTransIndex;
   }
-  memset(m_DecodeBuf.data(), pal_index, m_SrcWidth);
+  fxcrt::spanset(pdfium::make_span(m_DecodeBuf).first(m_SrcWidth), pal_index);
+
   bool bLastPass = (row_num % 2) == 1;
   int32_t line = row_num + m_GifFrameRect.top;
   int32_t left = m_GifFrameRect.left;
-  memcpy(m_DecodeBuf.data() + left, row_buf, img_width);
+  fxcrt::spancpy(pdfium::make_span(m_DecodeBuf).subspan(left),
+                 row_buf.first(img_width));
+
   int src_top = m_clipBox.top;
   int src_bottom = m_clipBox.bottom;
   int dest_top = m_startY;
