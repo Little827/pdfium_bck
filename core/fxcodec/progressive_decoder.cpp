@@ -444,28 +444,30 @@ bool ProgressiveDecoder::GifInputRecordPositionBuf(uint32_t rcd_pos,
   return true;
 }
 
-void ProgressiveDecoder::GifReadScanline(int32_t row_num, uint8_t* row_buf) {
+void ProgressiveDecoder::GifReadScanline(int32_t row_num,
+                                         pdfium::span<uint8_t> row_buf) {
   RetainPtr<CFX_DIBitmap> pDIBitmap = m_pDeviceBitmap;
   DCHECK(pDIBitmap);
   int32_t img_width = m_GifFrameRect.Width();
   if (!pDIBitmap->IsAlphaFormat()) {
-    uint8_t* byte_ptr = row_buf;
+    pdfium::span<uint8_t> byte_ptr = row_buf;
     for (int i = 0; i < img_width; i++) {
-      if (*byte_ptr == m_GifTransIndex) {
-        *byte_ptr = m_GifBgIndex;
+      if (byte_ptr.front() == m_GifTransIndex) {
+        byte_ptr.front() = m_GifBgIndex;
       }
-      byte_ptr++;
+      byte_ptr = byte_ptr.subspan(1);
     }
   }
   int32_t pal_index = m_GifBgIndex;
   if (m_GifTransIndex != -1 && m_pDeviceBitmap->IsAlphaFormat()) {
     pal_index = m_GifTransIndex;
   }
-  memset(m_DecodeBuf.data(), pal_index, m_SrcWidth);
+  fxcrt::spanset(pdfium::make_span(m_DecodeBuf).first(m_SrcWidth), pal_index);
   bool bLastPass = (row_num % 2) == 1;
   int32_t line = row_num + m_GifFrameRect.top;
   int32_t left = m_GifFrameRect.left;
-  memcpy(m_DecodeBuf.data() + left, row_buf, img_width);
+  fxcrt::spancpy(pdfium::make_span(m_DecodeBuf).subspan(left),
+                 row_buf.first(img_width));
   int src_top = m_clipBox.top;
   int src_bottom = m_clipBox.bottom;
   int dest_top = m_startY;
