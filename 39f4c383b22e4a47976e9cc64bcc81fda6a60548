@@ -139,6 +139,24 @@
       "parentUuid": "a0f71263_e567d03d",
       "revId": "39f4c383b22e4a47976e9cc64bcc81fda6a60548",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "550f3971_5c89ffeb",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-11-08T17:14:17Z",
+      "side": 1,
+      "message": "It\u0027s only required if SkPictureRecorder is wrapped in a unique_ptr. If it was a raw pointer, e.g. release() in CFX_DefaultRenderDevice::CreateRecorder() instead, then fpdfsdk won\u0027t need any Skia includes.\n\nTaking a step back, do you foresee non-test fpdfsdk code needing more direct access to Skia? Or can the Skia usage stay in core/fxge?",
+      "parentUuid": "3141e894_accfbc64",
+      "revId": "39f4c383b22e4a47976e9cc64bcc81fda6a60548",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
