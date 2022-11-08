@@ -6,6 +6,7 @@
 
 #include <vector>
 
+#include "core/fxcrt/fx_coordinates.h"
 #include "testing/gtest/include/gtest/gtest.h"
 
 TEST(Spanset, Fits) {
@@ -59,6 +60,16 @@ TEST(Spancpy, EmptyCopyWithin) {
   EXPECT_EQ(dst[3], 'B');
 }
 
+TEST(Spancpy, NoDeduction) {
+  CFX_Point dst[4] = {};
+  CFX_Point src[2] = {{1, 2}, {3, 4}};
+  fxcrt::spancpy<CFX_Point>(dst, src);
+  EXPECT_EQ(dst[0], CFX_Point(1, 2));
+  EXPECT_EQ(dst[1], CFX_Point(3, 4));
+  EXPECT_EQ(dst[2], CFX_Point());
+  EXPECT_EQ(dst[3], CFX_Point());
+}
+
 TEST(Spancpy, EmptyCopyToEmpty) {
   std::vector<char> src(2, 'A');
   std::vector<char> dst(4, 'B');
@@ -80,6 +91,16 @@ TEST(Spanmove, FitsWithin) {
   EXPECT_EQ(dst[1], 'A');
   EXPECT_EQ(dst[2], 'A');
   EXPECT_EQ(dst[3], 'B');
+}
+
+TEST(Spanmove, NoDeduction) {
+  CFX_Point dst[4] = {};
+  CFX_Point src[2] = {{1, 2}, {3, 4}};
+  fxcrt::spanmove<CFX_Point>(dst, src);
+  EXPECT_EQ(dst[0], CFX_Point(1, 2));
+  EXPECT_EQ(dst[1], CFX_Point(3, 4));
+  EXPECT_EQ(dst[2], CFX_Point());
+  EXPECT_EQ(dst[3], CFX_Point());
 }
 
 TEST(Span, AssignOverOnePastEnd) {
