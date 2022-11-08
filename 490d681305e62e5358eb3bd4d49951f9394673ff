@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a169bfaf_3c2fa46f",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1418,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-11-08T21:33:48Z",
+      "side": 1,
+      "message": "Looking at other existing uses, they are of the form `NOLINTNEXTLINE(reason)`. Does Clang Analyzer use that format, and is there a specific reason to add?",
+      "revId": "490d681305e62e5358eb3bd4d49951f9394673ff",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
