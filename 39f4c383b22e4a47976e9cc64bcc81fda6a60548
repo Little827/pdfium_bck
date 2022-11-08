@@ -177,6 +177,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1090ca24_84f55fc5",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-11-08T21:55:40Z",
+      "side": 1,
+      "message": "I\u0027d like to not have too many dependencies if it\u0027s easily avoidable. The fpdfsdk code has no direct dependencies on AGG headers. I know that\u0027s not an apples to apples comparison, since AGG doesn\u0027t have public APIs that deals with its data types. Before this CL, fpdfsdk also had no Skia dependencies, which is why I just wanted to discuss this a bit more.\n\nAlso, having code where opaque data simply pass through it is not uncommon.\n\nMaybe a better medium term solution is to change the API, so the caller passes in a SkPictureRecorder that it owns to start with.",
+      "parentUuid": "af00f461_342349fc",
+      "revId": "39f4c383b22e4a47976e9cc64bcc81fda6a60548",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9dc9be1b_75ea356d",
@@ -190,6 +208,24 @@
       "writtenOn": "2022-11-08T20:29:40Z",
       "side": 1,
       "message": "For example: If we do any error handling here, we would need to delete the SkPictureRecorder in this code anyway. Relying on never having to do that seems fragile to me.",
+      "revId": "39f4c383b22e4a47976e9cc64bcc81fda6a60548",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8e46ee5_4ffaa9e9",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 749,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-11-08T21:55:40Z",
+      "side": 1,
+      "message": "Thanks for the example.",
+      "parentUuid": "9dc9be1b_75ea356d",
       "revId": "39f4c383b22e4a47976e9cc64bcc81fda6a60548",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
