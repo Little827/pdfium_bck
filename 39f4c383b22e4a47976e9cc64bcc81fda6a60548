@@ -157,6 +157,24 @@
       "parentUuid": "3141e894_accfbc64",
       "revId": "39f4c383b22e4a47976e9cc64bcc81fda6a60548",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af00f461_342349fc",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-11-08T20:26:34Z",
+      "side": 1,
+      "message": "I think the fundamental problem is the design of the FPDF_RenderPageSkp() API: It returns an SkPictureRecorder, and pretending it doesn\u0027t creates these sort of design issues. The public API effectively has a dependency on Skia.\n\nIs there a problem with fpdfsdk code depending internally on Skia? I think passing this as a unique_ptr fundamentally is the right design, so if we\u0027re going to deviate from that, I think we need a good reason, rather than vice versa.",
+      "parentUuid": "550f3971_5c89ffeb",
+      "revId": "39f4c383b22e4a47976e9cc64bcc81fda6a60548",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
