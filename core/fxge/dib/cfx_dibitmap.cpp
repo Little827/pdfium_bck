@@ -17,6 +17,7 @@
 #include "core/fxcrt/data_vector.h"
 #include "core/fxcrt/fx_coordinates.h"
 #include "core/fxcrt/fx_safe_types.h"
+#include "core/fxcrt/span_util.h"
 #include "core/fxge/calculate_pitch.h"
 #include "core/fxge/cfx_cliprgn.h"
 #include "core/fxge/cfx_defaultrenderdevice.h"
@@ -98,8 +99,8 @@ bool CFX_DIBitmap::Copy(const RetainPtr<CFX_DIBBase>& pSrc) {
 
 CFX_DIBitmap::~CFX_DIBitmap() = default;
 
-uint8_t* CFX_DIBitmap::GetBuffer() const {
-  return m_pBuffer.Get();
+pdfium::span<uint8_t> CFX_DIBitmap::GetBuffer() const {
+  return {m_pBuffer.Get(), m_Height * m_Pitch};
 }
 
 pdfium::span<const uint8_t> CFX_DIBitmap::GetScanline(int line) const {
@@ -111,7 +112,7 @@ pdfium::span<const uint8_t> CFX_DIBitmap::GetScanline(int line) const {
 
 size_t CFX_DIBitmap::GetEstimatedImageMemoryBurden() const {
   size_t result = CFX_DIBBase::GetEstimatedImageMemoryBurden();
-  if (GetBuffer()) {
+  if (!GetBuffer().empty()) {
     int height = GetHeight();
     CHECK(pdfium::base::IsValueInRangeForNumericType<size_t>(height));
     result += static_cast<size_t>(height) * GetPitch();
@@ -405,8 +406,7 @@ bool CFX_DIBitmap::SetUniformOpaqueAlpha() {
     return true;
   }
   if (m_pAlphaMask) {
-    memset(m_pAlphaMask->GetBuffer(), 0xff,
-           m_pAlphaMask->GetHeight() * m_pAlphaMask->GetPitch());
+    fxcrt::spanset(m_pAlphaMask->GetBuffer(), 0xff);
     return true;
   }
   const int destOffset = GetFormat() == FXDIB_Format::kArgb ? 3 : 0;
