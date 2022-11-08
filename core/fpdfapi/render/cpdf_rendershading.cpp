@@ -26,6 +26,7 @@
 #include "core/fpdfapi/render/cpdf_renderoptions.h"
 #include "core/fxcrt/fx_safe_types.h"
 #include "core/fxcrt/fx_system.h"
+#include "core/fxcrt/span_util.h"
 #include "core/fxge/cfx_defaultrenderdevice.h"
 #include "core/fxge/cfx_fillrenderoptions.h"
 #include "core/fxge/cfx_path.h"
@@ -820,11 +821,10 @@ void DrawCoonPatchMeshes(
       for (i = 0; i < 4; i++) {
         tempCoords[i] = coords[(flag * 3 + i) % 12];
       }
-      memcpy(coords, tempCoords, sizeof(tempCoords));
-      CoonColor tempColors[2];
-      tempColors[0] = patch.patch_colors[flag];
-      tempColors[1] = patch.patch_colors[(flag + 1) % 4];
-      memcpy(patch.patch_colors, tempColors, sizeof(CoonColor) * 2);
+      fxcrt::spancpy<CFX_PointF>(coords, tempCoords);
+      CoonColor tempColors[2] = {patch.patch_colors[flag],
+                                 patch.patch_colors[(flag + 1) % 4]};
+      fxcrt::spancpy<CoonColor>(patch.patch_colors, tempColors);
     }
     for (i = iStartPoint; i < point_count; i++) {
       if (!stream.CanReadCoords())
