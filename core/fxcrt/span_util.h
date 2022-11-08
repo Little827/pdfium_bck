@@ -7,12 +7,20 @@
 
 #include <string.h>
 
+#include <utility>
+
 #include "third_party/base/check_op.h"
 #include "third_party/base/span.h"
 
 namespace fxcrt {
 
 // Bounds-checked copies from spans into spans.
+template <typename T>
+void spancpy(pdfium::span<T> dst, pdfium::span<const T> src) {
+  CHECK_GE(dst.size_bytes(), src.size_bytes());
+  memcpy(dst.data(), src.data(), src.size_bytes());
+}
+
 template <typename T,
           typename U,
           typename = pdfium::internal::EnableIfLegalSpanConversion<T, U>>
@@ -22,6 +30,12 @@ void spancpy(pdfium::span<T> dst, pdfium::span<U> src) {
 }
 
 // Bounds-checked moves from spans into spans.
+template <typename T>
+void spanmove(pdfium::span<T> dst, pdfium::span<const T> src) {
+  CHECK_GE(dst.size_bytes(), src.size_bytes());
+  memmove(dst.data(), src.data(), src.size_bytes());
+}
+
 template <typename T,
           typename U,
           typename = pdfium::internal::EnableIfLegalSpanConversion<T, U>>
