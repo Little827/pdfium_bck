@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73227038_15c9366d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-11-09T18:14:40Z",
+      "side": 1,
+      "message": "just nits, etc.",
+      "revId": "981fa413b1a32e2d5a9e85e3cba9be256510ee33",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef80c2d3_7b40feda",
+        "filename": "fxbarcode/oned/BC_OneDimWriter.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-11-09T18:14:40Z",
+      "side": 1,
+      "message": "pre-nit-followup: probably want a single iterator variable, compute inputx+leftpadding in place of outputx since they seem to move lock-step, no?",
+      "range": {
+        "startLine": 274,
+        "startChar": 3,
+        "endLine": 275,
+        "endChar": 28
+      },
+      "revId": "981fa413b1a32e2d5a9e85e3cba9be256510ee33",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cfe9ef1_e8f32706",
+        "filename": "fxbarcode/oned/BC_OnedEAN13Writer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-11-09T18:14:40Z",
+      "side": 1,
+      "message": "nit: constexpr k-something?\nfollow-up: Maybe should be float since always cast to float when used?",
+      "range": {
+        "startLine": 127,
+        "startChar": 10,
+        "endLine": 127,
+        "endChar": 22
+      },
+      "revId": "981fa413b1a32e2d5a9e85e3cba9be256510ee33",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8db4fe10_ac38f25f",
+        "filename": "fxbarcode/oned/BC_OnedEAN8Writer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-11-09T18:14:40Z",
+      "side": 1,
+      "message": "ditto: constexpr k-something and maybe float?",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 27
+      },
+      "revId": "981fa413b1a32e2d5a9e85e3cba9be256510ee33",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f877d85_8db69c19",
+        "filename": "fxbarcode/oned/BC_OnedUPCAWriter.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-11-09T18:14:40Z",
+      "side": 1,
+      "message": "ditto ditto: see previous comments.",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 28
+      },
+      "revId": "981fa413b1a32e2d5a9e85e3cba9be256510ee33",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2c36274_f69bec7c",
+        "filename": "fxbarcode/oned/BC_OnedUPCAWriter.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-11-09T18:14:40Z",
+      "side": 1,
+      "message": "nit: maybe 35.0f if you want to be really picky, and then 0.0f on next line?",
+      "range": {
+        "startLine": 106,
+        "startChar": 27,
+        "endLine": 106,
+        "endChar": 29
+      },
+      "revId": "981fa413b1a32e2d5a9e85e3cba9be256510ee33",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
