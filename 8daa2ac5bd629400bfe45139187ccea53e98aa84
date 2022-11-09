@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83a59e5d_59cb099e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-11-09T21:52:12Z",
+      "side": 1,
+      "message": "After reverting https://pdfium-review.googlesource.com/100174 in the previous CL, the dots are rendered less blurry. And CL https://pdfium-review.googlesource.com/97791 has already fixed the dot density issue.",
+      "revId": "8daa2ac5bd629400bfe45139187ccea53e98aa84",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
