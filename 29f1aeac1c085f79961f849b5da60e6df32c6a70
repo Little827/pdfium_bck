@@ -16,6 +16,23 @@
       "message": "See next CL in chain to see if this is reasonable, etc.",
       "revId": "29f1aeac1c085f79961f849b5da60e6df32c6a70",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c57643e_ab1df7e9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-11-09T18:04:48Z",
+      "side": 1,
+      "message": "Clearing draft comments on abandoned CL",
+      "revId": "29f1aeac1c085f79961f849b5da60e6df32c6a70",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ],
   "submitRequirementResults": [
