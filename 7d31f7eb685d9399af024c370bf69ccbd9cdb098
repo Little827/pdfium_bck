@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56e036f8_ca5c26b7",
+        "filename": "fxbarcode/oned/BC_OnedCode128Writer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-11-09T18:27:02Z",
+      "side": 1,
+      "message": "nit: maybe write out DataVector\u003cuint8_t\u003e()\n(not sure why, just seems better, feel free to ignore).",
+      "range": {
+        "startLine": 123,
+        "startChar": 11,
+        "endLine": 123,
+        "endChar": 14
+      },
+      "revId": "7d31f7eb685d9399af024c370bf69ccbd9cdb098",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66f96525_ae35b247",
+        "filename": "fxbarcode/oned/BC_OnedCode39Writer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-11-09T18:27:02Z",
+      "side": 1,
+      "message": "nit: ditto",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 14
+      },
+      "revId": "7d31f7eb685d9399af024c370bf69ccbd9cdb098",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bb0a455_27b80cfb",
+        "filename": "fxbarcode/oned/BC_OnedCode39Writer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-11-09T18:27:02Z",
+      "side": 1,
+      "message": "follow-up: I can haz span, too?",
+      "range": {
+        "startLine": 174,
+        "startChar": 16,
+        "endLine": 174,
+        "endChar": 29
+      },
+      "revId": "7d31f7eb685d9399af024c370bf69ccbd9cdb098",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd9309c8_fbd8627d",
+        "filename": "fxbarcode/oned/BC_OnedEAN13Writer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-11-09T18:27:02Z",
+      "side": 1,
+      "message": "nit: ditto (or not, again as you like).",
+      "range": {
+        "startLine": 90,
+        "startChar": 12,
+        "endLine": 90,
+        "endChar": 13
+      },
+      "revId": "7d31f7eb685d9399af024c370bf69ccbd9cdb098",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
