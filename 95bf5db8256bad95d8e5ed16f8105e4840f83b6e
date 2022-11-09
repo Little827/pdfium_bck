@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "53ac5e13_32a1ac21",
+        "filename": "core/fxcodec/jbig2/JBig2_Image_unittest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-11-09T21:12:54Z",
+      "side": 1,
+      "message": "BTW, these aren\u0027t declared const.",
+      "revId": "95bf5db8256bad95d8e5ed16f8105e4840f83b6e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "8df9dbf0_1dded989",
