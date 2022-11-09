@@ -37,17 +37,14 @@ bool CBC_Code128::Encode(WideStringView contents) {
   if (!pWriter->CheckContentValidity(contents))
     return false;
 
-  int32_t outWidth = 0;
   WideString content(contents);
   if (contents.GetLength() % 2 && pWriter->GetType() == BC_TYPE::kCode128C)
     content += '0';
 
   m_renderContents = pWriter->FilterContents(content.AsStringView());
   ByteString byteString = m_renderContents.ToUTF8();
-  std::unique_ptr<uint8_t, FxFreeDeleter> data(
-      pWriter->Encode(byteString, outWidth));
   return pWriter->RenderResult(m_renderContents.AsStringView(),
-                               pdfium::make_span(data.get(), outWidth));
+                               pWriter->Encode(byteString));
 }
 
 bool CBC_Code128::RenderDevice(CFX_RenderDevice* device,
