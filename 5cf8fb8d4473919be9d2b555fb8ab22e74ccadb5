@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fc18ea8_ae11da8c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-11-09T21:16:53Z",
+      "side": 1,
+      "message": "The embedder tests and pixel tests changes are due to reverting the previous change.\nThe improvements are shown in the updated corpus tests.",
+      "revId": "5cf8fb8d4473919be9d2b555fb8ab22e74ccadb5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
