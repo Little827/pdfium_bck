@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48a3a5b0_005756a7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-11-10T00:41:05Z",
+      "side": 1,
+      "message": "s/\\_\\_/\\_/",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 22
+      },
+      "revId": "dbd17c67824f3efd7cfc4175d2c9f85aad158bf2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6346d273_d173f5de",
+        "filename": "core/fxcrt/cfx_bitstream.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-11-10T00:41:05Z",
+      "side": 1,
+      "message": "No longer needed?",
+      "revId": "dbd17c67824f3efd7cfc4175d2c9f85aad158bf2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
