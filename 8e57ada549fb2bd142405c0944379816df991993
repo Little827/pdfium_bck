@@ -16,6 +16,24 @@
       "message": "Thanks for looking into this.",
       "revId": "8e57ada549fb2bd142405c0944379816df991993",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c16fa947_22885eab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-11-10T21:08:00Z",
+      "side": 1,
+      "message": "No problem; looking forward to more automated enforcement. 😊",
+      "parentUuid": "35b33f15_e42899fc",
+      "revId": "8e57ada549fb2bd142405c0944379816df991993",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ],
   "submitRequirementResults": [
