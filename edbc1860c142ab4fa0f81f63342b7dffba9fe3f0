@@ -34,6 +34,24 @@
       "parentUuid": "12661c26_36406426",
       "revId": "edbc1860c142ab4fa0f81f63342b7dffba9fe3f0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "988ea43d_4bc9cc2c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-11-10T14:38:42Z",
+      "side": 1,
+      "message": "I wrote https://pdfium-review.googlesource.com/c/pdfium/+/101050 to improve the GN checks to catch this.",
+      "parentUuid": "833ac981_7fbec8f8",
+      "revId": "edbc1860c142ab4fa0f81f63342b7dffba9fe3f0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
