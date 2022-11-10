@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "215241d0_089e9a39",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1449,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-11-10T00:39:32Z",
+      "side": 1,
+      "message": "Use const uint8_t while we\u0027re at it? Ditto below with `src_pos`.",
+      "range": {
+        "startLine": 1449,
+        "startChar": 15,
+        "endLine": 1449,
+        "endChar": 22
+      },
+      "revId": "c1d9e733161dec7dd35c8cd6e9b494f1063a84fe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4a9d232_d1b105a5",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1480,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-11-10T00:39:32Z",
+      "side": 1,
+      "message": "Already calculated as `size`.",
+      "range": {
+        "startLine": 1480,
+        "startChar": 43,
+        "endLine": 1480,
+        "endChar": 62
+      },
+      "revId": "c1d9e733161dec7dd35c8cd6e9b494f1063a84fe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f099d57d_46e53f2b",
+        "filename": "core/fxcodec/progressive_decoder.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1936,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-11-10T00:39:32Z",
+      "side": 1,
+      "message": "Whu not take `subspan(dest_ScanOffset, m_sizeX * dest_Bpp)` here once instead of N times inside the loop? Same for line 2015.",
+      "revId": "c1d9e733161dec7dd35c8cd6e9b494f1063a84fe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
