@@ -13,6 +13,7 @@
 /third_party/fuchsia-sdk/sdk
 /third_party/freetype/src
 /third_party/googletest/src
+/third_party/expat
 /third_party/icu
 /third_party/instrumented_libraries
 /third_party/jinja2

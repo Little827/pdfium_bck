@@ -108,6 +108,10 @@ vars = {
   # and whatever else without interference from each other.
   'libcxxabi_revision': '8dd405113a4f3694e910b79785dd7fb7535a888a',
   # Three lines of non-changing comments so that
+  # the commit queue can handle CLs rolling libexpat
+  # and whatever else without interference from each other.
+  'libexpat_revision': '53fbdf5b8925a426e1b41a9e09b833986b87524e',
+  # Three lines of non-changing comments so that
   # the commit queue can handle CLs rolling libunwind
   # and whatever else without interference from each other.
   'libunwind_revision': 'aabcd8753678f1536e15eb6385a948470debdae4',
@@ -263,6 +267,10 @@ deps = {
   'third_party/depot_tools':
     Var('chromium_git') + '/chromium/tools/depot_tools.git@' +
         Var('depot_tools_revision'),
+
+  'third_party/expat':
+    Var('chromium_git') + '/external/github.com/libexpat/libexpat.git@' +
+        Var('libexpat_revision'),
 
   'third_party/freetype/src':
     Var('chromium_git') + '/chromium/src/third_party/freetype2.git@' +
