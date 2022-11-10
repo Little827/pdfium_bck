@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "883b1c01_50a7a67f",
+        "filename": "fxbarcode/oned/BC_OnedCode128Writer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-11-10T02:15:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56e036f8_ca5c26b7",
+      "range": {
+        "startLine": 123,
+        "startChar": 11,
+        "endLine": 123,
+        "endChar": 14
+      },
+      "revId": "7d31f7eb685d9399af024c370bf69ccbd9cdb098",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "66f96525_ae35b247",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-11-09T18:27:02Z",
       "side": 1,
       "message": "nit: ditto",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 14
+      },
+      "revId": "7d31f7eb685d9399af024c370bf69ccbd9cdb098",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53fed61b_06e484d2",
+        "filename": "fxbarcode/oned/BC_OnedCode39Writer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-11-10T02:15:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66f96525_ae35b247",
       "range": {
         "startLine": 151,
         "startChar": 0,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d7df7e59_05bff9c2",
+        "filename": "fxbarcode/oned/BC_OnedCode39Writer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-11-10T02:15:03Z",
+      "side": 1,
+      "message": "Next CL...",
+      "parentUuid": "6bb0a455_27b80cfb",
+      "range": {
+        "startLine": 174,
+        "startChar": 16,
+        "endLine": 174,
+        "endChar": 29
+      },
+      "revId": "7d31f7eb685d9399af024c370bf69ccbd9cdb098",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fd9309c8_fbd8627d",
         "filename": "fxbarcode/oned/BC_OnedEAN13Writer.cpp",
         "patchSetId": 3
@@ -83,6 +155,30 @@
       "writtenOn": "2022-11-09T18:27:02Z",
       "side": 1,
       "message": "nit: ditto (or not, again as you like).",
+      "range": {
+        "startLine": 90,
+        "startChar": 12,
+        "endLine": 90,
+        "endChar": 13
+      },
+      "revId": "7d31f7eb685d9399af024c370bf69ccbd9cdb098",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7207d879_05ba0fc1",
+        "filename": "fxbarcode/oned/BC_OnedEAN13Writer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-11-10T02:15:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd9309c8_fbd8627d",
       "range": {
         "startLine": 90,
         "startChar": 12,
