@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12661c26_36406426",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-11-10T13:46:04Z",
+      "side": 1,
+      "message": "I played around with this a bit, and it comes down to \"gn check\" only checking files listed in \"sources\" somewhere. We don\u0027t have this line in our //skia/BUILD.gn:\n\n  sources +\u003d skia_core_public\n\nProbably some other improvements we could make to synchronize our //skia/BUILD.gn more closely with Chromium\u0027s.",
+      "revId": "edbc1860c142ab4fa0f81f63342b7dffba9fe3f0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
