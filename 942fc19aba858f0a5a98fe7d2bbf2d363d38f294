@@ -16,6 +16,24 @@
       "message": "It looks like including third_party/expat requires additional changes beyond adding a new DEPS, so I\u0027m going to just not depend on //skia on Android instead.",
       "revId": "942fc19aba858f0a5a98fe7d2bbf2d363d38f294",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d45c4b80_8111aa2e",
+        "filename": "DEPS",
+        "patchSetId": 6
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-11-10T16:59:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2bab35d2_03311724",
+      "revId": "942fc19aba858f0a5a98fe7d2bbf2d363d38f294",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
