@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "083eba77_8f9a47b2",
+        "filename": "core/fpdfapi/parser/cpdf_stream_acc.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-11-10T19:08:35Z",
+      "side": 1,
+      "message": "BTW, this is the only caller, and the offset is always 0.",
+      "revId": "5baceee19626dc63e043997bb1f0732d899a65f3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
