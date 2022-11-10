@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c85aa312_a13c3708",
+        "filename": "fxbarcode/cbc_codabar.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-11-10T02:11:40Z",
+      "side": 1,
+      "message": "Doesn\u0027t work due to -Wc++11-narrowing, because `outWidth` is an int and not a size_t. Leaving it as is since the next CL in the chain will rework this anyway.",
+      "parentUuid": "830bfc52_67e71214",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 72
+      },
+      "revId": "0fbdc8c591ebd883eb08eb9f652f2e6f49a3da60",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c08e651_98f77d6d",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-11-09T18:21:59Z",
       "side": 1,
       "message": "nit: local not needed ? (didn\u0027t see codelength updated, could it be const too?)",
+      "range": {
+        "startLine": 267,
+        "startChar": 15,
+        "endLine": 267,
+        "endChar": 26
+      },
+      "revId": "0fbdc8c591ebd883eb08eb9f652f2e6f49a3da60",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a437641_4ce2d139",
+        "filename": "fxbarcode/oned/BC_OneDimWriter.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-11-10T02:11:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c08e651_98f77d6d",
       "range": {
         "startLine": 267,
         "startChar": 15,
