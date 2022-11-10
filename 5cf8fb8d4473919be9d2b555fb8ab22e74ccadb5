@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "f86b8fb6_4cfff239",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-11-10T00:52:30Z",
+      "side": 1,
+      "message": "\"actual\" ?",
+      "range": {
+        "startLine": 9,
+        "startChar": 55,
+        "endLine": 9,
+        "endChar": 62
+      },
+      "revId": "5cf8fb8d4473919be9d2b555fb8ab22e74ccadb5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c342690_da6bdfcf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-11-10T00:52:30Z",
+      "side": 1,
+      "message": "\"where it\u0027s\" ?",
+      "range": {
+        "startLine": 18,
+        "startChar": 1,
+        "endLine": 18,
+        "endChar": 14
+      },
+      "revId": "5cf8fb8d4473919be9d2b555fb8ab22e74ccadb5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "5fc18ea8_ae11da8c",
@@ -14,6 +60,23 @@
       "writtenOn": "2022-11-09T21:16:53Z",
       "side": 1,
       "message": "The embedder tests and pixel tests changes are due to reverting the previous change.\nThe improvements are shown in the updated corpus tests.",
+      "revId": "5cf8fb8d4473919be9d2b555fb8ab22e74ccadb5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2f9cf12_1bd2bba7",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 805,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-11-10T00:52:30Z",
+      "side": 1,
+      "message": "Is the `kOpaque_SkAlphaType` usage here OK?",
       "revId": "5cf8fb8d4473919be9d2b555fb8ab22e74ccadb5",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
