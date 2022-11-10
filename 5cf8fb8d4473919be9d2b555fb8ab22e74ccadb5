@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "016a8538_c393c97e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-11-10T01:38:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f86b8fb6_4cfff239",
+      "range": {
+        "startLine": 9,
+        "startChar": 55,
+        "endLine": 9,
+        "endChar": 62
+      },
+      "revId": "5cf8fb8d4473919be9d2b555fb8ab22e74ccadb5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3c342690_da6bdfcf",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-11-10T00:52:30Z",
       "side": 1,
       "message": "\"where it\u0027s\" ?",
+      "range": {
+        "startLine": 18,
+        "startChar": 1,
+        "endLine": 18,
+        "endChar": 14
+      },
+      "revId": "5cf8fb8d4473919be9d2b555fb8ab22e74ccadb5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "396c6163_a1e628cf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-11-10T01:38:55Z",
+      "side": 1,
+      "message": "Changed it into \"whether it\u0027s\".",
+      "parentUuid": "3c342690_da6bdfcf",
       "range": {
         "startLine": 18,
         "startChar": 1,
@@ -77,6 +125,24 @@
       "writtenOn": "2022-11-10T00:52:30Z",
       "side": 1,
       "message": "Is the `kOpaque_SkAlphaType` usage here OK?",
+      "revId": "5cf8fb8d4473919be9d2b555fb8ab22e74ccadb5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b54f6e5_50222893",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 805,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-11-10T01:38:55Z",
+      "side": 1,
+      "message": "The following embedder tests provides test coverage for this line:\n\nFPDFAnnotEmbedderTest.AddAndModifyImage\nFPDFEditEmbedderTest.RasterizePDF\nFPDFEditEmbedderTest.GetRenderedBitmapHandlesSetMatrix\nFPDFEditEmbedderTest.GetRenderedBitmapHandlesSMask\nFPDFViewEmbedderTest.RenderJpxLzwImageWithFlags\nCFWLEditEmbedderTest.ImageEditTest\n\nChanging `alphaType` to `kPremul_SkAlphaType` didn\u0027t affect these tests because the bitmap was originally 24bbp and we are going to fill the alpha channel with 0xFF during the upsampling process. So being opaque is OK here.",
+      "parentUuid": "d2f9cf12_1bd2bba7",
       "revId": "5cf8fb8d4473919be9d2b555fb8ab22e74ccadb5",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
