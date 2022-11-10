@@ -16,6 +16,24 @@
       "message": "`outputX + 1 \u003e outputWidth \u0026\u0026 outputWidth - outputX \u003e 0`\n\nbecomes:\n`outputX + 1 \u003e outputWidth \u0026\u0026 outputWidth \u003e outputX`\n\nThe latter half is always true due to line 279. The former half can\u0027t be true for the same reason.",
       "revId": "ebf4853da247f7b70e7f7000f6c9be8250b95fde",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c2cdfbf_7803a8d7",
+        "filename": "fxbarcode/oned/BC_OneDimWriter.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-11-10T02:44:56Z",
+      "side": 0,
+      "message": "Right, modulo overflow which is undefined for signed types, and isn\u0027t what they meant in the first place.",
+      "parentUuid": "5c840ea2_485bb3c7",
+      "revId": "ebf4853da247f7b70e7f7000f6c9be8250b95fde",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
