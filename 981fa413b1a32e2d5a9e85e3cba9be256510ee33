@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "30666b00_b9a045df",
+        "filename": "fxbarcode/oned/BC_OneDimWriter.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-11-10T01:17:48Z",
+      "side": 1,
+      "message": "Will follow-up.",
+      "parentUuid": "ef80c2d3_7b40feda",
+      "range": {
+        "startLine": 274,
+        "startChar": 3,
+        "endLine": 275,
+        "endChar": 28
+      },
+      "revId": "981fa413b1a32e2d5a9e85e3cba9be256510ee33",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4cfe9ef1_e8f32706",
         "filename": "fxbarcode/oned/BC_OnedEAN13Writer.cpp",
         "patchSetId": 1
@@ -54,6 +78,30 @@
       "writtenOn": "2022-11-09T18:14:40Z",
       "side": 1,
       "message": "nit: constexpr k-something?\nfollow-up: Maybe should be float since always cast to float when used?",
+      "range": {
+        "startLine": 127,
+        "startChar": 10,
+        "endLine": 127,
+        "endChar": 22
+      },
+      "revId": "981fa413b1a32e2d5a9e85e3cba9be256510ee33",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4bf1a85_3127fc74",
+        "filename": "fxbarcode/oned/BC_OnedEAN13Writer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-11-10T01:17:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4cfe9ef1_e8f32706",
       "range": {
         "startLine": 127,
         "startChar": 10,
@@ -87,6 +135,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "57b7e699_11424632",
+        "filename": "fxbarcode/oned/BC_OnedEAN8Writer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-11-10T01:17:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8db4fe10_ac38f25f",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 27
+      },
+      "revId": "981fa413b1a32e2d5a9e85e3cba9be256510ee33",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f877d85_8db69c19",
@@ -110,6 +182,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e293f8b_6e8f5879",
+        "filename": "fxbarcode/oned/BC_OnedUPCAWriter.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-11-10T01:17:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f877d85_8db69c19",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 28
+      },
+      "revId": "981fa413b1a32e2d5a9e85e3cba9be256510ee33",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2c36274_f69bec7c",
@@ -123,6 +219,30 @@
       "writtenOn": "2022-11-09T18:14:40Z",
       "side": 1,
       "message": "nit: maybe 35.0f if you want to be really picky, and then 0.0f on next line?",
+      "range": {
+        "startLine": 106,
+        "startChar": 27,
+        "endLine": 106,
+        "endChar": 29
+      },
+      "revId": "981fa413b1a32e2d5a9e85e3cba9be256510ee33",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfa03c8d_8b16d7ea",
+        "filename": "fxbarcode/oned/BC_OnedUPCAWriter.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-11-10T01:17:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2c36274_f69bec7c",
       "range": {
         "startLine": 106,
         "startChar": 27,
