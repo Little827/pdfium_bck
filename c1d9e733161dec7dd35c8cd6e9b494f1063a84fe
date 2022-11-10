@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "edbc9ca8_51f0bf7d",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1449,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-11-10T00:59:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "215241d0_089e9a39",
+      "range": {
+        "startLine": 1449,
+        "startChar": 15,
+        "endLine": 1449,
+        "endChar": 22
+      },
+      "revId": "c1d9e733161dec7dd35c8cd6e9b494f1063a84fe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c4a9d232_d1b105a5",
@@ -47,6 +71,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eaf37616_e1d14842",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1480,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-11-10T00:59:30Z",
+      "side": 1,
+      "message": "But not in the scope of this else {}.",
+      "parentUuid": "c4a9d232_d1b105a5",
+      "range": {
+        "startLine": 1480,
+        "startChar": 43,
+        "endLine": 1480,
+        "endChar": 62
+      },
+      "revId": "c1d9e733161dec7dd35c8cd6e9b494f1063a84fe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f099d57d_46e53f2b",
@@ -60,6 +108,24 @@
       "writtenOn": "2022-11-10T00:39:32Z",
       "side": 1,
       "message": "Whu not take `subspan(dest_ScanOffset, m_sizeX * dest_Bpp)` here once instead of N times inside the loop? Same for line 2015.",
+      "revId": "c1d9e733161dec7dd35c8cd6e9b494f1063a84fe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "beaec349_14f186d7",
+        "filename": "core/fxcodec/progressive_decoder.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1936,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-11-10T00:59:30Z",
+      "side": 1,
+      "message": "Probably because it read clearer or indented better, I\u0027ve uploaded the ideal version from a compiler perspective, but it reads so-so. Time for more locals?",
+      "parentUuid": "f099d57d_46e53f2b",
       "revId": "c1d9e733161dec7dd35c8cd6e9b494f1063a84fe",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
