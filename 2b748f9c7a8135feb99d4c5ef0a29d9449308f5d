@@ -22,6 +22,30 @@
       },
       "revId": "2b748f9c7a8135feb99d4c5ef0a29d9449308f5d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "490faad1_aadd0fd8",
+        "filename": "fxbarcode/oned/BC_OnedCode128Writer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-11-11T01:20:21Z",
+      "side": 1,
+      "message": "In the next CL: fxbarcode/oned/BC_OnedCode128Writer.cpp",
+      "parentUuid": "05007f48_e046c9db",
+      "range": {
+        "startLine": 143,
+        "startChar": 1,
+        "endLine": 144,
+        "endChar": 48
+      },
+      "revId": "2b748f9c7a8135feb99d4c5ef0a29d9449308f5d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
