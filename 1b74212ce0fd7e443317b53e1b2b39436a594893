@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5755244_d910fd3c",
+        "filename": "core/fpdfapi/page/cpdf_image.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-11-11T01:27:28Z",
+      "side": 1,
+      "message": "Still squeamish about applying a bounds check per pixel rather than per-line.",
+      "range": {
+        "startLine": 309,
+        "startChar": 1,
+        "endLine": 311,
+        "endChar": 0
+      },
+      "revId": "1b74212ce0fd7e443317b53e1b2b39436a594893",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
