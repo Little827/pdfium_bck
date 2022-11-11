@@ -93,26 +93,27 @@ DataVector<uint8_t> CBC_OnedEAN13Writer::Encode(const ByteString& contents) {
   int32_t firstDigit = FXSYS_DecimalCharToInt(contents.Front());
   int32_t parities = kFirstDigitEncodings[firstDigit];
   DataVector<uint8_t> result(m_codeWidth);
-  size_t pos = 0;
-  pos += AppendPattern(result.data(), pos, kOnedEAN13StartPattern, 3, true);
+  auto result_span = pdfium::make_span(result);
+  size_t pos = AppendPattern(result_span, kOnedEAN13StartPattern, true);
+  result_span = result_span.subspan(pos);
 
-  int32_t i = 0;
-  for (i = 1; i <= 6; i++) {
+  for (int i = 1; i <= 6; i++) {
     int32_t digit = FXSYS_DecimalCharToInt(contents[i]);
     if ((parities >> (6 - i) & 1) == 1) {
       digit += 10;
     }
-    pos +=
-        AppendPattern(result.data(), pos, kOnedEAN13LGPattern[digit], 4, false);
+    pos = AppendPattern(result_span, kOnedEAN13LGPattern[digit], false);
+    result_span = result_span.subspan(pos);
   }
-  pos += AppendPattern(result.data(), pos, kOnedEAN13MiddlePattern, 5, false);
+  pos = AppendPattern(result_span, kOnedEAN13MiddlePattern, false);
+  result_span = result_span.subspan(pos);
 
-  for (i = 7; i <= 12; i++) {
+  for (int i = 7; i <= 12; i++) {
     int32_t digit = FXSYS_DecimalCharToInt(contents[i]);
-    pos +=
-        AppendPattern(result.data(), pos, kOnedEAN13LPattern[digit], 4, true);
+    pos = AppendPattern(result_span, kOnedEAN13LPattern[digit], true);
+    result_span = result_span.subspan(pos);
   }
-  pos += AppendPattern(result.data(), pos, kOnedEAN13StartPattern, 3, true);
+  AppendPattern(result_span, kOnedEAN13StartPattern, true);
   return result;
 }
 

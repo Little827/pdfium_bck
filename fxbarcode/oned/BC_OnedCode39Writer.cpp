@@ -172,11 +172,14 @@ DataVector<uint8_t> CBC_OnedCode39Writer::Encode(const ByteString& contents) {
     }
   }
   DataVector<uint8_t> result(code_width);
+  auto result_span = pdfium::make_span(result);
   ToIntArray(kOnedCode39CharacterEncoding[39], widths);
-  size_t pos = AppendPattern(result.data(), 0, widths, kArraySize, true);
+  size_t pos = AppendPattern(result_span, widths, true);
+  result_span = result_span.subspan(pos);
 
   static constexpr uint8_t kNarrowWhite[] = {1};
-  pos += AppendPattern(result.data(), pos, kNarrowWhite, 1, false);
+  pos = AppendPattern(result_span, kNarrowWhite, false);
+  result_span = result_span.subspan(pos);
 
   for (int32_t l = m_iContentLen - 1; l >= 0; l--) {
     for (size_t i = 0; i < kOnedCode39AlphabetLen; i++) {
@@ -184,12 +187,14 @@ DataVector<uint8_t> CBC_OnedCode39Writer::Encode(const ByteString& contents) {
         continue;
 
       ToIntArray(kOnedCode39CharacterEncoding[i], widths);
-      pos += AppendPattern(result.data(), pos, widths, kArraySize, true);
+      pos = AppendPattern(result_span, widths, true);
+      result_span = result_span.subspan(pos);
     }
-    pos += AppendPattern(result.data(), pos, kNarrowWhite, 1, false);
+    pos = AppendPattern(result_span, kNarrowWhite, false);
+    result_span = result_span.subspan(pos);
   }
   ToIntArray(kOnedCode39CharacterEncoding[39], widths);
-  pos += AppendPattern(result.data(), pos, widths, kArraySize, true);
+  AppendPattern(result_span, widths, true);
 
   for (size_t i = 0; i < code_width / 2; i++) {
     result[i] ^= result[code_width - 1 - i];

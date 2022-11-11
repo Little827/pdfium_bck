@@ -73,10 +73,8 @@ class CBC_OneDimWriter : public CBC_Writer {
                     float geWidth,
                     int32_t fontSize,
                     float& charsLen);
-  size_t AppendPattern(uint8_t* target,
-                       size_t pos,
-                       const uint8_t* pattern,
-                       int32_t patternLength,
+  size_t AppendPattern(pdfium::span<uint8_t> target,
+                       pdfium::span<const uint8_t> pattern,
                        bool startColor);
 
   bool m_bPrintChecksum = true;
