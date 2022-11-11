@@ -16,6 +16,24 @@
       "message": "If we update this manually, I think it is fine to write version in desp entry directly?",
       "revId": "72f65b37d6bf5835820ab322ae3984f5641076b7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf6fbcd6_b77a5624",
+        "filename": "DEPS",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 9026
+      },
+      "writtenOn": "2022-11-11T05:48:24Z",
+      "side": 1,
+      "message": "thestig,\nHow is the autoroller setup done currently? I think we should setup it for ninja, as well.",
+      "parentUuid": "891cb84b_9895a2e3",
+      "revId": "72f65b37d6bf5835820ab322ae3984f5641076b7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
