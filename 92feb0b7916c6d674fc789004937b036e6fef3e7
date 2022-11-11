@@ -16,6 +16,24 @@
       "message": "Is it possible to coerce Skia\u0027s internal dash drawing code to draw how other PDF renderers draw? I don\u0027t think drawing an extra dash is \"acceptable\" as there are now an extra element in the rendering. It\u0027s no longer just pixel color channel values being off by 1 or some other barely distinguishable difference.",
       "revId": "92feb0b7916c6d674fc789004937b036e6fef3e7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13c0c062_5ee85ea6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-11-11T02:23:19Z",
+      "side": 1,
+      "message": "From PDFium side there is no way to avoid drawing that extra dash at the bottom left corner. Skia and AGG are both getting the same path as following, and we should not change that: \n\npoint[0] \u003d {fX \u003d 119.482002, fY \u003d 675.545959}\npoint[1] \u003d {fX \u003d 145.882507, fY \u003d 675.545959}\npoint[2] \u003d {fX \u003d 145.882507, fY \u003d 697.048645}\npoint[3] \u003d {fX \u003d 119.482002, fY \u003d 697.048645}\npoint[4] \u003d {fX \u003d 119.482002, fY \u003d 675.545959}\n\nHere are the facts about the dash path:\nTotal path length \u003d 95.8063812\nStarting phase \u003d 0\nEach dash cycle length \u003d 6\non length \u003d 3\noff length \u003d 3\n\nI would assume the final cycle ended on an \"off\", since the last cycle will have a length of 5.806 (3 for \"on\" and 2.806 for off).\n\nHowever, by looking at SkDashPath::InternalFilter(), Skia determines that this path will end on a \"on\" dash:\n\nSkScalar endPhase \u003d SkScalarMod(pathLength + initialDashLength, intervalLength);\n(Notice that initialDashLength is 3 here).\n\nBy making \nSkScalar endPhase \u003d SkScalarMod(pathLength, intervalLength),\nthe skia rendering result was almost the same as AGG (this is a special case that starting phase is 0). There could be improvement made for how `intervalLength` is calculated, which will also take starting phase into consideration.\n\nI think this could be a potential bug in Skia. CC @brianosman@google.com for some insights here.",
+      "parentUuid": "a987504e_d39c54be",
+      "revId": "92feb0b7916c6d674fc789004937b036e6fef3e7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
