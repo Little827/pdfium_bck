@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62997a50_3512bf2c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-11-12T00:17:31Z",
+      "side": 1,
+      "message": "Fixes the PDFium roller (https://autoroll.skia.org/r/pdfium-autoroll).",
+      "revId": "f943cc38193001f16e67cd50f7dc2a0becaa158c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
