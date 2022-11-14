@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "630a93d9_1a71c7e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-11-14T18:48:51Z",
+      "side": 1,
+      "message": "Was OOO.",
+      "parentUuid": "dbc17647_933a66c1",
+      "revId": "72f65b37d6bf5835820ab322ae3984f5641076b7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "891cb84b_9895a2e3",
@@ -49,6 +67,24 @@
       "side": 1,
       "message": "thestig,\nHow is the autoroller setup done currently? I think we should setup it for ninja, as well.",
       "parentUuid": "891cb84b_9895a2e3",
+      "revId": "72f65b37d6bf5835820ab322ae3984f5641076b7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27a5d1b8_3070897e",
+        "filename": "DEPS",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-11-14T18:48:51Z",
+      "side": 1,
+      "message": "PDFium maintainers can manually roll these.",
+      "parentUuid": "bf6fbcd6_b77a5624",
       "revId": "72f65b37d6bf5835820ab322ae3984f5641076b7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
