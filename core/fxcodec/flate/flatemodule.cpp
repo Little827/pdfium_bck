@@ -136,16 +136,19 @@ class CLZWDecoder {
   uint32_t dest_buf_size_ = 0;  // Actual allocated size.
   uint32_t dest_byte_pos_ = 0;  // Size used.
   uint32_t stack_len_ = 0;
-  uint8_t decode_stack_[4000];
+  DataVector<uint8_t> decode_stack_;
   const uint8_t early_change_;
   uint8_t code_len_ = 9;
   uint32_t current_code_ = 0;
-  uint32_t codes_[5021];
+  DataVector<uint32_t> codes_;
 };
 
 CLZWDecoder::CLZWDecoder(pdfium::span<const uint8_t> src_span,
                          bool early_change)
-    : src_span_(src_span), early_change_(early_change ? 1 : 0) {}
+    : src_span_(src_span),
+      decode_stack_(4000),
+      early_change_(early_change ? 1 : 0),
+      codes_(5021) {}
 
 void CLZWDecoder::AddCode(uint32_t prefix_code, uint8_t append_char) {
   if (current_code_ + early_change_ == 4094)
@@ -167,13 +170,13 @@ void CLZWDecoder::DecodeString(uint32_t code) {
       break;
 
     uint32_t data = codes_[index];
-    if (stack_len_ >= sizeof(decode_stack_))
+    if (stack_len_ >= decode_stack_.size())
       return;
 
     decode_stack_[stack_len_++] = static_cast<uint8_t>(data);
     code = data >> 16;
   }
-  if (stack_len_ >= sizeof(decode_stack_))
+  if (stack_len_ >= decode_stack_.size())
     return;
 
   decode_stack_[stack_len_++] = static_cast<uint8_t>(code);
@@ -252,7 +255,7 @@ bool CLZWDecoder::Decode() {
     DCHECK(old_code < 256 || old_code >= 258);
     stack_len_ = 0;
     if (code - 258 >= current_code_) {
-      if (stack_len_ < sizeof(decode_stack_))
+      if (stack_len_ < decode_stack_.size())
         decode_stack_[stack_len_++] = last_char;
       DecodeString(old_code);
     } else {
