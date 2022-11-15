@@ -1,0 +1,9 @@
+# Copyright 2022 The PDFium Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# No-op fuzzer_test() rule in order for //third_party/libpng to build.
+template("fuzzer_test") {
+  assert(target_name == "libpng_read_fuzzer")
+  not_needed(invoker, "*")
+}
