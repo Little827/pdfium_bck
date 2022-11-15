@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9de1fe7_d89a08bb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-11-15T22:02:53Z",
+      "side": 1,
+      "message": "Maybe this should just say \"Add third_party/libpng\" ?",
+      "revId": "32138c2a70d004c97d4630898da639921a373210",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
