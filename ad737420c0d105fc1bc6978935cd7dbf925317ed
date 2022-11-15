@@ -105,6 +105,24 @@
       "parentUuid": "ce60ac99_ef688d67",
       "revId": "ad737420c0d105fc1bc6978935cd7dbf925317ed",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0eaef83d_2040c301",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-11-15T18:46:00Z",
+      "side": 1,
+      "message": "I didn\u0027t like the \"separate BUILD.gn\" option, but the \"modify upstream\" option would be to use build_with_chromium to control which targets are defined, similar to //third_party/zlib/BUILD.gn. I\u0027ll pursue that.",
+      "parentUuid": "567d0083_1dc551b8",
+      "revId": "ad737420c0d105fc1bc6978935cd7dbf925317ed",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
