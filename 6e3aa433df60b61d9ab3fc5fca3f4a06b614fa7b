@@ -16,6 +16,24 @@
       "message": "WDYT of creating the span outside the while-loop, or as a class member?",
       "revId": "6e3aa433df60b61d9ab3fc5fca3f4a06b614fa7b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad11e5f9_c83947e6",
+        "filename": "core/fxcodec/flate/flatemodule.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-11-15T00:24:48Z",
+      "side": 1,
+      "message": "Hoping the optimizer can figure this out.",
+      "parentUuid": "db7c337e_f33382d3",
+      "revId": "6e3aa433df60b61d9ab3fc5fca3f4a06b614fa7b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
