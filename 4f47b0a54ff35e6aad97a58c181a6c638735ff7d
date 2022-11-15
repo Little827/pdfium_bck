@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3034a83e_244ed4a0",
+        "filename": "core/fxcodec/flate/flatemodule.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-11-15T00:09:46Z",
+      "side": 1,
+      "message": "FixedUninitDataVector?",
+      "range": {
+        "startLine": 139,
+        "startChar": 2,
+        "endLine": 139,
+        "endChar": 12
+      },
+      "revId": "4f47b0a54ff35e6aad97a58c181a6c638735ff7d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
