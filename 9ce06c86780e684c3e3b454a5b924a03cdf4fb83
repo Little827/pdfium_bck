@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "924dc4b1_2d512b99",
+        "filename": "core/fxcrt/fixed_size_data_vector.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-11-15T00:37:30Z",
+      "side": 1,
+      "message": "Would it help to have a span member to reuse?",
+      "revId": "9ce06c86780e684c3e3b454a5b924a03cdf4fb83",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "375c4943_cdba8037",
+        "filename": "core/fxcrt/fixed_zeroed_data_vector_unittest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-11-15T00:37:30Z",
+      "side": 1,
+      "message": "Want to create similar tests for the other variants?",
+      "revId": "9ce06c86780e684c3e3b454a5b924a03cdf4fb83",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
