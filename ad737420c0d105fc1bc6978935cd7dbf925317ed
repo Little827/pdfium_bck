@@ -87,6 +87,24 @@
       "parentUuid": "0e7707f1_08988acf",
       "revId": "ad737420c0d105fc1bc6978935cd7dbf925317ed",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "567d0083_1dc551b8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-11-15T18:30:41Z",
+      "side": 1,
+      "message": "What do you think of doing a no-op fuzzer_test() rule (patchset 2)?\n\nI could incorporate this into https://pdfium-review.googlesource.com/101311, rather than its own CL, but wanted to get your opinion first.",
+      "parentUuid": "ce60ac99_ef688d67",
+      "revId": "ad737420c0d105fc1bc6978935cd7dbf925317ed",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
