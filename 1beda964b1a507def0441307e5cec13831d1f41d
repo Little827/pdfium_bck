@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ddda8ed_bda6414a",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2843,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-11-15T20:50:25Z",
+      "side": 1,
+      "message": "Just initialize to `options.bInterpolateBilinear` here?",
+      "revId": "1beda964b1a507def0441307e5cec13831d1f41d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddc418ca_2bd671ad",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2852,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-11-15T20:50:25Z",
+      "side": 1,
+      "message": "If line 2849 already called IsValueInRangeForNumericType(), then can the checked_cast() here ever fail?",
+      "revId": "1beda964b1a507def0441307e5cec13831d1f41d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
