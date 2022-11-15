@@ -69,6 +69,24 @@
       "parentUuid": "441962ee_b36191a0",
       "revId": "ad737420c0d105fc1bc6978935cd7dbf925317ed",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce60ac99_ef688d67",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-11-15T18:07:49Z",
+      "side": 1,
+      "message": "There are bugs about making fuzzer buildable in standalone PDFium, so fuzzer bits may be helpful. But that\u0027s a better reason to pull in libfuzzer than libpng.",
+      "parentUuid": "0e7707f1_08988acf",
+      "revId": "ad737420c0d105fc1bc6978935cd7dbf925317ed",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
