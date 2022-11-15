@@ -16,6 +16,24 @@
       "message": "This is required by //third_party/libpng/BUILD.gn.",
       "revId": "ad737420c0d105fc1bc6978935cd7dbf925317ed",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3900c52_64cf5b20",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-11-15T17:02:03Z",
+      "side": 1,
+      "message": "Oh, and I named this \"testing_libfuzzer_revision\" to avoid confusion with Chromium\u0027s  \"libfuzzer_revision\", which is used for //third_party/libFuzzer/src.",
+      "parentUuid": "b029f592_f1a1e082",
+      "revId": "ad737420c0d105fc1bc6978935cd7dbf925317ed",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
