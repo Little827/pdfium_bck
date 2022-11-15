@@ -23,7 +23,7 @@ enum class DataVectorAllocOption {
 
 // A simple data container that has a fixed size.
 // Unlike std::vector, it cannot be implicitly copied and its data is only
-// accessible using spans.
+// accessible using spans, either explicity or via operator[].
 // It can either initialize its data with zeros, or leave its data
 // uninitialized.
 template <typename T, DataVectorAllocOption OPTION>
@@ -62,6 +62,9 @@ class FixedSizeDataVector {
 
   size_t size() const { return size_; }
   bool empty() const { return size_ == 0; }
+
+  const T& operator[](size_t index) const { return span()[index]; }
+  T& operator[](size_t index) { return writable_span()[index]; }
 
  private:
   friend class FixedSizeDataVector<T, DataVectorAllocOption::kInitialized>;

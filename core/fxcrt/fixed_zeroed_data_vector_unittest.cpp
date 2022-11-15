@@ -34,6 +34,21 @@ TEST(FixedZeroedDataVector, WithData) {
   EXPECT_THAT(vec.span(), testing::ElementsAre(1, 2, 3, 4));
 }
 
+TEST(FixedZeroedDataVector, ValidIndex) {
+  FixedZeroedDataVector<int> vec(4);
+  vec[0] = 100;
+  vec[3] = 400;
+  EXPECT_EQ(100, vec[0]);
+  EXPECT_EQ(0, vec[1]);
+  EXPECT_EQ(0, vec[2]);
+  EXPECT_EQ(400, vec[3]);
+}
+
+TEST(FixedZeroedDataVector, InvalidIndex) {
+  FixedZeroedDataVector<int> vec(4);
+  EXPECT_DEATH(vec[4] = 1, ".*");
+}
+
 TEST(FixedZeroedDataVector, Move) {
   FixedZeroedDataVector<int> vec(4);
   constexpr int kData[] = {1, 2, 3, 4};
