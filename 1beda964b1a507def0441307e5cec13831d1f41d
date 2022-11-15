@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "10b390dd_08cabebd",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2843,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-11-15T21:36:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ddda8ed_bda6414a",
+      "revId": "1beda964b1a507def0441307e5cec13831d1f41d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ddc418ca_2bd671ad",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-11-15T20:50:25Z",
       "side": 1,
       "message": "If line 2849 already called IsValueInRangeForNumericType(), then can the checked_cast() here ever fail?",
+      "revId": "1beda964b1a507def0441307e5cec13831d1f41d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "378e6353_90c97c6a",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2852,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-11-15T21:36:50Z",
+      "side": 1,
+      "message": "Thanks! I changed it into static_cast instead.",
+      "parentUuid": "ddc418ca_2bd671ad",
       "revId": "1beda964b1a507def0441307e5cec13831d1f41d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
