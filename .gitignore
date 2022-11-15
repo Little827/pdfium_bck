@@ -4,6 +4,7 @@
 /compile_commands.json
 /out
 /testing/corpus
+/testing/libfuzzer
 /third_party/abseil-cpp
 /third_party/android_ndk
 /third_party/catapult

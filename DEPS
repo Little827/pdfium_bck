@@ -150,6 +150,10 @@ vars = {
   # and whatever else without interference from each other.
   'test_fonts_revision': '7f51783942943e965cd56facf786544ccfc07713',
   # Three lines of non-changing comments so that
+  # the commit queue can handle CLs rolling testing/libfuzzer
+  # and whatever else without interference from each other.
+  'testing_libfuzzer_revision': '9f1cf4177d29b28b623362b9cb0f73d12806b0c4',
+  # Three lines of non-changing comments so that
   # the commit queue can handle CLs rolling tools_memory
   # and whatever else without interference from each other.
   'tools_memory_revision': '8581381d92045707a699f1fc14525cac75a802e0',
@@ -250,6 +254,10 @@ deps = {
     'url': Var('pdfium_git') + '/pdfium_tests@' + Var('pdfium_tests_revision'),
     'condition': 'checkout_testing_corpus',
   },
+
+  'testing/libfuzzer':
+    Var('chromium_git') + '/chromium/src/testing/libfuzzer.git@' +
+        Var('testing_libfuzzer_revision'),
 
   'third_party/abseil-cpp':
     Var('chromium_git') + '/chromium/src/third_party/abseil-cpp.git@' +
