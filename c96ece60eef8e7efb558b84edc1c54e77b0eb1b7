@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31d7d0cc_0d53ef86",
+        "filename": "core/fxcrt/fake_time_test.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-11-16T18:53:06Z",
+      "side": 1,
+      "message": "Optional: Wondering if this would work better as a global testing::Environment, rather than a per test base class:\nhttp://google.github.io/googletest/advanced.html#global-set-up-and-tear-down",
+      "range": {
+        "startLine": 10,
+        "startChar": 28,
+        "endLine": 10,
+        "endChar": 43
+      },
+      "revId": "c96ece60eef8e7efb558b84edc1c54e77b0eb1b7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12d9caf6_75282dd0",
+        "filename": "fxjs/fx_date_helpers_unittest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-11-16T18:53:06Z",
+      "side": 1,
+      "message": "Optional: Maybe use the digit separator (\u0027) to break up these lengthy numeric literals?",
+      "range": {
+        "startLine": 119,
+        "startChar": 19,
+        "endLine": 119,
+        "endChar": 32
+      },
+      "revId": "c96ece60eef8e7efb558b84edc1c54e77b0eb1b7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
