@@ -16,6 +16,24 @@
       "message": "Wrap at 72 columns.",
       "revId": "97424a62de353cbe90b1429f3fac87f7b9e5c357",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7d690ae_fcd65f8f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-11-16T01:01:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe858256_6634e2d5",
+      "revId": "97424a62de353cbe90b1429f3fac87f7b9e5c357",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
