@@ -17,6 +17,7 @@
 #include "core/fxcrt/data_vector.h"
 #include "core/fxcrt/fx_safe_types.h"
 #include "core/fxcrt/fx_system.h"
+#include "core/fxcrt/span_util.h"
 #include "core/fxge/calculate_pitch.h"
 #include "third_party/base/numerics/safe_math.h"
 
@@ -445,9 +446,8 @@ BmpDecoder::Status CFX_BmpDecompressor::DecodeRGB() {
       case 24:
       case 32:
         // TODO(crbug.com/pdfium/1901): Apply bitfields.
-        uint8_t* dest_buf_data = dest_buf.data();
-        std::copy(dest_buf_data, dest_buf_data + src_row_bytes_,
-                  out_row_buffer_.begin());
+        fxcrt::spancpy(pdfium::make_span(out_row_buffer_),
+                       pdfium::make_span(dest_buf).first(src_row_bytes_));
         idx += src_row_bytes_;
         break;
     }
