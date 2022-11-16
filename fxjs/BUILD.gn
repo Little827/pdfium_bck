@@ -264,6 +264,7 @@ if (pdf_enable_v8) {
       ]
       deps += [
         ":gc",
+        "../core/fxcrt:unit_test_support",
         "../xfa/fxfa/parser",
       ]
     }
