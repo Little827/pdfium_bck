@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a431ad80_1b61ca0f",
+        "filename": "third_party/BUILD.gn",
+        "patchSetId": 4
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-11-16T00:05:32Z",
+      "side": 0,
+      "message": "Need to delete this before the roll, otherwise :fx_lpng is considered reachable from Chromium\u0027s all target.",
+      "revId": "e66603249a8a1ba0847c035821c9f1e94dcf0487",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
