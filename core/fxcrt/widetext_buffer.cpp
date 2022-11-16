@@ -50,22 +50,24 @@ WideTextBuffer& WideTextBuffer::operator<<(ByteStringView ascii) {
 }
 
 WideTextBuffer& WideTextBuffer::operator<<(WideStringView str) {
-  AppendBlock(str.unterminated_c_str(), str.GetLength() * sizeof(wchar_t));
+  AppendSpan(pdfium::as_bytes(str.span()));
   return *this;
 }
 
 WideTextBuffer& WideTextBuffer::operator<<(const WideString& str) {
-  AppendBlock(str.c_str(), str.GetLength() * sizeof(wchar_t));
+  AppendSpan(pdfium::as_bytes(str.span()));
   return *this;
 }
 
 WideTextBuffer& WideTextBuffer::operator<<(const wchar_t* lpsz) {
-  AppendBlock(lpsz, wcslen(lpsz) * sizeof(wchar_t));
+  AppendSpan(
+      {reinterpret_cast<const uint8_t*>(lpsz), wcslen(lpsz) * sizeof(wchar_t)});
   return *this;
 }
 
 WideTextBuffer& WideTextBuffer::operator<<(const WideTextBuffer& buf) {
-  AppendBlock(buf.m_buffer.data(), buf.GetSize());
+  AppendSpan(
+      pdfium::as_bytes(pdfium::make_span(buf.m_buffer)).first(buf.GetSize()));
   return *this;
 }
 
