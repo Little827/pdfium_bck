@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9df21a0_ce2c77d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-11-17T19:25:43Z",
+      "side": 1,
+      "message": "Removed +1 as code has changed, Lei pls. re-review.",
+      "revId": "f92e9920af446b513da22a88cc93327f97d2a120",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
