@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e8b6dac_77ddd971",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-11-17T22:26:15Z",
+      "side": 1,
+      "message": "I did a simple smoke test to make sure the output is comparable with rasterization:\n\n  pdfium_test --png --md5 testing/resources/rectangles.pdf\n  pdfium_test --skp --md5 testing/resources/rectangles.pdf",
+      "revId": "2da9b3c8183a203f87aff39ae721877204474c2a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
