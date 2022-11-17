@@ -89,6 +89,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d544b9f_8d5281e0",
+        "filename": "samples/pdfium_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 999,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-11-17T22:58:05Z",
+      "side": 1,
+      "message": "I added an explanatory comment.",
+      "parentUuid": "e322b62b_f0785e76",
+      "revId": "2da9b3c8183a203f87aff39ae721877204474c2a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b30eb087_92b54065",
@@ -138,6 +156,24 @@
       "side": 1,
       "message": "Yes please.",
       "parentUuid": "6dd31eef_63d6b5b0",
+      "revId": "2da9b3c8183a203f87aff39ae721877204474c2a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54a8575f_897fa710",
+        "filename": "samples/pdfium_test_write_helper.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-11-17T22:58:05Z",
+      "side": 1,
+      "message": "Done\n\nI decided dropping \"// PDF_ENABLE_SKIA\" in these cases was the least ugly option.",
+      "parentUuid": "92ee2063_19814d4c",
       "revId": "2da9b3c8183a203f87aff39ae721877204474c2a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
