@@ -11,7 +11,9 @@
 #include "core/fxcrt/cfx_utf8decoder.h"
 #include "core/fxcrt/cfx_utf8encoder.h"
 #include "core/fxcrt/fx_extension.h"
+#include "core/fxcrt/span_util.h"
 #include "third_party/base/compiler_specific.h"
+#include "third_party/base/span.h"
 
 ByteString FX_UTF8Encode(WideStringView wsStr) {
   CFX_UTF8Encoder encoder;
@@ -87,7 +89,7 @@ T StringTo(ByteStringView strc,
 }
 
 template <class T>
-size_t ToString(T value, int (*round_func)(T), char* buf) {
+size_t ToString(T value, int (*round_func)(T), pdfium::span<char> buf) {
   buf[0] = '0';
   buf[1] = '\0';
   if (value == 0) {
@@ -118,7 +120,7 @@ size_t ToString(T value, int (*round_func)(T), char* buf) {
   int i = scaled / scale;
   FXSYS_itoa(i, buf2, 10);
   size_t len = strlen(buf2);
-  memcpy(buf + buf_size, buf2, len);
+  fxcrt::spancpy(buf.subspan(buf_size), pdfium::make_span(buf2).first(len));
   buf_size += len;
   int fraction = scaled % scale;
   if (fraction == 0) {
@@ -145,7 +147,7 @@ float StringToFloat(WideStringView wsStr) {
   return StringToFloat(FX_UTF8Encode(wsStr).AsStringView());
 }
 
-size_t FloatToString(float f, char* buf) {
+size_t FloatToString(float f, pdfium::span<char> buf) {
   return ToString<float>(f, FXSYS_roundf, buf);
 }
 
@@ -158,7 +160,7 @@ double StringToDouble(WideStringView wsStr) {
   return StringToDouble(FX_UTF8Encode(wsStr).AsStringView());
 }
 
-size_t DoubleToString(double d, char* buf) {
+size_t DoubleToString(double d, pdfium::span<char> buf) {
   return ToString<double>(d, FXSYS_round, buf);
 }
 
