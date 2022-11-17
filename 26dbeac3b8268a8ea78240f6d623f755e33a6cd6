@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a93a9fdb_bcffab00",
+        "filename": "samples/pdfium_test.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 772,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-11-17T19:51:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea8137da_10b6b9e3",
+      "range": {
+        "startLine": 772,
+        "startChar": 39,
+        "endLine": 772,
+        "endChar": 45
+      },
+      "revId": "26dbeac3b8268a8ea78240f6d623f755e33a6cd6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "645b2b84_51f484d8",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-11-17T19:28:37Z",
       "side": 1,
       "message": "Should this be protected so nobody instantiated this? Considering BitmapPageRenderer::Start() doesn\u0027t actually render.",
+      "revId": "26dbeac3b8268a8ea78240f6d623f755e33a6cd6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "206b9361_8c69a5fc",
+        "filename": "samples/pdfium_test.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 793,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-11-17T19:51:00Z",
+      "side": 1,
+      "message": "Done\n\nI made this public so \"using BitmapPageRenderer::BitmapPageRenderer\" in OneShotBitmapPageRenderer would compile:\nhttps://en.cppreference.com/w/cpp/language/using_declaration#Inheriting_constructors\n\nThat said, that\u0027s a small price to pay. I was thinking this class would be at least partially abstract, but it\u0027s not.",
+      "parentUuid": "645b2b84_51f484d8",
       "revId": "26dbeac3b8268a8ea78240f6d623f755e33a6cd6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -58,6 +100,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "91d92ed9_cf8b46f8",
+        "filename": "samples/pdfium_test.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 794,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-11-17T19:51:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee53ab8d_b9a27f07",
+      "revId": "26dbeac3b8268a8ea78240f6d623f755e33a6cd6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6f549220_4370b021",
@@ -71,6 +131,24 @@
       "writtenOn": "2022-11-17T19:28:37Z",
       "side": 1,
       "message": "WDYT about rearranging this to:\n\n```\nif (to_be_continued_) {\n  to_be_continued_ \u003d FPDF_RenderPage_Continue(...) \u003d\u003d FPDF_RENDER_TOBECONTINUED;\n}\nreturn to_be_continued_;\n```",
+      "revId": "26dbeac3b8268a8ea78240f6d623f755e33a6cd6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f267232c_e9981dee",
+        "filename": "samples/pdfium_test.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 918,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-11-17T19:51:00Z",
+      "side": 1,
+      "message": "Done\n\nThis version repeatedly overwrites the field, but that\u0027s probably fine in this case.",
+      "parentUuid": "6f549220_4370b021",
       "revId": "26dbeac3b8268a8ea78240f6d623f755e33a6cd6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
