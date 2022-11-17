@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d88c6e6_71966262",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-11-17T19:12:39Z",
+      "side": 1,
+      "message": "Some additional observations on how the PageRenderer concept could be extended.",
+      "revId": "a3e4773009d06cf28c58b90f4f073071a94ee0b4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c784e5ba_51154958",
+        "filename": "samples/pdfium_test.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 1079,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-11-17T19:12:39Z",
+      "side": 1,
+      "message": "Note: The --emf and --ps2/--ps3 formats have similar issues as --skp, only with FPDF_RenderPage(HDC) instead of FPDF_RenderPageSkp().\n\nPageRenderer could be extended with a separate \"HdcPageRenderer\" to handle these cases.",
+      "revId": "a3e4773009d06cf28c58b90f4f073071a94ee0b4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28cee59f_46aa3813",
+        "filename": "samples/pdfium_test.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 1089,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-11-17T19:12:39Z",
+      "side": 1,
+      "message": "Note: The --txt and --annot formats just require FPDF_PAGE, and don\u0027t require rendering at all.\n\nPageRenderer could be extended with a \"NoopPageRenderer\" to handle these cases.",
+      "revId": "a3e4773009d06cf28c58b90f4f073071a94ee0b4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
