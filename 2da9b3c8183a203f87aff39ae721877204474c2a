@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "33eeed66_b9d1b669",
+        "filename": "samples/pdfium_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 999,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-11-17T22:41:26Z",
+      "side": 1,
+      "message": "Another way to think of this is that the SkPictureRecorder captures all the drawing commands after it gets passed the CFX_DIBitmap, which starts pre-cleared. In order to replicate the result, we need to replay the SkPicture on top of a pre-cleared SkSurface.",
+      "parentUuid": "9022b2c3_f614c79e",
+      "revId": "2da9b3c8183a203f87aff39ae721877204474c2a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b30eb087_92b54065",
         "filename": "samples/pdfium_test_write_helper.cc",
         "patchSetId": 1
