@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "55bd8c17_d3a5bbcd",
+        "filename": "core/fpdfapi/parser/cpdf_crypto_handler.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-11-17T19:24:48Z",
+      "side": 1,
+      "message": "Changed to \u003c",
+      "parentUuid": "c432c4bf_a0fda900",
+      "revId": "3a1a2916a32b7e8b7ff4a0a0db42901069dd2556",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c3f531a_bbb9908c",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-11-17T18:51:25Z",
       "side": 1,
       "message": "Or maybe delegate to the WideStringView version?",
+      "revId": "3a1a2916a32b7e8b7ff4a0a0db42901069dd2556",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44c5a1f5_ac669081",
+        "filename": "core/fxcrt/widetext_buffer.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-11-17T19:24:48Z",
+      "side": 1,
+      "message": "Done. Much cleaner.",
+      "parentUuid": "5c3f531a_bbb9908c",
       "revId": "3a1a2916a32b7e8b7ff4a0a0db42901069dd2556",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
