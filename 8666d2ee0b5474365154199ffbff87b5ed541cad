@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0b1be180_6a8a7d9b",
+        "filename": "core/fxcrt/fx_memory.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-11-21T21:32:38Z",
+      "side": 1,
+      "message": "follow-on: we hid the impl of what would be a nice inline function because we didn\u0027t want to drag safe artithmetic header in with every fx_memory.h inclusion. \n\nI think we might want to just create fx_2d_size.h, and move this definition from fx_memory.h to there.  Then we can just template it, pay the cost for the inclusion of safe math, and not worry about having to instantiate it.\n\nAlloc2d stays here, of course.",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 32
+      },
+      "revId": "8666d2ee0b5474365154199ffbff87b5ed541cad",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6966d338_d6431575",
         "filename": "core/fxcrt/fx_memory.cpp",
         "patchSetId": 1
