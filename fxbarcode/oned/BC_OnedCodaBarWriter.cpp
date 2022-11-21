@@ -24,6 +24,7 @@
 
 #include <iterator>
 
+#include "core/fxcrt/fx_2d_size.h"
 #include "core/fxcrt/fx_extension.h"
 #include "core/fxcrt/fx_memory.h"
 #include "fxbarcode/BC_Writer.h"
