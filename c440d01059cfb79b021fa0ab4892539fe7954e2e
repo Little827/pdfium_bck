@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f5999e0_1f85c544",
+        "filename": "core/fxge/agg/fx_agg_driver.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-11-21T18:49:23Z",
+      "side": 1,
+      "message": "follow-up: do this in terms of span \u003d span.subspan() instead of pointer arithmetic.",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 184,
+        "endChar": 29
+      },
+      "revId": "c440d01059cfb79b021fa0ab4892539fe7954e2e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
