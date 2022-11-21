@@ -106,7 +106,8 @@ inline T FxAlignToBoundary(T size) {
   return (size + (N - 1)) & ~(N - 1);
 }
 
-size_t Fx2DSizeOrDie(size_t w, size_t h);
+template <typename T, typename U>
+size_t Fx2DSizeOrDie(T w, U h);
 
 #endif  // __cplusplus
 
