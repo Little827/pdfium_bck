@@ -18,6 +18,7 @@
 #include "core/fxcrt/binary_buffer.h"
 #include "core/fxcrt/data_vector.h"
 #include "core/fxcrt/fx_memory.h"
+#include "core/fxcrt/fx_safe_types.h"
 #include "core/fxge/calculate_pitch.h"
 #include "third_party/base/check.h"
 #include "third_party/base/check_op.h"

@@ -16,4 +16,11 @@ using FX_SAFE_INT32 = pdfium::base::CheckedNumeric<int32_t>;
 using FX_SAFE_SIZE_T = pdfium::base::CheckedNumeric<size_t>;
 using FX_SAFE_FILESIZE = pdfium::base::CheckedNumeric<FX_FILESIZE>;
 
+template <typename T, typename U>
+size_t Fx2DSizeOrDie(T w, U h) {
+  pdfium::base::CheckedNumeric<size_t> safe_size = w;
+  safe_size *= h;
+  return safe_size.ValueOrDie();
+}
+
 #endif  // CORE_FXCRT_FX_SAFE_TYPES_H_
