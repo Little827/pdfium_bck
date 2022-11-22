@@ -102,9 +102,3 @@ void* StringAllocOrDie(size_t num_members, size_t member_size) {
 }
 }  // namespace internal
 }  // namespace pdfium
-
-size_t Fx2DSizeOrDie(size_t w, size_t h) {
-  pdfium::base::CheckedNumeric<size_t> safe_size = w;
-  safe_size *= h;
-  return safe_size.ValueOrDie();
-}
