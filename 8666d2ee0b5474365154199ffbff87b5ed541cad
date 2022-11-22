@@ -88,6 +88,54 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "554177f7_fd61a24e",
+        "filename": "core/fxcrt/fx_memory.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-11-22T08:06:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "64f7bc05_392880b8",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 32
+      },
+      "revId": "8666d2ee0b5474365154199ffbff87b5ed541cad",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b675fdbf_e320e5e5",
+        "filename": "core/fxcrt/fx_memory.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-11-22T08:06:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d09467cc_0b164596",
+      "range": {
+        "startLine": 107,
+        "startChar": 21,
+        "endLine": 107,
+        "endChar": 22
+      },
+      "revId": "8666d2ee0b5474365154199ffbff87b5ed541cad",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6966d338_d6431575",
@@ -101,6 +149,30 @@
       "writtenOn": "2022-11-21T21:12:57Z",
       "side": 1,
       "message": "What happened to \u003csize_t, size_t\u003e?",
+      "range": {
+        "startLine": 113,
+        "startChar": 15,
+        "endLine": 113,
+        "endChar": 42
+      },
+      "revId": "8666d2ee0b5474365154199ffbff87b5ed541cad",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0bbeb76_db4f0e88",
+        "filename": "core/fxcrt/fx_memory.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-11-22T08:06:37Z",
+      "side": 1,
+      "message": "Turns out nobody actually instantiates it.",
+      "parentUuid": "6966d338_d6431575",
       "range": {
         "startLine": 113,
         "startChar": 15,
