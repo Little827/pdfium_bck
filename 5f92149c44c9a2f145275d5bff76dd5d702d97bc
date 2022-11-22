@@ -36,6 +36,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4576673c_d24f7ad3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8751
+      },
+      "writtenOn": "2022-11-22T18:16:48Z",
+      "side": 1,
+      "message": "I see, thanks for your reply. I\u0027m afraid I only know Python, not C/C++, and already have more projects than I can cope with.\nHopefully, someone else will be able to resume working on this.",
+      "parentUuid": "00792f59_538065ab",
+      "revId": "5f92149c44c9a2f145275d5bff76dd5d702d97bc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a9e65509_df0adeef",
