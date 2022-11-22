@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c50bfd59_5d001f20",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-11-22T17:00:56Z",
+      "side": 1,
+      "message": "We have tests? I think this is correct, but it is hard to be sure.",
+      "revId": "4e16472906e49c08be08da9d134bf3b3d6f951b9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7b73838_5bdd85d8",
+        "filename": "core/fxge/dib/cfx_dibbase.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1056,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-11-22T17:00:56Z",
+      "side": 1,
+      "message": "follow-up: spans?",
+      "range": {
+        "startLine": 1056,
+        "startChar": 47,
+        "endLine": 1056,
+        "endChar": 55
+      },
+      "revId": "4e16472906e49c08be08da9d134bf3b3d6f951b9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
