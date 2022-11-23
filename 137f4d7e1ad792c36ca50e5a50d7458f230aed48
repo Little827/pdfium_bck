@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5df311c9_396ce4a3",
+        "filename": "core/fpdfapi/page/cpdf_colorspace.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-11-23T20:31:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e670204c_e2e4003f",
+      "revId": "137f4d7e1ad792c36ca50e5a50d7458f230aed48",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "de070f7e_fc5a390d",
@@ -49,6 +67,24 @@
       "side": 1,
       "message": "But needs to include something for std::size().",
       "parentUuid": "de070f7e_fc5a390d",
+      "revId": "137f4d7e1ad792c36ca50e5a50d7458f230aed48",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fe929b8_7442182c",
+        "filename": "core/fxcrt/fx_memory.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-11-23T20:31:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77a45f30_83cac989",
       "revId": "137f4d7e1ad792c36ca50e5a50d7458f230aed48",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
