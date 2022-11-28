@@ -46,6 +46,30 @@
       },
       "revId": "726db31fe6ba0215993b5c936a8641b39e9e7be9",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e2e276e_dfdd0064",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-11-28T20:40:16Z",
+      "side": 1,
+      "message": "Send out https://pdfium-review.googlesource.com/101730 for review to fix that in AGG first.",
+      "parentUuid": "8b301f3b_ff515b7e",
+      "range": {
+        "startLine": 127,
+        "startChar": 7,
+        "endLine": 127,
+        "endChar": 17
+      },
+      "revId": "726db31fe6ba0215993b5c936a8641b39e9e7be9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
