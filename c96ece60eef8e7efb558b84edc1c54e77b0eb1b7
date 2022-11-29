@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e72943c0_3dd1867c",
+        "filename": "core/fxcrt/fake_time_test.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-11-29T02:46:01Z",
+      "side": 1,
+      "message": "With an Environment, PDFium would apply the fake time to an entire test suite. e.g. in testing/unit_test_main.cpp. That\u0027s a bigger scope than what I\u0027m looking for here.",
+      "parentUuid": "31d7d0cc_0d53ef86",
+      "range": {
+        "startLine": 10,
+        "startChar": 28,
+        "endLine": 10,
+        "endChar": 43
+      },
+      "revId": "c96ece60eef8e7efb558b84edc1c54e77b0eb1b7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "12d9caf6_75282dd0",
         "filename": "fxjs/fx_date_helpers_unittest.cpp",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2022-11-16T18:53:06Z",
       "side": 1,
       "message": "Optional: Maybe use the digit separator (\u0027) to break up these lengthy numeric literals?",
+      "range": {
+        "startLine": 119,
+        "startChar": 19,
+        "endLine": 119,
+        "endChar": 32
+      },
+      "revId": "c96ece60eef8e7efb558b84edc1c54e77b0eb1b7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86737601_76425517",
+        "filename": "fxjs/fx_date_helpers_unittest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-11-29T02:46:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12d9caf6_75282dd0",
       "range": {
         "startLine": 119,
         "startChar": 19,
