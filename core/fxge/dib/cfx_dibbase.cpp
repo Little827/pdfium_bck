@@ -694,11 +694,11 @@ bool CFX_DIBBase::BuildAlphaMask() {
   if (m_pAlphaMask)
     return true;
 
-  m_pAlphaMask = pdfium::MakeRetain<CFX_DIBitmap>();
-  if (!m_pAlphaMask->Create(m_Width, m_Height, FXDIB_Format::k8bppMask)) {
-    m_pAlphaMask = nullptr;
+  RetainPtr<CFX_DIBitmap> alpha_mask = pdfium::MakeRetain<CFX_DIBitmap>();
+  if (!alpha_mask->Create(m_Width, m_Height, FXDIB_Format::k8bppMask)) {
     return false;
   }
+  m_pAlphaMask = std::move(alpha_mask);
   for (int i = 0; i < m_pAlphaMask->GetHeight(); ++i) {
     fxcrt::spanset(m_pAlphaMask->GetWritableScanline(i), 0xff);
   }
