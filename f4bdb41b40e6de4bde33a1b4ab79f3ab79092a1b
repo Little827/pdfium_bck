@@ -46,6 +46,30 @@
       },
       "revId": "f4bdb41b40e6de4bde33a1b4ab79f3ab79092a1b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0b779c5_edbd66dc",
+        "filename": "core/fxge/dib/cfx_dibbase.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1072,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-11-29T19:54:06Z",
+      "side": 0,
+      "message": "Ack",
+      "parentUuid": "677b7068_36e5031f",
+      "range": {
+        "startLine": 1072,
+        "startChar": 10,
+        "endLine": 1072,
+        "endChar": 18
+      },
+      "revId": "f4bdb41b40e6de4bde33a1b4ab79f3ab79092a1b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
