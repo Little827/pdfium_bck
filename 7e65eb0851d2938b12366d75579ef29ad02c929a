@@ -34,6 +34,24 @@
       "parentUuid": "6dc62866_795b2712",
       "revId": "7e65eb0851d2938b12366d75579ef29ad02c929a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8859a68a_90bb0e70",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-11-29T22:29:23Z",
+      "side": 1,
+      "message": "Rebased.",
+      "parentUuid": "234754ca_029fc8de",
+      "revId": "7e65eb0851d2938b12366d75579ef29ad02c929a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
