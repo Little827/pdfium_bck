@@ -22,6 +22,30 @@
       },
       "revId": "f4bdb41b40e6de4bde33a1b4ab79f3ab79092a1b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "677b7068_36e5031f",
+        "filename": "core/fxge/dib/cfx_dibbase.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1072,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-11-29T19:52:51Z",
+      "side": 0,
+      "message": "Line 1068 moves to the start of the last row and then the for-loop below works across the row. So the offset here should remain positive whether there is a Y-flip or not.",
+      "parentUuid": "7a2afe02_3cdb2ba0",
+      "range": {
+        "startLine": 1072,
+        "startChar": 10,
+        "endLine": 1072,
+        "endChar": 18
+      },
+      "revId": "f4bdb41b40e6de4bde33a1b4ab79f3ab79092a1b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
