@@ -54,6 +54,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "057321cd_e0904a74",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 7361
+      },
+      "writtenOn": "2022-11-29T20:16:18Z",
+      "side": 1,
+      "message": "Yes. The final CL that didn\u0027t get reverted and resolved the issue is here:\n\nhttps://skia.googlesource.com/skia/+/d7c177a69e16be3ba97289e636fb853d3e8b2336",
+      "parentUuid": "02ac7898_5ba37187",
+      "revId": "baeb438b7f6baeb4b34ed64a501781fa4337d399",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ea84af22_66b3a760",
