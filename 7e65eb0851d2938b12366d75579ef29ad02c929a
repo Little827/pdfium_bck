@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6dc62866_795b2712",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-11-29T21:40:01Z",
+      "side": 1,
+      "message": "Probably need to fix a conflict (roll from 580b91b2ab6a5bd842000162295cbdfecf36ef9d to the latest revision) later after https://pdfium-review.googlesource.com/c/pdfium/+/100534 lands.",
+      "revId": "7e65eb0851d2938b12366d75579ef29ad02c929a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
