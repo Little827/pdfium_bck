@@ -48,6 +48,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "40992ab2_b18a02a1",
+        "filename": "core/fxcrt/fake_time_test.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-11-29T20:10:44Z",
+      "side": 1,
+      "message": "👍 I think it\u0027d make sense to fake time globally by default (hopefully not that many tests depend on time), but that\u0027s reasonable.\n\nIt\u0027s also possible to call an Environment\u0027s SetUp() and TearDown() explicitly, but that\u0027s probably of limited utility in this case.",
+      "parentUuid": "e72943c0_3dd1867c",
+      "range": {
+        "startLine": 10,
+        "startChar": 28,
+        "endLine": 10,
+        "endChar": 43
+      },
+      "revId": "c96ece60eef8e7efb558b84edc1c54e77b0eb1b7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "12d9caf6_75282dd0",
