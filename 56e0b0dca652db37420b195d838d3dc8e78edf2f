@@ -16,6 +16,24 @@
       "message": "I thought I fixed this one, but it looks like this will trap earlier rather than making safe but wrong accesses?",
       "revId": "56e0b0dca652db37420b195d838d3dc8e78edf2f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03f28e46_fc478aab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-11-29T18:43:25Z",
+      "side": 1,
+      "message": "Signed integer overflow is undefined behavior and still good to avoid.",
+      "parentUuid": "7bc6a899_e3a09eae",
+      "revId": "56e0b0dca652db37420b195d838d3dc8e78edf2f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
