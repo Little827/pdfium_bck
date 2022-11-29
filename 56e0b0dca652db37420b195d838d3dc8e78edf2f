@@ -59,6 +59,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc5f5789_bbabe70d",
+        "filename": "core/fxge/dib/cfx_bitmapcomposer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-11-29T19:32:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45e0fc7a_a184b811",
+      "range": {
+        "startLine": 149,
+        "startChar": 4,
+        "endLine": 149,
+        "endChar": 10
+      },
+      "revId": "56e0b0dca652db37420b195d838d3dc8e78edf2f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "058d9d1f_b16c4281",
@@ -82,6 +106,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fb083f5_9b0f393a",
+        "filename": "core/fxge/dib/cfx_bitmapcomposer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-11-29T19:32:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "058d9d1f_b16c4281",
+      "range": {
+        "startLine": 151,
+        "startChar": 26,
+        "endLine": 151,
+        "endChar": 72
+      },
+      "revId": "56e0b0dca652db37420b195d838d3dc8e78edf2f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c527eb32_1cd9c8b1",
@@ -95,6 +143,30 @@
       "writtenOn": "2022-11-29T18:45:06Z",
       "side": 1,
       "message": "nit: over-()",
+      "range": {
+        "startLine": 199,
+        "startChar": 44,
+        "endLine": 199,
+        "endChar": 62
+      },
+      "revId": "56e0b0dca652db37420b195d838d3dc8e78edf2f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0958228e_c8f2ae4f",
+        "filename": "core/fxge/dib/cfx_bitmapcomposer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-11-29T19:32:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c527eb32_1cd9c8b1",
       "range": {
         "startLine": 199,
         "startChar": 44,
