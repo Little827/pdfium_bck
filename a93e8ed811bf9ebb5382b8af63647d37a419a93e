@@ -22,6 +22,30 @@
       },
       "revId": "a93e8ed811bf9ebb5382b8af63647d37a419a93e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea034aaa_4486ffc2",
+        "filename": "core/fxge/dib/cfx_scanlinecompositor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-11-30T21:56:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52f49005_839784c4",
+      "range": {
+        "startLine": 271,
+        "startChar": 12,
+        "endLine": 271,
+        "endChar": 19
+      },
+      "revId": "a93e8ed811bf9ebb5382b8af63647d37a419a93e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
