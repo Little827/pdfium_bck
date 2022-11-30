@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c63bf957_6fe4db8a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-11-30T21:48:38Z",
+      "side": 1,
+      "message": "Still got some extra newlines here. Just 1 will suffice.",
+      "revId": "9a92ee0929bc449a813215c0f56583ed8c51c7dd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "598e5286_a563bc42",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-11-30T21:48:38Z",
+      "side": 1,
+      "message": "bug_1946_expected.pdf.0.png has a checkbox, but I think the tryjobs are red because the PDF actually renders blank. Is this behavior intentional?",
+      "revId": "9a92ee0929bc449a813215c0f56583ed8c51c7dd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
