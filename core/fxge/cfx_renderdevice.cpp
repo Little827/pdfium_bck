@@ -1171,8 +1171,6 @@ bool CFX_RenderDevice::DrawNormalText(pdfium::span<const TextCharPos> pCharPos,
       return false;
   } else {
     bitmap->Clear(0);
-    if (bitmap->HasAlphaMask())
-      bitmap->GetAlphaMask()->Clear(0);
   }
   int dest_width = pixel_width;
   int a = 0;
