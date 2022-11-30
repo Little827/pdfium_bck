@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "413ba3fc_6a85c2e2",
+        "filename": "core/fxge/dib/cfx_scanlinecompositor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2821,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-11-30T19:25:51Z",
+      "side": 0,
+      "message": "could you give a quick explanation bout why this can\u0027t happen?",
+      "range": {
+        "startLine": 2821,
+        "startChar": 0,
+        "endLine": 2821,
+        "endChar": 17
+      },
+      "revId": "3321ff1bc187dc08931439474f04a9483ea8cf6a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
