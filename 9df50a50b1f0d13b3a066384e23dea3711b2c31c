@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24660d67_e80ad29a",
+        "filename": "core/fxge/dib/cfx_dibbase.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1016,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-11-30T18:05:24Z",
+      "side": 0,
+      "message": "Always true due to line 1014.",
+      "revId": "9df50a50b1f0d13b3a066384e23dea3711b2c31c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a828cb3a_bb0f59f3",
+        "filename": "core/fxge/dib/cfx_dibbase.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1022,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-11-30T18:05:24Z",
+      "side": 0,
+      "message": "Always true due to line 1020.",
+      "revId": "9df50a50b1f0d13b3a066384e23dea3711b2c31c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3389877e_6144326a",
+        "filename": "core/fxge/dib/cfx_dibitmap.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1098,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-11-30T18:05:24Z",
+      "side": 0,
+      "message": "Not possible due to line 1086.",
+      "revId": "9df50a50b1f0d13b3a066384e23dea3711b2c31c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}

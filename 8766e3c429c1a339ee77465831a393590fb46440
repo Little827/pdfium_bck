@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5e52dc5_356f4853",
+        "filename": "core/fxge/dib/cfx_dibitmap.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-11-30T18:05:24Z",
+      "side": 1,
+      "message": "IsOpaqueImage() on line 414 only lets the mask and alpha formats continue. Line 425 takes care of the mask formats. That leaves the alpha formats here, but there is only 1.",
+      "revId": "8766e3c429c1a339ee77465831a393590fb46440",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d08f4f21_c07f68c0",
+        "filename": "core/fxge/dib/cfx_dibitmap.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-11-30T18:05:24Z",
+      "side": 1,
+      "message": "Line 482 is the case for the only alpha format.",
+      "revId": "8766e3c429c1a339ee77465831a393590fb46440",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e90c0678_fabffd14",
+        "filename": "core/fxge/dib/cfx_dibitmap.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 999,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-11-30T18:05:24Z",
+      "side": 1,
+      "message": "Manually audited all the callers and these are the format values passed in.",
+      "revId": "8766e3c429c1a339ee77465831a393590fb46440",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
