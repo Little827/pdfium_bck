@@ -764,8 +764,6 @@ bool CFX_DIBitmap::CompositeBitmap(int dest_left,
         pSrcAlphaMask
             ? pSrcAlphaMask->GetScanline(src_top + row).subspan(src_left)
             : pdfium::span<const uint8_t>();
-    // TODO(thestig): This span is always empty. Check for more dead code.
-    pdfium::span<uint8_t> dst_scan_extra_alpha;
     pdfium::span<const uint8_t> clip_scan;
     if (pClipMask) {
       clip_scan = pClipMask->GetWritableScanline(dest_top + row - clip_box.top)
@@ -773,12 +771,10 @@ bool CFX_DIBitmap::CompositeBitmap(int dest_left,
     }
     if (bRgb) {
       compositor.CompositeRgbBitmapLine(dest_scan, src_scan, width, clip_scan,
-                                        src_scan_extra_alpha,
-                                        dst_scan_extra_alpha);
+                                        src_scan_extra_alpha);
     } else {
       compositor.CompositePalBitmapLine(dest_scan, src_scan, src_left, width,
-                                        clip_scan, src_scan_extra_alpha,
-                                        dst_scan_extra_alpha);
+                                        clip_scan, src_scan_extra_alpha);
     }
   }
   return true;
@@ -845,7 +841,7 @@ bool CFX_DIBitmap::CompositeMask(int dest_left,
                                       clip_scan, dst_scan_extra_alpha);
     } else {
       compositor.CompositeByteMaskLine(dest_scan, src_scan.subspan(src_left),
-                                       width, clip_scan, dst_scan_extra_alpha);
+                                       width, clip_scan);
     }
   }
   return true;
