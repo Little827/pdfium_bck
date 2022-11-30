@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03b5d95a_8a6b9ad8",
+        "filename": "third_party/BUILD.gn",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-11-30T19:45:25Z",
+      "side": 1,
+      "message": "From https://pdfium-review.googlesource.com/97770.",
+      "revId": "553eef79014454c72a131050af57528614ba9a2f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
