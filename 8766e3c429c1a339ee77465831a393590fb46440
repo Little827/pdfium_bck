@@ -90,6 +90,30 @@
       },
       "revId": "8766e3c429c1a339ee77465831a393590fb46440",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44e9b059_569f366b",
+        "filename": "core/fxge/dib/cfx_dibitmap.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1035,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-11-30T19:00:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69885ff3_461fa3cd",
+      "range": {
+        "startLine": 1035,
+        "startChar": 0,
+        "endLine": 1035,
+        "endChar": 12
+      },
+      "revId": "8766e3c429c1a339ee77465831a393590fb46440",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
