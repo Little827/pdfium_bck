@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad2ac1aa_ed57602e",
+        "filename": "fpdfsdk/fpdf_progressive.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-11-30T18:40:21Z",
+      "side": 1,
+      "message": "This can be removed in this CL, since it\u0027s gonna be no-op.\nI see that you are removing multiple use cases of `_SKIA_SUPPORT_PATHS_` like this in the follow-up CL, so that\u0027s OK.",
+      "range": {
+        "startLine": 73,
+        "startChar": 28,
+        "endLine": 73,
+        "endChar": 60
+      },
+      "revId": "58a00fa2ac7b95789b6368e363085d450201aef0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
