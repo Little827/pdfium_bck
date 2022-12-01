@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42ca3d6f_a02aca4a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-12-01T23:01:05Z",
+      "side": 1,
+      "message": "Assuming there\u0027s nothing else to say beyond the subject line.",
+      "revId": "9fbf6c65103097ce4f0454a88b0da11b797714a4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
