@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "020e1c81_337c38c8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-12-02T18:57:18Z",
+      "side": 1,
+      "message": "I thought we did this already, but the salient difference here is that it\u0027s applying to the infra/config branch; I\u0027d probably mention that in the description.",
+      "revId": "3fbdb88338e13ee8d621171011f4325e495bb706",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
