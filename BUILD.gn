@@ -239,6 +239,21 @@ config("pdfium_common_config") {
       "-Wno-return-type",
     ]
   }
+
+  # Override //build/config/compiler and always use C++17.
+  # TODO(crbug.com/pdfium/1932): Remove when switching to C++20, if appropriate.
+  if (is_linux || is_chromeos || is_android || current_os == "aix") {
+    if (is_clang) {
+      standard_prefix = "c"
+    } else {
+      standard_prefix = "gnu"
+    }
+    cflags_cc += [ "-std=${standard_prefix}++17" ]
+  } else if (is_win) {
+    cflags_cc += [ "/std:c++17" ]
+  } else {
+    cflags_cc += [ "-std=c++17" ]
+  }
 }
 
 config("pdfium_implementation_config") {
