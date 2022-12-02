@@ -34,6 +34,40 @@
       "parentUuid": "a1dda7da_091769a9",
       "revId": "5d40bdb001525ffb390e6636866b15496d7e4094",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fc94bda_9561ca64",
+        "filename": "build_overrides/BUILDCONFIG.gn",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-12-02T23:37:23Z",
+      "side": 1,
+      "message": "Commentary: This is a bit hard to review this way; I did a \"git cl patch\" and some local diffs. Perhaps next time upload an unmodified copy, then upload your diffs as a new patchset on top of that?",
+      "revId": "5d40bdb001525ffb390e6636866b15496d7e4094",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "817b242a_8309a104",
+        "filename": "build_overrides/compiler/BUILD.gn",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-12-02T23:37:23Z",
+      "side": 1,
+      "message": "Last one wins, hopefully. 😊",
+      "revId": "5d40bdb001525ffb390e6636866b15496d7e4094",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
