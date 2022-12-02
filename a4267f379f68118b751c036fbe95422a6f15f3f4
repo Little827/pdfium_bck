@@ -22,6 +22,30 @@
       },
       "revId": "a4267f379f68118b751c036fbe95422a6f15f3f4",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9f7cc94_66ffe0eb",
+        "filename": "skia/BUILD.gn",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-12-02T19:02:42Z",
+      "side": 1,
+      "message": "Just keeping this in sync with Chromium.",
+      "parentUuid": "1f59860a_28518239",
+      "range": {
+        "startLine": 73,
+        "startChar": 22,
+        "endLine": 73,
+        "endChar": 26
+      },
+      "revId": "a4267f379f68118b751c036fbe95422a6f15f3f4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
