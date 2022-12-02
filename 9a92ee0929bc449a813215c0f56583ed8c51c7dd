@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad9d7bab_5d84e0c3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 9016
+      },
+      "writtenOn": "2022-12-02T16:18:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c63bf957_6fe4db8a",
+      "revId": "9a92ee0929bc449a813215c0f56583ed8c51c7dd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "598e5286_a563bc42",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-11-30T21:48:38Z",
       "side": 1,
       "message": "bug_1946_expected.pdf.0.png has a checkbox, but I think the tryjobs are red because the PDF actually renders blank. Is this behavior intentional?",
+      "revId": "9a92ee0929bc449a813215c0f56583ed8c51c7dd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96a2343d_c7dead9e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 9016
+      },
+      "writtenOn": "2022-12-02T16:18:03Z",
+      "side": 1,
+      "message": "I may have pushed this for testing early, but I did not expect the Windows jobs to fail, because on Windows the Wingdings font should be available.\n\nFor this test to properly match the original document, we need a non-unicode font. I have checked all the fonts available, and all of them do have a unicode charmap.\n\nCan we do something about this? like creating a custom font with a single glyph to have this test pass.",
+      "parentUuid": "598e5286_a563bc42",
       "revId": "9a92ee0929bc449a813215c0f56583ed8c51c7dd",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
