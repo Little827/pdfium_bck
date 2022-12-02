@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d2f6d41_483932c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-12-02T20:02:25Z",
+      "side": 1,
+      "message": "Sorry, I messed up the MSVC bots. You may need to run `git cl try -B luci.pdfium.try -b win_xfa_msvc -c` to unwedge it.",
+      "revId": "7ee7d1b7d0f1c8d5549a9d2e0c1c848721a69b70",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
