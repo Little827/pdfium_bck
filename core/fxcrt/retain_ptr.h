@@ -177,9 +177,12 @@ class Retainable {
   // These need to be const methods operating on a mutable member so that
   // RetainPtr<const T> can be used for an object that is otherwise const
   // apart from the internal ref-counting.
-  void Retain() const { ++m_nRefCount; }
+  void Retain() const {
+    ++m_nRefCount;
+    CHECK(m_nRefCount > 0);
+  }
   void Release() const {
-    DCHECK(m_nRefCount > 0);
+    CHECK(m_nRefCount > 0);
     if (--m_nRefCount == 0)
       delete this;
   }
