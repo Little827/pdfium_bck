@@ -16,6 +16,24 @@
       "message": "Note: A little weird having the import in the middle of the file. Not sure that\u0027s worth it just to keep everything in a single \"modifications\" block.",
       "revId": "a819432f57797d90e03caf76b751627ec4390c59",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "752db7a3_6e1522e9",
+        "filename": "build_overrides/BUILDCONFIG.gn",
+        "patchSetId": 3
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-12-05T18:34:48Z",
+      "side": 1,
+      "message": "This isn\u0027t just for aesthetics. BUILDCONFIG.gn is a bit special compared to other .gn files in that this is the place where variables like `is_linux` gets defined. Putting the import statement at the top of the file leads to many undefined variables in imported .gni files.",
+      "parentUuid": "e146a23e_755fc6b9",
+      "revId": "a819432f57797d90e03caf76b751627ec4390c59",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
