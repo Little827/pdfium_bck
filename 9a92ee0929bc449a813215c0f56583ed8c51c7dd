@@ -69,6 +69,24 @@
       "parentUuid": "598e5286_a563bc42",
       "revId": "9a92ee0929bc449a813215c0f56583ed8c51c7dd",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e4a57b0_f2817635",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 9016
+      },
+      "writtenOn": "2022-12-05T21:59:52Z",
+      "side": 1,
+      "message": "@thestig@chromium.org any ideas?\n\nI have just tried the above by re-encoding the SymbolNeu font and regenerating a new font.\n\nCan you please advise on how we can add custom fonts?",
+      "parentUuid": "96a2343d_c7dead9e",
+      "revId": "9a92ee0929bc449a813215c0f56583ed8c51c7dd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
