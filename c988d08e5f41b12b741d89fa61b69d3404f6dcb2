@@ -16,6 +16,23 @@
       "message": "Hi,\n\nI have pushed a new update, can you please take a look.\n\nThanks",
       "revId": "c988d08e5f41b12b741d89fa61b69d3404f6dcb2",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c74267d4_98972f99",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2022-12-05T19:22:37Z",
+      "side": 1,
+      "message": "Splitting the transfer/composite operations seems to make more sense. Let\u0027s see what the bots think,",
+      "revId": "c988d08e5f41b12b741d89fa61b69d3404f6dcb2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
