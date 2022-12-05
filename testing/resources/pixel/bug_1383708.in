@@ -1,0 +1,103 @@
+{{header}}
+{{object 1 0}} <<
+  /Type /Catalog
+  /Pages 2 0 R
+>>
+endobj
+{{object 2 0}} <<
+  /Type /Pages
+  /Count 1
+  /Kids [3 0 R]
+>>
+endobj
+{{object 3 0}} <<
+  /Type /Page
+  /Parent 2 0 R
+  /Contents 4 0 R
+  /MediaBox [0 0 200 250]
+  /Resources 5 0 R
+>>
+endobj
+{{object 4 0}} <<
+  {{streamlen}}
+>>
+stream
+q
+100 0 0 20 50 50 cm
+/I1 Do
+Q
+q
+100 0 0 100 50 100 cm
+/I2 Do
+Q
+endstream
+endobj
+{{object 5 0}} <<
+  /ProcSet [/PDF /ImageB /ImageC /ImageI]
+  /XObject <<
+    /I1 6 0 R
+    /I2 8 0 R
+  >>
+>>
+endobj
+{{object 6 0}} <<
+  /Type /XObject
+  /Subtype /Image
+  /BitsPerComponent 1
+  /ColorSpace [/Indexed /DeviceRGB 1 7 0 R]
+  /Filter [/ASCIIHexDecode /FlateDecode]
+  /Height 5
+  /Width 177
+  {{streamlen}}
+>>
+stream
+789cfbff1f1b6860c00eb02afedf80431887215c0094ac4349
+endstream
+endobj
+{{object 7 0}} <<
+  /Filter [/ASCIIHexDecode /FlateDecode]
+  {{streamlen}}
+>>
+stream
+789cbb70e5c6ffffffb90017e80584
+endstream
+endobj
+{{object 8 0}} <<
+  /Type /XObject
+  /Subtype /Image
+  /BitsPerComponent 8
+  /ColorSpace [/Indexed /DeviceRGB 39 9 0 R]
+  /Filter [/ASCIIHexDecode /FlateDecode]
+  /Height 15
+  /Width 58
+  {{streamlen}}
+>>
+stream
+789cc593491282301045f79c2220e0355444ad1205141515bff7bf851d1c
+1832010bccab229d26959f1e82085f3638101b44e331656c3aa2de120916
+4442d6489a3e9e6f7ccdae1921f38918f52608714580077dc3c920c5f60e
+93ee1a3b824bf279add49345a28ab2add95cdf90e342704d3ee7e431c7f9
+b5eb735d4daf99e15872c7fe636503726b8ab3eeb97958712c6cdf86270d
+53de205d83ac7b629c25c44a4559a3f40b3245c1d483d757f39ba1a003c4
+63f56968ee525ecdc6e9076fb3dfcaeea4587dc5f2a84a15b8988bb824df
+5f5157b08ad4a6ea660ebdd97238d4d2b1ddca6964b8b99853d51bf80bd6
+0b5aba3212
+endstream
+endobj
+{{object 9 0}} <<
+  /Filter [/ASCIIHexDecode /FlateDecode]
+  {{streamlen}}
+>>
+stream
+789cd331b6fc7f26cee1ffff332bcbe21c5e5f8cb37f7e22f4ff5d8f3336
+969676710edf5eeeff7f392ef6ca4a651b4b0b3b1b0b733bdbff40f0cec6
+d2d82e35ce6e9b8d853150d5eb0be937f6c7d9df5d0934e871e23e1b8b24
+a0e0fff371beff6f18fe7f51f578afedffcfabee1e8eb3df676369681717
+7173659cbfb1b1f1d58540553ff6fdff7f775d759cc3091b4b13a0b6e767
+e3ec5f6d8b73b8b749e5ca823887dbcbe31cb80031a35662
+endstream
+endobj
+{{xref}}
+{{trailer}}
+{{startxref}}
+%%EOF
