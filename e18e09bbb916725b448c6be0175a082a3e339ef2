@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd460ebc_513ffb26",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 9016
+      },
+      "writtenOn": "2022-12-05T13:17:04Z",
+      "side": 1,
+      "message": "Hi Lei,\n\nCan you please take a look at this CL? all is good locally.\n\nThanks,",
+      "revId": "e18e09bbb916725b448c6be0175a082a3e339ef2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
