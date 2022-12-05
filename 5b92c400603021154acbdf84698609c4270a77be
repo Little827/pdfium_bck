@@ -16,6 +16,24 @@
       "message": "This line appears to be overflowing the column limit.",
       "revId": "5b92c400603021154acbdf84698609c4270a77be",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f9647ec_5850d15c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-12-05T23:56:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8f5a603_df4031e6",
+      "revId": "5b92c400603021154acbdf84698609c4270a77be",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }

@@ -140,6 +140,24 @@
       "parentUuid": "5e5a1061_8f8516f8",
       "revId": "d9fbe0e458b751b36b620c3dae9884fceddb9791",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "244147dc_65b81cb7",
+        "filename": "testing/resources/pixel/bug_1383708_expected.pdf.0.png",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-12-05T23:56:27Z",
+      "side": 1,
+      "message": "The black block was directly copied from an image object from the original bug report. I am not sure how to modify that image. Skia and AGG results do align with each other on that blackblock.",
+      "parentUuid": "8622c505_512c0a10",
+      "revId": "d9fbe0e458b751b36b620c3dae9884fceddb9791",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
