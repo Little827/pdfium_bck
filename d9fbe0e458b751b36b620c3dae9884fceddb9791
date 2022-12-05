@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "701c254c_c81e6811",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-12-05T23:39:10Z",
+      "side": 1,
+      "message": "Yes. I just cc\u0027ed you on the bug.",
+      "parentUuid": "5aa1ebcc_be24e10a",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 12
+      },
+      "revId": "d9fbe0e458b751b36b620c3dae9884fceddb9791",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "677ab494_0c376dc1",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -54,6 +78,24 @@
       "writtenOn": "2022-12-05T23:27:04Z",
       "side": 1,
       "message": "What is this image supposed to look like? It\u0027s not very obvious to me from the description alone.",
+      "revId": "d9fbe0e458b751b36b620c3dae9884fceddb9791",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e5a1061_8f8516f8",
+        "filename": "testing/resources/pixel/bug_1383708_expected.pdf.0.png",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-12-05T23:39:10Z",
+      "side": 1,
+      "message": "Yes, this is the AGG rendering result, which is correct. I added a comment in the commit message about it.\n\nSkia rendering result is wrong (it renders the 2 lines as a square block.) and I haven\u0027t figured out the correct fix yet.",
+      "parentUuid": "3129e3d1_0094613c",
       "revId": "d9fbe0e458b751b36b620c3dae9884fceddb9791",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
