@@ -33,6 +33,24 @@
       "message": "Question: Did you want to carry over the comment from build_overrides/pdfium.gni about the default?",
       "revId": "5c3cf38b6ea6d8c85b3a695ccfb0a4b046d09cc3",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da3e986b_7e984475",
+        "filename": "pdfium.gni",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-12-06T21:38:46Z",
+      "side": 1,
+      "message": "No. I had the comment there for file-level consistency in build_overrides/pdfium.gni. But here, there aren\u0027t comments of that type for other variables.",
+      "parentUuid": "b634b1af_601f82a0",
+      "revId": "5c3cf38b6ea6d8c85b3a695ccfb0a4b046d09cc3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
