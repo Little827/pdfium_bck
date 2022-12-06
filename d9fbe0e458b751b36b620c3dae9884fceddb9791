@@ -176,6 +176,24 @@
       "parentUuid": "244147dc_65b81cb7",
       "revId": "d9fbe0e458b751b36b620c3dae9884fceddb9791",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fe16207_85188b46",
+        "filename": "testing/resources/pixel/bug_1383708_expected.pdf.0.png",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-12-06T00:30:46Z",
+      "side": 1,
+      "message": "If the actual pixel values do not matter too much, and it is more important to get the index values into the data array correct, then it would be better to choose pixel values that make it easy for the human eye to determine if the rendering is correct or not.",
+      "parentUuid": "a8a32cfc_37f019a1",
+      "revId": "d9fbe0e458b751b36b620c3dae9884fceddb9791",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
