@@ -212,6 +212,24 @@
       "parentUuid": "0fe16207_85188b46",
       "revId": "d9fbe0e458b751b36b620c3dae9884fceddb9791",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23464c63_fd7b91b4",
+        "filename": "testing/resources/pixel/bug_1383708_expected.pdf.0.png",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-12-06T18:30:47Z",
+      "side": 1,
+      "message": "Suspect some colored squares would be sufficient, but no objections.",
+      "parentUuid": "07ae91d6_ba8f2ff4",
+      "revId": "d9fbe0e458b751b36b620c3dae9884fceddb9791",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
