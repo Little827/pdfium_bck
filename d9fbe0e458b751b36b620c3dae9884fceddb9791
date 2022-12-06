@@ -158,6 +158,24 @@
       "parentUuid": "8622c505_512c0a10",
       "revId": "d9fbe0e458b751b36b620c3dae9884fceddb9791",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8a32cfc_37f019a1",
+        "filename": "testing/resources/pixel/bug_1383708_expected.pdf.0.png",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-12-06T00:08:58Z",
+      "side": 1,
+      "message": "It should be possible to decode the binary data and fix up the images/palettes to be simpler. Let\u0027s not block submitting this change on such work, though.",
+      "parentUuid": "244147dc_65b81cb7",
+      "revId": "d9fbe0e458b751b36b620c3dae9884fceddb9791",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
