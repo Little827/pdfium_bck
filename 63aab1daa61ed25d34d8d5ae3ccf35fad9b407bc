@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9d3a452c_7da5d294",
+        "filename": "testing/resources/pixel/bug_1845.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-12-07T23:30:54Z",
+      "side": 1,
+      "message": "We\u0027re not consistent about this; for example, 32 current pixel tests include spaces around the brackets, and 93 do not.\n\nI think it\u0027s more readable with the extra space, so is there a concrete reason to do this?",
+      "parentUuid": "219d14bd_578580f8",
+      "range": {
+        "startLine": 10,
+        "startChar": 8,
+        "endLine": 10,
+        "endChar": 17
+      },
+      "revId": "63aab1daa61ed25d34d8d5ae3ccf35fad9b407bc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ea0aba8d_147d46a5",
         "filename": "testing/resources/pixel/bug_1845.in",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2022-12-07T22:56:15Z",
       "side": 1,
       "message": "Move this line above \"MediaBox\".\nUsually we sort the entries by alphabetical order which are not \"Type\" \"SubType\" \"Kids\".",
+      "range": {
+        "startLine": 20,
+        "startChar": 2,
+        "endLine": 20,
+        "endChar": 17
+      },
+      "revId": "63aab1daa61ed25d34d8d5ae3ccf35fad9b407bc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9de010c5_1a0355c8",
+        "filename": "testing/resources/pixel/bug_1845.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-12-07T23:30:54Z",
+      "side": 1,
+      "message": "Done\n\nWhat about /Parents?",
+      "parentUuid": "ea0aba8d_147d46a5",
       "range": {
         "startLine": 20,
         "startChar": 2,
@@ -66,6 +114,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eaf9cfc9_ef5bf3a9",
+        "filename": "testing/resources/pixel/bug_1845.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-12-07T23:30:54Z",
+      "side": 1,
+      "message": "I think it\u0027s more readable with the extra space, so is there a concrete reason to do this?",
+      "parentUuid": "af96a866_89ae2060",
+      "revId": "63aab1daa61ed25d34d8d5ae3ccf35fad9b407bc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fd83515b_c0526cdd",
         "filename": "testing/resources/pixel/bug_1845.in",
         "patchSetId": 2
@@ -77,6 +143,24 @@
       "writtenOn": "2022-12-07T22:56:15Z",
       "side": 1,
       "message": "Remove the space between objects,  and between the last object and the trailing references.",
+      "revId": "63aab1daa61ed25d34d8d5ae3ccf35fad9b407bc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44a0137f_0ea0572b",
+        "filename": "testing/resources/pixel/bug_1845.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-12-07T23:30:54Z",
+      "side": 1,
+      "message": "I think it\u0027s more readable with the extra space, so is there a concrete reason to do this?",
+      "parentUuid": "fd83515b_c0526cdd",
       "revId": "63aab1daa61ed25d34d8d5ae3ccf35fad9b407bc",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
