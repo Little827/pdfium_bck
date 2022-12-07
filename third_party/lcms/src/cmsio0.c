@@ -485,14 +485,6 @@ cmsIOHANDLER* CMSEXPORT cmsGetProfileIOhandler(cmsHPROFILE hProfile)
     return Icc->IOhandler;
 }
 
-#ifdef _WIN32_WCE
-time_t wceex_time(time_t *timer);
-struct tm * wceex_gmtime(const time_t *timer);
-
-#define time wceex_time
-#define gmtime wceex_gmtime
-#endif
-
 // Creates an empty structure holding all required parameters
 cmsHPROFILE CMSEXPORT cmsCreateProfilePlaceholder(cmsContext ContextID)
 {
@@ -588,14 +580,6 @@ int _cmsSearchTag(_cmsICCPROFILE* Icc, cmsTagSignature sig, cmsBool lFollowLinks
 
         // Yes, follow link
         if (LinkedSig != (cmsTagSignature) 0) {
-            // fix bug mantis id#0055942
-            // assume that TRCTag and ColorantTag can't be linked.
-            // Xiaochuan Liu 2014-04-23
-            if ((sig == cmsSigRedTRCTag || sig == cmsSigGreenTRCTag || sig == cmsSigBlueTRCTag) && 
-                (LinkedSig == cmsSigRedColorantTag || LinkedSig == cmsSigGreenColorantTag || LinkedSig == cmsSigBlueColorantTag))
-            {
-                return n;
-            }
             sig = LinkedSig;
         }
 
@@ -779,8 +763,7 @@ cmsBool _cmsReadHeader(_cmsICCPROFILE* Icc)
         for (j=0; j < Icc ->TagCount; j++) {
 
             if ((Icc ->TagOffsets[j] == Tag.offset) &&
-                (Icc ->TagSizes[j]   == Tag.size) &&
-                (Icc ->TagNames[j]   == Tag.sig)) {
+                (Icc ->TagSizes[j]   == Tag.size)) {
 
                 Icc ->TagLinked[Icc ->TagCount] = Icc ->TagNames[j];
             }
@@ -1390,12 +1373,6 @@ Error:
     return 0;
 }
 
-#ifdef _WIN32_WCE
-int wceex_unlink(const char *filename);
-#ifndef remove
-#   define remove wceex_unlink
-#endif
-#endif
 
 // Low-level save to disk.
 cmsBool  CMSEXPORT cmsSaveProfileToFile(cmsHPROFILE hProfile, const char* FileName)

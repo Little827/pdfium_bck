@@ -1320,7 +1320,7 @@ void _LUTeval16(CMSREGISTER const cmsUInt16Number In[], CMSREGISTER cmsUInt16Num
 {
     cmsPipeline* lut = (cmsPipeline*) D;
     cmsStage *mpe;
-    cmsFloat32Number Storage[2][MAX_STAGE_CHANNELS] = {0.0f};
+    cmsFloat32Number Storage[2][MAX_STAGE_CHANNELS];
     int Phase = 0, NextPhase;
 
     From16ToFloat(In, &Storage[Phase][0], lut ->InputChannels);
@@ -1346,7 +1346,7 @@ void _LUTevalFloat(const cmsFloat32Number In[], cmsFloat32Number Out[], const vo
 {
     cmsPipeline* lut = (cmsPipeline*) D;
     cmsStage *mpe;
-    cmsFloat32Number Storage[2][MAX_STAGE_CHANNELS] = {0.0f};
+    cmsFloat32Number Storage[2][MAX_STAGE_CHANNELS];
     int Phase = 0, NextPhase;
 
     memmove(&Storage[Phase][0], In, lut ->InputChannels  * sizeof(cmsFloat32Number));

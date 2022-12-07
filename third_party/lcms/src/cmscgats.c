@@ -38,10 +38,7 @@
 #define DEFAULT_DBL_FORMAT  "%.10g" // Double formatting
 
 #ifdef CMS_IS_WINDOWS_
-//sunliang.liu modified 2010426 for wince error
-# ifndef _WIN32_WCE
-#   include <io.h>
-# endif
+#    include <io.h>
 #    define DIR_CHAR    '\\'
 #else
 #    define DIR_CHAR    '/'
