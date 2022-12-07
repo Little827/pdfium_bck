@@ -58,7 +58,7 @@ typedef struct _cmsParametricCurvesCollection_st {
 static cmsFloat64Number DefaultEvalParametricFn(cmsInt32Number Type, const cmsFloat64Number Params[], cmsFloat64Number R);
 
 // The built-in list
-static const _cmsParametricCurvesCollection DefaultCurves = {
+static _cmsParametricCurvesCollection DefaultCurves = {
     10,                                      // # of curve types
     { 1, 2, 3, 4, 5, 6, 7, 8, 108, 109 },    // Parametric curve ID
     { 1, 3, 4, 5, 7, 4, 5, 5,   1,   1 },    // Parameters by type
@@ -162,7 +162,7 @@ cmsBool _cmsRegisterParametricCurvesPlugin(cmsContext ContextID, cmsPluginBase* 
 
 // Search in type list, return position or -1 if not found
 static
-int IsInSet(int Type, const _cmsParametricCurvesCollection* c)
+int IsInSet(int Type, _cmsParametricCurvesCollection* c)
 {
     int i;
 
@@ -175,9 +175,9 @@ int IsInSet(int Type, const _cmsParametricCurvesCollection* c)
 
 // Search for the collection which contains a specific type
 static
-const _cmsParametricCurvesCollection *GetParametricCurveByType(cmsContext ContextID, int Type, int* index)
+_cmsParametricCurvesCollection *GetParametricCurveByType(cmsContext ContextID, int Type, int* index)
 {
-    const _cmsParametricCurvesCollection* c;
+    _cmsParametricCurvesCollection* c;
     int Position;
     _cmsCurvesPluginChunkType* ctx = ( _cmsCurvesPluginChunkType*) _cmsContextGetClientChunk(ContextID, CurvesPlugin);
 
@@ -270,7 +270,7 @@ cmsToneCurve* AllocateToneCurveStruct(cmsContext ContextID, cmsUInt32Number nEnt
     // is placed in advance to maximize performance.
     if (Segments != NULL && (nSegments > 0)) {
 
-        const _cmsParametricCurvesCollection *c;
+        _cmsParametricCurvesCollection *c;
 
         p ->SegInterp = (cmsInterpParams**) _cmsCalloc(ContextID, nSegments, sizeof(cmsInterpParams*));
         if (p ->SegInterp == NULL) goto Error;
@@ -427,8 +427,8 @@ cmsFloat64Number DefaultEvalParametricFn(cmsInt32Number Type, const cmsFloat64Nu
 
 
     // IEC 61966-3
-    // Y = (aX + b)^Gamma | X <= -b/a
-    // Y = c              | else
+    // Y = (aX + b)^Gamma + c | X <= -b/a
+    // Y = c                  | else
     case 3:
     {
         if (fabs(Params[1]) < MATRIX_DET_TOLERANCE)
@@ -462,7 +462,8 @@ cmsFloat64Number DefaultEvalParametricFn(cmsInt32Number Type, const cmsFloat64Nu
     // X=-b/a                   | (Y<c)
     case -3:
     {
-        if (fabs(Params[1]) < MATRIX_DET_TOLERANCE)
+        if (fabs(Params[0]) < MATRIX_DET_TOLERANCE ||
+            fabs(Params[1]) < MATRIX_DET_TOLERANCE)
         {
             Val = 0;
         }
@@ -601,7 +602,8 @@ cmsFloat64Number DefaultEvalParametricFn(cmsInt32Number Type, const cmsFloat64Nu
     // ((Y - c) ^1/Gamma - b) / a
     case -6:
     {
-        if (fabs(Params[1]) < MATRIX_DET_TOLERANCE)
+        if (fabs(Params[0]) < MATRIX_DET_TOLERANCE ||
+            fabs(Params[1]) < MATRIX_DET_TOLERANCE)
         {
             Val = 0;
         }
@@ -866,7 +868,7 @@ cmsToneCurve* CMSEXPORT cmsBuildParametricToneCurve(cmsContext ContextID, cmsInt
     cmsCurveSegment Seg0;
     int Pos = 0;
     cmsUInt32Number size;
-    const _cmsParametricCurvesCollection* c = GetParametricCurveByType(ContextID, Type, &Pos);
+    _cmsParametricCurvesCollection* c = GetParametricCurveByType(ContextID, Type, &Pos);
 
     _cmsAssert(Params != NULL);
 
@@ -1487,6 +1489,9 @@ cmsFloat64Number CMSEXPORT cmsEstimateGamma(const cmsToneCurve* t, cmsFloat64Num
             n++;
         }
     }
+
+    // We need enough valid samples
+    if (n <= 1) return -1.0;
 
     // Take a look on SD to see if gamma isn't exponential at all
     Std = sqrt((n * sum2 - sum * sum) / (n*(n-1)));
