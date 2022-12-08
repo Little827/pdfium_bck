@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "926b7ef6_2cea2903",
+        "filename": "testing/resources/pixel/bug_1845.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-12-08T01:15:10Z",
+      "side": 1,
+      "message": "Let\u0027s try to write it without the extra spaces in new PDFs. In C++ and Python, we don\u0027t usually put spaces on the inside of brackets.",
+      "parentUuid": "55613825_cf60cb15",
+      "range": {
+        "startLine": 10,
+        "startChar": 8,
+        "endLine": 10,
+        "endChar": 17
+      },
+      "revId": "63aab1daa61ed25d34d8d5ae3ccf35fad9b407bc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ea0aba8d_147d46a5",
         "filename": "testing/resources/pixel/bug_1845.in",
         "patchSetId": 2
@@ -234,6 +258,24 @@
       "side": 1,
       "message": "In general, readability trumps consistency. Since I think this is significantly more readable, I plan to stick with it unless there\u0027s a stronger argument than consistency.",
       "parentUuid": "4bb6ea7b_184b45d5",
+      "revId": "63aab1daa61ed25d34d8d5ae3ccf35fad9b407bc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d931c27a_ad384712",
+        "filename": "testing/resources/pixel/bug_1845.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-12-08T01:15:10Z",
+      "side": 1,
+      "message": "I\u0027ve read through many real world PDFs in their uncompressed form, and they don\u0027t have nice indentations. I usually reformat them to put q/Q and BT/ET on their own lines to help organize the content stream. Those operators on their own lines already stand out to me, as those lines contain 1-2 chars, while other lines in the content stream are usually much longer. Since I\u0027m used to reading PDFs like that, I wouldn\u0027t call this indentation \"significantly\" more readable.\n\nBut that\u0027s just my opinion and others may find the indentation to be really helpful. Why don\u0027t we just leave this as is? I\u0027m ok with this either way.",
+      "parentUuid": "0cc3292b_fe53bfc7",
       "revId": "63aab1daa61ed25d34d8d5ae3ccf35fad9b407bc",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },

@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f810619_56ae2a4f",
+        "filename": "testing/resources/pixel/bug_1845.in",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-12-08T01:15:10Z",
+      "side": 1,
+      "message": "I would wrap this its own graphics state, so if someone appends more to this content stream, they won\u0027t be accidentally affected by this.",
+      "revId": "ee514be3824c622e9bc8d1b24b6022ba3df59842",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
