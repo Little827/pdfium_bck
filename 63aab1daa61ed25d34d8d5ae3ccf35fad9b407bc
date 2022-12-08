@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "55613825_cf60cb15",
+        "filename": "testing/resources/pixel/bug_1845.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-12-08T00:50:22Z",
+      "side": 1,
+      "message": "Ack; I\u0027ll wait to update this until we\u0027ve resolved the other questions.",
+      "parentUuid": "09334f4f_a1caa257",
+      "range": {
+        "startLine": 10,
+        "startChar": 8,
+        "endLine": 10,
+        "endChar": 17
+      },
+      "revId": "63aab1daa61ed25d34d8d5ae3ccf35fad9b407bc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ea0aba8d_147d46a5",
         "filename": "testing/resources/pixel/bug_1845.in",
         "patchSetId": 2
@@ -192,6 +216,24 @@
       "side": 1,
       "message": "It\u0027s for consistency.",
       "parentUuid": "eaf9cfc9_ef5bf3a9",
+      "revId": "63aab1daa61ed25d34d8d5ae3ccf35fad9b407bc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cc3292b_fe53bfc7",
+        "filename": "testing/resources/pixel/bug_1845.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-12-08T00:50:22Z",
+      "side": 1,
+      "message": "In general, readability trumps consistency. Since I think this is significantly more readable, I plan to stick with it unless there\u0027s a stronger argument than consistency.",
+      "parentUuid": "4bb6ea7b_184b45d5",
       "revId": "63aab1daa61ed25d34d8d5ae3ccf35fad9b407bc",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
