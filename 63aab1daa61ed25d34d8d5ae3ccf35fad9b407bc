@@ -180,6 +180,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4bb6ea7b_184b45d5",
+        "filename": "testing/resources/pixel/bug_1845.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-12-08T00:24:48Z",
+      "side": 1,
+      "message": "It\u0027s for consistency.",
+      "parentUuid": "eaf9cfc9_ef5bf3a9",
+      "revId": "63aab1daa61ed25d34d8d5ae3ccf35fad9b407bc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fd83515b_c0526cdd",
         "filename": "testing/resources/pixel/bug_1845.in",
         "patchSetId": 2
@@ -209,6 +227,24 @@
       "side": 1,
       "message": "I think it\u0027s more readable with the extra space, so is there a concrete reason to do this?",
       "parentUuid": "fd83515b_c0526cdd",
+      "revId": "63aab1daa61ed25d34d8d5ae3ccf35fad9b407bc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81e0650b_c960e015",
+        "filename": "testing/resources/pixel/bug_1845.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-12-08T00:24:48Z",
+      "side": 1,
+      "message": "With/Without space, the file will work the same. It\u0027s more about being consistent.",
+      "parentUuid": "44a0137f_0ea0572b",
       "revId": "63aab1daa61ed25d34d8d5ae3ccf35fad9b407bc",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
