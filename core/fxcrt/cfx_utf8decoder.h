@@ -15,14 +15,17 @@ class CFX_UTF8Decoder {
   explicit CFX_UTF8Decoder(ByteStringView input);
   ~CFX_UTF8Decoder();
 
+  bool HasError() const;
   WideString TakeResult();
 
  private:
   void ProcessByte(uint8_t byte);
   void AppendCodePoint(uint32_t ch);
 
+  bool m_HasError = false;
   int m_PendingBytes = 0;
   uint32_t m_PendingChar = 0;
+  uint32_t m_MinCodePoint = 0;
   WideString m_Buffer;
 };
 

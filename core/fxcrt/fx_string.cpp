@@ -31,6 +31,26 @@ WideString FX_UTF8Decode(ByteStringView bsStr) {
   return decoder.TakeResult();
 }
 
+bool FX_IsUTF8ByteString(ByteStringView input) {
+  CFX_UTF8Decoder decoder(input);
+  if (decoder.HasError())
+    return false;
+
+  WideString decoded = decoder.TakeResult();
+  for (wchar_t c : decoded) {
+    // Beyond the upper limit of Unicode codespace.
+    if (c > 0x10FFFF) {
+      return false;
+    }
+
+    // Surrogate code points.
+    if ((c >= 0xD800 && c <= 0xDBFF) || (c >= 0xDC00 && c <= 0xDFFF)) {
+      return false;
+    }
+  }
+  return true;
+}
+
 namespace {
 
 constexpr float kFractionScalesFloat[] = {
