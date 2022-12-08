@@ -22,6 +22,30 @@
       },
       "revId": "1f315de1c62a51de47c358eb891e12417cf44421",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9482ce86_411ffc80",
+        "filename": "testing/resources/pixel/bug_1845.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-12-08T19:05:50Z",
+      "side": 1,
+      "message": "Let\u0027s treat them like Google C++ style curly braces. e.g. always\n\n```\n/XObject \u003c\u003c\n  /XO 5 0 R\n\u003e\u003e\n```\n\nThen there\u0027s less churn if someone adds a new dictionary entry later.",
+      "parentUuid": "ba9ef858_5b8df12e",
+      "range": {
+        "startLine": 19,
+        "startChar": 13,
+        "endLine": 19,
+        "endChar": 26
+      },
+      "revId": "1f315de1c62a51de47c358eb891e12417cf44421",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
