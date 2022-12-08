@@ -16,6 +16,23 @@
       "message": "I\u0027m not able to CQ dry run this, since I\u0027m not a dry-runner.",
       "revId": "144d3d63f507c67e16b6642374d98f0155b0a266",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad2e5442_80447cd2",
+        "filename": "core/fxge/agg/fx_agg_driver.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-12-08T20:31:56Z",
+      "side": 1,
+      "message": "Is clamping to this value the same as removing HardClip() entirely?",
+      "revId": "144d3d63f507c67e16b6642374d98f0155b0a266",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
