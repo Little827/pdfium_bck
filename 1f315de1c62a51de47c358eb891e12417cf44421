@@ -70,6 +70,30 @@
       },
       "revId": "1f315de1c62a51de47c358eb891e12417cf44421",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e10ba45b_958c96d1",
+        "filename": "testing/resources/pixel/bug_1845.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-12-08T19:24:36Z",
+      "side": 1,
+      "message": "Well, every so often one ends up wanting to tack on a closely related test variation, and it\u0027s sometimes easier to just update an existing test.",
+      "parentUuid": "1cb4e21b_9cb1d55d",
+      "range": {
+        "startLine": 19,
+        "startChar": 13,
+        "endLine": 19,
+        "endChar": 26
+      },
+      "revId": "1f315de1c62a51de47c358eb891e12417cf44421",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }

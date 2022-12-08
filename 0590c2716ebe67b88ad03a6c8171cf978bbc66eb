@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36d7a901_9b9ae408",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-12-08T19:24:36Z",
+      "side": 1,
+      "message": "Anyway, I uploaded https://pdfium-review.googlesource.com/102292 to better document some of the preferences discussed here.",
+      "revId": "0590c2716ebe67b88ad03a6c8171cf978bbc66eb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
