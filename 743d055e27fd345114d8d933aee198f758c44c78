@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f25901be_151005f2",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-12-08T19:26:25Z",
+      "side": 1,
+      "message": "nigi@ mentioned /Kids and /Parent as well, and that otherwise the keys should be lexicographic. Should we include these rules as well? Do something different?",
+      "revId": "743d055e27fd345114d8d933aee198f758c44c78",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee3ca9dd_e5b11e19",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-12-08T19:26:25Z",
+      "side": 1,
+      "message": "This example is of the object dictionary, which might make people think this is a special case. Maybe add a nested dictionary so the example covers more cases?",
+      "revId": "743d055e27fd345114d8d933aee198f758c44c78",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
