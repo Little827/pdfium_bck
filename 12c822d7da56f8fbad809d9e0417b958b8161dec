@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3256fce_79e9ff8a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-12-08T23:48:13Z",
+      "side": 1,
+      "message": "Looks like msvc_use_cxx17 was added for ANGLE, but I guess we can piggyback on it.",
+      "revId": "12c822d7da56f8fbad809d9e0417b958b8161dec",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
