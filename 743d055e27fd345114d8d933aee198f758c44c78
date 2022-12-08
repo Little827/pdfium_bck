@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f3ee0ef5_608d92e6",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-12-08T20:52:10Z",
+      "side": 1,
+      "message": "I agree. How about:\n`/Parent` (if applicable) should follow right after the type keys, and `Kids` should be at the end of all keys of an object.",
+      "parentUuid": "f25901be_151005f2",
+      "revId": "743d055e27fd345114d8d933aee198f758c44c78",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ee3ca9dd_e5b11e19",
         "filename": "README.md",
         "patchSetId": 1
@@ -31,6 +49,24 @@
       "writtenOn": "2022-12-08T19:26:25Z",
       "side": 1,
       "message": "This example is of the object dictionary, which might make people think this is a special case. Maybe add a nested dictionary so the example covers more cases?",
+      "revId": "743d055e27fd345114d8d933aee198f758c44c78",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "549ce129_d050933f",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-12-08T20:52:10Z",
+      "side": 1,
+      "message": "Maybe always enforce \"\u003c\u003c\" to be at the end of a line?\n\nFor example:\n/Resources \u003c\u003c\n  /ProcSet [/PDF /Text]\n  /Font \u003c\u003c\n    /F1 5 0 R\n  \u003e\u003e\n\u003e\u003e\n\nDespite \"F1 5 0 R\" is pretty short, we can always start a new line.",
+      "parentUuid": "ee3ca9dd_e5b11e19",
       "revId": "743d055e27fd345114d8d933aee198f758c44c78",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
