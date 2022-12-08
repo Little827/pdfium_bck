@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e65ddd3_afa298be",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-12-08T18:57:40Z",
+      "side": 1,
+      "message": "A corresponding Chromium-side change is https://chromium-review.googlesource.com/4089124\n\nAlternatively, we could clone FPDFAction_GetURIPath() to FPDFAction_GetURIPathUTF8() and call FPDFAction_GetURIPathUTF8() in Chromium. e.g. https://pdfium-review.googlesource.com/102290",
+      "revId": "8ffc14cd14e8c5ff2e0336c99cefbdce609bbd11",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
