@@ -276,6 +276,8 @@ TEST_F(FPDFDocEmbedderTest, ActionBadArguments) {
   EXPECT_EQ(0u, FPDFAction_GetFilePath(nullptr, nullptr, 0));
   EXPECT_EQ(0u, FPDFAction_GetURIPath(nullptr, nullptr, nullptr, 0));
   EXPECT_EQ(0u, FPDFAction_GetURIPath(document(), nullptr, nullptr, 0));
+  EXPECT_EQ(0u, FPDFAction_GetURIPathUTF8(nullptr, nullptr, nullptr, 0));
+  EXPECT_EQ(0u, FPDFAction_GetURIPathUTF8(document(), nullptr, nullptr, 0));
 }
 
 TEST_F(FPDFDocEmbedderTest, ActionLaunch) {
@@ -305,6 +307,8 @@ TEST_F(FPDFDocEmbedderTest, ActionLaunch) {
   // Other public methods are not appropriate for launch actions.
   EXPECT_FALSE(FPDFAction_GetDest(document(), action));
   EXPECT_EQ(0u, FPDFAction_GetURIPath(document(), action, buf, sizeof(buf)));
+  EXPECT_EQ(0u,
+            FPDFAction_GetURIPathUTF8(document(), action, buf, sizeof(buf)));
 
   UnloadPage(page);
 }
@@ -333,6 +337,14 @@ TEST_F(FPDFDocEmbedderTest, ActionUri) {
   EXPECT_EQ(bufsize, FPDFAction_GetURIPath(document(), action, buf, bufsize));
   EXPECT_STREQ(kExpectedResult, buf);
 
+  bufsize = FPDFAction_GetURIPathUTF8(document(), action, nullptr, 0);
+  ASSERT_EQ(kExpectedLength, bufsize);
+
+  memset(buf, 0, sizeof(buf));
+  EXPECT_EQ(bufsize,
+            FPDFAction_GetURIPathUTF8(document(), action, buf, bufsize));
+  EXPECT_STREQ(kExpectedResult, buf);
+
   // Other public methods are not appropriate for URI actions
   EXPECT_FALSE(FPDFAction_GetDest(document(), action));
   EXPECT_EQ(0u, FPDFAction_GetFilePath(action, buf, sizeof(buf)));
@@ -343,22 +355,50 @@ TEST_F(FPDFDocEmbedderTest, ActionUri) {
 TEST_F(FPDFDocEmbedderTest, ActionUriNonAscii) {
   ASSERT_TRUE(OpenDocument("uri_action_nonascii.pdf"));
 
-  FPDF_PAGE page = LoadPage(0);
-  ASSERT_TRUE(page);
+  {
+    FPDF_PAGE page = LoadPage(0);
+    ASSERT_TRUE(page);
 
-  // The target action is nearly the size of the whole page.
-  FPDF_LINK link = FPDFLink_GetLinkAtPoint(page, 100, 100);
-  ASSERT_TRUE(link);
+    // The target action is nearly the size of the whole page.
+    FPDF_LINK link = FPDFLink_GetLinkAtPoint(page, 100, 100);
+    ASSERT_TRUE(link);
 
-  FPDF_ACTION action = FPDFLink_GetAction(link);
-  ASSERT_TRUE(action);
-  EXPECT_EQ(static_cast<unsigned long>(PDFACTION_URI),
-            FPDFAction_GetType(action));
+    FPDF_ACTION action = FPDFLink_GetAction(link);
+    ASSERT_TRUE(action);
+    EXPECT_EQ(static_cast<unsigned long>(PDFACTION_URI),
+              FPDFAction_GetType(action));
 
-  // Call fails because the URI embedded in the PDF is invalid.
-  EXPECT_EQ(0u, FPDFAction_GetURIPath(document(), action, nullptr, 0));
+    // Call fails because the URI embedded in the PDF is not 7-bit ASCII.
+    EXPECT_EQ(0u, FPDFAction_GetURIPath(document(), action, nullptr, 0));
+    // And it is also not valid UTF-8.
+    EXPECT_EQ(0u, FPDFAction_GetURIPathUTF8(document(), action, nullptr, 0));
 
-  UnloadPage(page);
+    UnloadPage(page);
+  }
+  {
+    FPDF_PAGE page = LoadPage(1);
+    ASSERT_TRUE(page);
+
+    // The target action is nearly the size of the whole page.
+    FPDF_LINK link = FPDFLink_GetLinkAtPoint(page, 100, 100);
+    ASSERT_TRUE(link);
+
+    FPDF_ACTION action = FPDFLink_GetAction(link);
+    ASSERT_TRUE(action);
+    EXPECT_EQ(static_cast<unsigned long>(PDFACTION_URI),
+              FPDFAction_GetType(action));
+
+    // Call fails because the URI embedded in the PDF is not 7-bit ASCII.
+    EXPECT_EQ(0u, FPDFAction_GetURIPath(document(), action, nullptr, 0));
+    // But it is valid UTF-8
+    EXPECT_EQ(27u, FPDFAction_GetURIPathUTF8(document(), action, nullptr, 0));
+    char buf[27];
+    EXPECT_EQ(27u,
+              FPDFAction_GetURIPathUTF8(document(), action, buf, sizeof(buf)));
+    EXPECT_STREQ("https://example.com/\xE4\xBD\xA0\xE5\xA5\xBD", buf);
+
+    UnloadPage(page);
+  }
 }
 
 TEST_F(FPDFDocEmbedderTest, LinkToAnnotConversion) {
@@ -404,6 +444,8 @@ TEST_F(FPDFDocEmbedderTest, ActionGoto) {
   char buf[1024];
   EXPECT_EQ(0u, FPDFAction_GetFilePath(action, buf, sizeof(buf)));
   EXPECT_EQ(0u, FPDFAction_GetURIPath(document(), action, buf, sizeof(buf)));
+  EXPECT_EQ(0u,
+            FPDFAction_GetURIPathUTF8(document(), action, buf, sizeof(buf)));
 
   UnloadPage(page);
 }
@@ -465,6 +507,8 @@ TEST_F(FPDFDocEmbedderTest, ActionNonesuch) {
   EXPECT_FALSE(FPDFAction_GetDest(document(), action));
   EXPECT_EQ(0u, FPDFAction_GetFilePath(action, buf, sizeof(buf)));
   EXPECT_EQ(0u, FPDFAction_GetURIPath(document(), action, buf, sizeof(buf)));
+  EXPECT_EQ(0u,
+            FPDFAction_GetURIPathUTF8(document(), action, buf, sizeof(buf)));
 
   UnloadPage(page);
 }

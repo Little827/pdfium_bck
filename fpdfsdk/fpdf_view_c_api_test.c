@@ -133,6 +133,7 @@ int CheckPDFiumCApi() {
     CHK(FPDFAction_GetFilePath);
     CHK(FPDFAction_GetType);
     CHK(FPDFAction_GetURIPath);
+    CHK(FPDFAction_GetURIPathUTF8);
     CHK(FPDFBookmark_Find);
     CHK(FPDFBookmark_GetAction);
     CHK(FPDFBookmark_GetCount);

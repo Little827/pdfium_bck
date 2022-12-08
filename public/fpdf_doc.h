@@ -191,11 +191,39 @@ FPDFAction_GetFilePath(FPDF_ACTION action, void* buffer, unsigned long buflen);
 //
 // The |buffer| is always encoded in 7-bit ASCII. If |buflen| is less than the
 // returned length, or |buffer| is NULL, |buffer| will not be modified.
+//
+// Unlike FPDFAction_GetURIPathUTF8(), FPDFAction_GetURIPath() only allows 7-bit
+// ASCII URIs. This follows ISO 32000-1:2008. See table 206. However, this is
+// too restrictive, considering many real world PDFs do not encode URIs with
+// 7-bit ASCII.
 FPDF_EXPORT unsigned long FPDF_CALLCONV
 FPDFAction_GetURIPath(FPDF_DOCUMENT document,
                       FPDF_ACTION action,
                       void* buffer,
                       unsigned long buflen);
+
+// Experimental API.
+// Get the URI path of |action|.
+//
+//   document - handle to the document.
+//   action   - handle to the action. Must be a |PDFACTION_URI|.
+//   buffer   - a buffer for the path string. May be NULL.
+//   buflen   - the length of the buffer, in bytes. May be 0.
+//
+// Returns the number of bytes in the URI path, including the trailing NUL
+// character, or 0 on error, typically because the arguments were bad or the
+// action was of the wrong type.
+//
+// The |buffer| is always encoded in UTF-8. If |buflen| is less than the
+// returned length, or |buffer| is NULL, |buffer| will not be modified.
+//
+// Unlike FPDFAction_GetURIPath(), FPDFAction_GetURIPathUTF8() allows UTF-8
+// URIs, found in some PDFs. This is allowed in ISO 32000-2:2020. See table 211.
+FPDF_EXPORT unsigned long FPDF_CALLCONV
+FPDFAction_GetURIPathUTF8(FPDF_DOCUMENT document,
+                          FPDF_ACTION action,
+                          void* buffer,
+                          unsigned long buflen);
 
 // Get the page index of |dest|.
 //

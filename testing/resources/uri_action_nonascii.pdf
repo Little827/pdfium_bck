@@ -8,8 +8,8 @@ endobj
 2 0 obj <<
   /Type /Pages
   /MediaBox [0 0 200 200]
-  /Count 1
-  /Kids [3 0 R]
+  /Count 2
+  /Kids [3 0 R 6 0 R]
 >>
 endobj
 3 0 obj <<
@@ -36,21 +36,53 @@ endobj
 endobj
 5 0 obj <<
   /S /URI
+  % Not 7-bit ASCII and not UTF-8.
   /URI (https://example.com/\245octal\307chars)
 >>
 endobj
+6 0 obj <<
+  /Type /Page
+  /Parent 2 0 R
+  /Annots [7 0 R]
+>>
+endobj
+7 0 obj <<
+  /A 8 0 R
+  /FT /Tx
+  /Ff 29360128
+  /Type /Annot
+  /Subtype /Link
+  /F 4
+  /Rect [1 1 199 199]
+  /BS  <<
+    /W 1
+    /S /S
+  >>
+  /DA (/Helv 0 Tf 0 0 0 rg)
+  /V ()
+>>
+endobj
+8 0 obj <<
+  /S /URI
+  % Not 7-bit ASCII but is UTF-8.
+  /URI (https://example.com/\344\275\240\345\245\275)
+>>
+endobj
 xref
-0 6
+0 9
 0000000000 65535 f 
 0000000015 00000 n 
 0000000068 00000 n 
-0000000157 00000 n 
-0000000226 00000 n 
-0000000414 00000 n 
+0000000163 00000 n 
+0000000232 00000 n 
+0000000420 00000 n 
+0000000534 00000 n 
+0000000603 00000 n 
+0000000791 00000 n 
 trailer <<
   /Root 1 0 R
-  /Size 6
+  /Size 9
 >>
 startxref
-493
+910
 %%EOF

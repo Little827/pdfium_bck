@@ -236,8 +236,36 @@ FPDFAction_GetURIPath(FPDF_DOCUMENT document,
   ByteString path = cAction.GetURI(pDoc);
 
   // Table 206 in the ISO 32000-1:2008 spec states the type for the URI field is
-  // ASCII string. If the data is not 7-bit ASCII, consider that a failure.
+  // an ASCII string. If the data is not 7-bit ASCII, consider that a failure.
   if (!path.AsStringView().IsASCII())
+    return 0;
+
+  const unsigned long len =
+      pdfium::base::checked_cast<unsigned long>(path.GetLength() + 1);
+  if (buffer && len <= buflen)
+    memcpy(buffer, path.c_str(), len);
+  return len;
+}
+
+FPDF_EXPORT unsigned long FPDF_CALLCONV
+FPDFAction_GetURIPathUTF8(FPDF_DOCUMENT document,
+                          FPDF_ACTION action,
+                          void* buffer,
+                          unsigned long buflen) {
+  CPDF_Document* pDoc = CPDFDocumentFromFPDFDocument(document);
+  if (!pDoc)
+    return 0;
+
+  unsigned long type = FPDFAction_GetType(action);
+  if (type != PDFACTION_URI)
+    return 0;
+
+  CPDF_Action cAction(pdfium::WrapRetain(CPDFDictionaryFromFPDFAction(action)));
+  ByteString path = cAction.GetURI(pDoc);
+
+  // Table 210 in the ISO 32000-2:2020 spec states the type for the URI field is
+  // a UTF-8 string. If the data is not UTF-8, consider that a failure.
+  if (!FX_IsUTF8ByteString(path.AsStringView()))
     return 0;
 
   const unsigned long len =
