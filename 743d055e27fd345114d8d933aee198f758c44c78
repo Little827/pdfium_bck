@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "46db01e9_21413635",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-12-08T21:54:50Z",
+      "side": 1,
+      "message": "If we\u0027re going to have a specific ordering, it\u0027s probably best to format these as a list, rather than prose. Anyway, I\u0027m OK with whatever decision gets made here, as long as it\u0027s documented.",
+      "parentUuid": "f3ee0ef5_608d92e6",
+      "revId": "743d055e27fd345114d8d933aee198f758c44c78",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ee3ca9dd_e5b11e19",
         "filename": "README.md",
         "patchSetId": 1
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "Maybe always enforce \"\u003c\u003c\" to be at the end of a line?\n\nFor example:\n/Resources \u003c\u003c\n  /ProcSet [/PDF /Text]\n  /Font \u003c\u003c\n    /F1 5 0 R\n  \u003e\u003e\n\u003e\u003e\n\nDespite \"F1 5 0 R\" is pretty short, we can always start a new line.",
       "parentUuid": "ee3ca9dd_e5b11e19",
+      "revId": "743d055e27fd345114d8d933aee198f758c44c78",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fa9c265_ccd40cfd",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-12-08T21:54:50Z",
+      "side": 1,
+      "message": "Yes, Lei suggested the same thing on https://pdfium-review.googlesource.com/c/pdfium/+/102211; I think we just need an example.",
+      "parentUuid": "549ce129_d050933f",
       "revId": "743d055e27fd345114d8d933aee198f758c44c78",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
