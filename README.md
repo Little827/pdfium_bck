@@ -175,9 +175,20 @@ $ ./testing/tools/fixup_pdf_template.py your_file.in
 This will create a `your_file.pdf` in the same directory as `your_file.in`.
 
 There is no official style guide for the .in file, but a consistent style is
-preferred simply to help with readability. If possible, object numbers should
-be consecutive and `/Type` and `/SubType` should be on top of a dictionary to
-make object identification easier.
+preferred simply to help with readability. Suggestions on style:
+
+* Object numbers should be ordered and consecutive.
+* `/Type`,`/SubType` and other type keys should be on top in a dictionary to
+  make object identification easier.
+* Avoid extraneous whitespace immediately inside brackets.
+* Format dictionaries as follows:
+```
+{{object 5 0}} <<
+  /Key1 Value1
+  ...
+  /KeyN ValueN
+>>
+```
 
 ## Embedding PDFium in your own projects
 
