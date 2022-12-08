@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "09334f4f_a1caa257",
+        "filename": "testing/resources/pixel/bug_1845.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-12-08T00:14:16Z",
+      "side": 1,
+      "message": "Some pixel tests\u0027 format are out-of-date. All newer pixel tests are following the \"no space\" after \"[\" rule.",
+      "parentUuid": "9d3a452c_7da5d294",
+      "range": {
+        "startLine": 10,
+        "startChar": 8,
+        "endLine": 10,
+        "endChar": 17
+      },
+      "revId": "63aab1daa61ed25d34d8d5ae3ccf35fad9b407bc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ea0aba8d_147d46a5",
         "filename": "testing/resources/pixel/bug_1845.in",
         "patchSetId": 2
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "Done\n\nWhat about /Parents?",
       "parentUuid": "ea0aba8d_147d46a5",
+      "range": {
+        "startLine": 20,
+        "startChar": 2,
+        "endLine": 20,
+        "endChar": 17
+      },
+      "revId": "63aab1daa61ed25d34d8d5ae3ccf35fad9b407bc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7169202e_9921c792",
+        "filename": "testing/resources/pixel/bug_1845.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-12-08T00:14:16Z",
+      "side": 1,
+      "message": "Yes, \"/Parents\" is another exception.",
+      "parentUuid": "9de010c5_1a0355c8",
       "range": {
         "startLine": 20,
         "startChar": 2,
