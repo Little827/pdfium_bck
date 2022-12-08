@@ -46,6 +46,30 @@
       },
       "revId": "1f315de1c62a51de47c358eb891e12417cf44421",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cb4e21b_9cb1d55d",
+        "filename": "testing/resources/pixel/bug_1845.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-12-08T19:14:31Z",
+      "side": 1,
+      "message": "Done\n\n(Although, again, I don\u0027t think these files change much once they\u0027re committed.)",
+      "parentUuid": "9482ce86_411ffc80",
+      "range": {
+        "startLine": 19,
+        "startChar": 13,
+        "endLine": 19,
+        "endChar": 26
+      },
+      "revId": "1f315de1c62a51de47c358eb891e12417cf44421",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
