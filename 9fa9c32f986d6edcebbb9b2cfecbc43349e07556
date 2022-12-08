@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58901078_3724314e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 9016
+      },
+      "writtenOn": "2022-12-08T21:43:09Z",
+      "side": 1,
+      "message": "Hi,\n\nI think this CL is ready. It passed embedded, unit and pixel tests locally.\n\nThanks",
+      "revId": "9fa9c32f986d6edcebbb9b2cfecbc43349e07556",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95782153_5fc35574",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 9016
+      },
+      "writtenOn": "2022-12-08T21:43:09Z",
+      "side": 1,
+      "message": "Hi,\n\nI think this is ready",
+      "revId": "9fa9c32f986d6edcebbb9b2cfecbc43349e07556",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
