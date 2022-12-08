@@ -9,6 +9,7 @@
 #include <math.h>
 
 #include <algorithm>
+#include <limits>
 #include <utility>
 
 #include "build/build_config.h"
@@ -48,7 +49,7 @@
 namespace pdfium {
 namespace {
 
-const float kMaxPos = 32000.0f;
+const float kMaxPos = std::numeric_limits<float>::max();
 
 CFX_PointF HardClip(const CFX_PointF& pos) {
   return CFX_PointF(pdfium::clamp(pos.x, -kMaxPos, kMaxPos),
