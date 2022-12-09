@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b23fb43_d2d30066",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-12-09T06:46:22Z",
+      "side": 1,
+      "message": "Extra newline here.",
+      "revId": "9fa9c32f986d6edcebbb9b2cfecbc43349e07556",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "58901078_3724314e",
@@ -31,6 +48,23 @@
       "writtenOn": "2022-12-08T21:43:09Z",
       "side": 1,
       "message": "Hi,\n\nI think this is ready",
+      "revId": "9fa9c32f986d6edcebbb9b2cfecbc43349e07556",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef92e72c_9f453100",
+        "filename": "core/fxge/cfx_folderfontinfo.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-12-09T06:46:22Z",
+      "side": 1,
+      "message": "How about tweaking the code flow here so it\u0027s easier to follow?\n\n```\nif (pFind) {\n  return pFind;\n}\n\nif (charset ...) {\n  ...\n}\n\nreturn nullptr;\n```",
       "revId": "9fa9c32f986d6edcebbb9b2cfecbc43349e07556",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
