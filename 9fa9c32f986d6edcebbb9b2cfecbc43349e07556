@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e27fe10_6e299b3e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 9016
+      },
+      "writtenOn": "2022-12-09T15:35:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b23fb43_d2d30066",
+      "revId": "9fa9c32f986d6edcebbb9b2cfecbc43349e07556",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7afacd59_f1a3cc7b",
@@ -41,6 +59,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f02dc3b2_cacefbaf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 9016
+      },
+      "writtenOn": "2022-12-09T15:35:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7afacd59_f1a3cc7b",
+      "range": {
+        "startLine": 10,
+        "startChar": 20,
+        "endLine": 10,
+        "endChar": 50
+      },
+      "revId": "9fa9c32f986d6edcebbb9b2cfecbc43349e07556",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3600a10_5ae96fcb",
@@ -54,6 +96,30 @@
       "writtenOn": "2022-12-09T06:49:54Z",
       "side": 1,
       "message": "Typo: substituted",
+      "range": {
+        "startLine": 14,
+        "startChar": 58,
+        "endLine": 14,
+        "endChar": 68
+      },
+      "revId": "9fa9c32f986d6edcebbb9b2cfecbc43349e07556",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f09307a7_9d3066d6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 9016
+      },
+      "writtenOn": "2022-12-09T15:35:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3600a10_5ae96fcb",
       "range": {
         "startLine": 14,
         "startChar": 58,
@@ -111,6 +177,24 @@
       "writtenOn": "2022-12-09T06:46:22Z",
       "side": 1,
       "message": "How about tweaking the code flow here so it\u0027s easier to follow?\n\n```\nif (pFind) {\n  return pFind;\n}\n\nif (charset ...) {\n  ...\n}\n\nreturn nullptr;\n```",
+      "revId": "9fa9c32f986d6edcebbb9b2cfecbc43349e07556",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5d270ed_ac357680",
+        "filename": "core/fxge/cfx_folderfontinfo.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 9016
+      },
+      "writtenOn": "2022-12-09T15:35:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef92e72c_9f453100",
       "revId": "9fa9c32f986d6edcebbb9b2cfecbc43349e07556",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
