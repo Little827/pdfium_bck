@@ -9,6 +9,7 @@
 #include <math.h>
 
 #include <algorithm>
+#include <limits>
 #include <utility>
 
 #include "build/build_config.h"
@@ -47,13 +48,6 @@
 
 namespace pdfium {
 namespace {
-
-const float kMaxPos = 32000.0f;
-
-CFX_PointF HardClip(const CFX_PointF& pos) {
-  return CFX_PointF(pdfium::clamp(pos.x, -kMaxPos, kMaxPos),
-                    pdfium::clamp(pos.y, -kMaxPos, kMaxPos));
-}
 
 void RgbByteOrderCompositeRect(const RetainPtr<CFX_DIBitmap>& pBitmap,
                                int left,
@@ -914,7 +908,6 @@ agg::path_storage BuildAggPath(const CFX_Path& path,
     if (pObject2Device)
       pos = pObject2Device->Transform(pos);
 
-    pos = HardClip(pos);
     CFX_Path::Point::Type point_type = points[i].m_Type;
     if (point_type == CFX_Path::Point::Type::kMove) {
       agg_path.move_to(pos.x, pos.y);
@@ -936,9 +929,6 @@ agg::path_storage BuildAggPath(const CFX_Path& path,
           pos2 = pObject2Device->Transform(pos2);
           pos3 = pObject2Device->Transform(pos3);
         }
-        pos0 = HardClip(pos0);
-        pos2 = HardClip(pos2);
-        pos3 = HardClip(pos3);
         agg::curve4 curve(pos0.x, pos0.y, pos.x, pos.y, pos2.x, pos2.y, pos3.x,
                           pos3.y);
         i += 2;
