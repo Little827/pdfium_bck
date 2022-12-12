@@ -16,6 +16,23 @@
       "message": "Just cleaning up some no-longer-useful code.",
       "revId": "a432d37513cd50da1dfc3c45804ab79a1a2765d3",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d99218a4_00e79e5f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-12-12T20:16:36Z",
+      "side": 1,
+      "message": "Using cache: m_debugDisable \u003d false \nUsing debug mode with no cache: m_debugDisable \u003d true\n \nI would still keep the debug mode as it calls the matching Skia APIs while processing the commands instead of just accumulating them. Sometimes cache mode doesn\u0027t flush the command frequent enough and multiple commands might interfere with each other in an unwanted way. That\u0027s why comparing debug mode with cache mode can help better allocate where exactly the issue happens without worrying about potential caching problems.\n\nThere is at least one remaining open bug that the debug mode is working but the cache mode is not .\n\nMay I ask why disabling debug mode is related to bug:1845? Do debug mode and cache mode result in different rendering results?",
+      "revId": "a432d37513cd50da1dfc3c45804ab79a1a2765d3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
