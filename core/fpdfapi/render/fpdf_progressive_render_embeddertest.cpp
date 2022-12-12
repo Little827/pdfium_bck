@@ -435,7 +435,7 @@ TEST_F(FPDFProgressiveRenderEmbedderTest, RenderStampWithColorScheme) {
 #if BUILDFLAG(IS_APPLE)
     return "7a209e29caeeab7d2b25b34570a4ace6";
 #else
-    return "3bbbfc6cc18801906285a232c4a20617";
+    return "d1fd087e59d4dcebf47b56570bdb8c22";
 #endif
   }();
 

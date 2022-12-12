@@ -1110,7 +1110,7 @@ TEST_F(FPDFAnnotEmbedderTest, AddAndModifyPath) {
 #if BUILDFLAG(IS_APPLE)
     return "e31421f86c61d4e9cda138f15f561ca3";
 #else
-    return "980e7636d864f7f7d323a31ad4e8fa04";
+    return "31a94d22460171cd83169daf6a6956ee";
 #endif
   }();
   const char* md5_two_paths = []() {
@@ -1119,7 +1119,7 @@ TEST_F(FPDFAnnotEmbedderTest, AddAndModifyPath) {
 #if BUILDFLAG(IS_APPLE)
     return "58d932492f9d485d6a4bc0ba76c04557";
 #else
-    return "4c779c394b6790f8cf80305b566b663b";
+    return "ed49fefef45f14121f8150cde10006c4";
 #endif
   }();
   const char* md5_new_annot = []() {
@@ -1128,7 +1128,7 @@ TEST_F(FPDFAnnotEmbedderTest, AddAndModifyPath) {
 #if BUILDFLAG(IS_APPLE)
     return "61f9ad13f2fd235753db198cf9704773";
 #else
-    return "97effd68dcf86273f68d126d6b45152e";
+    return "cc08493b1f079803930388ecc703be9d";
 #endif
   }();
 
@@ -1335,7 +1335,7 @@ TEST_F(FPDFAnnotEmbedderTest, AddAndModifyImage) {
 #if BUILDFLAG(IS_APPLE)
     return "c6fcbceb2f079bef10458ac60db3a10c";
 #else
-    return "62c2706511cb50e32e7caeb82b1d3d49";
+    return "e79446398d4508bc2cb47e6cf2a677ed";
 #endif
   }();
   const char* md5_modified_image = []() {
@@ -1344,7 +1344,7 @@ TEST_F(FPDFAnnotEmbedderTest, AddAndModifyImage) {
 #if BUILDFLAG(IS_APPLE)
     return "8068eb568e5c1c5fbe84e98f7a980ac3";
 #else
-    return "83093ce9fac746db69fbd2fb394434ac";
+    return "425646a517a23104b9ef22881a19b3e2";
 #endif
   }();
 
@@ -1428,7 +1428,7 @@ TEST_F(FPDFAnnotEmbedderTest, AddAndModifyText) {
 #elif BUILDFLAG(IS_APPLE) && !defined(ARCH_CPU_ARM64)
     return "57a0fb3fba33e17de26bcde4c40b9a75";
 #else
-    return "1c4198c38f890c208c5cbaad57be4dc6";
+    return "a9532f555aca2fd099e2107fa40b61e6";
 #endif
   }();
   const char* md5_modified_text = []() {
@@ -1439,7 +1439,7 @@ TEST_F(FPDFAnnotEmbedderTest, AddAndModifyText) {
 #elif BUILDFLAG(IS_APPLE) && !defined(ARCH_CPU_ARM64)
     return "072574999f2e3f36774ee0b5bc94d4dd";
 #else
-    return "cfa78d01406865f41f486bd34a8b9f7b";
+    return "03cae68322d6a6ba120e738ab325408c";
 #endif
   }();
 
@@ -1575,7 +1575,7 @@ TEST_F(FPDFAnnotEmbedderTest, GetSetStringValue) {
 #if BUILDFLAG(IS_APPLE)
     return "cd90315b250dfe08265ce0ac335c5f76";
 #else
-    return "c4fb6911f2a87f490be196f8898de738";
+    return "5143f9a98beb7b00ff40b89110a1089f";
 #endif
   }();
 
