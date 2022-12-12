@@ -481,6 +481,39 @@ FXDIB_Format GetCreateCompatibleBitmapFormat(int render_caps) {
   return CFX_DIBBase::kPlatformRGBFormat;
 }
 
+void Composite1bppBitmap(const RetainPtr<CFX_DIBBase>& pTargetBitmap,
+                         int dest_left,
+                         int dest_top,
+                         int width,
+                         int height,
+                         const RetainPtr<CFX_DIBBase>& pSrcBitmap,
+                         int src_left,
+                         int src_top) {
+  if (pSrcBitmap->GetBPP() != 1) {
+    return;
+  }
+
+  if (!pTargetBitmap->GetOverlapRect(
+          dest_left, dest_top, width, height, pSrcBitmap->GetWidth(),
+          pSrcBitmap->GetHeight(), src_left, src_top, nullptr)) {
+    return;
+  }
+
+  pdfium::span<uint8_t> pBuffer = pTargetBitmap->GetBuffer();
+  uint32_t pitch = pTargetBitmap->GetPitch();
+
+  for (int row = 0; row < height; ++row) {
+    uint8_t* dest_scan = pBuffer.subspan((dest_top + row) * pitch).data();
+    const uint8_t* src_scan = pSrcBitmap->GetScanline(src_top + row).data();
+    for (int col = 0; col < width; ++col) {
+      int src_idx = src_left + col;
+      int dest_idx = dest_left + col;
+      if (src_scan[(src_idx) / 8] & (1 << (7 - (src_idx) % 8)))
+        dest_scan[(dest_idx) / 8] |= 1 << (7 - (dest_idx) % 8);
+    }
+  }
+}
+
 }  // namespace
 
 CFX_RenderDevice::CFX_RenderDevice() = default;
@@ -1149,9 +1182,9 @@ bool CFX_RenderDevice::DrawNormalText(pdfium::span<const TextCharPos> pCharPos,
         continue;
 
       const RetainPtr<CFX_DIBitmap>& pGlyph = glyph.m_pGlyph->GetBitmap();
-      bitmap->TransferBitmap(point.value().x, point.value().y,
-                             pGlyph->GetWidth(), pGlyph->GetHeight(), pGlyph, 0,
-                             0);
+      Composite1bppBitmap(bitmap, point.value().x, point.value().y,
+                          pGlyph->GetWidth(), pGlyph->GetHeight(), pGlyph, 0,
+                          0);
     }
     return SetBitMask(bitmap, bmp_rect.left, bmp_rect.top, fill_color);
   }
