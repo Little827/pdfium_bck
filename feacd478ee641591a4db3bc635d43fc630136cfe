@@ -16,6 +16,23 @@
       "message": "nigi@: Can you help the CL author with getting corpus tests to pass? Assuming the fix looks good.",
       "revId": "feacd478ee641591a4db3bc635d43fc630136cfe",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5879059a_dcce84c1",
+        "filename": "testing/embedder_test_constants.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-12-12T23:00:36Z",
+      "side": 1,
+      "message": "This and possibly other constants need to be updated for embedder_tests to pass on macOS.",
+      "revId": "feacd478ee641591a4db3bc635d43fc630136cfe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
