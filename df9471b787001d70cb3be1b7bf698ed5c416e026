@@ -16,6 +16,24 @@
       "message": "Doing even more code archaeology, the code that became HardClip() got added to fix a performance problem with AGG. Will removing HardClip() make AGG slower again? I privately shared the PDF that was rendering slowly.",
       "revId": "df9471b787001d70cb3be1b7bf698ed5c416e026",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "488896e8_2f577734",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8936
+      },
+      "writtenOn": "2022-12-12T20:07:25Z",
+      "side": 1,
+      "message": "Yes, reproducible. With HardClip() takes about 2 seconds, without is 3+ minutes (still processing).",
+      "parentUuid": "939c9a8c_e5f568db",
+      "revId": "df9471b787001d70cb3be1b7bf698ed5c416e026",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
