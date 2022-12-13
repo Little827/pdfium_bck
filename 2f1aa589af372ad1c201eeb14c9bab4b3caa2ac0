@@ -63,6 +63,30 @@
       },
       "revId": "2f1aa589af372ad1c201eeb14c9bab4b3caa2ac0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f44ddc05_e06f8f43",
+        "filename": "testing/SUPPRESSIONS",
+        "patchSetId": 3
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-12-13T18:03:17Z",
+      "side": 1,
+      "message": "SGTM.",
+      "parentUuid": "d8e416f8_4fc9b631",
+      "range": {
+        "startLine": 382,
+        "startChar": 0,
+        "endLine": 382,
+        "endChar": 25
+      },
+      "revId": "2f1aa589af372ad1c201eeb14c9bab4b3caa2ac0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
