@@ -16,6 +16,24 @@
       "message": "@abdelkarim.se@gmail.com\nI sent https://pdfium-review.googlesource.com/c/pdfium_tests/+/102471 out for review. Once it lands, you can update the pdfium_test revision in DEPS and do dry run on the bots again.",
       "revId": "b2ab8f040c80599f47b204ca1b9bddb57a1574b4",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d884b273_13ab2a49",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-12-13T18:53:38Z",
+      "side": 1,
+      "message": "Corpus tests have been updated. The latest revision number is 20e9894b12154d257612a2829a4b4a37e057267e.\n\nNow you can update the pdfium_tests revision number in DEPS file to:\n\u0027pdfium_tests_revision\u0027: \u002720e9894b12154d257612a2829a4b4a37e057267e\u0027",
+      "parentUuid": "2d0fb575_13ae78f9",
+      "revId": "b2ab8f040c80599f47b204ca1b9bddb57a1574b4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
