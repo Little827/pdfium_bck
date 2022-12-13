@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39447947_d7a2880b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-12-13T19:50:02Z",
+      "side": 1,
+      "message": "Start a new line. Keep every line at a maximum of 71 characters.\n\nAlso start a new line at \"annotation_stamp_with_ap.pdf\"",
+      "range": {
+        "startLine": 16,
+        "startChar": 67,
+        "endLine": 16,
+        "endChar": 75
+      },
+      "revId": "ef1a1db6b736b328685015b1e550e71b2a47e4de",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
