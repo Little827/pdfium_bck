@@ -69,6 +69,24 @@
       "message": "This and possibly other constants need to be updated for embedder_tests to pass on macOS.",
       "revId": "feacd478ee641591a4db3bc635d43fc630136cfe",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fbc4cb9_a19d8b21",
+        "filename": "testing/embedder_test_constants.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-12-13T01:35:41Z",
+      "side": 1,
+      "message": "@abdelkarim.se@gmail.com Pls check out the modified embedder test files in  https://pdfium-review.googlesource.com/c/pdfium/+/102472, and update the embedder tests in your current CL accordingly. Embeddertests should all pass after that.",
+      "parentUuid": "5879059a_dcce84c1",
+      "revId": "feacd478ee641591a4db3bc635d43fc630136cfe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
