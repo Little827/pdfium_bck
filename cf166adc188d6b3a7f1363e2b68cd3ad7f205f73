@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a74f4177_0ae33af7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-12-14T18:25:42Z",
+      "side": 1,
+      "message": "Shorten to: https://skia-review.googlesource.com/616821\n\nand then it fits in 72 columns, just.",
+      "range": {
+        "startLine": 9,
+        "startChar": 29,
+        "endLine": 9,
+        "endChar": 81
+      },
+      "revId": "cf166adc188d6b3a7f1363e2b68cd3ad7f205f73",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8eccd5da_12daedc0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-12-14T18:25:42Z",
+      "side": 1,
+      "message": "Can you also include a link to the changelog for the DEPS roll? https://skia.googlesource.com/skia.git/+log/80b3e3d24a99..0c922b0e97a4",
+      "revId": "cf166adc188d6b3a7f1363e2b68cd3ad7f205f73",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
