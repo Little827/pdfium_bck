@@ -128,6 +128,8 @@ def get_properties_by_name(name):
 
     if name.find("skia") != -1:
         properties.update({"skia": True})
+        if name.find("win") != -1:
+            properties.update({"skia": True, "selected_tests_only": True})
 
     return properties
 
