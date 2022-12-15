@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2391c94_e7dcc1af",
+        "filename": "main.star",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-12-15T19:28:50Z",
+      "side": 1,
+      "message": "Use `name.startswith(\"win\")` like line 85?",
+      "revId": "9250465a71563cd02ef208c6ff48e439bd4c14d5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9319aa4_d7235866",
+        "filename": "main.star",
+        "patchSetId": 3
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-12-15T19:28:50Z",
+      "side": 1,
+      "message": "DOes this need to be set again?",
+      "range": {
+        "startLine": 135,
+        "startChar": 31,
+        "endLine": 135,
+        "endChar": 45
+      },
+      "revId": "9250465a71563cd02ef208c6ff48e439bd4c14d5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
