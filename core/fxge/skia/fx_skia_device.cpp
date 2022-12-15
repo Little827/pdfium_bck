@@ -401,6 +401,7 @@ bool AddSamples(const CPDF_SampledFunc* pFunc,
 bool AddStitching(const CPDF_StitchFunc* pFunc,
                   SkTDArray<SkColor>* skColors,
                   SkTDArray<SkScalar>* skPos) {
+  // test
   float boundsStart = pFunc->GetDomain(0);
 
   const auto& subFunctions = pFunc->GetSubFunctions();
