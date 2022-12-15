@@ -22,6 +22,30 @@
       },
       "revId": "6095b6cc009dc05ba63707f3026baeff6100631c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8163434d_14e3deb5",
+        "filename": "testing/resources/pixel/bug_1963.in",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-12-15T20:16:21Z",
+      "side": 1,
+      "message": "I\u0027d rather not spend time doing this, as the error appears to be related to the exact floating point value used. I don\u0027t see any advantage to doing this.",
+      "parentUuid": "9c56768b_2d834250",
+      "range": {
+        "startLine": 17,
+        "startChar": 13,
+        "endLine": 17,
+        "endChar": 28
+      },
+      "revId": "6095b6cc009dc05ba63707f3026baeff6100631c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
