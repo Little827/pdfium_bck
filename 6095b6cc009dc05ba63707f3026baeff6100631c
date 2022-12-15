@@ -46,6 +46,30 @@
       },
       "revId": "6095b6cc009dc05ba63707f3026baeff6100631c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c594ff8_876c0ae9",
+        "filename": "testing/resources/pixel/bug_1963.in",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-12-15T20:17:08Z",
+      "side": 1,
+      "message": "(in terms of image size, which was the initial concern)",
+      "parentUuid": "8163434d_14e3deb5",
+      "range": {
+        "startLine": 17,
+        "startChar": 13,
+        "endLine": 17,
+        "endChar": 28
+      },
+      "revId": "6095b6cc009dc05ba63707f3026baeff6100631c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
