@@ -87,6 +87,24 @@
       "parentUuid": "96a2343d_c7dead9e",
       "revId": "9a92ee0929bc449a813215c0f56583ed8c51c7dd",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "098cf32f_2f2bce6e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-12-15T01:50:25Z",
+      "side": 1,
+      "message": "Due to fixing https://crbug.com/pdfium/1792, the hermetic test environment used for pixel tests does not have Wingdings, even on Windows.\n\nWould it be possible to substitute ZapfDingbats for Wingdings? Since it\u0027s a built-in font, a fix that uses ZapfDingbats would work more consistently across platforms.",
+      "parentUuid": "1e4a57b0_f2817635",
+      "revId": "9a92ee0929bc449a813215c0f56583ed8c51c7dd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
