@@ -1,0 +1,86 @@
+{{header}}
+{{object 1 0}} <<
+  /Pages 2 0 R
+  /Type /Catalog
+>>
+endobj
+{{object 2 0}} <<
+  /Count 1
+  /Kids [ 3 0 R ]
+  /Type /Pages
+>>
+endobj
+{{object 3 0}} <<
+  /Annots [ 4 0 R 6 0 R ]
+  /CropBox [ 0 0 612 792 ]
+  /MediaBox [ 0 0 612 792 ]
+  /Parent 2 0 R
+  /Type /Page
+>>
+endobj
+{{object 4 0}}
+<<
+  /Type /Annot
+  /Subtype /Line
+  /Rect [ 301.65 515.4 342.75 527.4 ]
+  /F 4
+  /C [ 1 0 0 ]
+
+  /AP << /N 5 0 R >>
+  /L [ 305.4 521.4 339 521.4 ]
+  /BS << /S /S /W 2 >>
+>>
+endobj
+{{object 5 0}}
+<<
+  /Type /XObject
+  /Subtype /Form
+  /BBox [ 301.65 515.4 342.75 527.4 ]
+  /Matrix [ 1 0 0 1 -301.65 -515.4 ]
+  {{streamlen}}
+>>
+stream
+1.000 0.000 0.000 RG
+2 w
+0 J
+0 j
+305.400 521.400 m
+339.000 521.400 l
+S
+endstream
+endobj
+{{object 6 0}}
+<<
+  /Type /Annot
+  /Subtype /Line
+  /Rect [ 304.05 503.7 345.15 515.7 ]
+  /F 4
+  /C [ 1 0 0 ]
+
+  /AP << /N 7 0 R >>
+  /L [ 307.8 510 341.4 509.4 ]
+  /BS << /S /S /W 2 >>
+>>
+endobj
+{{object 7 0}}
+<<
+  /Type /XObject
+  /Subtype /Form
+  /BBox [ 304.05 503.7 345.15 515.7 ]
+  /Matrix [ 1 0 0 1 -304.05 -503.7 ]
+  {{streamlen}}
+>>
+stream
+1.000 0.000 0.000 RG
+2 w
+0 J
+0 j
+307.800 510.000 m
+341.400 509.400 l
+S
+endstream
+endobj
+{{xref}}
+{{trailer}}
+{{startxref}}
+%%EOF
