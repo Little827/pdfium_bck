@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7825972b_d2fcecd8",
+        "filename": "testing/resources/pixel/bug_1963.in",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-12-15T19:46:42Z",
+      "side": 1,
+      "message": "Remove the extra spaces inside [ ].",
+      "range": {
+        "startLine": 10,
+        "startChar": 7,
+        "endLine": 10,
+        "endChar": 17
+      },
+      "revId": "3c7cacb0142afb1bc3dbb9700cccad21b1c5b903",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "839f6bc3_6dbe7358",
+        "filename": "testing/resources/pixel/bug_1963.in",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-12-15T19:46:42Z",
+      "side": 1,
+      "message": "To minimize the size of the image, you can shrink the page size if it can still reproduce the issue.\n\nCropBox can be omitted too.",
+      "range": {
+        "startLine": 18,
+        "startChar": 1,
+        "endLine": 18,
+        "endChar": 27
+      },
+      "revId": "3c7cacb0142afb1bc3dbb9700cccad21b1c5b903",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
