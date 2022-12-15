@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6c28044_e47b19fb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-12-15T23:58:26Z",
+      "side": 1,
+      "message": "grayscale?",
+      "range": {
+        "startLine": 10,
+        "startChar": 4,
+        "endLine": 10,
+        "endChar": 8
+      },
+      "revId": "2fb96d98ed2d059fc53f72269469ad9737a342e7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76fc6308_ae139148",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-12-15T23:58:26Z",
+      "side": 1,
+      "message": "An alternative to adding this function is to::\n1) Keep building the palette like the existing code.\n2) Pass an extra boolean to tell Fill32BppDestStorageWithPalette() whether to use the line 172-182 logic, or the line 199-210 logic.\n2a) It\u0027s likely more performant to check the extra boolean from (2) outside of the double for-loop, even if it means a bit of repeated code.",
+      "revId": "2fb96d98ed2d059fc53f72269469ad9737a342e7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4613a9d_9debe463",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-12-15T23:58:26Z",
+      "side": 1,
+      "message": "Use a ternary operator like line 648, or do:\n\n```\nbool use_color1 \u003d ...;\ndst_row[x] \u003d use_color1 ? color1 : color0;\n```",
+      "revId": "2fb96d98ed2d059fc53f72269469ad9737a342e7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "527cf726_c55974ee",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-12-15T23:58:26Z",
+      "side": 1,
+      "message": "As is: Enforce the pre-condition with a DCHECK for both Fill32BppDestStorageWith1BppSource() and Fill32BppDestStorageWithPalette()?",
+      "range": {
+        "startLine": 187,
+        "startChar": 19,
+        "endLine": 188,
+        "endChar": 17
+      },
+      "revId": "2fb96d98ed2d059fc53f72269469ad9737a342e7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
