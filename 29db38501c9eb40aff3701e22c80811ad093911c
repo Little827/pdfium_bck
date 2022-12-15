@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9d3fbf8_0e63ba44",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-12-15T16:51:40Z",
+      "side": 1,
+      "message": "Hope this will make the bots turn green.",
+      "revId": "29db38501c9eb40aff3701e22c80811ad093911c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
