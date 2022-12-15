@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c56768b_2d834250",
+        "filename": "testing/resources/pixel/bug_1963.in",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-12-15T20:13:48Z",
+      "side": 1,
+      "message": "We can deduct 300 and 500 from x and y axis to make it [0 0 50 30].\nSimilar changes can be applied to the xobjects and the content stream as well to simplify the calculation (while maintaining the nature of this bug).\n\nAlso this is just personal preference: I like to replace doubles with integers in the test file as it helps me with debugging.",
+      "range": {
+        "startLine": 17,
+        "startChar": 13,
+        "endLine": 17,
+        "endChar": 28
+      },
+      "revId": "6095b6cc009dc05ba63707f3026baeff6100631c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
