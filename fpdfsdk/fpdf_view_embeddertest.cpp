@@ -1523,20 +1523,19 @@ TEST_F(FPDFViewEmbedderTest, RenderManyRectanglesWithAndWithoutExternalMemory) {
       return "3dfe1fc3889123d68e1748fefac65e72";
     return "b561c11edc44dc3972125a9b8744fa2f";
   }();
+  const char* bgr_checksum = []() {
+    if (CFX_DefaultRenderDevice::SkiaIsDefaultRenderer())
+      return "4e7e280c1597222afcb0ee3bb90ec119";
+    return "ab6312e04c0d3f4e46fb302a45173d05";
+  }();
 
-  // TODO(crbug.com/pdfium/1489): Add a test for FPDFBitmap_BGR in Skia modes
-  // once Skia provides support for BGR24 format.
-  if (!CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()) {
-    static const char kBgrChecksum[] = "ab6312e04c0d3f4e46fb302a45173d05";
-
-    static constexpr int kBgrStride = 600;  // Width of 200 * 24 bits per pixel.
-    TestRenderPageBitmapWithInternalMemory(page, FPDFBitmap_BGR, kBgrChecksum);
-    TestRenderPageBitmapWithInternalMemoryAndStride(page, FPDFBitmap_BGR,
-                                                    kBgrStride, kBgrChecksum);
-    TestRenderPageBitmapWithExternalMemory(page, FPDFBitmap_BGR, kBgrChecksum);
-    TestRenderPageBitmapWithExternalMemoryAndNoStride(page, FPDFBitmap_BGR,
-                                                      kBgrChecksum);
-  }
+  static constexpr int kBgrStride = 600;  // Width of 200 * 24 bits per pixel.
+  TestRenderPageBitmapWithInternalMemory(page, FPDFBitmap_BGR, bgr_checksum);
+  TestRenderPageBitmapWithInternalMemoryAndStride(page, FPDFBitmap_BGR,
+                                                  kBgrStride, bgr_checksum);
+  TestRenderPageBitmapWithExternalMemory(page, FPDFBitmap_BGR, bgr_checksum);
+  TestRenderPageBitmapWithExternalMemoryAndNoStride(page, FPDFBitmap_BGR,
+                                                    bgr_checksum);
 
   TestRenderPageBitmapWithInternalMemory(page, FPDFBitmap_Gray, gray_checksum);
   static constexpr int kGrayStride = 200;  // Width of 200 * 8 bits per pixel.
