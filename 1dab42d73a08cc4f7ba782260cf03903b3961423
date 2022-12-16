@@ -41,6 +41,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2b588de_b72cf897",
+        "filename": "core/fxge/dib/cfx_scanlinecompositor.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2252,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-12-16T02:04:40Z",
+      "side": 1,
+      "message": "Correct. No designated initializers because MSVC is strict about it in C++17 mode.",
+      "parentUuid": "b7ecdd89_1b91b3f5",
+      "range": {
+        "startLine": 2252,
+        "startChar": 3,
+        "endLine": 2252,
+        "endChar": 18
+      },
+      "revId": "1dab42d73a08cc4f7ba782260cf03903b3961423",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6e53fa72_83c23d9c",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-12-16T01:02:50Z",
       "side": 1,
       "message": "can we stick \u0027return\u0027 into each of these clauses, and avoid the elses?\nMight read better unnested.",
+      "range": {
+        "startLine": 2339,
+        "startChar": 0,
+        "endLine": 2339,
+        "endChar": 14
+      },
+      "revId": "1dab42d73a08cc4f7ba782260cf03903b3961423",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ca3fcac_6aeae85f",
+        "filename": "core/fxge/dib/cfx_scanlinecompositor.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2339,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-12-16T02:04:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e53fa72_83c23d9c",
       "range": {
         "startLine": 2339,
         "startChar": 0,
