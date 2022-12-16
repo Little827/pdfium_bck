@@ -770,6 +770,18 @@ int CPDF_CIDFont::GlyphFromCharCode(uint32_t charcode, bool* pVertGlyph) {
 
     int err = FXFT_Select_Charmap(face, FT_ENCODING_UNICODE);
     if (err) {
+      if (unicode) {
+        for (int i = 0; i < face->num_charmaps; i++) {
+          FT_CharMap charmap = face->charmaps[i];
+          FT_Set_Charmap(face, charmap);
+
+          uint16_t val = FT_Get_Char_Index(face, unicode);
+          if (val) {
+            return val;
+          }
+        }
+      }
+
       int i;
       for (i = 0; i < face->num_charmaps; i++) {
         uint32_t ret = CharCodeFromUnicodeForFreetypeEncoding(
