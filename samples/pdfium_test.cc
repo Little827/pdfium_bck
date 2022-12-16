@@ -1442,6 +1442,7 @@ void SetUpErrorHandling() {
 
 int main(int argc, const char* argv[]) {
   SetUpErrorHandling();
+
   setlocale(LC_CTYPE, "en_US.UTF-8");  // For printf() of high-characters.
 
   std::vector<std::string> args(argv, argv + argc);
