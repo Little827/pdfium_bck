@@ -71,7 +71,7 @@ def RunCommandPropagateErr(cmd,
 # The returned hashed_files is a list of (file_path, MD5-hash) pairs.
 def RunCommandExtractHashedFiles(cmd):
   try:
-    output = subprocess.check_output(cmd, universal_newlines=True)
+    output = subprocess.check_output(cmd, universal_newlines=True, timeout=60)
     ret = []
     for line in output.split('\n'):
       line = line.strip()
