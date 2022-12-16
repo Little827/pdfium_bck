@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d002d24a_ac90ace7",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 610,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-12-16T16:55:23Z",
+      "side": 0,
+      "message": "Follow-up: Can BuildPaletteFrom1BppSource() be make private again?",
+      "revId": "1e5f8aac8cc36a324c0c8c321d9b98b594399e62",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
