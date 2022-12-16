@@ -1426,6 +1426,14 @@ constexpr char kUsageString[] =
 }  // namespace
 
 int main(int argc, const char* argv[]) {
+#ifdef _WIN32
+  // In debug mode, the default behavior of a failed assertion is to open a
+  // dialog box. This can appear to be a hang; report to stderr instead.
+  if (_set_error_mode(_OUT_TO_STDERR) == -1) {
+    fprintf(stderr, "Failed to set assert() error mode.\n");
+    return 1;
+  }
+#endif
   setlocale(LC_CTYPE, "en_US.UTF-8");  // For printf() of high-characters.
 
   std::vector<std::string> args(argv, argv + argc);
