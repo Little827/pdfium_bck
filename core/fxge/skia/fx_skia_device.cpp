@@ -1347,18 +1347,22 @@ CFX_SkiaDeviceDriver::CFX_SkiaDeviceDriver(
   SkBitmap skBitmap;
   SkColorType color_type;
   const int bpp = pBitmap->GetBPP();
+  const int width = pBitmap->GetWidth();
+  const int height = pBitmap->GetHeight();
   if (bpp == 8) {
     color_type = pBitmap->IsAlphaFormat() || pBitmap->IsMaskFormat()
                      ? kAlpha_8_SkColorType
                      : kGray_8_SkColorType;
   } else {
-    DCHECK_EQ(bpp, 32);
+    if (bpp == 24)
+      pBitmap->ConvertFormat(FXDIB_Format::kArgb);
+
+    DECHECK_EQ(pBitmap->GetBPP(), 32);
     color_type = Get32BitSkColorType(bRgbByteOrder);
   }
 
   SkImageInfo imageInfo =
-      SkImageInfo::Make(pBitmap->GetWidth(), pBitmap->GetHeight(), color_type,
-                        kPremul_SkAlphaType);
+      SkImageInfo::Make(width, height, color_type, kPremul_SkAlphaType);
   skBitmap.installPixels(imageInfo, pBitmap->GetBuffer().data(),
                          pBitmap->GetPitch());
   m_pCanvas = new SkCanvas(skBitmap);
