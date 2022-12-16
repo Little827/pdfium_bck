@@ -50,6 +50,23 @@
       "message": "Would you be able to try to land this today?",
       "revId": "57b791a45e9941c9650bbf99c7d713fdb180edcb",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3072bd19_3b6f2e59",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 6295
+      },
+      "writtenOn": "2022-12-16T16:35:15Z",
+      "side": 1,
+      "message": "Retrying bots for you",
+      "revId": "57b791a45e9941c9650bbf99c7d713fdb180edcb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
