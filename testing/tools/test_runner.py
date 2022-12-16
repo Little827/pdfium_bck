@@ -291,6 +291,8 @@ class TestRunner:
               continue
             if not os.path.isfile(input_path):
               continue
+            if "quick_start_guide" not in input_path:
+              continue
 
             self.test_cases.NewTestCase(input_path)
 
