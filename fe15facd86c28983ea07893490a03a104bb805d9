@@ -43,6 +43,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "eaae6832_178af71e",
+        "filename": "core/fxge/dib/cfx_bitmapcomposer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-12-16T21:06:01Z",
+      "side": 1,
+      "message": "There aren\u0027t any other 8 bpp formats. I added DCHECKs in CFX_ScanlineCompositor::CompositeRgbBitmapLine() and CompositeRgbBitmapLine().",
+      "parentUuid": "de7e07ae_40266040",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 72
+      },
+      "revId": "fe15facd86c28983ea07893490a03a104bb805d9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "57430ba6_a6532233",
         "filename": "core/fxge/dib/cfx_scanlinecompositor.cpp",
         "patchSetId": 1
@@ -71,6 +95,30 @@
       "writtenOn": "2022-12-16T19:17:10Z",
       "side": 1,
       "message": "nit: return true then notreached at 2256?",
+      "range": {
+        "startLine": 2254,
+        "startChar": 4,
+        "endLine": 2254,
+        "endChar": 21
+      },
+      "revId": "fe15facd86c28983ea07893490a03a104bb805d9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fb9aa1c_1662c103",
+        "filename": "core/fxge/dib/cfx_scanlinecompositor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2254,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-12-16T21:06:01Z",
+      "side": 1,
+      "message": "There are other `m_SrcFormat` values that can reach line 2256. (All the 24 and 32 bpp ones.)",
+      "parentUuid": "acbc8aff_150f34de",
       "range": {
         "startLine": 2254,
         "startChar": 4,
@@ -129,6 +177,24 @@
       "side": 1,
       "message": "same idea with dcheck?",
       "parentUuid": "ec13a438_e77f8522",
+      "revId": "fe15facd86c28983ea07893490a03a104bb805d9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24d969f9_f5d5f063",
+        "filename": "core/fxge/dib/cfx_scanlinecompositor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2394,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-12-16T21:06:01Z",
+      "side": 1,
+      "message": "I added more, but they are somewhat weak.",
+      "parentUuid": "49faab72_74f6ef67",
       "revId": "fe15facd86c28983ea07893490a03a104bb805d9",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
