@@ -1352,7 +1352,10 @@ CFX_SkiaDeviceDriver::CFX_SkiaDeviceDriver(
                      ? kAlpha_8_SkColorType
                      : kGray_8_SkColorType;
   } else {
-    DCHECK_EQ(bpp, 32);
+    if (bpp == 24)
+      pBitmap->ConvertFormat(FXDIB_Format::kArgb);
+
+    DCHECK_EQ(pBitmap->GetBPP(), 32);
     color_type = Get32BitSkColorType(bRgbByteOrder);
   }
 
