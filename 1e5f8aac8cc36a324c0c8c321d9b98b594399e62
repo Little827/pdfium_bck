@@ -16,6 +16,24 @@
       "message": "Follow-up: Can BuildPaletteFrom1BppSource() be make private again?",
       "revId": "1e5f8aac8cc36a324c0c8c321d9b98b594399e62",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1bf8da2_e7613ced",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 610,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-12-16T17:59:22Z",
+      "side": 0,
+      "message": "Moved BuildPaletteFrom1BppSource() to anonymous namespace in core/fxge/dib/cfx_imagestretcher.cpp since it no longer needs to exist in the header.",
+      "parentUuid": "d002d24a_ac90ace7",
+      "revId": "1e5f8aac8cc36a324c0c8c321d9b98b594399e62",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
