@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "342fdf23_46ff2771",
+        "filename": "core/fxge/dib/cfx_scanlinecompositor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2470,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-12-16T21:50:59Z",
+      "side": 1,
+      "message": "Ah ha.",
+      "revId": "54e5a75b82c5a9fc5a92508d212c0c92e3fab8c7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
