@@ -105,6 +105,24 @@
       "parentUuid": "1e4a57b0_f2817635",
       "revId": "9a92ee0929bc449a813215c0f56583ed8c51c7dd",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b5c77a3_bf9c6284",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 9016
+      },
+      "writtenOn": "2022-12-16T16:01:35Z",
+      "side": 1,
+      "message": "Unfortunately, we cannot replicate this case with the builtin ZapfDingbats, it has two character maps:\n- FT_ENCODING_UNICODE\n- FT_ENCODING_ADOBE_STANDARD\n\nA font without \u0027FT_ENCODING_UNICODE\u0027 is needed.",
+      "parentUuid": "098cf32f_2f2bce6e",
+      "revId": "9a92ee0929bc449a813215c0f56583ed8c51c7dd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
