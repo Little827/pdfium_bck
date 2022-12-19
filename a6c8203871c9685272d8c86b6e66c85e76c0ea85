@@ -16,6 +16,24 @@
       "message": "No branch builders -\u003e manually landing after building locally.",
       "revId": "a6c8203871c9685272d8c86b6e66c85e76c0ea85",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc653ada_0845b81d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-12-19T19:16:34Z",
+      "side": 1,
+      "message": "Rather: no branch builders, and the branch is sufficiently out of sync with ToT.",
+      "parentUuid": "c827a070_4b4f8440",
+      "revId": "a6c8203871c9685272d8c86b6e66c85e76c0ea85",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
