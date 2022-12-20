@@ -1351,6 +1351,20 @@ CFX_SkiaDeviceDriver::CFX_SkiaDeviceDriver(
     color_type = m_pBitmap->IsAlphaFormat() || m_pBitmap->IsMaskFormat()
                      ? kAlpha_8_SkColorType
                      : kGray_8_SkColorType;
+  } else if (bpp == 24) {
+    DCHECK_EQ(m_pBitmap->GetFormat(), FXDIB_Format::kRgb);
+    DCHECK(!m_pOriginalBitmap);
+
+    auto temp = pdfium::MakeRetain<CFX_DIBitmap>();
+    temp->Copy(m_pBitmap);
+    temp->ConvertFormat(FXDIB_Format::kArgb);
+
+    // Save the input bitmap as `m_pOriginalBitmap` and save its 32 bpp
+    // equivalent at `m_pBitmap` for Skia's internal process.
+    m_pOriginalBitmap = std::move(m_pBitmap);
+    m_pBitmap = std::move(temp);
+
+    color_type = Get32BitSkColorType(bRgbByteOrder);
   } else {
     DCHECK_EQ(bpp, 32);
     color_type = Get32BitSkColorType(bRgbByteOrder);
@@ -1381,6 +1395,18 @@ CFX_SkiaDeviceDriver::CFX_SkiaDeviceDriver(SkPictureRecorder* recorder)
 
 CFX_SkiaDeviceDriver::~CFX_SkiaDeviceDriver() {
   Flush();
+
+  // Convert and transfer the internal processed result to the original 24 bpp
+  // bitmap provided by the render device.
+  if (m_pOriginalBitmap && m_pBitmap->ConvertFormat(FXDIB_Format::kRgb)) {
+    int width = m_pOriginalBitmap->GetWidth();
+    int height = m_pOriginalBitmap->GetHeight();
+    DCHECK_EQ(width, m_pBitmap->GetWidth());
+    DCHECK_EQ(height, m_pBitmap->GetHeight());
+    DCHECK_EQ(m_pOriginalBitmap->GetFormat(), FXDIB_Format::kRgb);
+    m_pOriginalBitmap->TransferBitmap(0, 0, width, height, m_pBitmap, 0, 0);
+  }
+
   if (!m_pRecorder)
     delete m_pCanvas;
 }
