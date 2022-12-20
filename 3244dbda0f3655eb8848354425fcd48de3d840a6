@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "77ccef76_ab580fae",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1341,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-12-20T18:55:57Z",
+      "side": 1,
+      "message": "I move this change to a separate CL: https://pdfium-review.googlesource.com/c/pdfium/+/102830",
+      "parentUuid": "4af369ca_cd19c63a",
+      "revId": "3244dbda0f3655eb8848354425fcd48de3d840a6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "250054a3_d5461949",
@@ -66,6 +84,42 @@
       "side": 1,
       "message": "i.e. It\u0027s fine to convert a CFX_DIBitmap used internally, but converting a CFX_DIBitmap that has been handed out as a FPDF_BITMAP may be unexpected behavior because the embedder can observe that change.",
       "parentUuid": "95a5c25f_131303b8",
+      "revId": "3244dbda0f3655eb8848354425fcd48de3d840a6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "367bfbb1_2a0456d1",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1356,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-12-20T18:55:57Z",
+      "side": 1,
+      "message": "Yes. I think if it fails, we should do an early return to stop the process.",
+      "parentUuid": "250054a3_d5461949",
+      "revId": "3244dbda0f3655eb8848354425fcd48de3d840a6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9048a119_581b7dc4",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1356,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-12-20T18:55:57Z",
+      "side": 1,
+      "message": "I think we need to revert the format change before each public api call ends to avoid unexpected behavior in the embedder.\nIn that case, the embedder can always expect the FPDF_BITMAP format unchanged after each call. \n\nI added the revert process in the APIs in fpdfsdk/fpdf_view.cpp as examples.",
+      "parentUuid": "1497f6ad_7eb8ff32",
       "revId": "3244dbda0f3655eb8848354425fcd48de3d840a6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }

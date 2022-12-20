@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbe749eb_2625bb0f",
+        "filename": "core/fxge/dib/cfx_dibitmap.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 974,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-12-20T18:55:57Z",
+      "side": 1,
+      "message": "FPDFBitmap_BGR and FPDFBitmap_BGRx have been tested across the platforms and now ConvertFormat() needs to be used by Skia for all platforms as well. We should allow kRgb and kRgb32 both to be tested no matter we are on macOS or not.",
+      "range": {
+        "startLine": 973,
+        "startChar": 9,
+        "endLine": 974,
+        "endChar": 46
+      },
+      "revId": "55da2cfb50e53e666c8f4e7b029578ee5789ac85",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
