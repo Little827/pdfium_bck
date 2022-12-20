@@ -674,6 +674,10 @@ FPDF_EXPORT void FPDF_CALLCONV FPDF_RenderPageBitmap(FPDF_BITMAP bitmap,
   pContext->m_pDevice = std::move(pOwnedDevice);
 
   RetainPtr<CFX_DIBitmap> pBitmap(CFXDIBitmapFromFPDFBitmap(bitmap));
+#ifdef _SKIA_SUPPORT_
+  FXDIB_Format original_format = pBitmap->GetFormat();
+  int original_bpp = pBitmap->GetBPP();
+#endif
   pDevice->AttachWithRgbByteOrder(pBitmap, !!(flags & FPDF_REVERSE_BYTE_ORDER));
   CPDFSDK_RenderPageWithContext(pContext, pPage, start_x, start_y, size_x,
                                 size_y, rotate, flags, /*color_scheme=*/nullptr,
@@ -684,6 +688,8 @@ FPDF_EXPORT void FPDF_CALLCONV FPDF_RenderPageBitmap(FPDF_BITMAP bitmap,
   if (CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()) {
     pDevice->Flush(true);
     pBitmap->UnPreMultiply();
+    if (original_bpp == 24)
+      pBitmap->ConvertFormat(original_format);
   }
 #endif
 }
@@ -711,6 +717,10 @@ FPDF_RenderPageBitmapWithMatrix(FPDF_BITMAP bitmap,
   pContext->m_pDevice = std::move(pOwnedDevice);
 
   RetainPtr<CFX_DIBitmap> pBitmap(CFXDIBitmapFromFPDFBitmap(bitmap));
+#ifdef _SKIA_SUPPORT_
+  FXDIB_Format original_format = pBitmap->GetFormat();
+  int original_bpp = pBitmap->GetBPP();
+#endif
   pDevice->AttachWithRgbByteOrder(std::move(pBitmap),
                                   !!(flags & FPDF_REVERSE_BYTE_ORDER));
 
@@ -725,6 +735,11 @@ FPDF_RenderPageBitmapWithMatrix(FPDF_BITMAP bitmap,
     transform_matrix *= CFXMatrixFromFSMatrix(*matrix);
   CPDFSDK_RenderPage(pContext, pPage, transform_matrix, clip_rect, flags,
                      /*color_scheme=*/nullptr);
+#ifdef _SKIA_SUPPORT_
+  if (CFX_DefaultRenderDevice::SkiaIsDefaultRenderer() && original_bpp == 24) {
+    pBitmap->ConvertFormat(original_format);
+  }
+#endif
 }
 
 #if defined(_SKIA_SUPPORT_)
@@ -904,11 +919,20 @@ FPDF_EXPORT void FPDF_CALLCONV FPDFBitmap_FillRect(FPDF_BITMAP bitmap,
 
   CFX_DefaultRenderDevice device;
   RetainPtr<CFX_DIBitmap> pBitmap(CFXDIBitmapFromFPDFBitmap(bitmap));
+#ifdef _SKIA_SUPPORT_
+  FXDIB_Format original_format = pBitmap->GetFormat();
+  int original_bpp = pBitmap->GetBPP();
+#endif
   device.Attach(pBitmap);
   if (!pBitmap->IsAlphaFormat())
     color |= 0xFF000000;
   device.FillRect(FX_RECT(left, top, left + width, top + height),
                   static_cast<uint32_t>(color));
+#ifdef _SKIA_SUPPORT_
+  if (CFX_DefaultRenderDevice::SkiaIsDefaultRenderer() && original_bpp == 24) {
+    pBitmap->ConvertFormat(original_format);
+  }
+#endif
 }
 
 FPDF_EXPORT void* FPDF_CALLCONV FPDFBitmap_GetBuffer(FPDF_BITMAP bitmap) {
