@@ -122,6 +122,24 @@
       "parentUuid": "1497f6ad_7eb8ff32",
       "revId": "3244dbda0f3655eb8848354425fcd48de3d840a6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39c12dd4_e8221a1e",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1356,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-12-20T22:54:36Z",
+      "side": 1,
+      "message": "[Pls ignore my last comment.]\n\nThe latest patchset (patchset 9) contains no change to any public API and all the format conversions are done within CFX_SkiaDeviceDriver:\n1. When creating a CFX_SkiaDeviceDriver: save the input bitmap (from the embedder) at `m_pOriginalBitmap` and its 32-bpp copy at `m_pBitmap`. `m_pBitmap` is the one backs Skia for drawing.\n2. When destroying CFX_SkiaDeviceDriver, convert the Skia drawing results( stored in `m_pBitmap`) to 24 bpp and copy its value to the input bitmap. In this case, the memory allocated for the input bitmap remain the same.",
+      "parentUuid": "9048a119_581b7dc4",
+      "revId": "3244dbda0f3655eb8848354425fcd48de3d840a6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
