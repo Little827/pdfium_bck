@@ -1215,10 +1215,11 @@ bool CFX_RenderDevice::DrawNormalText(pdfium::span<const TextCharPos> pCharPos,
 
 #if defined(_SKIA_SUPPORT_) || defined(_SKIA_SUPPORT_PATH_)
   if (CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()) {
+    DCHECK(bitmap->m_nFormat == CFX_DIBitmap::Format::kCleared); // for sure
     // DrawNormalTextHelper() can result in unpremultiplied bitmaps for
     // rendering glyphs. Make sure `bitmap` is premultiplied before proceeding
     // or CFX_DIBBase::DebugVerifyBufferIsPreMultiplied() check will fail.
-    bitmap->PreMultiply();
+    bitmap->PreMultiply(); // for sure
   }
 #endif
 

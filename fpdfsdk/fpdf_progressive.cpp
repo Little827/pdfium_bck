@@ -73,7 +73,10 @@ FPDF_RenderPageBitmapWithColorScheme_Start(FPDF_BITMAP bitmap,
 #ifdef _SKIA_SUPPORT_
   if (CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()) {
     pDevice->Flush(false);
-    pBitmap->UnPreMultiply();
+
+    DCHECK(pBitmap->m_nFormat == CFX_DIBitmap::Format::kCleared); // forsure
+    pBitmap->UnPreMultiply(); // cannot be deleted, it will affect the bitmap
+                              // check in FPDF_RenderPage_Continue()
   }
 #endif  // _SKIA_SUPPORT_
 
@@ -118,7 +121,9 @@ FPDF_EXPORT int FPDF_CALLCONV FPDF_RenderPage_Continue(FPDF_PAGE page,
   if (CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()) {
     CFX_RenderDevice* pDevice = pContext->m_pDevice.get();
     pDevice->Flush(false);
-    pDevice->GetBitmap()->UnPreMultiply();
+
+    DCHECK(pDevice->GetBitmap()->m_nFormat == CFX_DIBitmap::Format::kUnPreMultiplied); // for sure
+    // pDevice->GetBitmap()->UnPreMultiply(); // for sure can be deleted
   }
 #endif  // _SKIA_SUPPORT_
   return ToFPDFStatus(pContext->m_pRenderer->GetStatus());

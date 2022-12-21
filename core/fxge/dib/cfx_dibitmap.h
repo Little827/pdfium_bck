@@ -111,13 +111,14 @@ class CFX_DIBitmap final : public CFX_DIBBase {
   void DebugVerifyBitmapIsPreMultiplied() const;
   void UnPreMultiply();
 #endif
+  #ifdef _SKIA_SUPPORT_
+  enum class Format { kCleared, kPreMultiplied, kUnPreMultiplied };
+  Format m_nFormat = Format::kCleared;
+#endif
+
 
  private:
   enum class Channel : uint8_t { kRed, kAlpha };
-
-#ifdef _SKIA_SUPPORT_
-  enum class Format { kCleared, kPreMultiplied, kUnPreMultiplied };
-#endif
 
   CFX_DIBitmap();
   CFX_DIBitmap(const CFX_DIBitmap& src);
@@ -150,9 +151,6 @@ class CFX_DIBitmap final : public CFX_DIBBase {
                                   int src_top);
 
   MaybeOwned<uint8_t, FxFreeDeleter> m_pBuffer;
-#ifdef _SKIA_SUPPORT_
-  Format m_nFormat = Format::kCleared;
-#endif
 };
 
 #endif  // CORE_FXGE_DIB_CFX_DIBITMAP_H_
