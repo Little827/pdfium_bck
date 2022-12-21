@@ -33,6 +33,24 @@
       "message": "You will need to add the skia expectation for bug_1966.in as well to pass all the bots, which will be named \"bug_1966_expected_skia.pdf.0.png\"",
       "revId": "7f17e0663dbaf22f9d1b524e2d2910132ca39a8a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6917151a_484afd9a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-12-21T18:37:15Z",
+      "side": 1,
+      "message": "I\u0027m not sure this suggestion is helpful. See my earlier comment regarding the Skia rendering being all black.",
+      "parentUuid": "be1ed48e_cee7545b",
+      "revId": "7f17e0663dbaf22f9d1b524e2d2910132ca39a8a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
