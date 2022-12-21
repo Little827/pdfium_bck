@@ -718,7 +718,10 @@ bool CPDF_RenderStatus::ProcessTransparency(CPDF_PageObject* pPageObj,
 #ifdef _SKIA_SUPPORT_
   if (CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()) {
     bitmap_device.Flush(true);
-    bitmap->UnPreMultiply();
+
+    // It;s kcleared here , but unpremultiply is needed
+    DCHECK(bitmap->m_nFormat == CFX_DIBitmap::Format::kCleared); // for sure
+    bitmap->UnPreMultiply(); // for sure
   }
 #endif  // _SKIA_SUPPORT_
   m_bStopped = bitmap_render.m_bStopped;
@@ -739,6 +742,8 @@ bool CPDF_RenderStatus::ProcessTransparency(CPDF_PageObject* pPageObj,
   }
 #if defined(_SKIA_SUPPORT_)
   if (CFX_DefaultRenderDevice::SkiaIsDefaultRenderer())
+    DCHECK(bitmap->m_nFormat == CFX_DIBitmap::Format::kUnPreMultiplied); // for
+                                                                         // sure
     bitmap->PreMultiply();
 #endif
   transparency = m_Transparency;
@@ -1285,8 +1290,13 @@ void CPDF_RenderStatus::CompositeDIBitmap(
         pDIBitmap->MultiplyAlpha(bitmap_alpha);
       }
 #if defined(_SKIA_SUPPORT_)
-      if (CFX_DefaultRenderDevice::SkiaIsDefaultRenderer())
+      if (CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()) {
+        // can be premultiplied or clear
+        // cannot be unpremultiplied
+        DCHECK_NE(pDIBitmap->m_nFormat, CFX_DIBitmap::Format::kUnPreMultiplied); // for
+                                                                                 // sure
         CFX_SkiaDeviceDriver::PreMultiply(pDIBitmap);
+      }
 #endif
       if (m_pDevice->SetDIBits(pDIBitmap, left, top)) {
         return;

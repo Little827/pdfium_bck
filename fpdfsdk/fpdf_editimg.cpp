@@ -258,8 +258,11 @@ FPDFImageObj_GetRenderedBitmap(FPDF_DOCUMENT document,
     return nullptr;
 
 #if defined(_SKIA_SUPPORT_)
-  if (CFX_DefaultRenderDevice::SkiaIsDefaultRenderer())
-    result_bitmap->UnPreMultiply();
+  if (CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()) {
+    DCHECK(result_bitmap->m_nFormat == CFX_DIBitmap::Format::kCleared); // for
+                                                                        // sure
+    result_bitmap->UnPreMultiply(); // needed for FPDFEditEmbedderTest.GetRenderedBitmapHandlesSMask
+  }
 #endif
 
   // Caller takes ownership.
