@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73c6d6f9_8293e72c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2022-12-21T17:10:28Z",
+      "side": 1,
+      "message": "It looks like the Skia try bots are rendering the new pixel test as all black. Not sure if that\u0027s a bug in PDFium\u0027s Skia rendering code.",
+      "revId": "7f17e0663dbaf22f9d1b524e2d2910132ca39a8a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
