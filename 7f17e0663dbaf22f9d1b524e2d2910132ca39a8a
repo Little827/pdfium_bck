@@ -144,6 +144,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8a2608bd_25eb0db1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-12-22T20:30:18Z",
+      "side": 1,
+      "message": "I filed crbug.com/pdfium/1968 for the Skia issue.\n@abdelkarim.se@gmail.com You can suppress the pixel test under this bug number.",
+      "parentUuid": "c3db776b_01166d64",
+      "revId": "7f17e0663dbaf22f9d1b524e2d2910132ca39a8a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e577fd19_6c4778d8",
         "filename": "testing/resources/pixel/bug_1966.in",
         "patchSetId": 1
