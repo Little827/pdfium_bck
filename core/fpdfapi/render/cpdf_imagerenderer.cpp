@@ -386,9 +386,13 @@ bool CPDF_ImageRenderer::DrawMaskedImage() {
                      new_matrix, rect);
 #if defined(_SKIA_SUPPORT_)
   if (CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()) {
+    bitmap_device1.GetBitmap()->PreMultiply();
+    bitmap_device2.GetBitmap()->PreMultiply();
     m_pRenderStatus->GetRenderDevice()->SetBitsWithMask(
         bitmap_device1.GetBitmap(), bitmap_device2.GetBitmap(), rect.left,
         rect.top, m_BitmapAlpha, m_BlendType);
+    bitmap_device1.GetBitmap()->UnPreMultiply();
+    bitmap_device2.GetBitmap()->UnPreMultiply();
     return false;
   }
 #endif
