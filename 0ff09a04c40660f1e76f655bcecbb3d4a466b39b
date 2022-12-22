@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff5735ad_a5570e29",
+        "filename": "testing/resources/pixel/bug_1395648.in",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-12-22T22:03:21Z",
+      "side": 1,
+      "message": "Optional: Should we tighten the media box?",
+      "revId": "0ff09a04c40660f1e76f655bcecbb3d4a466b39b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8af1d74e_a54ff499",
+        "filename": "testing/resources/pixel/bug_1395648.in",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2022-12-22T22:03:21Z",
+      "side": 1,
+      "message": "/Filter isn\u0027t required; can you make your comment more specific about why this is a problem?\n\nFor example, it looks like this data has the same encoding as object 5 0, but is interpreted as raw gray bytes from 00 to FF. It\u0027s also too short to be a 50x50 image. Which of these problems causes the issue?",
+      "revId": "0ff09a04c40660f1e76f655bcecbb3d4a466b39b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
