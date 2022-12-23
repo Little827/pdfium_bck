@@ -160,6 +160,42 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5dfd8b4_17268c1b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 9016
+      },
+      "writtenOn": "2022-12-23T13:53:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a2608bd_25eb0db1",
+      "revId": "7f17e0663dbaf22f9d1b524e2d2910132ca39a8a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9dd2fee3_6c4d430e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 9016
+      },
+      "writtenOn": "2022-12-23T13:53:02Z",
+      "side": 1,
+      "message": "I am sure that I tested skia, except when I run pdfium_test.exe locally, I append --scale\u003d3 for all my tests to have large output.\n\nskia will render correct for scale \u003e 1",
+      "parentUuid": "73c6d6f9_8293e72c",
+      "revId": "7f17e0663dbaf22f9d1b524e2d2910132ca39a8a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e577fd19_6c4778d8",
@@ -177,6 +213,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "37ccf6e4_2e5f37d5",
+        "filename": "testing/resources/pixel/bug_1966.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 9016
+      },
+      "writtenOn": "2022-12-23T13:53:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e577fd19_6c4778d8",
+      "revId": "7f17e0663dbaf22f9d1b524e2d2910132ca39a8a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "071110e1_eec5256f",
@@ -190,6 +244,24 @@
       "writtenOn": "2022-12-22T19:11:37Z",
       "side": 1,
       "message": "Please move this below all the \"type\" keys.",
+      "revId": "7f17e0663dbaf22f9d1b524e2d2910132ca39a8a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f7ac4f8_03591090",
+        "filename": "testing/resources/pixel/bug_1966.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 9016
+      },
+      "writtenOn": "2022-12-23T13:53:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "071110e1_eec5256f",
       "revId": "7f17e0663dbaf22f9d1b524e2d2910132ca39a8a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
