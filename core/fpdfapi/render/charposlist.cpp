@@ -10,6 +10,7 @@
 #include "core/fpdfapi/font/cpdf_cidfont.h"
 #include "core/fpdfapi/font/cpdf_font.h"
 #include "core/fpdfapi/parser/cpdf_stream.h"
+#include "core/fxge/cfx_fontmapper.h"
 #include "core/fxge/cfx_substfont.h"
 #include "core/fxge/text_char_pos.h"
 
@@ -35,6 +36,45 @@ bool ShouldUseExistingFont(const CPDF_Font* font,
   // and
   // https://www.freetype.org/freetype2/docs/tutorial/step1.html#section-6)
   return glyph_id != 0 || has_to_unicode;
+}
+
+bool ApplyGlyphSpacingHeuristic(const CPDF_Font* font,
+                                const CFX_Font* current_font,
+                                bool is_vertical_writing) {
+  if (is_vertical_writing || font->IsEmbedded() || !font->HasFontWidths()) {
+    return false;
+  }
+
+  // skip if we loaded a standard alternate font
+  // example: Helvetica -> Arial
+  ByteString base_font_name = font->GetBaseFontName();
+  base_font_name.MakeLower();
+
+  auto standard_font_name =
+      CFX_FontMapper::GetStandardFontName(&base_font_name);
+  if (standard_font_name.has_value()) {
+    return false;
+  }
+
+  CFX_SubstFont* subst_font = current_font->GetSubstFont();
+  if (subst_font->IsBuiltInGenericFont()) {
+    return false;
+  }
+
+  // skip this heuristic if we loaded the actual font,
+  // example: TimesNewRoman,Bold -> Times New Roman
+  ByteString subst_font_name = subst_font->m_Family;
+  subst_font_name.Remove(' ');
+  subst_font_name.MakeLower();
+
+  absl::optional<size_t> find =
+      base_font_name.Find(subst_font_name.AsStringView());
+  bool is_actual_font = find.has_value() && find.value() == 0;
+  if (is_actual_font) {
+    return false;
+  }
+
+  return true;
 }
 
 }  // namespace
@@ -94,8 +134,7 @@ std::vector<TextCharPos> GetCharPosList(pdfium::span<const uint32_t> char_codes,
     text_char_pos.m_bGlyphAdjust = false;
 
     float scaling_factor = 1.0f;
-    if (!font->IsEmbedded() && font->HasFontWidths() && !is_vertical_writing &&
-        !current_font->GetSubstFont()->IsBuiltInGenericFont()) {
+    if (ApplyGlyphSpacingHeuristic(font, current_font, is_vertical_writing)) {
       int pdf_glyph_width = font->GetCharWidthF(char_code);
       int font_glyph_width =
           current_font->GetGlyphWidth(text_char_pos.m_GlyphIndex);
