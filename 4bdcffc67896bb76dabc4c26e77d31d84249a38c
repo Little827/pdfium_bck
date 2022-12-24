@@ -47,6 +47,54 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5aed754_b473293c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 9016
+      },
+      "writtenOn": "2022-12-24T21:31:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "795c5349_c872b0c7",
+      "range": {
+        "startLine": 9,
+        "startChar": 8,
+        "endLine": 9,
+        "endChar": 16
+      },
+      "revId": "4bdcffc67896bb76dabc4c26e77d31d84249a38c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d61e38c8_fb90e8e1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 9016
+      },
+      "writtenOn": "2022-12-24T21:31:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec81f4e7_60e5d40e",
+      "range": {
+        "startLine": 9,
+        "startChar": 17,
+        "endLine": 9,
+        "endChar": 24
+      },
+      "revId": "4bdcffc67896bb76dabc4c26e77d31d84249a38c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fd524f08_3476abc8",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-12-12T23:54:14Z",
       "side": 1,
       "message": "typo",
+      "range": {
+        "startLine": 14,
+        "startChar": 19,
+        "endLine": 14,
+        "endChar": 29
+      },
+      "revId": "4bdcffc67896bb76dabc4c26e77d31d84249a38c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cf7b78b_2652d508",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 9016
+      },
+      "writtenOn": "2022-12-24T21:31:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd524f08_3476abc8",
       "range": {
         "startLine": 14,
         "startChar": 19,
@@ -87,6 +159,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "328a63f3_69e44a67",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 9016
+      },
+      "writtenOn": "2022-12-24T21:31:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc708a54_1117f6a1",
+      "revId": "4bdcffc67896bb76dabc4c26e77d31d84249a38c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "039ff5c1_f81a6fae",
@@ -104,6 +194,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "35cbf8be_cae0654a",
+        "filename": "core/fpdfapi/render/charposlist.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 9016
+      },
+      "writtenOn": "2022-12-24T21:31:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "039ff5c1_f81a6fae",
+      "revId": "4bdcffc67896bb76dabc4c26e77d31d84249a38c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "49e43b42_9f3bb3ad",
@@ -117,6 +225,24 @@
       "writtenOn": "2022-12-12T23:54:14Z",
       "side": 1,
       "message": "Does the implementation for this heuristic work correctly for: FooBar,Bold -\u003e Foo ?",
+      "revId": "4bdcffc67896bb76dabc4c26e77d31d84249a38c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4e2125c_af1d590b",
+        "filename": "core/fpdfapi/render/charposlist.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 9016
+      },
+      "writtenOn": "2022-12-24T21:31:20Z",
+      "side": 1,
+      "message": "I am not sure if I understood this correctly, but we want to avoid the heuristic for the above-mentioned example. Eg: TimesNewRomanPSMT,Bold --\u003e Times New Roman",
+      "parentUuid": "49e43b42_9f3bb3ad",
       "revId": "4bdcffc67896bb76dabc4c26e77d31d84249a38c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -144,6 +270,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ef0881f_5a0be470",
+        "filename": "core/fpdfapi/render/charposlist.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 9016
+      },
+      "writtenOn": "2022-12-24T21:31:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ef4c07d_59d77f5d",
+      "range": {
+        "startLine": 59,
+        "startChar": 56,
+        "endLine": 59,
+        "endChar": 59
+      },
+      "revId": "4bdcffc67896bb76dabc4c26e77d31d84249a38c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b7d29df3_65109c56",
@@ -161,6 +311,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8b753f7_49d7325c",
+        "filename": "core/fpdfapi/render/charposlist.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 9016
+      },
+      "writtenOn": "2022-12-24T21:31:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7d29df3_65109c56",
+      "revId": "4bdcffc67896bb76dabc4c26e77d31d84249a38c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3df0100e_7c87a6b6",
@@ -174,6 +342,24 @@
       "writtenOn": "2022-12-12T23:54:14Z",
       "side": 1,
       "message": "Some spaces can help make this a bit easier to read. e.g.\n\n```\n[(U) -107.72357178 (n) -14.68963623 (i) 31.01132202 (v) -125.67745972\n```\n\non this first line.",
+      "revId": "4bdcffc67896bb76dabc4c26e77d31d84249a38c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ca792ad_56ceb5b6",
+        "filename": "testing/resources/pixel/bug_1922.in",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 9016
+      },
+      "writtenOn": "2022-12-24T21:31:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3df0100e_7c87a6b6",
       "revId": "4bdcffc67896bb76dabc4c26e77d31d84249a38c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
