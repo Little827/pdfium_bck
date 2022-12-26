@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f7a9da4_3a36f6ee",
+        "filename": "testing/SUPPRESSIONS",
+        "patchSetId": 3
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-12-26T20:03:22Z",
+      "side": 1,
+      "message": "Suppress this test under pdfium:1968 since it\u0027s a Skia-specific issue.",
+      "range": {
+        "startLine": 515,
+        "startChar": 14,
+        "endLine": 515,
+        "endChar": 18
+      },
+      "revId": "cfa46434fa7037bd3ec8eda4d5f625b4ce6f9c63",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}

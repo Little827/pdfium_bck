@@ -196,6 +196,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "13e93117_66a30330",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-12-26T20:03:22Z",
+      "side": 1,
+      "message": "Hi Karim, could you leave your findings regarding skia rendering on crbug.com/pdfium/1968?\nThanks!",
+      "parentUuid": "9dd2fee3_6c4d430e",
+      "revId": "7f17e0663dbaf22f9d1b524e2d2910132ca39a8a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e577fd19_6c4778d8",
