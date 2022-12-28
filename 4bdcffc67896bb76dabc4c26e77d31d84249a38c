@@ -249,6 +249,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2e39b1fc_93fc7f96",
+        "filename": "core/fpdfapi/render/charposlist.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-12-28T19:52:13Z",
+      "side": 1,
+      "message": "Using name comparison makes sense but I don\u0027t think checking the very first few letters of the font name is trustworthy enough.\n\nFor example for typeface \"Book\", it could potentially match \"Book Country\", \"Bookman\", but they are not in the same font family or even published by the same author.",
+      "parentUuid": "c4e2125c_af1d590b",
+      "revId": "4bdcffc67896bb76dabc4c26e77d31d84249a38c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8ef4c07d_59d77f5d",
         "filename": "core/fpdfapi/render/charposlist.cpp",
         "patchSetId": 3

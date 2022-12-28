@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3aca390_ad89e3a4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-12-28T19:52:13Z",
+      "side": 1,
+      "message": "Update rendering",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 17
+      },
+      "revId": "031984762bc4c2ab1e1044678436de1eab7f0fd0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00e88291_fcf00328",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-12-28T19:52:13Z",
+      "side": 1,
+      "message": "refactors",
+      "range": {
+        "startLine": 9,
+        "startChar": 8,
+        "endLine": 9,
+        "endChar": 16
+      },
+      "revId": "031984762bc4c2ab1e1044678436de1eab7f0fd0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd0fef97_e9343626",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-12-28T19:52:13Z",
+      "side": 1,
+      "message": "Adds",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 5
+      },
+      "revId": "031984762bc4c2ab1e1044678436de1eab7f0fd0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e33c511_7ff812ca",
+        "filename": "core/fpdfapi/render/charposlist.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2022-12-28T19:52:13Z",
+      "side": 1,
+      "message": "Write a full sentence and end with \".\"\nSkip if standard alternative font is found.\nExample:......\n\nDo the same for the comment on line 64-65.",
+      "range": {
+        "startLine": 48,
+        "startChar": 2,
+        "endLine": 49,
+        "endChar": 32
+      },
+      "revId": "031984762bc4c2ab1e1044678436de1eab7f0fd0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
