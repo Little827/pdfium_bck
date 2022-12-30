@@ -282,12 +282,22 @@ void CPDF_ImageRenderer::CalculateDrawImage(
         dest_scan += 4;
         continue;
       }
-      int orig = (*dest_scan - matte_b) * 255 / alpha + matte_b;
-      *dest_scan++ = pdfium::clamp(orig, 0, 255);
-      orig = (*dest_scan - matte_g) * 255 / alpha + matte_g;
-      *dest_scan++ = pdfium::clamp(orig, 0, 255);
-      orig = (*dest_scan - matte_r) * 255 / alpha + matte_r;
-      *dest_scan++ = pdfium::clamp(orig, 0, 255);
+      int range =
+          CFX_DefaultRenderDevice::SkiaIsDefaultRenderer() ? alpha : 255;
+      int b = (*dest_scan - matte_b) * 255 / alpha + matte_b;
+      if (CFX_DefaultRenderDevice::SkiaIsDefaultRenderer())
+        b = b * alpha / 255;
+      *dest_scan++ = pdfium::clamp(b, 0, range);
+
+      int g = (*dest_scan - matte_g) * 255 / alpha + matte_g;
+      if (alpha != 255 && CFX_DefaultRenderDevice::SkiaIsDefaultRenderer())
+        g = g * alpha / 255;
+      *dest_scan++ = pdfium::clamp(g, 0, range);
+
+      int r = (*dest_scan - matte_r) * 255 / alpha + matte_r;
+      if (CFX_DefaultRenderDevice::SkiaIsDefaultRenderer())
+        r = r * alpha / 255;
+      *dest_scan++ = pdfium::clamp(r, 0, range);
       dest_scan++;
     }
   }
