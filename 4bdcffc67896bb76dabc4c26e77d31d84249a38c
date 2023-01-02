@@ -267,6 +267,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f4d86d97_9a9093e0",
+        "filename": "core/fpdfapi/render/charposlist.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 9016
+      },
+      "writtenOn": "2023-01-02T15:54:42Z",
+      "side": 1,
+      "message": "I think the two additional checks will make this rendering heuristic more accurate. It isn\u0027t perfect, but it will fix some of the obvious problems.",
+      "parentUuid": "2e39b1fc_93fc7f96",
+      "revId": "4bdcffc67896bb76dabc4c26e77d31d84249a38c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8ef4c07d_59d77f5d",
         "filename": "core/fpdfapi/render/charposlist.cpp",
         "patchSetId": 3
