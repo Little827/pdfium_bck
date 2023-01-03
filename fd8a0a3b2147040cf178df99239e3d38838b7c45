@@ -18,6 +18,42 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7fbfc53_00d049bc",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 1356,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-01-03T22:54:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2707575a_c07ba8f4",
+      "revId": "fd8a0a3b2147040cf178df99239e3d38838b7c45",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b33cea40_06af4f83",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 1356,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-01-03T22:54:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2707575a_c07ba8f4",
+      "revId": "fd8a0a3b2147040cf178df99239e3d38838b7c45",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "596bd58c_044eff1d",
@@ -41,6 +77,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cf66f8e_d0f402be",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 1358,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-01-03T22:54:51Z",
+      "side": 1,
+      "message": "Apply the change to use `m_pBitmap` directly instead of creating `temp`",
+      "parentUuid": "596bd58c_044eff1d",
+      "range": {
+        "startLine": 1358,
+        "startChar": 9,
+        "endLine": 1358,
+        "endChar": 13
+      },
+      "revId": "fd8a0a3b2147040cf178df99239e3d38838b7c45",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "84ea07a9_dedf96ac",
@@ -54,6 +114,24 @@
       "writtenOn": "2023-01-03T21:36:55Z",
       "side": 1,
       "message": "Can Copy() and ConvertFormat() fail?",
+      "revId": "fd8a0a3b2147040cf178df99239e3d38838b7c45",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d45d20f_d7dd33e4",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 1359,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-01-03T22:54:51Z",
+      "side": 1,
+      "message": "They can fail, which means the ctor caller must check if the backing canvas is successfully created. I added a comment in the header file and added checks at this ctor\u0027s call sites in the new patchset.",
+      "parentUuid": "84ea07a9_dedf96ac",
       "revId": "fd8a0a3b2147040cf178df99239e3d38838b7c45",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
