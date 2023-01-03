@@ -136,6 +136,7 @@ void Harness(void (*Test)(CFX_SkiaDeviceDriver*, const State&),
   RetainPtr<CFX_DIBitmap> pBitmap(CFXDIBitmapFromFPDFBitmap(bitmap.get()));
   auto driver =
       std::make_unique<CFX_SkiaDeviceDriver>(pBitmap, false, nullptr, false);
+  ASSERT_TRUE(driver->SkiaCanvas());
   (*Test)(driver.get(), state);
   driver->Flush();
   uint32_t pixel = pBitmap->GetPixel(0, 0);

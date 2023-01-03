@@ -21,6 +21,8 @@ class TextCharPos;
 
 class CFX_SkiaDeviceDriver final : public RenderDeviceDriverIface {
  public:
+  /** Create a Skia rendering driver. The caller must check if SkiaCanvas() has
+   * been created successfully. */
   CFX_SkiaDeviceDriver(RetainPtr<CFX_DIBitmap> pBitmap,
                        bool bRgbByteOrder,
                        RetainPtr<CFX_DIBitmap> pBackdropBitmap,
@@ -160,6 +162,11 @@ class CFX_SkiaDeviceDriver final : public RenderDeviceDriverIface {
 
   RetainPtr<CFX_DIBitmap> m_pBitmap;
   RetainPtr<CFX_DIBitmap> m_pBackdropBitmap;
+
+  // The input bitmap passed by the render device. Only used when the input
+  // bitmap is 24 bpp and cannot be directly used as the back of a SkCanvas.
+  RetainPtr<CFX_DIBitmap> m_pOriginalBitmap;
+
   SkCanvas* m_pCanvas;
   SkPictureRecorder* const m_pRecorder;
   std::unique_ptr<SkiaState> m_pCache;
