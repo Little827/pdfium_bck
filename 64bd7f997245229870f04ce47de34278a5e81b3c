@@ -16,6 +16,24 @@
       "message": "This is fine, though wondering why https://chromium.googlesource.com/chromium/src/third_party/freetype2.git/+/0bcb664de8ea44299f57c45d01433328596bc2a7 isn\u0027t included?",
       "revId": "64bd7f997245229870f04ce47de34278a5e81b3c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68889eb2_583822b6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-01-03T19:21:58Z",
+      "side": 1,
+      "message": "Thanks for reviewing the CL Ben!\n\nWe roll PDFium to the same revision number that Chromium is currently using, which is ace97a02a4461bbdae29da4019c105eead95e277 at the moment. That\u0027s why that latest commit was not included.",
+      "parentUuid": "934fa530_2f66c7be",
+      "revId": "64bd7f997245229870f04ce47de34278a5e81b3c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
