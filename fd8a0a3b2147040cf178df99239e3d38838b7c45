@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2707575a_c07ba8f4",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 1356,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-01-03T21:36:55Z",
+      "side": 1,
+      "message": "Probably not needed, as the ctor can\u0027t be called twice for the same object.",
+      "revId": "fd8a0a3b2147040cf178df99239e3d38838b7c45",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "596bd58c_044eff1d",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 1358,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-01-03T21:36:55Z",
+      "side": 1,
+      "message": "Please give this variable a more meaningful name. Or maybe perform line 1364 first. Then the new bitmap can go into `m_pBitmap` directly.",
+      "range": {
+        "startLine": 1358,
+        "startChar": 9,
+        "endLine": 1358,
+        "endChar": 13
+      },
+      "revId": "fd8a0a3b2147040cf178df99239e3d38838b7c45",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84ea07a9_dedf96ac",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 1359,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-01-03T21:36:55Z",
+      "side": 1,
+      "message": "Can Copy() and ConvertFormat() fail?",
+      "revId": "fd8a0a3b2147040cf178df99239e3d38838b7c45",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
