@@ -134,6 +134,24 @@
       "parentUuid": "84ea07a9_dedf96ac",
       "revId": "fd8a0a3b2147040cf178df99239e3d38838b7c45",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cabccf4_5254a010",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 1359,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-01-03T23:49:23Z",
+      "side": 1,
+      "message": "Can you think of a way to make this more foolproof? Is a new callsite instantiates CFX_SkiaDeviceDriver, they might forget the SkiaCanvas() check.",
+      "parentUuid": "4d45d20f_d7dd33e4",
+      "revId": "fd8a0a3b2147040cf178df99239e3d38838b7c45",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
