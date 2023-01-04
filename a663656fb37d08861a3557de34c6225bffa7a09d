@@ -22,6 +22,30 @@
       },
       "revId": "a663656fb37d08861a3557de34c6225bffa7a09d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbd402b3_fc534958",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 1344,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-01-04T18:07:00Z",
+      "side": 1,
+      "message": "Done. And moved the factory method refactoring to https://pdfium-review.googlesource.com/c/pdfium/+/103075/",
+      "parentUuid": "78b3a852_a41dd992",
+      "range": {
+        "startLine": 1344,
+        "startChar": 41,
+        "endLine": 1344,
+        "endChar": 56
+      },
+      "revId": "a663656fb37d08861a3557de34c6225bffa7a09d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
