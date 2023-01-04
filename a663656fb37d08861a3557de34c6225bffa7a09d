@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78b3a852_a41dd992",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 1344,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-01-04T08:35:37Z",
+      "side": 1,
+      "message": "Consistently std::move().",
+      "range": {
+        "startLine": 1344,
+        "startChar": 41,
+        "endLine": 1344,
+        "endChar": 56
+      },
+      "revId": "a663656fb37d08861a3557de34c6225bffa7a09d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}

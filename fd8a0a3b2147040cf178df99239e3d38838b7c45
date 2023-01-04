@@ -170,6 +170,24 @@
       "parentUuid": "7cabccf4_5254a010",
       "revId": "fd8a0a3b2147040cf178df99239e3d38838b7c45",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "191b2721_7bc55c28",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 1359,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-01-04T08:35:37Z",
+      "side": 1,
+      "message": "Factory function SGTM.",
+      "parentUuid": "e3ed8e10_3ca6a22b",
+      "revId": "fd8a0a3b2147040cf178df99239e3d38838b7c45",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
