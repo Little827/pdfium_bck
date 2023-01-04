@@ -152,6 +152,24 @@
       "parentUuid": "4d45d20f_d7dd33e4",
       "revId": "fd8a0a3b2147040cf178df99239e3d38838b7c45",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3ed8e10_3ca6a22b",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 1359,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-01-04T08:29:10Z",
+      "side": 1,
+      "message": "One way to do it is to mark the ctor private and wrap it inside a factory function that returns a unique_ptr. I will create a seprate CL chain for this change.",
+      "parentUuid": "7cabccf4_5254a010",
+      "revId": "fd8a0a3b2147040cf178df99239e3d38838b7c45",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
