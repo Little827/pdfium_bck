@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14612206_170477e3",
+        "filename": "core/fxge/dib/cfx_dibbase.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-01-04T18:07:57Z",
+      "side": 1,
+      "message": "follow-up: maybe keep this a span, move the .data() call to line 321 and use subspan there as well.",
+      "range": {
+        "startLine": 317,
+        "startChar": 2,
+        "endLine": 317,
+        "endChar": 72
+      },
+      "revId": "673e5403958720d4743b2d839ac4b71474094798",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
