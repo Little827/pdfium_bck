@@ -22,6 +22,30 @@
       },
       "revId": "673e5403958720d4743b2d839ac4b71474094798",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea753a17_20b0bba1",
+        "filename": "core/fxge/dib/cfx_dibbase.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-01-04T23:34:15Z",
+      "side": 1,
+      "message": "https://pdfium-review.googlesource.com/103076",
+      "parentUuid": "14612206_170477e3",
+      "range": {
+        "startLine": 317,
+        "startChar": 2,
+        "endLine": 317,
+        "endChar": 72
+      },
+      "revId": "673e5403958720d4743b2d839ac4b71474094798",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ],
   "submitRequirementResults": [
