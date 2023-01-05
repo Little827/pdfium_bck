@@ -30,11 +30,16 @@ namespace {
 
 const int kMaxPageLevel = 1024;
 
+bool IsValidPageCount(int count) {
+  return count > 0 && count < CPDF_Document::kPageMaxNum;
+}
+
 int CountPages(RetainPtr<CPDF_Dictionary> pPages,
                std::set<RetainPtr<CPDF_Dictionary>>* visited_pages) {
   int count = pPages->GetIntegerFor("Count");
-  if (count > 0 && count < CPDF_Document::kPageMaxNum)
+  if (IsValidPageCount(count)) {
     return count;
+  }
   RetainPtr<CPDF_Array> pKidList = pPages->GetMutableArrayFor("Kids");
   if (!pKidList)
     return 0;
@@ -51,6 +56,9 @@ int CountPages(RetainPtr<CPDF_Dictionary> pPages,
     } else {
       // This page is a leaf node.
       count++;
+    }
+    if (!IsValidPageCount(count)) {
+      return 0;
     }
   }
   pPages->SetNewFor<CPDF_Number>("Count", count);
