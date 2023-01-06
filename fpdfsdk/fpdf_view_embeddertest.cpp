@@ -1448,6 +1448,10 @@ TEST_F(FPDFViewEmbedderTest, RenderBug664284WithNoNativeText) {
   UnloadPage(page);
 }
 
+// TODO(crbug.com/1396264): Add a FPDFViewEmbedderTest that can test rendering
+// flag `FPDF_REVERSE_BYTE_ORDER` that triggers Upsample() call when Skia is
+// enabled.
+
 TEST_F(FPDFViewEmbedderTest, RenderJpxLzwImageWithFlags) {
   static const char kNormalChecksum[] = "4bcd56cae1ca2622403e8af07242e71a";
   static const char kGrayscaleChecksum[] = "fe45ad56efe868ba82285fa5ffedc0cb";
