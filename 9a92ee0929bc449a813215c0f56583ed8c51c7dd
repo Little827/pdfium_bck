@@ -123,6 +123,24 @@
       "parentUuid": "098cf32f_2f2bce6e",
       "revId": "9a92ee0929bc449a813215c0f56583ed8c51c7dd",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b95ed93_d9243603",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 9016
+      },
+      "writtenOn": "2023-01-09T21:03:02Z",
+      "side": 1,
+      "message": "Can we have this merged without the pixel test ?",
+      "parentUuid": "0b5c77a3_bf9c6284",
+      "revId": "9a92ee0929bc449a813215c0f56583ed8c51c7dd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
