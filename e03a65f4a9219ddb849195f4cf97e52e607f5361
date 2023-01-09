@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7b83f234_6cccc627",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-01-09T23:54:19Z",
+      "side": 1,
+      "message": "Could you leave more details about which renderers you were using and how these renderers behave while rendering this corrupted image object in a related pdfium bug?\n\nSince the issue you are trying to fix is how AGG behaves, and chromium:1395648 is for fixing Skia\u0027s assertion error, I would recommend file a new bug and add the details in it first.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 53
+      },
+      "revId": "e03a65f4a9219ddb849195f4cf97e52e607f5361",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "17c5033e_759757dd",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
