@@ -1073,19 +1073,37 @@ pdfium::span<const uint8_t> CPDF_DIB::GetScanline(int line) const {
 
   uint32_t src_pitch_value = src_pitch.value();
   pdfium::span<const uint8_t> pSrcLine;
+  DataVector<uint8_t> temp_buffer;
+
   if (m_pCachedBitmap && src_pitch_value <= m_pCachedBitmap->GetPitch()) {
     if (line >= m_pCachedBitmap->GetHeight())
       line = m_pCachedBitmap->GetHeight() - 1;
     pSrcLine = m_pCachedBitmap->GetScanline(line);
   } else if (m_pDecoder) {
     pSrcLine = m_pDecoder->GetScanline(line);
-  } else if (m_pStreamAcc->GetSize() >= (line + 1) * src_pitch_value) {
-    pSrcLine = m_pStreamAcc->GetSpan().subspan(line * src_pitch_value,
-                                               src_pitch_value);
+  } else {
+    if (m_pStreamAcc->GetSize() >= (line + 1) * src_pitch_value) {
+      pSrcLine = m_pStreamAcc->GetSpan().subspan(line * src_pitch_value,
+                                                 src_pitch_value);
+    } else {
+      // read any remaining bytes
+      if (m_pStreamAcc->GetSize() > line * src_pitch_value) {
+        pdfium::span<const uint8_t> remaining_bytes =
+            m_pStreamAcc->GetSpan().subspan(line * src_pitch_value);
+
+        temp_buffer = DataVector<uint8_t>(src_pitch_value);
+        pdfium::span<uint8_t> result = temp_buffer;
+        fxcrt::spanset(result, 0);
+
+        fxcrt::spancpy(result, remaining_bytes);
+        pSrcLine = result;
+      }
+    }
   }
+
   if (pSrcLine.empty()) {
     pdfium::span<uint8_t> result = !m_MaskBuf.empty() ? m_MaskBuf : m_LineBuf;
-    fxcrt::spanset(result, 0xFF);
+    fxcrt::spanset(result, 0);
     return result;
   }
   if (m_bpc * m_nComponents == 1) {
