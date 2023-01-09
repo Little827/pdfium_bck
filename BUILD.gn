@@ -402,6 +402,7 @@ visibility = [
 group("pdfium_unittest_deps") {
   testonly = true
   public_deps = [
+    ":pdfium_public_headers",
     "core/fxcrt",
     "testing:unit_test_support",
     "//testing/gmock",
