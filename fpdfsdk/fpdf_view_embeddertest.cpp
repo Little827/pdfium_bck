@@ -11,6 +11,9 @@
 #include <vector>
 
 #include "build/build_config.h"
+#include "core/fpdfapi/page/cpdf_image.h"
+#include "core/fpdfapi/page/cpdf_imageobject.h"
+#include "core/fpdfapi/page/cpdf_pageimagecache.h"
 #include "core/fpdfapi/parser/cpdf_document.h"
 #include "core/fxge/cfx_defaultrenderdevice.h"
 #include "fpdfsdk/cpdfsdk_helpers.h"
@@ -1444,6 +1447,52 @@ TEST_F(FPDFViewEmbedderTest, RenderBug664284WithNoNativeText) {
   TestRenderPageBitmapWithFlags(page, 0, original_checksum);
   TestRenderPageBitmapWithFlags(page, FPDF_NO_NATIVETEXT,
                                 kNoNativeTextChecksum);
+
+  UnloadPage(page);
+}
+
+TEST_F(FPDFViewEmbedderTest, RenderBug1924){
+  // If you render a page with a JPEG2000 image as a thumbnail (small picture)
+  // first, the image that gets cached has a low resolution. If you afterwards
+  // render it full-size, you should get a larger image - the image cache will
+  // be regenerate.
+
+  ASSERT_TRUE(OpenDocument("bug_1924.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+  CPDF_Page* cpage = CPDFPageFromFPDFPage(page);
+  ASSERT_TRUE(cpage);
+
+  CPDF_PageImageCache* page_image_cache = cpage->GetPageImageCache();
+  ASSERT_TRUE(page_image_cache);
+
+  FPDF_PAGEOBJECT image_object = FPDFPage_GetObject(page, 0);
+  ASSERT_TRUE(image_object);
+  ASSERT_EQ(FPDFPageObj_GetType(image_object), FPDF_PAGEOBJ_IMAGE);
+  CPDF_ImageObject* image =
+      CPDFPageObjectFromFPDFPageObject(image_object)->AsImage();
+  ASSERT_TRUE(image);
+
+  // Render with small scale.
+  bool should_continue = page_image_cache->StartGetCachedBitmap(
+      image->GetImage(), nullptr, cpage->GetMutablePageResources(), true,
+      CPDF_ColorSpace::Family::kICCBased, false, {50, 50});
+  while (should_continue)
+    should_continue = page_image_cache->Continue(nullptr);
+
+  RetainPtr<CFX_DIBBase> bitmap_small = page_image_cache->DetachCurBitmap();
+
+  // And render with large scale.
+  should_continue = page_image_cache->StartGetCachedBitmap(
+      image->GetImage(), nullptr, cpage->GetMutablePageResources(), true,
+      CPDF_ColorSpace::Family::kICCBased, false, {100, 100});
+  while (should_continue)
+    should_continue = page_image_cache->Continue(nullptr);
+
+  RetainPtr<CFX_DIBBase> bitmap_large = page_image_cache->DetachCurBitmap();
+
+  ASSERT_GT(bitmap_large->GetWidth(), bitmap_small->GetWidth());
+  ASSERT_GT(bitmap_large->GetHeight(), bitmap_small->GetHeight());
 
   UnloadPage(page);
 }
