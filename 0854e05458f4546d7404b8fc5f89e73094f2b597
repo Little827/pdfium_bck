@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "69213400_8980a0a3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 8606
+      },
+      "writtenOn": "2023-01-10T10:42:56Z",
+      "side": 1,
+      "message": "fixed",
+      "parentUuid": "2f598f5f_0bef1e13",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 18
+      },
+      "revId": "0854e05458f4546d7404b8fc5f89e73094f2b597",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bc7165b9_a2834639",
@@ -37,6 +61,24 @@
       "writtenOn": "2023-01-09T20:17:13Z",
       "side": 1,
       "message": "Would it be possible to write a test that detects the error and verifies this fix works as intended?",
+      "revId": "0854e05458f4546d7404b8fc5f89e73094f2b597",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab30df12_727d1070",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 8606
+      },
+      "writtenOn": "2023-01-10T10:42:56Z",
+      "side": 1,
+      "message": "A good idea. I added a small test for this.",
+      "parentUuid": "bc7165b9_a2834639",
       "revId": "0854e05458f4546d7404b8fc5f89e73094f2b597",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -58,6 +100,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "028d2d7a_e731ea12",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 8606
+      },
+      "writtenOn": "2023-01-10T10:42:56Z",
+      "side": 1,
+      "message": "fixed",
+      "parentUuid": "6181bb11_097ed2f3",
+      "revId": "0854e05458f4546d7404b8fc5f89e73094f2b597",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b98f4259_d9f26248",
@@ -71,6 +131,30 @@
       "writtenOn": "2023-01-09T20:17:13Z",
       "side": 1,
       "message": "It may be easier to understand in English if this got renamed to \"ShouldRegenerateCache()\". Or maybe negate the logic within and rename it to \"IsCacheValid()\".",
+      "range": {
+        "startLine": 244,
+        "startChar": 33,
+        "endLine": 244,
+        "endChar": 46
+      },
+      "revId": "0854e05458f4546d7404b8fc5f89e73094f2b597",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed0cd098_46d951f5",
+        "filename": "core/fpdfapi/page/cpdf_pageimagecache.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 8606
+      },
+      "writtenOn": "2023-01-10T10:42:56Z",
+      "side": 1,
+      "message": "renamed",
+      "parentUuid": "b98f4259_d9f26248",
       "range": {
         "startLine": 244,
         "startChar": 33,
