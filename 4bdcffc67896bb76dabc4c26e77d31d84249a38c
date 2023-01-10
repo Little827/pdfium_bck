@@ -303,6 +303,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9fa3c747_17e28177",
+        "filename": "core/fpdfapi/render/charposlist.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-01-10T00:18:26Z",
+      "side": 1,
+      "message": "Given that a case like \"Book Country\" and \"Bookman\" is pretty rare and normally hard to find on the same machine, I am OK with the approach. But since this approach is not perfect, I think the comment \"Skip if we loaded the actual font...\" needs to reflect that this is an approach that has flaws.\n\nI suggest that we pack line 64 to 72 into a helper function IsActualFontLoaded(), and comment on this helper function. In the future, we can just keep improving this helper function.",
+      "parentUuid": "a8ddb096_100233a3",
+      "revId": "4bdcffc67896bb76dabc4c26e77d31d84249a38c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8ef4c07d_59d77f5d",
         "filename": "core/fpdfapi/render/charposlist.cpp",
         "patchSetId": 3
