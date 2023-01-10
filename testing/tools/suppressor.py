@@ -13,7 +13,7 @@ class Suppressor:
   def __init__(self, finder, features, js_disabled, xfa_disabled):
     self.has_v8 = not js_disabled and 'V8' in features
     self.has_xfa = not js_disabled and not xfa_disabled and 'XFA' in features
-    self.has_skia = 'SKIA' in features
+    self.has_skia = False  #'SKIA' in features
     self.suppression_set = self._LoadSuppressedSet('SUPPRESSIONS', finder)
     self.image_suppression_set = self._LoadSuppressedSet(
         'SUPPRESSIONS_IMAGE_DIFF', finder)
