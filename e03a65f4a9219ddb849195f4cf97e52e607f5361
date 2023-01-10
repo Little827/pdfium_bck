@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "91fd7863_0bd9e552",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 9016
+      },
+      "writtenOn": "2023-01-10T13:22:09Z",
+      "side": 1,
+      "message": "I have created a ticket with details.",
+      "parentUuid": "7b83f234_6cccc627",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 53
+      },
+      "revId": "e03a65f4a9219ddb849195f4cf97e52e607f5361",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "17c5033e_759757dd",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-01-09T23:48:09Z",
       "side": 1,
       "message": "Is this for chromium:1395648 ?",
+      "range": {
+        "startLine": 22,
+        "startChar": 5,
+        "endLine": 22,
+        "endChar": 19
+      },
+      "revId": "e03a65f4a9219ddb849195f4cf97e52e607f5361",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9adcc936_cf1a832b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 9016
+      },
+      "writtenOn": "2023-01-10T13:22:09Z",
+      "side": 1,
+      "message": "no, this is a fix to the expected image of that bug.",
+      "parentUuid": "17c5033e_759757dd",
       "range": {
         "startLine": 22,
         "startChar": 5,
@@ -64,6 +112,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfd5ae25_f8fae9a3",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1076,
+      "author": {
+        "id": 9016
+      },
+      "writtenOn": "2023-01-10T13:22:09Z",
+      "side": 1,
+      "message": "we need it to have the same lifetime as pSrcLine,",
+      "parentUuid": "01ccaab3_bbee5648",
+      "revId": "e03a65f4a9219ddb849195f4cf97e52e607f5361",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "474799c3_f59cfd81",
@@ -77,6 +143,24 @@
       "writtenOn": "2023-01-10T00:01:16Z",
       "side": 1,
       "message": "This could become:\n\n```\n} else if (m_pStreamAcc-\u003eGetSize() \u003e line * src_pitch_value) {\n  pdfium::span\u003cconst uint8_t\u003e remaining_bytes \u003d ...;\n  if (remaining_bytes.size() \u003e\u003d src_pitch_value) {\n    ...;\n  } else {\n    ...;\n  }\n}\n```",
+      "revId": "e03a65f4a9219ddb849195f4cf97e52e607f5361",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7b4ba75_f635a977",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1084,
+      "author": {
+        "id": 9016
+      },
+      "writtenOn": "2023-01-10T13:22:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "474799c3_f59cfd81",
       "revId": "e03a65f4a9219ddb849195f4cf97e52e607f5361",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
