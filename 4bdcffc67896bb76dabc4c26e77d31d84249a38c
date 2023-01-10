@@ -319,6 +319,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f38a1d9_d440f735",
+        "filename": "core/fpdfapi/render/charposlist.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 9016
+      },
+      "writtenOn": "2023-01-10T13:49:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fa3c747_17e28177",
+      "revId": "4bdcffc67896bb76dabc4c26e77d31d84249a38c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8ef4c07d_59d77f5d",
