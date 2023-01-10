@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80032e1a_51ee1801",
+        "filename": "core/fpdfapi/render/charposlist.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-01-10T19:47:02Z",
+      "side": 1,
+      "message": "1. Let\u0027s move this section above line 41 as the comment of the function.\n\n2. In the \"For example\" section, it\u0027s easier to describe the non-ideal situation with the actual parameters of the function. How about:\nFor example, if \"`subst_font` is \"Book\" and the `base_font_name` is \"Bookman\", this function will return true even though the actual font \"Bookman\" is not loaded.",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 0
+      },
+      "revId": "085cb33ad820629c1b7f94ad463922a5f66657e8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
