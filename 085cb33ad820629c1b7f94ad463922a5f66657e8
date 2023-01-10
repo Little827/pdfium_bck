@@ -22,6 +22,30 @@
       },
       "revId": "085cb33ad820629c1b7f94ad463922a5f66657e8",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b45790ad_d974731c",
+        "filename": "core/fpdfapi/render/charposlist.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 9016
+      },
+      "writtenOn": "2023-01-10T21:31:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80032e1a_51ee1801",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 0
+      },
+      "revId": "085cb33ad820629c1b7f94ad463922a5f66657e8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
