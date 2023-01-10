@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c6ee5d6_4ac041b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-01-10T21:47:18Z",
+      "side": 1,
+      "message": "To test the corpus tests you updated in https://pdfium-review.googlesource.com/c/pdfium_tests/+/102970, you will need to update DEPS in this CL:\nChange \n\u0027pdfium_tests_revision\u0027: \u0027cfeb9b2e0386a0aa23ba961b99e0ea651ccc1a45\u0027\nto  \n\u0027pdfium_tests_revision\u0027: \u0027refs/changes/70/102970/3\u0027\n\nThen I will help you start a CQ DRY RUN.",
+      "revId": "315f0aad02b5964e65c0bfdf37e1c2a21e8f43b1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3eb4f079_91ea400d",
+        "filename": "core/fpdfapi/render/charposlist.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-01-10T21:47:18Z",
+      "side": 1,
+      "message": "Use backticks \\` instead of quote \" to wrap parameter or variable names in a comment.\nDo the same change to `base_font_name`.\n\nSee c++ style guide: https://google.github.io/styleguide/cppguide.html#Function_Comments",
+      "range": {
+        "startLine": 42,
+        "startChar": 19,
+        "endLine": 42,
+        "endChar": 31
+      },
+      "revId": "315f0aad02b5964e65c0bfdf37e1c2a21e8f43b1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
