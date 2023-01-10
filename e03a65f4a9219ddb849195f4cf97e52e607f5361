@@ -132,6 +132,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4be138f8_64957602",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1076,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-01-10T21:47:38Z",
+      "side": 1,
+      "message": "In that case, doesn\u0027t the declaration order have to be reversed, so `pSrcLine` gets destroyed first to avoid a short-lived dangling pointer?\n\nIt would be helpful to add a comment here to document the variable lifetime expectations.",
+      "parentUuid": "cfd5ae25_f8fae9a3",
+      "revId": "e03a65f4a9219ddb849195f4cf97e52e607f5361",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "474799c3_f59cfd81",
         "filename": "core/fpdfapi/page/cpdf_dib.cpp",
         "patchSetId": 1
