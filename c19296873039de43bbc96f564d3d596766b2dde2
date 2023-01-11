@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bc35085_721c3a11",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-01-11T22:11:25Z",
+      "side": 1,
+      "message": "Just \"32000\" since English doesn\u0027t care about int vs float?",
+      "range": {
+        "startLine": 10,
+        "startChar": 63,
+        "endLine": 10,
+        "endChar": 71
+      },
+      "revId": "c19296873039de43bbc96f564d3d596766b2dde2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07bbae56_d2b4a611",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-01-11T22:11:25Z",
+      "side": 1,
+      "message": "\"we may need to\" since we are not 100% sure yet?",
+      "range": {
+        "startLine": 12,
+        "startChar": 26,
+        "endLine": 12,
+        "endChar": 36
+      },
+      "revId": "c19296873039de43bbc96f564d3d596766b2dde2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0abae8e2_8f0fcc8e",
+        "filename": "testing/resources/pixel/long_dashed_line.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-01-11T22:11:25Z",
+      "side": 1,
+      "message": "Put these on the previous line. See hello_world.in for reference. Think of it as\n\n```\nif (cond) {\n}\n```\n\nvs.\n\n```\nif (cond)\n{\n}\n```",
+      "revId": "c19296873039de43bbc96f564d3d596766b2dde2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2082edd3_5cc4e7c0",
+        "filename": "testing/resources/pixel/long_dashed_line.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-01-11T22:11:25Z",
+      "side": 1,
+      "message": "No spaces immediately inside the brackets. Like `if (cond)` vs. `if ( cond )`.",
+      "range": {
+        "startLine": 11,
+        "startChar": 12,
+        "endLine": 11,
+        "endChar": 27
+      },
+      "revId": "c19296873039de43bbc96f564d3d596766b2dde2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
