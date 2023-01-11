@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "6747244a_4af693ac",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 8906
+      },
+      "writtenOn": "2023-01-11T18:38:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7fac484d_5eaaa07c",
+      "revId": "5000eb67395935f842227686f895c1508c13cbcf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "07c39f8c_c309aeaf",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3
@@ -31,6 +49,24 @@
       "writtenOn": "2023-01-11T16:59:50Z",
       "side": 1,
       "message": "Yes, PDFium uses `gn check`.",
+      "revId": "5000eb67395935f842227686f895c1508c13cbcf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "482e0115_7fa6fa9e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 8906
+      },
+      "writtenOn": "2023-01-11T18:38:12Z",
+      "side": 1,
+      "message": "Thanks. Updating Skia\u0027s rules to do that can be in a follow-up change.",
+      "parentUuid": "07c39f8c_c309aeaf",
       "revId": "5000eb67395935f842227686f895c1508c13cbcf",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
