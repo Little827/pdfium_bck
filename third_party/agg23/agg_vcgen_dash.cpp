@@ -24,6 +24,8 @@
 #include "agg_vcgen_dash.h"
 #include "third_party/base/check_op.h"
 
+#include <iostream>
+
 namespace pdfium
 {
 namespace agg
@@ -50,10 +52,11 @@ void vcgen_dash::remove_all_dashes()
 }
 void vcgen_dash::add_dash(float dash_len, float gap_len)
 {
-    if(m_num_dashes < max_dashes) {
-        m_total_dash_len += dash_len + gap_len;
-        m_dashes[m_num_dashes++] = dash_len;
-        m_dashes[m_num_dashes++] = gap_len;
+  std::cout << "add_dash ";
+  if (m_num_dashes < max_dashes) {
+    m_total_dash_len += dash_len + gap_len;
+    m_dashes[m_num_dashes++] = dash_len;
+    m_dashes[m_num_dashes++] = gap_len;
     }
 }
 void vcgen_dash::dash_start(float ds)
@@ -89,9 +92,10 @@ void vcgen_dash::remove_all()
 }
 void vcgen_dash::add_vertex(float x, float y, unsigned cmd)
 {
-    m_status = initial;
-    if(is_move_to(cmd)) {
-        m_src_vertices.modify_last(vertex_dist(x, y));
+  std::cout << "dash::add_vertex\n";
+  m_status = initial;
+  if (is_move_to(cmd)) {
+    m_src_vertices.modify_last(vertex_dist(x, y));
     } else {
         if(is_vertex(cmd)) {
             m_src_vertices.add(vertex_dist(x, y));
@@ -99,6 +103,7 @@ void vcgen_dash::add_vertex(float x, float y, unsigned cmd)
             m_closed = get_close_flag(cmd);
         }
     }
+    std::cout << "dash::add_vertex done\n";
 }
 void vcgen_dash::rewind(unsigned)
 {
@@ -111,6 +116,10 @@ void vcgen_dash::rewind(unsigned)
 }
 unsigned vcgen_dash::vertex(float* x, float* y)
 {
+  static int i = 0;
+  if (i < 50) {
+    std::cout << i++ << " dash: (" << *x << "," << *y << ") \n";
+  }
     unsigned cmd = path_cmd_move_to;
     while(!is_stop(cmd)) {
         switch(m_status) {

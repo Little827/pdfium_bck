@@ -27,6 +27,8 @@
 #include "third_party/base/notreached.h"
 #include "third_party/base/span.h"
 
+#include <iostream>
+
 // Ignore fallthrough warnings in agg23 headers.
 #if defined(__clang__)
 #pragma GCC diagnostic push
@@ -47,13 +49,6 @@
 
 namespace pdfium {
 namespace {
-
-const float kMaxPos = 32000.0f;
-
-CFX_PointF HardClip(const CFX_PointF& pos) {
-  return CFX_PointF(pdfium::clamp(pos.x, -kMaxPos, kMaxPos),
-                    pdfium::clamp(pos.y, -kMaxPos, kMaxPos));
-}
 
 void RgbByteOrderCompositeRect(const RetainPtr<CFX_DIBitmap>& pBitmap,
                                int left,
@@ -238,6 +233,7 @@ void RasterizeStroke(agg::rasterizer_scanline_aa* rasterizer,
                      const CFX_GraphStateData* pGraphState,
                      float scale,
                      bool bTextMode) {
+  std::cerr << "RasterizeStroke Start" << std::endl;
   agg::line_cap_e cap;
   switch (pGraphState->m_LineCap) {
     case CFX_GraphStateData::LineCap::kRound:
@@ -290,6 +286,7 @@ void RasterizeStroke(agg::rasterizer_scanline_aa* rasterizer,
     stroke.miter_limit(pGraphState->m_MiterLimit);
     stroke.width(width);
     rasterizer->add_path_transformed(stroke, pObject2Device);
+    std::cerr << "RasterizeStroke Complete" << std::endl;
     return;
   }
   agg::conv_stroke<agg::path_storage> stroke(*path_data);
@@ -911,7 +908,6 @@ agg::path_storage BuildAggPath(const CFX_Path& path,
     if (pObject2Device)
       pos = pObject2Device->Transform(pos);
 
-    pos = HardClip(pos);
     CFX_Path::Point::Type point_type = points[i].m_Type;
     if (point_type == CFX_Path::Point::Type::kMove) {
       agg_path.move_to(pos.x, pos.y);
@@ -933,9 +929,6 @@ agg::path_storage BuildAggPath(const CFX_Path& path,
           pos2 = pObject2Device->Transform(pos2);
           pos3 = pObject2Device->Transform(pos3);
         }
-        pos0 = HardClip(pos0);
-        pos2 = HardClip(pos2);
-        pos3 = HardClip(pos3);
         agg::curve4 curve(pos0.x, pos0.y, pos.x, pos.y, pos2.x, pos2.y, pos3.x,
                           pos3.y);
         i += 2;

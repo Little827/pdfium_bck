@@ -38,6 +38,8 @@
 #include "core/fxcrt/fx_coordinates.h"
 #include "core/fxcrt/fx_memory.h"
 
+#include <iostream>
+
 namespace pdfium
 {
 namespace agg
@@ -231,13 +233,20 @@ public:
     void add_vertex(float x, float y, unsigned cmd)
     {
         if(is_close(cmd)) {
-            close_polygon();
+          std::cerr << "is_close" << std::endl;
+          close_polygon();
         } else {
             if(is_move_to(cmd)) {
-                move_to(poly_coord(x), poly_coord(y));
+              std::cerr << "move_to(" << poly_coord(x) << "," << poly_coord(y)
+                        << ")"
+                        << " aka (" << x << "," << y << ")" << std::endl;
+              move_to(poly_coord(x), poly_coord(y));
             } else {
                 if(is_vertex(cmd)) {
-                    line_to(poly_coord(x), poly_coord(y));
+                  std::cerr << "line_to(" << poly_coord(x) << ","
+                            << poly_coord(y) << ") aka (" << x << "," << y
+                            << ")" << std::endl;
+                  line_to(poly_coord(x), poly_coord(y));
                 }
             }
         }
@@ -405,18 +414,21 @@ public:
     template<class VertexSource>
     void add_path_transformed(VertexSource& vs, const CFX_Matrix* pMatrix, unsigned path_id = 0)
     {
-        float x;
-        float y;
-        unsigned cmd;
-        vs.rewind(path_id);
-        while(!is_stop(cmd = vs.vertex(&x, &y))) {
-          if (pMatrix) {
-            CFX_PointF ret = pMatrix->Transform(CFX_PointF(x, y));
-            x = ret.x;
-            y = ret.y;
-          }
-          add_vertex(x, y, cmd);
+      std::cerr << "add_path_transformed" << std::endl;
+      float x;
+      float y;
+      unsigned cmd;
+      vs.rewind(path_id);
+      while (!is_stop(cmd = vs.vertex(&x, &y))) {
+        std::cerr << "This doesn't get reached\n";
+        if (pMatrix) {
+          CFX_PointF ret = pMatrix->Transform(CFX_PointF(x, y));
+          x = ret.x;
+          y = ret.y;
         }
+        add_vertex(x, y, cmd);
+        }
+        std::cerr << "\nadd_path_transformed complete" << std::endl;
     }
 private:
     rasterizer_scanline_aa(const rasterizer_scanline_aa&);
