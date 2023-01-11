@@ -15,6 +15,7 @@
 //----------------------------------------------------------------------------
 #ifndef AGG_CONV_ADAPTOR_VCGEN_INCLUDED
 #define AGG_CONV_ADAPTOR_VCGEN_INCLUDED
+#include <iostream>
 #include "agg_basics.h"
 namespace pdfium
 {
