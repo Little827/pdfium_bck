@@ -33,6 +33,24 @@
       "message": "Can the test case just be a pixel test? If we resolve all the byte ordering issues soon and enable tests to fix crbug.com/pdfium/1955, then that will provide test coverage for FPDF_REVERSE_BYTE_ORDER.",
       "revId": "8aaaaca94a6a65808b9c7e6f8ed25ef6c66f1626",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14c2e5ea_0603174f",
+        "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1451,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-01-11T20:15:26Z",
+      "side": 1,
+      "message": "Offline discussion:\nThe remaining failures in pixel tests are often off by 1 or 2 in some color channels, but they are visually acceptable.\nBefore pixel tests can pass with `reverse-byte-order`, we can keep this embedder test.\n\nIn the new patchset: I added a TODO comment that this test can be removed once pixel tests can pass with `reverse-byte-order`.",
+      "parentUuid": "765949fc_ea78e20e",
+      "revId": "8aaaaca94a6a65808b9c7e6f8ed25ef6c66f1626",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
