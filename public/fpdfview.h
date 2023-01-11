@@ -1414,6 +1414,7 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDF_GetXFAPacketContent(
 //          The caller must not attempt to modify or free the result.
 FPDF_EXPORT const char* FPDF_CALLCONV FPDF_GetRecommendedV8Flags();
 
+#ifndef V8_ENABLE_SANDBOX
 // Experimental API.
 // Function: FPDF_GetArrayBufferAllocatorSharedInstance()
 //          Helper function for initializing V8 isolates that will
@@ -1427,7 +1428,9 @@ FPDF_EXPORT const char* FPDF_CALLCONV FPDF_GetRecommendedV8Flags();
 //          Use is optional, but allows external creation of isolates
 //          matching the ones PDFium will make when none is provided
 //          via |FPDF_LIBRARY_CONFIG::m_pIsolate|.
+// TODO(crbug.com/1325244): support this v8 mode.
 FPDF_EXPORT void* FPDF_CALLCONV FPDF_GetArrayBufferAllocatorSharedInstance();
+#endif  // V8_ENABLE_SANDBOX
 #endif  // PDF_ENABLE_V8
 
 #ifdef PDF_ENABLE_XFA
