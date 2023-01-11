@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b36985d_ecc32404",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1110,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-01-11T22:15:31Z",
+      "side": 1,
+      "message": "\"support the sandboxed case\" ?",
+      "range": {
+        "startLine": 1110,
+        "startChar": 28,
+        "endLine": 1110,
+        "endChar": 45
+      },
+      "revId": "e81c9d709378ee16105362aedb62a1c6d6c1d687",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddb648cf_36a21103",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1431,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-01-11T22:15:31Z",
+      "side": 1,
+      "message": "- Indent\n- Clarify what \"this\" means",
+      "revId": "e81c9d709378ee16105362aedb62a1c6d6c1d687",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
