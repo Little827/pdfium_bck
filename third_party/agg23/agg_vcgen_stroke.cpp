@@ -25,6 +25,8 @@
 
 #include "agg_vcgen_stroke.h"
 
+#include <iostream>
+
 namespace pdfium
 {
 namespace agg
@@ -54,9 +56,10 @@ void vcgen_stroke::remove_all()
 }
 void vcgen_stroke::add_vertex(float x, float y, unsigned cmd)
 {
-    m_status = initial;
-    if(is_move_to(cmd)) {
-        m_src_vertices.modify_last(vertex_dist_cmd(x, y, cmd));
+  std::cout << "stroke::add_vertex (" << x << "," << y << ")\n";
+  m_status = initial;
+  if (is_move_to(cmd)) {
+    m_src_vertices.modify_last(vertex_dist_cmd(x, y, cmd));
     } else {
         if(is_vertex(cmd)) {
             m_src_vertices.add(vertex_dist_cmd(x, y, cmd));
@@ -91,6 +94,10 @@ void vcgen_stroke::rewind(unsigned)
 }
 unsigned vcgen_stroke::vertex(float* x, float* y)
 {
+  static int i = 0;
+  if (i < 50) {
+    std::cout << i++ << " stroke: (" << *x << "," << *y << ") \n";
+  }
     unsigned cmd = path_cmd_line_to;
     line_join_e curj;
     while(!is_stop(cmd)) {
