@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cddb078_3ebef944",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 8936
+      },
+      "writtenOn": "2023-01-12T00:47:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7bc35085_721c3a11",
+      "range": {
+        "startLine": 10,
+        "startChar": 63,
+        "endLine": 10,
+        "endChar": 71
+      },
+      "revId": "c19296873039de43bbc96f564d3d596766b2dde2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "07bbae56_d2b4a611",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-01-11T22:11:25Z",
       "side": 1,
       "message": "\"we may need to\" since we are not 100% sure yet?",
+      "range": {
+        "startLine": 12,
+        "startChar": 26,
+        "endLine": 12,
+        "endChar": 36
+      },
+      "revId": "c19296873039de43bbc96f564d3d596766b2dde2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78e41aca_57ca2b07",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 8936
+      },
+      "writtenOn": "2023-01-12T00:47:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07bbae56_d2b4a611",
       "range": {
         "startLine": 12,
         "startChar": 26,
@@ -64,6 +112,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3757be06_55d7d4fb",
+        "filename": "testing/resources/pixel/long_dashed_line.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 8936
+      },
+      "writtenOn": "2023-01-12T00:47:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0abae8e2_8f0fcc8e",
+      "revId": "c19296873039de43bbc96f564d3d596766b2dde2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2082edd3_5cc4e7c0",
@@ -77,6 +143,30 @@
       "writtenOn": "2023-01-11T22:11:25Z",
       "side": 1,
       "message": "No spaces immediately inside the brackets. Like `if (cond)` vs. `if ( cond )`.",
+      "range": {
+        "startLine": 11,
+        "startChar": 12,
+        "endLine": 11,
+        "endChar": 27
+      },
+      "revId": "c19296873039de43bbc96f564d3d596766b2dde2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af531eea_3ada848d",
+        "filename": "testing/resources/pixel/long_dashed_line.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 8936
+      },
+      "writtenOn": "2023-01-12T00:47:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2082edd3_5cc4e7c0",
       "range": {
         "startLine": 11,
         "startChar": 12,
