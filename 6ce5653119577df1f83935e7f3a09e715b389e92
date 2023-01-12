@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "93a3b082_45df59fc",
+        "filename": "fpdfsdk/formfiller/cffl_formfield.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 6910
+      },
+      "writtenOn": "2023-01-12T22:29:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a0ea18d_4eed6eb5",
+      "revId": "6ce5653119577df1f83935e7f3a09e715b389e92",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "98b083ca_a6995bf4",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-01-12T22:20:46Z",
       "side": 1,
       "message": "Restore original formatting.",
+      "revId": "6ce5653119577df1f83935e7f3a09e715b389e92",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d658ef5c_9eeb4251",
+        "filename": "fpdfsdk/pwl/cpwl_edit_impl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 6910
+      },
+      "writtenOn": "2023-01-12T22:29:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98b083ca_a6995bf4",
       "revId": "6ce5653119577df1f83935e7f3a09e715b389e92",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
