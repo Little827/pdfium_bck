@@ -35,6 +35,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e660a08c_afaf8fda",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8936
+      },
+      "writtenOn": "2023-01-12T02:06:02Z",
+      "side": 1,
+      "message": "Offline, we discovered that removing the limit causes some PDFs with very long dashed lines to render very slowly, or enter an infinite loop. To avoid this, we decided to keep the limit, and instead clamp coordinates such that they remain at the same angle with the previous point.\n\nRelevant CL comment above.",
+      "parentUuid": "8b7534b5_3fe5bfe0",
+      "revId": "144d3d63f507c67e16b6642374d98f0155b0a266",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ad2e5442_80447cd2",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-12-08T20:31:56Z",
       "side": 1,
       "message": "Is clamping to this value the same as removing HardClip() entirely?",
+      "revId": "144d3d63f507c67e16b6642374d98f0155b0a266",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4555fa3e_3ee6d1d2",
+        "filename": "core/fxge/agg/fx_agg_driver.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 8936
+      },
+      "writtenOn": "2023-01-12T02:06:02Z",
+      "side": 1,
+      "message": "Obsolete, since we are keeping it at 32000.0F.",
+      "parentUuid": "ad2e5442_80447cd2",
       "revId": "144d3d63f507c67e16b6642374d98f0155b0a266",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }

@@ -34,6 +34,24 @@
       "parentUuid": "939c9a8c_e5f568db",
       "revId": "df9471b787001d70cb3be1b7bf698ed5c416e026",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "739a1cea_9cd17b05",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8936
+      },
+      "writtenOn": "2023-01-12T02:06:02Z",
+      "side": 1,
+      "message": "We decided to keep HardClip() to make sure we don\u0027t encounter performance issues. This CL has pivoted from removing the position limit to clamping it while keeping the coordinate position relative to the previous point.",
+      "parentUuid": "488896e8_2f577734",
+      "revId": "df9471b787001d70cb3be1b7bf698ed5c416e026",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
