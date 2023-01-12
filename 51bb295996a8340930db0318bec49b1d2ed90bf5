@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7db6d7c8_6d2baedf",
+        "filename": "core/fxge/agg/fx_agg_driver.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 8936
+      },
+      "writtenOn": "2023-01-12T23:03:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a78dbb47_acf1c056",
+      "range": {
+        "startLine": 61,
+        "startChar": 32,
+        "endLine": 62,
+        "endChar": 11
+      },
+      "revId": "51bb295996a8340930db0318bec49b1d2ed90bf5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4205c0f0_b6dd8373",
@@ -37,6 +61,24 @@
       "writtenOn": "2023-01-12T18:27:36Z",
       "side": 1,
       "message": "Reuse the result from line 66?",
+      "revId": "51bb295996a8340930db0318bec49b1d2ed90bf5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5aea1d60_2a905a9b",
+        "filename": "core/fxge/agg/fx_agg_driver.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 8936
+      },
+      "writtenOn": "2023-01-12T23:03:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4205c0f0_b6dd8373",
       "revId": "51bb295996a8340930db0318bec49b1d2ed90bf5",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -58,6 +100,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a87ec52e_41637004",
+        "filename": "core/fxge/agg/fx_agg_driver.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 8936
+      },
+      "writtenOn": "2023-01-12T23:03:07Z",
+      "side": 1,
+      "message": "Yes. Refactored.",
+      "parentUuid": "b33f8efd_3678a21f",
+      "revId": "51bb295996a8340930db0318bec49b1d2ed90bf5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "46083ed3_d9a15eb7",
@@ -71,6 +131,24 @@
       "writtenOn": "2023-01-12T18:27:36Z",
       "side": 1,
       "message": "Is there a test case to make sure this code path works correctly?",
+      "revId": "51bb295996a8340930db0318bec49b1d2ed90bf5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1adf38a_a6ab87d4",
+        "filename": "core/fxge/agg/fx_agg_driver.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 971,
+      "author": {
+        "id": 8936
+      },
+      "writtenOn": "2023-01-12T23:03:07Z",
+      "side": 1,
+      "message": "Discussed in separate chat, the existing code is already buggy due to `HardClip()` changing the points of the bezier curve. Removed the changes relevant to bezier curves. Will fix and add a test case in a separate CL. This CL focuses on line drawings.",
+      "parentUuid": "46083ed3_d9a15eb7",
       "revId": "51bb295996a8340930db0318bec49b1d2ed90bf5",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
