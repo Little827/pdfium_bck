@@ -12,16 +12,17 @@
 #include "public/fpdf_fwlevent.h"
 #include "public/fpdfview.h"
 #include "testing/fx_string_testhelpers.h"
+#include "third_party/abseil-cpp/absl/strings/match.h"
 
 namespace {
 
 uint32_t GetModifiers(std::string modifiers_string) {
   uint32_t modifiers = 0;
-  if (modifiers_string.find("shift") != std::string::npos)
+  if (absl::StrContains(modifiers_string, "shift"))
     modifiers |= FWL_EVENTFLAG_ShiftKey;
-  if (modifiers_string.find("control") != std::string::npos)
+  if (absl::StrContains(modifiers_string, "control"))
     modifiers |= FWL_EVENTFLAG_ControlKey;
-  if (modifiers_string.find("alt") != std::string::npos)
+  if (absl::StrContains(modifiers_string, "alt"))
     modifiers |= FWL_EVENTFLAG_AltKey;
 
   return modifiers;
