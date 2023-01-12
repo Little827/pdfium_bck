@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87ce08a5_0709ab20",
+        "filename": "core/fxge/agg/fx_agg_driver.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-01-12T23:53:03Z",
+      "side": 1,
+      "message": "Would it be clearer if this said \"returns a value based on `curr_pos`\" ?",
+      "range": {
+        "startLine": 58,
+        "startChar": 18,
+        "endLine": 58,
+        "endChar": 36
+      },
+      "revId": "d290ecc50102679b76bd1dbe4da2f768c70adb4a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e76416c5_89ab2642",
+        "filename": "core/fxge/agg/fx_agg_driver.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-01-12T23:53:03Z",
+      "side": 1,
+      "message": "Use DCHECK_EQ().",
+      "revId": "d290ecc50102679b76bd1dbe4da2f768c70adb4a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ac0d5b8_215a1e7d",
+        "filename": "core/fxge/agg/fx_agg_driver.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-01-12T23:53:03Z",
+      "side": 1,
+      "message": "This line says the position will need to be recalculated, but line 72-74 doesn\u0027t recalculate. Rephrase this comment. Or split out part of the comment and put it on line 76?",
+      "revId": "d290ecc50102679b76bd1dbe4da2f768c70adb4a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5931218_328ed814",
+        "filename": "core/fxge/agg/fx_agg_driver.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 951,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-01-12T23:53:03Z",
+      "side": 1,
+      "message": "Needs a bit of investigation to see if this is also buggy.",
+      "revId": "d290ecc50102679b76bd1dbe4da2f768c70adb4a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
