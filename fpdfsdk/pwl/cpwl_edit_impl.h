@@ -45,14 +45,11 @@ class CPWL_EditImpl {
   CPWL_EditImpl();
   ~CPWL_EditImpl();
 
-  void DrawEdit(CFX_RenderDevice* pDevice,
-                const CFX_Matrix& mtUser2Device,
-                FX_COLORREF crTextFill,
-                const CFX_FloatRect& rcClip,
-                const CFX_PointF& ptOffset,
-                const CPVT_WordRange* pRange,
-                IPWL_FillerNotify* pHandler,
-                IPWL_FillerNotify::PerWindowData* pWindowData);
+  void DrawEdit(CFX_RenderDevice* pDevice, const CFX_Matrix& mtUser2Device,
+                FX_COLORREF crTextFill, const CFX_FloatRect& rcClip,
+                const CFX_PointF& ptOffset, const CPVT_WordRange* pRange,
+                IPWL_FillerNotify* pFillerNotify,
+                IPWL_FillerNotify::PerWindowData* pSystemData);
 
   void SetFontMap(IPVT_FontMap* pFontMap);
   void SetNotify(CPWL_Edit* pNotify);
