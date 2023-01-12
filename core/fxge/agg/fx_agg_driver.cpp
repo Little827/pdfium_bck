@@ -55,6 +55,40 @@ CFX_PointF HardClip(const CFX_PointF& pos) {
                     pdfium::clamp(pos.y, -kMaxPos, kMaxPos));
 }
 
+// Hard clips and returns `curr_pos`, attempting to recalculate the x and y
+// values such that both x and y values are within [-kMaxPos, kMaxPos]
+// boundaries and the slope between of the line connecting `prev_pos` and
+// `curr_pos` remains the same. Assumes `prev_pos` has already been hard
+// clipped.
+CFX_PointF HardClipScaled(const CFX_PointF& prev_pos,
+                          const CFX_PointF& curr_pos) {
+  // If the current position is already within bounds, there is no need to clip.
+  if (curr_pos == HardClip(curr_pos)) {
+    return curr_pos;
+  }
+
+  // This prevent divide by 0 errors when calculating the slope.
+  if (prev_pos.x == curr_pos.x || prev_pos.y == curr_pos.y) {
+    return HardClip(curr_pos);
+  }
+
+  CFX_PointF new_pos;
+
+  float m = (curr_pos.y - prev_pos.y) / (curr_pos.x - prev_pos.x);
+  float b = prev_pos.y - (m * prev_pos.x);
+
+  // Clamp the x or y value that has the largest absolute value and recalculate
+  // the other coordinate value.
+  if (fabs(curr_pos.x) > fabs(curr_pos.y)) {
+    new_pos.x = curr_pos.x < -kMaxPos ? -kMaxPos : kMaxPos;
+    new_pos.y = new_pos.x * m + b;
+  } else {
+    new_pos.y = curr_pos.y < -kMaxPos ? -kMaxPos : kMaxPos;
+    new_pos.x = (new_pos.y - b) / m;
+  }
+  return new_pos;
+}
+
 void RgbByteOrderCompositeRect(const RetainPtr<CFX_DIBitmap>& pBitmap,
                                int left,
                                int top,
@@ -906,16 +940,17 @@ agg::path_storage BuildAggPath(const CFX_Path& path,
                                const CFX_Matrix* pObject2Device) {
   agg::path_storage agg_path;
   pdfium::span<const CFX_Path::Point> points = path.GetPoints();
+  CFX_PointF prev_pos;
   for (size_t i = 0; i < points.size(); ++i) {
     CFX_PointF pos = points[i].m_Point;
     if (pObject2Device)
       pos = pObject2Device->Transform(pos);
-
-    pos = HardClip(pos);
     CFX_Path::Point::Type point_type = points[i].m_Type;
     if (point_type == CFX_Path::Point::Type::kMove) {
+      pos = HardClip(pos);
       agg_path.move_to(pos.x, pos.y);
     } else if (point_type == CFX_Path::Point::Type::kLine) {
+      pos = HardClipScaled(prev_pos, pos);
       if (i > 0 && points[i - 1].IsTypeAndOpen(CFX_Path::Point::Type::kMove) &&
           (i == points.size() - 1 ||
            points[i + 1].IsTypeAndOpen(CFX_Path::Point::Type::kMove)) &&
@@ -933,17 +968,20 @@ agg::path_storage BuildAggPath(const CFX_Path& path,
           pos2 = pObject2Device->Transform(pos2);
           pos3 = pObject2Device->Transform(pos3);
         }
-        pos0 = HardClip(pos0);
-        pos2 = HardClip(pos2);
-        pos3 = HardClip(pos3);
+        pos0 = HardClipScaled(prev_pos, pos0);
+        pos = HardClipScaled(pos0, pos);
+        pos2 = HardClipScaled(pos, pos2);
+        pos3 = HardClipScaled(pos2, pos3);
         agg::curve4 curve(pos0.x, pos0.y, pos.x, pos.y, pos2.x, pos2.y, pos3.x,
                           pos3.y);
         i += 2;
         agg_path.add_path(curve);
+        pos = pos3;
       }
     }
     if (points[i].m_CloseFigure)
       agg_path.end_poly();
+    prev_pos = pos;
   }
   return agg_path;
 }
