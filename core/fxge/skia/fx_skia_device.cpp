@@ -687,8 +687,7 @@ bool Upsample(const RetainPtr<CFX_DIBBase>& pSource,
       pSource->DebugVerifyBufferIsPreMultiplied(buffer);
       break;
     default:
-      NOTREACHED();  // TODO(bug_11) ensure that all cases are covered
-      colorType = SkColorType::kUnknown_SkColorType;
+      NOTREACHED();
   }
   SkImageInfo imageInfo =
       SkImageInfo::Make(width, height, colorType, alphaType);
