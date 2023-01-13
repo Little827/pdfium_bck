@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "09fadef6_9e4ed567",
+        "filename": "core/fxge/agg/fx_agg_driver.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 8936
+      },
+      "writtenOn": "2023-01-13T00:56:03Z",
+      "side": 1,
+      "message": "Yes, done.",
+      "parentUuid": "87ce08a5_0709ab20",
+      "range": {
+        "startLine": 58,
+        "startChar": 18,
+        "endLine": 58,
+        "endChar": 36
+      },
+      "revId": "d290ecc50102679b76bd1dbe4da2f768c70adb4a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e76416c5_89ab2642",
@@ -41,6 +65,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f55ba9e6_a9a352bc",
+        "filename": "core/fxge/agg/fx_agg_driver.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 8936
+      },
+      "writtenOn": "2023-01-13T00:56:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e76416c5_89ab2642",
+      "revId": "d290ecc50102679b76bd1dbe4da2f768c70adb4a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8ac0d5b8_215a1e7d",
@@ -54,6 +96,24 @@
       "writtenOn": "2023-01-12T23:53:03Z",
       "side": 1,
       "message": "This line says the position will need to be recalculated, but line 72-74 doesn\u0027t recalculate. Rephrase this comment. Or split out part of the comment and put it on line 76?",
+      "revId": "d290ecc50102679b76bd1dbe4da2f768c70adb4a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bca6494b_e89e8957",
+        "filename": "core/fxge/agg/fx_agg_driver.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 8936
+      },
+      "writtenOn": "2023-01-13T00:56:03Z",
+      "side": 1,
+      "message": "Split and moved.",
+      "parentUuid": "8ac0d5b8_215a1e7d",
       "revId": "d290ecc50102679b76bd1dbe4da2f768c70adb4a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
