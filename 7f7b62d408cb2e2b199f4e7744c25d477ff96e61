@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6f0baa3_8e91f265",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-01-13T01:13:34Z",
+      "side": 1,
+      "message": "Chromium DEPS roll failed because Chromium trybots are building pdfium_test. e.g. https://ci.chromium.org/ui/p/chromium/builders/try/linux-rel/1258698/overview\n\nRevert?",
+      "revId": "7f7b62d408cb2e2b199f4e7744c25d477ff96e61",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
