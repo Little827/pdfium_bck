@@ -16,6 +16,24 @@
       "message": "Better describe what\u0027s going on in this CL.",
       "revId": "3d4019ee5829c95f3657f04e3215adf0596c2432",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3950465c_eb15755c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 6910
+      },
+      "writtenOn": "2023-01-13T00:06:25Z",
+      "side": 1,
+      "message": "I fat fingered \"END_PUBLIC\" and this was the result. Fixed!",
+      "parentUuid": "24f865c1_8c8c2d09",
+      "revId": "3d4019ee5829c95f3657f04e3215adf0596c2432",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
