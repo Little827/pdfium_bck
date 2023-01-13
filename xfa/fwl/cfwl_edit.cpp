@@ -16,6 +16,7 @@
 #include "core/fxge/text_char_pos.h"
 #include "third_party/base/check.h"
 #include "third_party/base/cxx17_backports.h"
+#include "third_party/base/numerics/clamped_math.h"
 #include "third_party/base/numerics/safe_conversions.h"
 #include "v8/include/cppgc/visitor.h"
 #include "xfa/fde/cfde_textout.h"
@@ -219,6 +220,20 @@ absl::optional<WideString> CFWL_Edit::Cut() {
   WideString cut_text = m_pEditEngine->DeleteSelectedText();
   UpdateCaret();
   return cut_text;
+}
+
+bool CFWL_Edit::PasteAndKeepSelection(const WideString& wsPaste) {
+  auto [selection_start, selection_length_old] = m_pEditEngine->GetSelection();
+  size_t content_length_old = m_pEditEngine->GetLength();
+  Paste(wsPaste);
+  size_t content_length_new = m_pEditEngine->GetLength();
+  m_pEditEngine->SetSelection(
+      selection_start,
+      pdfium::base::ClampSub(
+          pdfium::base::ClampAdd(selection_length_old, content_length_new),
+          content_length_old));
+
+  return true;
 }
 
 bool CFWL_Edit::Paste(const WideString& wsPaste) {

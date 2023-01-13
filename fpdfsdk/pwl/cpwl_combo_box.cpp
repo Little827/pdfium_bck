@@ -15,6 +15,7 @@
 #include "fpdfsdk/pwl/cpwl_edit.h"
 #include "fpdfsdk/pwl/ipwl_fillernotify.h"
 #include "public/fpdf_fwlevent.h"
+#include "third_party/base/notreached.h"
 
 namespace {
 
@@ -60,6 +61,11 @@ WideString CPWL_ComboBox::GetSelectedText() {
     return m_pEdit->GetSelectedText();
 
   return WideString();
+}
+
+void CPWL_ComboBox::ReplaceAndKeepSelection(const WideString& text) {
+  if (m_pEdit)
+    m_pEdit->ReplaceAndKeepSelection(text);
 }
 
 void CPWL_ComboBox::ReplaceSelection(const WideString& text) {

@@ -83,6 +83,7 @@ class CFWL_Edit : public CFWL_Widget, public CFDE_TextEditEngine::Delegate {
   absl::optional<WideString> Copy();
   absl::optional<WideString> Cut();
   bool Paste(const WideString& wsPaste);
+  bool PasteAndKeepSelection(const WideString& wsPaste);
   bool Undo();
   bool Redo();
   bool CanUndo();
