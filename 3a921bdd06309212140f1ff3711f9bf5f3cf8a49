@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9aeed9a7_cb500128",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 6910
+      },
+      "writtenOn": "2023-01-13T00:25:21Z",
+      "side": 1,
+      "message": "Saw this auto-generated CL and figured I\u0027d ask you if pdfium is allowed to use this absl function. Thanks!",
+      "revId": "3a921bdd06309212140f1ff3711f9bf5f3cf8a49",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
