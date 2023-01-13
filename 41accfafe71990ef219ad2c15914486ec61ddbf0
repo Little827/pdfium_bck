@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "411dddd1_98ffc463",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-01-13T23:29:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1cd185f_4f2f10ee",
+      "range": {
+        "startLine": 10,
+        "startChar": 33,
+        "endLine": 10,
+        "endChar": 41
+      },
+      "revId": "41accfafe71990ef219ad2c15914486ec61ddbf0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d09c40dc_26ddf860",
@@ -37,6 +61,24 @@
       "writtenOn": "2023-01-13T23:23:33Z",
       "side": 1,
       "message": "Should this be std::unique_ptr\u003cT\u003e?",
+      "revId": "41accfafe71990ef219ad2c15914486ec61ddbf0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4f920d3_599dced9",
+        "filename": "fxjs/cfx_v8_array_buffer_allocator.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-01-13T23:29:45Z",
+      "side": 1,
+      "message": "Yep, the comment in v8-array-buffer.h says caller deletes it.",
+      "parentUuid": "d09c40dc_26ddf860",
       "revId": "41accfafe71990ef219ad2c15914486ec61ddbf0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
