@@ -16,6 +16,24 @@
       "message": "Saw this auto-generated CL and figured I\u0027d ask you if pdfium is allowed to use this absl function. Thanks!",
       "revId": "3a921bdd06309212140f1ff3711f9bf5f3cf8a49",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49422322_9011e183",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-01-13T00:32:36Z",
+      "side": 1,
+      "message": "Thanks for trying, but not allowed in Chromium, so PDFium will follow that rule. https://chromium.googlesource.com/chromium/src/+/942f8170/styleguide/c++/c++-features.md#strings-library-banned",
+      "parentUuid": "9aeed9a7_cb500128",
+      "revId": "3a921bdd06309212140f1ff3711f9bf5f3cf8a49",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
