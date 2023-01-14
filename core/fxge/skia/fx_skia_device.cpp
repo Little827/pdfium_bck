@@ -576,7 +576,9 @@ void SetBitmapPaint(bool is_mask,
   else if (bitmap_alpha != 255)
     paint->setAlpha(bitmap_alpha);
 
-  paint->setAntiAlias(anti_alias);
+  // TODO(crbug.com/pdfium/1973): Try rendering images without antialiasing.
+  paint->setAntiAlias(false);
+
   paint->setBlendMode(GetSkiaBlendMode(blend_type));
 }
 
