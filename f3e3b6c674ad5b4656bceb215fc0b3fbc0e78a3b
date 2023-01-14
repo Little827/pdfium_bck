@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2460f0fd_c4335d61",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-01-14T01:55:51Z",
+      "side": 1,
+      "message": "Got a red bots caused by corpus test process being terminated.",
+      "revId": "f3e3b6c674ad5b4656bceb215fc0b3fbc0e78a3b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
