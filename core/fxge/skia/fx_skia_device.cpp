@@ -2297,21 +2297,20 @@ bool CFX_DefaultRenderDevice::SetBitsWithMask(
 void CFX_DIBBase::DebugVerifyBitmapIsPreMultiplied() const {
 #ifdef SK_DEBUG
   DCHECK_EQ(GetBPP(), 32);
-  const uint32_t* buffer = reinterpret_cast<uint32_t*>(GetBuffer().data());
-  int width = GetWidth();
-  int height = GetHeight();
-  // verify that input is really premultiplied
+  const int width = GetWidth();
+  const int height = GetHeight();
   for (int y = 0; y < height; ++y) {
-    const uint32_t* srcRow = buffer + y * width;
+    pdfium::span<const uint8_t> line = GetScanline(y);
     for (int x = 0; x < width; ++x) {
-      uint8_t a = SkGetPackedA32(srcRow[x]);
-      uint8_t r = SkGetPackedR32(srcRow[x]);
-      uint8_t g = SkGetPackedG32(srcRow[x]);
-      uint8_t b = SkGetPackedB32(srcRow[x]);
+      uint8_t a = line[3];
+      uint8_t r = line[2];
+      uint8_t g = line[1];
+      uint8_t b = line[0];
       SkA32Assert(a);
-      DCHECK(r <= a);
-      DCHECK(g <= a);
-      DCHECK(b <= a);
+      DCHECK_LE(r, a);
+      DCHECK_LE(g, a);
+      DCHECK_LE(b, a);
+      line = line.subspan(4);
     }
   }
 #endif  // SK_DEBUG
