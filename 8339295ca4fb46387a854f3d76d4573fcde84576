@@ -22,6 +22,30 @@
       },
       "revId": "8339295ca4fb46387a854f3d76d4573fcde84576",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9654b6b3_90a6f21a",
+        "filename": "DEPS",
+        "patchSetId": 12
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 9016
+      },
+      "writtenOn": "2023-01-15T14:11:16Z",
+      "side": 1,
+      "message": "I have checked corpus and pixel tests for all platforms, skia and agg. All is good now except Mac-Skia, I get failures unrelated to my changes. Same failures if I build and run the tests from the main branch.",
+      "parentUuid": "641eaa23_9ad5b126",
+      "range": {
+        "startLine": 143,
+        "startChar": 28,
+        "endLine": 143,
+        "endChar": 52
+      },
+      "revId": "8339295ca4fb46387a854f3d76d4573fcde84576",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
