@@ -16,6 +16,24 @@
       "message": "Given how much this test case digs into CPDF internals, it\u0027s not much of an embedder test. Maybe this can be part of pdfium_unittests, where the test case creates CPDF_Document, CPDF_Page, and CPDF_PageImageCache directly. I don\u0027t have an existing example to point to. Please let me know if you need help here.",
       "revId": "cdfaf6e2ac0cbff702bef5f84a8bdb3c3ed5059d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f4c77d2_204176c2",
+        "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1454,
+      "author": {
+        "id": 8606
+      },
+      "writtenOn": "2023-01-16T18:26:18Z",
+      "side": 1,
+      "message": "Added a test as a unit-test. Let me know if something is wrong",
+      "parentUuid": "645ee781_0f354884",
+      "revId": "cdfaf6e2ac0cbff702bef5f84a8bdb3c3ed5059d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }

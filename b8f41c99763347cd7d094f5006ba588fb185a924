@@ -16,6 +16,24 @@
       "message": "Thanks for adding a test, but can we find some way to avoid adding a ~350 KB binary blob? e.g. Maybe use a smaller image in the test file? Reuse an existing test file?",
       "revId": "b8f41c99763347cd7d094f5006ba588fb185a924",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51ec7a4b_1deae299",
+        "filename": "testing/resources/bug_1924.pdf",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8606
+      },
+      "writtenOn": "2023-01-16T18:26:18Z",
+      "side": 0,
+      "message": "tried to reuse an existing file",
+      "parentUuid": "41906e20_5ea7b19d",
+      "revId": "b8f41c99763347cd7d094f5006ba588fb185a924",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
