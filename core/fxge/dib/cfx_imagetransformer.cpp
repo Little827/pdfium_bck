@@ -45,15 +45,15 @@ uint8_t BilinearInterpolate(const uint8_t* buf,
   return (r_pos_0 * (255 - data.res_y) + r_pos_1 * data.res_y) >> 8;
 }
 
-class CFX_BilinearMatrix {
+class CFX_BilinearMatrix_F {
  public:
-  explicit CFX_BilinearMatrix(const CFX_Matrix& src)
-      : a(FXSYS_roundf(src.a * kBase)),
-        b(FXSYS_roundf(src.b * kBase)),
-        c(FXSYS_roundf(src.c * kBase)),
-        d(FXSYS_roundf(src.d * kBase)),
-        e(FXSYS_roundf(src.e * kBase)),
-        f(FXSYS_roundf(src.f * kBase)) {}
+  explicit CFX_BilinearMatrix_F(const CFX_Matrix& src)
+      : a(src.a * kBase),
+        b(src.b * kBase),
+        c(src.c * kBase),
+        d(src.d * kBase),
+        e(src.e * kBase),
+        f(src.f * kBase) {}
 
   void Transform(int x, int y, int* x1, int* y1, int* res_x, int* res_y) const {
     CFX_PointF val = TransformInternal(CFX_PointF(x, y));
@@ -73,12 +73,12 @@ class CFX_BilinearMatrix {
                       b * pt.x + d * pt.y + f + kBase / 2);
   }
 
-  const int a;
-  const int b;
-  const int c;
-  const int d;
-  const int e;
-  const int f;
+  const float a;
+  const float b;
+  const float c;
+  const float d;
+  const float e;
+  const float f;
 };
 
 bool InStretchBounds(const FX_RECT& clip_rect, int col, int row) {
@@ -103,7 +103,7 @@ void DoBilinearLoop(const CFX_ImageTransformer::CalcData& calc_data,
                     const FX_RECT& clip_rect,
                     int increment,
                     const F& func) {
-  CFX_BilinearMatrix matrix_fix(calc_data.matrix);
+  CFX_BilinearMatrix_F matrix_fix(calc_data.matrix);
   for (int row = 0; row < result_rect.Height(); row++) {
     uint8_t* dest = calc_data.bitmap->GetWritableScanline(row).data();
     for (int col = 0; col < result_rect.Width(); col++) {
