@@ -94,6 +94,30 @@
       },
       "revId": "8339295ca4fb46387a854f3d76d4573fcde84576",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cb1ae6f_09fab738",
+        "filename": "DEPS",
+        "patchSetId": 12
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-01-17T23:50:19Z",
+      "side": 1,
+      "message": "I had to revert https://pdfium-review.googlesource.com/c/pdfium_tests/+/102970 since it blocks others from committing code to corpus test.\nYou can reland that CL and update DEPS once this CL is ready.",
+      "parentUuid": "1a6d3605_c0f98d76",
+      "range": {
+        "startLine": 143,
+        "startChar": 28,
+        "endLine": 143,
+        "endChar": 52
+      },
+      "revId": "8339295ca4fb46387a854f3d76d4573fcde84576",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
