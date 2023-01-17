@@ -70,6 +70,24 @@
       "parentUuid": "d5f6275f_9fa64607",
       "revId": "2526ba7ddf3edb4374846c5fb9f7b1a7a7acc8dd",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cc945ad_eb6f37a1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-01-17T21:02:34Z",
+      "side": 1,
+      "message": "Since https://pdfium-review.googlesource.com/c/pdfium/+/103224 simply drops the Skia suppressions, I am assuming:\n1. A fix for AGG will result in AGG rendering images smaller, and we will need to update test expectations for AGG as well.\n2. Skia keeps its original behavior.\n\nIs this correct?",
+      "parentUuid": "9a1d5ace_bd7df7ab",
+      "revId": "2526ba7ddf3edb4374846c5fb9f7b1a7a7acc8dd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
