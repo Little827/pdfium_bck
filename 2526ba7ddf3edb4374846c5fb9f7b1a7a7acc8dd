@@ -52,6 +52,24 @@
       "parentUuid": "b6e23cde_df347c75",
       "revId": "2526ba7ddf3edb4374846c5fb9f7b1a7a7acc8dd",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a1d5ace_bd7df7ab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-01-17T20:54:40Z",
+      "side": 1,
+      "message": "I\u0027m not sure, either. The right fix is up to whomever ends up taking the bug. It could involve fixing the images to match the paths, the paths to match the images, or some combination. The fixes might not even be the same for AGG and Skia.",
+      "parentUuid": "d5f6275f_9fa64607",
+      "revId": "2526ba7ddf3edb4374846c5fb9f7b1a7a7acc8dd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
