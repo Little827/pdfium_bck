@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31b57280_a609ac6a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-01-17T18:56:02Z",
+      "side": 1,
+      "message": "Thanks for adding this test!\n\nI tested locally that AGG result is slightly bigger than the expectation and skia result has some unwanted black borders.\nI am wondering if once the fix is done, will AGG and Skia results align with each other?\n\nIf Skia and AGG results are gonna align after the fix is committed, can we mention that the expectation in this current CL is the actual correct expectation? (Because sometimes expectations can represent the current behavior instead of correct behavior.)",
+      "revId": "2526ba7ddf3edb4374846c5fb9f7b1a7a7acc8dd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
