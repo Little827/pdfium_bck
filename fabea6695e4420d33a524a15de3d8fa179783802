@@ -16,6 +16,29 @@
       "message": "Sorry the diff is a bit hard to read. Let me know if you\u0027d like the CL to be broken up.",
       "revId": "fabea6695e4420d33a524a15de3d8fa179783802",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bdf3284_0df0250d",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-01-17T19:51:13Z",
+      "side": 1,
+      "message": "Optional: This is the one last variable that doesn\u0027t comply with the style guide in this function now. Rename it in this CL or in a follow-up CL would be great.",
+      "range": {
+        "startLine": 446,
+        "startChar": 27,
+        "endLine": 446,
+        "endChar": 35
+      },
+      "revId": "fabea6695e4420d33a524a15de3d8fa179783802",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
