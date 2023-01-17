@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96d9ebc6_317be5cd",
+        "filename": "core/fpdfapi/render/charposlist.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-01-17T19:56:43Z",
+      "side": 1,
+      "message": "Can the comment mention why this cannot just do an exact string match?",
+      "revId": "3c586d219a3694b425aa24998e495bde56cad068",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e398f82_05205b45",
+        "filename": "core/fpdfapi/render/charposlist.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-01-17T19:56:43Z",
+      "side": 1,
+      "message": "End the sentence with a period.",
+      "revId": "3c586d219a3694b425aa24998e495bde56cad068",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e485457f_647e2d2e",
+        "filename": "core/fpdfapi/render/charposlist.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-01-17T19:56:43Z",
+      "side": 1,
+      "message": "Pass by const-reference?",
+      "revId": "3c586d219a3694b425aa24998e495bde56cad068",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88d886ea_deb9eae6",
+        "filename": "core/fpdfapi/render/charposlist.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-01-17T19:56:43Z",
+      "side": 1,
+      "message": "To be clear, is this saying `base_font_name` is \"TimesNewRoman,Bold\" and `subst_font_name` is \"Times New Roman\"? Or the other way around?",
+      "revId": "3c586d219a3694b425aa24998e495bde56cad068",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
