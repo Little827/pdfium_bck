@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af77fc5d_dfd3e799",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-01-17T19:35:08Z",
+      "side": 1,
+      "message": "Sorry the diff is a bit hard to read. Let me know if you\u0027d like the CL to be broken up.",
+      "revId": "fabea6695e4420d33a524a15de3d8fa179783802",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
