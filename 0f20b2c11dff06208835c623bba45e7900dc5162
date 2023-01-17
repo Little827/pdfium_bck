@@ -16,6 +16,24 @@
       "message": "Yea, sure you want the braces? We spent 7 years taking them out :).",
       "revId": "0f20b2c11dff06208835c623bba45e7900dc5162",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51b99e3f_bfd1389c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-01-17T19:45:40Z",
+      "side": 1,
+      "message": "I know, but Chromium developers are going in this direction.",
+      "parentUuid": "3d0b5c1e_496e4bb3",
+      "revId": "0f20b2c11dff06208835c623bba45e7900dc5162",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
