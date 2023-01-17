@@ -142,6 +142,24 @@
       "parentUuid": "ae518474_41bad9d1",
       "revId": "2526ba7ddf3edb4374846c5fb9f7b1a7a7acc8dd",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87bf4215_35b2581f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-01-17T21:44:04Z",
+      "side": 1,
+      "message": "Thanks for the review! By the way, you can see the image diff on the bots as well by searching for \"bug_1973\" in the Test Results page. (It\u0027ll be under the \"expected\" results, so you\u0027ll probably need to load additional results.)\n\nExample AGG result:\nhttps://ci.chromium.org/ui/p/pdfium/builders/try/linux/24682/test-results?sortby\u003d\u0026groupby\u003d\u0026q\u003dExactID%3Aninja%3A%2F%2Ftesting%2Ftools%3Arun_pixel_tests%2Fbug_1973+VHash%3A1f6fb09d70f6c450\n\nExample Skia result:\nhttps://ci.chromium.org/ui/p/pdfium/builders/try/linux_skia/23533/test-results?sortby\u003d\u0026groupby\u003d\u0026q\u003dExactID%3Aninja%3A%2F%2Ftesting%2Ftools%3Arun_pixel_tests%2Fbug_1973+VHash%3A7c062aa393301665",
+      "parentUuid": "4509f0e0_e2204d8d",
+      "revId": "2526ba7ddf3edb4374846c5fb9f7b1a7a7acc8dd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
