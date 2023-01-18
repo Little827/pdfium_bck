@@ -16,6 +16,40 @@
       "message": "Hey Lei, PTAL? Thanks.",
       "revId": "5b360447b92a21cfc1a5b96ab2243140914acc63",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c02c87b_f1363ac4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-01-18T01:48:01Z",
+      "side": 1,
+      "message": "Thanks for taking the time to do all the plumbing required to make this work. I wonder if this alternative would work:\n\n1) Add an API to get the current caret location inside the form. e.g. FORM_GetCurrentCaretPosition().\n2) Add an API to set the selection based on 2 caret locations. e.g. FORM_SetSelection().\n\nThen the embedder can call:\n\nint original_caret_pos \u003d FORM_GetCurrentCaretPosition(...);\nFORM_ReplaceSelection(...);\nint new_caret_pos \u003d FORM_GetCurrentCaretPosition(...);\nFORM_SetSelection(original_caret_pos, new_caret_pos);",
+      "revId": "5b360447b92a21cfc1a5b96ab2243140914acc63",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22da0622_6be8821b",
+        "filename": "public/fpdf_formfill.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1563,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-01-18T01:48:01Z",
+      "side": 1,
+      "message": "Need to mark new APIs as experimental, as not experimental and not deprecated implies stable.",
+      "revId": "5b360447b92a21cfc1a5b96ab2243140914acc63",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
