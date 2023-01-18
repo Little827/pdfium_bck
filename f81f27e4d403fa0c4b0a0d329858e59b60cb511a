@@ -34,6 +34,24 @@
       "parentUuid": "cef3603d_c50b6a32",
       "revId": "f81f27e4d403fa0c4b0a0d329858e59b60cb511a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65f38cca_d34562fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-01-18T21:46:28Z",
+      "side": 1,
+      "message": "Thank you both for coordinating on juggling CLs in 2 different repos.",
+      "parentUuid": "cef3603d_c50b6a32",
+      "revId": "f81f27e4d403fa0c4b0a0d329858e59b60cb511a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
