@@ -2195,7 +2195,7 @@ bool CFX_SkiaDeviceDriver::StartDIBitsSkia(
       SkSamplingOptions sampling_options;
       if (use_interpolate_bilinear) {
         sampling_options =
-            SkSamplingOptions(SkFilterMode::kLinear, SkMipmapMode::kLinear);
+            SkSamplingOptions(SkFilterMode::kLinear, SkMipmapMode::kNearest);
       }
       m_pCanvas->drawImageRect(skBitmap.asImage(),
                                SkRect::MakeWH(width, height), sampling_options,
