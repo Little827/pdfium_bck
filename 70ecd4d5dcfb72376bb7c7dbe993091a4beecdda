@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f3b5ff8_153b9e61",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-01-18T22:50:08Z",
+      "side": 1,
+      "message": "typo -\u003e precision",
+      "range": {
+        "startLine": 7,
+        "startChar": 57,
+        "endLine": 7,
+        "endChar": 66
+      },
+      "revId": "70ecd4d5dcfb72376bb7c7dbe993091a4beecdda",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "72d7ee32_aa9b4fa6",
@@ -14,6 +37,29 @@
       "writtenOn": "2023-01-17T17:40:35Z",
       "side": 1,
       "message": "Thanks for the suggested patch. Before landing this, there are a few more investigations that will help justify a move to fp arithmetic.",
+      "revId": "70ecd4d5dcfb72376bb7c7dbe993091a4beecdda",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29fb9dbb_e08e3c5d",
+        "filename": "core/fxge/dib/cfx_imagetransformer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-01-18T22:50:08Z",
+      "side": 1,
+      "message": "No need to rename the class.",
+      "range": {
+        "startLine": 48,
+        "startChar": 6,
+        "endLine": 48,
+        "endChar": 26
+      },
       "revId": "70ecd4d5dcfb72376bb7c7dbe993091a4beecdda",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
