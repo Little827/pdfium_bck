@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d8036cf_26bf1567",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-01-19T16:37:00Z",
+      "side": 1,
+      "message": "Have you consulted the Skia team on this approach? I would expect nearest neighbor to perform badly under certain circumstances.",
+      "revId": "fab02133750a0ab90773a3c0495994f20aa10607",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
