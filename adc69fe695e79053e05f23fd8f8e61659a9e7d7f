@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38e85aa9_11c5d7cd",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 2200,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-01-19T17:27:39Z",
+      "side": 0,
+      "message": "FYI, the CL that switched to `SkMipmapMode::kLinear` made the safetynet_measure.py score higher (AKA slower) for some PDFs. This CL makes those faster again.",
+      "range": {
+        "startLine": 2200,
+        "startChar": 53,
+        "endLine": 2200,
+        "endChar": 74
+      },
+      "revId": "adc69fe695e79053e05f23fd8f8e61659a9e7d7f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
