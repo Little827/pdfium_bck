@@ -16,6 +16,24 @@
       "message": "Maybe add a FPDFViewEmbedderTest test case to render an XFA PDF in a follow-up CL?",
       "revId": "a7fcfe1bee940d402a2309677c99caf1c86a2e75",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97153ea3_c6ba6fe9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-01-19T18:21:39Z",
+      "side": 1,
+      "message": "Sounds reasonable. I\u0027ll go with your suggestion to do a follow-up CL, so I can spend some extra time to do a test for the non-SKP case as well.",
+      "parentUuid": "6e7800ba_1e4464b2",
+      "revId": "a7fcfe1bee940d402a2309677c99caf1c86a2e75",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
