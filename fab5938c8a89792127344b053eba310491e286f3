@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8beecdde_1065515a",
+        "filename": "BUILD.gn",
+        "patchSetId": 3
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-01-19T23:27:04Z",
+      "side": 1,
+      "message": "Thanks for trying the suggestion to write a unit test instead of an embedder test. However, unit tests by definition should not be calling the public PDFium APIs. Instead, they can directly use PDFium internals. So this entry should not be here.",
+      "revId": "fab5938c8a89792127344b053eba310491e286f3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d94b9396_66133f98",
+        "filename": "core/fpdfapi/page/cpdf_pageimagecache_unittest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-01-19T23:27:04Z",
+      "side": 1,
+      "message": "This comment is not needed in new files.",
+      "revId": "fab5938c8a89792127344b053eba310491e286f3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
