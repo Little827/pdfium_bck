@@ -34,6 +34,24 @@
       "parentUuid": "f6d74f98_24f16be6",
       "revId": "15caa63235add25e49c91fc11dc7b5c31cd25839",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "284a14b8_59b80077",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-01-19T23:24:36Z",
+      "side": 1,
+      "message": "OK, I will unsuppress lines.pdf before crbug.com/1396266 is fixed.\nWatch for incoming CLs. :P",
+      "parentUuid": "22c6d5e2_fc5dee5a",
+      "revId": "15caa63235add25e49c91fc11dc7b5c31cd25839",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
