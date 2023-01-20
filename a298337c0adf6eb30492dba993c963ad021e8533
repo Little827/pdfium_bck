@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39f51a70_9807958d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-01-20T19:42:10Z",
+      "side": 1,
+      "message": "This explanation isn\u0027t quite right:\nhttps://docs.python.org/3/library/subprocess.html#subprocess.TimeoutExpired\n\nThese members were added in 3.5, since some output may have been captured before the timeout (and we want this).\n\nHowever, it\u0027s possible for these attributes to be None in the case that there was no output, rather than a valid bytes object.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 26
+      },
+      "revId": "a298337c0adf6eb30492dba993c963ad021e8533",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ce8048c_d336ac58",
+        "filename": "testing/tools/test_runner.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-01-20T19:42:10Z",
+      "side": 1,
+      "message": "A better fix would be to check that stdout is not None before writing.",
+      "revId": "a298337c0adf6eb30492dba993c963ad021e8533",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
