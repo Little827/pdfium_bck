@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0b1d567_7036c392",
+        "filename": "BUILD.gn",
+        "patchSetId": 3
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 8606
+      },
+      "writtenOn": "2023-01-20T15:36:39Z",
+      "side": 1,
+      "message": "fixed",
+      "parentUuid": "8beecdde_1065515a",
+      "revId": "fab5938c8a89792127344b053eba310491e286f3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d94b9396_66133f98",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-01-19T23:27:04Z",
       "side": 1,
       "message": "This comment is not needed in new files.",
+      "revId": "fab5938c8a89792127344b053eba310491e286f3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "940a99d9_c3e64659",
+        "filename": "core/fpdfapi/page/cpdf_pageimagecache_unittest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 8606
+      },
+      "writtenOn": "2023-01-20T15:36:39Z",
+      "side": 1,
+      "message": "deleted",
+      "parentUuid": "d94b9396_66133f98",
       "revId": "fab5938c8a89792127344b053eba310491e286f3",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
