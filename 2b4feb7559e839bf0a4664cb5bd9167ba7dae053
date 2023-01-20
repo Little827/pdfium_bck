@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f088ace_c533f9bf",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 8606
+      },
+      "writtenOn": "2023-01-20T13:33:43Z",
+      "side": 1,
+      "message": "I would suggest rename as CompositeOneBppMask/Composite1bppMask and moving this method to CFX_DIBitmap.\n@thestig@chromium.org @tsepez@chromium.org what do you think about this?",
+      "range": {
+        "startLine": 484,
+        "startChar": 0,
+        "endLine": 515,
+        "endChar": 1
+      },
+      "revId": "2b4feb7559e839bf0a4664cb5bd9167ba7dae053",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
