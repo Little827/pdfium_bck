@@ -48,6 +48,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb36e321_76170144",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-01-20T20:24:54Z",
+      "side": 1,
+      "message": "Yes, I initially found this change confusing, as I had to pick through the documentation carefully the first time, and did test with actual commands timing out. The particular code here was a late addition to support using BytesIO as an output stream, though, so insufficiently tested, I guess.",
+      "parentUuid": "2e7943ad_878eaadf",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 26
+      },
+      "revId": "a298337c0adf6eb30492dba993c963ad021e8533",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ce8048c_d336ac58",
