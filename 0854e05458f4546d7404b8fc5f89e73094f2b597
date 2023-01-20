@@ -83,6 +83,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fd8ee17_3cb1a0c8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-01-20T19:30:42Z",
+      "side": 1,
+      "message": "Thanks for taking the time to write and iterated on test.",
+      "parentUuid": "ab30df12_727d1070",
+      "revId": "0854e05458f4546d7404b8fc5f89e73094f2b597",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6181bb11_097ed2f3",
