@@ -16,6 +16,24 @@
       "message": "Got a red bots caused by corpus test process being terminated.",
       "revId": "f3e3b6c674ad5b4656bceb215fc0b3fbc0e78a3b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c298dd0_b9307092",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-01-20T01:23:29Z",
+      "side": 1,
+      "message": "Red bots are due to a test_runner.py issue that\u0027s being fixed in https://pdfium-review.googlesource.com/103376, but that\u0027s not necessary here anymore, as the latest patch set will run the test faster.",
+      "parentUuid": "2460f0fd_c4335d61",
+      "revId": "f3e3b6c674ad5b4656bceb215fc0b3fbc0e78a3b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
