@@ -590,7 +590,8 @@ class _TestCaseRunner:
       test_result.status = result_types.TIMEOUT
       test_result.reason = 'Command {} timed out'.format(run_result.cmd)
 
-    if stdout == subprocess.PIPE and stderr == subprocess.PIPE:
+    if (stdout == subprocess.PIPE and stderr == subprocess.PIPE and
+        test_result.status != result_types.TIMEOUT):
       # Copy captured standard output to the original `stdout`.
       original_stdout.write(run_result.stdout)
 
