@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a6a4c600_df7eba2e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-01-20T17:03:05Z",
+      "side": 1,
+      "message": "Specifically, core/fpdfapi/page/BUILD.gn needs a \"../render\" entry. Since PDFium can be embedded in other projects, the dependency needs to be relative and not absolute.",
+      "parentUuid": "a531af13_2c170da7",
+      "revId": "38832778c72585fd78cbb3050a8398091333c8e5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4fadf1aa_99209208",
         "filename": "core/fpdfapi/page/cpdf_pageimagecache_unittest.cpp",
         "patchSetId": 4
