@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "387778e2_7ade0d2d",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-01-21T05:48:05Z",
+      "side": 1,
+      "message": "BTW, the code this is copied from is over-parenthesized.",
+      "range": {
+        "startLine": 511,
+        "startChar": 19,
+        "endLine": 511,
+        "endChar": 28
+      },
+      "revId": "2b4feb7559e839bf0a4664cb5bd9167ba7dae053",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0f088ace_c533f9bf",
         "filename": "core/fxge/cfx_renderdevice.cpp",
         "patchSetId": 6
@@ -14,6 +37,30 @@
       "writtenOn": "2023-01-20T13:33:43Z",
       "side": 1,
       "message": "I would suggest rename as CompositeOneBppMask/Composite1bppMask and moving this method to CFX_DIBitmap.\n@thestig@chromium.org @tsepez@chromium.org what do you think about this?",
+      "range": {
+        "startLine": 484,
+        "startChar": 0,
+        "endLine": 515,
+        "endChar": 1
+      },
+      "revId": "2b4feb7559e839bf0a4664cb5bd9167ba7dae053",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1c5a337_2c56bc25",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-01-21T05:48:05Z",
+      "side": 1,
+      "message": "Thanks for the suggestion. Makes sense to me.",
+      "parentUuid": "0f088ace_c533f9bf",
       "range": {
         "startLine": 484,
         "startChar": 0,
