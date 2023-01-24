@@ -586,12 +586,13 @@ FPDF_EXPORT void FPDF_CALLCONV FPDF_RenderPage(HDC dc,
     pContext->m_pOptions->GetOptions().bBreakForMasks = true;
   }
 
-  CPDFSDK_RenderPageWithContext(pContext, pPage, start_x, start_y, size_x,
-                                size_y, rotate, flags, /*color_scheme=*/nullptr,
-                                /*need_to_restore=*/true,
-                                /*pause=*/nullptr);
-
   if (!bHasMask) {
+    CPDFSDK_RenderPageWithContext(pContext, pPage, start_x, start_y, size_x,
+                                  size_y, rotate, flags,
+                                  /*color_scheme=*/nullptr,
+                                  /*need_to_restore=*/true,
+                                  /*pause=*/nullptr);
+
     CPDF_WindowsRenderDevice win_dc(dc, render_data->GetPSFontTracker());
     bool bitsStretched = false;
     if (win_dc.GetDeviceType() == DeviceType::kPrinter) {
