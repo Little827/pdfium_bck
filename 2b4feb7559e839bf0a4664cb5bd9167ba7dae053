@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ead05fe_24b3ed47",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 9016
+      },
+      "writtenOn": "2023-01-24T11:39:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "387778e2_7ade0d2d",
+      "range": {
+        "startLine": 511,
+        "startChar": 19,
+        "endLine": 511,
+        "endChar": 28
+      },
+      "revId": "2b4feb7559e839bf0a4664cb5bd9167ba7dae053",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f088ace_c533f9bf",
@@ -61,6 +85,30 @@
       "side": 1,
       "message": "Thanks for the suggestion. Makes sense to me.",
       "parentUuid": "0f088ace_c533f9bf",
+      "range": {
+        "startLine": 484,
+        "startChar": 0,
+        "endLine": 515,
+        "endChar": 1
+      },
+      "revId": "2b4feb7559e839bf0a4664cb5bd9167ba7dae053",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90388565_d2b6fed8",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 9016
+      },
+      "writtenOn": "2023-01-24T11:39:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1c5a337_2c56bc25",
       "range": {
         "startLine": 484,
         "startChar": 0,
