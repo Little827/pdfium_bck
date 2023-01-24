@@ -419,10 +419,16 @@ CJPX_Decoder::~CJPX_Decoder() {
 
 bool CJPX_Decoder::Init(pdfium::span<const uint8_t> src_data,
                         uint8_t resolution_levels_to_skip) {
+<<<<<<< HEAD   (cff8b3 Roll testing/corpus/ 917d3b447..23370cd97 (6 commits))
   static constexpr uint8_t kJP2Header[] = {0x00, 0x00, 0x00, 0x0c, 0x6a, 0x50,
                                            0x20, 0x20, 0x0d, 0x0a, 0x87, 0x0a};
   if (src_data.size() < sizeof(kJP2Header) ||
       resolution_levels_to_skip > kMaxResolutionsToSkip) {
+=======
+  static const unsigned char szJP2Header[] = {
+      0x00, 0x00, 0x00, 0x0c, 0x6a, 0x50, 0x20, 0x20, 0x0d, 0x0a, 0x87, 0x0a};
+  if (src_data.empty() || src_data.size() < sizeof(szJP2Header))
+>>>>>>> CHANGE (231e7e Optimization of decoding large JPX images)
     return false;
   }
 
@@ -437,7 +443,11 @@ bool CJPX_Decoder::Init(pdfium::span<const uint8_t> src_data,
   m_Parameters.decod_format = 0;
   m_Parameters.cod_format = 3;
   m_Parameters.cp_reduce = resolution_levels_to_skip;
+<<<<<<< HEAD   (cff8b3 Roll testing/corpus/ 917d3b447..23370cd97 (6 commits))
   if (memcmp(m_SrcData.data(), kJP2Header, sizeof(kJP2Header)) == 0) {
+=======
+  if (memcmp(m_SrcData.data(), szJP2Header, sizeof(szJP2Header)) == 0) {
+>>>>>>> CHANGE (231e7e Optimization of decoding large JPX images)
     m_Codec = opj_create_decompress(OPJ_CODEC_JP2);
     m_Parameters.decod_format = 1;
   } else {
@@ -512,16 +522,24 @@ CJPX_Decoder::JpxImageInfo CJPX_Decoder::GetInfo() const {
           m_Image->color_space};
 }
 
+<<<<<<< HEAD   (cff8b3 Roll testing/corpus/ 917d3b447..23370cd97 (6 commits))
 bool CJPX_Decoder::Decode(pdfium::span<uint8_t> dest_buf,
                           uint32_t pitch,
                           bool swap_rgb) {
+=======
+bool CJPX_Decoder::Decode(uint8_t* dest_buf, uint32_t pitch, bool swap_rgb) {
+>>>>>>> CHANGE (231e7e Optimization of decoding large JPX images)
   if (pitch < ((m_Image->comps[0].w * 8 * m_Image->numcomps + 31) >> 5) << 2)
     return false;
 
   if (swap_rgb && m_Image->numcomps < 3)
     return false;
 
+<<<<<<< HEAD   (cff8b3 Roll testing/corpus/ 917d3b447..23370cd97 (6 commits))
   fxcrt::spanset(dest_buf.first(m_Image->comps[0].h * pitch), 0xff);
+=======
+  memset(dest_buf, 0xff, m_Image->comps[0].h * pitch);
+>>>>>>> CHANGE (231e7e Optimization of decoding large JPX images)
   std::vector<uint8_t*> channel_bufs(m_Image->numcomps);
   std::vector<int> adjust_comps(m_Image->numcomps);
   for (uint32_t i = 0; i < m_Image->numcomps; i++) {

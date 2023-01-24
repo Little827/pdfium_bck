@@ -30,8 +30,13 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
     return 0;
 
   std::unique_ptr<CJPX_Decoder> decoder = CJPX_Decoder::Create(
+<<<<<<< HEAD   (cff8b3 Roll testing/corpus/ 917d3b447..23370cd97 (6 commits))
       {data + 2, size - 2},
       static_cast<CJPX_Decoder::ColorSpaceOption>(data[0] % 3), data[1]);
+=======
+      {data + 1, size - 1},
+      static_cast<CJPX_Decoder::ColorSpaceOption>(data[0] % 3), 0);
+>>>>>>> CHANGE (231e7e Optimization of decoding large JPX images)
   if (!decoder)
     return 0;
 

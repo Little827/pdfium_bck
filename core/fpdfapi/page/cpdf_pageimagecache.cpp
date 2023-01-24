@@ -183,7 +183,11 @@ CPDF_DIB::LoadState CPDF_PageImageCache::Entry::StartGetCachedBitmap(
   }
 
   m_pCurBitmap = m_pImage->CreateNewDIB();
+<<<<<<< HEAD   (cff8b3 Roll testing/corpus/ 917d3b447..23370cd97 (6 commits))
   CPDF_DIB::LoadState ret = m_pCurBitmap.AsRaw<CPDF_DIB>()->StartLoadDIBBase(
+=======
+  CPDF_DIB::LoadState ret = m_pCurBitmap.As<CPDF_DIB>()->StartLoadDIBBase(
+>>>>>>> CHANGE (231e7e Optimization of decoding large JPX images)
       true, pFormResources, pPageResources, bStdCS, eFamily, bLoadMask,
       max_size_required);
   if (ret == CPDF_DIB::LoadState::kContinue)
