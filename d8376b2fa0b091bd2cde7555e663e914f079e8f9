@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2eb7efd_aca7a653",
+        "filename": "testing/resources/pixel/bug_1287409.pdf",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-01-25T01:58:25Z",
+      "side": 0,
+      "message": "Linearized PDFs are by definition binary blobs.",
+      "revId": "d8376b2fa0b091bd2cde7555e663e914f079e8f9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
