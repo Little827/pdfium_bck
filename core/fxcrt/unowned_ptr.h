@@ -5,6 +5,19 @@
 #ifndef CORE_FXCRT_UNOWNED_PTR_H_
 #define CORE_FXCRT_UNOWNED_PTR_H_
 
+#if defined(PDF_USE_PARTITION_ALLOC)
+
+#include "base/allocator/partition_allocator/pointers/raw_ptr.h"
+
+namespace fxcrt {
+
+template <typename T>
+using UnownedPtr = raw_ptr<T>;
+
+}  // namespace fxcrt
+
+#else  // defined(PDF_USE_PARTITION_ALLOC)
+
 #include <cstddef>
 #include <functional>
 #include <type_traits>
@@ -181,6 +194,8 @@ class TRIVIAL_ABI GSL_POINTER UnownedPtr {
 };
 
 }  // namespace fxcrt
+
+#endif  // defined(PDF_USE_PARTITION_ALLOC)
 
 using fxcrt::UnownedPtr;
 
