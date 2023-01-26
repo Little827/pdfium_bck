@@ -1,6 +1,7 @@
 include_rules = [
   '+core/fxcrt',
   '+public',
+  '+skia/ext/skia_discardable_memory_allocator.h',
   '+third_party/skia/include',
   '+v8',
 ]
