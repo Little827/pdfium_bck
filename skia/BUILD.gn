@@ -360,6 +360,11 @@ component("skia") {
   }
 }
 
+static_library("pdfium_support") {
+  testonly = true
+  public = [ "ext/skia_discardable_memory_allocator.h" ]
+}
+
 # Template for things that are logically part of :skia, but need to be split out
 # so custom compile flags can be applied.
 #

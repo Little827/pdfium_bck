@@ -55,6 +55,7 @@
 #endif  // ENABLE_CALLGRIND
 
 #ifdef PDF_ENABLE_SKIA
+#include "skia/ext/skia_discardable_memory_allocator.h"       // nogncheck
 #include "third_party/skia/include/core/SkCanvas.h"           // nogncheck
 #include "third_party/skia/include/core/SkColor.h"            // nogncheck
 #include "third_party/skia/include/core/SkPicture.h"          // nogncheck
@@ -1462,14 +1463,23 @@ int main(int argc, const char* argv[]) {
     return 1;
   }
 
+  const FPDF_RENDERER_TYPE renderer_type =
+      options.use_renderer_type.value_or(GetDefaultRendererType());
+#ifdef PDF_ENABLE_SKIA
+  if (renderer_type == FPDF_RENDERERTYPE_SKIA) {
+    // Not strictly necessary in PDFium's copy of Skia. It's a no-op.
+    // However, other versions of Skia may need this.
+    skia::InitializeDiscardableMemoryAllocatorForTesting();
+  }
+#endif
+
   FPDF_LIBRARY_CONFIG config;
   config.version = 4;
   config.m_pUserFontPaths = nullptr;
   config.m_pIsolate = nullptr;
   config.m_v8EmbedderSlot = 0;
   config.m_pPlatform = nullptr;
-  config.m_RendererType =
-      options.use_renderer_type.value_or(GetDefaultRendererType());
+  config.m_RendererType = renderer_type;
 
   std::function<void()> idler = []() {};
 #ifdef PDF_ENABLE_V8
