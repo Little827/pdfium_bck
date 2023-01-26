@@ -288,10 +288,12 @@ class TRIVIAL_ABI GSL_POINTER span {
 
  private:
   void ReleaseEmptySpan() noexcept {
+#if !defined(PDF_USE_PARTITION_ALLOC)
     // Empty spans might point to byte N+1 of a N-byte object, legal for
     // C pointers but not UnownedPtrs.
     if (!size_)
       data_.ReleaseBadPointer();
+#endif
   }
 
   UnownedPtr<T> data_;
