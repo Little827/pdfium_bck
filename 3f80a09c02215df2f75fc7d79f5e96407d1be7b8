@@ -16,6 +16,24 @@
       "message": "Hey Kavlin, is there a particular issue we ought be rolling past right now? Or can this wait until Lei performs the ~monthly scheduled roll?  Thanks!",
       "revId": "3f80a09c02215df2f75fc7d79f5e96407d1be7b8",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30abdb5b_e353c407",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-01-27T18:51:33Z",
+      "side": 1,
+      "message": "We can just land this CL and skip PA in the monthly DEPS roll. Since it\u0027s already here.",
+      "parentUuid": "4c043d5e_d7ba4e1d",
+      "revId": "3f80a09c02215df2f75fc7d79f5e96407d1be7b8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
