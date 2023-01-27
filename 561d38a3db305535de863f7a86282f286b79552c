@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1dae95a_b367228c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-01-27T18:48:38Z",
+      "side": 1,
+      "message": "I hate to add Chromium-specific code here, but Skia folks are not thrilled about dumping it in //skia either. A 2 CL alternative:\nhttps://pdfium-review.googlesource.com/103496\nhttps://crrev.com/c/4196855",
+      "revId": "561d38a3db305535de863f7a86282f286b79552c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
