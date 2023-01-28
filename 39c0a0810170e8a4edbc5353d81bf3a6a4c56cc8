@@ -16,6 +16,24 @@
       "message": "Explain why this is needed in the CL description, and why not use the alternative.",
       "revId": "39c0a0810170e8a4edbc5353d81bf3a6a4c56cc8",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03782a79_d911c299",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2023-01-28T02:53:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd0462e6_116a2439",
+      "revId": "39c0a0810170e8a4edbc5353d81bf3a6a4c56cc8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
