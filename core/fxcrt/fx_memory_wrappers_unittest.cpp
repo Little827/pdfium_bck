@@ -46,6 +46,20 @@ TEST(fxcrt, FxAllocAllocator) {
   vec2.push_back(42);
 }
 
+TEST(fxcrt, FxAllocAllocatorWchar) {
+  // Let ASAN sanity check some simple operations.
+  std::vector<wchar_t, FxAllocAllocator<wchar_t>> vec;
+  vec.push_back('L');
+  vec.reserve('M');
+  vec.resize('N');
+  vec[11] = 'L';
+
+  std::vector<wchar_t, FxAllocAllocator<wchar_t>> vec2 = vec;
+  vec = std::move(vec2);
+  vec2.resize(0);
+  vec2.push_back('L');
+}
+
 TEST(fxcrt, FxStringAllocator) {
   // Let ASAN sanity check some simple operations.
   std::basic_ostringstream<char, std::char_traits<char>,
