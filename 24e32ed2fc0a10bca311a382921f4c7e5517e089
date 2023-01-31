@@ -128,6 +128,30 @@
       },
       "revId": "24e32ed2fc0a10bca311a382921f4c7e5517e089",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68f5b0b0_e3528565",
+        "filename": "testing/resources/pixel/bug_1396266.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-01-31T00:27:41Z",
+      "side": 1,
+      "message": "Thanks! Still LGTM~",
+      "parentUuid": "8ef406e8_e167ce77",
+      "range": {
+        "startLine": 15,
+        "startChar": 20,
+        "endLine": 15,
+        "endChar": 33
+      },
+      "revId": "24e32ed2fc0a10bca311a382921f4c7e5517e089",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
