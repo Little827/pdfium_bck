@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "25712b4e_7887a3c0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-01-31T00:23:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43c235c7_8888b3e2",
+      "range": {
+        "startLine": 7,
+        "startChar": 3,
+        "endLine": 7,
+        "endChar": 14
+      },
+      "revId": "24e32ed2fc0a10bca311a382921f4c7e5517e089",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "e8c1c067_73448100",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
@@ -37,6 +61,24 @@
       "writtenOn": "2023-01-31T00:03:40Z",
       "side": 1,
       "message": "LGTM with nits.",
+      "revId": "24e32ed2fc0a10bca311a382921f4c7e5517e089",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75a2a97b_24ed51d9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-01-31T00:23:51Z",
+      "side": 1,
+      "message": "Thanks for the review!",
+      "parentUuid": "e8c1c067_73448100",
       "revId": "24e32ed2fc0a10bca311a382921f4c7e5517e089",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -54,6 +96,30 @@
       "writtenOn": "2023-01-31T00:03:40Z",
       "side": 1,
       "message": "I assume \"original area\" is 3*3 (the image) in this case instead of 64 * 64 (the mask)?\n\nCould we add comments for the 4 scaled images to indicate which ones force bilinear interpolation?",
+      "range": {
+        "startLine": 15,
+        "startChar": 20,
+        "endLine": 15,
+        "endChar": 33
+      },
+      "revId": "24e32ed2fc0a10bca311a382921f4c7e5517e089",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ef406e8_e167ce77",
+        "filename": "testing/resources/pixel/bug_1396266.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-01-31T00:23:51Z",
+      "side": 1,
+      "message": "Done\n\nThe filtering applies to the mask and the base image, but the problem is with the mask, which is 64x64. I\u0027ve added more specific comments.",
+      "parentUuid": "c254d9a3_477f4093",
       "range": {
         "startLine": 15,
         "startChar": 20,
