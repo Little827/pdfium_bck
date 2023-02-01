@@ -16,6 +16,23 @@
       "message": "See patchsets for progression.",
       "revId": "7fd9637cb24b1b3ce396495867de260414c7b377",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ac2c646_ac96d95d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-02-01T16:56:35Z",
+      "side": 1,
+      "message": "LG, cursory inspection, might be easier if there were a whitespace only version as an intermediated.",
+      "revId": "7fd9637cb24b1b3ce396495867de260414c7b377",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
