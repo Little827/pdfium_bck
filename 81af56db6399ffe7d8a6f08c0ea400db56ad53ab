@@ -16,6 +16,24 @@
       "message": "Please also mention the Clang version change. (Only 1 change according to the commit log)",
       "revId": "81af56db6399ffe7d8a6f08c0ea400db56ad53ab",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5e5c80f_72d93ab7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-02-02T01:17:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95219a11_b0fb91b7",
+      "revId": "81af56db6399ffe7d8a6f08c0ea400db56ad53ab",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
