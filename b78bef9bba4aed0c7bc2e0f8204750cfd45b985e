@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac2bffbb_711365f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-02-02T21:14:06Z",
+      "side": 1,
+      "message": "As with other merges from the recent past, Skia bots are expected to be red.",
+      "revId": "b78bef9bba4aed0c7bc2e0f8204750cfd45b985e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
