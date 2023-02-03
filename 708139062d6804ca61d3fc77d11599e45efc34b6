@@ -88,6 +88,24 @@
       "parentUuid": "4debb472_69b2093e",
       "revId": "708139062d6804ca61d3fc77d11599e45efc34b6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a49415c8_74d573ad",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-02-03T20:15:44Z",
+      "side": 1,
+      "message": "Inside CFGAS_DefaultFontManager::GetDefaultFont(), as a fallback, it asked for an empty font name if it couldn\u0027t find Arial Narrow. Above that in the callstack, CXFA_FontMgr::GetFont() asked for Arial, but couldn\u0027t find it, so it called GetDefaultFont().\n\nI wonder why Arial isn\u0027t being mapped to Arimo. Maybe the XFA font manager is ignoring --croscore-font-names.",
+      "parentUuid": "d2609a11_de63ca5f",
+      "revId": "708139062d6804ca61d3fc77d11599e45efc34b6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
