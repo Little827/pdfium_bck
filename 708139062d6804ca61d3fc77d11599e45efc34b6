@@ -34,6 +34,24 @@
       "parentUuid": "08137e48_5d9f2eea",
       "revId": "708139062d6804ca61d3fc77d11599e45efc34b6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2609a11_de63ca5f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-02-03T20:05:43Z",
+      "side": 1,
+      "message": "I found that CFGAS_FontMgr::RegisterFace() processes fonts in a different order, possibly based on the order of the fonts on the file system. When MatchFonts() tries to match an empty font name, many fonts all come back with the same default penalty.",
+      "parentUuid": "a5312eb1_72752224",
+      "revId": "708139062d6804ca61d3fc77d11599e45efc34b6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
