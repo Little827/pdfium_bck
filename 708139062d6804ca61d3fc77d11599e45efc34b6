@@ -70,6 +70,24 @@
       "parentUuid": "08137e48_5d9f2eea",
       "revId": "708139062d6804ca61d3fc77d11599e45efc34b6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a9f9cbc_f9797793",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-02-03T20:14:30Z",
+      "side": 1,
+      "message": "For example, my best guess is that the file system traversal order is different in CFX_FolderFontInfo::ScanPath(). We\u0027d need to define a specific traversal order (perhaps alphabetical) to avoid system-specific differences here.",
+      "parentUuid": "4debb472_69b2093e",
+      "revId": "708139062d6804ca61d3fc77d11599e45efc34b6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
