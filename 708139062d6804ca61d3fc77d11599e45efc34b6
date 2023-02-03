@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08137e48_5d9f2eea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-02-03T19:38:46Z",
+      "side": 1,
+      "message": "I\u0027m curious why the rendering on Mac is different vs. Linux. They should both be using the same set of fonts from third_party/test_fonts. Do both platforms generate the same return value in CFGAS_FontMgr::MatchFonts() with std::stable_sort()?",
+      "revId": "708139062d6804ca61d3fc77d11599e45efc34b6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
