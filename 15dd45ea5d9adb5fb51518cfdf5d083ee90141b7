@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3c0c762_9b67eed3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-02-03T07:58:05Z",
+      "side": 1,
+      "message": "FYI: buildtools update requires the libc++ rolls, and the Abseil roll is tied to the libc++ rolls, particularly on Windows (due to DLL symbol exports).",
+      "revId": "15dd45ea5d9adb5fb51518cfdf5d083ee90141b7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
