@@ -901,7 +901,7 @@ void CPDF_StreamContentParser::Handle_ClosePath() {
 
   if (m_PathStart.x != m_PathCurrent.x || m_PathStart.y != m_PathCurrent.y) {
     AddPathPointAndClose(m_PathStart, CFX_Path::Point::Type::kLine);
-  } else if (m_PathPoints.back().m_Type != CFX_Path::Point::Type::kMove) {
+  } else {
     m_PathPoints.back().m_CloseFigure = true;
   }
 }
@@ -1459,20 +1459,32 @@ void CPDF_StreamContentParser::AddPathObject(
   if (path_points.empty())
     return;
 
+  CPDF_Path path;
   if (path_points.size() == 1) {
     if (path_clip_type != CFX_FillRenderOptions::FillType::kNoFill) {
-      CPDF_Path path;
       path.AppendRect(0, 0, 0, 0);
       m_pCurStates->m_ClipPath.AppendPathWithAutoMerge(
           path, CFX_FillRenderOptions::FillType::kWinding);
+      return;
     }
-    return;
+
+    CFX_Path::Point point = path_points.front();
+    if (point.IsTypeAndOpen(CFX_Path::Point::Type::kMove)) {
+      return;
+    }
+
+    // When a path moves to a point and immediately gets closed, we can mimic
+    // drawing a path from this point to itself and close the path.
+    path.AppendPoint(point.m_Point, point.m_Type);
+    path.AppendPointAndClose(point.m_Point, CFX_Path::Point::Type::kLine);
+    path_points.clear();
   }
 
-  if (path_points.back().IsTypeAndOpen(CFX_Path::Point::Type::kMove))
+  if (!path_points.empty() &&
+      path_points.back().IsTypeAndOpen(CFX_Path::Point::Type::kMove)) {
     path_points.pop_back();
+  }
 
-  CPDF_Path path;
   for (const auto& point : path_points) {
     if (point.m_CloseFigure)
       path.AppendPointAndClose(point.m_Point, point.m_Type);
