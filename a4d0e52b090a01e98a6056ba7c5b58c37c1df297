@@ -16,6 +16,24 @@
       "message": "Rolling for msvc_32 blocked by crbug.com/v8/13716.",
       "revId": "a4d0e52b090a01e98a6056ba7c5b58c37c1df297",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44febf75_0185b69c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-02-06T18:20:52Z",
+      "side": 1,
+      "message": "Fixed upstream, although there hasn\u0027t been a Chromium roll that includes the fix yet. Going to test on the msvc_32 bot now.",
+      "parentUuid": "fb9fca54_36d6a6fd",
+      "revId": "a4d0e52b090a01e98a6056ba7c5b58c37c1df297",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
