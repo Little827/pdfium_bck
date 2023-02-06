@@ -70,7 +70,6 @@
 // #define SK_UINT8_BITFIELD_BENDIAN
 // #define SK_UINT8_BITFIELD_LENDIAN
 
-
 /*  To write debug messages to a console, skia will call SkDebugf(...) following
     printf conventions (e.g. const char* format, ...). If you want to redirect
     this to something other than printf, define yours here
@@ -97,15 +96,9 @@
  */
 // #define SK_MAX_SIZE_FOR_LCDTEXT     48
 
-/*  Change the ordering to work in X windows.
+/*  Change the kN32_SkColorType ordering to BGRA to work in X windows.
  */
-// #ifdef SK_SAMPLES_FOR_X
-//         #define SK_R32_SHIFT    16
-//         #define SK_G32_SHIFT    8
-//         #define SK_B32_SHIFT    0
-//         #define SK_A32_SHIFT    24
-// #endif
-
+// #define SK_R32_SHIFT    16
 
 /* Determines whether to build code that supports the GPU backend. Some classes
    that are not GPU-specific, such as SkShader subclasses, have optional code
@@ -121,28 +114,50 @@
  * Skia consumers can provide their own definitions of these macros to
  * integrate with their histogram collection backend.
  */
-// #define SK_HISTOGRAM_BOOLEAN(name, value)
-// #define SK_HISTOGRAM_ENUMERATION(name, value, boundary_value)
+// #define SK_HISTOGRAM_BOOLEAN(name, sample)
+// #define SK_HISTOGRAM_EXACT_LINEAR(name, sample, value_max)
+// #define SK_HISTOGRAM_MEMORY_KB(name, sample)
+#include "third_party/base/component_export.h"
+// #include "skia/ext/skia_histogram.h"
 
 // ===== Begin Chrome-specific definitions =====
 
-#define SK_MSCALAR_IS_FLOAT
-#undef SK_MSCALAR_IS_DOUBLE
+#ifdef DCHECK_ALWAYS_ON
+#undef SK_RELEASE
+#define SK_DEBUG
+#endif
 
-#define GR_MAX_OFFSCREEN_AA_DIM 512
+/*  Define this to provide font subsetter for font subsetting when generating
+    PDF documents.
+ */
+#define SK_PDF_USE_HARFBUZZ_SUBSET
+
+// Handle exporting using base/component_export.h
+#define SK_API COMPONENT_EXPORT(SKIA)
+
+// Chromium does not use these fonts.  This define causes type1 fonts to be
+// converted to type3 when producing PDFs, and reduces build size.
+#define SK_PDF_DO_NOT_SUPPORT_TYPE_1_FONTS
+
+#ifdef SK_DEBUG
+// #define SK_REF_CNT_MIXIN_INCLUDE "skia/config/sk_ref_cnt_ext_debug.h"
+#else
+// #define SK_REF_CNT_MIXIN_INCLUDE "skia/config/sk_ref_cnt_ext_release.h"
+#endif
 
 // Log the file and line number for assertions.
-#if defined(SK_BUILD_FOR_WIN) && !defined(__clang__)
-// String formatting with this toolchain not supported.
-#define SkDebugf(...) SkDebugf_FileLineOnly(__FILE__, __LINE__)
-SK_API void SkDebugf_FileLineOnly(const char* file, int line);
-#else
 #define SkDebugf(...) SkDebugf_FileLine(__FILE__, __LINE__, __VA_ARGS__)
 SK_API void SkDebugf_FileLine(const char* file,
                               int line,
                               const char* format,
                               ...);
-#endif
+
+#define SK_ABORT(format, ...) \
+  SkAbort_FileLine(__FILE__, __LINE__, format, ##__VA_ARGS__)
+[[noreturn]] SK_API void SkAbort_FileLine(const char* file,
+                                          int line,
+                                          const char* format,
+                                          ...);
 
 #if !defined(ANDROID)  // On Android, we use the skia default settings.
 #define SK_A32_SHIFT 24
@@ -151,14 +166,7 @@ SK_API void SkDebugf_FileLine(const char* file,
 #define SK_B32_SHIFT 0
 #endif
 
-#if defined(SK_BUILD_FOR_WIN32)
-
-#define SK_BUILD_FOR_WIN
-
-// Skia uses this deprecated bzero function to fill zeros into a string.
-#define bzero(str, len) memset(str, 0, len)
-
-#elif defined(SK_BUILD_FOR_MAC)
+#if defined(SK_BUILD_FOR_MAC)
 
 #define SK_CPU_LENDIAN
 #undef SK_CPU_BENDIAN
@@ -183,84 +191,46 @@ SK_API void SkDebugf_FileLine(const char* file,
 
 #endif
 
+#define SK_TRIVIAL_ABI [[clang::trivial_abi]]
+
 // These flags are no longer defined in Skia, but we have them (temporarily)
 // until we update our call-sites (typically these are for API changes).
 //
 // Remove these as we update our sites.
-//
-#ifndef SK_SUPPORT_LEGACY_GETTOPDEVICE
-#define SK_SUPPORT_LEGACY_GETTOPDEVICE
-#endif
 
-#ifndef SK_SUPPORT_EXOTIC_CLIPOPS
-#define SK_SUPPORT_EXOTIC_CLIPOPS
-#endif
-
-#ifndef SK_SUPPORT_LEGACY_GETDEVICE
-#define SK_SUPPORT_LEGACY_GETDEVICE
-#endif
+#define SK_LEGACY_LAYER_BOUNDS_EXPANSION  // skbug.com/12083, skbug.com/12303
 
 // Workaround for poor anisotropic mipmap quality,
 // pending Skia ripmap support.
 // (https://bugs.chromium.org/p/skia/issues/detail?id=4863)
-#ifndef SK_SUPPORT_LEGACY_ANISOTROPIC_MIPMAP_SCALE
 #define SK_SUPPORT_LEGACY_ANISOTROPIC_MIPMAP_SCALE
-#endif
 
-#ifndef SK_SUPPORT_LEGACY_REFENCODEDDATA_NOCTX
-#define SK_SUPPORT_LEGACY_REFENCODEDDATA_NOCTX
-#endif
+// Temporarily insulate Chrome pixel tests from Skia LOD bias change on GPU.
+#define SK_USE_LEGACY_MIPMAP_LOD_BIAS
 
-#ifndef SK_IGNORE_ETC1_SUPPORT
-#define SK_IGNORE_ETC1_SUPPORT
-#endif
+// Max. verb count for paths rendered by the edge-AA tessellating path renderer.
+#define GR_AA_TESSELLATOR_MAX_VERB_COUNT 100
 
-#ifndef SK_IGNORE_GPU_DITHER
-#define SK_IGNORE_GPU_DITHER
-#endif
+#define SK_SUPPORT_LEGACY_AAA_CHOICE
 
-#ifndef SK_SUPPORT_LEGACY_EVAL_CUBIC
-#define SK_SUPPORT_LEGACY_EVAL_CUBIC
-#endif
+#define SK_SUPPORT_LEGACY_DRAWLOOPER
 
-///////////////////////// Imported from BUILD.gn
+#define SK_USE_LEGACY_MIPMAP_BUILDER
+
+///////////////////////// Imported from BUILD.gn and skia_common.gypi
 
 /* In some places Skia can use static initializers for global initialization,
  *  or fall back to lazy runtime initialization. Chrome always wants the latter.
  */
 #define SK_ALLOW_STATIC_GLOBAL_INITIALIZERS 0
 
-/* This flag forces Skia not to use typographic metrics with GDI.
- */
-#define SK_GDI_ALWAYS_USE_TEXTMETRICS_FOR_FONT_METRICS
+/* Restrict formats for Skia font matching to SFNT type fonts. */
+#define SK_FONT_CONFIG_INTERFACE_ONLY_ALLOW_SFNT_FONTS
 
 #define SK_IGNORE_BLURRED_RRECT_OPT
 #define SK_USE_DISCARDABLE_SCALEDIMAGECACHE
-#define SK_WILL_NEVER_DRAW_PERSPECTIVE_TEXT
 
 #define SK_ATTR_DEPRECATED SK_NOTHING_ARG1
-#define SK_ENABLE_INST_COUNT 0
 #define GR_GL_CUSTOM_SETUP_HEADER "GrGLConfig_chrome.h"
-
-// Blink layout tests are baselined to Clang optimizing through the UB in
-// SkDivBits.
-#define SK_SUPPORT_LEGACY_DIVBITS_UB
-
-// mtklein's fiddling with Src / SrcOver.  Will rebaseline these only once when
-// done.
-#define SK_SUPPORT_LEGACY_X86_BLITS
-
-#define SK_DISABLE_TILE_IMAGE_FILTER_OPTIMIZATION
-
-#if defined(SK_BUILD_FOR_WIN) && !defined(__clang__)
-#define SK_ABORT(format, ...) \
-  SkAbort_FileLine(__FILE__, __LINE__, format, ##__VA_ARGS__)
-[[noreturn]] SK_API void SkAbort_FileLine(const char* file,
-                                          int line,
-                                          const char* format,
-                                          ...);
-#endif
-
-// ===== End Chrome-specific definitions =====
 
 #endif  // SKIA_CONFIG_SKUSERCONFIG_H_
