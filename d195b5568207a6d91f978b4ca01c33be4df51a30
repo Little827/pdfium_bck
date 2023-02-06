@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3496da1d_8533866d",
+        "filename": "third_party/base/component_export.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-02-06T23:50:14Z",
+      "side": 1,
+      "message": "Add \"THIRD_PARTY_\" to be consistent with most of the other files in this dir.",
+      "revId": "d195b5568207a6d91f978b4ca01c33be4df51a30",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
