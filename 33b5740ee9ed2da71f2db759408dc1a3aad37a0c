@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05de6a1a_9ffcd4ed",
+        "filename": "core/fpdfapi/page/cpdf_streamcontentparser.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 1472,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-02-07T21:25:25Z",
+      "side": 1,
+      "message": "Take a const-ref.",
+      "revId": "33b5740ee9ed2da71f2db759408dc1a3aad37a0c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d125b577_110c83aa",
+        "filename": "core/fpdfapi/page/cpdf_streamcontentparser.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 1485,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-02-07T21:25:25Z",
+      "side": 1,
+      "message": "Alternatively, instead of changing `path` directly, this code could change `path_points` and let the loop at line 1493 take care of changing `path`.",
+      "revId": "33b5740ee9ed2da71f2db759408dc1a3aad37a0c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
