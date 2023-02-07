@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f67b3eb4_e3e26e36",
+        "filename": "core/fpdfapi/page/cpdf_streamcontentparser.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 904,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-02-07T19:02:40Z",
+      "side": 0,
+      "message": "A path with only \"move\" and \"close\" operations should still be closed.",
+      "range": {
+        "startLine": 904,
+        "startChar": 9,
+        "endLine": 904,
+        "endChar": 74
+      },
+      "revId": "89413969624b708a062e5a00e697c3b135954a35",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
