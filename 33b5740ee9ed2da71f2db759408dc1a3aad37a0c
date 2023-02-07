@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d4778ac_b63a7324",
+        "filename": "core/fpdfapi/page/cpdf_streamcontentparser.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 1472,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-02-07T22:54:57Z",
+      "side": 1,
+      "message": "I marked `point` ref but not const since with the alternative method you described below, I need to change `point`\u0027s close status.",
+      "parentUuid": "05de6a1a_9ffcd4ed",
+      "revId": "33b5740ee9ed2da71f2db759408dc1a3aad37a0c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d125b577_110c83aa",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-02-07T21:25:25Z",
       "side": 1,
       "message": "Alternatively, instead of changing `path` directly, this code could change `path_points` and let the loop at line 1493 take care of changing `path`.",
+      "revId": "33b5740ee9ed2da71f2db759408dc1a3aad37a0c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2b1bfae_9950b45b",
+        "filename": "core/fpdfapi/page/cpdf_streamcontentparser.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 1485,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-02-07T22:54:57Z",
+      "side": 1,
+      "message": "I took this alternative route in the new patchset.",
+      "parentUuid": "d125b577_110c83aa",
       "revId": "33b5740ee9ed2da71f2db759408dc1a3aad37a0c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
