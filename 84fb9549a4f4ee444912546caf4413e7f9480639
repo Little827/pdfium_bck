@@ -16,6 +16,24 @@
       "message": "Looks like this is iOS-specific. I got a direct e-mail this morning about an iOS fix; wondering if this is related.",
       "revId": "84fb9549a4f4ee444912546caf4413e7f9480639",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bce3f1f5_2016bb1d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-02-07T16:49:57Z",
+      "side": 1,
+      "message": "I took a closer look at the e-mail, and this is the same issue.",
+      "parentUuid": "dcc78e2e_8b151dc1",
+      "revId": "84fb9549a4f4ee444912546caf4413e7f9480639",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
