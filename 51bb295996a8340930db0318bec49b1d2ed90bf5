@@ -169,6 +169,24 @@
       "parentUuid": "f1adf38a_a6ab87d4",
       "revId": "51bb295996a8340930db0318bec49b1d2ed90bf5",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0552fa07_9a2faf8e",
+        "filename": "core/fxge/agg/fx_agg_driver.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 971,
+      "author": {
+        "id": 8936
+      },
+      "writtenOn": "2023-02-08T20:30:29Z",
+      "side": 1,
+      "message": "I\u0027m still not content with this CL, since it only fixes some cases, but will incorrectly render other cases.\n\nThe only way to correctly render lines in all cases would be to remove the hard clip, but that causes the slow line rendering with dashed lines as discussed offline.",
+      "parentUuid": "8c913d2a_524b40b1",
+      "revId": "51bb295996a8340930db0318bec49b1d2ed90bf5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
