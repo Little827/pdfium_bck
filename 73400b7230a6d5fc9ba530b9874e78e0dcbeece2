@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbfbb0f9_9a28131f",
+        "filename": "testing/resources/pixel/bug_1966.in",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-02-08T18:31:06Z",
+      "side": 1,
+      "message": "Move this to after \"Height\" so that all non-type entries are in alphabetic order.",
+      "range": {
+        "startLine": 32,
+        "startChar": 2,
+        "endLine": 32,
+        "endChar": 17
+      },
+      "revId": "73400b7230a6d5fc9ba530b9874e78e0dcbeece2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
