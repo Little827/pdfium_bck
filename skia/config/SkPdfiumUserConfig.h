@@ -267,4 +267,6 @@ SK_API void SkDebugf_FileLine(const char* file,
 
 // ===== End Chrome-specific definitions =====
 
+#define SK_DISABLE_AAA 1
+
 #endif  // SKIA_CONFIG_SKUSERCONFIG_H_
