@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "00597837_c49d63b2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-02-09T23:34:16Z",
+      "side": 1,
+      "message": "There used to be no \"move+close\" combo in the CFX_PATH and now there is. So the condition \"m_Points[iPoint].IsTypeAndOpen(CFX_Path::Point::Type::kMove)\" does not cover all the \"move\" operations.\n\nAt the calling point of this function, all \"move\" points (disregarding open or close status) need to be drawn. I think the correct condition should be just \"move\" operations now, for which we only update the rectangular area when we move to the next point unless this point is the final point of the whole path.\n\nI am currently working on adding a test for this crash (to be added in this CL). But for now this new patchset is what I think the fix should be.",
+      "parentUuid": "e3e8f9f4_4ea0fcab",
+      "revId": "cec1dd7066631e81ac3f02c0c718d14a9e74dd10",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dc7120b4_11af8764",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-02-09T20:43:44Z",
       "side": 1,
       "message": "Here, I see a comment discussing the caller\u0027s responsibility. Would an alternative fix to be place more restrictions on how the caller constructs paths?",
+      "revId": "cec1dd7066631e81ac3f02c0c718d14a9e74dd10",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "629d7164_6347a3d5",
+        "filename": "core/fxge/cfx_path.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-02-09T23:34:16Z",
+      "side": 1,
+      "message": "The condition has been updated (See the other comment).",
+      "parentUuid": "dc7120b4_11af8764",
       "revId": "cec1dd7066631e81ac3f02c0c718d14a9e74dd10",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
