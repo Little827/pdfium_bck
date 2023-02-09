@@ -357,6 +357,12 @@ CFX_FloatRect CFX_Path::GetBoundingBoxForStrokePath(float line_width,
         rect.UpdateRect(m_Points[iPoint + 1].m_Point);
         iPoint += 2;
       }
+
+      if (iPoint == 0) {
+        ++iPoint;
+        continue;
+      }
+
       if (iPoint == m_Points.size() - 1 ||
           m_Points[iPoint + 1].IsTypeAndOpen(CFX_Path::Point::Type::kMove)) {
         iStartPoint = iPoint - 1;
@@ -380,7 +386,7 @@ CFX_FloatRect CFX_Path::GetBoundingBoxForStrokePath(float line_width,
       UpdateLineEndPoints(&rect, m_Points[iStartPoint].m_Point,
                           m_Points[iEndPoint].m_Point, half_width);
     }
-    iPoint++;
+    ++iPoint;
   }
   return rect;
 }
