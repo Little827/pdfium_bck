@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3e8f9f4_4ea0fcab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-02-09T20:38:55Z",
+      "side": 1,
+      "message": "So my question is, why is this problem showing up today? Shouldn\u0027t the fuzzer have been able to easily detect this issue in the past by generating PDF content with 2 path move operations?",
+      "revId": "cec1dd7066631e81ac3f02c0c718d14a9e74dd10",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
