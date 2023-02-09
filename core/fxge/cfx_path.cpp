@@ -347,6 +347,12 @@ CFX_FloatRect CFX_Path::GetBoundingBoxForStrokePath(float line_width,
       iStartPoint = iPoint + 1;
       iEndPoint = iPoint;
       bJoin = false;
+    } else if (m_Points[iPoint].m_Type == CFX_Path::Point::Type::kMove ||
+               m_Points[iPoint].m_CloseFigure) {
+      // A single dot within the stroked path.
+      rect.UpdateRect(m_Points[iPoint].m_Point);
+      ++iPoint;
+      continue;
     } else {
       if (m_Points[iPoint].IsTypeAndOpen(CFX_Path::Point::Type::kBezier)) {
         // Callers are responsible for adding Beziers in sets of 3.
@@ -357,8 +363,9 @@ CFX_FloatRect CFX_Path::GetBoundingBoxForStrokePath(float line_width,
         rect.UpdateRect(m_Points[iPoint + 1].m_Point);
         iPoint += 2;
       }
+
       if (iPoint == m_Points.size() - 1 ||
-          m_Points[iPoint + 1].IsTypeAndOpen(CFX_Path::Point::Type::kMove)) {
+          m_Points[iPoint + 1].m_Type == CFX_Path::Point::Type::kMove) {
         iStartPoint = iPoint - 1;
         iEndPoint = iPoint;
         bJoin = false;
@@ -380,7 +387,7 @@ CFX_FloatRect CFX_Path::GetBoundingBoxForStrokePath(float line_width,
       UpdateLineEndPoints(&rect, m_Points[iStartPoint].m_Point,
                           m_Points[iEndPoint].m_Point, half_width);
     }
-    iPoint++;
+    ++iPoint;
   }
   return rect;
 }
