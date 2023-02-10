@@ -24,6 +24,47 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b38e3e0_f6485e34",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-02-10T01:21:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a53a7f59_b087183a",
+      "range": {
+        "startLine": 10,
+        "startChar": 19,
+        "endLine": 10,
+        "endChar": 25
+      },
+      "revId": "4b74623e16990134a05a0278ce4b5cfb21a16ca9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee75cbc0_ce8f55d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-02-10T01:21:27Z",
+      "side": 1,
+      "message": "Thanks for the review!",
+      "revId": "4b74623e16990134a05a0278ce4b5cfb21a16ca9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "31c29890_951dc6ec",
@@ -37,6 +78,30 @@
       "writtenOn": "2023-02-10T00:42:27Z",
       "side": 1,
       "message": "QQ: Since it\u0027s plural, should we use \"which\"? (Even though \"that\" sounds more natural to me.)",
+      "range": {
+        "startLine": 203,
+        "startChar": 30,
+        "endLine": 203,
+        "endChar": 34
+      },
+      "revId": "4b74623e16990134a05a0278ce4b5cfb21a16ca9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "165e36cc_69012aef",
+        "filename": "testing/tools/test_runner.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-02-10T01:21:27Z",
+      "side": 1,
+      "message": "It\u0027s not related to this CL, but I don\u0027t think number agreement is the key here. What you really care about is whether the clause is restrictive or not, in which case, this usage is appropriate.\n\nI don\u0027t think most engineers are going to care one way or the other, though.",
+      "parentUuid": "31c29890_951dc6ec",
       "range": {
         "startLine": 203,
         "startChar": 30,
