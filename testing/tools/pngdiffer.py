@@ -12,6 +12,7 @@ import sys
 
 _PNG_OPTIMIZER = 'optipng'
 
+# Maybe don't touch common expectations? What about platform suffix?
 _COMMON_SUFFIX_ORDER = ('_{os}', '')
 _AGG_SUFFIX_ORDER = ('_agg_{os}', '_agg') + _COMMON_SUFFIX_ORDER
 _SKIA_SUFFIX_ORDER = ('_skia_{os}', '_skia') + _COMMON_SUFFIX_ORDER
@@ -97,22 +98,14 @@ class PNGDiffer():
       if not os.path.exists(page_diff.actual_path):
         break
 
-      last_not_found_expected_path = None
-      compare_error = None
-      for expected_path in path_templates.GetExpectedPaths(page):
-        if not os.path.exists(expected_path):
-          last_not_found_expected_path = expected_path
-          continue
+      expected_path = path_templates.GetExpectedPath(page, default_to_base=True)
+      if os.path.exists(expected_path):
         page_diff.expected_path = expected_path
 
         compare_error = self._RunImageCompareCommand(page_diff)
         if not compare_error:
-          # Found a match.
-          break
-
-      if page_diff.expected_path:
-        if not compare_error:
           # Proceed to next page
+          # TODO: Make sure there aren't extra matches. Extra validation mode?
           continue
         page_diff.reason = str(compare_error)
 
@@ -124,10 +117,7 @@ class PNGDiffer():
       else:
         if page == 0:
           print(f'WARNING: no expected results files for {input_filename}')
-        if last_not_found_expected_path:
-          page_diff.reason = f'{last_not_found_expected_path} does not exist'
-        else:
-          page_diff.reason = f'Missing expected result for 0-based page {page}'
+        page_diff.reason = f'{expected_path} does not exist'
 
       image_diffs.append(page_diff)
 
@@ -136,18 +126,47 @@ class PNGDiffer():
   def Regenerate(self, input_filename, source_dir, working_dir):
     path_templates = _PathTemplates(input_filename, source_dir, working_dir,
                                     self.os_name, self.suffix_order)
-
     for page in itertools.count():
-      # Loop through the generated page images. Stop when there is a page
-      # missing a png, which means the document ended.
-      actual_path = path_templates.GetActualPath(page)
-      if not os.path.isfile(actual_path):
+      # Find existing expectations.
+      existing_expected_paths = list(
+          filter(os.path.exists, path_templates.GetExpectedPaths(page)))
+
+      # Make sure the actual page exists.
+      page_diff = ImageDiff(actual_path=path_templates.GetActualPath(page))
+      if not os.path.exists(page_diff.actual_path):
+        if existing_expected_paths:
+          print(f'WARNING: {input_filename} has extra expected page {page}')
         break
+
+      # Compare against existing expectations.
+      first_match = None
+      multiple_matches = False
+      for index, expected_path in enumerate(existing_expected_paths):
+        page_diff.expected_path = expected_path
+        if self._RunImageCompareCommand(page_diff):
+          # Not a match.
+          continue
+
+        if first_match is None:
+          first_match = index
+          if first_match > 1:
+            print(f'WARNING: {input_filename}.{page} has non-adjacent match')
+        elif not multiple_matches:
+          multiple_matches = True
+          print(f'WARNING: {input_filename}.{page} has redundant matches')
+
+      # Try to use an existing expectation.
+      if first_match is not None:
+        if first_match > 0:
+          os.remove(existing_expected_paths[0])
+          for expected_path in existing_expected_paths[1:first_match]:
+            os.rename(expected_path, expected_path + '.bak')
+
+        # Proceed to next page.
+        continue
 
       # Regenerate the most specific expected path that exists. If there are no
       # existing expectations, regenerate the base case.
-      #
-      # TODO(crbug.com/pdfium/1987): Clean up redundant expectations.
       expected_path = path_templates.GetExpectedPath(page)
       shutil.copyfile(actual_path, expected_path)
       self._RunCommand([_PNG_OPTIMIZER, expected_path])
