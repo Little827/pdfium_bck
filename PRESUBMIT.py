@@ -432,7 +432,7 @@ def _CheckPNGFormat(input_api, output_api):
   must be the same as this one.
   """
   expected_pattern = input_api.re.compile(
-      r'.+_expected(_skia)?(_(win|mac|linux))?\.pdf\.\d+.png')
+      r'.+_expected(_agg|_skia)?(_(win|mac|linux))?\.pdf\.\d+.png')
   results = []
   for f in input_api.AffectedFiles(include_deletes=False):
     if not f.LocalPath().endswith('.png'):
