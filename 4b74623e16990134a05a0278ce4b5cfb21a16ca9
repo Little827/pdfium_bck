@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a53a7f59_b087183a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-02-10T00:42:27Z",
+      "side": 1,
+      "message": "which is",
+      "range": {
+        "startLine": 10,
+        "startChar": 19,
+        "endLine": 10,
+        "endChar": 25
+      },
+      "revId": "4b74623e16990134a05a0278ce4b5cfb21a16ca9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31c29890_951dc6ec",
+        "filename": "testing/tools/test_runner.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-02-10T00:42:27Z",
+      "side": 1,
+      "message": "QQ: Since it\u0027s plural, should we use \"which\"? (Even though \"that\" sounds more natural to me.)",
+      "range": {
+        "startLine": 203,
+        "startChar": 30,
+        "endLine": 203,
+        "endChar": 34
+      },
+      "revId": "4b74623e16990134a05a0278ce4b5cfb21a16ca9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
