@@ -131,20 +131,43 @@ class PNGDiffer():
   def Regenerate(self, input_filename, source_dir, working_dir):
     path_templates = _PathTemplates(input_filename, source_dir, working_dir,
                                     self.os_name, self.suffix_order)
-
     for page in itertools.count():
-      # Loop through the generated page images. Stop when there is a page
-      # missing a png, which means the document ended.
-      actual_path = path_templates.GetActualPath(page)
-      if not os.path.isfile(actual_path):
+      expected_paths = path_templates.GetExpectedPaths(page)
+
+      # Make sure the actual page exists.
+      page_diff = ImageDiff(actual_path=path_templates.GetActualPath(page))
+      if not os.path.exists(page_diff.actual_path):
+        if expected_paths:
+          print(f'WARNING: {input_filename} has extra expected page {page}')
         break
+
+      # Locate existing matches.
+      first_match = None
+      last_match = None
+      for index, expected_path in enumerate(expected_paths[1:]):
+        page_diff.expected_path = expected_path
+        if not self._RunImageCompareCommand(page_diff):
+          if first_match is None:
+            if index > 0:
+              print(f'WARNING: {input_filename}.{page} has non-adjacent match')
+            first_match = index
+          last_match = index
+
+      if first_match != last_match:
+        print(f'WARNING: {input_filename}.{page} has redundant matches')
+
+      # Try to reuse expectations.
+      if last_match is not None:
+        for expected_path in expected_paths[0:last_match + 1]:
+          os.rename(expected_path, expected_path + '.bak')
+
+        # Proceed to next page.
+        continue
 
       # Regenerate the most specific expected path that exists. If there are no
       # existing expectations, regenerate the base case.
-      #
-      # TODO(crbug.com/pdfium/1987): Clean up redundant expectations.
       expected_path = path_templates.GetExpectedPath(page)
-      shutil.copyfile(actual_path, expected_path)
+      shutil.copyfile(page_diff.actual_path, expected_path)
       self._RunCommand([_PNG_OPTIMIZER, expected_path])
 
 
