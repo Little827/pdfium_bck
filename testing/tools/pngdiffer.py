@@ -97,39 +97,34 @@ class PNGDiffer():
       if not os.path.exists(page_diff.actual_path):
         break
 
-      last_not_found_expected_path = None
-      compare_error = None
-      for expected_path in path_templates.GetExpectedPaths(page):
-        if not os.path.exists(expected_path):
-          last_not_found_expected_path = expected_path
-          continue
+      expected_path = path_templates.GetExpectedPath(page)
+      if os.path.exists(expected_path):
         page_diff.expected_path = expected_path
 
         compare_error = self._RunImageCompareCommand(page_diff)
-        if not compare_error:
-          # Found a match.
-          break
+        if compare_error:
+          page_diff.reason = str(compare_error)
 
-      if page_diff.expected_path:
-        if not compare_error:
-          # Proceed to next page
-          continue
-        page_diff.reason = str(compare_error)
-
-        # TODO(crbug.com/pdfium/1925): Compare and diff in a single invocation.
-        page_diff.diff_path = path_templates.GetDiffPath(page)
-        if not self._RunImageDiffCommand(page_diff):
-          print(f'WARNING: No diff for {page_diff.actual_path}')
-          page_diff.diff_path = None
+          # TODO(crbug.com/pdfium/1925): Compare and diff simultaneously.
+          page_diff.diff_path = path_templates.GetDiffPath(page)
+          if not self._RunImageDiffCommand(page_diff):
+            print(f'WARNING: No diff for {page_diff.actual_path}')
+            page_diff.diff_path = None
+        else:
+          # Validate that no other paths match.
+          for unexpected_path in path_templates.GetExpectedPaths(page)[1:]:
+            page_diff.expected_path = unexpected_path
+            if not self._RunImageCompareCommand(page_diff):
+              page_diff.reason = f'Also matches {unexpected_path}'
+              break
+          page_diff.expected_path = expected_path
       else:
         if page == 0:
           print(f'WARNING: no expected results files for {input_filename}')
-        if last_not_found_expected_path:
-          page_diff.reason = f'{last_not_found_expected_path} does not exist'
-        else:
-          page_diff.reason = f'Missing expected result for 0-based page {page}'
+        page_diff.reason = f'{expected_path} does not exist'
 
-      image_diffs.append(page_diff)
+      if page_diff.reason:
+        image_diffs.append(page_diff)
 
     return image_diffs
 
@@ -184,13 +179,16 @@ class _PathTemplates:
   def GetDiffPath(self, page):
     return self.diff_path_template % page
 
-  def GetExpectedPaths(self, page):
+  def _GetPossibleExpectedPaths(self, page):
     return [template % page for template in self.expected_templates]
+
+  def GetExpectedPaths(self, page):
+    return list(filter(os.path.exists, self._GetPossibleExpectedPaths(page)))
 
   def GetExpectedPath(self, page, default_to_base=True):
     """Returns the most specific expected path that exists."""
     last_not_found_expected_path = None
-    for expected_path in self.GetExpectedPaths(page):
+    for expected_path in self._GetPossibleExpectedPaths(page):
       if os.path.exists(expected_path):
         return expected_path
       last_not_found_expected_path = expected_path
