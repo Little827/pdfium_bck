@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d48555e_e71c8c9f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 9081
+      },
+      "writtenOn": "2023-02-14T01:58:49Z",
+      "side": 1,
+      "message": "thestig@ - it looks like I don\u0027t have permissions to submit to CQ for this repository, so can you do that on my behalf? Thanks!",
+      "revId": "86d13d2a4810c0d35384fe9760f49621ae11591d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
