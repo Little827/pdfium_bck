@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a08a96a7_6a60f9c6",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1880,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-02-14T20:41:27Z",
+      "side": 1,
+      "message": "Nit: Seems silly to use memcpy() for this, but :shrug:.",
+      "revId": "0edb4c8ff3fc15e74c568c3ba75a7e3ab1e69670",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
