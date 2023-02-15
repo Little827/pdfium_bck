@@ -34,6 +34,24 @@
       "parentUuid": "a08a96a7_6a60f9c6",
       "revId": "0edb4c8ff3fc15e74c568c3ba75a7e3ab1e69670",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "683dd413_87aac64d",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1880,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-02-15T01:41:23Z",
+      "side": 1,
+      "message": "I was thinking direct assignment, unless there\u0027s a good reason not to do that.\n\nThis code essentially seems to do this:\n\n  // unrolled for loop\n  temp_cubics[0] \u003d computation(0)\n  temp_cubics[1] \u003d computation(1)\n  temp_cubics[2] \u003d computation(2)\n  temp_cubics[3] \u003d computation(3)\n  \n  // unrolled memcpy()\n  cubics[0] \u003d temp_cubics[0]\n  cubics[1] \u003d temp_cubics[1]\n  cubics[2] \u003d temp_cubics[2]\n  cubics[3] \u003d temp_cubics[3]\n  \nThen pretty much the same thing for \"temp_colors\" and \"colors\". There isn\u0027t even any type punning or pointer arithmetic going on, as far as I can tell.",
+      "parentUuid": "dab9c73b_d0c32a0e",
+      "revId": "0edb4c8ff3fc15e74c568c3ba75a7e3ab1e69670",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
