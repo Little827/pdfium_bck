@@ -16,6 +16,24 @@
       "message": "Nit: Seems silly to use memcpy() for this, but :shrug:.",
       "revId": "0edb4c8ff3fc15e74c568c3ba75a7e3ab1e69670",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dab9c73b_d0c32a0e",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1880,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-02-15T01:24:25Z",
+      "side": 1,
+      "message": "std::copy() then?",
+      "parentUuid": "a08a96a7_6a60f9c6",
+      "revId": "0edb4c8ff3fc15e74c568c3ba75a7e3ab1e69670",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
