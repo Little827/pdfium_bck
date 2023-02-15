@@ -16,6 +16,63 @@
       "message": "nigi -\u003e thestig, since nigi is sheriff today.",
       "revId": "51ad909fc48b3f80ff11ac05301aca49d0f26a55",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba8cabea_3e1597c5",
+        "filename": "testing/tools/pngdiffer.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-02-15T08:51:41Z",
+      "side": 1,
+      "message": "The 0 isn\u0027t necessary?",
+      "revId": "51ad909fc48b3f80ff11ac05301aca49d0f26a55",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc2d4a91_f1680d6a",
+        "filename": "testing/tools/test_runner.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-02-15T08:51:41Z",
+      "side": 1,
+      "message": "... by renaming them with an additional .bak extension?",
+      "revId": "51ad909fc48b3f80ff11ac05301aca49d0f26a55",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6badfe01_74785dc8",
+        "filename": "testing/tools/test_runner.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-02-15T08:51:41Z",
+      "side": 1,
+      "message": "Omit?",
+      "range": {
+        "startLine": 222,
+        "startChar": 53,
+        "endLine": 222,
+        "endChar": 60
+      },
+      "revId": "51ad909fc48b3f80ff11ac05301aca49d0f26a55",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
