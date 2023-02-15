@@ -52,6 +52,24 @@
       "parentUuid": "dab9c73b_d0c32a0e",
       "revId": "0edb4c8ff3fc15e74c568c3ba75a7e3ab1e69670",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "155a39a8_b9e9b815",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1880,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-02-15T01:42:50Z",
+      "side": 1,
+      "message": "Never mind, I see that it\u0027s doing self-assignment now.",
+      "parentUuid": "683dd413_87aac64d",
+      "revId": "0edb4c8ff3fc15e74c568c3ba75a7e3ab1e69670",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
