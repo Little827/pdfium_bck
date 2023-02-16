@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8414c869_230c1740",
+        "filename": "testing/resources/pixel/bug_1976.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-02-16T20:31:14Z",
+      "side": 1,
+      "message": "Maybe use \"/ASCIIHexDecode\" so that the stream looks better?",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 9
+      },
+      "revId": "6e1d696510f050dbf189bb98c2888ab3333e4e32",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
