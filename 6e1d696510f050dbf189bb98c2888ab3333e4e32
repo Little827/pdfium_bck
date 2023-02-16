@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f9d62d5_3727c783",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-02-16T20:38:34Z",
+      "side": 1,
+      "message": "Thanks for the review!",
+      "revId": "6e1d696510f050dbf189bb98c2888ab3333e4e32",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8414c869_230c1740",
@@ -14,6 +31,30 @@
       "writtenOn": "2023-02-16T20:31:14Z",
       "side": 1,
       "message": "Maybe use \"/ASCIIHexDecode\" so that the stream looks better?",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 9
+      },
+      "revId": "6e1d696510f050dbf189bb98c2888ab3333e4e32",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f97a73e_1e019582",
+        "filename": "testing/resources/pixel/bug_1976.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-02-16T20:38:34Z",
+      "side": 1,
+      "message": "Ack\n\nThe hexadecimal isn\u0027t meaningful to humans (unless one can decode zlib in their head), so I don\u0027t think there\u0027s any value in using /ASCIIHexDecode over /ASCII85Decode, while /ASCII85Decode is significantly shorter.",
+      "parentUuid": "8414c869_230c1740",
       "range": {
         "startLine": 75,
         "startChar": 0,
