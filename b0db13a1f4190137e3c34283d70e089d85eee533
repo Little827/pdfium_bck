@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "79958495_cee41c07",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-02-17T03:44:50Z",
+      "side": 1,
+      "message": "No. Existing pixel and corpus tests do not catch this issue (because not all fill options are used for Skia). And I am having trouble creating a pixel test that can render differently after these 3 commits.",
+      "parentUuid": "d7cac48f_dd7de7c3",
+      "revId": "b0db13a1f4190137e3c34283d70e089d85eee533",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "61839959_2eee2c3e",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -31,6 +49,24 @@
       "writtenOn": "2023-02-17T01:25:40Z",
       "side": 1,
       "message": "Just curious, is there a related bug for this?",
+      "revId": "b0db13a1f4190137e3c34283d70e089d85eee533",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac3e33de_c52548b1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-02-17T03:44:50Z",
+      "side": 1,
+      "message": "There is no related bug for this. I accidentally stumbled upon this issue when I created a 2 paths test:\nThe 1st path is filling a zero-area path. \nThe 2nd path is filling a regular triangle path.\n\nWhen DrawPath() is called for the second time (to queue the second path), FlushPath() will try to flush the first path out. This is when m_fillOptions.zero_path \u003d\u003d true (in SkiaState) and m_FillOptions.zero_path \u003d\u003d false (in the driver).\n\nThe logic is very wrong as we should not use the second path\u0027s fill options to draw the first path. But I was having trouble creating a pixel test that can render differently before and after these 3 chained CLs.",
+      "parentUuid": "61839959_2eee2c3e",
       "revId": "b0db13a1f4190137e3c34283d70e089d85eee533",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
