@@ -36,6 +36,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c12270d4_fd5499cc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-02-17T17:26:05Z",
+      "side": 1,
+      "message": "Thanks for trying.",
+      "parentUuid": "79958495_cee41c07",
+      "revId": "b0db13a1f4190137e3c34283d70e089d85eee533",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "61839959_2eee2c3e",
@@ -85,6 +103,24 @@
       "side": 1,
       "message": "What might be able to make the rendering difference for Skia is when stroke_width \u003d\u003d 1 behaves differently from when stroke_width \u003d\u003d 0.\n\nTheoretically, stroke_width\u003d\u003d0 will draw 1-pixel width hairline disregarding the device space, but it usually behaves the same as drawing stroke_width \u003d\u003d1 pen lines. (See [1])\n\n[1] https://source.chromium.org/chromium/chromium/src/+/main:third_party/skia/include/core/SkPaint.h;drc\u003df37b11fe3cfd8d5f8294ef27d5c6c723a4028d89;bpv\u003d1;bpt\u003d1;l\u003d312?q\u003dskpaint\u0026ss\u003dchromium\u0026gsn\u003dsetStrokeWidth\u0026gs\u003dkythe%3A%2F%2Fchromium.googlesource.com%2Fchromium%2Fsrc%3Flang%3Dc%252B%252B%3Fpath%3Dthird_party%2Fskia%2Finclude%2Fcore%2FSkPaint.h%23wWUGxI5Qx5GixcjztFPWtB0DYMv2Im0eBuWeLAswpDU",
       "parentUuid": "ac3e33de_c52548b1",
+      "revId": "b0db13a1f4190137e3c34283d70e089d85eee533",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09e11d3d_9d66f0f2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-02-17T17:26:05Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "ad40e3c0_a718888b",
       "revId": "b0db13a1f4190137e3c34283d70e089d85eee533",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
