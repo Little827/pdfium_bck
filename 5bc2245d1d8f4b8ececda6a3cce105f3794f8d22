@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1cc7be7_d34cf0c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5625
+      },
+      "writtenOn": "2023-02-17T20:07:17Z",
+      "side": 1,
+      "message": "Note this probably depends on https://chromium-review.googlesource.com/c/chromium/src/+/4036347 landing upstream and rolling into pdfium first.",
+      "revId": "5bc2245d1d8f4b8ececda6a3cce105f3794f8d22",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
