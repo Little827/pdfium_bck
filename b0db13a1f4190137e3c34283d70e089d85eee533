@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54b6d7f1_71244ebd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-02-17T00:28:46Z",
+      "side": 1,
+      "message": "Found out this issue when I was tracing \"zero_area\" value when rendering multiple paths.\n\nThis change makes sure the correct fill options are used for individual path rendering. But because fill options don\u0027t really affect Skia rendering like AGG, it didn\u0027t trigger any expectation change.\n\n(Skia only cares about anti aliasing option, which does not change when rendering the same PDF)",
+      "revId": "b0db13a1f4190137e3c34283d70e089d85eee533",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
