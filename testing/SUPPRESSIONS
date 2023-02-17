@@ -260,13 +260,8 @@ jetman_std.pdf mac * * *
 jetman_std_fixed.pdf mac * * *
 js_calculate.pdf * * * *
 list_box.pdf * * * *
-
 negative.pdf mac * * *
 new_certify1.pdf mac * * *
-
-# TODO(pdfium:1863): Remove after associated bug is fixed
-new_pdfsign1.pdf * * * skia
-
 new_signature1.pdf mac * * *
 new_signature2.pdf mac * * *
 new_stamp4.pdf mac * * *
@@ -393,9 +388,6 @@ bug_1846.in * * * agg
 
 # TODO(pdfium:1963): Remove after associated bug is fixed
 bug_1963.in * * * skia
-
-# TODO(pdfium:1968): Remove after associated bug is fixed
-bug_1966.in * * * skia
 
 # TODO(pdfium:1973): Remove after associated bug is fixed
 bug_1973.in * * * agg,skia
