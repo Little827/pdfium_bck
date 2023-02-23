@@ -141,6 +141,9 @@ JpxDecodeAction GetJpxDecodeAction(const CJPX_Decoder::JpxImageInfo& jpx_info,
   // Cases where the PDF did not provide a colorspace.
   // Choose how to decode based on the number of components in the JPX image.
   switch (jpx_info.components) {
+    case 2:
+      return JpxDecodeAction::kFail;
+
     case 3:
       return JpxDecodeAction::kUseRgb;
 
@@ -631,7 +634,7 @@ RetainPtr<CFX_DIBitmap> CPDF_DIB::LoadJpxBitmap(
   FXDIB_Format format;
   if (image_info.components == 1) {
     format = FXDIB_Format::k8bppRgb;
-  } else if (image_info.components <= 3) {
+  } else if (image_info.components == 3) {
     format = FXDIB_Format::kRgb;
   } else if (image_info.components == 4) {
     format = FXDIB_Format::kRgb32;
