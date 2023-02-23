@@ -16,6 +16,24 @@
       "message": "I can see the point in cleaning this up, but I think it provides a useful signal that this is being suppressed because of a renderer issue, rather than a platform or V8/XFA issue. I\u0027ll leave it up to you.",
       "revId": "8d2d3732fb5a587d8cc400da63e74239cc60dd1c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f674568_6485c6fe",
+        "filename": "testing/SUPPRESSIONS",
+        "patchSetId": 2
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-02-23T20:00:35Z",
+      "side": 0,
+      "message": "I just want to make skia-specific issues stand out more, therefore I did the clean up.",
+      "parentUuid": "51998b49_5b6bfd86",
+      "revId": "8d2d3732fb5a587d8cc400da63e74239cc60dd1c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
