@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0f345ee_c116a7d1",
+        "filename": "testing/SUPPRESSIONS",
+        "patchSetId": 1
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-02-23T23:51:11Z",
+      "side": 0,
+      "message": "Skia behavior was actually the same as AGG which was rendering the tiny dot (before it got enlarged), but due to the dot was too small, there was a small discrepancy.",
+      "range": {
+        "startLine": 349,
+        "startChar": 0,
+        "endLine": 349,
+        "endChar": 25
+      },
+      "revId": "67c2317847968ec4e07fe73c51d1f16a16b35ccf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
