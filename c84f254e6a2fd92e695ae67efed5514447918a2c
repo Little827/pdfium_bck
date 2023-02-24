@@ -16,6 +16,24 @@
       "message": "Would it make sense to map 1 to `kDoNothing`, and fail for all other values?",
       "revId": "c84f254e6a2fd92e695ae67efed5514447918a2c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54f3b68c_73b57b82",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-02-24T00:08:53Z",
+      "side": 1,
+      "message": "e.g. What if the components count is 5 or 99?",
+      "parentUuid": "3388f5a2_6b31127a",
+      "revId": "c84f254e6a2fd92e695ae67efed5514447918a2c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
