@@ -34,6 +34,24 @@
       "parentUuid": "3388f5a2_6b31127a",
       "revId": "c84f254e6a2fd92e695ae67efed5514447918a2c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8dd3b6da_0af2a76c",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-02-24T23:11:51Z",
+      "side": 1,
+      "message": "If there is not colorspaces specified in the PDF, PDF should just support baseline color spaces + CMYK.\n\nI tested component number of 2,5 and 257 with the PDFs in https://bugs.chromium.org/p/pdfium/issues/detail?id\u003d1747#c7 without specifying color spaces in the PDFs, and Acrobat reported errors and didn\u0027t render those images.",
+      "parentUuid": "54f3b68c_73b57b82",
+      "revId": "c84f254e6a2fd92e695ae67efed5514447918a2c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
