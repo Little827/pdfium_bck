@@ -19,9 +19,16 @@ bool CFX_BidiChar::AppendChar(wchar_t wch) {
   Direction direction;
   switch (pdfium::unicode::GetBidiClass(wch)) {
     case FX_BIDICLASS::kL:
-    case FX_BIDICLASS::kAN:
-    case FX_BIDICLASS::kEN:
       direction = Direction::kLeft;
+      break;
+    case FX_BIDICLASS::kES:
+    case FX_BIDICLASS::kEN:
+    case FX_BIDICLASS::kET:
+    case FX_BIDICLASS::kAN:
+    case FX_BIDICLASS::kCS:
+    case FX_BIDICLASS::kNSM:
+    case FX_BIDICLASS::kBN:
+      direction = Direction::kLeftWeak;
       break;
     case FX_BIDICLASS::kR:
     case FX_BIDICLASS::kAL:
@@ -79,6 +86,7 @@ CFX_BidiString::~CFX_BidiString() = default;
 
 CFX_BidiChar::Direction CFX_BidiString::OverallDirection() const {
   DCHECK(m_eOverallDirection != CFX_BidiChar::Direction::kNeutral);
+  DCHECK(m_eOverallDirection != CFX_BidiChar::Direction::kLeftWeak);
   return m_eOverallDirection;
 }
 
