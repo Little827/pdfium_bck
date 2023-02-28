@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3be80f7_312761b2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 9101
+      },
+      "writtenOn": "2023-02-28T08:19:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e626094_51c547bc",
+      "revId": "3686bf94d90994017b5b944796fc49174c22007f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fb8d5218_3e78f245",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-02-28T07:26:15Z",
       "side": 1,
       "message": "PDFium tries to use Google C++ style, where ClassName and FunctionName are named in the same style. A common workaround is to refer to functions as FunctionName() to reduce the ambiguity.",
+      "range": {
+        "startLine": 16,
+        "startChar": 12,
+        "endLine": 16,
+        "endChar": 36
+      },
+      "revId": "3686bf94d90994017b5b944796fc49174c22007f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37f5d783_357c118e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 9101
+      },
+      "writtenOn": "2023-02-28T08:19:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb8d5218_3e78f245",
       "range": {
         "startLine": 16,
         "startChar": 12,
@@ -58,6 +100,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "137cc77c_e69ca63f",
+        "filename": "core/fxcrt/fx_bidi.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 9101
+      },
+      "writtenOn": "2023-02-28T08:19:17Z",
+      "side": 1,
+      "message": "I\u0027ve sorted them according to the order of the Unicode standard but the fx_unicode.h order also makes sense, fixed",
+      "parentUuid": "b6d4ee17_efb5e734",
+      "revId": "3686bf94d90994017b5b944796fc49174c22007f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a6e381c4_74f8357c",
@@ -71,6 +131,24 @@
       "writtenOn": "2023-02-28T07:26:15Z",
       "side": 1,
       "message": "For a while, PDFium didn\u0027t have DCHECK_NE(), which explains why line 88 is the way it is. Would you mind switching both lines to DCHECK_NE()?",
+      "revId": "3686bf94d90994017b5b944796fc49174c22007f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f100d78_719a24dd",
+        "filename": "core/fxcrt/fx_bidi.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 9101
+      },
+      "writtenOn": "2023-02-28T08:19:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6e381c4_74f8357c",
       "revId": "3686bf94d90994017b5b944796fc49174c22007f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -92,6 +170,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f46614d_6a668394",
+        "filename": "core/fxcrt/fx_bidi_unittest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 9101
+      },
+      "writtenOn": "2023-02-28T08:19:17Z",
+      "side": 1,
+      "message": "Added in separate CL https://pdfium-review.googlesource.com/c/pdfium/+/104150",
+      "parentUuid": "4861d774_01d7abe5",
+      "revId": "3686bf94d90994017b5b944796fc49174c22007f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa07a24d_5822f3aa",
@@ -109,6 +205,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90dad46a_16f299ba",
+        "filename": "core/fxcrt/fx_bidi_unittest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 9101
+      },
+      "writtenOn": "2023-02-28T08:19:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa07a24d_5822f3aa",
+      "revId": "3686bf94d90994017b5b944796fc49174c22007f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "59d84f61_c7a6e89d",
@@ -122,6 +236,24 @@
       "writtenOn": "2023-02-28T07:26:15Z",
       "side": 1,
       "message": "Needs to move up to between lines 249/250. i.e. Check `it` immediately after incrementing it.",
+      "revId": "3686bf94d90994017b5b944796fc49174c22007f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d10e98e_635ff001",
+        "filename": "core/fxcrt/fx_bidi_unittest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 9101
+      },
+      "writtenOn": "2023-02-28T08:19:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59d84f61_c7a6e89d",
       "revId": "3686bf94d90994017b5b944796fc49174c22007f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
