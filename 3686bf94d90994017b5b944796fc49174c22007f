@@ -1,0 +1,129 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e626094_51c547bc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-02-28T07:26:15Z",
+      "side": 1,
+      "message": "Please wrap at 72 columns, not 73.",
+      "revId": "3686bf94d90994017b5b944796fc49174c22007f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb8d5218_3e78f245",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-02-28T07:26:15Z",
+      "side": 1,
+      "message": "PDFium tries to use Google C++ style, where ClassName and FunctionName are named in the same style. A common workaround is to refer to functions as FunctionName() to reduce the ambiguity.",
+      "range": {
+        "startLine": 16,
+        "startChar": 12,
+        "endLine": 16,
+        "endChar": 36
+      },
+      "revId": "3686bf94d90994017b5b944796fc49174c22007f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6d4ee17_efb5e734",
+        "filename": "core/fxcrt/fx_bidi.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-02-28T07:26:15Z",
+      "side": 1,
+      "message": "Can these cases be sorted in the same order as they are defined in fx_unicode.h?",
+      "revId": "3686bf94d90994017b5b944796fc49174c22007f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6e381c4_74f8357c",
+        "filename": "core/fxcrt/fx_bidi.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-02-28T07:26:15Z",
+      "side": 1,
+      "message": "For a while, PDFium didn\u0027t have DCHECK_NE(), which explains why line 88 is the way it is. Would you mind switching both lines to DCHECK_NE()?",
+      "revId": "3686bf94d90994017b5b944796fc49174c22007f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4861d774_01d7abe5",
+        "filename": "core/fxcrt/fx_bidi_unittest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-02-28T07:26:15Z",
+      "side": 1,
+      "message": "ASSERT_NE(). Yes, I realize this is a problem with the existing surrounding code. I can fix those separately.",
+      "revId": "3686bf94d90994017b5b944796fc49174c22007f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa07a24d_5822f3aa",
+        "filename": "core/fxcrt/fx_bidi_unittest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-02-28T07:26:15Z",
+      "side": 1,
+      "message": "Redundant with line 243?",
+      "revId": "3686bf94d90994017b5b944796fc49174c22007f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59d84f61_c7a6e89d",
+        "filename": "core/fxcrt/fx_bidi_unittest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-02-28T07:26:15Z",
+      "side": 1,
+      "message": "Needs to move up to between lines 249/250. i.e. Check `it` immediately after incrementing it.",
+      "revId": "3686bf94d90994017b5b944796fc49174c22007f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
