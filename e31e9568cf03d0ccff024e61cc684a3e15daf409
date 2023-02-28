@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db3d99bf_a7ced8d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 9101
+      },
+      "writtenOn": "2023-02-28T00:34:11Z",
+      "side": 1,
+      "message": "Sorry, my bad, accidentally ran `cl try` here instead on my CL",
+      "revId": "e31e9568cf03d0ccff024e61cc684a3e15daf409",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
