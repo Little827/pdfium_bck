@@ -74,6 +74,10 @@ config("skia_library_config") {
     "SKIA_IMPLEMENTATION=1",
   ]
 
+  if (pdf_use_skia_simd) {
+    defines += [ "PDF_USE_SKIA_SIMD" ]
+  }
+
   if (current_cpu == "arm") {
     if (arm_use_neon) {
       defines += [ "SK_ARM_HAS_NEON" ]

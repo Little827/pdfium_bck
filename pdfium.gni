@@ -49,6 +49,8 @@ declare_args() {
   # renderer is selectable at runtime.
   pdf_use_skia = pdf_use_skia_override
 
+  pdf_use_skia_simd = false
+
   # Build PDFium standalone
   pdf_is_standalone = false
 

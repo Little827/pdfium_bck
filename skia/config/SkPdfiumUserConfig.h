@@ -267,4 +267,15 @@ SK_API void SkDebugf_FileLine(const char* file,
 
 // ===== End Chrome-specific definitions =====
 
+#ifndef PDF_USE_SKIA_SIMD
+
+#undef SK_ARM_HAS_NEON
+
+#if SK_CPU_SSE_LEVEL > SK_CPU_SSE_LEVEL_SSE1
+#undef SK_CPU_SSE_LEVEL
+#define SK_CPU_SSE_LEVEL SK_CPU_SSE_LEVEL_SSE1
+#endif  // SK_CPU_SSE_LEVEL
+
+#endif
+
 #endif  // SKIA_CONFIG_SKUSERCONFIG_H_
