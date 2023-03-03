@@ -70,6 +70,24 @@
       "parentUuid": "5c8e293e_d5b6d3cf",
       "revId": "e527e56ef1a189c609610b9fd1f714ffaa6f0df1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "587ba470_59041331",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-03-03T15:08:09Z",
+      "side": 1,
+      "message": "Hi Kevin, https://pdfium-review.googlesource.com/c/pdfium/+/104276 has landed. You can try roll Skia from 7e2c9f54c0fd5d777f96e94b958c2ebff5fa246b in this CL and the tests should all pass.",
+      "parentUuid": "eedd9168_7b4845dc",
+      "revId": "e527e56ef1a189c609610b9fd1f714ffaa6f0df1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
