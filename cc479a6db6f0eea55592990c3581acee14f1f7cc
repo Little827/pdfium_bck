@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fcfa394_830d7f05",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-03-03T00:00:06Z",
+      "side": 1,
+      "message": "Thanks for the review!",
+      "parentUuid": "d5a00d21_8bcd2fce",
+      "revId": "cc479a6db6f0eea55592990c3581acee14f1f7cc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ac38ad7f_525a72c5",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-03-02T23:38:46Z",
       "side": 1,
       "message": "Maybe put this logic into a helper function (PixelMatch(), MatchingPixel(), etc) will be clearer.",
+      "range": {
+        "startLine": 179,
+        "startChar": 6,
+        "endLine": 186,
+        "endChar": 44
+      },
+      "revId": "cc479a6db6f0eea55592990c3581acee14f1f7cc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04b8962c_3863b6b4",
+        "filename": "testing/image_diff/image_diff.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-03-03T00:00:06Z",
+      "side": 1,
+      "message": "Done\n\nI realized we can just take the max() of the 4 channels, which makes it simpler to compute a per-pixel rather than per-channel value.\n\nI also added back a quick check for equality that I forgot about at some point.",
+      "parentUuid": "ac38ad7f_525a72c5",
       "range": {
         "startLine": 179,
         "startChar": 6,
