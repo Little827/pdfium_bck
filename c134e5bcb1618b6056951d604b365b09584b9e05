@@ -34,6 +34,24 @@
       "parentUuid": "99a6fec0_d43f4a44",
       "revId": "c134e5bcb1618b6056951d604b365b09584b9e05",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a99165a_be4fb5eb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-03-03T17:45:55Z",
+      "side": 1,
+      "message": "Done\n\nWe ended up introducing fuzzy matching due to device-specific differences (pdfium:1991).",
+      "parentUuid": "a01380be_120b6fc4",
+      "revId": "c134e5bcb1618b6056951d604b365b09584b9e05",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
