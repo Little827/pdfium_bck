@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e11c0e9_eed15f78",
+        "filename": "skia/config/SkPdfiumUserConfig.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 8751
+      },
+      "writtenOn": "2023-03-05T18:33:13Z",
+      "side": 1,
+      "message": "Either `is used to` or `allows them to`, but not a mixture of both ;)",
+      "revId": "5a9c17f7a2149e61c502194019673f5e1a9cf875",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
