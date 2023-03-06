@@ -79,6 +79,16 @@ const char kFormCalcRuntime[] = "pfm_rt";
 
 }  // namespace
 
+CFXJSE_Engine::EventParamScope::EventParamScope(CFXJSE_Engine* pEngine,
+                                                CXFA_EventParam* param)
+    : m_pEngine(pEngine), m_pOldParam(m_pEngine->GetEventParam()) {
+  m_pEngine->SetEventParam(param);
+}
+
+CFXJSE_Engine::EventParamScope::~EventParamScope() {
+  m_pEngine->SetEventParam(m_pOldParam);
+}
+
 CFXJSE_Engine::ResolveResult::ResolveResult() = default;
 
 CFXJSE_Engine::ResolveResult::ResolveResult(const ResolveResult& that) =

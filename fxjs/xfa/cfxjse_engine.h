@@ -48,6 +48,18 @@ enum class XFA_ResolveFlag : uint16_t {
 
 class CFXJSE_Engine final : public CFX_V8 {
  public:
+  class EventParamScope {
+   public:
+    FX_STACK_ALLOCATED();
+
+    EventParamScope(CFXJSE_Engine* pEngine, CXFA_EventParam* param);
+    ~EventParamScope();
+
+   private:
+    CFXJSE_Engine* m_pEngine;
+    CXFA_EventParam* m_pOldParam;
+  };
+
   class ResolveResult {
     CPPGC_STACK_ALLOCATED();  // Allow raw/unowned pointers.
 
@@ -110,7 +122,6 @@ class CFXJSE_Engine final : public CFX_V8 {
   CFXJSE_Engine(CXFA_Document* pDocument, CJS_Runtime* fxjs_runtime);
   ~CFXJSE_Engine() override;
 
-  void SetEventParam(CXFA_EventParam* param) { m_eventParam = param; }
   CXFA_EventParam* GetEventParam() const { return m_eventParam; }
   bool RunScript(CXFA_Script::Type eScriptType,
                  WideStringView wsScript,
@@ -152,6 +163,7 @@ class CFXJSE_Engine final : public CFX_V8 {
   CFXJSE_Context* GetJseContextForTest() const { return GetJseContext(); }
 
  private:
+  void SetEventParam(CXFA_EventParam* param) { m_eventParam = param; }
   CFXJSE_Context* GetJseContext() const { return m_JsContext.get(); }
   CFXJSE_Context* CreateVariablesContext(CXFA_Script* pScriptNode,
                                          CXFA_Node* pSubform);
