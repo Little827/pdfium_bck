@@ -211,6 +211,9 @@ CJS_Result CJX_EventPseudoModel::emit(
     return CJS_Result::Success();
 
   pNotify->HandleWidgetEvent(pEventParam->m_pTarget, pEventParam);
+  // HandleWidgetEvent may clear out the EventParam in pScriptContext, so
+  // restore it.
+  pScriptContext->SetEventParam(pEventParam);
   return CJS_Result::Success();
 }
 
