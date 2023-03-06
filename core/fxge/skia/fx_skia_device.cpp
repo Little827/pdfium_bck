@@ -255,11 +255,6 @@ SkFont::Edging GetFontEdgingType(const CFX_TextRenderOptions& text_options) {
   return SkFont::Edging::kSubpixelAntiAlias;
 }
 
-bool IsEvenOddFillType(SkPathFillType fill) {
-  return fill == SkPathFillType::kEvenOdd ||
-         fill == SkPathFillType::kInverseEvenOdd;
-}
-
 bool IsPathAPoint(const SkPath& path) {
   if (path.isEmpty())
     return false;
@@ -804,7 +799,6 @@ class SkiaState {
     kNone,
     kPath,
     kText,
-    kOther,
   };
 
   // mark all cached state as uninitialized
@@ -819,10 +813,7 @@ class SkiaState {
                 BlendMode blend_type) {
     size_t drawIndex = std::min(m_drawIndex, m_commands.size());
     if (Accumulator::kText == m_type || drawIndex != m_commandIndex ||
-        (Accumulator::kPath == m_type &&
-         DrawChanged(pMatrix, pDrawState, fill_color, stroke_color,
-                     fill_options, blend_type,
-                     m_pDriver->GetGroupKnockout()))) {
+        Accumulator::kPath == m_type) {
       Flush();
     }
     if (Accumulator::kPath != m_type) {
@@ -951,9 +942,7 @@ class SkiaState {
     }
     size_t drawIndex = std::min(m_drawIndex, m_commands.size());
     if (Accumulator::kPath == m_type || drawIndex != m_commandIndex ||
-        (Accumulator::kText == m_type &&
-         (FontChanged(pFont, matrix, font_size, scaleX, color, options) ||
-          hasRSX == m_rsxform.empty()))) {
+        Accumulator::kText == m_type) {
       Flush();
     }
     if (Accumulator::kText != m_type) {
@@ -1191,22 +1180,6 @@ class SkiaState {
     }
   }
 
-  bool DrawChanged(const CFX_Matrix* pMatrix,
-                   const CFX_GraphStateData* pState,
-                   uint32_t fill_color,
-                   uint32_t stroke_color,
-                   const CFX_FillRenderOptions& fill_options,
-                   BlendMode blend_type,
-                   bool group_knockout) const {
-    return MatrixChanged(pMatrix) || StateChanged(pState, m_drawState) ||
-           fill_color != m_fillColor || stroke_color != m_strokeColor ||
-           IsEvenOddFillType(m_skPath.getFillType()) ||
-           fill_options != m_fillOptions ||
-           fill_options.fill_type ==
-               CFX_FillRenderOptions::FillType::kEvenOdd ||
-           blend_type != m_blendType || group_knockout != m_groupKnockout;
-  }
-
   bool FontChanged(CFX_Font* pFont,
                    const CFX_Matrix& matrix,
                    float font_size,
@@ -1225,29 +1198,6 @@ class SkiaState {
 
   bool MatrixChanged(const CFX_Matrix* pMatrix) const {
     return pMatrix ? *pMatrix != m_drawMatrix : m_drawMatrix.IsIdentity();
-  }
-
-  bool StateChanged(const CFX_GraphStateData* pState,
-                    const CFX_GraphStateData& refState) const {
-    CFX_GraphStateData identityState;
-    if (!pState)
-      pState = &identityState;
-    return pState->m_LineWidth != refState.m_LineWidth ||
-           pState->m_LineCap != refState.m_LineCap ||
-           pState->m_LineJoin != refState.m_LineJoin ||
-           pState->m_MiterLimit != refState.m_MiterLimit ||
-           DashChanged(pState, refState);
-  }
-
-  bool DashChanged(const CFX_GraphStateData* pState,
-                   const CFX_GraphStateData& refState) const {
-    bool dashArray = pState && !pState->m_DashArray.empty();
-    if (!dashArray && refState.m_DashArray.empty())
-      return false;
-    if (!dashArray || refState.m_DashArray.empty())
-      return true;
-    return pState->m_DashPhase != refState.m_DashPhase ||
-           pState->m_DashArray != refState.m_DashArray;
   }
 
   void AdjustClip(size_t limit) {

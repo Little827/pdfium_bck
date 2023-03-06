@@ -366,9 +366,6 @@ bug_1723.in * * * *
 # TODO(pdfium:1846): Remove after associated bug is fixed
 bug_1846.in * * * agg
 
-# TODO(pdfium:1963): Remove after associated bug is fixed
-bug_1963.in * * * skia
-
 # TODO(pdfium:1973): Remove after associated bug is fixed
 bug_1973.in * * * *
 
