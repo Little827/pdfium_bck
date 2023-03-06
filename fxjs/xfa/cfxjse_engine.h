@@ -110,7 +110,23 @@ class CFXJSE_Engine final : public CFX_V8 {
   CFXJSE_Engine(CXFA_Document* pDocument, CJS_Runtime* fxjs_runtime);
   ~CFXJSE_Engine() override;
 
-  void SetEventParam(CXFA_EventParam* param) { m_eventParam = param; }
+  class EventParamScope {
+    CPPGC_STACK_ALLOCATED();
+
+   public:
+    EventParamScope(CFXJSE_Engine* pEngine,
+                    CXFA_Node* pNode,
+                    CXFA_EventParam* pEventParam);
+    ~EventParamScope();
+
+   private:
+    UnownedPtr<CFXJSE_Engine> m_pEngine;
+    UnownedPtr<CXFA_Node> m_pPrevNode;
+    UnownedPtr<CXFA_EventParam> m_pPrevEventParam;
+  };
+  friend class EventParamScope;
+
+  CXFA_Node* GetEventTarget() const { return m_pTarget; }
   CXFA_EventParam* GetEventParam() const { return m_eventParam; }
   bool RunScript(CXFA_Script::Type eScriptType,
                  WideStringView wsScript,
@@ -175,6 +191,7 @@ class CFXJSE_Engine final : public CFX_V8 {
                            ByteStringView szPropName,
                            v8::Local<v8::Value> pValue);
   void RunVariablesScript(CXFA_Script* pScriptNode);
+  void SetEventParam(CXFA_Node* node, CXFA_EventParam* param);
 
   UnownedPtr<CJS_Runtime> const m_pSubordinateRuntime;
   cppgc::WeakPersistent<CXFA_Document> const m_pDocument;
@@ -185,6 +202,7 @@ class CFXJSE_Engine final : public CFX_V8 {
   // CJX_Object remains valid for the lifetime of the engine.
   std::map<CJX_Object*, v8::Global<v8::Object>> m_mapObjectToObject;
   std::map<CJX_Object*, std::unique_ptr<CFXJSE_Context>> m_mapVariableToContext;
+  cppgc::WeakPersistent<CXFA_Node> m_pTarget;
   UnownedPtr<CXFA_EventParam> m_eventParam;
   std::vector<cppgc::Persistent<CXFA_Node>> m_upObjectArray;
   UnownedPtr<std::vector<cppgc::Persistent<CXFA_Node>>> m_pScriptNodeArray;
