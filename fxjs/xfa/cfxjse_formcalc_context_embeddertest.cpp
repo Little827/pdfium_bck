@@ -1034,11 +1034,11 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, GetXFAEventChange) {
   params.m_wsChange = L"changed";
 
   CFXJSE_Engine* context = GetScriptContext();
-  context->SetEventParam(&params);
+  context->SetEventParamAndTarget(&params, nullptr);
 
   const char test[] = {"xfa.event.change"};
   ExecuteExpectString(test, "changed");
-  context->SetEventParam(nullptr);
+  context->SetEventParamAndTarget(nullptr, nullptr);
 }
 
 TEST_F(CFXJSE_FormCalcContextEmbedderTest, SetXFAEventChange) {
@@ -1046,12 +1046,12 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, SetXFAEventChange) {
 
   CXFA_EventParam params;
   CFXJSE_Engine* context = GetScriptContext();
-  context->SetEventParam(&params);
+  context->SetEventParamAndTarget(&params, nullptr);
 
   const char test[] = {"xfa.event.change = \"changed\""};
   EXPECT_TRUE(Execute(test));
   EXPECT_EQ(L"changed", params.m_wsChange);
-  context->SetEventParam(nullptr);
+  context->SetEventParamAndTarget(nullptr, nullptr);
 }
 
 TEST_F(CFXJSE_FormCalcContextEmbedderTest, SetXFAEventFullTextFails) {
@@ -1061,12 +1061,12 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, SetXFAEventFullTextFails) {
   params.m_wsFullText = L"Original Full Text";
 
   CFXJSE_Engine* context = GetScriptContext();
-  context->SetEventParam(&params);
+  context->SetEventParamAndTarget(&params, nullptr);
 
   const char test[] = {"xfa.event.fullText = \"Changed Full Text\""};
   EXPECT_TRUE(Execute(test));
   EXPECT_EQ(L"Original Full Text", params.m_wsFullText);
-  context->SetEventParam(nullptr);
+  context->SetEventParamAndTarget(nullptr, nullptr);
 }
 
 TEST_F(CFXJSE_FormCalcContextEmbedderTest, EventChangeSelection) {
@@ -1078,7 +1078,7 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, EventChangeSelection) {
   params.m_iSelEnd = 3;
 
   CFXJSE_Engine* context = GetScriptContext();
-  context->SetEventParam(&params);
+  context->SetEventParamAndTarget(&params, nullptr);
 
   // Moving end to start works fine.
   EXPECT_TRUE(Execute("xfa.event.selEnd = \"1\""));
@@ -1122,7 +1122,7 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, EventChangeSelection) {
   EXPECT_EQ(4, params.m_iSelStart);
   EXPECT_EQ(4, params.m_iSelEnd);
 
-  context->SetEventParam(nullptr);
+  context->SetEventParamAndTarget(nullptr, nullptr);
 }
 
 TEST_F(CFXJSE_FormCalcContextEmbedderTest, XFAEventCancelAction) {
@@ -1132,11 +1132,11 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, XFAEventCancelAction) {
   params.m_bCancelAction = false;
 
   CFXJSE_Engine* context = GetScriptContext();
-  context->SetEventParam(&params);
+  context->SetEventParamAndTarget(&params, nullptr);
   ExecuteExpectBool("xfa.event.cancelAction", false);
   EXPECT_TRUE(Execute("xfa.event.cancelAction = \"true\""));
   EXPECT_TRUE(params.m_bCancelAction);
-  context->SetEventParam(nullptr);
+  context->SetEventParamAndTarget(nullptr, nullptr);
 }
 
 TEST_F(CFXJSE_FormCalcContextEmbedderTest, ComplexTextChangeEvent) {
@@ -1149,7 +1149,7 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, ComplexTextChangeEvent) {
   params.m_iSelEnd = 3;
 
   CFXJSE_Engine* context = GetScriptContext();
-  context->SetEventParam(&params);
+  context->SetEventParamAndTarget(&params, nullptr);
 
   EXPECT_EQ(L"abcd", params.m_wsPrevText);
   EXPECT_EQ(L"agd", params.GetNewText());
@@ -1175,7 +1175,7 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, ComplexTextChangeEvent) {
   EXPECT_EQ(1, params.m_iSelStart);
   EXPECT_EQ(1, params.m_iSelEnd);
 
-  context->SetEventParam(nullptr);
+  context->SetEventParamAndTarget(nullptr, nullptr);
 }
 
 // Should not crash.

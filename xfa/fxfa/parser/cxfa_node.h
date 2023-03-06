@@ -299,11 +299,13 @@ class CXFA_Node : public CXFA_Object, public GCedTreeNodeMixin<CXFA_Node> {
   XFA_EventError ProcessValidate(CXFA_FFDocView* pDocView, int32_t iFlags);
   XFA_EventError ExecuteScript(CXFA_FFDocView* pDocView,
                                CXFA_Script* script,
-                               CXFA_EventParam* pEventParam);
+                               CXFA_EventParam* pEventParam,
+                               CXFA_Node* pEventTarget);
   std::pair<XFA_EventError, bool> ExecuteBoolScript(
       CXFA_FFDocView* pDocView,
       CXFA_Script* script,
-      CXFA_EventParam* pEventParam);
+      CXFA_EventParam* pEventParam,
+      CXFA_Node* pEventTarget);
 
   CXFA_Node* GetUIChildNode();
 
