@@ -848,6 +848,7 @@ class SkiaState {
     if (MatrixOffset(pMatrix, &delta))
       skPath.offset(delta.fX, delta.fY);
     m_skPath.addPath(skPath);
+    // Flush();
   }
 
   void FlushPath() {
@@ -1025,6 +1026,7 @@ class SkiaState {
         }
       }
     }
+    Flush();
     return true;
   }
 
