@@ -150,6 +150,21 @@ CFXJSE_Engine::~CFXJSE_Engine() {
   }
 }
 
+CFXJSE_Engine::EventParamScope::EventParamScope(CFXJSE_Engine* pEngine,
+                                                CXFA_Node* pNode,
+                                                CXFA_EventParam* pEventParam)
+    : m_pEngine(pEngine),
+      m_pPrevNode(pEngine->GetEventTarget()),
+      m_pPrevEventParam(pEngine->GetEventParam()) {
+  m_pEngine->m_pTarget = pNode;
+  m_pEngine->m_eventParam = pEventParam;
+}
+
+CFXJSE_Engine::EventParamScope::~EventParamScope() {
+  m_pEngine->m_pTarget = m_pPrevNode;
+  m_pEngine->m_eventParam = m_pPrevEventParam;
+}
+
 bool CFXJSE_Engine::RunScript(CXFA_Script::Type eScriptType,
                               WideStringView wsScript,
                               CFXJSE_Value* hRetValue,
@@ -608,6 +623,16 @@ void CFXJSE_Engine::RunVariablesScript(CXFA_Script* pScriptNode) {
   m_pThisObject = pThisObject;
   pVariablesContext->ExecuteScript(btScript.AsStringView(), hRetValue.get(),
                                    v8::Local<v8::Object>());
+}
+
+void CFXJSE_Engine::SetEventParam(CXFA_Node* node, CXFA_EventParam* param) {
+  m_pTarget = node;
+  m_eventParam = param;
+}
+
+void CFXJSE_Engine::ClearEventParam() {
+  m_pTarget = nullptr;
+  m_eventParam = nullptr;
 }
 
 CFXJSE_Context* CFXJSE_Engine::VariablesContextForScriptNode(
