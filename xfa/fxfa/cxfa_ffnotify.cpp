@@ -221,7 +221,8 @@ bool CXFA_FFNotify::RunScript(CXFA_Script* script, CXFA_Node* item) {
 
   XFA_EventError iRet;
   bool bRet;
-  std::tie(iRet, bRet) = item->ExecuteBoolScript(pDocView, script, &EventParam);
+  std::tie(iRet, bRet) =
+      item->ExecuteBoolScript(pDocView, script, &EventParam, nullptr);
   return iRet == XFA_EventError::kSuccess && bRet;
 }
 

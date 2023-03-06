@@ -387,7 +387,8 @@ static XFA_EventError XFA_ProcessEvent(CXFA_FFDocView* pDocView,
         return XFA_EventError::kNotExist;
       if (pNode->IsUserInteractive())
         return XFA_EventError::kDisabled;
-      return pNode->ExecuteScript(pDocView, calc->GetScriptIfExists(), pParam);
+      return pNode->ExecuteScript(pDocView, calc->GetScriptIfExists(), pParam,
+                                  nullptr);
     }
     default:
       return pNode->ProcessEvent(pDocView, kXFAEventActivity[pParam->m_eType],
@@ -413,7 +414,6 @@ XFA_EventError CXFA_FFDocView::ExecEventActivityByDeepFirst(
 
     CXFA_EventParam eParam;
     eParam.m_eType = eEventType;
-    eParam.m_pTarget = pFormNode;
     eParam.m_bIsFormReady = bIsFormReady;
     return XFA_ProcessEvent(this, pFormNode, &eParam);
   }
@@ -436,7 +436,6 @@ XFA_EventError CXFA_FFDocView::ExecEventActivityByDeepFirst(
 
   CXFA_EventParam eParam;
   eParam.m_eType = eEventType;
-  eParam.m_pTarget = pFormNode;
   eParam.m_bIsFormReady = bIsFormReady;
 
   XFA_EventErrorAccumulate(&iRet, XFA_ProcessEvent(this, pFormNode, &eParam));
@@ -510,7 +509,6 @@ void CXFA_FFDocView::RunSubformIndexChange() {
 
     CXFA_EventParam eParam;
     eParam.m_eType = XFA_EVENT_IndexChange;
-    eParam.m_pTarget = pSubformNode;
     pSubformNode->ProcessEvent(this, XFA_AttributeValue::IndexChange, &eParam);
   }
 }

@@ -110,8 +110,11 @@ class CFXJSE_Engine final : public CFX_V8 {
   CFXJSE_Engine(CXFA_Document* pDocument, CJS_Runtime* fxjs_runtime);
   ~CFXJSE_Engine() override;
 
-  void SetEventParam(CXFA_EventParam* param) { m_eventParam = param; }
+  void SetEventParam(CXFA_EventParam* param, int _) { m_eventParam = param; }
   CXFA_EventParam* GetEventParam() const { return m_eventParam; }
+  void SetEventTarget(CXFA_Node* target) { m_pEventTarget = target; }
+  CXFA_Node* GetEventTarget() const { return m_pEventTarget; }
+
   bool RunScript(CXFA_Script::Type eScriptType,
                  WideStringView wsScript,
                  CFXJSE_Value* pRetValue,
@@ -186,6 +189,7 @@ class CFXJSE_Engine final : public CFX_V8 {
   std::map<CJX_Object*, v8::Global<v8::Object>> m_mapObjectToObject;
   std::map<CJX_Object*, std::unique_ptr<CFXJSE_Context>> m_mapVariableToContext;
   UnownedPtr<CXFA_EventParam> m_eventParam;
+  cppgc::Persistent<CXFA_Node> m_pEventTarget;
   std::vector<cppgc::Persistent<CXFA_Node>> m_upObjectArray;
   UnownedPtr<std::vector<cppgc::Persistent<CXFA_Node>>> m_pScriptNodeArray;
   std::unique_ptr<CFXJSE_NodeHelper> const m_NodeHelper;

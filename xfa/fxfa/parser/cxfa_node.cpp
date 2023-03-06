@@ -2456,7 +2456,8 @@ XFA_EventError CXFA_Node::ProcessEventInternal(CXFA_FFDocView* pDocView,
         // Too late, scripting engine already gone.
         return XFA_EventError::kNotExist;
       }
-      return ExecuteScript(pDocView, event->GetScriptIfExists(), pEventParam);
+      return ExecuteScript(pDocView, event->GetScriptIfExists(), pEventParam,
+                           nullptr);
     case XFA_Element::SignData:
       break;
     case XFA_Element::Submit: {
@@ -2491,7 +2492,7 @@ XFA_EventError CXFA_Node::ProcessCalculate(CXFA_FFDocView* pDocView) {
   CXFA_EventParam EventParam;
   EventParam.m_eType = XFA_EVENT_Calculate;
   XFA_EventError iRet =
-      ExecuteScript(pDocView, calc->GetScriptIfExists(), &EventParam);
+      ExecuteScript(pDocView, calc->GetScriptIfExists(), &EventParam, nullptr);
   if (iRet != XFA_EventError::kSuccess)
     return iRet;
 
@@ -2682,8 +2683,7 @@ XFA_EventError CXFA_Node::ProcessValidate(CXFA_FFDocView* pDocView,
   if (script) {
     CXFA_EventParam eParam;
     eParam.m_eType = XFA_EVENT_Validate;
-    eParam.m_pTarget = this;
-    std::tie(iRet, bRet) = ExecuteBoolScript(pDocView, script, &eParam);
+    std::tie(iRet, bRet) = ExecuteBoolScript(pDocView, script, &eParam, this);
   }
 
   XFA_VERSION version = pDocView->GetDoc()->GetXFADoc()->GetCurVersionMode();
@@ -2741,14 +2741,16 @@ WideString CXFA_Node::GetValidateMessage(bool bError, bool bVersionFlag) {
 
 XFA_EventError CXFA_Node::ExecuteScript(CXFA_FFDocView* pDocView,
                                         CXFA_Script* script,
-                                        CXFA_EventParam* pEventParam) {
-  return ExecuteBoolScript(pDocView, script, pEventParam).first;
+                                        CXFA_EventParam* pEventParam,
+                                        CXFA_Node* pEventTarget) {
+  return ExecuteBoolScript(pDocView, script, pEventParam, pEventTarget).first;
 }
 
 std::pair<XFA_EventError, bool> CXFA_Node::ExecuteBoolScript(
     CXFA_FFDocView* pDocView,
     CXFA_Script* script,
-    CXFA_EventParam* pEventParam) {
+    CXFA_EventParam* pEventParam,
+    CXFA_Node* pEventTarget) {
   if (m_ExecuteRecursionDepth > kMaxExecuteRecursion)
     return {XFA_EventError::kSuccess, false};
 
@@ -2768,7 +2770,7 @@ std::pair<XFA_EventError, bool> CXFA_Node::ExecuteBoolScript(
 
   CXFA_FFDoc* pDoc = pDocView->GetDoc();
   CFXJSE_Engine* pContext = pDoc->GetXFADoc()->GetScriptContext();
-  pContext->SetEventParam(pEventParam);
+  pContext->SetEventParam(pEventParam, 0);
   pContext->SetRunAtType(script->GetRunAt());
 
   std::vector<cppgc::Persistent<CXFA_Node>> refNodes;
@@ -2819,7 +2821,7 @@ std::pair<XFA_EventError, bool> CXFA_Node::ExecuteBoolScript(
     }
   }
   pContext->SetNodesOfRunScript(nullptr);
-  pContext->SetEventParam(nullptr);
+  pContext->SetEventParam(nullptr, 0);
 
   return {iRet, pTmpRetValue->IsBoolean(pContext->GetIsolate()) &&
                     pTmpRetValue->ToBoolean(pContext->GetIsolate())};
