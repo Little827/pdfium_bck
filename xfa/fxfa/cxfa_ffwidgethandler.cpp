@@ -226,7 +226,7 @@ XFA_EventError CXFA_FFWidgetHandler::ProcessEvent(CXFA_Node* pNode,
       if (pNode->IsUserInteractive())
         return XFA_EventError::kDisabled;
       return pNode->ExecuteScript(m_pDocView.Get(), calc->GetScriptIfExists(),
-                                  pParam);
+                                  pParam, nullptr);
     }
     default:
       break;

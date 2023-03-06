@@ -523,7 +523,7 @@ class PDFiumFormCalcContextFuzzer : public PDFiumFuzzerHelper {
 
     CXFA_EventParam params;
     params.m_bCancelAction = false;
-    script_context->SetEventParam(&params);
+    script_context->SetEventParamAndTarget(&params, nullptr);
     ByteStringView data_view(data_, size_);
 
     auto value = std::make_unique<CFXJSE_Value>();
@@ -531,7 +531,7 @@ class PDFiumFormCalcContextFuzzer : public PDFiumFuzzerHelper {
                               WideString::FromUTF8(data_view).AsStringView(),
                               value.get(), xfa_document->GetRoot());
 
-    script_context->SetEventParam(nullptr);
+    script_context->SetEventParamAndTarget(nullptr, nullptr);
   }
 
  private:
