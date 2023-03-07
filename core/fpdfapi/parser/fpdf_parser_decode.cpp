@@ -94,8 +94,13 @@ bool ValidateDecoderPipeline(const CPDF_Array* pDecoders) {
     return true;
 
   for (size_t i = 0; i < count; ++i) {
-    if (!pDecoders->GetObjectAt(i)->IsName())
+    RetainPtr<const CPDF_Object> object = pDecoders->GetObjectAt(i);
+    if (object->IsReference()) {
+      object = object->GetDirect();
+    }
+    if (!object->IsName()) {
       return false;
+    }
   }
 
   if (count == 1)
