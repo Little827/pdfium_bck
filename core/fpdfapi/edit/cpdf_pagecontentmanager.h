@@ -34,12 +34,12 @@ class CPDF_PageContentManager {
   // removed when ExecuteScheduledRemovals() is called.
   void ScheduleRemoveStreamByIndex(size_t stream_index);
 
+ private:
   // Remove all Content streams for which ScheduleRemoveStreamByIndex() was
   // called. Update the content stream of all page objects with the shifted
   // indexes.
   void ExecuteScheduledRemovals();
 
- private:
   UnownedPtr<CPDF_PageObjectHolder> const page_obj_holder_;
   UnownedPtr<CPDF_IndirectObjectHolder> const indirect_obj_holder_;
   RetainPtr<CPDF_Array> contents_array_;
