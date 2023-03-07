@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09381ab3_51d2e39b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-03-07T23:31:29Z",
+      "side": 1,
+      "message": "Optional:\nMaybe we can mention that we can directly replace FlushForDraw() with AdjustClip() now. (FlushForDraw() no longer does any flushing.)\nOr just do that in a follow-up CL.",
+      "range": {
+        "startLine": 18,
+        "startChar": 3,
+        "endLine": 18,
+        "endChar": 65
+      },
+      "revId": "a0182b459839be7e4e43636cdf149cc024ffb2f9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
