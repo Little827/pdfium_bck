@@ -142,6 +142,24 @@
       "parentUuid": "9e3f9476_40faf4fd",
       "revId": "c84f254e6a2fd92e695ae67efed5514447918a2c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf9c1423_6ddc445a",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-03-07T00:34:57Z",
+      "side": 1,
+      "message": "I assume the baseline for JPEG2000 is the blue circle. \n\nLei mentioned that JPX is an extension of the original JPEG2000 (JP2), and the adobe documentation clearly states that \"Consumer applications must support the\nJPX baseline set of enumerated color spaces\". So here are some more detailed findings:\n\nThe baseline colors for JPEG2000 are different types of sRGB and gray scale. (color channel are either 1 or 3, including sRGB-YCC, which has 3 channels)\n\nFor baseline of JPX, I found some answers online (not reliable) that says the baseline colorspaces are sRGB, Adobe RGB(1998), ProPhotoRGB.\n\nI assume we should move forward with the colors all types of RGBs + CYMK.\n\nhttps://www.prepressure.com/pdf/basics/color has the entire list of color spaces to be supported in PDF. \"DeviceN\" is what we are looking at. When \"DeviceN\" is customized number but the color space is not included in the PDF or mentioned in JPEG2000 documentation (JP2+JPX), I think we should fall back on DeviceGray, DeviceRGB and DeviceCMYK as the PDF ref book stated \"If no supported color space is found, the color space used should be DeviceGray, DeviceRGB, or DeviceCMYK, depending on the number of color channels in the JPEG2000 data\".",
+      "parentUuid": "18931590_96b3e600",
+      "revId": "c84f254e6a2fd92e695ae67efed5514447918a2c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
