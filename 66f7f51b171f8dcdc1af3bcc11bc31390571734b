@@ -22,6 +22,30 @@
       },
       "revId": "66f7f51b171f8dcdc1af3bcc11bc31390571734b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc9c9733_611a529d",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 827,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-03-07T00:50:36Z",
+      "side": 1,
+      "message": "Yes, that\u0027s why I mentioned in the CL description: \"A future change will simplify SkiaState to eliminate support for lazy flushing, which creates significant extra complexity.\" This change also contains TODOs to get rid of lazy flushing.\n\nIn my research so far, combining paths actually is a pessimization for Skia, as two rectangles combined into a single path can\u0027t be treated as a simple rectangular path anymore (for which Skia has special fast paths). Absent actual evidence this is making anything noticeably slower, I don\u0027t think this is a good reason not to make this change. On the other hand, making this change improves consistency of rendered output, which is a good thing.",
+      "parentUuid": "66a9406e_cd192350",
+      "range": {
+        "startLine": 821,
+        "startChar": 2,
+        "endLine": 827,
+        "endChar": 5
+      },
+      "revId": "66f7f51b171f8dcdc1af3bcc11bc31390571734b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
