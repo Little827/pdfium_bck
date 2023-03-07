@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9fcd2c0_ddf5f827",
+        "filename": "core/fpdfapi/parser/fpdf_parser_decode_unittest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-03-07T18:39:29Z",
+      "side": 1,
+      "message": "This can be std::move() to avoid ref-churn. (Refcount goes up to 2, then back to 1 when AddIndirectObject() returns, and then 0 when `decoder` goes out of scope.)",
+      "range": {
+        "startLine": 125,
+        "startChar": 63,
+        "endLine": 125,
+        "endChar": 70
+      },
+      "revId": "44f41a57eb4fdc072e557ca7a8cb7816b2b61c96",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
