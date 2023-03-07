@@ -8,7 +8,9 @@
 
 #include "core/fpdfapi/parser/cpdf_array.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
+#include "core/fpdfapi/parser/cpdf_indirect_object_holder.h"
 #include "core/fpdfapi/parser/cpdf_name.h"
+#include "core/fpdfapi/parser/cpdf_reference.h"
 #include "core/fpdfapi/parser/cpdf_string.h"
 #include "core/fxcrt/fx_memory_wrappers.h"
 #include "testing/gtest/include/gtest/gtest.h"
@@ -64,6 +66,23 @@ TEST(ParserDecodeTest, ValidateDecoderPipeline) {
     decoders->AppendNew<CPDF_Name>("FlateDecode");
     decoders->AppendNew<CPDF_Name>("LZW");
     decoders->AppendNew<CPDF_Name>("DCTDecode");
+    EXPECT_TRUE(ValidateDecoderPipeline(decoders.Get()));
+  }
+  {
+    // Valid 2 decoder pipeline with indirect objects.
+    CPDF_IndirectObjectHolder objects_holder;
+
+    auto decoder = pdfium::MakeRetain<CPDF_Name>(nullptr, "FlateDecode");
+    uint32_t decoder_number =
+        objects_holder.AddIndirectObject(decoder->Clone());
+    auto decoders = pdfium::MakeRetain<CPDF_Array>();
+    decoders->AppendNew<CPDF_Reference>(&objects_holder, decoder_number);
+    decoders->AppendNew<CPDF_Name>("LZW");
+    ASSERT_EQ(2U, decoders->size());
+
+    RetainPtr<const CPDF_Object> object = decoders->GetObjectAt(0);
+    ASSERT_TRUE(object);
+    EXPECT_TRUE(object->IsReference());
     EXPECT_TRUE(ValidateDecoderPipeline(decoders.Get()));
   }
   {
