@@ -178,6 +178,24 @@
       "parentUuid": "cf9c1423_6ddc445a",
       "revId": "c84f254e6a2fd92e695ae67efed5514447918a2c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26bd032a_2bcc9ac7",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-03-07T00:53:22Z",
+      "side": 1,
+      "message": "Understood. \nThis change has nothing to do with falling back on device specific color spaces.\n\nIn this case, we are simply checking if the channel number match any of the baseline colorspaces of JPX or CYMK. If it doesn\u0027t match, then we do not support it.",
+      "parentUuid": "e3f880e5_512e8fd3",
+      "revId": "c84f254e6a2fd92e695ae67efed5514447918a2c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
