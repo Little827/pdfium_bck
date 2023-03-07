@@ -214,6 +214,24 @@
       "parentUuid": "26bd032a_2bcc9ac7",
       "revId": "c84f254e6a2fd92e695ae67efed5514447918a2c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7821e801_a240afad",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-03-07T02:12:12Z",
+      "side": 1,
+      "message": "I am not sure I understood your question correctly. Did you mean to ask if 1,3 and 4 are the numbers that already include the opacity channel?\n\nThe channel number 1,3 and 4 do not include the opacity channel, because colorspace sRGB and CMYK do not contain alpha channel. If we want to apply transparency to the image, I think GraphicState is where it should be applied.\n\nIf I misinterpret the question, could you give me an example to help me capture the question?",
+      "parentUuid": "0f0b1b34_091f2a30",
+      "revId": "c84f254e6a2fd92e695ae67efed5514447918a2c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
