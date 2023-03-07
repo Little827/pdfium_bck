@@ -286,6 +286,24 @@
       "parentUuid": "cbc1b543_ccd96ae7",
       "revId": "c84f254e6a2fd92e695ae67efed5514447918a2c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5d729eb_f0ac03d1",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-03-07T22:01:27Z",
+      "side": 1,
+      "message": "I couldn\u0027t directly count channel through any apps, but I can look at the colorspace type:\nFor p1_07_c_2.j2k (used in com_2.pdf), colorspace type is grey-sRGB (1 color channel) and the component number is 2.\nFor issue414.jp2 (used in com_5.pdf), the colorspace type is sRGB (3 color channels) and the component number is 5.\nFor issue211.jp2 (used in comp_211.pdf), the colorspace type grey-sRGB (1 color channel) and the component number is 2.\nFor p0_13.j2k, I couldn\u0027t find out what\u0027s the colorspace type as it was not readable by my local applications. Its component number is 257.\n\nTherefore component number is usually larger than color channel and I assume opacity is handled through the extra components.\n\nIn this case, when component number is 2, I think the grey-sRGB color space should be handled. There might be other reasons why Acrobat reports errors on those PDFs.",
+      "parentUuid": "d3a478fe_44137321",
+      "revId": "c84f254e6a2fd92e695ae67efed5514447918a2c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
