@@ -135,6 +135,30 @@
       },
       "revId": "66f7f51b171f8dcdc1af3bcc11bc31390571734b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d617c7f_f4a5616d",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 827,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-03-07T01:52:42Z",
+      "side": 1,
+      "message": "That\u0027s a good idea! 👍 We actually still need these Flush() calls at the beginning of the calls before frequesnt flush is implemented everywhere.",
+      "parentUuid": "36a0157a_1b4aafb9",
+      "range": {
+        "startLine": 821,
+        "startChar": 2,
+        "endLine": 827,
+        "endChar": 5
+      },
+      "revId": "66f7f51b171f8dcdc1af3bcc11bc31390571734b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
