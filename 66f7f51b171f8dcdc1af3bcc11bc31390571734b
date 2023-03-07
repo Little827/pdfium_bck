@@ -46,6 +46,30 @@
       },
       "revId": "66f7f51b171f8dcdc1af3bcc11bc31390571734b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cd8ab2c_bac34df2",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 827,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-03-07T00:58:31Z",
+      "side": 1,
+      "message": "A few other thoughts on this topic:\n\n1. If combining paths is a win (although it\u0027s not), we should be doing that in generic PDF code, not in the Skia backend code; AGG and Skia otherwise don\u0027t behave the same (as AGG doesn\u0027t merge paths). Doing it in the Skia backend was a design mistake.\n2. AGG rasterizing immediately and Skia deferring rasterization has been the root cause of a number of AGG-Skia rendering differences (due to missing flushes for Skia). We\u0027ll save maintenance hassle by eliminating lazy flushing.\n3. The combining itself comes at a performance cost, since we need extra memory allocations and bookkeeping to maintain the combining state.",
+      "parentUuid": "fc9c9733_611a529d",
+      "range": {
+        "startLine": 821,
+        "startChar": 2,
+        "endLine": 827,
+        "endChar": 5
+      },
+      "revId": "66f7f51b171f8dcdc1af3bcc11bc31390571734b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
