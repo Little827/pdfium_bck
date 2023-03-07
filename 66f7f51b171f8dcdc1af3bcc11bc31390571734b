@@ -70,6 +70,30 @@
       },
       "revId": "66f7f51b171f8dcdc1af3bcc11bc31390571734b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57da6f21_cc7595de",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 827,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-03-07T01:36:59Z",
+      "side": 1,
+      "message": "I found https://groups.google.com/g/skia-discuss/c/2IitMfJvSGk. I assume it\u0027s not gonna cause a huge difference in performance.\n\nI assume DrawChanged() will be completely removed after we already add flush() in every DrawText() or DrawPath()?",
+      "parentUuid": "66a9406e_cd192350",
+      "range": {
+        "startLine": 821,
+        "startChar": 2,
+        "endLine": 827,
+        "endChar": 5
+      },
+      "revId": "66f7f51b171f8dcdc1af3bcc11bc31390571734b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
