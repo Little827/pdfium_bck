@@ -22,6 +22,47 @@
       },
       "revId": "a0182b459839be7e4e43636cdf149cc024ffb2f9",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6590cb1_9d55ef4f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-03-07T23:32:30Z",
+      "side": 1,
+      "message": "I\u0027m just going to do it in a follow-up CL, as there may be more improvements we can make to clip handling.",
+      "parentUuid": "09381ab3_51d2e39b",
+      "range": {
+        "startLine": 18,
+        "startChar": 3,
+        "endLine": 18,
+        "endChar": 65
+      },
+      "revId": "a0182b459839be7e4e43636cdf149cc024ffb2f9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fd2b4ce_c793684b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-03-07T23:32:30Z",
+      "side": 1,
+      "message": "Thanks for the review!",
+      "revId": "a0182b459839be7e4e43636cdf149cc024ffb2f9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
