@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9f3597a_c7c27f46",
+        "filename": "core/fpdfapi/parser/fpdf_parser_decode.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 8936
+      },
+      "writtenOn": "2023-03-07T18:05:58Z",
+      "side": 1,
+      "message": "I see now that CPDF_Array::GetByteStringAt() will check the direct object if it\u0027s an indirect reference.\n\nDone",
+      "parentUuid": "c53b7936_71d7f649",
+      "revId": "59c1996f419d9f95c0710818322c26149a15835e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0bd2e581_1ee5ff8a",
@@ -35,6 +53,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e22354d6_434085c0",
+        "filename": "core/fpdfapi/parser/fpdf_parser_decode.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 8936
+      },
+      "writtenOn": "2023-03-07T18:05:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0bd2e581_1ee5ff8a",
+      "revId": "59c1996f419d9f95c0710818322c26149a15835e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb604a88_45116d6a",
@@ -48,6 +84,24 @@
       "writtenOn": "2023-03-07T17:47:00Z",
       "side": 1,
       "message": "Also add an invalid test case that involves indirect objects?",
+      "revId": "59c1996f419d9f95c0710818322c26149a15835e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e18e5df_4397b79a",
+        "filename": "core/fpdfapi/parser/fpdf_parser_decode_unittest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 8936
+      },
+      "writtenOn": "2023-03-07T18:05:58Z",
+      "side": 1,
+      "message": "Done, and separated into own unit test.",
+      "parentUuid": "cb604a88_45116d6a",
       "revId": "59c1996f419d9f95c0710818322c26149a15835e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -75,6 +129,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3976f249_8a15f823",
+        "filename": "core/fpdfapi/parser/fpdf_parser_decode_unittest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 8936
+      },
+      "writtenOn": "2023-03-07T18:05:58Z",
+      "side": 1,
+      "message": "Removed",
+      "parentUuid": "47375f86_4cdcff3d",
+      "range": {
+        "startLine": 77,
+        "startChar": 41,
+        "endLine": 77,
+        "endChar": 57
+      },
+      "revId": "59c1996f419d9f95c0710818322c26149a15835e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c13d301f_2b472e14",
@@ -88,6 +166,30 @@
       "writtenOn": "2023-03-07T17:47:00Z",
       "side": 1,
       "message": "I\u0027m not sure if these are necessary. Other tests already covered if CPDF_Array::AppendNew() works correctly or not.",
+      "range": {
+        "startLine": 81,
+        "startChar": 4,
+        "endLine": 85,
+        "endChar": 39
+      },
+      "revId": "59c1996f419d9f95c0710818322c26149a15835e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fda97cc5_3ead9aa2",
+        "filename": "core/fpdfapi/parser/fpdf_parser_decode_unittest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 8936
+      },
+      "writtenOn": "2023-03-07T18:05:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c13d301f_2b472e14",
       "range": {
         "startLine": 81,
         "startChar": 4,
