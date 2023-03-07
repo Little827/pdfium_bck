@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a647b1ce_1aaec177",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-03-07T16:01:50Z",
+      "side": 1,
+      "message": "The buildtools roll claims it rolled back the libc++ roll this change is rolling. I\u0027m a little confused as to the current state of things, and why our automation isn\u0027t flagging an issue.",
+      "revId": "6a03f3f8ed29b29dbf5e4f72bbaffbe3dc7f77f3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
