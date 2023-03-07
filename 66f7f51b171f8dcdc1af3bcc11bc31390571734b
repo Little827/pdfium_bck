@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66a9406e_cd192350",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 827,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-03-07T00:47:05Z",
+      "side": 1,
+      "message": "If flush() happens at every DrawPath() call, this DrawChanged() call is no longer needed. \n\nThis change means turning off cached painting and we flush as commands come in (which was the path we deleted before), this could cause negative performance impact on complicated paths rendering.",
+      "range": {
+        "startLine": 821,
+        "startChar": 2,
+        "endLine": 827,
+        "endChar": 5
+      },
+      "revId": "66f7f51b171f8dcdc1af3bcc11bc31390571734b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
