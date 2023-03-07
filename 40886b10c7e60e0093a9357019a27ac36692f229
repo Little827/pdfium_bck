@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28eda14b_cf60dffb",
+        "filename": "core/fpdfapi/parser/fpdf_parser_decode.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-03-07T18:14:03Z",
+      "side": 1,
+      "message": "Does calling GetDirectObjectAt() work? Note that the comments for GetDirectObjectAt() mentions additional cases where it can return nullptr.",
+      "revId": "40886b10c7e60e0093a9357019a27ac36692f229",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
