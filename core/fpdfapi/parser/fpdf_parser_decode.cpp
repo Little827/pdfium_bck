@@ -55,6 +55,17 @@ uint8_t GetA85Result(uint32_t res, size_t i) {
   return static_cast<uint8_t>(res >> (3 - i) * 8);
 }
 
+ByteString GetDecoder(const CPDF_Object* object) {
+  if (!object) {
+    return ByteString();
+  }
+
+  if (object->IsReference()) {
+    return object->GetDirect()->GetString();
+  }
+  return object->GetString();
+}
+
 }  // namespace
 
 const uint16_t kPDFDocEncoding[256] = {
@@ -94,8 +105,13 @@ bool ValidateDecoderPipeline(const CPDF_Array* pDecoders) {
     return true;
 
   for (size_t i = 0; i < count; ++i) {
-    if (!pDecoders->GetObjectAt(i)->IsName())
+    RetainPtr<const CPDF_Object> object = pDecoders->GetObjectAt(i);
+    if (object->IsReference()) {
+      object = object->GetDirect();
+    }
+    if (!object->IsName()) {
       return false;
+    }
   }
 
   if (count == 1)
@@ -106,8 +122,10 @@ bool ValidateDecoderPipeline(const CPDF_Array* pDecoders) {
       "FlateDecode",    "Fl",  "LZWDecode",       "LZW", "ASCII85Decode", "A85",
       "ASCIIHexDecode", "AHx", "RunLengthDecode", "RL"};
   for (size_t i = 0; i < count - 1; ++i) {
-    if (!pdfium::Contains(kValidDecoders, pDecoders->GetByteStringAt(i)))
+    if (!pdfium::Contains(kValidDecoders,
+                          GetDecoder(pDecoders->GetObjectAt(i).Get()))) {
       return false;
+    }
   }
   return true;
 }
@@ -384,7 +402,7 @@ absl::optional<DecoderArray> GetDecoderArray(
     RetainPtr<const CPDF_Array> pParamsArray = ToArray(pParams);
     for (size_t i = 0; i < pDecoders->size(); ++i) {
       decoder_array.emplace_back(
-          pDecoders->GetByteStringAt(i),
+          GetDecoder(pDecoders->GetObjectAt(i).Get()),
           pParamsArray ? pParamsArray->GetDictAt(i) : nullptr);
     }
   } else {
