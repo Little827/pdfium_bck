@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32d118e0_87a629e3",
+        "filename": "testing/resources/javascript/xfa_specific/mixed_widgets.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-03-07T23:37:39Z",
+      "side": 1,
+      "message": "Renumber these to avoid having gaps in the number space.",
+      "range": {
+        "startLine": 7,
+        "startChar": 13,
+        "endLine": 7,
+        "endChar": 15
+      },
+      "revId": "aaf37fa2b8b7d40f274eed56c1fe4830ebf8e041",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e5598ae_4c11e9e5",
+        "filename": "testing/resources/javascript/xfa_specific/mixed_widgets.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-03-07T23:37:39Z",
+      "side": 1,
+      "message": "No spaces immediately inside the brackets.",
+      "range": {
+        "startLine": 15,
+        "startChar": 8,
+        "endLine": 15,
+        "endChar": 17
+      },
+      "revId": "aaf37fa2b8b7d40f274eed56c1fe4830ebf8e041",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
