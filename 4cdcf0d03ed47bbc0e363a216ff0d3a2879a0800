@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecd4f6af_dd23896d",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 919,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-03-08T22:07:23Z",
+      "side": 1,
+      "message": "Move this section to where SkFont is set, so that all the font related operations can be together.",
+      "range": {
+        "startLine": 916,
+        "startChar": 4,
+        "endLine": 919,
+        "endChar": 5
+      },
+      "revId": "4cdcf0d03ed47bbc0e363a216ff0d3a2879a0800",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
