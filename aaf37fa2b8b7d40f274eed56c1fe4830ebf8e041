@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccdadae3_60f01d3c",
+        "filename": "testing/resources/javascript/xfa_specific/mixed_widgets.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-03-08T02:28:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32d118e0_87a629e3",
+      "range": {
+        "startLine": 7,
+        "startChar": 13,
+        "endLine": 7,
+        "endChar": 15
+      },
+      "revId": "aaf37fa2b8b7d40f274eed56c1fe4830ebf8e041",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6e5598ae_4c11e9e5",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-03-07T23:37:39Z",
       "side": 1,
       "message": "No spaces immediately inside the brackets.",
+      "range": {
+        "startLine": 15,
+        "startChar": 8,
+        "endLine": 15,
+        "endChar": 17
+      },
+      "revId": "aaf37fa2b8b7d40f274eed56c1fe4830ebf8e041",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "edf2ea26_17526aa5",
+        "filename": "testing/resources/javascript/xfa_specific/mixed_widgets.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-03-08T02:28:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e5598ae_4c11e9e5",
       "range": {
         "startLine": 15,
         "startChar": 8,
