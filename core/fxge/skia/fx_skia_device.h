@@ -142,8 +142,6 @@ class CFX_SkiaDeviceDriver final : public RenderDeviceDriverIface {
   void DebugVerifyBitmapIsPreMultiplied() const;
   void Dump() const;
 
-  bool GetGroupKnockout() const { return m_bGroupKnockout; }
-
  private:
   CFX_SkiaDeviceDriver(RetainPtr<CFX_DIBitmap> pBitmap,
                        bool bRgbByteOrder,
