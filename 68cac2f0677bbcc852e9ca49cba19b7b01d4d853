@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f866dae_85b65e34",
+        "filename": "xfa/fxfa/parser/gced_locale_iface.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 7956
+      },
+      "writtenOn": "2023-03-09T08:28:25Z",
+      "side": 0,
+      "message": "Since you asked on the bug: We don\u0027t allow pure virtual Trace methods as we need to enforce dispatch to base classes. Pure virtual is fine for the base but it\u0027s wrong for any intermediate class in the hierarchy that would need to dispatch to its base.",
+      "range": {
+        "startLine": 16,
+        "startChar": 52,
+        "endLine": 16,
+        "endChar": 53
+      },
+      "revId": "68cac2f0677bbcc852e9ca49cba19b7b01d4d853",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
