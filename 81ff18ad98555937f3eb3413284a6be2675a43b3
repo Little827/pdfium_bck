@@ -16,6 +16,29 @@
       "message": "This is why it didn\u0027t make sense to make any clipping changes sooner. 😊",
       "revId": "81ff18ad98555937f3eb3413284a6be2675a43b3",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a9e9587_c88300bd",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1321,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-03-09T17:05:00Z",
+      "side": 1,
+      "message": "Since GetDeviceCaps() is not gonna be deprecated in this chain of changes, can we keep the GetDeviceCaps() calls for the width and height? This is purely for maintenance reason. If in the future (low chance) that if the logic for getting width and height need to be changed in GetDeviceCaps(), we can easily see all the call sites and only make changes in one place.",
+      "range": {
+        "startLine": 1321,
+        "startChar": 42,
+        "endLine": 1321,
+        "endChar": 72
+      },
+      "revId": "81ff18ad98555937f3eb3413284a6be2675a43b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
