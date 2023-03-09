@@ -16,16 +16,12 @@
 #include "core/fxge/cfx_path.h"
 #include "core/fxge/renderdevicedriver_iface.h"
 #include "third_party/base/check_op.h"
-#include "third_party/base/span.h"
 #include "third_party/skia/include/core/SkPoint.h"
 #include "third_party/skia/include/core/SkRSXform.h"
 
-class CFX_Font;
 class CFX_Matrix;
 class SkCanvas;
 class SkPictureRecorder;
-class TextCharPos;
-struct CFX_TextRenderOptions;
 
 // Assumes Skia is not going to add non-data members to its fundamental types.
 FX_DATA_PARTITION_EXCEPTION(SkPoint);
@@ -194,13 +190,6 @@ class CFX_SkiaDeviceDriver final : public RenderDeviceDriverIface {
                        bool bRgbByteOrder,
                        RetainPtr<CFX_DIBitmap> pBackdropBitmap,
                        bool bGroupKnockout);
-
-  bool TryDrawText(pdfium::span<const TextCharPos> char_pos,
-                   const CFX_Font* pFont,
-                   const CFX_Matrix& matrix,
-                   float font_size,
-                   uint32_t color,
-                   const CFX_TextRenderOptions& options);
 
   bool StartDIBitsSkia(const RetainPtr<CFX_DIBBase>& pBitmap,
                        int bitmap_alpha,

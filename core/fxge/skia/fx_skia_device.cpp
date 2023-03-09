@@ -936,78 +936,47 @@ bool CFX_SkiaDeviceDriver::DrawDeviceText(
       return false;
   }
 
-  if (TryDrawText(pCharPos, pFont, mtObject2Device, font_size, color,
-                  options)) {
-    return true;
-  }
-  sk_sp<SkTypeface> typeface(SkSafeRef(pFont->GetDeviceCache()));
-  SkPaint paint;
-  paint.setAntiAlias(true);
-  paint.setColor(color);
-
-  SkFont font;
-  font.setTypeface(typeface);
-  font.setEmbolden(pFont->IsSubstFontBold());
-  font.setHinting(SkFontHinting::kNone);
-  font.setSize(SkTAbs(font_size));
-  font.setSubpixel(true);
-  font.setSkewX(tanf(pFont->GetSubstFontItalicAngle() * FXSYS_PI / 180.0));
-  font.setEdging(GetFontEdgingType(options));
-
-  SkAutoCanvasRestore scoped_save_restore(m_pCanvas, /*doSave=*/true);
-  const SkScalar flip = font_size < 0 ? -1 : 1;
-  const SkScalar vFlip = pFont->IsVertical() ? -1 : 1;
-  SkMatrix skMatrix = ToFlippedSkMatrix(mtObject2Device, flip);
-  m_pCanvas->concat(skMatrix);
-  DataVector<SkPoint> positions(pCharPos.size());
-  DataVector<uint16_t> glyphs(pCharPos.size());
-
-  // TODO(crbug.com/pdfium/1936): Reuse `HasRSX()` result.
-  bool useRSXform = false;
+  float scaleX = 1;
   bool oneAtATime = false;
-  for (size_t index = 0; index < pCharPos.size(); ++index) {
-    const TextCharPos& cp = pCharPos[index];
-    positions[index] = {cp.m_Origin.x * flip, cp.m_Origin.y * vFlip};
-    if (cp.m_bGlyphAdjust) {
-      useRSXform = true;
-      if (cp.m_AdjustMatrix[0] != cp.m_AdjustMatrix[3] ||
-          cp.m_AdjustMatrix[1] != -cp.m_AdjustMatrix[2]) {
-        oneAtATime = true;
-      }
-    }
-    glyphs[index] = static_cast<uint16_t>(cp.m_GlyphIndex);
+  bool hasRSX = HasRSX(pCharPos, &scaleX, &oneAtATime);
+  if (oneAtATime) {
+    sk_sp<SkTypeface> typeface(SkSafeRef(pFont->GetDeviceCache()));
+    SkPaint paint;
+    paint.setAntiAlias(true);
+    paint.setColor(color);
+
+    SkFont font;
+    font.setTypeface(typeface);
+    font.setEmbolden(pFont->IsSubstFontBold());
+    font.setHinting(SkFontHinting::kNone);
+    font.setSize(SkTAbs(font_size));
+    font.setSubpixel(true);
+    font.setSkewX(tanf(pFont->GetSubstFontItalicAngle() * FXSYS_PI / 180.0));
+    font.setEdging(GetFontEdgingType(options));
+
+    SkAutoCanvasRestore scoped_save_restore(m_pCanvas, /*doSave=*/true);
+    const SkScalar flip = font_size < 0 ? -1 : 1;
+    const SkScalar vFlip = pFont->IsVertical() ? -1 : 1;
+    SkMatrix skMatrix = ToFlippedSkMatrix(mtObject2Device, flip);
+    m_pCanvas->concat(skMatrix);
+    DataVector<SkPoint> positions(pCharPos.size());
+    DataVector<uint16_t> glyphs(pCharPos.size());
+
+    for (size_t index = 0; index < pCharPos.size(); ++index) {
+      const TextCharPos& cp = pCharPos[index];
+      positions[index] = {cp.m_Origin.x * flip, cp.m_Origin.y * vFlip};
+      glyphs[index] = static_cast<uint16_t>(cp.m_GlyphIndex);
 #if BUILDFLAG(IS_APPLE)
-    if (cp.m_ExtGID)
-      glyphs[index] = static_cast<uint16_t>(cp.m_ExtGID);
-#endif
-  }
-  if (oneAtATime)
-    useRSXform = false;
-  if (useRSXform) {
-    DataVector<SkRSXform> xforms(pCharPos.size());
-    for (size_t index = 0; index < pCharPos.size(); ++index) {
-      const TextCharPos& cp = pCharPos[index];
-      SkRSXform& rsxform = xforms[index];
-      if (cp.m_bGlyphAdjust) {
-        rsxform.fSCos = cp.m_AdjustMatrix[0];
-        rsxform.fSSin = cp.m_AdjustMatrix[1];
-        rsxform.fTx = cp.m_AdjustMatrix[0] * positions[index].fX;
-        rsxform.fTy = -cp.m_AdjustMatrix[3] * positions[index].fY;
-      } else {
-        rsxform.fSCos = 1;
-        rsxform.fSSin = 0;
-        rsxform.fTx = positions[index].fX;
-        rsxform.fTy = positions[index].fY;
+      if (cp.m_ExtGID) {
+        glyphs[index] = static_cast<uint16_t>(cp.m_ExtGID);
       }
+#endif
     }
-    m_pCanvas->drawTextBlob(SkTextBlob::MakeFromRSXform(
-                                glyphs.data(), glyphs.size() * sizeof(uint16_t),
-                                xforms.data(), font, SkTextEncoding::kGlyphID),
-                            0, 0, paint);
-  } else if (oneAtATime) {
+
     for (size_t index = 0; index < pCharPos.size(); ++index) {
       const TextCharPos& cp = pCharPos[index];
       if (cp.m_bGlyphAdjust) {
+        // TODO: Factor out similar `HasRSX()` calculation?
         if (0 == cp.m_AdjustMatrix[1] && 0 == cp.m_AdjustMatrix[2] &&
             1 == cp.m_AdjustMatrix[3]) {
           font.setScaleX(cp.m_AdjustMatrix[0]);
@@ -1040,108 +1009,86 @@ bool CFX_SkiaDeviceDriver::DrawDeviceText(
       }
     }
   } else {
+    m_charDetails.SetCount(0);
+    m_rsxform.resize(0);
+
+    const size_t original_count = m_charDetails.Count();
+    FX_SAFE_SIZE_T safe_count = original_count;
+    safe_count += pCharPos.size();
+    const size_t total_count = safe_count.ValueOrDie();
+    m_charDetails.SetCount(total_count);
+    if (hasRSX) {
+      m_rsxform.resize(total_count);
+    }
+
+    const SkScalar flip = font_size < 0 ? -1 : 1;
+    const SkScalar vFlip = pFont->IsVertical() ? -1 : 1;
     for (size_t index = 0; index < pCharPos.size(); ++index) {
-      auto blob =
-          SkTextBlob::MakeFromText(&glyphs[index], sizeof(glyphs[index]), font,
-                                   SkTextEncoding::kGlyphID);
-      m_pCanvas->drawTextBlob(blob, positions[index].fX, positions[index].fY,
-                              paint);
-    }
-  }
-
-  return true;
-}
-
-bool CFX_SkiaDeviceDriver::TryDrawText(pdfium::span<const TextCharPos> char_pos,
-                                       const CFX_Font* pFont,
-                                       const CFX_Matrix& matrix,
-                                       float font_size,
-                                       uint32_t color,
-                                       const CFX_TextRenderOptions& options) {
-  float scaleX = 1;
-  bool oneAtATime = false;
-  bool hasRSX = HasRSX(char_pos, &scaleX, &oneAtATime);
-  if (oneAtATime) {
-    return false;
-  }
-
-  m_charDetails.SetCount(0);
-  m_rsxform.resize(0);
-
-  const size_t original_count = m_charDetails.Count();
-  FX_SAFE_SIZE_T safe_count = original_count;
-  safe_count += char_pos.size();
-  const size_t total_count = safe_count.ValueOrDie();
-  m_charDetails.SetCount(total_count);
-  if (hasRSX) {
-    m_rsxform.resize(total_count);
-  }
-
-  const SkScalar flip = font_size < 0 ? -1 : 1;
-  const SkScalar vFlip = pFont->IsVertical() ? -1 : 1;
-  for (size_t index = 0; index < char_pos.size(); ++index) {
-    const TextCharPos& cp = char_pos[index];
-    size_t cur_index = index + original_count;
-    m_charDetails.SetPositionAt(cur_index,
-                                {cp.m_Origin.x * flip, cp.m_Origin.y * vFlip});
-    m_charDetails.SetGlyphAt(cur_index, static_cast<uint16_t>(cp.m_GlyphIndex));
-    m_charDetails.SetFontCharWidthAt(cur_index, cp.m_FontCharWidth);
+      const TextCharPos& cp = pCharPos[index];
+      size_t cur_index = index + original_count;
+      m_charDetails.SetPositionAt(
+          cur_index, {cp.m_Origin.x * flip, cp.m_Origin.y * vFlip});
+      m_charDetails.SetGlyphAt(cur_index,
+                               static_cast<uint16_t>(cp.m_GlyphIndex));
+      m_charDetails.SetFontCharWidthAt(cur_index, cp.m_FontCharWidth);
 #if BUILDFLAG(IS_APPLE)
-    if (cp.m_ExtGID) {
-      m_charDetails.SetGlyphAt(cur_index, static_cast<uint16_t>(cp.m_ExtGID));
-    }
+      if (cp.m_ExtGID) {
+        m_charDetails.SetGlyphAt(cur_index, static_cast<uint16_t>(cp.m_ExtGID));
+      }
 #endif
-  }
-  if (hasRSX) {
-    const DataVector<SkPoint>& positions = m_charDetails.GetPositions();
-    for (size_t index = 0; index < char_pos.size(); ++index) {
-      const TextCharPos& cp = char_pos[index];
-      SkRSXform& rsxform = m_rsxform[index + original_count];
-      if (cp.m_bGlyphAdjust) {
-        rsxform.fSCos = cp.m_AdjustMatrix[0];
-        rsxform.fSSin = cp.m_AdjustMatrix[1];
-        rsxform.fTx = cp.m_AdjustMatrix[0] * positions[index].fX;
-        rsxform.fTy = -cp.m_AdjustMatrix[3] * positions[index].fY;
-      } else {
-        rsxform.fSCos = 1;
-        rsxform.fSSin = 0;
-        rsxform.fTx = positions[index].fX;
-        rsxform.fTy = positions[index].fY;
+    }
+    if (hasRSX) {
+      const DataVector<SkPoint>& positions = m_charDetails.GetPositions();
+      for (size_t index = 0; index < pCharPos.size(); ++index) {
+        const TextCharPos& cp = pCharPos[index];
+        SkRSXform& rsxform = m_rsxform[index + original_count];
+        if (cp.m_bGlyphAdjust) {
+          rsxform.fSCos = cp.m_AdjustMatrix[0];
+          rsxform.fSSin = cp.m_AdjustMatrix[1];
+          rsxform.fTx = cp.m_AdjustMatrix[0] * positions[index].fX;
+          rsxform.fTy = -cp.m_AdjustMatrix[3] * positions[index].fY;
+        } else {
+          rsxform.fSCos = 1;
+          rsxform.fSSin = 0;
+          rsxform.fTx = positions[index].fX;
+          rsxform.fTy = positions[index].fY;
+        }
       }
     }
-  }
 
-  SkPaint skPaint;
-  skPaint.setAntiAlias(true);
-  skPaint.setColor(color);
+    SkPaint skPaint;
+    skPaint.setAntiAlias(true);
+    skPaint.setColor(color);
 
-  SkFont font;
-  if (pFont->GetFaceRec()) {  // exclude placeholder test fonts
-    font.setTypeface(sk_ref_sp(pFont->GetDeviceCache()));
-  }
-  font.setEmbolden(pFont->IsSubstFontBold());
-  font.setHinting(SkFontHinting::kNone);
-  font.setScaleX(scaleX);
-  font.setSkewX(tanf(pFont->GetSubstFontItalicAngle() * FXSYS_PI / 180.0));
-  font.setSize(SkTAbs(font_size));
-  font.setSubpixel(true);
-  font.setEdging(GetFontEdgingType(options));
+    SkFont font;
+    if (pFont->GetFaceRec()) {  // exclude placeholder test fonts
+      font.setTypeface(sk_ref_sp(pFont->GetDeviceCache()));
+    }
+    font.setEmbolden(pFont->IsSubstFontBold());
+    font.setHinting(SkFontHinting::kNone);
+    font.setScaleX(scaleX);
+    font.setSkewX(tanf(pFont->GetSubstFontItalicAngle() * FXSYS_PI / 180.0));
+    font.setSize(SkTAbs(font_size));
+    font.setSubpixel(true);
+    font.setEdging(GetFontEdgingType(options));
 
-  SkAutoCanvasRestore scoped_save_restore(m_pCanvas, /*doSave=*/true);
-  m_pCanvas->concat(ToFlippedSkMatrix(matrix, flip));
+    SkAutoCanvasRestore scoped_save_restore(m_pCanvas, /*doSave=*/true);
+    m_pCanvas->concat(ToFlippedSkMatrix(mtObject2Device, flip));
 
-  const DataVector<uint16_t>& glyphs = m_charDetails.GetGlyphs();
-  if (m_rsxform.size()) {
-    sk_sp<SkTextBlob> blob = SkTextBlob::MakeFromRSXform(
-        glyphs.data(), glyphs.size() * sizeof(uint16_t), m_rsxform.data(), font,
-        SkTextEncoding::kGlyphID);
-    m_pCanvas->drawTextBlob(blob, 0, 0, skPaint);
-  } else {
-    const DataVector<SkPoint>& positions = m_charDetails.GetPositions();
-    for (size_t i = 0; i < m_charDetails.Count(); ++i) {
-      sk_sp<SkTextBlob> blob = SkTextBlob::MakeFromText(
-          &glyphs[i], sizeof(glyphs[i]), font, SkTextEncoding::kGlyphID);
-      m_pCanvas->drawTextBlob(blob, positions[i].fX, positions[i].fY, skPaint);
+    const DataVector<uint16_t>& glyphs = m_charDetails.GetGlyphs();
+    if (m_rsxform.size()) {
+      sk_sp<SkTextBlob> blob = SkTextBlob::MakeFromRSXform(
+          glyphs.data(), glyphs.size() * sizeof(uint16_t), m_rsxform.data(),
+          font, SkTextEncoding::kGlyphID);
+      m_pCanvas->drawTextBlob(blob, 0, 0, skPaint);
+    } else {
+      const DataVector<SkPoint>& positions = m_charDetails.GetPositions();
+      for (size_t i = 0; i < m_charDetails.Count(); ++i) {
+        sk_sp<SkTextBlob> blob = SkTextBlob::MakeFromText(
+            &glyphs[i], sizeof(glyphs[i]), font, SkTextEncoding::kGlyphID);
+        m_pCanvas->drawTextBlob(blob, positions[i].fX, positions[i].fY,
+                                skPaint);
+      }
     }
   }
   return true;
