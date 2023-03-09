@@ -340,6 +340,24 @@
       "parentUuid": "2de15c1f_eb94ea49",
       "revId": "c84f254e6a2fd92e695ae67efed5514447918a2c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95426301_e4968d06",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-03-09T00:28:48Z",
+      "side": 1,
+      "message": "Some more findings:\n\n(1) Discrepancies between other PDF viewers and Acrobat: \nI tested all the JPX PDFs in our testing/resources directory, and it seems like as long as the PDF is missing /ColorSpace or /BitPerComponent entry, Acrobat will report error. (e.g: pixel test lzw1.in, acrobat reports error when rendering this test. But after I manually add the /ColorSpace and /BitsPerComponent entries, the Acrobat result matches the PDFium rendering result.) Under such circumstances, sometimes mac Preview, Okular and PDFium will utilize existing info from the image stream to try to render the image as best as they can, which caused the discrepancies that sometimes a jp2 or jpx images are rendered in a various PDF viewers and not rendered in Acrobat.\n\n(2) We can definitely add the handling to use the color space from the image stream when color space is not directly available in PDF image object entries. This does not change PDFium\u0027s current behavior regarding pixel test bug_1258634.in.\n\nIn conclusion, we can add extra handling to read the color space type from the image stream. And the PDFium behavior will basically remain the same for our existing tests. WDYT of this approach?",
+      "parentUuid": "1f7a238b_ef655d3f",
+      "revId": "c84f254e6a2fd92e695ae67efed5514447918a2c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
