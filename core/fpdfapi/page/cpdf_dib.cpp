@@ -40,6 +40,7 @@
 #include "third_party/base/check.h"
 #include "third_party/base/check_op.h"
 #include "third_party/base/cxx17_backports.h"
+#include "third_party/base/notreached.h"
 
 namespace {
 
@@ -138,8 +139,31 @@ JpxDecodeAction GetJpxDecodeAction(const CJPX_Decoder::JpxImageInfo& jpx_info,
     return JpxDecodeAction::kDoNothing;
   }
 
-  // Cases where the PDF did not provide a colorspace.
-  // Choose how to decode based on the number of components in the JPX image.
+  // When PDF does not provide a color space, check the image color space.
+  switch (jpx_info.colorspace) {
+    case OPJ_CLRSPC_UNKNOWN:
+    case OPJ_CLRSPC_UNSPECIFIED:
+      break;
+
+    case OPJ_CLRSPC_SRGB:
+      return JpxDecodeAction::kUseRgb;
+
+    case OPJ_CLRSPC_GRAY:
+    case OPJ_CLRSPC_SYCC:
+    case OPJ_CLRSPC_EYCC:
+      return JpxDecodeAction::kDoNothing;
+
+    case OPJ_CLRSPC_CMYK:
+      return JpxDecodeAction::kUseCmyk;
+
+    default:
+      NOTREACHED();
+      return JpxDecodeAction::kFail;
+  }
+
+  // When neither the image object nor the JPX image stream provides a
+  // color space, choose how to decode based on the number of components in the
+  // JPX image stream.
   switch (jpx_info.components) {
     case 3:
       return JpxDecodeAction::kUseRgb;
