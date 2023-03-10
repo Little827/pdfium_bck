@@ -166,6 +166,11 @@ def insert_includes(input_path, output_file, visited_set):
     return
   visited_set.add(input_path)
   try:
+    _, file_extension = os.path.splitext(input_path)
+    replace_windows_line_endings = (
+        file_extension in EXTENSION_OVERRIDE_LINE_ENDINGS)
+
+    end_of_file_line_ending = False
     with open(input_path, 'rb') as infile:
       for line in infile:
         match = re.match(b'\s*\{\{include\s+(.+)\}\}', line)
@@ -176,11 +181,17 @@ def insert_includes(input_path, output_file, visited_set):
                   match.group(1).decode('utf-8')), output_file, visited_set)
         else:
           # Replace CRLF with LF line endings for .in files.
-          _, file_extension = os.path.splitext(input_path)
-          if (file_extension in EXTENSION_OVERRIDE_LINE_ENDINGS and
+          if (replace_windows_line_endings and
               line.endswith(WINDOWS_LINE_ENDING)):
             line = line.removesuffix(WINDOWS_LINE_ENDING) + UNIX_LINE_ENDING
+            end_of_file_line_ending = True
+          else:
+            end_of_file_line_ending = line.endswith(UNIX_LINE_ENDING)
           output_file.write(line)
+
+    # Ensure the include ends on its own line.
+    if not end_of_file_line_ending:
+      output_file.write(UNIX_LINE_ENDING)
   except IOError:
     print('failed to include %s' % input_path, file=sys.stderr)
     raise
