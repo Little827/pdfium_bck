@@ -16,6 +16,24 @@
       "message": "Decided I wanted to change how this worked slightly.",
       "revId": "bce4036620f04950e4d53d7bc894f5066d17e962",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76cc263f_547005c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-03-10T23:38:35Z",
+      "side": 1,
+      "message": "For \"binary\" files (ones we don\u0027t modify line endings), I realized we want to make sure we always insert the extra newline.",
+      "parentUuid": "a9197546_1b534e01",
+      "revId": "bce4036620f04950e4d53d7bc894f5066d17e962",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
