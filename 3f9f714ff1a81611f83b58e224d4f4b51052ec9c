@@ -16,6 +16,41 @@
       "message": "Test file lgtm. I am wondering about the sources of the image files and whether it\u0027s OK to include them in our repo (even though you probably modified the original images with the script).",
       "revId": "3f9f714ff1a81611f83b58e224d4f4b51052ec9c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79e11afb_560f5d4b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-03-12T00:08:37Z",
+      "side": 1,
+      "message": "Thanks for the review!",
+      "revId": "3f9f714ff1a81611f83b58e224d4f4b51052ec9c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02034786_47e41e8e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-03-12T00:08:37Z",
+      "side": 1,
+      "message": "I created the images myself.",
+      "parentUuid": "3e019618_ba489722",
+      "revId": "3f9f714ff1a81611f83b58e224d4f4b51052ec9c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
