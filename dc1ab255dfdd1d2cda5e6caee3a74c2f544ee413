@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe3f76f7_ce0c463b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-03-13T17:33:45Z",
+      "side": 1,
+      "message": "Do you like this better/worse than the base CL?",
+      "revId": "dc1ab255dfdd1d2cda5e6caee3a74c2f544ee413",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
