@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fa3a366_dc3f15bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-03-13T18:01:25Z",
+      "side": 1,
+      "message": "BTW, you may want to consider adding skia/OWNERS in a separate CL.",
+      "revId": "0b28cc305c423ad538b5d1431576da65788246df",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
