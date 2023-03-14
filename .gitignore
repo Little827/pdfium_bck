@@ -8,6 +8,7 @@
 /third_party/android_ndk
 /third_party/catapult
 /third_party/depot_tools
+/third_party/expat/src
 /third_party/freetype/src
 /third_party/fuchsia-sdk/images
 /third_party/fuchsia-sdk/images-internal

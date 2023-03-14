@@ -26,4 +26,4 @@ pdf_use_partition_alloc_override = is_clang
 # If enabled, coexists in build with AGG graphics and the default
 # renderer is selectable at runtime.
 # The default is to use AGG only when `pdf_use_skia_override` is false.
-pdf_use_skia_override = false
+pdf_use_skia_override = true
