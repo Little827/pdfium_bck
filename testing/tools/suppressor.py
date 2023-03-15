@@ -46,6 +46,7 @@ class Suppressor:
     ]
 
   def _MatchSuppression(self, item, os_name, js, xfa, rendering_option):
+    os_name = ''
     os_column = item[1].split(",")
     js_column = item[2].split(",")
     xfa_column = item[3].split(",")
