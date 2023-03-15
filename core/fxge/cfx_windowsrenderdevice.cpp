@@ -54,9 +54,3 @@ CFX_WindowsRenderDevice::CFX_WindowsRenderDevice(
 }
 
 CFX_WindowsRenderDevice::~CFX_WindowsRenderDevice() = default;
-
-#if defined(_SKIA_SUPPORT_)
-void CFX_WindowsRenderDevice::DebugVerifyBitmapIsPreMultiplied() const {
-  DCHECK_EQ(GetDeviceCaps(FXDC_BITS_PIXEL), 32);
-}
-#endif
