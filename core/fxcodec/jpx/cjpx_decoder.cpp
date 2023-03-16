@@ -515,16 +515,23 @@ CJPX_Decoder::JpxImageInfo CJPX_Decoder::GetInfo() const {
 bool CJPX_Decoder::Decode(pdfium::span<uint8_t> dest_buf,
                           uint32_t pitch,
                           bool swap_rgb) {
-  if (pitch < ((m_Image->comps[0].w * 8 * m_Image->numcomps + 31) >> 5) << 2)
+  printf("CJPX_Decoder::Decode()\n\n");
+  uint32_t xxx = m_Image->numcomps;
+  if (m_Image->numcomps == 2 || m_Image->numcomps == 5) {
+    xxx--;
+    //printf("modify\n");
+  }
+
+  if (pitch < ((m_Image->comps[0].w * 8 * xxx + 31) >> 5) << 2) // must be xxx
     return false;
 
-  if (swap_rgb && m_Image->numcomps < 3)
+  if (swap_rgb && xxx < 3) // not changing
     return false;
 
   fxcrt::spanset(dest_buf.first(m_Image->comps[0].h * pitch), 0xff);
   std::vector<uint8_t*> channel_bufs(m_Image->numcomps);
   std::vector<int> adjust_comps(m_Image->numcomps);
-  for (uint32_t i = 0; i < m_Image->numcomps; i++) {
+  for (uint32_t i = 0; i < xxx; i++) { // can be numcomp or xxx
     channel_bufs[i] = dest_buf.subspan(i).data();
     adjust_comps[i] = m_Image->comps[i].prec - 8;
     if (i > 0) {
@@ -540,7 +547,7 @@ bool CJPX_Decoder::Decode(pdfium::span<uint8_t> dest_buf,
 
   uint32_t width = m_Image->comps[0].w;
   uint32_t height = m_Image->comps[0].h;
-  for (uint32_t channel = 0; channel < m_Image->numcomps; ++channel) {
+  for (uint32_t channel = 0; channel < xxx; ++channel) { // must be xxx
     uint8_t* pChannel = channel_bufs[channel];
     const int adjust = adjust_comps[channel];
     const opj_image_comp_t& comps = m_Image->comps[channel];
@@ -554,7 +561,7 @@ bool CJPX_Decoder::Decode(pdfium::span<uint8_t> dest_buf,
       for (uint32_t row = 0; row < height; ++row) {
         uint8_t* pScanline = pChannel + row * pitch;
         for (uint32_t col = 0; col < width; ++col) {
-          uint8_t* pPixel = pScanline + col * m_Image->numcomps;
+          uint8_t* pPixel = pScanline + col * xxx;
           int src = comps.data[row * width + col] + src_offset;
           *pPixel = static_cast<uint8_t>(src << -adjust);
         }
@@ -563,7 +570,7 @@ bool CJPX_Decoder::Decode(pdfium::span<uint8_t> dest_buf,
       for (uint32_t row = 0; row < height; ++row) {
         uint8_t* pScanline = pChannel + row * pitch;
         for (uint32_t col = 0; col < width; ++col) {
-          uint8_t* pPixel = pScanline + col * m_Image->numcomps;
+          uint8_t* pPixel = pScanline + col * xxx;
           int src = comps.data[row * width + col] + src_offset;
           *pPixel = static_cast<uint8_t>(src);
         }
@@ -572,7 +579,7 @@ bool CJPX_Decoder::Decode(pdfium::span<uint8_t> dest_buf,
       for (uint32_t row = 0; row < height; ++row) {
         uint8_t* pScanline = pChannel + row * pitch;
         for (uint32_t col = 0; col < width; ++col) {
-          uint8_t* pPixel = pScanline + col * m_Image->numcomps;
+          uint8_t* pPixel = pScanline + col * xxx;
           int src = comps.data[row * width + col] + src_offset;
           int pixel = (src >> adjust) + ((src >> (adjust - 1)) % 2);
           pixel = pdfium::clamp(pixel, 0, 255);
