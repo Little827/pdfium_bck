@@ -227,7 +227,7 @@ format_number.pdf mac * * *
 format_percentage.pdf mac * * *
 format_special.pdf * nov8 * *
 format_text_color.pdf mac * * *
-formfeild.pdf * * * *
+formfield.pdf * * * *
 getarray.pdf mac * * *
 
 # TODO(pdfium:489): Remove after associated bug is fixed.
