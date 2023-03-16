@@ -52,6 +52,41 @@
       "parentUuid": "206b1bde_e361fa73",
       "revId": "808c3359c0180e257e5b6207545ab134dfbdaa6d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11a19930_cecfcfb2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-03-16T23:25:00Z",
+      "side": 1,
+      "message": "Would it make sense to extend bug_1469.in, then, or replace it entirely? Or should bug_1469.in still focus on all the /SMaskInData cases? (absent/0/1/2)",
+      "parentUuid": "31c57879_28cab156",
+      "revId": "808c3359c0180e257e5b6207545ab134dfbdaa6d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2120d7dd_293e5d15",
+        "filename": "testing/resources/pixel/jpxdecode_without_smask.in",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-03-16T23:25:00Z",
+      "side": 1,
+      "message": "The non-alpha cases don\u0027t seem useful in this file.",
+      "revId": "808c3359c0180e257e5b6207545ab134dfbdaa6d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
