@@ -380,6 +380,7 @@ bug_983289.in * * * agg
 
 # TODO(pdfium:1747): Remove after associated bug is fixed
 jpxdecode.in * * * *
+jpxdecode_unused_smask.in * * * *
 jpxdecode_without_bitspercomponent.in * * * *
 jpxdecode_without_colorspace.in * * * *
 
