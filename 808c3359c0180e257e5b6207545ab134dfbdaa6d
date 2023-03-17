@@ -92,6 +92,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c01016c2_719edd4b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-03-17T00:18:13Z",
+      "side": 1,
+      "message": "I did some testing on the SMaskInData value in Acrobat (I use T or F to indicate if SMask is used):\n1.1 F\n1.09 T\n1 T\n0.6~0.9 T\n0.5 F\n-1 F\n\nAcrobat definitely has its own acceptable range.",
+      "parentUuid": "5688b6dc_472acaa6",
+      "revId": "808c3359c0180e257e5b6207545ab134dfbdaa6d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2120d7dd_293e5d15",
         "filename": "testing/resources/pixel/jpxdecode_without_smask.in",
         "patchSetId": 3
