@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64a2d406_a9c61ec9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-03-17T16:09:54Z",
+      "side": 1,
+      "message": "\"an\" -\u003e \"a\"",
+      "range": {
+        "startLine": 9,
+        "startChar": 5,
+        "endLine": 9,
+        "endChar": 7
+      },
+      "revId": "e6585cda6b8c91f19163ee708f88985bb3d926dd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "460a7258_eb2a62b0",
+        "filename": "testing/resources/pixel/jpxdecode_unused_smask.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-03-17T16:09:54Z",
+      "side": 1,
+      "message": "For consistency with the other files, I think \"jpxdecode_without_smaskindata.in\" would be the best name.",
+      "revId": "e6585cda6b8c91f19163ee708f88985bb3d926dd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6810e462_708c8c11",
+        "filename": "testing/resources/pixel/jpxdecode_unused_smask.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-03-17T16:09:54Z",
+      "side": 1,
+      "message": "I used an 8 pixel border on each side; the expectation looks a little too wide on the right side. This should probably be 48 (8 + 32 + 8).",
+      "range": {
+        "startLine": 17,
+        "startChar": 17,
+        "endLine": 17,
+        "endChar": 19
+      },
+      "revId": "e6585cda6b8c91f19163ee708f88985bb3d926dd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8ff2218_98e7add0",
+        "filename": "testing/resources/pixel/jpxdecode_unused_smask.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-03-17T16:09:54Z",
+      "side": 1,
+      "message": "Optional: Could renumber the objects so they\u0027re sequential.",
+      "revId": "e6585cda6b8c91f19163ee708f88985bb3d926dd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b86f0f5_05547ff4",
+        "filename": "testing/resources/pixel/jpxdecode_unused_smask.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-03-17T16:09:54Z",
+      "side": 1,
+      "message": "Probably should mention that the alpha is ignored (\"with ignored alpha\"?), otherwise I would expect to see transparency in the expected PNG.",
+      "range": {
+        "startLine": 39,
+        "startChar": 12,
+        "endLine": 39,
+        "endChar": 22
+      },
+      "revId": "e6585cda6b8c91f19163ee708f88985bb3d926dd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
