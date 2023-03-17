@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5688b6dc_472acaa6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-03-17T00:00:03Z",
+      "side": 1,
+      "message": "I think we need to do the following 2 things:\n\n(1) Extend bug_1469.in, make sure to cover some weird non-zero values for /SMaskInData, such as 2, -1 (PDF ref says  \"If SMaskInData is nonzero, there must be only one opacity channel in the JPEG2000 data and it must apply to all color channels.\"). This will be done in a separate CL.\n\n(2) In this new pixel test, make sure SMask is not used for cases that component number doesn\u0027t match color channel number. This helps us to get one step closer to fix the exiting 2 jpxdecode*.in tests. I agree that non-alpha cases can be removed from this newly added pixel test. On a second thought, rename this test to \"jpxdecode_unsed_smask.in\" would be better, since the image contains smask info and the PDF decides to not use it.",
+      "parentUuid": "11a19930_cecfcfb2",
+      "revId": "808c3359c0180e257e5b6207545ab134dfbdaa6d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2120d7dd_293e5d15",
         "filename": "testing/resources/pixel/jpxdecode_without_smask.in",
         "patchSetId": 3
@@ -85,6 +103,24 @@
       "writtenOn": "2023-03-16T23:25:00Z",
       "side": 1,
       "message": "The non-alpha cases don\u0027t seem useful in this file.",
+      "revId": "808c3359c0180e257e5b6207545ab134dfbdaa6d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a20065bf_c846e69f",
+        "filename": "testing/resources/pixel/jpxdecode_without_smask.in",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-03-17T00:00:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2120d7dd_293e5d15",
       "revId": "808c3359c0180e257e5b6207545ab134dfbdaa6d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
