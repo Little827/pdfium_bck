@@ -20,6 +20,41 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "1bcf44b1_f50cf5f1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-03-19T16:25:02Z",
+      "side": 1,
+      "message": "I\u0027m probably going to pursue a different approach, as we don\u0027t reliably update the premultiplied status. (In this usage, it\u0027s usually kClear.)",
+      "parentUuid": "fe455c78_a4ba7120",
+      "revId": "52ffc215d5f14d33bd43029173e7ade6404be618",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92a5d689_757f0813",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-03-19T16:25:02Z",
+      "side": 1,
+      "message": "Thanks for the review!",
+      "revId": "52ffc215d5f14d33bd43029173e7ade6404be618",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "246950fe_67753f15",
         "filename": "testing/resources/pixel/bug_1949.in",
         "patchSetId": 1
@@ -31,6 +66,24 @@
       "writtenOn": "2023-03-18T00:34:36Z",
       "side": 1,
       "message": "Optional: It\u0027s unnecessary to have the extra blank space here since each path is short and they are separated by blank space already.",
+      "revId": "52ffc215d5f14d33bd43029173e7ade6404be618",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fe0c2b7_3239d579",
+        "filename": "testing/resources/pixel/bug_1949.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-03-19T16:25:02Z",
+      "side": 1,
+      "message": "The graphics state operator depends on the current transformation matrix, so I like the visual separation.",
+      "parentUuid": "246950fe_67753f15",
       "revId": "52ffc215d5f14d33bd43029173e7ade6404be618",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
