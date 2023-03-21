@@ -205,8 +205,9 @@ bool CPDF_PageContentGenerator::ProcessPageObjects(fxcrt::ostringstream* buf) {
   const CPDF_ContentMarks* content_marks = empty_content_marks.get();
 
   for (auto& pPageObj : m_pageObjects) {
-    if (m_pObjHolder->IsPage() && !pPageObj->IsDirty())
+    if (!pPageObj->IsDirty()) {
       continue;
+    }
 
     bDirty = true;
     content_marks = ProcessContentMarks(buf, pPageObj, content_marks);
