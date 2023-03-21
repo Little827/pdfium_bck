@@ -22,6 +22,30 @@
       },
       "revId": "0f93a1ef9883cbbeda75c785c2576f6ccb4106d7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bfee5a8_3234d516",
+        "filename": "testing/resources/pixel/bug_1949.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-03-21T17:05:04Z",
+      "side": 1,
+      "message": "I don\u0027t have an estimate for how long it\u0027ll take to fix. The \"left\" side of this test is the one I really care about right now (and shouldn\u0027t be suppressed), but it seems odd to leave the \"right\" side out of this file, since it\u0027s part of a matrix of (object type) x (alpha constant, masks).\n\nWhat if we leave this in, but check in the \"wrong\" expectation for now? And add a second suppressed test file to cover just this bug?",
+      "parentUuid": "7d7e5c50_5467d560",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 20
+      },
+      "revId": "0f93a1ef9883cbbeda75c785c2576f6ccb4106d7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
