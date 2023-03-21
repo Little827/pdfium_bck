@@ -70,6 +70,30 @@
       },
       "revId": "0f93a1ef9883cbbeda75c785c2576f6ccb4106d7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4a86f39_0dd7c83d",
+        "filename": "testing/resources/pixel/bug_1949.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-03-21T17:59:17Z",
+      "side": 1,
+      "message": "If it\u0027s covered by a corpus test, sitting on it is fine.",
+      "parentUuid": "03c1e2a2_a6554f53",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 20
+      },
+      "revId": "0f93a1ef9883cbbeda75c785c2576f6ccb4106d7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
