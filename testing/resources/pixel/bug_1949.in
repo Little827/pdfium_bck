@@ -14,7 +14,7 @@ endobj
   /Type /Page
   /Parent 2 0 R
   /Contents 4 0 R
-  /MediaBox [0 0 44 24]
+  /MediaBox [0 0 44 64]
   /Resources <<
     /ExtGState <<
       /GSHalfAlphaConstant 5 0 R
@@ -22,6 +22,7 @@ endobj
     >>
     /XObject <<
       /HalfAlphaSquare 8 0 R
+      /OpaqueSquare 9 0 R
     >>
   >>
 >>
@@ -34,13 +35,13 @@ stream
 % Opaque black background.
 q
   0 0 0 rg
-  0 0 44 24 re
+  0 0 44 64 re
   f
 Q
 
 % Transparency group drawn with constant alpha.
 q
-  1 0 0 1 4 4 cm
+  1 0 0 1 4 44 cm
   /GSHalfAlphaConstant gs
 
   /HalfAlphaSquare Do
@@ -48,10 +49,47 @@ Q
 
 % Transparency group drawn with a soft mask.
 q
-  1 0 0 1 24 4 cm
+  1 0 0 1 24 44 cm
   /GSHalfAlphaMask gs
 
   /HalfAlphaSquare Do
+Q
+
+% Regular form XObject drawn with constant alpha.
+q
+  1 0 0 1 4 24 cm
+  /GSHalfAlphaConstant gs
+
+  /OpaqueSquare Do
+Q
+
+% Regular form XOBject drawn with a soft mask.
+q
+  1 0 0 1 24 24 cm
+  /GSHalfAlphaMask gs
+
+  % TODO(crbug.com/pdfium/2009): This case doesn't currently work.
+  % /OpaqueSquare Do
+Q
+
+% Square drawn with constant alpha.
+q
+  1 0 0 1 4 4 cm
+  /GSHalfAlphaConstant gs
+
+  1 1 1 rg
+  0 0 16 16 re
+  f
+Q
+
+% Square drawn with a soft mask.
+q
+  1 0 0 1 24 4 cm
+  /GSHalfAlphaMask gs
+
+  1 1 1 rg
+  0 0 16 16 re
+  f
 Q
 
 endstream
@@ -120,6 +158,22 @@ stream
 q
   /GSHalfAlphaConstant gs
 
+  1 1 1 rg
+  0 0 16 16 re
+  f
+Q
+endstream
+endobj
+
+% Regular form XObject containing an opaque white square.
+{{object 9 0}} <<
+  /Type /XObject
+  /Subtype /Form
+  /BBox [0 0 16 16]
+  {{streamlen}}
+>>
+stream
+q
   1 1 1 rg
   0 0 16 16 re
   f
