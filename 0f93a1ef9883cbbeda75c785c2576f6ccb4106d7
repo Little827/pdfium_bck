@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d7e5c50_5467d560",
+        "filename": "testing/resources/pixel/bug_1949.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-03-21T17:00:57Z",
+      "side": 1,
+      "message": "I see how having similar image objects side by side can really help demonstrate the rendering behaviors for different cases. It would be nice to keep all images all in file as long as the pixel test doesn\u0027t get too big.\n\nLei and I had a discussion offline and we agree that if this issue is gonna be fixed pretty soon, let\u0027s keep it as it is here. If it\u0027s not gonna be fixed any time soon, maybe it\u0027s better to have a separate test case so that we can keep all the \"suppressed\" tests at the same place (testing/SUPPRESSION) instead of starting having TODOs in .in files. We can always merge that separated test back into this file later.",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 20
+      },
+      "revId": "0f93a1ef9883cbbeda75c785c2576f6ccb4106d7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
