@@ -561,13 +561,14 @@ CPDF_TextPage::TextOrientation CPDF_TextPage::FindTextlineFlowOrientation()
     if (!pPageObj->IsText())
       continue;
 
-    int32_t minH = std::max(static_cast<int32_t>(pPageObj->GetRect().left), 0);
-    int32_t maxH =
-        std::min(static_cast<int32_t>(pPageObj->GetRect().right), nPageWidth);
-    int32_t minV =
-        std::max(static_cast<int32_t>(pPageObj->GetRect().bottom), 0);
-    int32_t maxV =
-        std::min(static_cast<int32_t>(pPageObj->GetRect().top), nPageHeight);
+    int32_t minH = static_cast<int32_t>(
+        std::fmin(std::fmax(pPageObj->GetRect().left, 0), nPageWidth));
+    int32_t maxH = static_cast<int32_t>(
+        std::fmin(std::fmax(pPageObj->GetRect().right, 0), nPageWidth));
+    int32_t minV = static_cast<int32_t>(
+        std::fmin(std::fmax(pPageObj->GetRect().bottom, 0), nPageHeight));
+    int32_t maxV = static_cast<int32_t>(
+        std::fmin(std::fmax(pPageObj->GetRect().top, 0), nPageHeight));
     if (minH >= maxH || minV >= maxV)
       continue;
 
