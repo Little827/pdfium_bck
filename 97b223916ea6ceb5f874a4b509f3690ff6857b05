@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9ff6bda_14f7804a",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 932,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-03-22T17:16:54Z",
+      "side": 1,
+      "message": "Question re: \"SharingContentStreamAndResources\": This would require separate tests/PDFs to split up, but are there any differences between sharing just the content stream, sharing just the resources, or sharing both?",
+      "range": {
+        "startLine": 932,
+        "startChar": 35,
+        "endLine": 932,
+        "endChar": 67
+      },
+      "revId": "97b223916ea6ceb5f874a4b509f3690ff6857b05",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3d8f869_f064684b",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 932,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-03-22T17:16:54Z",
+      "side": 1,
+      "message": "Optional: This test seems like it\u0027s doing a lot. Would it make sense to validate any steps separately? For example, a test that verifies removing works, a test that verifies regenerating content works, and a test that verifies saving and reloading does(n\u0027t currently) work.\n\nIf these are more in the realm of \"preconditions for the test,\" I think it\u0027d be OK to verify the final result before saving/reloading (the behavior we really want to test).",
+      "revId": "97b223916ea6ceb5f874a4b509f3690ff6857b05",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "443a5cdb_329ff9ac",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 982,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-03-22T17:16:54Z",
+      "side": 1,
+      "message": "Nit: Quote code with backticks?",
+      "range": {
+        "startLine": 982,
+        "startChar": 44,
+        "endLine": 982,
+        "endChar": 64
+      },
+      "revId": "97b223916ea6ceb5f874a4b509f3690ff6857b05",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a0aa33f_91cbcf6f",
+        "filename": "testing/resources/hello_world_2_pages.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-03-22T17:16:54Z",
+      "side": 1,
+      "message": "Nit: Not sure from https://pdfium-review.googlesource.com/c/pdfium/+/102292 if /MediaBox should order this way or not.",
+      "revId": "97b223916ea6ceb5f874a4b509f3690ff6857b05",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
