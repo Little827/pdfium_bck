@@ -39,6 +39,23 @@
       "message": "Is there a bug report for this issue? A test case? If the test case can\u0027t be shared publicly, I can try to help make one.",
       "revId": "316da1c9c8761d6326b743be4360889446808faf",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d922fc1d_7259f38d",
+        "filename": "core/fpdftext/cpdf_textpage.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-03-22T21:48:23Z",
+      "side": 1,
+      "message": "Is there any reason to prefer std::fmin() over std::min()? If the code used std::min() and std::max(), then that can become pdfium::clamp() calls, which helps with readability.\n\npdfium::clamp() will eventually go away in favor of std::clamp().",
+      "revId": "316da1c9c8761d6326b743be4360889446808faf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
