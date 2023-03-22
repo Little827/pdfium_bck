@@ -1105,11 +1105,17 @@ int CFX_SkiaDeviceDriver::GetDriverType() const {
 }
 
 bool CFX_SkiaDeviceDriver::MultiplyAlpha(float alpha) {
-  return m_pBitmap->MultiplyAlpha(static_cast<int32_t>(alpha * 255));
+  m_pBitmap->UnPreMultiply();
+  bool result = m_pBitmap->MultiplyAlpha(static_cast<int32_t>(alpha * 255));
+  m_pBitmap->PreMultiply();
+  return result;
 }
 
 bool CFX_SkiaDeviceDriver::MultiplyAlpha(const RetainPtr<CFX_DIBBase>& mask) {
-  return m_pBitmap->MultiplyAlpha(mask);
+  m_pBitmap->UnPreMultiply();
+  bool result = m_pBitmap->MultiplyAlpha(mask);
+  m_pBitmap->PreMultiply();
+  return result;
 }
 
 DeviceType CFX_SkiaDeviceDriver::GetDeviceType() const {
