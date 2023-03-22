@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93fa92e6_89281235",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-03-22T21:45:21Z",
+      "side": 1,
+      "message": "go/avoidwe\n\nI\u0027m not clamping anything.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 8
+      },
+      "revId": "316da1c9c8761d6326b743be4360889446808faf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d186f10b_082bb265",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-03-22T21:45:21Z",
+      "side": 1,
+      "message": "Is there a bug report for this issue? A test case? If the test case can\u0027t be shared publicly, I can try to help make one.",
+      "revId": "316da1c9c8761d6326b743be4360889446808faf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
