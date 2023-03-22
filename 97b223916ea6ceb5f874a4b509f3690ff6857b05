@@ -43,6 +43,48 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a88f7c91_3b725213",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 932,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-03-22T22:11:26Z",
+      "side": 1,
+      "message": "Excluding the CompareBitmap() checks, splitting this test case would produce 3 test cases:\n\nTC1) Remove\nTC2) Remove, Generate\nTC3) Remove, Generate, Save\n\nAt which point TC3 looks a lot like what\u0027s here right now.",
+      "parentUuid": "e3d8f869_f064684b",
+      "revId": "97b223916ea6ceb5f874a4b509f3690ff6857b05",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b604fff1_daf33803",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 932,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-03-22T22:11:26Z",
+      "side": 1,
+      "message": "Having an input PDF that shares both will force the relevant code to deal with both conditions. Having a test file that only shares one or the other probably doesn\u0027t add more test coverage.",
+      "parentUuid": "f9ff6bda_14f7804a",
+      "range": {
+        "startLine": 932,
+        "startChar": 35,
+        "endLine": 932,
+        "endChar": 67
+      },
+      "revId": "97b223916ea6ceb5f874a4b509f3690ff6857b05",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "443a5cdb_329ff9ac",
         "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
         "patchSetId": 2
@@ -77,6 +119,24 @@
       "writtenOn": "2023-03-22T17:16:54Z",
       "side": 1,
       "message": "Nit: Not sure from https://pdfium-review.googlesource.com/c/pdfium/+/102292 if /MediaBox should order this way or not.",
+      "revId": "97b223916ea6ceb5f874a4b509f3690ff6857b05",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84c8e9fd_e281f055",
+        "filename": "testing/resources/hello_world_2_pages.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-03-22T22:11:26Z",
+      "side": 1,
+      "message": "Oh, I just cloned hello_world.in. I\u0027ll reorder it.",
+      "parentUuid": "6a0aa33f_91cbcf6f",
       "revId": "97b223916ea6ceb5f874a4b509f3690ff6857b05",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
