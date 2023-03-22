@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad480bba_dc63d58f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8721
+      },
+      "writtenOn": "2023-03-22T15:59:20Z",
+      "side": 1,
+      "message": "Hi Tom, do you have permissions for deleting this CL? Zakhar won\u0027t be available this week and I have a local CL with fixes for the conflicts, but I don\u0027t have permissions to upload a new patchset",
+      "revId": "7f5811545cd6bc9fb2da124c7b483164686b8636",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "00ad4072_1fdc2154",
