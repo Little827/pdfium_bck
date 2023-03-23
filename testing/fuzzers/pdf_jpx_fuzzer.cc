@@ -50,15 +50,20 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
     return 0;
 
   FXDIB_Format format;
+  uint32_t channel_num = 0;
   if (image_info.components == 1) {
     format = FXDIB_Format::k8bppRgb;
+    channel_num = 1;
   } else if (image_info.components <= 3) {
     format = FXDIB_Format::kRgb;
+    channel_num = 3;
   } else if (image_info.components == 4) {
     format = FXDIB_Format::kRgb32;
+    channel_num = 4;
   } else {
     image_info.width = (image_info.width * image_info.components + 2) / 3;
     format = FXDIB_Format::kRgb;
+    channel_num = 3;
   }
   auto bitmap = pdfium::MakeRetain<CFX_DIBitmap>();
   if (!bitmap->Create(image_info.width, image_info.height, format))
@@ -70,7 +75,7 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
     return 0;
 
   decoder->Decode(bitmap->GetBuffer(), bitmap->GetPitch(),
-                  /*swap_rgb=*/false);
+                  /*swap_rgb=*/false, channel_num);
 
   return 0;
 }
