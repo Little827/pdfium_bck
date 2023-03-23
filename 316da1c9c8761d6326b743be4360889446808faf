@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "18fab653_822ca0a7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 9121
+      },
+      "writtenOn": "2023-03-23T15:01:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93fa92e6_89281235",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 8
+      },
+      "revId": "316da1c9c8761d6326b743be4360889446808faf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d186f10b_082bb265",
@@ -54,6 +78,24 @@
       "writtenOn": "2023-03-22T21:48:23Z",
       "side": 1,
       "message": "Is there any reason to prefer std::fmin() over std::min()? If the code used std::min() and std::max(), then that can become pdfium::clamp() calls, which helps with readability.\n\npdfium::clamp() will eventually go away in favor of std::clamp().",
+      "revId": "316da1c9c8761d6326b743be4360889446808faf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a58477d2_98312eca",
+        "filename": "core/fpdftext/cpdf_textpage.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 9121
+      },
+      "writtenOn": "2023-03-23T15:01:24Z",
+      "side": 1,
+      "message": "Great, I didn\u0027t know about pdfium::clamp(); updated.\n(I used std::fmin() instead of std::min because one of the arguments was an int)",
+      "parentUuid": "d922fc1d_7259f38d",
       "revId": "316da1c9c8761d6326b743be4360889446808faf",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
