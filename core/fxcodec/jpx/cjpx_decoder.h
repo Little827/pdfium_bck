@@ -55,8 +55,12 @@ class CJPX_Decoder {
   JpxImageInfo GetInfo() const;
   bool StartDecode();
 
-  // |swap_rgb| can only be set for images with 3 or more components.
-  bool Decode(pdfium::span<uint8_t> dest_buf, uint32_t pitch, bool swap_rgb);
+  // `swap_rgb` can only be set for images with at least 3 color channels, and
+  // these images must have at least 3 components.
+  bool Decode(pdfium::span<uint8_t> dest_buf,
+              uint32_t pitch,
+              bool swap_rgb,
+              uint32_t color_channel_count);
 
  private:
   // Use Create() to instantiate.
