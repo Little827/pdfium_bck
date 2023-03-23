@@ -47,6 +47,23 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "32eb7c94_127a6fa1",
+        "filename": "core/fxcodec/jpx/cjpx_decoder.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-03-23T21:24:56Z",
+      "side": 1,
+      "message": "This vector, and the one below it, are sized based on `m_Image-\u003enumcomps`, but line 553 iterates over it using `channel_count`. Should the code always use only one or the other? Or do they have to use one or the other depending on the situation?",
+      "revId": "6e8ef2cded4327a9b2098ab081880887b50a616b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "d149a92f_5541127a",
@@ -83,6 +100,24 @@
       "writtenOn": "2023-03-23T21:21:08Z",
       "side": 1,
       "message": "Can this be \"component_count\" to match the phrasing on line 58?",
+      "revId": "6e8ef2cded4327a9b2098ab081880887b50a616b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd02d327_a2cb905b",
+        "filename": "core/fxcodec/jpx/cjpx_decoder.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-03-23T21:24:56Z",
+      "side": 1,
+      "message": "Or change line 58 to say channels. Or if channels and components are 2 different concepts, clarify that.",
+      "parentUuid": "76521ae7_f7fb6dc3",
       "revId": "6e8ef2cded4327a9b2098ab081880887b50a616b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
