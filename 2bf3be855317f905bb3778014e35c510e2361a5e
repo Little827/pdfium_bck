@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "16a20f48_38c596ba",
+        "filename": "core/fxcodec/jpx/cjpx_decoder.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-03-23T23:53:33Z",
+      "side": 1,
+      "message": "Do we know that `m_Image-\u003enumcomps` is only true for ARGB formats? Would there be confusion with CMYK?",
+      "revId": "2bf3be855317f905bb3778014e35c510e2361a5e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "61c8acf4_0940704a",
         "filename": "core/fxcodec/jpx/cjpx_decoder.h",
         "patchSetId": 21
