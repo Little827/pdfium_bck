@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d149a92f_5541127a",
+        "filename": "core/fxcodec/jpx/cjpx_decoder.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-03-23T16:54:53Z",
+      "side": 1,
+      "message": "The change to use the correct color channel count helps render Gray + CYMK images correctly. (Tested with the existing jpx*.in in pixel tests.)\n\nAll our test cases have \"adjust \u003d\u003d 0\". There is no proper coverage on cases for adjust !\u003d 0 yet.",
+      "range": {
+        "startLine": 576,
+        "startChar": 46,
+        "endLine": 576,
+        "endChar": 60
+      },
+      "revId": "6e8ef2cded4327a9b2098ab081880887b50a616b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e40c954b_d2d8acd4",
+        "filename": "testing/resources/pixel/bug_304_expected.pdf.0.png",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-03-23T16:54:53Z",
+      "side": 1,
+      "message": "This new expectation matches the Acrobat rendering result.",
+      "revId": "6e8ef2cded4327a9b2098ab081880887b50a616b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
