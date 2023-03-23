@@ -16,6 +16,24 @@
       "message": "Bug: b/274783814, otherwise it auto-links to crbug.com/274783814, which does not exist.",
       "revId": "5281a5e40a412b4f184d388ff4de0c3013bfd8a8",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a011aaa2_0bfc28a1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 9121
+      },
+      "writtenOn": "2023-03-23T17:13:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f711441b_f10f79c7",
+      "revId": "5281a5e40a412b4f184d388ff4de0c3013bfd8a8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
