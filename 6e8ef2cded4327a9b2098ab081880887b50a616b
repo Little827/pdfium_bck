@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb9d48a3_0467a0d1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-03-23T23:24:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6901f53_42fedcc4",
+      "range": {
+        "startLine": 13,
+        "startChar": 25,
+        "endLine": 13,
+        "endChar": 27
+      },
+      "revId": "6e8ef2cded4327a9b2098ab081880887b50a616b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3b62fa4d_0ca73f6c",
@@ -47,6 +71,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fb43c97_48a298d5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-03-23T23:24:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b62fa4d_0ca73f6c",
+      "range": {
+        "startLine": 18,
+        "startChar": 9,
+        "endLine": 18,
+        "endChar": 14
+      },
+      "revId": "6e8ef2cded4327a9b2098ab081880887b50a616b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "32eb7c94_127a6fa1",
@@ -60,6 +108,24 @@
       "writtenOn": "2023-03-23T21:24:56Z",
       "side": 1,
       "message": "This vector, and the one below it, are sized based on `m_Image-\u003enumcomps`, but line 553 iterates over it using `channel_count`. Should the code always use only one or the other? Or do they have to use one or the other depending on the situation?",
+      "revId": "6e8ef2cded4327a9b2098ab081880887b50a616b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9296bb47_d818b85f",
+        "filename": "core/fxcodec/jpx/cjpx_decoder.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-03-23T23:24:54Z",
+      "side": 1,
+      "message": "The following condition should be true: m_Image-\u003enumcomps \u003e\u003d channel_count. I think\na CHECK() is needed.\n\nThe reason why I didn\u0027t change how these vectors are sized is because extra information (such as transparency) are stored in the extra components. And they will come to use eventually. I just haven\u0027t figured out how to use it yet.\n\nHow about adding a TODO comment here to explain why we allocate extra space in these vectors?",
+      "parentUuid": "32eb7c94_127a6fa1",
       "revId": "6e8ef2cded4327a9b2098ab081880887b50a616b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -122,6 +188,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "95efdaad_31167bbc",
+        "filename": "core/fxcodec/jpx/cjpx_decoder.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-03-23T23:24:54Z",
+      "side": 1,
+      "message": "Done. Used the concept \"channel\" and also specified that component count is at least 3 as well.",
+      "parentUuid": "dd02d327_a2cb905b",
+      "revId": "6e8ef2cded4327a9b2098ab081880887b50a616b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "62a1a526_c20dc812",
@@ -135,6 +219,24 @@
       "writtenOn": "2023-03-23T21:07:44Z",
       "side": 1,
       "message": "1) Should this be \"channel_count\"? Channel number makes me think it\u0027s switching between TV stations.\n2) Can the channel count be automatically derived from `format` here?",
+      "revId": "6e8ef2cded4327a9b2098ab081880887b50a616b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92645b1a_780e82cf",
+        "filename": "testing/fuzzers/pdf_jpx_fuzzer.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-03-23T23:24:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62a1a526_c20dc812",
       "revId": "6e8ef2cded4327a9b2098ab081880887b50a616b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },

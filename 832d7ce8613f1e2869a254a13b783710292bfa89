@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "09df070b_5bfe92c2",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-03-23T23:24:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "707cc1b8_55cfac3c",
+      "range": {
+        "startLine": 122,
+        "startChar": 3,
+        "endLine": 122,
+        "endChar": 14
+      },
+      "revId": "832d7ce8613f1e2869a254a13b783710292bfa89",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "11f1806f_49d7ddfd",
@@ -70,6 +94,54 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aaa74865_7b026c8c",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-03-23T23:24:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11f1806f_49d7ddfd",
+      "range": {
+        "startLine": 130,
+        "startChar": 71,
+        "endLine": 130,
+        "endChar": 80
+      },
+      "revId": "832d7ce8613f1e2869a254a13b783710292bfa89",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2d425d7_aa0fafeb",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-03-23T23:24:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7ffa79a_8e9ab3c7",
+      "range": {
+        "startLine": 130,
+        "startChar": 27,
+        "endLine": 130,
+        "endChar": 32
+      },
+      "revId": "832d7ce8613f1e2869a254a13b783710292bfa89",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "db8bb6c2_88d0c476",
@@ -83,6 +155,24 @@
       "writtenOn": "2023-03-23T22:27:22Z",
       "side": 1,
       "message": "This looks a bit like line 177, except here 5 would be `kConvertArgbToRgb` but around line 177, it would `kUseRgb`. Is this intentional?",
+      "revId": "832d7ce8613f1e2869a254a13b783710292bfa89",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f7cc0d7_656dd517",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-03-23T23:24:54Z",
+      "side": 1,
+      "message": "Changed 177 to \"if (jpx_info.components \u003e 3)\" to match this condition.",
+      "parentUuid": "db8bb6c2_88d0c476",
       "revId": "832d7ce8613f1e2869a254a13b783710292bfa89",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -104,6 +194,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "35ff34b1_586abc3a",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-03-23T23:24:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc3fe496_3bea3707",
+      "revId": "832d7ce8613f1e2869a254a13b783710292bfa89",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5db657ad_09aa914b",
@@ -117,6 +225,24 @@
       "writtenOn": "2023-03-23T22:27:22Z",
       "side": 1,
       "message": "No `else` after a return. Or switch to using a ternery operator. Also line 136.",
+      "revId": "832d7ce8613f1e2869a254a13b783710292bfa89",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e8f3f71_13bfcbcf",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-03-23T23:24:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5db657ad_09aa914b",
       "revId": "832d7ce8613f1e2869a254a13b783710292bfa89",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -138,6 +264,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "980a0402_08af9bf5",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-03-23T23:24:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a407b8d2_aca42426",
+      "revId": "832d7ce8613f1e2869a254a13b783710292bfa89",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "047762db_97aee3dc",
@@ -151,6 +295,24 @@
       "writtenOn": "2023-03-23T22:27:22Z",
       "side": 1,
       "message": "If the JPX colorspace is OPJ_CLRSPC_EYCC, then `format` is set to ` FXDIB_Format::k8bppRgb`. That does not look right.",
+      "revId": "832d7ce8613f1e2869a254a13b783710292bfa89",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e03398a_7b9727c2",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 714,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-03-23T23:24:54Z",
+      "side": 1,
+      "message": "Removed `kNothing` from this condition check.",
+      "parentUuid": "047762db_97aee3dc",
       "revId": "832d7ce8613f1e2869a254a13b783710292bfa89",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
