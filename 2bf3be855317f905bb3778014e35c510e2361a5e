@@ -144,6 +144,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d1948dfe_855e7b6b",
+        "filename": "core/fxcodec/jpx/cjpx_decoder.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-03-24T22:07:27Z",
+      "side": 1,
+      "message": "Thanks for the example. I think the confusion is what you are calling color channels is what the PDF spec calls \"components\". What you call JPX components is what the PDF spec calls channels. See ISO 32000-1:2008 page 36. (The 44th page) Did I get that right or am I still confused?\n\nMaybe we should first rename `JpxImageInfo::components` to `JpxImageInfo::channels` if that makes sense.",
+      "parentUuid": "64032ce0_fae1aab4",
+      "revId": "2bf3be855317f905bb3778014e35c510e2361a5e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5c61dbaf_479542f3",
         "filename": "testing/fuzzers/pdf_jpx_fuzzer.cc",
         "patchSetId": 21
