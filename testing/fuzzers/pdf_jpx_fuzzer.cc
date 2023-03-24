@@ -10,6 +10,7 @@
 #include "core/fxcrt/fx_safe_types.h"
 #include "core/fxge/dib/cfx_dibitmap.h"
 #include "core/fxge/dib/fx_dib.h"
+#include "third_party/base/notreached.h"
 
 namespace {
 
@@ -60,6 +61,7 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
     image_info.width = (image_info.width * image_info.components + 2) / 3;
     format = FXDIB_Format::kRgb;
   }
+
   auto bitmap = pdfium::MakeRetain<CFX_DIBitmap>();
   if (!bitmap->Create(image_info.width, image_info.height, format))
     return 0;
@@ -69,8 +71,8 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
           static_cast<uint32_t>(bitmap->GetHeight()))
     return 0;
 
-  decoder->Decode(bitmap->GetBuffer(), bitmap->GetPitch(),
-                  /*swap_rgb=*/false);
+  decoder->Decode(bitmap->GetBuffer(), bitmap->GetPitch(), /*swap_rgb=*/false,
+                  GetCompsFromFormat(format));
 
   return 0;
 }
