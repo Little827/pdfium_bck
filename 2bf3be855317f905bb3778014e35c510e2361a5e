@@ -90,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d85b35df_7b603e63",
+        "filename": "core/fxcodec/jpx/cjpx_decoder.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-03-24T00:17:10Z",
+      "side": 1,
+      "message": "To be clear, is \"channel count\" the JPX component count, or is \"component count\" the JPX component count? Let\u0027s add more comments to explain this to readers. Otherwise it\u0027s very confusing.",
+      "parentUuid": "8307bcec_6d7a1983",
+      "revId": "2bf3be855317f905bb3778014e35c510e2361a5e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5c61dbaf_479542f3",
         "filename": "testing/fuzzers/pdf_jpx_fuzzer.cc",
         "patchSetId": 21
