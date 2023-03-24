@@ -10,6 +10,7 @@
 #include "core/fxcrt/fx_safe_types.h"
 #include "core/fxge/dib/cfx_dibitmap.h"
 #include "core/fxge/dib/fx_dib.h"
+#include "third_party/base/notreached.h"
 
 namespace {
 
@@ -69,8 +70,8 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
           static_cast<uint32_t>(bitmap->GetHeight()))
     return 0;
 
-  decoder->Decode(bitmap->GetBuffer(), bitmap->GetPitch(),
-                  /*swap_rgb=*/false);
+  decoder->Decode(bitmap->GetBuffer(), bitmap->GetPitch(), /*swap_rgb=*/false,
+                  GetCompsFromFormat(format));
 
   return 0;
 }
