@@ -162,6 +162,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "13145541_51f59e6a",
+        "filename": "core/fxcodec/jpx/cjpx_decoder.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-03-27T19:37:32Z",
+      "side": 1,
+      "message": "You are correct.\nI cross referenced http://www.openjpeg.org/doxygen/structopj__image__comp.html#a8d471ac4bee95236e0b622638a8e07cf with the page 26 in PDF reference book, \"alpha channel\" and its \"components\" in openjpeg equal to the \"channels\" in the PDF ref book.\n\nI think we should keep it consistent with the PDF ref book and make JpxImageInfo to have \"channels\" instead of components. That should help eliminate the confusion.",
+      "parentUuid": "d1948dfe_855e7b6b",
+      "revId": "2bf3be855317f905bb3778014e35c510e2361a5e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5c61dbaf_479542f3",
         "filename": "testing/fuzzers/pdf_jpx_fuzzer.cc",
         "patchSetId": 21
