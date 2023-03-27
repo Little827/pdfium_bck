@@ -16,6 +16,24 @@
       "message": "[DO NOT MERGE YET] I can\u0027t seem to be able to start the CQ dry run. I ran pdfium_unittests and pdfium_embeddertests locally and they passed. Please take a look but don\u0027t merge the CL yet as we\u0027re waiting for an approval for LTS",
       "revId": "9474644b08594fb23b93ec37867ebbceee051780",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cd0ae53_98dd7333",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-03-27T15:36:43Z",
+      "side": 1,
+      "message": "PDFium CQ doesn\u0027t have branch builders. It just uses the main branch builders for all try jobs. Therefore CQ jobs for older branches do not always work, when they have diverged in some breaking way from main branch.",
+      "parentUuid": "9692e39a_a2a34eba",
+      "revId": "9474644b08594fb23b93ec37867ebbceee051780",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
