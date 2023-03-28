@@ -3,6 +3,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c3a23554_6e17f60a",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-03-28T21:07:48Z",
+      "side": 1,
+      "message": "Should the PDF colorspace take precedence over the JPX color info? i.e. Should lines 147-160 come before lines 126-145?",
+      "revId": "d054e3e3838210b9c06a8e4d412c184c1fd00c71",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "381ddf96_424aeb7e",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 699,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-03-28T21:07:48Z",
+      "side": 1,
+      "message": "Should this method return a failure if GetComponentCountFromOpjColorSpace() returns 0?",
+      "revId": "d054e3e3838210b9c06a8e4d412c184c1fd00c71",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "59a7be66_9b12f044",
         "filename": "core/fxcodec/jpx/cjpx_decoder.h",
         "patchSetId": 25
