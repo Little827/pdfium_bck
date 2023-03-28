@@ -55,8 +55,19 @@ class CJPX_Decoder {
   JpxImageInfo GetInfo() const;
   bool StartDecode();
 
-  // |swap_rgb| can only be set for images with 3 or more channels.
-  bool Decode(pdfium::span<uint8_t> dest_buf, uint32_t pitch, bool swap_rgb);
+  // `swap_rgb` can only be set when an image's color space type contains at
+  // least 3 color channels. Notice that this color channel count is not
+  // equivalent to `JpxImageInfo::components`. And the
+  // `JpxImageInfo::components` must be no less than the color channel count.
+  //
+  // Example: If a JPX image uses SRGB color space, the color channel count
+  // for this color space is 3. But the component count from its JpxImageInfo
+  // can be more than 3, since those extra components might contain extra
+  // information, such as the transparency level.
+  bool Decode(pdfium::span<uint8_t> dest_buf,
+              uint32_t pitch,
+              bool swap_rgb,
+              uint32_t color_channel_count);
 
  private:
   // Use Create() to instantiate.
