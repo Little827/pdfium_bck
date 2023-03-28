@@ -22,6 +22,30 @@
       },
       "revId": "6e660717f45c8d95a0f138a5e430c4a740e61cf1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9e4d7c0_7e702c01",
+        "filename": "testing/resources/hello_world_2_pages_split_streams.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-03-28T20:46:49Z",
+      "side": 1,
+      "message": "All the hello_world*.in files are written this way. One way to think about it is to define the resources before referencing them in the content stream. Of course, one can also argue for alphabetical ordering the keys, and many .in files are written that way.",
+      "parentUuid": "8ca6b402_f4188b34",
+      "range": {
+        "startLine": 23,
+        "startChar": 1,
+        "endLine": 23,
+        "endChar": 17
+      },
+      "revId": "6e660717f45c8d95a0f138a5e430c4a740e61cf1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
