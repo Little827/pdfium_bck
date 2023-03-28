@@ -34,6 +34,24 @@
       "parentUuid": "9692e39a_a2a34eba",
       "revId": "9474644b08594fb23b93ec37867ebbceee051780",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "769c934c_54b730a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 9116
+      },
+      "writtenOn": "2023-03-28T14:05:03Z",
+      "side": 1,
+      "message": "OK, thanks. I ran the tests locally so we should be fine. Can I get a code-owners approval from you?",
+      "parentUuid": "8cd0ae53_98dd7333",
+      "revId": "9474644b08594fb23b93ec37867ebbceee051780",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
