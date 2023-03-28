@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2912dc76_c79b7c1f",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-03-28T23:35:46Z",
+      "side": 1,
+      "message": "PDF refs page 37 mentioned that if ColorSpace is present, it should determine how the image samples are interpreted, and the color space spec inside the JPX image can be ignored. So we can move lines 147-160 up and remove some of the lines from 126-145.",
+      "parentUuid": "c3a23554_6e17f60a",
+      "revId": "d054e3e3838210b9c06a8e4d412c184c1fd00c71",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "381ddf96_424aeb7e",
         "filename": "core/fpdfapi/page/cpdf_dib.cpp",
         "patchSetId": 25
@@ -49,6 +67,24 @@
       "side": 1,
       "message": "The intent of the existing code is the branch above already has a non-zero value for `m_nComponents`, and thus it does nothing. Whereas this branch needs to set `m_nComponents` to a non-zero value.",
       "parentUuid": "381ddf96_424aeb7e",
+      "revId": "d054e3e3838210b9c06a8e4d412c184c1fd00c71",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1933b06e_e38890a9",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 699,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-03-28T23:35:46Z",
+      "side": 1,
+      "message": "Add check for whether m_mComponent \u003d\u003d 0. If so, early return nullptr.",
+      "parentUuid": "6cd1835c_d379f3ba",
       "revId": "d054e3e3838210b9c06a8e4d412c184c1fd00c71",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -99,6 +135,54 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1516bace_92bf8ed1",
+        "filename": "core/fxcodec/jpx/cjpx_decoder.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-03-28T23:35:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc481910_d8b804ae",
+      "range": {
+        "startLine": 59,
+        "startChar": 48,
+        "endLine": 59,
+        "endChar": 72
+      },
+      "revId": "d054e3e3838210b9c06a8e4d412c184c1fd00c71",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73dfee56_d9b30007",
+        "filename": "core/fxcodec/jpx/cjpx_decoder.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-03-28T23:35:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59a7be66_9b12f044",
+      "range": {
+        "startLine": 59,
+        "startChar": 31,
+        "endLine": 59,
+        "endChar": 42
+      },
+      "revId": "d054e3e3838210b9c06a8e4d412c184c1fd00c71",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c4feb111_dfec2db3",
@@ -112,6 +196,30 @@
       "writtenOn": "2023-03-28T20:57:10Z",
       "side": 1,
       "message": "This is comparing channels to channels. Does it need to be updated?",
+      "range": {
+        "startLine": 60,
+        "startChar": 45,
+        "endLine": 61,
+        "endChar": 50
+      },
+      "revId": "d054e3e3838210b9c06a8e4d412c184c1fd00c71",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f36bbe11_25e614bb",
+        "filename": "core/fxcodec/jpx/cjpx_decoder.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-03-28T23:35:46Z",
+      "side": 1,
+      "message": "Oops, missed this part. Done.",
+      "parentUuid": "c4feb111_dfec2db3",
       "range": {
         "startLine": 60,
         "startChar": 45,
@@ -147,6 +255,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1841f972_dd047bab",
+        "filename": "core/fxcodec/jpx/cjpx_decoder.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-03-28T23:35:46Z",
+      "side": 1,
+      "message": "Yes. OPJ_CLRSPC_SRGB.\nI changed this line to \"If a JPX image\u0027s color space type is OPJ_CLRSPC_SRGB\". Maybe it\u0027s more clear now?",
+      "parentUuid": "62412505_fb6c962c",
+      "range": {
+        "startLine": 63,
+        "startChar": 19,
+        "endLine": 63,
+        "endChar": 50
+      },
+      "revId": "d054e3e3838210b9c06a8e4d412c184c1fd00c71",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "18de9939_2e84dde4",
         "filename": "testing/fuzzers/pdf_jpx_fuzzer.cc",
         "patchSetId": 25
@@ -158,6 +290,24 @@
       "writtenOn": "2023-03-28T20:57:10Z",
       "side": 1,
       "message": "No longer needed.",
+      "revId": "d054e3e3838210b9c06a8e4d412c184c1fd00c71",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42122706_918ff669",
+        "filename": "testing/fuzzers/pdf_jpx_fuzzer.cc",
+        "patchSetId": 25
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-03-28T23:35:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18de9939_2e84dde4",
       "revId": "d054e3e3838210b9c06a8e4d412c184c1fd00c71",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
