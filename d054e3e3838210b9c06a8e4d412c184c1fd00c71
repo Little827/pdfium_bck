@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6cd1835c_d379f3ba",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 699,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-03-28T21:16:46Z",
+      "side": 1,
+      "message": "The intent of the existing code is the branch above already has a non-zero value for `m_nComponents`, and thus it does nothing. Whereas this branch needs to set `m_nComponents` to a non-zero value.",
+      "parentUuid": "381ddf96_424aeb7e",
+      "revId": "d054e3e3838210b9c06a8e4d412c184c1fd00c71",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "59a7be66_9b12f044",
         "filename": "core/fxcodec/jpx/cjpx_decoder.h",
         "patchSetId": 25
