@@ -180,6 +180,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "79a86a90_0f3525b9",
+        "filename": "core/fxcodec/jpx/cjpx_decoder.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-03-28T15:42:12Z",
+      "side": 1,
+      "message": "Rename is done in https://pdfium-review.googlesource.com/105470.\nNow that we swap the names: channels -\u003e jpx image, component -\u003e PDF color space, I updated the comments and function names to match this change.",
+      "parentUuid": "13145541_51f59e6a",
+      "revId": "2bf3be855317f905bb3778014e35c510e2361a5e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5c61dbaf_479542f3",
         "filename": "testing/fuzzers/pdf_jpx_fuzzer.cc",
         "patchSetId": 21
