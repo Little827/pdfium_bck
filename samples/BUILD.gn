@@ -5,6 +5,10 @@
 import("//build/config/sanitizers/sanitizers.gni")
 import("../pdfium.gni")
 
+if (is_win) {
+  import("//third_party/skia/gn/xps.gni")
+}
+
 group("samples") {
   testonly = true
   deps = [ ":pdfium_test" ]
@@ -71,6 +75,16 @@ executable("pdfium_test") {
         "chromium_support/discardable_memory_allocator.h",
       ]
       deps += [ "//base/test:test_support" ]
+    }
+
+    if (is_win) {
+      sources += skia_xps_sources
+
+      # re-add, since was removed from handling chromes auto gn filter
+      # (build/config/BUILDCONFIG.gn)
+      sources += [ "//third_party/skia/src/utils/win/SkIStream.cpp" ]
+
+      libs = [ "fontsub.lib" ]
     }
   }
 }
