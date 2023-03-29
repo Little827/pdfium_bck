@@ -162,6 +162,60 @@ void CPDF_PageContentGenerator::UpdateContentStreams(
 
     page_content_manager.UpdateStream(stream_index, buf);
   }
+
+  // Key: The resource type.
+  // Value: The resource names of a given type.
+  std::map<ByteString, std::set<ByteString>> seen_objects;
+  for (auto& page_object : m_pageObjects) {
+    const ByteString& resource_name = page_object->GetResourceName();
+    if (!resource_name.IsEmpty()) {
+      switch (page_object->GetType()) {
+        case CPDF_PageObject::Type::kText:
+          seen_objects["Font"].insert(resource_name);
+          break;
+        case CPDF_PageObject::Type::kImage:
+        case CPDF_PageObject::Type::kForm:
+          seen_objects["XObject"].insert(resource_name);
+          break;
+        case CPDF_PageObject::Type::kPath:
+          break;
+        case CPDF_PageObject::Type::kShading:
+          break;
+      }
+    }
+  }
+
+  RetainPtr<CPDF_Dictionary> resources = m_pObjHolder->GetMutableResources();
+  if (resources) {
+    // TODO(thestig): Remove other unused resource types, like ExtGState.
+    static constexpr const char* kResourceKeys[] = {"Font", "XObject"};
+    for (const char* resource_key : kResourceKeys) {
+      RetainPtr<CPDF_Dictionary> resource_dict =
+          resources->GetMutableDictFor(resource_key);
+      if (!resource_dict) {
+        continue;
+      }
+
+      std::vector<ByteString> keys;
+      {
+        CPDF_DictionaryLocker resource_dict_locker(resource_dict);
+        for (auto& it : resource_dict_locker) {
+          keys.push_back(it.first);
+        }
+      }
+
+      auto it = seen_objects.find(resource_key);
+      const std::set<ByteString>* seen_set =
+          it != seen_objects.end() ? &it->second : nullptr;
+      for (const ByteString& key : keys) {
+        if (seen_set && pdfium::Contains(*seen_set, key)) {
+          continue;
+        }
+
+        resource_dict->RemoveFor(key.AsStringView());
+      }
+    }
+  }
 }
 
 ByteString CPDF_PageContentGenerator::RealizeResource(
@@ -313,6 +367,8 @@ void CPDF_PageContentGenerator::ProcessImage(fxcrt::ostringstream* buf,
     pImage->ConvertStreamToIndirectObject();
 
   ByteString name = RealizeResource(pStream, "XObject");
+  pImageObj->SetResourceName(name);
+
   if (bWasInline) {
     auto* pPageData = CPDF_DocPageData::FromDocument(m_pDocument);
     pImageObj->SetImage(pPageData->GetImage(pStream->GetObjNum()));
@@ -332,10 +388,11 @@ void CPDF_PageContentGenerator::ProcessForm(fxcrt::ostringstream* buf,
   if (!pStream)
     return;
 
+  ByteString name = RealizeResource(pStream.Get(), "XObject");
+  pFormObj->SetResourceName(name);
+
   *buf << "q\n";
   WriteMatrix(*buf, pFormObj->form_matrix()) << " cm ";
-
-  ByteString name = RealizeResource(pStream.Get(), "XObject");
   *buf << "/" << PDF_NameEncode(name) << " Do Q\n";
 }
 
@@ -554,10 +611,10 @@ void CPDF_PageContentGenerator::ProcessText(fxcrt::ostringstream* buf,
   }
   data.baseFont = pFont->GetBaseFontName();
 
-  ByteString dictName;
+  ByteString dict_name;
   absl::optional<ByteString> maybe_name = m_pObjHolder->FontsMapSearch(data);
   if (maybe_name.has_value()) {
-    dictName = std::move(maybe_name.value());
+    dict_name = std::move(maybe_name.value());
   } else {
     RetainPtr<const CPDF_Object> pIndirectFont = pFont->GetFontDict();
     if (pIndirectFont->IsInline()) {
@@ -573,10 +630,12 @@ void CPDF_PageContentGenerator::ProcessText(fxcrt::ostringstream* buf,
       m_pDocument->AddIndirectObject(pFontDict);
       pIndirectFont = std::move(pFontDict);
     }
-    dictName = RealizeResource(std::move(pIndirectFont), "Font");
-    m_pObjHolder->FontsMapInsert(data, dictName);
+    dict_name = RealizeResource(std::move(pIndirectFont), "Font");
+    m_pObjHolder->FontsMapInsert(data, dict_name);
   }
-  *buf << "/" << PDF_NameEncode(dictName) << " ";
+  pTextObj->SetResourceName(dict_name);
+
+  *buf << "/" << PDF_NameEncode(dict_name) << " ";
   WriteFloat(*buf, pTextObj->GetFontSize()) << " Tf ";
   *buf << static_cast<int>(pTextObj->GetTextRenderMode()) << " Tr ";
   ByteString text;
