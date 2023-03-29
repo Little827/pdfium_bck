@@ -55,13 +55,21 @@
 #endif  // ENABLE_CALLGRIND
 
 #ifdef PDF_ENABLE_SKIA
+#if true  // This should really be a different include, and maybe have time
+          // stuff in a different file?
+#include "core/fxcrt/cfx_datetime.h"
+#endif
 #include "third_party/skia/include/core/SkCanvas.h"           // nogncheck
 #include "third_party/skia/include/core/SkColor.h"            // nogncheck
+#include "third_party/skia/include/core/SkDocument.h"         // nogncheck
 #include "third_party/skia/include/core/SkPicture.h"          // nogncheck
 #include "third_party/skia/include/core/SkPictureRecorder.h"  // nogncheck
 #include "third_party/skia/include/core/SkPixmap.h"           // nogncheck
 #include "third_party/skia/include/core/SkRefCnt.h"           // nogncheck
+#include "third_party/skia/include/core/SkStream.h"           // nogncheck
 #include "third_party/skia/include/core/SkSurface.h"          // nogncheck
+#include "third_party/skia/include/core/SkTime.h"
+#include "third_party/skia/include/docs/SkPDFDocument.h"
 
 #ifdef BUILD_WITH_CHROMIUM
 #include "samples/chromium_support/discardable_memory_allocator.h"  // nogncheck
@@ -111,6 +119,7 @@ enum class OutputFormat {
   kPs3Type42,
 #endif
 #ifdef PDF_ENABLE_SKIA
+  kPdf,
   kSkp,
 #endif
 };
@@ -552,6 +561,12 @@ bool ParseCommandLine(const std::vector<std::string>& args,
       }
       options->output_format = OutputFormat::kAnnot;
 #ifdef PDF_ENABLE_SKIA
+    } else if (cur_arg == "--pdf") {
+      if (options->output_format != OutputFormat::kNone) {
+        fprintf(stderr, "Duplicate or conflicting --pdf argument\n");
+        return false;
+      }
+      options->output_format = OutputFormat::kPdf;
     } else if (cur_arg == "--skp") {
       if (options->output_format != OutputFormat::kNone) {
         fprintf(stderr, "Duplicate or conflicting --skp argument\n");
@@ -1019,6 +1034,135 @@ class SkPicturePageRenderer : public PageRenderer {
   std::unique_ptr<SkPictureRecorder> recorder_;
   sk_sp<SkPicture> picture_;
 };
+
+class SkDocumentPageRenderer : public PageRenderer {
+ public:
+  SkDocumentPageRenderer(FPDF_PAGE page, int width, int height, int flags)
+      : PageRenderer(page,
+                     /*width=*/width,
+                     /*height=*/height,
+                     /*flags=*/flags) {}
+
+  bool HasOutput() const override { return !!picture_; }
+
+  bool Start() override {
+    recorder_.reset(reinterpret_cast<SkPictureRecorder*>(
+        FPDF_RenderPageSkp(page(), /*size_x=*/width(), /*size_y=*/height())));
+    if (!recorder_) {
+      return false;
+    }
+
+    if (!Initialize()) {
+      return false;
+    }
+
+    document_ = MakeDocument();
+
+    canvas_ = document_->beginPage(width(), height());
+    return true;
+  }
+
+  void Finish(FPDF_FORMHANDLE form) override {
+    FPDF_FFLRecord(form, reinterpret_cast<FPDF_RECORDER>(recorder_.get()),
+                   page(), /*start_x=*/0, /*start_y=*/0, /*size_x=*/width(),
+                   /*size_y=*/height(), /*rotate=*/0, /*flags=*/0);
+
+    picture_ = recorder_->finishRecordingAsPicture();
+    canvas_->drawPicture(picture_);
+    document_->endPage();
+    document_->close();
+    canvas_ = nullptr;
+    recorder_.reset();
+  }
+
+  bool Write(const std::string& name, int page_index, bool md5) override {
+    std::string image_file_name =
+        WriteDocument(name.c_str(), page_index, extension(), stream_);
+    if (image_file_name.empty()) {
+      return false;
+    }
+
+    if (md5) {
+      // Play back the `SkPicture` so we can take a hash of the result.
+      sk_sp<SkSurface> surface = SkSurface::MakeRasterN32Premul(
+          /*width=*/width(), /*height=*/height());
+      if (!surface) {
+        return false;
+      }
+
+      // Must clear to white before replay to match initial `CFX_DIBitmap`.
+      surface->getCanvas()->clear(SK_ColorWHITE);
+      surface->getCanvas()->drawPicture(picture_);
+
+      // Write the filename and the MD5 of the buffer to stdout.
+      SkPixmap pixmap;
+      if (!surface->peekPixels(&pixmap)) {
+        return false;
+      }
+
+      OutputMD5Hash(image_file_name.c_str(),
+                    {static_cast<const uint8_t*>(pixmap.addr()),
+                     pixmap.computeByteSize()});
+    }
+    return true;
+  }
+
+ protected:
+  virtual bool Initialize() = 0;
+  virtual sk_sp<SkDocument> MakeDocument() = 0;
+
+  virtual const char* extension() const = 0;
+
+  SkDynamicMemoryWStream& stream() { return stream_; }
+
+ private:
+  std::unique_ptr<SkPictureRecorder> recorder_;
+  sk_sp<SkPicture> picture_;
+  sk_sp<SkDocument> document_;
+  SkCanvas* canvas_;
+  SkDynamicMemoryWStream stream_;
+};
+
+class SkPdfDocumentPageRenderer : public SkDocumentPageRenderer {
+ public:
+  SkPdfDocumentPageRenderer(FPDF_PAGE page, int width, int height, int flags)
+      : SkDocumentPageRenderer(page,
+                               /*width=*/width,
+                               /*height=*/height,
+                               /*flags=*/flags) {}
+
+ private:
+  bool Initialize() override { return true; }
+
+  sk_sp<SkDocument> MakeDocument() override {
+    SkPDF::Metadata metadata;
+    SkTime::DateTime now = NowToSkTime();
+    metadata.fCreation = now;
+    metadata.fModified = now;
+    // TODO(crbug.com/691162): Switch to SkString's string_view constructor when
+    // possible.
+    metadata.fCreator = SkString("pdfium_test");
+    metadata.fRasterDPI = 300.0f;
+
+    return SkPDF::MakeDocument(&stream(), metadata);
+  }
+
+  const char* extension() const override { return "pdf"; }
+
+  SkTime::DateTime NowToSkTime() const {
+    CFX_DateTime now = CFX_DateTime::Now();
+    SkTime::DateTime skdate;
+    skdate.fTimeZoneMinutes = 0;
+    skdate.fYear = now.GetYear();
+    skdate.fMonth = now.GetMonth();
+    skdate.fDayOfWeek = now.GetDayOfWeek();
+    skdate.fDay = now.GetDay();
+    skdate.fHour = now.GetHour();
+    skdate.fMinute = now.GetMinute();
+    skdate.fSecond = now.GetSecond();
+    return skdate;
+  }
+};
 #endif  // PDF_ENABLE_SKIA
 
 bool ProcessPage(const std::string& name,
@@ -1067,6 +1211,9 @@ bool ProcessPage(const std::string& name,
   if (options.output_format == OutputFormat::kSkp) {
     renderer = std::make_unique<SkPicturePageRenderer>(
         page, /*width=*/width, /*height=*/height, /*flags=*/flags);
+  } else if (options.output_format == OutputFormat::kPdf) {
+    renderer =
+        std::make_unique<SkPdfDocumentPageRenderer>(page, width, height, flags);
   } else {
 #else
   {
@@ -1423,6 +1570,7 @@ constexpr char kUsageString[] =
     "  --ppm   - write page images <pdf-name>.<page-number>.ppm\n"
     "  --annot - write annotation info <pdf-name>.<page-number>.annot.txt\n"
 #ifdef PDF_ENABLE_SKIA
+    "  --pdf   - write page images <pdf-name>.<page-number>.pdf\n"
     "  --skp   - write page images <pdf-name>.<page-number>.skp\n"
 #endif
     "  --md5   - write output image paths and their md5 hashes to stdout.\n"
