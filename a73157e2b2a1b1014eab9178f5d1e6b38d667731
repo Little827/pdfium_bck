@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "906cd4ff_d22046da",
+        "filename": "core/fpdfapi/parser/cpdf_object.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-03-29T17:54:33Z",
+      "side": 1,
+      "message": "do we want to say the word \"parser\" somehow?",
+      "range": {
+        "startLine": 31,
+        "startChar": 29,
+        "endLine": 31,
+        "endChar": 35
+      },
+      "revId": "a73157e2b2a1b1014eab9178f5d1e6b38d667731",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
