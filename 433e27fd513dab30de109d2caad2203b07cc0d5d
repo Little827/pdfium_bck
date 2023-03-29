@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8a14cf3_813a96f7",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 26
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-03-29T21:18:25Z",
+      "side": 1,
+      "message": "The stock CPDF_ColorSpace objects are well defined. I don\u0027t think these DCHECKs are necessary.",
+      "revId": "433e27fd513dab30de109d2caad2203b07cc0d5d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}

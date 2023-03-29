@@ -36,6 +36,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad9eb0de_09aba40d",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-03-29T21:18:25Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "2912dc76_c79b7c1f",
+      "revId": "d054e3e3838210b9c06a8e4d412c184c1fd00c71",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "381ddf96_424aeb7e",
@@ -85,6 +103,24 @@
       "side": 1,
       "message": "Add check for whether m_mComponent \u003d\u003d 0. If so, early return nullptr.",
       "parentUuid": "6cd1835c_d379f3ba",
+      "revId": "d054e3e3838210b9c06a8e4d412c184c1fd00c71",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ae4e3eb_9f5a5fde",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 699,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-03-29T21:18:25Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "1933b06e_e38890a9",
       "revId": "d054e3e3838210b9c06a8e4d412c184c1fd00c71",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -267,6 +303,30 @@
       "side": 1,
       "message": "Yes. OPJ_CLRSPC_SRGB.\nI changed this line to \"If a JPX image\u0027s color space type is OPJ_CLRSPC_SRGB\". Maybe it\u0027s more clear now?",
       "parentUuid": "62412505_fb6c962c",
+      "range": {
+        "startLine": 63,
+        "startChar": 19,
+        "endLine": 63,
+        "endChar": 50
+      },
+      "revId": "d054e3e3838210b9c06a8e4d412c184c1fd00c71",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c32c078_b3065436",
+        "filename": "core/fxcodec/jpx/cjpx_decoder.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-03-29T21:18:25Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "1841f972_dd047bab",
       "range": {
         "startLine": 63,
         "startChar": 19,
