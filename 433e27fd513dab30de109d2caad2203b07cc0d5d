@@ -16,6 +16,24 @@
       "message": "The stock CPDF_ColorSpace objects are well defined. I don\u0027t think these DCHECKs are necessary.",
       "revId": "433e27fd513dab30de109d2caad2203b07cc0d5d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a55f2cb_2e3a851a",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 26
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-03-29T23:36:28Z",
+      "side": 1,
+      "message": "Done. Removed all 3 component number DCHECKs.",
+      "parentUuid": "d8a14cf3_813a96f7",
+      "revId": "433e27fd513dab30de109d2caad2203b07cc0d5d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
