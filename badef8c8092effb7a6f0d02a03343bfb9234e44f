@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1def7f3_3bcce6ff",
+        "filename": "samples/BUILD.gn",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2023-03-29T23:29:43Z",
+      "side": 1,
+      "message": "The red bots come out of ensuring these needed files get compiled.  This used to work, until the last DEPS roll.\n\nExpect that https://skia-review.googlesource.com/c/skia/+/663337 with a following DEPS roll should take care of it.",
+      "range": {
+        "startLine": 81,
+        "startChar": 6,
+        "endLine": 81,
+        "endChar": 33
+      },
+      "revId": "badef8c8092effb7a6f0d02a03343bfb9234e44f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
