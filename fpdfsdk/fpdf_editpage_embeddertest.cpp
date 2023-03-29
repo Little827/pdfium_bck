@@ -2,8 +2,10 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+#include "core/fpdfapi/parser/cpdf_document.h"
 #include "core/fxcrt/fx_system.h"
 #include "core/fxge/cfx_defaultrenderdevice.h"
+#include "fpdfsdk/cpdfsdk_helpers.h"
 #include "public/fpdf_edit.h"
 #include "testing/embedder_test.h"
 #include "testing/embedder_test_constants.h"
@@ -456,4 +458,16 @@ TEST_F(FPDFEditPageEmbedderTest, GetBoundsForRotatedImage) {
   EXPECT_FLOAT_EQ(kExpectedTop, quad.y4);
 
   UnloadPage(page);
+}
+
+TEST_F(FPDFEditPageEmbedderTest, NewlyCreatedDocumentHasNoParser) {
+  ScopedFPDFDocument new_doc(FPDF_CreateNewDocument());
+  // Peek inside the CPDF_Document and see there is no CPDF_Parser.
+  EXPECT_FALSE(CPDFDocumentFromFPDFDocument(new_doc.get())->GetParser());
+}
+
+TEST_F(FPDFEditPageEmbedderTest, NewlyCreatedDocumentHasRootNode) {
+  ScopedFPDFDocument new_doc(FPDF_CreateNewDocument());
+  // Peek inside the CPDF_Document and see there is a root node.
+  EXPECT_TRUE(CPDFDocumentFromFPDFDocument(new_doc.get())->GetRoot());
 }
