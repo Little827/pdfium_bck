@@ -425,6 +425,7 @@ void CPDF_StreamContentParser::SetGraphicStates(CPDF_PageObject* pObj,
   if (bText) {
     pObj->m_TextState = m_pCurStates->m_TextState;
   }
+  pObj->SetGraphicsResourceName(m_pCurStates->m_GraphicsResourceName);
 }
 
 // static
@@ -776,6 +777,7 @@ void CPDF_StreamContentParser::AddForm(RetainPtr<CPDF_Stream> pStream,
   auto pFormObj = std::make_unique<CPDF_FormObject>(GetCurrentStreamIndex(),
                                                     std::move(form), matrix);
   pFormObj->SetResourceName(name);
+  pFormObj->SetGraphicsResourceName(m_pCurStates->m_GraphicsResourceName);
   if (!m_pObjectHolder->BackgroundAlphaNeeded() &&
       pFormObj->form()->BackgroundAlphaNeeded()) {
     m_pObjectHolder->SetBackgroundAlphaNeeded(true);
@@ -900,6 +902,7 @@ void CPDF_StreamContentParser::Handle_SetExtendGraphState() {
   if (!pGS)
     return;
 
+  m_pCurStates->m_GraphicsResourceName = name;
   m_pCurStates->ProcessExtGS(pGS.Get(), this);
 }
 
