@@ -74,6 +74,13 @@
 #ifdef BUILD_WITH_CHROMIUM
 #include "samples/chromium_support/discardable_memory_allocator.h"  // nogncheck
 #endif
+
+#ifdef _WIN32
+#include <XpsObjectModel.h>
+#include <objbase.h>
+
+#include "third_party/skia/include/docs/SkXPSDocument.h"  // nogncheck
+#endif                                                    // _WIN32
 #endif  // PDF_ENABLE_SKIA
 
 #ifdef PDF_ENABLE_V8
@@ -121,6 +128,9 @@ enum class OutputFormat {
 #ifdef PDF_ENABLE_SKIA
   kPdf,
   kSkp,
+#ifdef _WIN32
+  kXps,
+#endif
 #endif
 };
 
@@ -573,6 +583,14 @@ bool ParseCommandLine(const std::vector<std::string>& args,
         return false;
       }
       options->output_format = OutputFormat::kSkp;
+#if _WIN32
+    } else if (cur_arg == "--xps") {
+      if (options->output_format != OutputFormat::kNone) {
+        fprintf(stderr, "Duplicate or conflicting --xps argument\n");
+        return false;
+      }
+      options->output_format = OutputFormat::kXps;
+#endif  // _WIN32
 #endif  // PDF_ENABLE_SKIA
     } else if (ParseSwitchKeyValue(cur_arg, "--font-dir=", &value)) {
       if (!options->font_directory.empty()) {
@@ -1163,6 +1181,45 @@ class SkPdfDocumentPageRenderer : public SkDocumentPageRenderer {
     return skdate;
   }
 };
+
+#ifdef _WIN32
+class SkXpsDocumentPageRenderer : public SkDocumentPageRenderer {
+ public:
+  SkXpsDocumentPageRenderer(FPDF_PAGE page, int width, int height, int flags)
+      : SkDocumentPageRenderer(page,
+                               /*width=*/width,
+                               /*height=*/height,
+                               /*flags=*/flags) {}
+
+ private:
+  bool Initialize() override {
+    static bool initialized = false;
+    if (initialized) {
+      return true;
+    }
+    HRESULT hr = CoInitializeEx(nullptr, COINIT_MULTITHREADED);
+    if (FAILED(hr)) {
+      return false;
+    }
+    initialized = true;
+    return true;
+  }
+
+  sk_sp<SkDocument> MakeDocument() override {
+    IXpsOMObjectFactory* factory = nullptr;
+    HRESULT hr = CoCreateInstance(CLSID_XpsOMObjectFactory, nullptr,
+                                  CLSCTX_INPROC_SERVER, IID_PPV_ARGS(&factory));
+    if (FAILED(hr) || !factory) {
+      return nullptr;
+    }
+
+    // Skia takes ownership of the factory.
+    return SkXPS::MakeDocument(&stream(), factory);
+  }
+
+  const char* extension() const override { return "xps"; }
+};
+#endif  // _WIN32
 #endif  // PDF_ENABLE_SKIA
 
 bool ProcessPage(const std::string& name,
@@ -1214,6 +1271,11 @@ bool ProcessPage(const std::string& name,
   } else if (options.output_format == OutputFormat::kPdf) {
     renderer =
         std::make_unique<SkPdfDocumentPageRenderer>(page, width, height, flags);
+#if _WIN32
+  } else if (options.output_format == OutputFormat::kXps) {
+    renderer =
+        std::make_unique<SkXpsDocumentPageRenderer>(page, width, height, flags);
+#endif
   } else {
 #else
   {
@@ -1572,7 +1634,10 @@ constexpr char kUsageString[] =
 #ifdef PDF_ENABLE_SKIA
     "  --pdf   - write page images <pdf-name>.<page-number>.pdf\n"
     "  --skp   - write page images <pdf-name>.<page-number>.skp\n"
+#if _WIN32
+    "  --xps   - write page images <pdf-name>.<page-number>.oxps\n"
 #endif
+#endif  // PDF_ENABLE_SKIA
     "  --md5   - write output image paths and their md5 hashes to stdout.\n"
     "  --time=<number> - Seconds since the epoch to set system time.\n"
     "";
