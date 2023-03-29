@@ -18,7 +18,6 @@ if (current_cpu == "mipsel" || current_cpu == "mips64el") {
 }
 
 skia_use_ganesh_backend = !is_ios
-skia_support_pdf = false
 
 # External-facing config for dependent code.
 config("skia_config") {
@@ -345,7 +344,6 @@ component("skia") {
   }
 
   if (skia_support_pdf) {
-    deps += [ "//third_party/sfntly" ]
     sources += skia_pdf_sources
   } else {
     sources += [ "//third_party/skia/src/pdf/SkDocument_PDF_None.cpp" ]

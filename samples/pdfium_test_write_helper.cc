@@ -533,7 +533,26 @@ std::string WriteSkp(const char* pdf_name, int num, const SkPicture& picture) {
   picture.serialize(&wStream);
   return std::string(filename);
 }
-#endif
+
+std::string WriteDocument(const char* pdf_name,
+                          int num,
+                          const char* extension,
+                          const SkDynamicMemoryWStream& stream) {
+  char filename[256];
+  int chars_formatted = snprintf(filename, sizeof(filename), "%s.%d.%s",
+                                 pdf_name, num, extension);
+
+  if (chars_formatted < 0 ||
+      static_cast<size_t>(chars_formatted) >= sizeof(filename)) {
+    fprintf(stderr, "Filename %s is too long\n", filename);
+    return "";
+  }
+
+  SkFILEWStream wStream(filename);
+  stream.writeToStream(&wStream);
+  return std::string(filename);
+}
+#endif  // PDF_ENABLE_SKIA
 
 enum class ThumbnailDecodeType { kBitmap, kRawStream, kDecodedStream };
 

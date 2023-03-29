@@ -10,6 +10,7 @@
 #include "public/fpdfview.h"
 
 #ifdef PDF_ENABLE_SKIA
+class SkDynamicMemoryWStream;
 class SkPicture;
 #endif
 
@@ -41,6 +42,10 @@ void WritePS(FPDF_PAGE page, const char* pdf_name, int num);
 
 #ifdef PDF_ENABLE_SKIA
 std::string WriteSkp(const char* pdf_name, int num, const SkPicture& picture);
+std::string WriteDocument(const char* pdf_name,
+                          int num,
+                          const char* extension,
+                          const SkDynamicMemoryWStream& stream);
 #endif  // PDF_ENABLE_SKIA
 
 void WriteAttachments(FPDF_DOCUMENT doc, const std::string& name);
