@@ -146,7 +146,7 @@ void CPDF_PageContentGenerator::UpdateContentStreams(
     return;
 
   // Make sure default graphics are created.
-  GetOrCreateDefaultGraphics();
+  m_DefaultGraphicsName = GetOrCreateDefaultGraphics();
 
   CPDF_PageContentManager page_content_manager(m_pObjHolder, m_pDocument);
   for (auto& pair : new_stream_data) {
@@ -183,12 +183,24 @@ void CPDF_PageContentGenerator::UpdateContentStreams(
           break;
       }
     }
+    const ByteString& graphics_resource_name =
+        page_object->GetGraphicsResourceName();
+    if (!graphics_resource_name.IsEmpty()) {
+      seen_objects["ExtGState"].insert(graphics_resource_name);
+    }
+  }
+  if (!m_DefaultGraphicsName.IsEmpty()) {
+    seen_objects["ExtGState"].insert(m_DefaultGraphicsName);
   }
 
   RetainPtr<CPDF_Dictionary> resources = m_pObjHolder->GetMutableResources();
   if (resources) {
-    // TODO(thestig): Remove other unused resource types, like ExtGState.
-    static constexpr const char* kResourceKeys[] = {"Font", "XObject"};
+    // TODO(thestig): Remove other unused resource types:
+    // - ColorSpace
+    // - Pattern
+    // - Shading
+    static constexpr const char* kResourceKeys[] = {"ExtGState", "Font",
+                                                    "XObject"};
     for (const char* resource_key : kResourceKeys) {
       RetainPtr<CPDF_Dictionary> resource_dict =
           resources->GetMutableDictFor(resource_key);
@@ -547,6 +559,7 @@ void CPDF_PageContentGenerator::ProcessGraphics(fxcrt::ostringstream* buf,
     }
     m_pDocument->AddIndirectObject(gsDict);
     name = RealizeResource(std::move(gsDict), "ExtGState");
+    pPageObj->SetGraphicsResourceName(name);
     m_pObjHolder->GraphicsMapInsert(graphD, name);
   }
   *buf << "/" << PDF_NameEncode(name) << " gs ";
@@ -557,8 +570,8 @@ void CPDF_PageContentGenerator::ProcessDefaultGraphics(
   *buf << "0 0 0 RG 0 0 0 rg 1 w "
        << static_cast<int>(CFX_GraphStateData::LineCap::kButt) << " J "
        << static_cast<int>(CFX_GraphStateData::LineJoin::kMiter) << " j\n";
-  ByteString name = GetOrCreateDefaultGraphics();
-  *buf << "/" << PDF_NameEncode(name) << " gs ";
+  m_DefaultGraphicsName = GetOrCreateDefaultGraphics();
+  *buf << "/" << PDF_NameEncode(m_DefaultGraphicsName) << " gs ";
 }
 
 ByteString CPDF_PageContentGenerator::GetOrCreateDefaultGraphics() const {
