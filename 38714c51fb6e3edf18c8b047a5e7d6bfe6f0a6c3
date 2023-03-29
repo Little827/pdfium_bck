@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31fc8f0d_7a84fdc8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-03-29T17:53:19Z",
+      "side": 1,
+      "message": "Clearing out old comments.",
+      "revId": "38714c51fb6e3edf18c8b047a5e7d6bfe6f0a6c3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
