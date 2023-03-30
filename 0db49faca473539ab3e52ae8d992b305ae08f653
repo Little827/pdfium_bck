@@ -43,6 +43,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "567e0c2a_76eaa0df",
+        "filename": "core/fpdfapi/parser/object_tree_traversal_util.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-03-30T01:36:12Z",
+      "side": 1,
+      "message": "it might be cleaner to split this into two parts, the first part, akin to a \"crawl\", where we just accumulate all the objects we can find into a vector, and the second where we process the vector, find any that are references and put them into the map.  Less efficient perhaps, but smaller, more testable, etc.",
+      "range": {
+        "startLine": 141,
+        "startChar": 7,
+        "endLine": 151,
+        "endChar": 13
+      },
+      "revId": "0db49faca473539ab3e52ae8d992b305ae08f653",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5eeaae44_470b4ec9",
         "filename": "core/fpdfapi/parser/object_tree_traversal_util.cpp",
         "patchSetId": 3
@@ -82,6 +105,29 @@
         "startChar": 19,
         "endLine": 19,
         "endChar": 44
+      },
+      "revId": "0db49faca473539ab3e52ae8d992b305ae08f653",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "998891ea_d23791a1",
+        "filename": "core/fpdfapi/parser/object_tree_traversal_util.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-03-30T01:36:12Z",
+      "side": 1,
+      "message": "nit: oh, because C\u0027s reference would make a cycle?  Maybe say so.",
+      "range": {
+        "startLine": 34,
+        "startChar": 40,
+        "endLine": 34,
+        "endChar": 50
       },
       "revId": "0db49faca473539ab3e52ae8d992b305ae08f653",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
