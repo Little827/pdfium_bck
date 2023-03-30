@@ -41,6 +41,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "11aed29c_66f9a91f",
+        "filename": "core/fpdfapi/edit/cpdf_creator.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-03-30T17:53:23Z",
+      "side": 1,
+      "message": "Done. Sometimes clang-format just does it, so I wasn\u0027t trying very hard.",
+      "parentUuid": "79a57685_4dc16263",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 51
+      },
+      "revId": "c7994a74b8a46616712efe6277e2a1b9566571cf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "97737b32_5d27e220",
@@ -64,6 +88,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e5291bc_dd832384",
+        "filename": "core/fpdfapi/edit/cpdf_creator.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-03-30T17:53:23Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "97737b32_5d27e220",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 46
+      },
+      "revId": "c7994a74b8a46616712efe6277e2a1b9566571cf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd050855_864cae70",
@@ -77,6 +125,24 @@
       "writtenOn": "2023-03-30T16:15:23Z",
       "side": 1,
       "message": "nit: so long as we are always using braces, we can lose blank lines like these.",
+      "revId": "c7994a74b8a46616712efe6277e2a1b9566571cf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5bff012_04ebbd4b",
+        "filename": "core/fpdfapi/edit/cpdf_creator.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-03-30T17:53:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd050855_864cae70",
       "revId": "c7994a74b8a46616712efe6277e2a1b9566571cf",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
