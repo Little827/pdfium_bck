@@ -41,6 +41,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "74e58a80_200e8f51",
+        "filename": "core/fpdfapi/parser/object_tree_traversal_util.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-03-30T07:51:26Z",
+      "side": 1,
+      "message": "Done. I left `seen_objects_` and the others with raw pointers, since those pointers are never dereferenced.",
+      "parentUuid": "56db6a09_95a0134c",
+      "range": {
+        "startLine": 78,
+        "startChar": 14,
+        "endLine": 78,
+        "endChar": 31
+      },
+      "revId": "0db49faca473539ab3e52ae8d992b305ae08f653",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "567e0c2a_76eaa0df",
@@ -64,6 +88,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f574b9d_b0e2675c",
+        "filename": "core/fpdfapi/parser/object_tree_traversal_util.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-03-30T07:51:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "567e0c2a_76eaa0df",
+      "range": {
+        "startLine": 141,
+        "startChar": 7,
+        "endLine": 151,
+        "endChar": 13
+      },
+      "revId": "0db49faca473539ab3e52ae8d992b305ae08f653",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5eeaae44_470b4ec9",
@@ -77,6 +125,30 @@
       "writtenOn": "2023-03-30T01:25:16Z",
       "side": 1,
       "message": "feels like this logic should be a method of the context.",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 170,
+        "endChar": 5
+      },
+      "revId": "0db49faca473539ab3e52ae8d992b305ae08f653",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8362bf9_7adde626",
+        "filename": "core/fpdfapi/parser/object_tree_traversal_util.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-03-30T07:51:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5eeaae44_470b4ec9",
       "range": {
         "startLine": 110,
         "startChar": 1,
@@ -112,6 +184,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5e762c01_6fa7d70c",
+        "filename": "core/fpdfapi/parser/object_tree_traversal_util.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-03-30T07:51:26Z",
+      "side": 1,
+      "message": "I chained https://pdfium-review.googlesource.com/105630 to this CL to show how GetObjectsWithMultipleReferences() gets used. It is not strictly necessary, but is convenient to have.",
+      "parentUuid": "287d0aa8_c0856041",
+      "range": {
+        "startLine": 19,
+        "startChar": 19,
+        "endLine": 19,
+        "endChar": 44
+      },
+      "revId": "0db49faca473539ab3e52ae8d992b305ae08f653",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "998891ea_d23791a1",
         "filename": "core/fpdfapi/parser/object_tree_traversal_util.h",
         "patchSetId": 3
@@ -123,6 +219,30 @@
       "writtenOn": "2023-03-30T01:36:12Z",
       "side": 1,
       "message": "nit: oh, because C\u0027s reference would make a cycle?  Maybe say so.",
+      "range": {
+        "startLine": 34,
+        "startChar": 40,
+        "endLine": 34,
+        "endChar": 50
+      },
+      "revId": "0db49faca473539ab3e52ae8d992b305ae08f653",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b1d60fd_a34823f8",
+        "filename": "core/fpdfapi/parser/object_tree_traversal_util.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-03-30T07:51:26Z",
+      "side": 1,
+      "message": "I thought I did on line 22.",
+      "parentUuid": "998891ea_d23791a1",
       "range": {
         "startLine": 34,
         "startChar": 40,
