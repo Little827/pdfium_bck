@@ -206,6 +206,53 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdbca461_458fc7a5",
+        "filename": "core/fpdfapi/parser/object_tree_traversal_util.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-03-30T16:07:23Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "5e762c01_6fa7d70c",
+      "range": {
+        "startLine": 19,
+        "startChar": 19,
+        "endLine": 19,
+        "endChar": 44
+      },
+      "revId": "0db49faca473539ab3e52ae8d992b305ae08f653",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b949f391_1e23cb56",
+        "filename": "core/fpdfapi/parser/object_tree_traversal_util.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-03-30T16:07:23Z",
+      "side": 1,
+      "message": "maybe \"links that would created a cycle are ignored\".",
+      "range": {
+        "startLine": 22,
+        "startChar": 24,
+        "endLine": 22,
+        "endChar": 31
+      },
+      "revId": "0db49faca473539ab3e52ae8d992b305ae08f653",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "998891ea_d23791a1",
@@ -243,6 +290,30 @@
       "side": 1,
       "message": "I thought I did on line 22.",
       "parentUuid": "998891ea_d23791a1",
+      "range": {
+        "startLine": 34,
+        "startChar": 40,
+        "endLine": 34,
+        "endChar": 50
+      },
+      "revId": "0db49faca473539ab3e52ae8d992b305ae08f653",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca2c2334_7fa0fb61",
+        "filename": "core/fpdfapi/parser/object_tree_traversal_util.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-03-30T16:07:23Z",
+      "side": 1,
+      "message": "Yes, but I stared at this for a minute not getting it, so maybe say it again? I suppose there are two ways to ignore cycles, one being the way it is coded where links that would create a cycle are ignored. The second would be to count the link but abort traversal after doing so so as to avoid infinite looping.\n\nI\u0027m a little confused as to which link creates the cycle.  Is it the B-\u003eC or the C-\u003eB, and why one and not the other?  There\u0027s some sort of ordering constraint required to make this call.  How does that happen?",
+      "parentUuid": "0b1d60fd_a34823f8",
       "range": {
         "startLine": 34,
         "startChar": 40,
