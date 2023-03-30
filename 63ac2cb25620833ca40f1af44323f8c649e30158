@@ -41,6 +41,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ff8bd8e_5f003b5e",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentgenerator.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-03-30T21:55:04Z",
+      "side": 1,
+      "message": "The function needs to keep going, when the next CL in this chain adds more code below.",
+      "parentUuid": "63fbf233_ed57d05c",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 33
+      },
+      "revId": "63ac2cb25620833ca40f1af44323f8c649e30158",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bba035e7_d5baf106",
@@ -54,6 +78,30 @@
       "writtenOn": "2023-03-30T19:21:29Z",
       "side": 1,
       "message": "nit: invert an early return?",
+      "range": {
+        "startLine": 224,
+        "startChar": 15,
+        "endLine": 224,
+        "endChar": 16
+      },
+      "revId": "63ac2cb25620833ca40f1af44323f8c649e30158",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6b8b93a_102955e8",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentgenerator.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-03-30T21:55:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bba035e7_d5baf106",
       "range": {
         "startLine": 224,
         "startChar": 15,
