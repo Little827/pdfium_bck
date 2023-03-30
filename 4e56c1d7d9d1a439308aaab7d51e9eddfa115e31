@@ -16,6 +16,24 @@
       "message": "LG otherwise.",
       "revId": "4e56c1d7d9d1a439308aaab7d51e9eddfa115e31",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa9d17da_2251f9a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-03-30T17:55:52Z",
+      "side": 1,
+      "message": "Needs CR+1.",
+      "parentUuid": "0f611dc4_cff9a64f",
+      "revId": "4e56c1d7d9d1a439308aaab7d51e9eddfa115e31",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
