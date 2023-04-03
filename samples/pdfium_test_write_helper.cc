@@ -556,7 +556,20 @@ std::string WriteSkp(const char* pdf_name, int num, const SkPicture& picture) {
   picture.serialize(&wStream);
   return filename;
 }
-#endif
+
+std::string WriteDocument(const char* pdf_name,
+                          int num,
+                          const char* extension,
+                          const SkDynamicMemoryWStream& stream) {
+  std::string filename = GeneratePageOutputFilename(pdf_name, num, extension);
+  if (filename.empty()) {
+    return filename;
+  }
+  SkFILEWStream wStream(filename.c_str());
+  stream.writeToStream(&wStream);
+  return filename;
+}
+#endif  // PDF_ENABLE_SKIA
 
 enum class ThumbnailDecodeType { kBitmap, kRawStream, kDecodedStream };
 

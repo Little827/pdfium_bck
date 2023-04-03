@@ -6,4 +6,7 @@ declare_args() {
   # Enable experimental SkiaRenderer Dawn backend.
   skia_use_dawn = false
   skia_use_gl = true
+
+  # Skia generating PDF can support sanitizing PDFs.
+  skia_support_pdf = !is_ios
 }
