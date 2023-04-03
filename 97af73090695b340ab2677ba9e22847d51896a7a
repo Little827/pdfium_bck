@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45da9f62_3b437df7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8751
+      },
+      "writtenOn": "2023-04-03T10:34:50Z",
+      "side": 1,
+      "message": "Thanks for this addition! Could you please also add a `use_system_icu` GN option, or at least fix `replace_gn_files.py` (both https://crbug.com/pdfium/1831) ?\n\nAlso, the `use_system_*` options don\u0027t seem to work unless we set `sysroot \u003d \"/\"`, which in turn broke at some point, so we are currently working around it with [this patch](https://github.com/pypdfium2-team/pypdfium2/blob/main/sourcebuild/patches/syslibs_sourcebuild.patch).\nWould be glad if this could be fixed in pdfium. Thanks!",
+      "revId": "97af73090695b340ab2677ba9e22847d51896a7a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
