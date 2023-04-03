@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "751fb03b_998c64cd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2023-04-03T22:46:42Z",
+      "side": 1,
+      "message": "Since it is relying on SkPictureRecorder, it does capture individual pages.\n\nWhen viewing the result of pages that do get through SKP successfully, one might think the pages are being rasterized.  However, looking inside the PDF exposes that the text is being converted into vector graphic calls.\n\nSo, not rasterized - but also not what we would ideally hope for in the output.\n\nI see the same \"text converted to vector graphics\" behavior when I use XPS for the output format (https://pdfium-review.googlesource.com/c/pdfium/+/105551).\n\nI suspect that there is some Skia setup that might be needed to be a little different, because the Chromium XPS prototype I have results in text fonts getting through okay, and resultant text being selectable.  That sort of improvement belongs in a separate CL, once it is figured out.",
+      "parentUuid": "cd8b630c_f53d4bab",
+      "range": {
+        "startLine": 9,
+        "startChar": 61,
+        "endLine": 10,
+        "endChar": 6
+      },
+      "revId": "7befc97066df0ce28edb8d211a7bb900b99ba3e4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "110e4ac7_3be161e6",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 5
@@ -37,6 +61,24 @@
       "writtenOn": "2023-03-30T06:24:37Z",
       "side": 1,
       "message": "Didn\u0027t work for me on Linux with hello_world.pdf.",
+      "revId": "7befc97066df0ce28edb8d211a7bb900b99ba3e4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91337d12_af9fc8fb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2023-04-03T22:46:42Z",
+      "side": 1,
+      "message": "I\u0027ve noticed that there are multiple files it struggles with, hello_world.pdf is just one of them.  So far I\u0027ve always found that when pdfium_test fails for `--pdf` it also fails for `--skp`.  That\u0027s not surprising, since this is just building on top of the SKP capability.\n\nEven for some PDFs which do generate output, sometimes the output has some unpleasant imaging artifacts.\n\nThis makes it more obvious that generating SKP is not fully flushed out 😞, since it is easier for us to look at PDFs vs. SKPs.",
+      "parentUuid": "110e4ac7_3be161e6",
       "revId": "7befc97066df0ce28edb8d211a7bb900b99ba3e4",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -64,6 +106,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c318bdac_f09d5145",
+        "filename": "samples/pdfium_test.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1118,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2023-04-03T22:46:42Z",
+      "side": 1,
+      "message": "Not that I know of - either works.  Switched to time().",
+      "parentUuid": "76df3fd6_bf8e480f",
+      "range": {
+        "startLine": 1118,
+        "startChar": 27,
+        "endLine": 1118,
+        "endChar": 36
+      },
+      "revId": "7befc97066df0ce28edb8d211a7bb900b99ba3e4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bb048bdd_14ae9d92",
@@ -81,6 +147,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9570a49f_b67d2525",
+        "filename": "samples/pdfium_test_write_helper.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2023-04-03T22:46:42Z",
+      "side": 1,
+      "message": "Done.  https://pdfium-review.googlesource.com/c/pdfium/+/105670",
+      "parentUuid": "bb048bdd_14ae9d92",
+      "revId": "7befc97066df0ce28edb8d211a7bb900b99ba3e4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70007a9c_eb11bb12",
@@ -94,6 +178,30 @@
       "writtenOn": "2023-03-30T06:24:37Z",
       "side": 1,
       "message": "Why not just use !is_ios like Chromium\u0027s skia/BUILD.gn?",
+      "range": {
+        "startLine": 12,
+        "startChar": 22,
+        "endLine": 12,
+        "endChar": 67
+      },
+      "revId": "7befc97066df0ce28edb8d211a7bb900b99ba3e4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5cd63ea3_2b24e09d",
+        "filename": "skia/features.gni",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2023-04-03T22:46:42Z",
+      "side": 1,
+      "message": "Updated.",
+      "parentUuid": "70007a9c_eb11bb12",
       "range": {
         "startLine": 12,
         "startChar": 22,
