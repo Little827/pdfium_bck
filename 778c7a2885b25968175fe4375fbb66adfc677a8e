@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47be2c75_a5f0d029",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentgenerator.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-04-04T16:15:04Z",
+      "side": 1,
+      "message": "nit: hate to say this, but could be DCHECK() with a comment that the output is safe and correct, just wasteful of cycles? Or am i missing something? Or just keep the `if` and always call this and return a bool about whether any work was done.",
+      "range": {
+        "startLine": 218,
+        "startChar": 0,
+        "endLine": 218,
+        "endChar": 34
+      },
+      "revId": "778c7a2885b25968175fe4375fbb66adfc677a8e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
