@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abd38a83_0fad6673",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-04-04T23:47:37Z",
+      "side": 1,
+      "message": "Mention pdfium_test here?",
+      "revId": "9e9d926b0f58eccb4de7047e6a9648e031adb986",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a2641a2_3ceb48ca",
+        "filename": "samples/pdfium_test_write_helper.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-04-04T23:47:37Z",
+      "side": 1,
+      "message": "Plenty of room here. Do we have money to buy some vowels? If so, let\u0027s write out \"stream\".",
+      "range": {
+        "startLine": 186,
+        "startChar": 21,
+        "endLine": 186,
+        "endChar": 25
+      },
+      "revId": "9e9d926b0f58eccb4de7047e6a9648e031adb986",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4f8fe0c_4010fca9",
+        "filename": "samples/pdfium_test_write_helper.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-04-04T23:47:37Z",
+      "side": 1,
+      "message": "size() is shorter.",
+      "range": {
+        "startLine": 189,
+        "startChar": 15,
+        "endLine": 189,
+        "endChar": 21
+      },
+      "revId": "9e9d926b0f58eccb4de7047e6a9648e031adb986",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81d2b7d6_94bc257d",
+        "filename": "samples/pdfium_test_write_helper.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-04-04T23:47:37Z",
+      "side": 1,
+      "message": "More of the same.",
+      "revId": "9e9d926b0f58eccb4de7047e6a9648e031adb986",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
