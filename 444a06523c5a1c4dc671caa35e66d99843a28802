@@ -39,6 +39,30 @@
       },
       "revId": "444a06523c5a1c4dc671caa35e66d99843a28802",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8dd35286_7626ce6f",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentgenerator.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-04-04T17:33:20Z",
+      "side": 1,
+      "message": "It can be slow, but it only runs as part of FPDFPage_GenerateContent() before saving, and not in the rendering paths.\n\nThe code cannot look at the RetainPtr refcount for `resources` because CPDF_Object !\u003d PDF object, as explained in the comments added to cpdf_object.h last week. The code here cares about PDF objects. FWIW, the dictionary `resources` points to always has at least 2 RetainPtr refcounts here. One from `resources` and one from `m_pObjHolder`.",
+      "parentUuid": "75b41ff0_5c16792a",
+      "range": {
+        "startLine": 251,
+        "startChar": 25,
+        "endLine": 251,
+        "endChar": 57
+      },
+      "revId": "444a06523c5a1c4dc671caa35e66d99843a28802",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
