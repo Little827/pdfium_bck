@@ -22,6 +22,30 @@
       },
       "revId": "778c7a2885b25968175fe4375fbb66adfc677a8e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7a103aa_86e7ea53",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentgenerator.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-04-04T17:27:55Z",
+      "side": 1,
+      "message": "I\u0027m trying to follow the updated guidance on https://chromium.googlesource.com/chromium/src/+/refs/heads/main/styleguide/c++/checks.md\n\n1) Calling std::map::empty() is cheap.\n2) This code gets called once per FPDFPage_GenerateContent().",
+      "parentUuid": "47be2c75_a5f0d029",
+      "range": {
+        "startLine": 218,
+        "startChar": 0,
+        "endLine": 218,
+        "endChar": 34
+      },
+      "revId": "778c7a2885b25968175fe4375fbb66adfc677a8e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
