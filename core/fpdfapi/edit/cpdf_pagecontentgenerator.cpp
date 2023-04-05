@@ -130,6 +130,7 @@ void RemoveUnusedResources(RetainPtr<CPDF_Dictionary> resources_dict,
 CPDF_PageContentGenerator::CPDF_PageContentGenerator(
     CPDF_PageObjectHolder* pObjHolder)
     : m_pObjHolder(pObjHolder), m_pDocument(pObjHolder->GetDocument()) {
+  DCHECK(m_pObjHolder->IsPage());
   for (const auto& pObj : *pObjHolder) {
     if (pObj)
       m_pageObjects.emplace_back(pObj.get());
@@ -139,7 +140,6 @@ CPDF_PageContentGenerator::CPDF_PageContentGenerator(
 CPDF_PageContentGenerator::~CPDF_PageContentGenerator() = default;
 
 void CPDF_PageContentGenerator::GenerateContent() {
-  DCHECK(m_pObjHolder->IsPage());
   std::map<int32_t, fxcrt::ostringstream> new_stream_data =
       GenerateModifiedStreams();
   // If no streams were regenerated or removed, nothing to do here.
@@ -304,8 +304,9 @@ bool CPDF_PageContentGenerator::ProcessPageObjects(fxcrt::ostringstream* buf) {
   const CPDF_ContentMarks* content_marks = empty_content_marks.get();
 
   for (auto& pPageObj : m_pageObjects) {
-    if (m_pObjHolder->IsPage() && !pPageObj->IsDirty())
+    if (!pPageObj->IsDirty()) {
       continue;
+    }
 
     bDirty = true;
     content_marks = ProcessContentMarks(buf, pPageObj, content_marks);
