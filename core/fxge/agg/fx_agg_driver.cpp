@@ -24,6 +24,7 @@
 #include "core/fxge/dib/cfx_imagestretcher.h"
 #include "third_party/base/check.h"
 #include "third_party/base/check_op.h"
+#include "third_party/base/compiler_specific.h"
 #include "third_party/base/cxx17_backports.h"
 #include "third_party/base/notreached.h"
 #include "third_party/base/span.h"
@@ -192,7 +193,12 @@ void RgbByteOrderTransferBitmap(const RetainPtr<CFX_DIBitmap>& pBitmap,
         *dest_scan++ = src_scan[0];
         src_scan += 4;
       }
-      dest_span = dest_span.subspan(dest_pitch);
+      if (LIKELY(row < height - 1)) {
+        // Since `dest_scan` was initialized in a way that takes `dest_x_offset`
+        // and `dest_y_offset` into account, it may go past the end of the span
+        // after processing the last row.
+        dest_span = dest_span.subspan(dest_pitch);
+      }
     }
     return;
   }
