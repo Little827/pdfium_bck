@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "194aea0e_6b0d4527",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-04-06T19:47:34Z",
+      "side": 1,
+      "message": "Noticed while trying to explain to someone how deeply tied to FT is PDFium\u0027s fxge.",
+      "revId": "2d68d2bee4b6f6cef1e7ba1979380d5b03b4ed84",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
