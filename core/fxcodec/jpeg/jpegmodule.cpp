@@ -288,10 +288,7 @@ bool JpegDecoder::Rewind() {
     jpeg_destroy_decompress(&m_Cinfo);
     return false;
   }
-  if (static_cast<int>(m_Cinfo.output_width) > m_OrigWidth) {
-    NOTREACHED();
-    return false;
-  }
+  CHECK_LE(static_cast<int>(m_Cinfo.output_width), m_OrigWidth);
   m_bStarted = true;
   return true;
 }
