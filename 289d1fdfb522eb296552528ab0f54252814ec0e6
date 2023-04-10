@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7efad4ee_7a5886e2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-04-10T19:43:51Z",
+      "side": 1,
+      "message": "bug_845697.pdf was the one that led to the change of making Skia not handling the glyph width issue, because Skia renders bug_845697 \"too narrow\" with scaling.\n\nIf we find a way to improve the case \"cp.m_FontCharWidth \u003c glyph_width\", then a lot of premultiplication will be avoided.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 31
+      },
+      "revId": "289d1fdfb522eb296552528ab0f54252814ec0e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
