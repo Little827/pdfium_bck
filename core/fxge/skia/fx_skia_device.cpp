@@ -917,23 +917,9 @@ bool CFX_SkiaDeviceDriver::DrawDeviceText(
   if (pFont->GetFontSpan().empty())
     return false;
 
-  // If a glyph's default width is no less than its width defined in the PDF,
-  // draw the glyph with path since it can be scaled to avoid overlapping with
-  // the adjacent glyphs (if there are any). Otherwise, use the device driver
-  // to render the glyph without any adjustments.
-  const CFX_SubstFont* subst_font = pFont->GetSubstFont();
-  const int subst_font_weight =
-      (subst_font && subst_font->IsBuiltInGenericFont()) ? subst_font->m_Weight
-                                                         : 0;
-  for (const TextCharPos& cp : pCharPos) {
-    const int glyph_width = pFont->GetGlyphWidth(
-        cp.m_GlyphIndex, cp.m_FontCharWidth, subst_font_weight);
-    if (cp.m_FontCharWidth <= glyph_width)
-      return false;
-  }
-
   if (TryDrawText(pCharPos, pFont, mtObject2Device, font_size, color,
                   options)) {
+    //printf("TryDrawText() succeeded!!!\n");
     return true;
   }
   sk_sp<SkTypeface> typeface(SkSafeRef(pFont->GetDeviceCache()));
@@ -1070,6 +1056,7 @@ bool CFX_SkiaDeviceDriver::TryDrawText(pdfium::span<const TextCharPos> char_pos,
   skPaint.setAntiAlias(true);
   skPaint.setColor(color);
 
+  //printf("font size = %f\n", font_size);
   SkFont font;
   if (pFont->GetFaceRec()) {  // exclude placeholder test fonts
     font.setTypeface(sk_ref_sp(pFont->GetDeviceCache()));
@@ -1093,7 +1080,34 @@ bool CFX_SkiaDeviceDriver::TryDrawText(pdfium::span<const TextCharPos> char_pos,
     m_pCanvas->drawTextBlob(blob, 0, 0, skPaint);
   } else {
     const DataVector<SkPoint>& positions = m_charDetails.GetPositions();
+    const DataVector<uint32_t>& widths = m_charDetails.GetFontCharWidths();
+
+    const CFX_SubstFont* subst_font = pFont->GetSubstFont();
+    const int subst_font_weight =
+          (subst_font && subst_font->IsBuiltInGenericFont())
+              ? subst_font->m_Weight
+              : 0;
+
     for (size_t i = 0; i < m_charDetails.Count(); ++i) {
+      //printf("position[%zu] = (%f, %f)\n", i, positions[i].fX, positions[i].fY);
+
+      const TextCharPos& cp = char_pos[i];
+      uint32_t font_glyph_width = pFont ? pFont->GetGlyphWidth(glyphs[i], cp.m_FontCharWidth, subst_font_weight) : 0;
+      uint32_t pdf_glyph_width = widths[i];
+      float gap = 0;
+      if (i < m_charDetails.Count()-1) {
+        gap = fmin(fabs(positions[i+1].fX - positions[i].fX) * font_size, pdf_glyph_width);
+      } else {
+        gap = pdf_glyph_width;
+      }
+
+      //printf("gap = %f\n", gap);
+      //printf("font width = %u, pdf width = %u\n", font_glyph_width, pdf_glyph_width);
+      if (font_glyph_width && gap && font_glyph_width > gap) {
+        font.setScaleX(SkIntToScalar(gap) / font_glyph_width);
+      } else {
+        font.setScaleX(SkIntToScalar(1));
+      }
       sk_sp<SkTextBlob> blob = SkTextBlob::MakeFromText(
           &glyphs[i], sizeof(glyphs[i]), font, SkTextEncoding::kGlyphID);
       m_pCanvas->drawTextBlob(blob, positions[i].fX, positions[i].fY, skPaint);
