@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87c6209b_36b02f5c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-04-17T19:15:20Z",
+      "side": 1,
+      "message": "Write out crrev.com here, so the URL works for everyone.",
+      "range": {
+        "startLine": 10,
+        "startChar": 91,
+        "endLine": 10,
+        "endChar": 96
+      },
+      "revId": "27e10a0889f7ffb21d5930dc3741a513df49300f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
