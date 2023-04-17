@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "411cea2b_eb686445",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-04-17T19:11:38Z",
+      "side": 1,
+      "message": "I think this was just the last two rolls, right? https://pdfium-review.googlesource.com/c/pdfium/+/103592 looks OK to me.",
+      "revId": "05391bd2a148042eb44e08adc7063f4fbc8f7d84",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
