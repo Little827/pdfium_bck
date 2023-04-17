@@ -34,6 +34,24 @@
       "parentUuid": "411cea2b_eb686445",
       "revId": "05391bd2a148042eb44e08adc7063f4fbc8f7d84",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32392a23_a3f98249",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-04-17T19:16:40Z",
+      "side": 1,
+      "message": "I think that roll is when I first noticed the Linux version wasn\u0027t updating correctly, so I redid the roll on Mac. Didn\u0027t have the cycles to look into updating the shell script, although I meant to bring it up at some point.",
+      "parentUuid": "2712be40_d4b8ea4b",
+      "revId": "05391bd2a148042eb44e08adc7063f4fbc8f7d84",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
