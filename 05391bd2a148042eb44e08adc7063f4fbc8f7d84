@@ -16,6 +16,24 @@
       "message": "I think this was just the last two rolls, right? https://pdfium-review.googlesource.com/c/pdfium/+/103592 looks OK to me.",
       "revId": "05391bd2a148042eb44e08adc7063f4fbc8f7d84",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2712be40_d4b8ea4b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-04-17T19:13:22Z",
+      "side": 1,
+      "message": "Yes, because the author of that CL probably used a Mac. :) Several rolls before that also did not correctly update the metadata.",
+      "parentUuid": "411cea2b_eb686445",
+      "revId": "05391bd2a148042eb44e08adc7063f4fbc8f7d84",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
