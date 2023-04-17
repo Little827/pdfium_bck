@@ -52,6 +52,24 @@
       "parentUuid": "5f9afa0b_f45ba8c0",
       "revId": "2f2249a839fbea5ea3bc26f18838c2ba0e4797b2",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "323f2020_8f321ac7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-04-17T20:12:07Z",
+      "side": 1,
+      "message": "Another approach (which would be POSIX-compliant) would be to write to a temporary file, then overwrite the original file.",
+      "parentUuid": "3006ab90_29c4e808",
+      "revId": "2f2249a839fbea5ea3bc26f18838c2ba0e4797b2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
