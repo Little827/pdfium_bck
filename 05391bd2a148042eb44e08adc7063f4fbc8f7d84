@@ -105,6 +105,24 @@
       "parentUuid": "760bea03_14ad62e1",
       "revId": "05391bd2a148042eb44e08adc7063f4fbc8f7d84",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ecd10c2_f0e1d866",
+        "filename": "third_party/freetype/README.pdfium",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-04-17T19:42:51Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "2a86d800_a6b1d0a8",
+      "revId": "05391bd2a148042eb44e08adc7063f4fbc8f7d84",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ],
   "submitRequirementResults": [
