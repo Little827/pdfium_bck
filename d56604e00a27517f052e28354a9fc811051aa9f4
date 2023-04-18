@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75012946_d6251c02",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1140,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-04-18T23:27:48Z",
+      "side": 1,
+      "message": "Let\u0027s consistently use \"#if defined(_SKIA_SUPPORT_)\" and update the comment at #endif to match it as well.\n\nLei has a clean up CL here: https://pdfium-review.googlesource.com/c/pdfium/+/106050",
+      "range": {
+        "startLine": 1140,
+        "startChar": 0,
+        "endLine": 1140,
+        "endChar": 21
+      },
+      "revId": "d56604e00a27517f052e28354a9fc811051aa9f4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
