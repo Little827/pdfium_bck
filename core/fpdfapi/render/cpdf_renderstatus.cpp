@@ -1138,6 +1138,12 @@ void CPDF_RenderStatus::DrawTilingPattern(CPDF_TilingPattern* pattern,
   if (!pScreen)
     return;
 
+#if defined(_SKIA_SUPPORT_)
+  // TODO(crbug.com/pdfium/2017): Compute `pScreen` already premultiplied.
+  if (CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()) {
+    pScreen->PreMultiply();
+  }
+#endif  // defined(_SKIA_SUPPORT_)
   CompositeDIBitmap(pScreen, clip_box.left, clip_box.top, 0, 255,
                     BlendMode::kNormal, CPDF_Transparency());
 }
