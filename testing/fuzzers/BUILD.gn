@@ -90,6 +90,7 @@ group("fuzzers") {
   }
 
   if (is_component_build) {
+    testonly = true
     deps += [ ":fuzzer_impls" ]
   }
 }
@@ -149,6 +150,7 @@ source_set("fuzzer_init_public") {
 
 if (is_component_build) {
   group("fuzzer_impls") {
+    testonly = true
     deps = []
     foreach(fuzzer, fuzzer_list) {
       deps += [ ":${fuzzer}_impl" ]
@@ -194,6 +196,8 @@ template("pdfium_fuzzer") {
     init_dep = ":fuzzer_init"
   }
   if (is_component_build) {
+    testonly = true
+
     # In component builds, fuzzers are split into "_impl" and "_src" targets.
     # The "_impl" target exports the fuzzer implementation. The "_src" target
     # is a thin wrapper that imports the fuzzer from PDFium; this gets linked
@@ -612,6 +616,10 @@ pdfium_fuzzer("pdf_xml_fuzzer") {
 
 pdfium_fuzzer("pdfium_fuzzer") {
   sources = [ "pdfium_fuzzer.cc" ]
-  deps = [ ":fuzzer_helper" ]
+  deps = [
+    ":fuzzer_helper",
+    "//base",
+    "//base/test:test_support",
+  ]
   public_fuzzer = true
 }

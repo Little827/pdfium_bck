@@ -4,6 +4,9 @@
 
 #include <stdint.h>
 
+#include "base/memory/discardable_memory_allocator.h"
+#include "base/no_destructor.h"
+#include "base/test/test_discardable_memory_allocator.h"
 #include "testing/fuzzers/pdfium_fuzzer_helper.h"
 
 class PDFiumFuzzer : public PDFiumFuzzerHelper {
@@ -15,6 +18,10 @@ class PDFiumFuzzer : public PDFiumFuzzerHelper {
 };
 
 extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
+  static base::NoDestructor<base::TestDiscardableMemoryAllocator>
+      test_memory_allocator;
+  base::DiscardableMemoryAllocator::SetInstance(test_memory_allocator.get());
+
   PDFiumFuzzer fuzzer;
   fuzzer.RenderPdf(reinterpret_cast<const char*>(data), size);
   return 0;
