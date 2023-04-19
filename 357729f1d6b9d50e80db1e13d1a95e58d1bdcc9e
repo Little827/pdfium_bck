@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15a66fb2_de85b796",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-04-19T15:20:06Z",
+      "side": 1,
+      "message": "I think this consistency is overvalued, especially when most conditions are simple and unlikely to become more complex, but I\u0027ll go along with it.\n\nUsing BUILDFLAG() more would avoid the whole question, of course, since that has to be used with #if anyway.",
+      "revId": "357729f1d6b9d50e80db1e13d1a95e58d1bdcc9e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
