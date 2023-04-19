@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e767874_7b273de7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-04-19T18:55:05Z",
+      "side": 1,
+      "message": "This can link to the comment directly: https://bugs.chromium.org/p/pdfium/issues/detail?id\u003d1924#c6",
+      "revId": "2a432347cc3b432a9d860ec7ead6ef8ad6d3a605",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebe6e541_60ec4e76",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 4450,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-04-19T18:55:05Z",
+      "side": 1,
+      "message": "Add 2 more calls to cover the cases where the {width,height} is null.",
+      "revId": "2a432347cc3b432a9d860ec7ead6ef8ad6d3a605",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad2de7b0_5568e783",
+        "filename": "fpdfsdk/fpdf_editimg.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-04-19T18:55:05Z",
+      "side": 1,
+      "message": "Please split this API into its own CL. That would make FPDFImageObj_GetImagePixelSize() much easier to review.",
+      "revId": "2a432347cc3b432a9d860ec7ead6ef8ad6d3a605",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "904e73ba_798536f4",
+        "filename": "public/fpdf_edit.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 734,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-04-19T18:55:05Z",
+      "side": 1,
+      "message": "Let\u0027s add the experimental API comment, so PDFium developers have the freedom to change it if it does not work out for some reason.",
+      "revId": "2a432347cc3b432a9d860ec7ead6ef8ad6d3a605",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
