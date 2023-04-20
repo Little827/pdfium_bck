@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e086ffef_7b9374d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-04-20T17:44:11Z",
+      "side": 1,
+      "message": "I think other fuzzers might need it too (especially the ones require creating bitmap for Skia driver), but not all fuzzers need it. pdfium_fuzzer is the only one needs to be fixed for this specific bug.",
+      "parentUuid": "aaba231b_8d8d8fff",
+      "revId": "3b54ae8e63b184785614d021583f243b0367acf4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f1b7461a_6f6c50a1",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-04-19T23:47:14Z",
       "side": 1,
       "message": "Already set by line 87?",
+      "revId": "3b54ae8e63b184785614d021583f243b0367acf4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a605e100_1ec4a9ae",
+        "filename": "testing/fuzzers/BUILD.gn",
+        "patchSetId": 5
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-04-20T17:44:11Z",
+      "side": 1,
+      "message": "Done. Removed in the new patchset.",
+      "parentUuid": "f1b7461a_6f6c50a1",
       "revId": "3b54ae8e63b184785614d021583f243b0367acf4",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -52,6 +88,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "98a83e85_cdaf046b",
+        "filename": "testing/fuzzers/BUILD.gn",
+        "patchSetId": 5
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-04-20T17:44:11Z",
+      "side": 1,
+      "message": "Done.\nWithout this line, gn check in chromium/src/ will have error. But with \"testonly \u003d true\" added into source_set(impl_name), it will work.",
+      "parentUuid": "04b39bee_13068af6",
+      "revId": "3b54ae8e63b184785614d021583f243b0367acf4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2ab0c4da_1cae6a21",
@@ -65,6 +119,24 @@
       "writtenOn": "2023-04-19T23:47:14Z",
       "side": 1,
       "message": "Instead, should this block set `testonly`?",
+      "revId": "3b54ae8e63b184785614d021583f243b0367acf4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d3cde3a_8e3858be",
+        "filename": "testing/fuzzers/BUILD.gn",
+        "patchSetId": 5
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-04-20T17:44:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ab0c4da_1cae6a21",
       "revId": "3b54ae8e63b184785614d021583f243b0367acf4",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -86,6 +158,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb2a4ee8_451a5e3a",
+        "filename": "testing/fuzzers/BUILD.gn",
+        "patchSetId": 5
+      },
+      "lineNbr": 618,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-04-20T17:44:11Z",
+      "side": 1,
+      "message": "once source_set(impl_name) has testonly \u003d true, we don\u0027t need to set testonly in individual fuzzers again.",
+      "parentUuid": "32606a9f_f8a086ff",
+      "revId": "3b54ae8e63b184785614d021583f243b0367acf4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16bbdb8a_b916a883",
@@ -99,6 +189,24 @@
       "writtenOn": "2023-04-19T23:47:14Z",
       "side": 1,
       "message": "Separate from the other entries and add a comment to explain this is only used when embedded in Chromium.",
+      "revId": "3b54ae8e63b184785614d021583f243b0367acf4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12caec9b_abead007",
+        "filename": "testing/fuzzers/DEPS",
+        "patchSetId": 5
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-04-20T17:44:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16bbdb8a_b916a883",
       "revId": "3b54ae8e63b184785614d021583f243b0367acf4",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
