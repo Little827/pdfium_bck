@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cef03295_73511fdf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-04-20T16:46:12Z",
+      "side": 1,
+      "message": "The CL description needs to be updated.",
+      "revId": "36e97f6ed4410301dda48e142d667fbfdac20868",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf56c2be_bc477223",
+        "filename": "fpdfsdk/fpdf_editimg.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-04-20T16:46:12Z",
+      "side": 1,
+      "message": "nit: omit this blank line, like lines 407-408 above.",
+      "revId": "36e97f6ed4410301dda48e142d667fbfdac20868",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
