@@ -55,10 +55,15 @@ void CPDF_ImageObject::CalcBoundingBox() {
 void CPDF_ImageObject::SetImage(RetainPtr<CPDF_Image> pImage) {
   MaybePurgeCache();
   m_pImage = std::move(pImage);
+  StoreImageMaskSize();
 }
 
 RetainPtr<CPDF_Image> CPDF_ImageObject::GetImage() const {
   return m_pImage;
+}
+
+const CFX_Size& CPDF_ImageObject::GetMaskSize() const {
+  return m_ImageMaskSize;
 }
 
 RetainPtr<CFX_DIBitmap> CPDF_ImageObject::GetIndependentBitmap() const {
@@ -96,4 +101,30 @@ void CPDF_ImageObject::MaybePurgeCache() {
 
   m_pImage.Reset();  // Clear my reference before asking the cache.
   pDoc->MaybePurgeImage(objnum);
+}
+
+void CPDF_ImageObject::StoreImageMaskSize() {
+  if (m_pImage->IsMask()) {
+    return;
+  }
+
+  RetainPtr<const CPDF_Dictionary> pImageDict = m_pImage->GetDict();
+  if (!pImageDict) {
+    return;
+  }
+
+  RetainPtr<const CPDF_Stream> pMaskStream = pImageDict->GetStreamFor("SMask");
+  if (!pMaskStream) {
+    pMaskStream = pImageDict->GetStreamFor("Mask");
+  }
+
+  if (!pMaskStream) {
+    return;
+  }
+
+  auto* pDoc = m_pImage->GetDocument();
+  CHECK(pDoc);
+
+  auto pMask = pdfium::MakeRetain<CPDF_Image>(pDoc, ToStream(pMaskStream));
+  m_ImageMaskSize = CFX_Size(pMask->GetPixelWidth(), pMask->GetPixelHeight());
 }

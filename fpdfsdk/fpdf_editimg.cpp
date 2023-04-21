@@ -426,3 +426,22 @@ FPDFImageObj_GetImagePixelSize(FPDF_PAGEOBJECT image_object,
   *height = pImg->GetPixelHeight();
   return true;
 }
+
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
+FPDFImageObj_GetMaskPixelSize(FPDF_PAGEOBJECT image_object,
+                              unsigned int* width,
+                              unsigned int* height) {
+  CPDF_ImageObject* pImgObj = CPDFImageObjectFromFPDFPageObject(image_object);
+  if (!pImgObj || !width || !height) {
+    return false;
+  }
+
+  const CFX_Size& mask_size = pImgObj->GetMaskSize();
+  if (mask_size.width <= 0 || mask_size.height <= 0) {
+    return false;
+  }
+
+  *width = mask_size.width;
+  *height = mask_size.height;
+  return true;
+}

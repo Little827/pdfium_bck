@@ -4465,6 +4465,40 @@ TEST_F(FPDFEditEmbedderTest, GetImagePixelSize) {
   UnloadPage(page);
 }
 
+TEST_F(FPDFEditEmbedderTest, GetMaskPixelSize) {
+  ASSERT_TRUE(OpenDocument("matte.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  // Check that getting the size of a null object would fail.
+  unsigned int width = 0;
+  unsigned int height = 0;
+  EXPECT_FALSE(FPDFImageObj_GetMaskPixelSize(nullptr, &width, &height));
+
+  // Check that receiving the size with a null width and height pointers would
+  // fail.
+  {
+    FPDF_PAGEOBJECT obj = FPDFPage_GetObject(page, 0);
+    ASSERT_EQ(FPDF_PAGEOBJ_IMAGE, FPDFPageObj_GetType(obj));
+    EXPECT_FALSE(FPDFImageObj_GetMaskPixelSize(obj, nullptr, nullptr));
+    EXPECT_FALSE(FPDFImageObj_GetMaskPixelSize(obj, nullptr, &height));
+    EXPECT_FALSE(FPDFImageObj_GetMaskPixelSize(obj, &width, nullptr));
+  }
+
+  constexpr int kExpectedObjects = 4;
+  ASSERT_EQ(kExpectedObjects, FPDFPage_CountObjects(page));
+
+  for (int i = 0; i < kExpectedObjects; ++i) {
+    FPDF_PAGEOBJECT obj = FPDFPage_GetObject(page, i);
+    ASSERT_EQ(FPDF_PAGEOBJ_IMAGE, FPDFPageObj_GetType(obj));
+    ASSERT_TRUE(FPDFImageObj_GetMaskPixelSize(obj, &width, &height));
+    EXPECT_EQ(50u, width);
+    EXPECT_EQ(50u, height);
+  }
+
+  UnloadPage(page);
+}
+
 TEST_F(FPDFEditEmbedderTest, GetRenderedBitmapForHelloWorldText) {
   ASSERT_TRUE(OpenDocument("hello_world.pdf"));
   FPDF_PAGE page = LoadPage(0);

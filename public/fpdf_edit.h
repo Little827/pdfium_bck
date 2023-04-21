@@ -744,6 +744,19 @@ FPDFImageObj_GetImagePixelSize(FPDF_PAGEOBJECT image_object,
                                unsigned int* width,
                                unsigned int* height);
 
+// Experimental API.
+// Get the image mask size in pixels.
+//
+//   image_object - handle to an image object.
+//   width        - receives the mask width in pixels; must not be NULL.
+//   height       - receives the mask height in pixels; must not be NULL.
+//
+// Returns true if successful.
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
+FPDFImageObj_GetMaskPixelSize(FPDF_PAGEOBJECT image_object,
+                              unsigned int* width,
+                              unsigned int* height);
+
 // Create a new path object at an initial position.
 //
 //   x - initial horizontal position.
