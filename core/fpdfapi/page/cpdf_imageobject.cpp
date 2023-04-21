@@ -61,6 +61,14 @@ RetainPtr<CPDF_Image> CPDF_ImageObject::GetImage() const {
   return m_pImage;
 }
 
+void CPDF_ImageObject::SetMaskSize(const CFX_Size& maskSize) {
+  m_ImageMaskSize = maskSize;
+}
+
+CFX_Size CPDF_ImageObject::GetMaskSize() const {
+  return m_ImageMaskSize;
+}
+
 RetainPtr<CFX_DIBitmap> CPDF_ImageObject::GetIndependentBitmap() const {
   RetainPtr<CFX_DIBBase> pSource = GetImage()->LoadDIBBase();
 

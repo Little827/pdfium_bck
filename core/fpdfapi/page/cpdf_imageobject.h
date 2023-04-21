@@ -30,6 +30,8 @@ class CPDF_ImageObject final : public CPDF_PageObject {
   void CalcBoundingBox();
   void SetImage(RetainPtr<CPDF_Image> pImage);
   RetainPtr<CPDF_Image> GetImage() const;
+  void SetMaskSize(const CFX_Size& maskSize);
+  CFX_Size GetMaskSize() const;
   RetainPtr<CFX_DIBitmap> GetIndependentBitmap() const;
 
   void SetImageMatrix(const CFX_Matrix& matrix);
@@ -40,6 +42,7 @@ class CPDF_ImageObject final : public CPDF_PageObject {
 
   CFX_Matrix m_Matrix;
   RetainPtr<CPDF_Image> m_pImage;
+  CFX_Size m_ImageMaskSize;
 };
 
 #endif  // CORE_FPDFAPI_PAGE_CPDF_IMAGEOBJECT_H_

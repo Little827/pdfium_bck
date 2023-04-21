@@ -796,8 +796,11 @@ CPDF_ImageObject* CPDF_StreamContentParser::AddImageFromStream(
 
   auto pImageObj = std::make_unique<CPDF_ImageObject>(GetCurrentStreamIndex());
   pImageObj->SetResourceName(name);
-  pImageObj->SetImage(
-      pdfium::MakeRetain<CPDF_Image>(m_pDocument, std::move(pStream)));
+
+  RetainPtr<CPDF_Image> pImage =
+      pdfium::MakeRetain<CPDF_Image>(m_pDocument, std::move(pStream));
+  pImageObj->SetImage(pImage);
+  AddImageMaskSize(pImageObj.get(), pImage);
 
   return AddImageObject(std::move(pImageObj));
 }
@@ -807,8 +810,11 @@ CPDF_ImageObject* CPDF_StreamContentParser::AddImageFromStreamObjNum(
     const ByteString& name) {
   auto pImageObj = std::make_unique<CPDF_ImageObject>(GetCurrentStreamIndex());
   pImageObj->SetResourceName(name);
-  pImageObj->SetImage(
-      CPDF_DocPageData::FromDocument(m_pDocument)->GetImage(stream_obj_num));
+
+  RetainPtr<CPDF_Image> pImage =
+      CPDF_DocPageData::FromDocument(m_pDocument)->GetImage(stream_obj_num);
+  pImageObj->SetImage(pImage);
+  AddImageMaskSize(pImageObj.get(), pImage);
 
   return AddImageObject(std::move(pImageObj));
 }
@@ -818,10 +824,40 @@ CPDF_ImageObject* CPDF_StreamContentParser::AddLastImage() {
 
   auto pImageObj = std::make_unique<CPDF_ImageObject>(GetCurrentStreamIndex());
   pImageObj->SetResourceName(m_LastImageName);
-  pImageObj->SetImage(CPDF_DocPageData::FromDocument(m_pDocument)
-                          ->GetImage(m_pLastImage->GetStream()->GetObjNum()));
+
+  RetainPtr<CPDF_Image> pImage =
+      CPDF_DocPageData::FromDocument(m_pDocument)
+          ->GetImage(m_pLastImage->GetStream()->GetObjNum());
+  pImageObj->SetImage(pImage);
+  AddImageMaskSize(pImageObj.get(), pImage);
 
   return AddImageObject(std::move(pImageObj));
+}
+
+void CPDF_StreamContentParser::AddImageMaskSize(
+    CPDF_ImageObject* pImageObj,
+    RetainPtr<CPDF_Image> pImageWithMask) {
+  if (!pImageWithMask) {
+    return;
+  }
+  if (pImageWithMask->IsMask()) {
+    return;
+  }
+
+  RetainPtr<const CPDF_Dictionary> pImageDict = pImageWithMask->GetDict();
+  if (pImageDict) {
+    RetainPtr<const CPDF_Stream> pMaskStream =
+        pImageDict->GetStreamFor("SMask");
+    if (!pMaskStream) {
+      pMaskStream = pImageDict->GetStreamFor("Mask");
+    }
+    if (pMaskStream) {
+      auto pMask = pdfium::MakeRetain<CPDF_Image>(
+          m_pDocument, ToStream(pMaskStream->Clone()));
+      pImageObj->SetMaskSize(
+          CFX_Size(pMask->GetPixelWidth(), pMask->GetPixelHeight()));
+    }
+  }
 }
 
 CPDF_ImageObject* CPDF_StreamContentParser::AddImageObject(
