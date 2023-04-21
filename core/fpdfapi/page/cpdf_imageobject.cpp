@@ -61,6 +61,14 @@ RetainPtr<CPDF_Image> CPDF_ImageObject::GetImage() const {
   return m_pImage;
 }
 
+void CPDF_ImageObject::SetMask(RetainPtr<CPDF_Image> pMask) {
+  m_pMask = std::move(pMask);
+}
+
+RetainPtr<CPDF_Image> CPDF_ImageObject::GetMask() const {
+  return m_pMask;
+}
+
 RetainPtr<CFX_DIBitmap> CPDF_ImageObject::GetIndependentBitmap() const {
   RetainPtr<CFX_DIBBase> pSource = GetImage()->LoadDIBBase();
 

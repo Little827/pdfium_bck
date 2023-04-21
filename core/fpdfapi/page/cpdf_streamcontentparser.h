@@ -124,6 +124,8 @@ class CPDF_StreamContentParser {
   CPDF_ImageObject* AddImageFromStreamObjNum(uint32_t stream_obj_num,
                                              const ByteString& name);
   CPDF_ImageObject* AddLastImage();
+  void AddImageMask(CPDF_ImageObject* pImageObj,
+                    RetainPtr<CPDF_Image> pImageWithMask);
 
   void AddForm(RetainPtr<CPDF_Stream> pStream, const ByteString& name);
   void SetGraphicStates(CPDF_PageObject* pObj,
