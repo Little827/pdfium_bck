@@ -39,6 +39,18 @@ it separately, but this is optional and not needed for building PDFium.
 
 ## Get the code
 
+On Linux, additional build dependencies should be installed before getting the
+code. On Debian/Ubuntu, the packages are:
+
+```
+git
+pkg-config
+python3
+xz-utils
+```
+
+To actually get the code, start by creating a new top-level directory to hold
+the PDFium code.
 The name of the top-level directory does not matter. In the following example,
 the directory name is "repo". This directory must not have been used before by
 `gclient config` as each directory can only house a single gclient
@@ -47,16 +59,8 @@ configuration.
 ```
 mkdir repo
 cd repo
-gclient config --unmanaged https://pdfium.googlesource.com/pdfium.git
-gclient sync
+fetch pdfium
 cd pdfium
-```
-
-On Linux, additional build dependencies need to be installed by running the
-following from the `pdfium` directory.
-
-```
-./build/install-build-deps.sh
 ```
 
 ## Generate the build files
