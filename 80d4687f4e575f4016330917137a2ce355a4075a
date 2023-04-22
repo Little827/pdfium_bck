@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1f4225a_47518a64",
+        "filename": "core/fpdfapi/page/cpdf_imageobject.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-04-22T01:05:06Z",
+      "side": 1,
+      "message": "Would it be sufficient to store the mask\u0027s dimensions instead?",
+      "revId": "80d4687f4e575f4016330917137a2ce355a4075a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0f94216_db70f636",
+        "filename": "core/fpdfapi/page/cpdf_streamcontentparser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 840,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-04-22T01:05:06Z",
+      "side": 1,
+      "message": "This part of the conditional never evaluates to true.",
+      "range": {
+        "startLine": 840,
+        "startChar": 6,
+        "endLine": 840,
+        "endChar": 16
+      },
+      "revId": "80d4687f4e575f4016330917137a2ce355a4075a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
