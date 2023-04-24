@@ -61,6 +61,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1dad02f0_e70a2cb9",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-04-24T17:44:04Z",
+      "side": 1,
+      "message": "For example, the Chromium instructions list git and Python 3.6+ as system requirements before doing anything, so it seems redundant to mention them again here:\nhttps://chromium.googlesource.com/chromium/src/+/main/docs/linux/build_instructions.md#system-requirements",
+      "parentUuid": "88f85d98_2c9a2257",
+      "range": {
+        "startLine": 42,
+        "startChar": 60,
+        "endLine": 43,
+        "endChar": 4
+      },
+      "revId": "d5d927186d71cad9265f5259bfda45557b749d32",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "361534cd_343032cd",
         "filename": "README.md",
         "patchSetId": 1
