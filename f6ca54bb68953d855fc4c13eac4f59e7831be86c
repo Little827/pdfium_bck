@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "18013b88_c9b427bb",
+        "filename": "core/fxcrt/maybe_owned.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-04-24T19:37:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0408942c_4d21e558",
+      "revId": "f6ca54bb68953d855fc4c13eac4f59e7831be86c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6e88e821_fb39a631",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-04-21T23:41:03Z",
       "side": 1,
       "message": "Maybe `obj_` ?",
+      "range": {
+        "startLine": 100,
+        "startChar": 40,
+        "endLine": 100,
+        "endChar": 45
+      },
+      "revId": "f6ca54bb68953d855fc4c13eac4f59e7831be86c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0410f758_9440f916",
+        "filename": "core/fxcrt/maybe_owned.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-04-24T19:37:15Z",
+      "side": 1,
+      "message": "Done. (ptr_ actually).",
+      "parentUuid": "6e88e821_fb39a631",
       "range": {
         "startLine": 100,
         "startChar": 40,
