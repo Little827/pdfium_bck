@@ -223,6 +223,7 @@ template("pdfium_fuzzer") {
     testonly = true
     sources = invoker.sources
     deps = []
+    defines = []
     if (defined(invoker.deps)) {
       deps += invoker.deps
     }
@@ -234,7 +235,7 @@ template("pdfium_fuzzer") {
       } else {
         export = "__attribute__((visibility(\"default\")))"
       }
-      defines = [ "LLVMFuzzerTestOneInput=${export} ${template_target_name}" ]
+      defines += [ "LLVMFuzzerTestOneInput=${export} ${template_target_name}" ]
       deps += [ "../../:pdfium_public_headers" ]
     } else {
       testonly = true
