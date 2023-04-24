@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "098532ff_0767dc79",
+        "filename": "testing/fuzzers/BUILD.gn",
+        "patchSetId": 4
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-04-24T21:01:02Z",
+      "side": 1,
+      "message": "This is a weird place to initialize `defines` for use with the source_set below. Can `defines` be initialized inside the source_set, like its `deps` variable on line 226?",
+      "revId": "3ad2f62bf682519e906ca8a720701c82eed33e19",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
