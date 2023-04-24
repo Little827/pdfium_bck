@@ -38,6 +38,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "88f85d98_2c9a2257",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-04-24T17:41:39Z",
+      "side": 1,
+      "message": "Nit: Maybe \"getting\" should be \"getting or building\", so readers don\u0027t assume they need to start over if they don\u0027t do this before downloading the code? Or since we require the user to install depot_tools anyway, perhaps this can just go after getting the code, as before.",
+      "range": {
+        "startLine": 42,
+        "startChar": 60,
+        "endLine": 43,
+        "endChar": 4
+      },
+      "revId": "d5d927186d71cad9265f5259bfda45557b749d32",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "361534cd_343032cd",
         "filename": "README.md",
         "patchSetId": 1
