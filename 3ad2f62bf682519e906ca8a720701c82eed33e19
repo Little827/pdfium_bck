@@ -34,6 +34,24 @@
       "parentUuid": "098532ff_0767dc79",
       "revId": "3ad2f62bf682519e906ca8a720701c82eed33e19",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b0e85c0_ab9d2de6",
+        "filename": "testing/fuzzers/BUILD.gn",
+        "patchSetId": 4
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-04-24T22:23:16Z",
+      "side": 1,
+      "message": "This is a bit confusing as this is part of a template, and there are additional variables inside this template. The template itself does not need to have `defines`, which is why I\u0027m pushing against patch set 4. Instead, the source_sets need to have `defines`. It would be less confusing if they each had their own:\n1) The ${target_name}_src source_set already has its own on line 217.\n2) The imple_name source_set below does not have one that is consistently defined.\n\nA way to simplify this problem is to just look at line 223-253 as a standalone build target. Does it make sense to put `defines` outside of the source_set, or within?",
+      "parentUuid": "466a08c5_bda78d44",
+      "revId": "3ad2f62bf682519e906ca8a720701c82eed33e19",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
