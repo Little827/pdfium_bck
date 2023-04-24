@@ -16,6 +16,41 @@
       "message": "In gittiles: https://pdfium.googlesource.com/pdfium/+/d5d927186d71cad9265f5259bfda45557b749d32/README.md#get-the-code",
       "revId": "d5d927186d71cad9265f5259bfda45557b749d32",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ba0d094_bd29b853",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-04-24T17:39:19Z",
+      "side": 1,
+      "message": "Gerrit\u0027s per-file view actually includes a \"preview\" link as well:\nhttps://pdfium.googlesource.com/pdfium/+/refs/changes/70/106470/1/README.md\n\n(Would be nice if this were available in the files view, though.)",
+      "parentUuid": "ad8f2ec8_790e401c",
+      "revId": "d5d927186d71cad9265f5259bfda45557b749d32",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "361534cd_343032cd",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-04-24T17:39:19Z",
+      "side": 1,
+      "message": "Optional: Give this list is being given for Debian/Ubuntu, I wonder if making this an `apt-get` or `apt` command that could be cut and paste would make more sense?",
+      "revId": "d5d927186d71cad9265f5259bfda45557b749d32",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
