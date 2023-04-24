@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "1ed0b2db_fd53f1d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-04-24T15:40:53Z",
+      "side": 1,
+      "message": "thestig@ already commented on this.",
+      "parentUuid": "9df4cd76_bcdcb08a",
+      "revId": "da4829cbcf019307b1e2f7f0865e73e83b873ccb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "67a58c42_2574286d",
         "filename": "testing/fuzzers/BUILD.gn",
         "patchSetId": 3
@@ -31,6 +49,24 @@
       "writtenOn": "2023-04-22T04:20:29Z",
       "side": 1,
       "message": "Broke the DEPS roll: https://chromium-review.googlesource.com/c/chromium/src/+/4461078?tab\u003dchecks\n\n`defines` needs to be defined more consistently. See line 237 vs. the line 240 block.",
+      "revId": "da4829cbcf019307b1e2f7f0865e73e83b873ccb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8a7dc53_b6bcdad4",
+        "filename": "testing/fuzzers/BUILD.gn",
+        "patchSetId": 3
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-04-24T15:40:53Z",
+      "side": 1,
+      "message": "Specifically, we should test this with component builds disabled.",
+      "parentUuid": "67a58c42_2574286d",
       "revId": "da4829cbcf019307b1e2f7f0865e73e83b873ccb",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
