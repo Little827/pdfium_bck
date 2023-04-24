@@ -16,6 +16,24 @@
       "message": "This is a weird place to initialize `defines` for use with the source_set below. Can `defines` be initialized inside the source_set, like its `deps` variable on line 226?",
       "revId": "3ad2f62bf682519e906ca8a720701c82eed33e19",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "466a08c5_bda78d44",
+        "filename": "testing/fuzzers/BUILD.gn",
+        "patchSetId": 4
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-04-24T22:16:33Z",
+      "side": 1,
+      "message": "I feel that line 217 should be close to where `template_target_name` is defined.\nTherefore the 2 options should be:\n(1) Define `defines` at line 221 when it\u0027s not component build.\nor\n(2) Define `defines \u003d []` right at the top of template(\"pdfium_fuzzer\"), before or after line 192 without any condition check.",
+      "parentUuid": "098532ff_0767dc79",
+      "revId": "3ad2f62bf682519e906ca8a720701c82eed33e19",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
