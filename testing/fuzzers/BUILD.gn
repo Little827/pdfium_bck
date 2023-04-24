@@ -218,6 +218,7 @@ template("pdfium_fuzzer") {
     }
   } else {
     impl_name = target_name + "_src"
+    deps = []
   }
   source_set(impl_name) {
     testonly = true
