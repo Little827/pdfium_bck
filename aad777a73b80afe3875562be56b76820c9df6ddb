@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71cd7175_771f5a10",
+        "filename": "testing/fuzzers/BUILD.gn",
+        "patchSetId": 5
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-04-24T23:00:12Z",
+      "side": 1,
+      "message": "How about putting `defines` above `deps`, for consistency with lines 238-239?\n\nFWIW, that also puts it in the order that matches the GN style guide: https://gn.googlesource.com/gn/+/main/docs/style_guide.md#ordering-within-a-target, though many GN files don\u0027t follow that to the letter.",
+      "revId": "aad777a73b80afe3875562be56b76820c9df6ddb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
