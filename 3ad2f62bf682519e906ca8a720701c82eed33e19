@@ -52,6 +52,24 @@
       "parentUuid": "466a08c5_bda78d44",
       "revId": "3ad2f62bf682519e906ca8a720701c82eed33e19",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3b61296_4db50a93",
+        "filename": "testing/fuzzers/BUILD.gn",
+        "patchSetId": 4
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-04-24T22:56:59Z",
+      "side": 1,
+      "message": "Thanks for the explanation! It makes sense to separate the source set and the top of the template.\nIn the new patchset, I defined `defines` at the top of the source_set and we can add more into `defines` depending on different conditions.",
+      "parentUuid": "1b0e85c0_ab9d2de6",
+      "revId": "3ad2f62bf682519e906ca8a720701c82eed33e19",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
