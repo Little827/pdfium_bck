@@ -28,6 +28,7 @@
 #include "core/fpdfdoc/cpdf_formfield.h"
 #include "core/fpdfdoc/cpdf_generateap.h"
 #include "core/fpdfdoc/cpdf_interactiveform.h"
+#include "core/fxcrt/retain_ptr.h"
 #include "core/fxge/cfx_renderdevice.h"
 
 namespace {
@@ -79,21 +80,15 @@ std::unique_ptr<CPDF_Annot> CreatePopupAnnot(CPDF_Document* pDocument,
   if (!pParentDict)
     return nullptr;
 
-  // TODO(jaepark): We shouldn't strip BOM for some strings and not for others.
-  // See pdfium:593.
-  WideString sContents =
-      pParentDict->GetUnicodeTextFor(pdfium::annotation::kContents);
-  if (sContents.IsEmpty())
-    return nullptr;
-
   auto pAnnotDict = pDocument->New<CPDF_Dictionary>();
   pAnnotDict->SetNewFor<CPDF_Name>(pdfium::annotation::kType, "Annot");
   pAnnotDict->SetNewFor<CPDF_Name>(pdfium::annotation::kSubtype, "Popup");
   pAnnotDict->SetNewFor<CPDF_String>(
       pdfium::form_fields::kT,
       pParentDict->GetByteStringFor(pdfium::form_fields::kT), false);
-  pAnnotDict->SetNewFor<CPDF_String>(pdfium::annotation::kContents,
-                                     sContents.ToUTF8(), false);
+  pAnnotDict->SetNewFor<CPDF_String>(
+      pdfium::annotation::kContents,
+      pParentDict->GetByteStringFor(pdfium::annotation::kContents), false);
 
   CFX_FloatRect rect = pParentDict->GetRectFor(pdfium::annotation::kRect);
   rect.Normalize();
