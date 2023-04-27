@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b52158b_6fdc8b1d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-04-27T17:26:50Z",
+      "side": 1,
+      "message": "LGTM. Just need to rerun to get rid of infra failures.",
+      "revId": "b86df822ae7ad6132cdd986b5b65b657c08ddf29",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
