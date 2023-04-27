@@ -34,6 +34,24 @@
       "parentUuid": "9673664a_43809304",
       "revId": "379bfc96bcfa2648fb94f8729704baf02190d2b9",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee12843e_ca47041c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8606
+      },
+      "writtenOn": "2023-04-27T06:28:01Z",
+      "side": 1,
+      "message": "It seems that this is not the most correct architectural solutions, it is better to have several methods to get specific values.\nIn any case, the final decision should be made by the authors of the project. @thestig@chromium.org what do you think about this?",
+      "parentUuid": "6a42d36e_f9719f39",
+      "revId": "379bfc96bcfa2648fb94f8729704baf02190d2b9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
