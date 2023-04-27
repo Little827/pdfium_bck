@@ -52,6 +52,24 @@
       "parentUuid": "6a42d36e_f9719f39",
       "revId": "379bfc96bcfa2648fb94f8729704baf02190d2b9",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1abf2e12_78c914f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8751
+      },
+      "writtenOn": "2023-04-27T12:05:47Z",
+      "side": 1,
+      "message": "Agreed my proposal above isn\u0027t elegant. (I guess the problem is unnecessary allocations for unused struct fields, right?)\n\nAnyway, thinking about this again, I guess it\u0027s too much fuss for little advantage.\nHaving a separate API for image size (as added here) is good as it\u0027s a very common operation, but actually I don\u0027t mind much if the other values can only be retrieved as a group. And after all, `GetImageMetadata()` usually runs quickly.",
+      "parentUuid": "ee12843e_ca47041c",
+      "revId": "379bfc96bcfa2648fb94f8729704baf02190d2b9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
