@@ -109,6 +109,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f2efec2e_c3bd8031",
+        "filename": "core/fpdfdoc/cpdf_annotlist_unittest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-04-28T22:31:05Z",
+      "side": 1,
+      "message": "If I want to do EXPECT_EQ(\"UTF-8 text\", actual) (which I do), GoogleTest requires \"actual\" to be a std::string (or something like it). I\u0027m not sure how avoiding returning std::string from GetDecodedContents() helps.\n\nCan you provide an example of the change you want to make? (I don\u0027t think we have suggested edits yet, unfortunately.)",
+      "parentUuid": "ed8a8147_fad6d8bd",
+      "revId": "2949dd331f29e6911956f43968e47ec60bee7b56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8480084d_47057491",
         "filename": "core/fpdfdoc/cpdf_annotlist_unittest.cpp",
         "patchSetId": 7
