@@ -145,6 +145,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0eaa5025_dfb83254",
+        "filename": "core/fpdfdoc/cpdf_annotlist_unittest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-04-28T22:46:55Z",
+      "side": 1,
+      "message": "If I deliberately introduce an error, I get this error message with the `ByteString` version:\n\n```\nExpected equality of these values:\n  \"xAaä€\"\n    Which is: 0x56022b9f2c84\n  GetDecodedContents(list.GetAt(1))\n    Which is: { \u0027A\u0027 (65, 0x41), \u0027a\u0027 (97, 0x61), \u0027\\xC3\u0027 (195), \u0027\\xA4\u0027 (164), \u0027\\xE2\u0027 (226), \u0027\\x82\u0027 (130), \u0027\\xAC\u0027 (172) }\n```\n\nAnd this error message with the `std::string` version:\n\n```\nExpected equality of these values:\n  \"xAaä€\"\n    Which is: \"xAa\\xC3\\xA4\\xE2\\x82\\xAC\"\n    As Text: \"xAaä€\"\n  GetDecodedContents(list.GetAt(1))\n    Which is: \"Aa\\xC3\\xA4\\xE2\\x82\\xAC\"\n    As Text: \"Aaä€\"\n```\n\nI\u0027m assuming the `ByteString` version works because `ByteString` has an implicit conversion from `const char*`, but that means the \"generic\" `EXPECT_EQ()` implementation gets selected, instead of the prettier `std::string` version.\n\nI can switch everything to `ByteString` if you\u0027d prefer that over the prettier error messages, but I personally wouldn\u0027t make that trade-off in test-only code.",
+      "parentUuid": "94450fe4_8e8754ab",
+      "revId": "2949dd331f29e6911956f43968e47ec60bee7b56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8480084d_47057491",
         "filename": "core/fpdfdoc/cpdf_annotlist_unittest.cpp",
         "patchSetId": 7
