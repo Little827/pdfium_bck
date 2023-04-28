@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7235338f_c6a5c97d",
+        "filename": "core/fpdfdoc/cpdf_annotlist_unittest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-04-28T22:17:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5688333d_6f98c0da",
+      "revId": "2949dd331f29e6911956f43968e47ec60bee7b56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a4aaa9ad_f5d27edf",
@@ -55,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cbd77410_8c8dde0d",
+        "filename": "core/fpdfdoc/cpdf_annotlist_unittest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-04-28T22:17:01Z",
+      "side": 1,
+      "message": "GetDecodedContents() is used in UTF-8 string expectations, so I don\u0027t think ByteString makes sense there.\n\nGoogleTest doesn\u0027t know how to print ByteString, so we just get the ugly default output. If we add custom printers for ByteString/WideString, I think returning ByteString would be fine, but I didn\u0027t want to tackle that in this change.",
+      "parentUuid": "1e92e5d9_bac9926c",
+      "revId": "2949dd331f29e6911956f43968e47ec60bee7b56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8480084d_47057491",
         "filename": "core/fpdfdoc/cpdf_annotlist_unittest.cpp",
         "patchSetId": 7
@@ -66,6 +102,30 @@
       "writtenOn": "2023-04-28T21:52:36Z",
       "side": 1,
       "message": "No underscores?",
+      "range": {
+        "startLine": 79,
+        "startChar": 26,
+        "endLine": 79,
+        "endChar": 46
+      },
+      "revId": "2949dd331f29e6911956f43968e47ec60bee7b56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77f55a30_6988ad1f",
+        "filename": "core/fpdfdoc/cpdf_annotlist_unittest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-04-28T22:17:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8480084d_47057491",
       "range": {
         "startLine": 79,
         "startChar": 26,
