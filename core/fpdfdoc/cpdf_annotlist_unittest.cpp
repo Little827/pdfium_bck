@@ -1,0 +1,129 @@
+// Copyright 2023 The PDFium Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+#include "core/fpdfdoc/cpdf_annotlist.h"
+
+#include <stdint.h>
+
+#include <memory>
+#include <string>
+#include <vector>
+
+#include "constants/annotation_common.h"
+#include "core/fpdfapi/page/cpdf_page.h"
+#include "core/fpdfapi/page/test_with_page_module.h"
+#include "core/fpdfapi/parser/cpdf_array.h"
+#include "core/fpdfapi/parser/cpdf_dictionary.h"
+#include "core/fpdfapi/parser/cpdf_name.h"
+#include "core/fpdfapi/parser/cpdf_string.h"
+#include "core/fpdfapi/parser/cpdf_test_document.h"
+#include "core/fpdfdoc/cpdf_annot.h"
+#include "core/fxcrt/bytestring.h"
+#include "core/fxcrt/retain_ptr.h"
+#include "core/fxcrt/string_view_template.h"
+#include "core/fxcrt/widestring.h"
+#include "testing/gtest/include/gtest/gtest.h"
+
+namespace {
+
+class CPDFAnnotListTest : public ::TestWithPageModule {
+ public:
+  void SetUp() override {
+    TestWithPageModule::SetUp();
+
+    document_ = std::make_unique<CPDF_TestDocument>();
+    document_->SetRoot(document_root_);
+    page_ = pdfium::MakeRetain<CPDF_Page>(document_.get(), page_dict_);
+  }
+
+  void TearDown() override {
+    page_.Reset();
+    document_.reset();
+
+    TestWithPageModule::TearDown();
+  }
+
+ protected:
+  void AddTextAnnotation(ByteStringView contents) {
+    RetainPtr<CPDF_Dictionary> annotation =
+        page_->GetOrCreateAnnotsArray()->AppendNew<CPDF_Dictionary>();
+    annotation->SetNewFor<CPDF_Name>(pdfium::annotation::kSubtype, "Text");
+    annotation->SetNewFor<CPDF_String>(pdfium::annotation::kContents,
+                                       ByteString(contents), /*bHex=*/false);
+  }
+
+  RetainPtr<CPDF_Dictionary> document_root_ =
+      pdfium::MakeRetain<CPDF_Dictionary>();
+  std::unique_ptr<CPDF_TestDocument> document_;
+
+  RetainPtr<CPDF_Dictionary> page_dict_ = pdfium::MakeRetain<CPDF_Dictionary>();
+  RetainPtr<CPDF_Page> page_;
+};
+
+std::vector<uint8_t> GetRawContents(const CPDF_Annot* annotation) {
+  ByteString contents = annotation->GetAnnotDict()->GetByteStringFor(
+      pdfium::annotation::kContents);
+  return {contents.begin(), contents.end()};
+}
+
+std::string GetDecodedContents(const CPDF_Annot* annotation) {
+  WideString contents = annotation->GetAnnotDict()->GetUnicodeTextFor(
+      pdfium::annotation::kContents);
+  ByteString decoded = contents.ToUTF8();
+  return {decoded.begin(), decoded.end()};
+}
+
+}  // namespace
+
+TEST_F(CPDFAnnotListTest, CreatePopupAnnot_Pdf) {
+  const std::vector<uint8_t> kContents = {'A', 'a', 0xE4, 0xA0};
+  AddTextAnnotation(ByteStringView(kContents));
+
+  CPDF_AnnotList list(page_);
+
+  ASSERT_EQ(2u, list.Count());
+  EXPECT_EQ(kContents, GetRawContents(list.GetAt(1)));
+  EXPECT_EQ("Aaä€", GetDecodedContents(list.GetAt(1)));
+}
+
+TEST_F(CPDFAnnotListTest, CreatePopupAnnot_Unicode) {
+  const std::vector<uint8_t> kContents = {0xFE, 0xFF, 0x00, 0x41, 0x00,
+                                          0x61, 0x00, 0xE4, 0x20, 0xAC,
+                                          0xD8, 0x3D, 0xDC, 0xC4};
+  AddTextAnnotation(ByteStringView(kContents));
+
+  CPDF_AnnotList list(page_);
+
+  ASSERT_EQ(2u, list.Count());
+  EXPECT_EQ(kContents, GetRawContents(list.GetAt(1)));
+
+  // Note that surrogate pairs are not handled correctly.
+  EXPECT_EQ("Aaä€\xED\xA0\xBD\xED\xB3\x84", GetDecodedContents(list.GetAt(1)));
+}
+
+TEST_F(CPDFAnnotListTest, CreatePopupAnnot_Empty_Pdf) {
+  AddTextAnnotation("");
+
+  CPDF_AnnotList list(page_);
+
+  EXPECT_EQ(1u, list.Count());
+}
+
+TEST_F(CPDFAnnotListTest, CreatePopupAnnot_Empty_Unicode) {
+  AddTextAnnotation("\xFE\xFF");
+
+  CPDF_AnnotList list(page_);
+
+  EXPECT_EQ(1u, list.Count());
+}
+
+TEST_F(CPDFAnnotListTest, CreatePopupAnnot_Empty_Unicode_WithEscape) {
+  const std::vector<uint8_t> kContents = {0xFE, 0xFF, 0x00, 0x1B,
+                                          'j',  'a',  0x00, 0x1B};
+  AddTextAnnotation(ByteStringView(kContents));
+
+  CPDF_AnnotList list(page_);
+
+  EXPECT_EQ(1u, list.Count());
+}
