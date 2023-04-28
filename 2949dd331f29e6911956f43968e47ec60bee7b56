@@ -91,6 +91,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ed8a8147_fad6d8bd",
+        "filename": "core/fpdfdoc/cpdf_annotlist_unittest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-04-28T22:25:05Z",
+      "side": 1,
+      "message": "WideString::ToUTF8() returns a ByteString , so it should be fine to use here.\n\nTeaching GoogleTest to pretty-print ByteString would be nice. Definitely something to do in another CL, but that shouldn\u0027t force this CL to use std::string.",
+      "parentUuid": "cbd77410_8c8dde0d",
+      "revId": "2949dd331f29e6911956f43968e47ec60bee7b56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8480084d_47057491",
         "filename": "core/fpdfdoc/cpdf_annotlist_unittest.cpp",
         "patchSetId": 7
