@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1e92e5d9_bac9926c",
+        "filename": "core/fpdfdoc/cpdf_annotlist_unittest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-04-28T21:56:39Z",
+      "side": 1,
+      "message": "Or at least GetDecodedContents()?",
+      "parentUuid": "a4aaa9ad_f5d27edf",
+      "revId": "2949dd331f29e6911956f43968e47ec60bee7b56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8480084d_47057491",
         "filename": "core/fpdfdoc/cpdf_annotlist_unittest.cpp",
         "patchSetId": 7
