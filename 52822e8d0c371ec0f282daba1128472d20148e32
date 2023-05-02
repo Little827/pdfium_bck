@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd038fb5_29630217",
+        "filename": "core/fxcrt/widestring.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-05-02T22:48:48Z",
+      "side": 1,
+      "message": "See similar concerns about the `ByteString` CL:\nhttps://pdfium-review.googlesource.com/c/pdfium/+/106690/comment/2a23b980_84c41573/",
+      "range": {
+        "startLine": 307,
+        "startChar": 64,
+        "endLine": 308,
+        "endChar": 33
+      },
+      "revId": "52822e8d0c371ec0f282daba1128472d20148e32",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
