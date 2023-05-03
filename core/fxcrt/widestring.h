@@ -303,6 +303,11 @@ std::ostream& operator<<(std::ostream& os, const WideString& str);
 std::wostream& operator<<(std::wostream& os, WideStringView str);
 std::ostream& operator<<(std::ostream& os, WideStringView str);
 
+// This is declared here for use in gtest-based tests but is defined in a test
+// support target. This should not be used in production code. Just use
+// operator<< from above instead.
+void PrintTo(const ByteString& str, std::ostream* os);
+
 }  // namespace fxcrt
 
 using WideString = fxcrt::WideString;
