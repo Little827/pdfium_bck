@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7e4be61_76145944",
+        "filename": "core/fxcrt/BUILD.gn",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-05-03T22:55:01Z",
+      "side": 1,
+      "message": "There exists test code that only makes sense in pdfium_unittest or pdfium_embeddertest, but not the other.",
+      "parentUuid": "f693cb27_81470431",
+      "range": {
+        "startLine": 172,
+        "startChar": 12,
+        "endLine": 172,
+        "endChar": 29
+      },
+      "revId": "338e8b17c256bbfa06c27570c26a05aed4d4092c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a23b980_84c41573",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-05-02T22:47:29Z",
       "side": 1,
       "message": "The built-in printer should be making use of the \u003c\u003c operator already:\n\n\"This printer knows how to print built-in C++ types, native arrays, STL containers, __and any type that supports the \u003c\u003c operator__.\" (emphasis mine)\nhttps://github.com/google/googletest/blob/main/docs/advanced.md#teaching-googletest-how-to-print-your-values\n\n\nI guess we need to figure out what\u0027s not working as expected here.",
+      "range": {
+        "startLine": 290,
+        "startChar": 63,
+        "endLine": 291,
+        "endChar": 33
+      },
+      "revId": "338e8b17c256bbfa06c27570c26a05aed4d4092c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4658526_2351c413",
+        "filename": "core/fxcrt/bytestring.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-05-03T22:55:01Z",
+      "side": 1,
+      "message": "gtest-printers.h says to use PrintTo() for container types. I haven\u0027t really looked in detail, but I suspect ByteString looks like a container type since it has begin() and end().",
+      "parentUuid": "2a23b980_84c41573",
       "range": {
         "startLine": 290,
         "startChar": 63,
@@ -70,6 +118,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "735ad052_e315669e",
+        "filename": "core/fxcrt/bytestring.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-05-03T22:55:01Z",
+      "side": 1,
+      "message": "I copied this from Chromium code. It is possible that the Chromium code copied from googletest, which uses `::std::ostream` all over the place.",
+      "parentUuid": "54d2d73c_73b61104",
+      "range": {
+        "startLine": 292,
+        "startChar": 36,
+        "endLine": 292,
+        "endChar": 38
+      },
+      "revId": "338e8b17c256bbfa06c27570c26a05aed4d4092c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fdc3ab3e_653594fb",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-05-02T22:47:29Z",
       "side": 1,
       "message": "Is this for std::ostream? From what I can tell, \u003costream\u003e would be a more minimal include.",
+      "range": {
+        "startLine": 5,
+        "startChar": 10,
+        "endLine": 5,
+        "endChar": 17
+      },
+      "revId": "338e8b17c256bbfa06c27570c26a05aed4d4092c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dafac7f0_6e842750",
+        "filename": "core/fxcrt/string_test_support.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-05-03T22:55:01Z",
+      "side": 1,
+      "message": "Looks like I got more not-so-great copy-pasta.",
+      "parentUuid": "fdc3ab3e_653594fb",
       "range": {
         "startLine": 5,
         "startChar": 10,
