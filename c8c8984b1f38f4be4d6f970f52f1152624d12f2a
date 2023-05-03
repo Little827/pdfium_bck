@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cce373c0_972451fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8821
+      },
+      "writtenOn": "2023-05-03T10:03:18Z",
+      "side": 1,
+      "message": "No access to dry runs and can\u0027t submit.",
+      "revId": "c8c8984b1f38f4be4d6f970f52f1152624d12f2a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
