@@ -16,6 +16,23 @@
       "message": "No access to dry runs and can\u0027t submit.",
       "revId": "c8c8984b1f38f4be4d6f970f52f1152624d12f2a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b21e5f73_378ce8f7",
+        "filename": "core/fxcrt/unowned_ptr.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-05-03T17:34:11Z",
+      "side": 1,
+      "message": "Wrap in `#if defined(ADDRESS_SANITIZER)`? (Move below line 14)",
+      "revId": "c8c8984b1f38f4be4d6f970f52f1152624d12f2a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
