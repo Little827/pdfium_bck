@@ -19,10 +19,10 @@ class CFX_UTF8Decoder {
 
  private:
   void ProcessByte(uint8_t byte);
-  void AppendCodePoint(uint32_t ch);
+  void AppendCodePoint(char32_t code_point);
 
   int m_PendingBytes = 0;
-  uint32_t m_PendingChar = 0;
+  char32_t m_PendingChar = 0;
   WideString m_Buffer;
 };
 
