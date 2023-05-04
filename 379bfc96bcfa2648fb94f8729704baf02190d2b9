@@ -90,6 +90,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "41ce5ad3_8e61ff02",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-05-04T01:02:29Z",
+      "side": 1,
+      "message": "WDYT about retiring FPDFImageObj_GetImageMetadata() in favor of more focused APIs?",
+      "parentUuid": "1356551e_17989b2d",
+      "revId": "379bfc96bcfa2648fb94f8729704baf02190d2b9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "99f3df2e_9f02fa4c",
@@ -103,6 +121,24 @@
       "writtenOn": "2023-05-04T00:52:51Z",
       "side": 1,
       "message": "I missed an issue here: the pointer on the LHS is unsigned int*, but the method on the RHS returns a signed int. I think this should be ok, as the dimensions are never negative, but using pdfium::base::checked_cast() can help ensure that\u0027s the case.",
+      "revId": "379bfc96bcfa2648fb94f8729704baf02190d2b9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71590894_275205e9",
+        "filename": "fpdfsdk/fpdf_editimg.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-05-04T01:02:29Z",
+      "side": 1,
+      "message": "Or maybe switch to int pointers. Most APIs do not use unsigned types for image dimensions.",
+      "parentUuid": "99f3df2e_9f02fa4c",
       "revId": "379bfc96bcfa2648fb94f8729704baf02190d2b9",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
