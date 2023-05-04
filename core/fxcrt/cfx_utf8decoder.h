@@ -18,12 +18,11 @@ class CFX_UTF8Decoder {
   WideString TakeResult();
 
  private:
-  void ProcessByte(uint8_t byte);
-  void AppendCodePoint(uint32_t ch);
+  void AppendCodePoint(char32_t code_point);
 
-  int m_PendingBytes = 0;
-  uint32_t m_PendingChar = 0;
-  WideString m_Buffer;
+  int pending_bytes_ = 0;
+  char32_t pending_code_point_ = 0;
+  WideString buffer_;
 };
 
 #endif  // CORE_FXCRT_CFX_UTF8DECODER_H_
