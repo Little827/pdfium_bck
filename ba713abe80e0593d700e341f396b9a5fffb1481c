@@ -117,6 +117,30 @@
       },
       "revId": "ba713abe80e0593d700e341f396b9a5fffb1481c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8173741_a26b7b84",
+        "filename": "core/fxcrt/cfx_utf8encoder.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-05-04T17:57:09Z",
+      "side": 1,
+      "message": "Ah, OK. Thanks for the explanation!",
+      "parentUuid": "d4398654_93179865",
+      "range": {
+        "startLine": 21,
+        "startChar": 26,
+        "endLine": 21,
+        "endChar": 39
+      },
+      "revId": "ba713abe80e0593d700e341f396b9a5fffb1481c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
