@@ -88,6 +88,23 @@
       "parentUuid": "1abf2e12_78c914f9",
       "revId": "379bfc96bcfa2648fb94f8729704baf02190d2b9",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99f3df2e_9f02fa4c",
+        "filename": "fpdfsdk/fpdf_editimg.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-05-04T00:52:51Z",
+      "side": 1,
+      "message": "I missed an issue here: the pointer on the LHS is unsigned int*, but the method on the RHS returns a signed int. I think this should be ok, as the dimensions are never negative, but using pdfium::base::checked_cast() can help ensure that\u0027s the case.",
+      "revId": "379bfc96bcfa2648fb94f8729704baf02190d2b9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
