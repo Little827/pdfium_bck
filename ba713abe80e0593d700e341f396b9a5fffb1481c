@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "842ab376_e60582fb",
+        "filename": "core/fxcrt/cfx_utf8encoder.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-05-04T17:28:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bbac07c4_d5766a13",
+      "range": {
+        "startLine": 15,
+        "startChar": 36,
+        "endLine": 15,
+        "endChar": 50
+      },
+      "revId": "ba713abe80e0593d700e341f396b9a5fffb1481c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df9ca5f5_c6ce78ae",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-05-04T16:03:34Z",
       "side": 1,
       "message": "`` is not necessary for function in a comment.",
+      "range": {
+        "startLine": 21,
+        "startChar": 26,
+        "endLine": 21,
+        "endChar": 39
+      },
+      "revId": "ba713abe80e0593d700e341f396b9a5fffb1481c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2da1640_0eae4572",
+        "filename": "core/fxcrt/cfx_utf8encoder.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-05-04T17:28:57Z",
+      "side": 1,
+      "message": "\"References to code in comments should be wrapped in `` pairs.\"\n\"Function names: `FooFunction()`. The trailing parens disambiguate against class names, and occasionally, English words.\"\nhttps://chromium.googlesource.com/chromium/src/+/refs/heads/main/styleguide/c++/c++-dos-and-donts.md#comment-style\n\nCan you clarify why you think this instance doesn\u0027t need backticks? As far as I know, there are no exceptions to this rule.",
+      "parentUuid": "df9ca5f5_c6ce78ae",
       "range": {
         "startLine": 21,
         "startChar": 26,
