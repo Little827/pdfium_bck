@@ -6,38 +6,60 @@
 
 #include "core/fxcrt/cfx_utf8encoder.h"
 
+#include "build/build_config.h"
+
 CFX_UTF8Encoder::CFX_UTF8Encoder() = default;
 
 CFX_UTF8Encoder::~CFX_UTF8Encoder() = default;
 
 void CFX_UTF8Encoder::Input(wchar_t unicodeAsWchar) {
-  uint32_t unicode = static_cast<uint32_t>(unicodeAsWchar);
-  if (unicode < 0x80) {
-    m_Buffer.push_back(unicode);
-  } else {
-    if (unicode >= 0x80000000)
-      return;
-
-    int nbytes = 0;
-    if (unicode < 0x800)
-      nbytes = 2;
-    else if (unicode < 0x10000)
-      nbytes = 3;
-    else if (unicode < 0x200000)
-      nbytes = 4;
-    else if (unicode < 0x4000000)
-      nbytes = 5;
-    else
-      nbytes = 6;
-
-    static const uint8_t prefix[] = {0xc0, 0xe0, 0xf0, 0xf8, 0xfc};
-    int order = 1 << ((nbytes - 1) * 6);
-    int code = unicodeAsWchar;
-    m_Buffer.push_back(prefix[nbytes - 2] | (code / order));
-    for (int i = 0; i < nbytes - 1; i++) {
-      code = code % order;
-      order >>= 6;
-      m_Buffer.push_back(0x80 | (code / order));
+#if defined(WCHAR_T_IS_UTF16)
+  if (unicodeAsWchar >= 0xD800 && unicodeAsWchar < 0xDC00) {
+    // High surrogate.
+    high_surrogate_ = unicodeAsWchar;
+  } else if (unicodeAsWchar >= 0xDC00 && unicodeAsWchar <= 0xDFFF) {
+    // Low surrogate.
+    if (high_surrogate_) {
+      char32_t code_point = unicodeAsWchar & 0x3FF;
+      code_point |= (high_surrogate_ & 0x3FF) << 10;
+      code_point += 0x10000;
+      high_surrogate_ = 0;
+      AppendCodePoint(code_point);
     }
+  } else {
+    high_surrogate_ = 0;
+    AppendCodePoint(unicodeAsWchar);
+  }
+#else
+  AppendCodePoint(unicodeAsWchar);
+#endif  // defined(WCHAR_T_IS_UTF16)
+}
+
+void CFX_UTF8Encoder::AppendCodePoint(char32_t code_point) {
+  if (code_point < 0x80) {
+    // 7-bit code points are unchanged in UTF-8.
+    buffer_.push_back(code_point);
+    return;
+  }
+
+  int nbytes;
+  if (code_point < 0x800) {
+    nbytes = 2;
+  } else if (code_point < 0x10000) {
+    nbytes = 3;
+  } else if (code_point < 0x110000) {
+    nbytes = 4;
+  } else {
+    // Invalid code point above U+10FFFF.
+    return;
+  }
+
+  static constexpr uint8_t kPrefix[] = {0xc0, 0xe0, 0xf0};
+  int order = 1 << ((nbytes - 1) * 6);
+  buffer_.push_back(kPrefix[nbytes - 2] | (code_point / order));
+  for (int i = 0; i < nbytes - 1; i++) {
+    code_point = code_point % order;
+    order >>= 6;
+    buffer_.push_back(0x80 | (code_point / order));
   }
 }

@@ -8,6 +8,8 @@
 
 #include <utility>
 
+#include "build/build_config.h"
+
 CFX_UTF8Decoder::CFX_UTF8Decoder(ByteStringView input) {
   for (char c : input) {
     ProcessByte(c);
@@ -20,8 +22,25 @@ WideString CFX_UTF8Decoder::TakeResult() {
   return std::move(m_Buffer);
 }
 
-void CFX_UTF8Decoder::AppendCodePoint(uint32_t ch) {
-  m_Buffer += static_cast<wchar_t>(ch);
+void CFX_UTF8Decoder::AppendCodePoint(char32_t code_point) {
+#if defined(WCHAR_T_IS_UTF16)
+  if (code_point < 0x10000) {
+    m_Buffer += static_cast<wchar_t>(code_point);
+  } else if (code_point < 0x110000) {
+    // Encode as UTF-16 surrogate pair.
+    code_point -= 0x10000;
+    m_Buffer += 0xD800 | (code_point >> 10);
+    m_Buffer += 0xDC00 | (code_point & 0x3FF);
+  } else {
+    // Invalid code point above U+10FFFF.
+  }
+#else
+  if (code_point < 0x110000) {
+    m_Buffer += static_cast<wchar_t>(code_point);
+  } else {
+    // Invalid code point above U+10FFFF.
+  }
+#endif  // defined(WCHAR_T_IS_UTF16)
 }
 
 void CFX_UTF8Decoder::ProcessByte(uint8_t byte) {
@@ -46,12 +65,6 @@ void CFX_UTF8Decoder::ProcessByte(uint8_t byte) {
   } else if (byte < 0xf8) {
     m_PendingBytes = 3;
     m_PendingChar = (byte & 0x07) << 18;
-  } else if (byte < 0xfc) {
-    m_PendingBytes = 4;
-    m_PendingChar = (byte & 0x03) << 24;
-  } else if (byte < 0xfe) {
-    m_PendingBytes = 5;
-    m_PendingChar = (byte & 0x01) << 30;
   } else {
     m_PendingBytes = 0;
   }
