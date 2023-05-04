@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbac07c4_d5766a13",
+        "filename": "core/fxcrt/cfx_utf8encoder.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-05-04T16:03:34Z",
+      "side": 1,
+      "message": "Convert this parameter to google style as well.",
+      "range": {
+        "startLine": 15,
+        "startChar": 36,
+        "endLine": 15,
+        "endChar": 50
+      },
+      "revId": "ba713abe80e0593d700e341f396b9a5fffb1481c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df9ca5f5_c6ce78ae",
+        "filename": "core/fxcrt/cfx_utf8encoder.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-05-04T16:03:34Z",
+      "side": 1,
+      "message": "`` is not necessary for function in a comment.",
+      "range": {
+        "startLine": 21,
+        "startChar": 26,
+        "endLine": 21,
+        "endChar": 39
+      },
+      "revId": "ba713abe80e0593d700e341f396b9a5fffb1481c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
