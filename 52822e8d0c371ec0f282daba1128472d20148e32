@@ -70,6 +70,30 @@
       },
       "revId": "52822e8d0c371ec0f282daba1128472d20148e32",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58f008ab_2288d50b",
+        "filename": "core/fxcrt/widestring.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-05-04T18:34:59Z",
+      "side": 1,
+      "message": "Done. And I fixed another copy-pasta error on line 309.",
+      "parentUuid": "64e746d9_cc37de38",
+      "range": {
+        "startLine": 307,
+        "startChar": 64,
+        "endLine": 308,
+        "endChar": 33
+      },
+      "revId": "52822e8d0c371ec0f282daba1128472d20148e32",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
