@@ -70,6 +70,30 @@
       },
       "revId": "21a2d02b19f860873140aa72bee3092d9dc4f94a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da043ddf_04d71193",
+        "filename": "core/fxcrt/fx_string_unittest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-05-04T18:31:58Z",
+      "side": 1,
+      "message": "I am Ok with either the painter or the paper icon. Thanks for the explanation.",
+      "parentUuid": "3885ae2f_15723119",
+      "range": {
+        "startLine": 48,
+        "startChar": 5,
+        "endLine": 48,
+        "endChar": 9
+      },
+      "revId": "21a2d02b19f860873140aa72bee3092d9dc4f94a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
