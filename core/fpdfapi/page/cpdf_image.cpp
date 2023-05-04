@@ -47,19 +47,21 @@ bool CPDF_Image::IsValidJpegBitsPerComponent(int32_t bpc) {
 }
 
 CPDF_Image::CPDF_Image(CPDF_Document* pDoc) : m_pDocument(pDoc) {
-  DCHECK(m_pDocument);
+  CHECK(m_pDocument);
 }
 
 CPDF_Image::CPDF_Image(CPDF_Document* pDoc, RetainPtr<CPDF_Stream> pStream)
-    : m_bIsInline(true), m_pDocument(pDoc), m_pStream(std::move(pStream)) {
-  DCHECK(m_pDocument);
+    : m_pDocument(pDoc), m_pStream(std::move(pStream)) {
+  CHECK(m_pDocument);
+  CHECK(m_pStream);
+  CHECK(m_pStream->IsInline());
   FinishInitialization();
 }
 
 CPDF_Image::CPDF_Image(CPDF_Document* pDoc, uint32_t dwStreamObjNum)
     : m_pDocument(pDoc),
       m_pStream(ToStream(pDoc->GetMutableIndirectObject(dwStreamObjNum))) {
-  DCHECK(m_pDocument);
+  CHECK(m_pDocument);
   FinishInitialization();
 }
 
@@ -92,6 +94,10 @@ RetainPtr<const CPDF_Stream> CPDF_Image::GetStream() const {
 
 RetainPtr<const CPDF_Dictionary> CPDF_Image::GetOC() const {
   return m_pOC;
+}
+
+bool CPDF_Image::IsInline() const {
+  return m_pStream && m_pStream->IsInline();
 }
 
 RetainPtr<CPDF_Dictionary> CPDF_Image::InitJPEG(

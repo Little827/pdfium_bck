@@ -41,7 +41,7 @@ class CPDF_Image final : public Retainable {
   int32_t GetPixelHeight() const { return m_Height; }
   int32_t GetPixelWidth() const { return m_Width; }
   uint32_t GetMatteColor() const { return m_MatteColor; }
-  bool IsInline() const { return m_bIsInline; }
+  bool IsInline() const;
   bool IsMask() const { return m_bIsMask; }
   bool IsInterpol() const { return m_bInterpolate; }
 
@@ -81,7 +81,6 @@ class CPDF_Image final : public Retainable {
   int32_t m_Height = 0;
   int32_t m_Width = 0;
   uint32_t m_MatteColor = 0;
-  bool m_bIsInline = false;
   bool m_bIsMask = false;
   bool m_bInterpolate = false;
   UnownedPtr<CPDF_Document> const m_pDocument;
