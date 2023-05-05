@@ -271,6 +271,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c6b57076_0e146d50",
+        "filename": "core/fpdfdoc/cpdf_annotlist_unittest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-05-05T21:06:57Z",
+      "side": 1,
+      "message": "The example from earlier in this thread demonstrates the issue:\n\n```\nExpected equality of these values:\n  \"xAaä€\"\n    Which is: 0x56022b9f2c84\n  GetDecodedContents(list.GetAt(1))\n    Which is: { \u0027A\u0027 (65, 0x41), \u0027a\u0027 (97, 0x61), \u0027\\xC3\u0027 (195), \u0027\\xA4\u0027 (164), \u0027\\xE2\u0027 (226), \u0027\\x82\u0027 (130), \u0027\\xAC\u0027 (172) }\n```\n\nAdding a PrintTo() fixes the second part (which prints the string as a collection), but it doesn\u0027t fix the first part (0x56022b9f2c84). For example, imagine the expected value was a constant or other expression, instead of a literal.",
+      "parentUuid": "18691268_26b46bfd",
+      "revId": "2949dd331f29e6911956f43968e47ec60bee7b56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8480084d_47057491",
         "filename": "core/fpdfdoc/cpdf_annotlist_unittest.cpp",
         "patchSetId": 7
