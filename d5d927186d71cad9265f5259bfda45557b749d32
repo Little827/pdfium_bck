@@ -70,6 +70,23 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e064e0a_2803b387",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 9186
+      },
+      "writtenOn": "2023-05-05T08:23:42Z",
+      "side": 1,
+      "message": "Summary:\n- These packages are required: `git pkg-config python3 xz-utils generate-ninja clang ninja-build`\n- Please retain the `gclient config --unmanaged https://pdfium.googlesource.com/pdfium.git` and `gclient sync` commands in the README\n- Please remove the `./build/install-build-deps.sh` command from the README, it is confirmed to be unnecessary\n- Please change the suggested `gn.args` line for goma to `use_goma \u003d false`",
+      "revId": "d5d927186d71cad9265f5259bfda45557b749d32",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "88f85d98_2c9a2257",
@@ -165,6 +182,23 @@
       "side": 1,
       "message": "After syncing gclient, the build files become available, and we can progress.\n\n\u003e iron@IRONSOFTWARE-DEV1:/repo/pdfium$ gclient config --unmanaged https://pdfium.googlesource.com/pdfium.git\niron@IRONSOFTWARE-DEV1:/repo/pdfium$ gclient sync\niron@IRONSOFTWARE-DEV1:/repo/pdfium$ gn args out/x64/Debug\nWaiting for editor on \"/home/iron/repo/pdfium/out/x64/Debug/args.gn\"...\nGenerating files...\nDone. Made 622 targets from 194 files in 108ms\n\n-------------------\n\nAs an aside, the full list of packages which are necessary on Ubuntu are `git pkg-config python3 xz-utils generate-ninja clang ninja-build`\n\n-------------------\n\nI\u0027d like to make one more comment regarding actual compilation, once I finish a bit more investigation 😊",
       "parentUuid": "fb790a59_84f64484",
+      "revId": "d5d927186d71cad9265f5259bfda45557b749d32",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a327eb66_e6bbacff",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 9186
+      },
+      "writtenOn": "2023-05-05T08:23:42Z",
+      "side": 1,
+      "message": "```suggestion\nuse_goma \u003d false  # Googlers only. Make sure goma is installed and running first.\n```\n\nI\u0027m not a googler, thus this I prefer this to default to false 😎",
       "revId": "d5d927186d71cad9265f5259bfda45557b749d32",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
