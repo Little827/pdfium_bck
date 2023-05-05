@@ -23,9 +23,10 @@ class CFX_CSSRuleCollection {
   class Data {
    public:
     Data(CFX_CSSSelector* pSel, CFX_CSSDeclaration* pDecl);
+    ~Data();
 
-    CFX_CSSSelector* const pSelector;
-    CFX_CSSDeclaration* const pDeclaration;
+    UnownedPtr<CFX_CSSSelector> const pSelector;
+    UnownedPtr<CFX_CSSDeclaration> const pDeclaration;
   };
 
   CFX_CSSRuleCollection();
