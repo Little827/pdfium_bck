@@ -231,6 +231,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1ee5c7e9_fbbf7dd4",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-05-05T18:28:05Z",
+      "side": 1,
+      "message": "I\u0027m not sure trying to be neutral makes any sense, as the package names are theoretically distribution-specific.",
+      "parentUuid": "1f43dd65_162541c7",
+      "revId": "d5d927186d71cad9265f5259bfda45557b749d32",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fb790a59_84f64484",
         "filename": "README.md",
         "patchSetId": 1
