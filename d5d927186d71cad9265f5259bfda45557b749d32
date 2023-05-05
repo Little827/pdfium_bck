@@ -105,6 +105,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1878486e_dd393b87",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8751
+      },
+      "writtenOn": "2023-05-05T17:17:23Z",
+      "side": 1,
+      "message": "1) I think pdfium downloads its own `clang` via DEPS, and `gn`/`ninja` come with depot_tools. However, perhaps somehow mentioning them would still make sense?\n2) See the other thread.\n3) This is exactly what this CL currently does, but as I say in [1], retaining a note to the script could even make sense if explained / put in the right context.\n4) Not really related to this particular CL, but I agree. Maybe it can be done on the way.\n\n[1] https://pdfium-review.googlesource.com/c/pdfium/+/106470/comment/d56d2c57_14cab1cc/",
+      "parentUuid": "5e064e0a_2803b387",
+      "revId": "d5d927186d71cad9265f5259bfda45557b749d32",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "88f85d98_2c9a2257",
