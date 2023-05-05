@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57d973af_354bfa05",
+        "filename": "core/fpdfapi/page/cpdf_imageobject.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-05-05T20:35:34Z",
+      "side": 1,
+      "message": "Never evaluates to true. https://pdfium-review.googlesource.com/107134",
+      "revId": "887e89d5fefeea0f54bb75a279f5b09d5c0d2fb6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1dc0754_f2af9139",
+        "filename": "core/fpdfapi/page/cpdf_imageobject.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-05-05T20:35:34Z",
+      "side": 1,
+      "message": "Maybe combine with line 107?",
+      "revId": "887e89d5fefeea0f54bb75a279f5b09d5c0d2fb6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73b2f799_0c9b0fe9",
+        "filename": "fpdfsdk/fpdf_editimg.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-05-05T20:35:34Z",
+      "side": 1,
+      "message": "mask_size",
+      "range": {
+        "startLine": 439,
+        "startChar": 18,
+        "endLine": 439,
+        "endChar": 26
+      },
+      "revId": "887e89d5fefeea0f54bb75a279f5b09d5c0d2fb6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09d06d73_fbb1e123",
+        "filename": "fpdfsdk/fpdf_editimg.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-05-05T20:35:34Z",
+      "side": 1,
+      "message": "Should this check and the check on line 440 be combined? Also, a size of 0x0 causes the function to return false, but 100x0 results in returning true. Why is that?",
+      "revId": "887e89d5fefeea0f54bb75a279f5b09d5c0d2fb6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
