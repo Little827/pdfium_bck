@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5260febe_fcccdcc5",
+        "filename": "build_overrides/pdfium.gni",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-05-05T21:02:03Z",
+      "side": 1,
+      "message": "How about \"Build PDFium with Chromium\u0027s raw_ptr restriction enforcing clang plugin.\"",
+      "revId": "8850bf73797dde9000d3003ac119fc883c0d709c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
