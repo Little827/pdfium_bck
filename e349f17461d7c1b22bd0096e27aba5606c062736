@@ -72,6 +72,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4239c07d_6bae22be",
+        "filename": "core/fxcrt/code_point_view.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-05-05T23:21:09Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "0aa32afe_99e51f59",
+      "range": {
+        "startLine": 31,
+        "startChar": 45,
+        "endLine": 31,
+        "endChar": 48
+      },
+      "revId": "e349f17461d7c1b22bd0096e27aba5606c062736",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b59ab81d_1e0520e8",
@@ -109,6 +133,30 @@
       "side": 1,
       "message": "Only by making the `Iterator(const wchar_t*, const wchar_t*)` constructor public, which seems worse.",
       "parentUuid": "b59ab81d_1e0520e8",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 31
+      },
+      "revId": "e349f17461d7c1b22bd0096e27aba5606c062736",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d253ffa6_39afbf2f",
+        "filename": "core/fxcrt/code_point_view.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-05-05T23:21:09Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "79426567_57bf360f",
       "range": {
         "startLine": 42,
         "startChar": 0,
@@ -260,6 +308,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f810bc2a_9a87f6be",
+        "filename": "core/fxcrt/code_point_view.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-05-05T23:21:09Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "c3a2f678_d147ead8",
+      "range": {
+        "startLine": 70,
+        "startChar": 4,
+        "endLine": 71,
+        "endChar": 24
+      },
+      "revId": "e349f17461d7c1b22bd0096e27aba5606c062736",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "399c53a5_53abb499",
@@ -297,6 +369,30 @@
       "side": 1,
       "message": "I had `WideStringView` originally, but it triggered the \"too complex constructor\" diagnostic. I want to keep this class lightweight, so I figured it was best to just retain the needed values.",
       "parentUuid": "399c53a5_53abb499",
+      "range": {
+        "startLine": 85,
+        "startChar": 2,
+        "endLine": 86,
+        "endChar": 22
+      },
+      "revId": "e349f17461d7c1b22bd0096e27aba5606c062736",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a44f955_626ea92e",
+        "filename": "core/fxcrt/code_point_view.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-05-05T23:21:09Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "06f36158_c4967fc2",
       "range": {
         "startLine": 85,
         "startChar": 2,
