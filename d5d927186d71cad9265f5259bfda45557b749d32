@@ -153,6 +153,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1f43dd65_162541c7",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 8751
+      },
+      "writtenOn": "2023-05-05T17:06:06Z",
+      "side": 1,
+      "message": "I think keeping this package manager neutral is good.\nHowever, I\u0027d consider putting the deps on a single line for easier pasting, and to save some space.",
+      "parentUuid": "361534cd_343032cd",
+      "revId": "d5d927186d71cad9265f5259bfda45557b749d32",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fb790a59_84f64484",
         "filename": "README.md",
         "patchSetId": 1
