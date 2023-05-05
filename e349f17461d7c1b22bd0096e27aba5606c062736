@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b56ee60_21e75171",
+        "filename": "core/fxcrt/code_point_view.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-05-05T22:53:59Z",
+      "side": 1,
+      "message": "DCHECK not strong enough for the +2 case? Can this skip past end?",
+      "range": {
+        "startLine": 31,
+        "startChar": 45,
+        "endLine": 31,
+        "endChar": 48
+      },
+      "revId": "e349f17461d7c1b22bd0096e27aba5606c062736",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b59ab81d_1e0520e8",
+        "filename": "core/fxcrt/code_point_view.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-05-05T22:53:59Z",
+      "side": 1,
+      "message": "can we avoid this?",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 31
+      },
+      "revId": "e349f17461d7c1b22bd0096e27aba5606c062736",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0fe4487_013f0224",
+        "filename": "core/fxcrt/code_point_view.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-05-05T22:53:59Z",
+      "side": 1,
+      "message": "maybe \u003e\u003d comparison here?",
+      "range": {
+        "startLine": 50,
+        "startChar": 19,
+        "endLine": 50,
+        "endChar": 21
+      },
+      "revId": "e349f17461d7c1b22bd0096e27aba5606c062736",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1861e5ab_f73cd24d",
+        "filename": "core/fxcrt/code_point_view.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-05-05T22:53:59Z",
+      "side": 1,
+      "message": "maybe \u003c comparison here?",
+      "range": {
+        "startLine": 59,
+        "startChar": 16,
+        "endLine": 59,
+        "endChar": 24
+      },
+      "revId": "e349f17461d7c1b22bd0096e27aba5606c062736",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f146d25_4109d027",
+        "filename": "core/fxcrt/code_point_view.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-05-05T22:53:59Z",
+      "side": 1,
+      "message": "Can we write this in terms of span\u003c\u003e?",
+      "range": {
+        "startLine": 70,
+        "startChar": 4,
+        "endLine": 71,
+        "endChar": 24
+      },
+      "revId": "e349f17461d7c1b22bd0096e27aba5606c062736",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "399c53a5_53abb499",
+        "filename": "core/fxcrt/code_point_view.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-05-05T22:53:59Z",
+      "side": 1,
+      "message": "Maybe just store the widestringview and extract these as parts of begin/end?",
+      "range": {
+        "startLine": 85,
+        "startChar": 2,
+        "endLine": 86,
+        "endChar": 22
+      },
+      "revId": "e349f17461d7c1b22bd0096e27aba5606c062736",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
