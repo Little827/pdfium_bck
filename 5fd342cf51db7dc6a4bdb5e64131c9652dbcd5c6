@@ -16,6 +16,24 @@
       "message": "Ok, LG except for the \u003c\u003d checks.",
       "revId": "5fd342cf51db7dc6a4bdb5e64131c9652dbcd5c6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33b35f11_6f285f31",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-05-05T23:28:34Z",
+      "side": 1,
+      "message": "Thanks for the review!",
+      "parentUuid": "b63ed2ca_6747a74a",
+      "revId": "5fd342cf51db7dc6a4bdb5e64131c9652dbcd5c6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }

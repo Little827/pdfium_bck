@@ -214,6 +214,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa4650f7_32dcfb05",
+        "filename": "core/fxcrt/code_point_view.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-05-05T23:28:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf799ef2_60326e8a",
+      "range": {
+        "startLine": 50,
+        "startChar": 19,
+        "endLine": 50,
+        "endChar": 21
+      },
+      "revId": "e349f17461d7c1b22bd0096e27aba5606c062736",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1861e5ab_f73cd24d",
@@ -251,6 +275,30 @@
       "side": 1,
       "message": "See previous comment about `\u003e\u003d`.",
       "parentUuid": "1861e5ab_f73cd24d",
+      "range": {
+        "startLine": 59,
+        "startChar": 16,
+        "endLine": 59,
+        "endChar": 24
+      },
+      "revId": "e349f17461d7c1b22bd0096e27aba5606c062736",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90e1d4ef_2bd1187a",
+        "filename": "core/fxcrt/code_point_view.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-05-05T23:28:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2fc518d9_40bb1ba4",
       "range": {
         "startLine": 59,
         "startChar": 16,
