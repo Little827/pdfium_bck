@@ -69,6 +69,24 @@
       "message": "Please send more CLs if you see any other string types that are not printed correctly.",
       "revId": "c1eb1d688a3fa302ff80ff30f92cd0a7aee03533",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3774902a_538c0e7e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-05-05T23:39:01Z",
+      "side": 1,
+      "message": "👍 Thanks for fixing this!",
+      "parentUuid": "9df7e519_ab05b423",
+      "revId": "c1eb1d688a3fa302ff80ff30f92cd0a7aee03533",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ],
   "submitRequirementResults": [
