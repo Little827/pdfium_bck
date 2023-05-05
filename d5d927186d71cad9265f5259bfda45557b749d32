@@ -206,6 +206,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e4c317c9_89a73983",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 8751
+      },
+      "writtenOn": "2023-05-05T16:57:37Z",
+      "side": 1,
+      "message": "However, perhaps it would be good to note `gclient` as well, to explain how an existing checkout of pdfium may be synced.",
+      "parentUuid": "a8451ca3_e576c48b",
+      "revId": "d5d927186d71cad9265f5259bfda45557b749d32",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a327eb66_e6bbacff",
         "filename": "README.md",
         "patchSetId": 1
