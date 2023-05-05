@@ -52,6 +52,23 @@
       "parentUuid": "7f8008bd_d0503ad8",
       "revId": "c1eb1d688a3fa302ff80ff30f92cd0a7aee03533",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9df7e519_ab05b423",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-05-05T23:02:29Z",
+      "side": 1,
+      "message": "Please send more CLs if you see any other string types that are not printed correctly.",
+      "revId": "c1eb1d688a3fa302ff80ff30f92cd0a7aee03533",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ],
   "submitRequirementResults": [
