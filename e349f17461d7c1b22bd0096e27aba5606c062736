@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0aa32afe_99e51f59",
+        "filename": "core/fxcrt/code_point_view.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-05-05T23:16:02Z",
+      "side": 1,
+      "message": "The one exception is `kSentinel`, which is `0xFFFFFFFF`, but that only happens when `current_ \u003d\u003d end_`.",
+      "parentUuid": "1d07d1bd_0a94a227",
+      "range": {
+        "startLine": 31,
+        "startChar": 45,
+        "endLine": 31,
+        "endChar": 48
+      },
+      "revId": "e349f17461d7c1b22bd0096e27aba5606c062736",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b59ab81d_1e0520e8",
         "filename": "core/fxcrt/code_point_view.h",
         "patchSetId": 1
