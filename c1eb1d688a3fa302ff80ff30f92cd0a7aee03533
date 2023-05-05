@@ -16,6 +16,24 @@
       "message": "Not sure why, but this didn\u0027t seem to do anything.\n\nI introduced an extra \"y\" character into the fxstring.FXUTF8Encode test:\n\n```\n[ RUN      ] fxstring.FXUTF8Encode\n../../core/fxcrt/fx_string_unittest.cpp:42: Failure\nExpected equality of these values:\n  \"xy\" \"\\u0080\" \"\\u00ff\" \"\\ud7ff\" \"\\ue000\" \"\\uff2c\" \"\\uffff\" \"y\"\n    Which is: 0x560e0ac8216b\n  FX_UTF8Encode(L\"x\" L\"\\u0080\" L\"\\u00ff\" L\"\\ud7ff\" L\"\\ue000\" L\"\\uff2c\" L\"\\uffff\" L\"y\")\n    Which is: xÿ퟿Ｌ￿y\nStack trace:\n  0x560e0b589c45: fxstring_FXUTF8Encode_Test::TestBody()\n  0x560e0b980ebb: testing::internal::HandleSehExceptionsInMethodIfSupported\u003c\u003e()\n  0x560e0b968e27: testing::internal::HandleExceptionsInMethodIfSupported\u003c\u003e()\n  0x560e0b9566a1: testing::Test::Run()\n  0x560e0b956dc2: testing::TestInfo::Run()\n... Google Test internal frames ...\n\n[  FAILED  ] fxstring.FXUTF8Encode (18 ms)\n```\n\nI tried replacing the string literal with a const char* constant, and as expected, nothing changed.",
       "revId": "c1eb1d688a3fa302ff80ff30f92cd0a7aee03533",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f8008bd_d0503ad8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-05-05T22:52:44Z",
+      "side": 1,
+      "message": "Not sure why it\u0027s not working for you. Here\u0027s what the test printed for me locally:\n\n```\n[ RUN      ] fxstring.FXUTF8Encode\n../../core/fxcrt/fx_string_unittest.cpp:42: Failure\nExpected equality of these values:\n  \"x\" \"\\u0080\" \"\\u00ff\" \"\\ud7ff\" \"\\ue000\" \"\\uff2c\" \"\\uffff\" \"yy\"\n    Which is: \"x\\xC2\\x80\\xC3\\xBF\\xED\\x9F\\xBF\\xEE\\x80\\x80\\xEF\\xBC\\xAC\\xEF\\xBF\\xBFyy\"\n    As Text: \"xÿ퟿Ｌ￿yy\"\n  FX_UTF8Encode(L\"x\" L\"\\u0080\" L\"\\u00ff\" L\"\\ud7ff\" L\"\\ue000\" L\"\\uff2c\" L\"\\uffff\" L\"y\")\n    Which is: xÿ퟿Ｌ￿y\nStack trace:\n  0x55ee3d68b0b5: fxstring_FXUTF8Encode_Test::TestBody()\n  0x55ee3ffda2eb: testing::internal::HandleSehExceptionsInMethodIfSupported\u003c\u003e()\n  0x55ee3ffc50c7: testing::internal::HandleExceptionsInMethodIfSupported\u003c\u003e()\n  0x55ee3ffb2ac1: testing::Test::Run()\n  0x55ee3ffb31e2: testing::TestInfo::Run()\n... Google Test internal frames ...\n\n[  FAILED  ] fxstring.FXUTF8Encode (83 ms)\n```",
+      "parentUuid": "2b3bb6ee_8f0fdc2c",
+      "revId": "c1eb1d688a3fa302ff80ff30f92cd0a7aee03533",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
