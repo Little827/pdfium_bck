@@ -149,6 +149,24 @@
       "message": "```suggestion\ngclient config --unmanaged https://pdfium.googlesource.com/pdfium.git\ngclient sync\n```\n\nI\u0027m not sure you can omit the gclient commands as gclient is responsible for populating pdfium/build repo, which is referenced by BUILD.gn\n\n\u003e iron@IRONSOFTWARE-DEV1:$ lsb_release -a\nNo LSB modules are available.\nDistributor ID: Ubuntu\nDescription:    Ubuntu 22.04.2 LTS\nRelease:        22.04\nCodename:       jammy\niron@IRONSOFTWARE-DEV1:$ sudo apt-get install git pkg-config python3 xz-utils generate-ninja clang ninja-build -y\niron@IRONSOFTWARE-DEV1:$ mkdir repo\niron@IRONSOFTWARE-DEV1:$ cd repo\niron@IRONSOFTWARE-DEV1:/repo$ git clone https://pdfium.googlesource.com/pdfium/\niron@IRONSOFTWARE-DEV1:/repo$ cd pdfium\niron@IRONSOFTWARE-DEV1:/repo/pdfium$ gn args out/x64/Debug\nWaiting for editor on \"/home/iron/repo/pdfium/out/x64/Debug/args.gn\"...\nGenerating files...\nERROR at //BUILD.gn:5:1: Unable to load \"/home/iron/repo/pdfium/build/config/clang/clang.gni\".\nimport(\"//build/config/clang/clang.gni\")\n^--------------------------------------",
       "revId": "d5d927186d71cad9265f5259bfda45557b749d32",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47a7b3a7_93c95cd6",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 9186
+      },
+      "writtenOn": "2023-05-05T07:42:26Z",
+      "side": 1,
+      "message": "After syncing gclient, the build files become available, and we can progress.\n\n\u003e iron@IRONSOFTWARE-DEV1:/repo/pdfium$ gclient config --unmanaged https://pdfium.googlesource.com/pdfium.git\niron@IRONSOFTWARE-DEV1:/repo/pdfium$ gclient sync\niron@IRONSOFTWARE-DEV1:/repo/pdfium$ gn args out/x64/Debug\nWaiting for editor on \"/home/iron/repo/pdfium/out/x64/Debug/args.gn\"...\nGenerating files...\nDone. Made 622 targets from 194 files in 108ms\n\n-------------------\n\nAs an aside, the full list of packages which are necessary on Ubuntu are `git pkg-config python3 xz-utils generate-ninja clang ninja-build`\n\n-------------------\n\nI\u0027d like to make one more comment regarding actual compilation, once I finish a bit more investigation 😊",
+      "parentUuid": "fb790a59_84f64484",
+      "revId": "d5d927186d71cad9265f5259bfda45557b749d32",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
