@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a5fbb4a_dda68c23",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-05-05T18:10:36Z",
+      "side": 1,
+      "message": "LG, and we\u0027ve known forever that this impl was deficient, but I\u0027d assumed we\u0027d piggyback on ICU to get proper functionality if it ever mattered and we were eager do do something about it.",
+      "revId": "7014c95eecc2dd755ffdbb26ec79a998446099e2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
