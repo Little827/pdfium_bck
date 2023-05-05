@@ -87,6 +87,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "25f5e6bc_abed1837",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 9186
+      },
+      "writtenOn": "2023-05-05T17:14:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "edafc04e_518cbd7c",
+      "revId": "d5d927186d71cad9265f5259bfda45557b749d32",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "88f85d98_2c9a2257",
@@ -124,6 +142,30 @@
       "side": 1,
       "message": "For example, the Chromium instructions list git and Python 3.6+ as system requirements before doing anything, so it seems redundant to mention them again here:\nhttps://chromium.googlesource.com/chromium/src/+/main/docs/linux/build_instructions.md#system-requirements",
       "parentUuid": "88f85d98_2c9a2257",
+      "range": {
+        "startLine": 42,
+        "startChar": 60,
+        "endLine": 43,
+        "endChar": 4
+      },
+      "revId": "d5d927186d71cad9265f5259bfda45557b749d32",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ffce1f9_d299d38f",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 9186
+      },
+      "writtenOn": "2023-05-05T17:14:12Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "1dad02f0_e70a2cb9",
       "range": {
         "startLine": 42,
         "startChar": 60,
@@ -236,6 +278,23 @@
       "side": 1,
       "message": "However, perhaps it would be good to note `gclient` as well, to explain how an existing checkout of pdfium may be synced.",
       "parentUuid": "a8451ca3_e576c48b",
+      "revId": "d5d927186d71cad9265f5259bfda45557b749d32",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "753e0e27_c58043a1",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 9186
+      },
+      "writtenOn": "2023-05-05T17:14:12Z",
+      "side": 1,
+      "message": "oh! I was wondering where you got `fetch` from and initially confused it with some git tool before concluding that you intended the phrase in a sort of instructional manner and it wasn\u0027t a tool at all! As a \"casual consumer\" I\u0027m not sure it\u0027s quite obvious that fetch is part of Google tools.\n\nHowever, now that you mentioned it, I will iterate again only using `fetch`. I think it\u0027s fine to omit client (I assume `fetch` is slimmer anyway?)",
       "revId": "d5d927186d71cad9265f5259bfda45557b749d32",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
