@@ -188,6 +188,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a8451ca3_e576c48b",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 8751
+      },
+      "writtenOn": "2023-05-05T16:47:01Z",
+      "side": 1,
+      "message": "While it\u0027s true you can\u0027t use `git` directly to get the pdfium sources, `fetch` is a separate tool designed specifically to get google projects, so this shortcut is fine. Call `./fetch --help` in `depot_tools/` for more info.",
+      "parentUuid": "47a7b3a7_93c95cd6",
+      "revId": "d5d927186d71cad9265f5259bfda45557b749d32",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a327eb66_e6bbacff",
         "filename": "README.md",
         "patchSetId": 1
