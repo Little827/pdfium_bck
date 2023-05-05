@@ -41,6 +41,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "112ac548_3d8b59f6",
+        "filename": "core/fpdfapi/page/cpdf_imageobject.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 8606
+      },
+      "writtenOn": "2023-05-05T08:27:26Z",
+      "side": 1,
+      "message": "removed this fragment",
+      "parentUuid": "a4d5981d_4bdcccb6",
+      "range": {
+        "startLine": 64,
+        "startChar": 51,
+        "endLine": 64,
+        "endChar": 59
+      },
+      "revId": "d6e070b10919035e7903966e4a30eda900c960df",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e3962676_318c14d8",
@@ -54,6 +78,24 @@
       "writtenOn": "2023-05-04T01:22:45Z",
       "side": 1,
       "message": "Return a const-ref? Then the caller can also use a const-ref.",
+      "revId": "d6e070b10919035e7903966e4a30eda900c960df",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0d623ec_3f0b66fb",
+        "filename": "core/fpdfapi/page/cpdf_imageobject.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 8606
+      },
+      "writtenOn": "2023-05-05T08:27:26Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "e3962676_318c14d8",
       "revId": "d6e070b10919035e7903966e4a30eda900c960df",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -75,6 +117,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f48da451_f93013c1",
+        "filename": "core/fpdfapi/page/cpdf_streamcontentparser.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 837,
+      "author": {
+        "id": 8606
+      },
+      "writtenOn": "2023-05-05T08:27:26Z",
+      "side": 1,
+      "message": "moved",
+      "parentUuid": "3e301dd6_a5c8b00b",
+      "revId": "d6e070b10919035e7903966e4a30eda900c960df",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "abee8aa4_92a19b13",
@@ -88,6 +148,24 @@
       "writtenOn": "2023-05-04T01:22:45Z",
       "side": 1,
       "message": "Negate the conditional and do an early return, similar to the checks above.",
+      "revId": "d6e070b10919035e7903966e4a30eda900c960df",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d15a64f_720f4cfe",
+        "filename": "core/fpdfapi/page/cpdf_streamcontentparser.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 848,
+      "author": {
+        "id": 8606
+      },
+      "writtenOn": "2023-05-05T08:27:26Z",
+      "side": 1,
+      "message": "fixed in CPDF_ImageObject",
+      "parentUuid": "abee8aa4_92a19b13",
       "revId": "d6e070b10919035e7903966e4a30eda900c960df",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -109,6 +187,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ba4bfac_38af276e",
+        "filename": "core/fpdfapi/page/cpdf_streamcontentparser.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 8606
+      },
+      "writtenOn": "2023-05-05T08:27:26Z",
+      "side": 1,
+      "message": "removed this fragment",
+      "parentUuid": "6e64dfa2_1602578c",
+      "revId": "d6e070b10919035e7903966e4a30eda900c960df",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2e704350_2342020b",
@@ -122,6 +218,24 @@
       "writtenOn": "2023-05-04T01:22:45Z",
       "side": 1,
       "message": "Let\u0027s also check_cast these sign conversions, or consider using signed ints in the public API.",
+      "revId": "d6e070b10919035e7903966e4a30eda900c960df",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d72162d1_1384c41d",
+        "filename": "fpdfsdk/fpdf_editimg.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 8606
+      },
+      "writtenOn": "2023-05-05T08:27:26Z",
+      "side": 1,
+      "message": "added check",
+      "parentUuid": "2e704350_2342020b",
       "revId": "d6e070b10919035e7903966e4a30eda900c960df",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
