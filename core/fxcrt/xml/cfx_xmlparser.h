@@ -11,6 +11,8 @@
 
 #include "core/fxcrt/data_vector.h"
 #include "core/fxcrt/retain_ptr.h"
+#include "core/fxcrt/unowned_ptr.h"
+#include "core/fxcrt/unowned_ptr_exclusion.h"
 #include "core/fxcrt/widestring.h"
 #include "third_party/abseil-cpp/absl/types/optional.h"
 
@@ -53,7 +55,7 @@ class CFX_XMLParser final {
   void ProcessTextChar(wchar_t ch);
   void ProcessTargetData();
 
-  CFX_XMLNode* current_node_ = nullptr;
+  UNOWNED_PTR_EXCLUSION CFX_XMLNode* current_node_;  // Tree destruction order.
   RetainPtr<CFX_SeekableStreamProxy> stream_;
   DataVector<wchar_t> current_text_;
   size_t xml_plane_size_ = 1024;
