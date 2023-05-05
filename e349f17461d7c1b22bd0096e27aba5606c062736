@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1d07d1bd_0a94a227",
+        "filename": "core/fxcrt/code_point_view.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-05-05T23:11:23Z",
+      "side": 1,
+      "message": "No, because then `code_point_` can\u0027t be `\u003e\u003d 0x10000`. (Getting into this state requires `current_` and `current_ + 1` to be `\u003c end_`.)\n\nWe could rewrite this as follows instead:\n\n```\nif (code_point_ \u003c 0x10000) {\n  DCHECK_LT(current_, end_);\n  ...\n} else {\n  DCHECK_LT(current_ + 1, end_);\n  ...\n}\n```\n\nThe main thing I\u0027m guarding against here is invoking `++` too many times, though, not an error in the internal logic, so I don\u0027t think it\u0027s too beneficial.",
+      "parentUuid": "6b56ee60_21e75171",
+      "range": {
+        "startLine": 31,
+        "startChar": 45,
+        "endLine": 31,
+        "endChar": 48
+      },
+      "revId": "e349f17461d7c1b22bd0096e27aba5606c062736",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b59ab81d_1e0520e8",
         "filename": "core/fxcrt/code_point_view.h",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2023-05-05T22:53:59Z",
       "side": 1,
       "message": "can we avoid this?",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 31
+      },
+      "revId": "e349f17461d7c1b22bd0096e27aba5606c062736",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79426567_57bf360f",
+        "filename": "core/fxcrt/code_point_view.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-05-05T23:11:23Z",
+      "side": 1,
+      "message": "Only by making the `Iterator(const wchar_t*, const wchar_t*)` constructor public, which seems worse.",
+      "parentUuid": "b59ab81d_1e0520e8",
       "range": {
         "startLine": 42,
         "startChar": 0,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cf799ef2_60326e8a",
+        "filename": "core/fxcrt/code_point_view.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-05-05T23:11:23Z",
+      "side": 1,
+      "message": "That\u0027s fine with `wchar_t*`, but I tried to write this code to support generic iterators (in case we want to make this a template that works with arbitrary `wchar_t` containers).\n\nI doubt we\u0027ll ever need that, so I can switch this if you still prefer `\u003e\u003d` here.",
+      "parentUuid": "e0fe4487_013f0224",
+      "range": {
+        "startLine": 50,
+        "startChar": 19,
+        "endLine": 50,
+        "endChar": 21
+      },
+      "revId": "e349f17461d7c1b22bd0096e27aba5606c062736",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1861e5ab_f73cd24d",
         "filename": "core/fxcrt/code_point_view.h",
         "patchSetId": 1
@@ -83,6 +155,30 @@
       "writtenOn": "2023-05-05T22:53:59Z",
       "side": 1,
       "message": "maybe \u003c comparison here?",
+      "range": {
+        "startLine": 59,
+        "startChar": 16,
+        "endLine": 59,
+        "endChar": 24
+      },
+      "revId": "e349f17461d7c1b22bd0096e27aba5606c062736",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fc518d9_40bb1ba4",
+        "filename": "core/fxcrt/code_point_view.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-05-05T23:11:23Z",
+      "side": 1,
+      "message": "See previous comment about `\u003e\u003d`.",
+      "parentUuid": "1861e5ab_f73cd24d",
       "range": {
         "startLine": 59,
         "startChar": 16,
@@ -118,6 +214,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c3a2f678_d147ead8",
+        "filename": "core/fxcrt/code_point_view.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-05-05T23:11:23Z",
+      "side": 1,
+      "message": "No, because `current_` needs to be mutable (and `span` uses an offset + size representation anyway, so it\u0027s not a perfect fit).",
+      "parentUuid": "5f146d25_4109d027",
+      "range": {
+        "startLine": 70,
+        "startChar": 4,
+        "endLine": 71,
+        "endChar": 24
+      },
+      "revId": "e349f17461d7c1b22bd0096e27aba5606c062736",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "399c53a5_53abb499",
         "filename": "core/fxcrt/code_point_view.h",
         "patchSetId": 1
@@ -129,6 +249,30 @@
       "writtenOn": "2023-05-05T22:53:59Z",
       "side": 1,
       "message": "Maybe just store the widestringview and extract these as parts of begin/end?",
+      "range": {
+        "startLine": 85,
+        "startChar": 2,
+        "endLine": 86,
+        "endChar": 22
+      },
+      "revId": "e349f17461d7c1b22bd0096e27aba5606c062736",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06f36158_c4967fc2",
+        "filename": "core/fxcrt/code_point_view.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-05-05T23:11:23Z",
+      "side": 1,
+      "message": "I had `WideStringView` originally, but it triggered the \"too complex constructor\" diagnostic. I want to keep this class lightweight, so I figured it was best to just retain the needed values.",
+      "parentUuid": "399c53a5_53abb499",
       "range": {
         "startLine": 85,
         "startChar": 2,
