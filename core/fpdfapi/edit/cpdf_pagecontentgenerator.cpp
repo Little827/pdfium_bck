@@ -548,6 +548,18 @@ void CPDF_PageContentGenerator::ProcessGraphics(fxcrt::ostringstream* buf,
   CFX_GraphStateData::LineJoin lineJoin = pPageObj->m_GraphState.GetLineJoin();
   if (lineJoin != CFX_GraphStateData::LineJoin::kMiter)
     *buf << static_cast<int>(lineJoin) << " j ";
+  if (pPageObj->m_GraphState.GetLineDashSize()) {
+    *buf << "[";
+    std::vector<float> dashArray = pPageObj->m_GraphState.GetLineDashArray();
+    for (size_t i = 0; i < dashArray.size(); ++i) {
+      if (i > 0) {
+        *buf << " ";
+      }
+      WriteFloat(*buf, dashArray[i]);
+    }
+    *buf << "] ";
+    WriteFloat(*buf, pPageObj->m_GraphState.GetLineDashPhase()) << " d ";
+  }
 
   const CPDF_ClipPath& clip_path = pPageObj->m_ClipPath;
   if (clip_path.HasRef()) {
