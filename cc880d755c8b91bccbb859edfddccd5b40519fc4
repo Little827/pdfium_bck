@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1c6a886_1f9da476",
+        "filename": "core/fxcrt/css/cfx_cssrulecollection.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-05-06T02:08:26Z",
+      "side": 1,
+      "message": "IWYU",
+      "revId": "cc880d755c8b91bccbb859edfddccd5b40519fc4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
