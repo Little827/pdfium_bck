@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "704c7aad_134efb0e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 9186
+      },
+      "writtenOn": "2023-05-07T03:01:43Z",
+      "side": 1,
+      "message": "param name should be changed as `p...` is likely reserved for pointers",
+      "revId": "47f76280a855f93278770490dd3af80d545a69f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cfc70e5_bec3cc52",
+        "filename": "core/fpdfapi/parser/cpdf_security_handler.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 9186
+      },
+      "writtenOn": "2023-05-07T03:01:43Z",
+      "side": 1,
+      "message": "my colleague pointed out this parameter should be `bGetUserPerms` or maybe just `get_user_perms`, as `p...` is reserved for pointers 😊",
+      "revId": "47f76280a855f93278770490dd3af80d545a69f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
