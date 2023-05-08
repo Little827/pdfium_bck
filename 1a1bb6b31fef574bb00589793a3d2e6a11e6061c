@@ -88,6 +88,24 @@
       "parentUuid": "1763d95c_766af992",
       "revId": "1a1bb6b31fef574bb00589793a3d2e6a11e6061c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5c9b229_67f4c35e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2023-05-08T22:56:38Z",
+      "side": 1,
+      "message": "Ack, I can do another roll once it\u0027s appropriate to do so.",
+      "parentUuid": "f4f05c04_e8bbb06c",
+      "revId": "1a1bb6b31fef574bb00589793a3d2e6a11e6061c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
