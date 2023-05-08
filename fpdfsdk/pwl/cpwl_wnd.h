@@ -118,7 +118,7 @@ class CPWL_Wnd : public Observable {
     CPWL_Dash sDash;
 
     // Ignore, used internally only:
-    CPWL_MsgControl* pMsgControl = nullptr;
+    UnownedPtr<CPWL_MsgControl> pMsgControl;
     IPWL_FillerNotify::CursorStyle eCursorType =
         IPWL_FillerNotify::CursorStyle::kArrow;
   };
