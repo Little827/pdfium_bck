@@ -35,6 +35,23 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2782c59_bdf6a403",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-05-08T23:25:53Z",
+      "side": 1,
+      "message": "As with, https://pdfium-review.googlesource.com/c/107210, this is effectively dead code and not useful in its current state.",
+      "revId": "47f76280a855f93278770490dd3af80d545a69f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4cfc70e5_bec3cc52",
@@ -48,6 +65,41 @@
       "writtenOn": "2023-05-07T03:01:43Z",
       "side": 1,
       "message": "my colleague pointed out this parameter should be `bGetUserPerms` or maybe just `get_user_perms`, as `p...` is reserved for pointers 😊",
+      "revId": "47f76280a855f93278770490dd3af80d545a69f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01243ec3_fbdbeceb",
+        "filename": "core/fpdfapi/parser/cpdf_security_handler.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-05-08T23:25:53Z",
+      "side": 1,
+      "message": "Please try to use Google C++ variables in new code. https://google.github.io/styleguide/cppguide.html#Variable_Names",
+      "parentUuid": "4cfc70e5_bec3cc52",
+      "revId": "47f76280a855f93278770490dd3af80d545a69f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b440e068_ad42f13f",
+        "filename": "core/fpdfapi/parser/cpdf_security_handler.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-05-08T23:25:53Z",
+      "side": 1,
+      "message": "While they are not banned, PDFium prefers not to use default arguments. See style guide notes here: https://google.github.io/styleguide/cppguide.html#Default_Arguments",
       "revId": "47f76280a855f93278770490dd3af80d545a69f7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
