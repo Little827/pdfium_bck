@@ -16,6 +16,23 @@
       "message": "Kindly please review this addition of CPDF_Image::GetMutableStream",
       "revId": "48b9b83d75b086dec4d5ea6358d5dbe99d09cb49",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a89f7ac4_fbb196af",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-05-08T23:14:46Z",
+      "side": 1,
+      "message": "As this new method has no callers in PDFium, it is effectively dead code. I would suggest holding on to it in your local tree, or contribute it as part of larger CL that can make use of it.",
+      "revId": "48b9b83d75b086dec4d5ea6358d5dbe99d09cb49",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
