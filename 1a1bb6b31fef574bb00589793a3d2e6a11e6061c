@@ -106,6 +106,24 @@
       "parentUuid": "f4f05c04_e8bbb06c",
       "revId": "1a1bb6b31fef574bb00589793a3d2e6a11e6061c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f444a844_18a4f262",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8461
+      },
+      "writtenOn": "2023-05-08T23:25:07Z",
+      "side": 1,
+      "message": "Running `testing/tools/run_pixel_tests.py --run-skia-gold` locally with the patch applied seems to work - the tests fail, but due to an image mismatch rather than any sort of Python syntax/logic errors.\n\nShould hold off on rolling build again until https://chromium-review.googlesource.com/c/chromium/src/+/4514682 lands, though, so that only one roll is necessary.",
+      "parentUuid": "b5c9b229_67f4c35e",
+      "revId": "1a1bb6b31fef574bb00589793a3d2e6a11e6061c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
