@@ -222,17 +222,8 @@ config("pdfium_common_config") {
     # May flag some issues when converting int to size_t.
     cflags += [ "-Wtautological-unsigned-zero-compare" ]
 
-    # Catch misuse of cppgc in XFA.
-    if (pdf_enable_xfa && clang_use_chrome_plugins) {
-      cflags += [
-        "-Xclang",
-        "-add-plugin",
-        "-Xclang",
-        "blink-gc-plugin",
-      ]
-    }
-
-    if (pdf_enable_unowned_ptr_exclusion) {
+    if (clang_use_chrome_plugins) {
+      # Catch misuse of C-style pointers.
       cflags += [
         "-Xclang",
         "-plugin-arg-find-bad-constructs",
@@ -242,12 +233,12 @@ config("pdfium_common_config") {
         "-Xclang",
         "-plugin-arg-find-bad-constructs",
         "-Xclang",
-        "raw-ptr-exclude-path=public/",
+        "raw-ptr-exclude-path=public",
 
         "-Xclang",
         "-plugin-arg-find-bad-constructs",
         "-Xclang",
-        "raw-ptr-exclude-path=testing/",
+        "raw-ptr-exclude-path=testing",
 
         "-Xclang",
         "-plugin-arg-find-bad-constructs",
@@ -266,6 +257,16 @@ config("pdfium_common_config") {
         # "check-raw-ref-fields",
       ]
       defines += [ "PDF_ENABLE_UNOWNED_PTR_EXCLUSION" ]
+
+      # Catch misuse of cppgc in XFA.
+      if (pdf_enable_xfa) {
+        cflags += [
+          "-Xclang",
+          "-add-plugin",
+          "-Xclang",
+          "blink-gc-plugin",
+        ]
+      }
     }
   }
 
