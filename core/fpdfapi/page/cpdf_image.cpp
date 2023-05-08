@@ -90,6 +90,10 @@ RetainPtr<const CPDF_Stream> CPDF_Image::GetStream() const {
   return m_pStream;
 }
 
+RetainPtr<CPDF_Stream> CPDF_Image::GetMutableStream() {
+  return m_pStream;
+}
+
 RetainPtr<const CPDF_Dictionary> CPDF_Image::GetOC() const {
   return m_pOC;
 }

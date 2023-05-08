@@ -35,6 +35,7 @@ class CPDF_Image final : public Retainable {
 
   RetainPtr<const CPDF_Dictionary> GetDict() const;
   RetainPtr<const CPDF_Stream> GetStream() const;
+  RetainPtr<CPDF_Stream> GetMutableStream();
   RetainPtr<const CPDF_Dictionary> GetOC() const;
 
   // Never returns nullptr.
