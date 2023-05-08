@@ -5,12 +5,35 @@
 #ifndef CORE_FXCRT_UNOWNED_PTR_H_
 #define CORE_FXCRT_UNOWNED_PTR_H_
 
+#include "build/build_config.h"
+
+#if defined(PDF_USE_PARTITION_ALLOC)
+
+#include "base/allocator/partition_allocator/partition_alloc_buildflags.h"
+
+#define PDFIUM_USE_RAW_PTR \
+  BUILDFLAG(ENABLE_BACKUP_REF_PTR_SUPPORT) || BUILDFLAG(USE_ASAN_UNOWNED_PTR)
+
+#endif  // PDF_USE_PARTITION_ALLOC
+
+#ifdef PDFIUM_USE_RAW_PTR
+
+#include "base/allocator/partition_allocator/pointers/raw_ptr.h"
+
+namespace fxcrt {
+
+template <typename T>
+using UnownedPtr = raw_ptr<T>;
+
+}  // namespace fxcrt
+
+#else  // PDFIUM_USE_RAW_PTRx
+
 #include <cstddef>
 #include <functional>
 #include <type_traits>
 #include <utility>
 
-#include "build/build_config.h"
 #include "core/fxcrt/unowned_ptr_exclusion.h"
 #include "third_party/base/compiler_specific.h"
 
@@ -187,6 +210,8 @@ class TRIVIAL_ABI GSL_POINTER UnownedPtr {
 };
 
 }  // namespace fxcrt
+
+#endif  // defined(PDFIUM_USE_RAW_PTR)
 
 using fxcrt::UnownedPtr;
 
