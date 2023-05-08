@@ -34,6 +34,24 @@
       "parentUuid": "85133195_c865d18f",
       "revId": "1a1bb6b31fef574bb00589793a3d2e6a11e6061c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5a6d07f_d89d1af8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-05-08T22:43:10Z",
+      "side": 1,
+      "message": "Just to set expectations, we normally roll `build` near the beginning of the month, so the next normal roll wouldn\u0027t be until June.",
+      "parentUuid": "6e01d8dc_6b760450",
+      "revId": "1a1bb6b31fef574bb00589793a3d2e6a11e6061c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
