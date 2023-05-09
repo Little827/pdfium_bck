@@ -327,6 +327,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3fe73713_7cbaabe5",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-05-09T23:42:37Z",
+      "side": 1,
+      "message": "Nit: If we really want to be neutral, perhaps we should avoid Debian/Ubuntu package names at all, and just tell people they need to install `pkg-config` and `xz`? They can figure out the actual package names themselves (although `xz-utils` might be non-obvious).\n\nThere are lots of examples in this document and others of CLI commands that are meant to be cut and paste verbatim, because it saves time over the XYZ number of developers who will follow these instructions.",
+      "parentUuid": "e82865c0_43139da2",
+      "revId": "d5d927186d71cad9265f5259bfda45557b749d32",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fb790a59_84f64484",
         "filename": "README.md",
         "patchSetId": 1

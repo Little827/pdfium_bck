@@ -52,6 +52,24 @@
       "parentUuid": "256a756a_a51bca42",
       "revId": "1e9e67f494f711bf3d727d81acde4183e344ae8e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5ff9700_e69bfece",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-05-09T23:42:37Z",
+      "side": 0,
+      "message": "DEPS/gclient pull down lots of scripts in subrepositories that have no bearing on PDFium. I don\u0027t think it\u0027s worth mentioning this one.",
+      "parentUuid": "7078afeb_47042749",
+      "revId": "1e9e67f494f711bf3d727d81acde4183e344ae8e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }

@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a183d9ee_3f6d0312",
+        "filename": "README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-05-09T23:42:37Z",
+      "side": 1,
+      "message": "Like Python 3, `git` also is covered under the system requirements section of the prerequisites:\nhttps://chromium.googlesource.com/chromium/src/+/main/docs/linux/build_instructions.md#system-requirements",
+      "revId": "79fc87a62ed9edfe6cc73425a76a31a11b8c9292",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
