@@ -33,6 +33,41 @@
       "message": "As this new method has no callers in PDFium, it is effectively dead code. I would suggest holding on to it in your local tree, or contribute it as part of larger CL that can make use of it.",
       "revId": "48b9b83d75b086dec4d5ea6358d5dbe99d09cb49",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a91fa430_32d975c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 9186
+      },
+      "writtenOn": "2023-05-09T06:52:57Z",
+      "side": 1,
+      "message": "Lei,\n\nYou\u0027re correct in that this is part of a more comprehensive feature to swap image object data while re-using the old stream object (which is desirable in some use cases).\n\nI\u0027ll hold off on this until I\u0027m ready to submit the whole proposed feature and I\u0027ll be sure to not submit incremental changes (\"dead code\" 😄) like this in the future.\n\nThanks,\nJD",
+      "parentUuid": "a89f7ac4_fbb196af",
+      "revId": "48b9b83d75b086dec4d5ea6358d5dbe99d09cb49",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "905ba5bd_6d59db87",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 9186
+      },
+      "writtenOn": "2023-05-09T06:52:57Z",
+      "side": 1,
+      "message": "please read comment and close",
+      "revId": "48b9b83d75b086dec4d5ea6358d5dbe99d09cb49",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
