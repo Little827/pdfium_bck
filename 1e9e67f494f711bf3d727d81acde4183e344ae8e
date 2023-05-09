@@ -34,6 +34,24 @@
       "parentUuid": "d56d2c57_14cab1cc",
       "revId": "1e9e67f494f711bf3d727d81acde4183e344ae8e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7078afeb_47042749",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 8751
+      },
+      "writtenOn": "2023-05-09T17:04:42Z",
+      "side": 0,
+      "message": "We might have misunderstood each other? That\u0027s not what I\u0027m concerned about. The idea behind this was to\na) clarify the script belongs to chromium if someone incidentally comes across it\nb) provide backing info that pdfium devs mostly work in an env where all chromium deps are installed, just as in case one of these gets used in pdfium but the committer forgot to update the list above",
+      "parentUuid": "256a756a_a51bca42",
+      "revId": "1e9e67f494f711bf3d727d81acde4183e344ae8e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }

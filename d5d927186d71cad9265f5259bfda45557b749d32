@@ -307,6 +307,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e82865c0_43139da2",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 8751
+      },
+      "writtenOn": "2023-05-09T17:04:42Z",
+      "side": 1,
+      "message": "\u003e this doc does not need to tell them what tool to use\n\n+1, that\u0027s kind of what I meant to say with \"package manager neutral\" :)",
+      "parentUuid": "498dabf1_3e7b307c",
+      "revId": "d5d927186d71cad9265f5259bfda45557b749d32",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fb790a59_84f64484",
