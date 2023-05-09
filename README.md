@@ -10,6 +10,18 @@ Chromium build instructions to get started, but replace Chromium's
 *   [Chromium Mac build instructions](https://chromium.googlesource.com/chromium/src/+/main/docs/mac_build_instructions.md)
 *   [Chromium Windows build instructions](https://chromium.googlesource.com/chromium/src/+/main/docs/windows_build_instructions.md)
 
+On Linux, additional build dependencies should be installed before getting the
+code. On Debian/Ubuntu, the packages are:
+
+```
+git
+pkg-config
+xz-utils
+```
+
+For other Linux distros, the required packages are the same, but the package
+names may be different.
+
 ### CPU Architectures supported
 
 The default architecture for Windows, Linux, and Mac is "`x64`". On Windows,
@@ -39,24 +51,21 @@ it separately, but this is optional and not needed for building PDFium.
 
 ## Get the code
 
+To actually get the code, start by creating a new top-level directory to hold
+the PDFium code.
 The name of the top-level directory does not matter. In the following example,
 the directory name is "repo". This directory must not have been used before by
 `gclient config` as each directory can only house a single gclient
 configuration.
+Running the following commands will get the PDFium code using the `fetch`
+command from `depot_tools` and put it in the `repo/pdfium` directory. `fetch`
+is a simple way to configure gclient in the `repo` directory.
 
 ```
 mkdir repo
 cd repo
-gclient config --unmanaged https://pdfium.googlesource.com/pdfium.git
-gclient sync
+fetch pdfium
 cd pdfium
-```
-
-On Linux, additional build dependencies need to be installed by running the
-following from the `pdfium` directory.
-
-```
-./build/install-build-deps.sh
 ```
 
 ## Generate the build files
