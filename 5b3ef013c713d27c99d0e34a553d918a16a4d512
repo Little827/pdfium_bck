@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cd7bd1c_7925c719",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-05-09T00:33:59Z",
+      "side": 1,
+      "message": "FWIW, I just saw this CL in passing and commented on it. Normally, nobody would review the CL until the CL owner add reviewer(s).",
+      "revId": "5b3ef013c713d27c99d0e34a553d918a16a4d512",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "01d95a84_4004934a",
