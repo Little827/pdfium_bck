@@ -67,6 +67,11 @@ fetch pdfium
 cd pdfium
 ```
 
+## Update your checkout
+
+See the [same section](https://chromium.googlesource.com/chromium/src/+/main/docs/linux/build_instructions.md#update-your-checkout)
+in Chromium's instructions.
+
 ## Generate the build files
 
 PDFium uses GN to generate the build files and [Ninja](https://ninja-build.org/)
