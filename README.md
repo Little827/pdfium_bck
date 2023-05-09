@@ -12,14 +12,46 @@ Chromium build instructions to get started, but replace Chromium's
 
 ### CPU Architectures supported
 
-The default architecture for Windows, Linux, and Mac is "`x64`". On Windows,
-"`x86`" is also supported. GN parameter "`target_cpu = "x86"`" can be used to
-override the default value. If you specify Android build, the default CPU
-architecture will be "`arm`".
+The table below is a list of supported host OS and CPU architecture
+combinations.
 
-It is expected that there are still some places lurking in the code which will
-not function properly on big-endian architectures. Bugs and/or patches are
-welcome, however providing this support is **not** a priority at this time.
+|OS     | CPU |
+|-------|-----|
+|Linux  |x64  |
+|macOS  |arm64|
+|macOS  |x64  |
+|Windows|x86  |
+
+The table below is a non-exhaustive list of possible target OS and CPU
+architecture combinations. Entries marked as "Tested" have continuous
+integration testing. Entries marked as "Compiled" have limited continuous
+integration, where the code is only build.
+
+|OS     | CPU | Status  |
+|-------|-----|---------|
+|Android|arm  |Compiled |
+|Android|arm64|Compiled |
+|Android|x64  |         |
+|Android|x86  |         |
+|Linux  |arm  |         |
+|Linux  |arm64|         |
+|Linux  |x64  |Tested   |
+|Linux  |x86  |         |
+|macOS  |arm64|         |
+|macOS  |x64  |Tested   |
+|Windows|arm64|         |
+|Windows|x64  |Tested   |
+|Windows|x86  |Tested   |
+
+The default architecture for most platforms is the host architecture. When a
+Linux host builds for the Android target, the default CPU architecture is `arm`.
+
+The GN parameters `target_cpu` and `target_os` can be used for cross-compiling.
+See `gn help target_cpu` and `gn help target_os` for more information. Not all
+combinations of host and target platforms are supported.
+
+There is no support for big-endian architectures. Bug reports and/or patches are
+welcome, however support is not a priority.
 
 #### Google employees
 
