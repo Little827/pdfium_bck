@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2f7e3e1_8f7faee9",
+        "filename": "README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-05-09T23:50:01Z",
+      "side": 1,
+      "message": "Nit: \"corresponding\"? It didn\u0027t immediately register to me which section in the PDFium doc was the \"same\". (The current one, obviously, but I thought at first that the contents would be the same, not the section titles.)",
+      "range": {
+        "startLine": 74,
+        "startChar": 5,
+        "endLine": 74,
+        "endChar": 9
+      },
+      "revId": "921bf7273adcdde01f57e0cd4e9b2dc2c782c6d0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
