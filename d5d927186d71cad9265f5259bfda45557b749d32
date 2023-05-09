@@ -194,6 +194,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e24d7977_6285ccab",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-05-09T02:29:29Z",
+      "side": 1,
+      "message": "I moved this up to the Prerequisites section, and removed python3 from the list.",
+      "parentUuid": "7ffce1f9_d299d38f",
+      "range": {
+        "startLine": 42,
+        "startChar": 60,
+        "endLine": 43,
+        "endChar": 4
+      },
+      "revId": "d5d927186d71cad9265f5259bfda45557b749d32",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "361534cd_343032cd",
@@ -261,6 +285,24 @@
       "side": 1,
       "message": "Acknowledged",
       "parentUuid": "1ee5c7e9_fbbf7dd4",
+      "revId": "d5d927186d71cad9265f5259bfda45557b749d32",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "498dabf1_3e7b307c",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-05-09T02:29:29Z",
+      "side": 1,
+      "message": "I added a note about other distros. Most developers can figure out how to install packages on their own, so this doc does not need to tell them what tool to use.",
+      "parentUuid": "064ccb1f_5be1210a",
       "revId": "d5d927186d71cad9265f5259bfda45557b749d32",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -353,6 +395,42 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "62610b5d_782491fb",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-05-09T02:29:29Z",
+      "side": 1,
+      "message": "For clarity, I added an additional comment to better explain what\u0027s going on.",
+      "parentUuid": "753e0e27_c58043a1",
+      "revId": "d5d927186d71cad9265f5259bfda45557b749d32",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b091c97f_f8d55b42",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-05-09T02:29:29Z",
+      "side": 1,
+      "message": "I can mention gclient and updating the code in a separate CL.",
+      "parentUuid": "e4c317c9_89a73983",
+      "revId": "d5d927186d71cad9265f5259bfda45557b749d32",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a327eb66_e6bbacff",
@@ -366,6 +444,24 @@
       "writtenOn": "2023-05-05T08:23:42Z",
       "side": 1,
       "message": "```suggestion\nuse_goma \u003d false  # Googlers only. Make sure goma is installed and running first.\n```\n\nI\u0027m not a googler, thus this I prefer this to default to false 😎",
+      "revId": "d5d927186d71cad9265f5259bfda45557b749d32",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6db11853_0e1c4c2a",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-05-09T02:29:29Z",
+      "side": 1,
+      "message": "Please send a separate CL for this suggested change. This CL is only trying to clarify some of the instructions above, and is not going to fix every line of documentation.",
+      "parentUuid": "a327eb66_e6bbacff",
       "revId": "d5d927186d71cad9265f5259bfda45557b749d32",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
