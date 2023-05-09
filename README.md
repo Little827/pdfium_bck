@@ -68,6 +68,12 @@ fetch pdfium
 cd pdfium
 ```
 
+## Update your checkout
+
+The PDFium checkout is managed with a combination of git and gclient.
+The [same section](https://chromium.googlesource.com/chromium/src/+/main/docs/linux/build_instructions.md#update-your-checkout)
+in Chromium's instructions explains how to keep a checkout up to date.
+
 ## Generate the build files
 
 PDFium uses GN to generate the build files and [Ninja](https://ninja-build.org/)
