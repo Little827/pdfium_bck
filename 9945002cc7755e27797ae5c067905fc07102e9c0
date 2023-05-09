@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8111626d_d348d3c1",
+        "filename": "README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-05-09T23:59:43Z",
+      "side": 1,
+      "message": "Optional: Would \"arm64, x64\" look better than having rows for every OS x CPU combination?\n\nAnother option might look like this:\n\n```\n|macOS  |arm64|\n|       |x64  |\n```\n\nwith the second \"macOS\" being implied.\n\nI guess the choice depends more on the preferred aesthetics for the second table.",
+      "revId": "9945002cc7755e27797ae5c067905fc07102e9c0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e8b6829_f21e9dd3",
+        "filename": "README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-05-09T23:59:43Z",
+      "side": 1,
+      "message": "Optional: Maybe something like, \"while entries marked as \"Compiled\" are only built,\" to draw the contrast with \"Tested\" more directly.",
+      "range": {
+        "startLine": 27,
+        "startChar": 19,
+        "endLine": 28,
+        "endChar": 41
+      },
+      "revId": "9945002cc7755e27797ae5c067905fc07102e9c0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c482ff26_bb26c226",
+        "filename": "README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-05-09T23:59:43Z",
+      "side": 1,
+      "message": "This is confusing to me. Is this referring to the host or target CPU architecture? Can we be more specific about that?\n\nAlso, would it be useful to define terms like \"host\" and \"target\" first?",
+      "range": {
+        "startLine": 47,
+        "startChar": 46,
+        "endLine": 47,
+        "endChar": 70
+      },
+      "revId": "9945002cc7755e27797ae5c067905fc07102e9c0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe4d2fee_33671ed3",
+        "filename": "README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-05-09T23:59:43Z",
+      "side": 1,
+      "message": "Perhaps it\u0027d be even more accurate to say, \"Only specific combinations.\"",
+      "range": {
+        "startLine": 50,
+        "startChar": 71,
+        "endLine": 50,
+        "endChar": 78
+      },
+      "revId": "9945002cc7755e27797ae5c067905fc07102e9c0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aebb5962_9193381d",
+        "filename": "README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-05-09T23:59:43Z",
+      "side": 1,
+      "message": "It\u0027d be might be simpler to characterize this as \"best effort\" or \"community\" support, rather than, \"no support, but...\".",
+      "revId": "9945002cc7755e27797ae5c067905fc07102e9c0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
