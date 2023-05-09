@@ -1,0 +1,170 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01d95a84_4004934a",
+        "filename": "AUTHORS",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-05-09T00:28:41Z",
+      "side": 1,
+      "message": "Please keep the list in alphabetical order.",
+      "revId": "5b3ef013c713d27c99d0e34a553d918a16a4d512",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7284eb83_5c50dfd6",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentgenerator.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-05-09T00:28:41Z",
+      "side": 1,
+      "message": "Just call GetLineDashArray() and check the size of the returned vector?",
+      "revId": "5b3ef013c713d27c99d0e34a553d918a16a4d512",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "494700dd_b200dbdb",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentgenerator.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-05-09T00:28:41Z",
+      "side": 1,
+      "message": "Prefer Google C++ style in new code: https://google.github.io/styleguide/cppguide.html#Variable_Names",
+      "range": {
+        "startLine": 553,
+        "startChar": 23,
+        "endLine": 553,
+        "endChar": 32
+      },
+      "revId": "5b3ef013c713d27c99d0e34a553d918a16a4d512",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5be0d2ba_0be417d1",
+        "filename": "fpdfsdk/fpdf_editpage_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-05-09T00:28:41Z",
+      "side": 1,
+      "message": "Can this be: std::size(kDashArray) ?",
+      "range": {
+        "startLine": 472,
+        "startChar": 57,
+        "endLine": 472,
+        "endChar": 58
+      },
+      "revId": "5b3ef013c713d27c99d0e34a553d918a16a4d512",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a61cd385_b87b79bb",
+        "filename": "fpdfsdk/fpdf_editpage_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-05-09T00:28:41Z",
+      "side": 1,
+      "message": "Instead of manually closing the page, how about using ScopedFPDFPage? Line 484 can use a separate variable.",
+      "revId": "5b3ef013c713d27c99d0e34a553d918a16a4d512",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1767e71_03ba6b9a",
+        "filename": "fpdfsdk/fpdf_editpage_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-05-09T00:28:41Z",
+      "side": 1,
+      "message": "dash_array",
+      "range": {
+        "startLine": 490,
+        "startChar": 8,
+        "endLine": 490,
+        "endChar": 17
+      },
+      "revId": "5b3ef013c713d27c99d0e34a553d918a16a4d512",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "342c34f2_ca8d1fcc",
+        "filename": "fpdfsdk/fpdf_editpage_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-05-09T00:28:41Z",
+      "side": 1,
+      "message": "std::size() here and next line",
+      "range": {
+        "startLine": 491,
+        "startChar": 12,
+        "endLine": 491,
+        "endChar": 13
+      },
+      "revId": "5b3ef013c713d27c99d0e34a553d918a16a4d512",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e71b302_f1ef61e7",
+        "filename": "fpdfsdk/fpdf_editpage_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-05-09T00:28:41Z",
+      "side": 1,
+      "message": "dash_phase",
+      "range": {
+        "startLine": 495,
+        "startChar": 8,
+        "endLine": 495,
+        "endChar": 17
+      },
+      "revId": "5b3ef013c713d27c99d0e34a553d918a16a4d512",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
