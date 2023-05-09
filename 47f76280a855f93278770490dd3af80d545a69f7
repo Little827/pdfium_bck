@@ -70,6 +70,41 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a59cc3dd_e7920f20",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 9186
+      },
+      "writtenOn": "2023-05-09T06:39:11Z",
+      "side": 1,
+      "message": "request feasibility of new public API method `FPDF_GetDocUserPermissions`",
+      "revId": "47f76280a855f93278770490dd3af80d545a69f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b69c3cd5_99c5eb39",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 9186
+      },
+      "writtenOn": "2023-05-09T06:39:11Z",
+      "side": 1,
+      "message": "Thanks Lei,\n\nWhat are your thoughts add adding a `FPDF_GetDocUserPermissions` to allow this behavior?",
+      "parentUuid": "2aeb7cb3_ac6cfdba",
+      "revId": "47f76280a855f93278770490dd3af80d545a69f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4cfc70e5_bec3cc52",
@@ -118,6 +153,42 @@
       "writtenOn": "2023-05-08T23:25:53Z",
       "side": 1,
       "message": "While they are not banned, PDFium prefers not to use default arguments. See style guide notes here: https://google.github.io/styleguide/cppguide.html#Default_Arguments",
+      "revId": "47f76280a855f93278770490dd3af80d545a69f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ea28bd8_05ebd947",
+        "filename": "core/fpdfapi/parser/cpdf_security_handler.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 9186
+      },
+      "writtenOn": "2023-05-09T06:39:11Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "01243ec3_fbdbeceb",
+      "revId": "47f76280a855f93278770490dd3af80d545a69f7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c221b3d_3001ff2f",
+        "filename": "core/fpdfapi/parser/cpdf_security_handler.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 9186
+      },
+      "writtenOn": "2023-05-09T06:39:11Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "b440e068_ad42f13f",
       "revId": "47f76280a855f93278770490dd3af80d545a69f7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
