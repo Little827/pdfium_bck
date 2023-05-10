@@ -88,6 +88,24 @@
       "parentUuid": "f5ff9700_e69bfece",
       "revId": "1e9e67f494f711bf3d727d81acde4183e344ae8e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05ddf918_f271b324",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 9186
+      },
+      "writtenOn": "2023-05-10T16:08:37Z",
+      "side": 0,
+      "message": "imo commit to the current change, there is currently no use case for `gclient` over `fetch`\n\ncheers",
+      "parentUuid": "36792f4a_34a6a706",
+      "revId": "1e9e67f494f711bf3d727d81acde4183e344ae8e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
