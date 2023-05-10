@@ -70,6 +70,24 @@
       "parentUuid": "7078afeb_47042749",
       "revId": "1e9e67f494f711bf3d727d81acde4183e344ae8e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36792f4a_34a6a706",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 8751
+      },
+      "writtenOn": "2023-05-10T10:28:02Z",
+      "side": 0,
+      "message": "Hmm, acknowledged, but maybe it would be good to have this as a sort of historical clarification, since the readme previously instructed to run the script?",
+      "parentUuid": "f5ff9700_e69bfece",
+      "revId": "1e9e67f494f711bf3d727d81acde4183e344ae8e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
