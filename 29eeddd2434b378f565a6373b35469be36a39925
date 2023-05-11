@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9866810_ae05fbf2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-05-11T20:33:01Z",
+      "side": 1,
+      "message": "lg/w nit",
+      "revId": "29eeddd2434b378f565a6373b35469be36a39925",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72ac2677_92859fca",
+        "filename": "core/fpdfapi/font/cfx_cttgsubtable.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-05-11T20:33:01Z",
+      "side": 1,
+      "message": "comment about // skip over foo, bar, baz.",
+      "revId": "29eeddd2434b378f565a6373b35469be36a39925",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fced7a57_a9ddb19a",
+        "filename": "core/fpdfapi/font/cfx_cttgsubtable.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-05-11T20:33:01Z",
+      "side": 1,
+      "message": "same here.",
+      "revId": "29eeddd2434b378f565a6373b35469be36a39925",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
