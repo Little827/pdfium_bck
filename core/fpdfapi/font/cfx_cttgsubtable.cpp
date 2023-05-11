@@ -97,19 +97,19 @@ absl::optional<uint32_t> CFX_CTTGSUBTable::GetVerticalGlyphSub2(
     const Lookup& lookup,
     uint32_t glyphnum) const {
   for (const auto& sub_table : lookup.sub_tables) {
-    switch (sub_table->SubstFormat) {
+    switch (sub_table->subst_format) {
       case 1: {
-        auto* tbl1 = static_cast<TSubTable1*>(sub_table.get());
-        if (GetCoverageIndex(tbl1->Coverage.get(), glyphnum) >= 0) {
-          return glyphnum + tbl1->DeltaGlyphID;
+        if (GetCoverageIndex(sub_table->coverage.get(), glyphnum) >= 0) {
+          return glyphnum + absl::get<int16_t>(sub_table->table_data);
         }
         break;
       }
       case 2: {
-        auto* tbl2 = static_cast<TSubTable2*>(sub_table.get());
-        int index = GetCoverageIndex(tbl2->Coverage.get(), glyphnum);
-        if (fxcrt::IndexInBounds(tbl2->Substitutes, index)) {
-          return tbl2->Substitutes[index];
+        int index = GetCoverageIndex(sub_table->coverage.get(), glyphnum);
+        const auto& substitutes =
+            absl::get<DataVector<uint16_t>>(sub_table->table_data);
+        if (fxcrt::IndexInBounds(substitutes, index)) {
+          return substitutes[index];
         }
         break;
       }
@@ -293,8 +293,8 @@ CFX_CTTGSUBTable::ParseCoverageFormat2(FT_Bytes raw) {
   return rec;
 }
 
-std::unique_ptr<CFX_CTTGSUBTable::TSubTableBase>
-CFX_CTTGSUBTable::ParseSingleSubst(FT_Bytes raw) {
+std::unique_ptr<CFX_CTTGSUBTable::SubTable> CFX_CTTGSUBTable::ParseSingleSubst(
+    FT_Bytes raw) {
   FT_Bytes sp = raw;
   uint16_t format = GetUInt16(sp);
   if (format == 1)
@@ -304,27 +304,27 @@ CFX_CTTGSUBTable::ParseSingleSubst(FT_Bytes raw) {
   return nullptr;
 }
 
-std::unique_ptr<CFX_CTTGSUBTable::TSubTable1>
+std::unique_ptr<CFX_CTTGSUBTable::SubTable>
 CFX_CTTGSUBTable::ParseSingleSubstFormat1(FT_Bytes raw) {
-  FT_Bytes sp = raw;
-  GetUInt16(sp);
+  FT_Bytes sp = raw + 2;
   uint16_t offset = GetUInt16(sp);
-  auto rec = std::make_unique<TSubTable1>();
-  rec->Coverage = ParseCoverage(&raw[offset]);
-  rec->DeltaGlyphID = GetInt16(sp);
+  auto rec = std::make_unique<SubTable>(1);
+  rec->coverage = ParseCoverage(&raw[offset]);
+  rec->table_data = GetInt16(sp);
   return rec;
 }
 
-std::unique_ptr<CFX_CTTGSUBTable::TSubTable2>
+std::unique_ptr<CFX_CTTGSUBTable::SubTable>
 CFX_CTTGSUBTable::ParseSingleSubstFormat2(FT_Bytes raw) {
-  FT_Bytes sp = raw;
-  (void)GetUInt16(sp);
+  FT_Bytes sp = raw + 2;
   uint16_t offset = GetUInt16(sp);
-  auto rec = std::make_unique<TSubTable2>();
-  rec->Coverage = ParseCoverage(&raw[offset]);
-  rec->Substitutes = DataVector<uint16_t>(GetUInt16(sp));
-  for (auto& substitute : rec->Substitutes)
+  auto rec = std::make_unique<SubTable>(2);
+  rec->coverage = ParseCoverage(&raw[offset]);
+  DataVector<uint16_t> table_data(GetUInt16(sp));
+  for (auto& substitute : table_data) {
     substitute = GetUInt16(sp);
+  }
+  rec->table_data = std::move(table_data);
   return rec;
 }
 
@@ -344,18 +344,9 @@ CFX_CTTGSUBTable::TCoverageFormat2::TCoverageFormat2(size_t initial_size)
 
 CFX_CTTGSUBTable::TCoverageFormat2::~TCoverageFormat2() = default;
 
-CFX_CTTGSUBTable::TSubTableBase::TSubTableBase(uint16_t format)
-    : SubstFormat(format) {}
+CFX_CTTGSUBTable::SubTable::SubTable(uint16_t format) : subst_format(format) {}
 
-CFX_CTTGSUBTable::TSubTableBase::~TSubTableBase() = default;
-
-CFX_CTTGSUBTable::TSubTable1::TSubTable1() : TSubTableBase(1) {}
-
-CFX_CTTGSUBTable::TSubTable1::~TSubTable1() = default;
-
-CFX_CTTGSUBTable::TSubTable2::TSubTable2() : TSubTableBase(2) {}
-
-CFX_CTTGSUBTable::TSubTable2::~TSubTable2() = default;
+CFX_CTTGSUBTable::SubTable::~SubTable() = default;
 
 CFX_CTTGSUBTable::Lookup::Lookup() = default;
 
