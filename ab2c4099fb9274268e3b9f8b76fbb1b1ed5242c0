@@ -22,6 +22,30 @@
       },
       "revId": "ab2c4099fb9274268e3b9f8b76fbb1b1ed5242c0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da78b196_178a662e",
+        "filename": "core/fpdfapi/font/cpdf_cidfont.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 663,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-05-11T22:32:46Z",
+      "side": 0,
+      "message": "`m_Font` is owned by this class, so it is not shared with anyone else. The check on line 658 above means an instance of this class will only go through this code path once in the common case where the `m_pTTGSUBTable` allocation succeeds.",
+      "parentUuid": "27a72946_852e0ac9",
+      "range": {
+        "startLine": 663,
+        "startChar": 0,
+        "endLine": 663,
+        "endChar": 29
+      },
+      "revId": "ab2c4099fb9274268e3b9f8b76fbb1b1ed5242c0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
