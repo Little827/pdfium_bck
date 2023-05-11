@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c3870e7_d9aed335",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-05-11T22:14:22Z",
+      "side": 1,
+      "message": "Alternatively, actually read the skipped values into locals and validate as possible.",
+      "revId": "98680fea2b7f04c22f7d39123da8573c780f00ab",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "544e0f9e_86943063",
