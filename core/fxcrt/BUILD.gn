@@ -252,4 +252,8 @@ pdfium_unittest_source_set("unittests") {
     sources += [ "cfx_memorystream_unittest.cpp" ]
     deps += [ "../fpdfapi/parser" ]
   }
+  if (pdf_use_partition_alloc) {
+    deps +=
+        [ "//base/allocator/partition_allocator:partition_alloc_buildflags" ]
+  }
 }

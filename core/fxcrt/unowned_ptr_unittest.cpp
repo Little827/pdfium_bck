@@ -12,6 +12,15 @@
 #include "testing/gtest/include/gtest/gtest.h"
 #include "third_party/base/containers/contains.h"
 
+#if defined(PDF_USE_PARTITION_ALLOC)
+#include "base/allocator/partition_allocator/partition_alloc_buildflags.h"
+#if BUILDFLAG(ENABLE_DANGLING_RAW_PTR_CHECKS) || BUILDFLAG(USE_ASAN_UNOWNED_PTR)
+#define CRASH_ON_DANGLING
+#endif
+#elif defined(ADDRESS_SANITIZER)
+#define CRASH_ON_DANGLING
+#endif
+
 namespace fxcrt {
 namespace {
 
@@ -162,7 +171,7 @@ TEST(UnownedPtr, PtrOk) {
 }
 
 TEST(UnownedPtr, PtrNotOk) {
-#if defined(ADDRESS_SANITIZER)
+#if defined(CRASH_ON_DANGLING)
   EXPECT_DEATH(DeleteDangling(), "");
 #else
   DeleteDangling();
@@ -179,7 +188,7 @@ TEST(UnownedPtr, AssignOk) {
 }
 
 TEST(UnownedPtr, AssignNotOk) {
-#if defined(ADDRESS_SANITIZER)
+#if defined(CRASH_ON_DANGLING)
   EXPECT_DEATH(AssignDangling(), "");
 #else
   AssignDangling();
@@ -196,7 +205,7 @@ TEST(UnownedPtr, ReleaseOk) {
 }
 
 TEST(UnownedPtr, ReleaseNotOk) {
-#if defined(ADDRESS_SANITIZER)
+#if defined(CRASH_ON_DANGLING)
   EXPECT_DEATH(ReleaseDangling(), "");
 #else
   ReleaseDangling();
