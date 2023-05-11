@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d39940fa_b8c21b7d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-05-11T22:40:37Z",
+      "side": 1,
+      "message": "Just comment when we\u0027re skipping.",
+      "revId": "ede749173341d9f2befb109d984915be71a93792",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d426e00_2ae1843e",
+        "filename": "core/fpdfapi/font/cfx_cttgsubtable.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-05-11T22:40:37Z",
+      "side": 1,
+      "message": "comment what we\u0027re skipping over.",
+      "revId": "ede749173341d9f2befb109d984915be71a93792",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
