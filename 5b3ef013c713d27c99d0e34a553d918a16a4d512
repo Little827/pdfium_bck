@@ -35,6 +35,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b82b1b66_b9ddb68b",
+        "filename": "AUTHORS",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-05-11T17:33:34Z",
+      "side": 1,
+      "message": "Thanks for doing this. For next time, please use the Gerrit web interface to mark this as done. Then publish the draft comment. That way, it\u0027s obvious that something has happened here.",
+      "parentUuid": "01d95a84_4004934a",
+      "revId": "5b3ef013c713d27c99d0e34a553d918a16a4d512",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7284eb83_5c50dfd6",
@@ -52,6 +70,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f242042a_ab662d5c",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentgenerator.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-05-11T17:33:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7284eb83_5c50dfd6",
+      "revId": "5b3ef013c713d27c99d0e34a553d918a16a4d512",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "494700dd_b200dbdb",
@@ -65,6 +101,30 @@
       "writtenOn": "2023-05-09T00:28:41Z",
       "side": 1,
       "message": "Prefer Google C++ style in new code: https://google.github.io/styleguide/cppguide.html#Variable_Names",
+      "range": {
+        "startLine": 553,
+        "startChar": 23,
+        "endLine": 553,
+        "endChar": 32
+      },
+      "revId": "5b3ef013c713d27c99d0e34a553d918a16a4d512",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ee14c2f_1019406f",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentgenerator.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-05-11T17:33:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "494700dd_b200dbdb",
       "range": {
         "startLine": 553,
         "startChar": 23,
@@ -98,6 +158,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "898e0043_01f52c11",
+        "filename": "fpdfsdk/fpdf_editpage_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-05-11T17:33:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5be0d2ba_0be417d1",
+      "range": {
+        "startLine": 472,
+        "startChar": 57,
+        "endLine": 472,
+        "endChar": 58
+      },
+      "revId": "5b3ef013c713d27c99d0e34a553d918a16a4d512",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a61cd385_b87b79bb",
@@ -115,6 +199,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2761e2c_356eb138",
+        "filename": "fpdfsdk/fpdf_editpage_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-05-11T17:33:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a61cd385_b87b79bb",
+      "revId": "5b3ef013c713d27c99d0e34a553d918a16a4d512",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c1767e71_03ba6b9a",
@@ -128,6 +230,30 @@
       "writtenOn": "2023-05-09T00:28:41Z",
       "side": 1,
       "message": "dash_array",
+      "range": {
+        "startLine": 490,
+        "startChar": 8,
+        "endLine": 490,
+        "endChar": 17
+      },
+      "revId": "5b3ef013c713d27c99d0e34a553d918a16a4d512",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b617781_4ab9eddd",
+        "filename": "fpdfsdk/fpdf_editpage_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-05-11T17:33:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1767e71_03ba6b9a",
       "range": {
         "startLine": 490,
         "startChar": 8,
@@ -161,6 +287,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7637d20_cbc1d715",
+        "filename": "fpdfsdk/fpdf_editpage_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-05-11T17:33:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "342c34f2_ca8d1fcc",
+      "range": {
+        "startLine": 491,
+        "startChar": 12,
+        "endLine": 491,
+        "endChar": 13
+      },
+      "revId": "5b3ef013c713d27c99d0e34a553d918a16a4d512",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0e71b302_f1ef61e7",
@@ -174,6 +324,30 @@
       "writtenOn": "2023-05-09T00:28:41Z",
       "side": 1,
       "message": "dash_phase",
+      "range": {
+        "startLine": 495,
+        "startChar": 8,
+        "endLine": 495,
+        "endChar": 17
+      },
+      "revId": "5b3ef013c713d27c99d0e34a553d918a16a4d512",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8286d167_d9287285",
+        "filename": "fpdfsdk/fpdf_editpage_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-05-11T17:33:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e71b302_f1ef61e7",
       "range": {
         "startLine": 495,
         "startChar": 8,
