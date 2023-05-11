@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27a72946_852e0ac9",
+        "filename": "core/fpdfapi/font/cpdf_cidfont.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 663,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-05-11T20:30:48Z",
+      "side": 0,
+      "message": "Do we repeatedly call this and hence can take advantage of caching this?",
+      "range": {
+        "startLine": 663,
+        "startChar": 0,
+        "endLine": 663,
+        "endChar": 29
+      },
+      "revId": "ab2c4099fb9274268e3b9f8b76fbb1b1ed5242c0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
