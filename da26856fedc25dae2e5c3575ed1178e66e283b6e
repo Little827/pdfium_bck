@@ -34,6 +34,24 @@
       "parentUuid": "9af499d1_d744ab67",
       "revId": "da26856fedc25dae2e5c3575ed1178e66e283b6e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96de1c5a_ded3e901",
+        "filename": "core/fpdfapi/font/cpdf_cidfont.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 677,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-05-11T22:35:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5947a1aa_11745e97",
+      "revId": "da26856fedc25dae2e5c3575ed1178e66e283b6e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
