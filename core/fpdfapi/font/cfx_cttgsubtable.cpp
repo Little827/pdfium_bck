@@ -27,7 +27,7 @@ bool IsVerticalFeatureTag(uint32_t tag) {
 
 }  // namespace
 
-CFX_CTTGSUBTable::CFX_CTTGSUBTable(FT_Bytes gsub) {
+CFX_CTTGSUBTable::CFX_CTTGSUBTable(const uint8_t* gsub) {
   if (!LoadGSUBTable(gsub))
     return;
 
@@ -55,7 +55,7 @@ CFX_CTTGSUBTable::CFX_CTTGSUBTable(FT_Bytes gsub) {
 
 CFX_CTTGSUBTable::~CFX_CTTGSUBTable() = default;
 
-bool CFX_CTTGSUBTable::LoadGSUBTable(FT_Bytes gsub) {
+bool CFX_CTTGSUBTable::LoadGSUBTable(const uint8_t* gsub) {
   if (FXSYS_UINT32_GET_MSBFIRST(gsub) != 0x00010000)
     return false;
 
@@ -152,46 +152,46 @@ int CFX_CTTGSUBTable::GetCoverageIndex(const CoverageFormat* coverage,
   return -1;
 }
 
-uint8_t CFX_CTTGSUBTable::GetUInt8(FT_Bytes& p) const {
+uint8_t CFX_CTTGSUBTable::GetUInt8(const uint8_t*& p) const {
   uint8_t ret = p[0];
   p += 1;
   return ret;
 }
 
-int16_t CFX_CTTGSUBTable::GetInt16(FT_Bytes& p) const {
+int16_t CFX_CTTGSUBTable::GetInt16(const uint8_t*& p) const {
   uint16_t ret = FXSYS_UINT16_GET_MSBFIRST(p);
   p += 2;
   return *reinterpret_cast<int16_t*>(&ret);
 }
 
-uint16_t CFX_CTTGSUBTable::GetUInt16(FT_Bytes& p) const {
+uint16_t CFX_CTTGSUBTable::GetUInt16(const uint8_t*& p) const {
   uint16_t ret = FXSYS_UINT16_GET_MSBFIRST(p);
   p += 2;
   return ret;
 }
 
-int32_t CFX_CTTGSUBTable::GetInt32(FT_Bytes& p) const {
+int32_t CFX_CTTGSUBTable::GetInt32(const uint8_t*& p) const {
   uint32_t ret = FXSYS_UINT32_GET_MSBFIRST(p);
   p += 4;
   return *reinterpret_cast<int32_t*>(&ret);
 }
 
-uint32_t CFX_CTTGSUBTable::GetUInt32(FT_Bytes& p) const {
+uint32_t CFX_CTTGSUBTable::GetUInt32(const uint8_t*& p) const {
   uint32_t ret = FXSYS_UINT32_GET_MSBFIRST(p);
   p += 4;
   return ret;
 }
 
-void CFX_CTTGSUBTable::Parse(FT_Bytes scriptlist,
-                             FT_Bytes featurelist,
-                             FT_Bytes lookuplist) {
+void CFX_CTTGSUBTable::Parse(const uint8_t* scriptlist,
+                             const uint8_t* featurelist,
+                             const uint8_t* lookuplist) {
   ParseScriptList(scriptlist);
   ParseFeatureList(featurelist);
   ParseLookupList(lookuplist);
 }
 
-void CFX_CTTGSUBTable::ParseScriptList(FT_Bytes raw) {
-  FT_Bytes sp = raw;
+void CFX_CTTGSUBTable::ParseScriptList(const uint8_t* raw) {
+  const uint8_t* sp = raw;
   script_list_ = std::vector<ScriptRecord>(GetUInt16(sp));
   for (auto& script : script_list_) {
     sp += 4;
@@ -199,8 +199,9 @@ void CFX_CTTGSUBTable::ParseScriptList(FT_Bytes raw) {
   }
 }
 
-CFX_CTTGSUBTable::ScriptRecord CFX_CTTGSUBTable::ParseScript(FT_Bytes raw) {
-  FT_Bytes sp = raw + 2;
+CFX_CTTGSUBTable::ScriptRecord CFX_CTTGSUBTable::ParseScript(
+    const uint8_t* raw) {
+  const uint8_t* sp = raw + 2;
   ScriptRecord result(GetUInt16(sp));
   for (auto& record : result) {
     sp += 4;
@@ -209,8 +210,9 @@ CFX_CTTGSUBTable::ScriptRecord CFX_CTTGSUBTable::ParseScript(FT_Bytes raw) {
   return result;
 }
 
-CFX_CTTGSUBTable::FeatureIndices CFX_CTTGSUBTable::ParseLangSys(FT_Bytes raw) {
-  FT_Bytes sp = raw + 4;
+CFX_CTTGSUBTable::FeatureIndices CFX_CTTGSUBTable::ParseLangSys(
+    const uint8_t* raw) {
+  const uint8_t* sp = raw + 4;
   FeatureIndices result(GetUInt16(sp));
   for (auto& element : result) {
     element = GetUInt16(sp);
@@ -218,8 +220,8 @@ CFX_CTTGSUBTable::FeatureIndices CFX_CTTGSUBTable::ParseLangSys(FT_Bytes raw) {
   return result;
 }
 
-void CFX_CTTGSUBTable::ParseFeatureList(FT_Bytes raw) {
-  FT_Bytes sp = raw;
+void CFX_CTTGSUBTable::ParseFeatureList(const uint8_t* raw) {
+  const uint8_t* sp = raw;
   feature_list_ = std::vector<FeatureRecord>(GetUInt16(sp));
   for (auto& record : feature_list_) {
     record.feature_tag = GetUInt32(sp);
@@ -229,8 +231,8 @@ void CFX_CTTGSUBTable::ParseFeatureList(FT_Bytes raw) {
 }
 
 DataVector<uint16_t> CFX_CTTGSUBTable::ParseFeatureLookupListIndices(
-    FT_Bytes raw) {
-  FT_Bytes sp = raw + 2;
+    const uint8_t* raw) {
+  const uint8_t* sp = raw + 2;
   DataVector<uint16_t> result(GetUInt16(sp));
   for (auto& index : result) {
     index = GetUInt16(sp);
@@ -238,16 +240,16 @@ DataVector<uint16_t> CFX_CTTGSUBTable::ParseFeatureLookupListIndices(
   return result;
 }
 
-void CFX_CTTGSUBTable::ParseLookupList(FT_Bytes raw) {
-  FT_Bytes sp = raw;
+void CFX_CTTGSUBTable::ParseLookupList(const uint8_t* raw) {
+  const uint8_t* sp = raw;
   lookup_list_ = std::vector<Lookup>(GetUInt16(sp));
   for (auto& lookup : lookup_list_) {
     lookup = ParseLookup(&raw[GetUInt16(sp)]);
   }
 }
 
-CFX_CTTGSUBTable::Lookup CFX_CTTGSUBTable::ParseLookup(FT_Bytes raw) {
-  FT_Bytes sp = raw;
+CFX_CTTGSUBTable::Lookup CFX_CTTGSUBTable::ParseLookup(const uint8_t* raw) {
+  const uint8_t* sp = raw;
   CFX_CTTGSUBTable::Lookup result;
   result.lookup_type = GetUInt16(sp);
   sp += 2;
@@ -263,8 +265,8 @@ CFX_CTTGSUBTable::Lookup CFX_CTTGSUBTable::ParseLookup(FT_Bytes raw) {
 }
 
 std::unique_ptr<CFX_CTTGSUBTable::CoverageFormat>
-CFX_CTTGSUBTable::ParseCoverage(FT_Bytes raw) {
-  FT_Bytes sp = raw;
+CFX_CTTGSUBTable::ParseCoverage(const uint8_t* raw) {
+  const uint8_t* sp = raw;
   uint16_t format = GetUInt16(sp);
   if (format == 1)
     return ParseCoverageFormat1(raw);
@@ -274,8 +276,8 @@ CFX_CTTGSUBTable::ParseCoverage(FT_Bytes raw) {
 }
 
 std::unique_ptr<CFX_CTTGSUBTable::CoverageFormat>
-CFX_CTTGSUBTable::ParseCoverageFormat1(FT_Bytes raw) {
-  FT_Bytes sp = raw + 2;
+CFX_CTTGSUBTable::ParseCoverageFormat1(const uint8_t* raw) {
+  const uint8_t* sp = raw + 2;
   auto rec = std::make_unique<CoverageFormat>(1);
   DataVector<uint16_t> glyph_array(GetUInt16(sp));
   for (auto& glyph : glyph_array) {
@@ -286,8 +288,8 @@ CFX_CTTGSUBTable::ParseCoverageFormat1(FT_Bytes raw) {
 }
 
 std::unique_ptr<CFX_CTTGSUBTable::CoverageFormat>
-CFX_CTTGSUBTable::ParseCoverageFormat2(FT_Bytes raw) {
-  FT_Bytes sp = raw + 2;
+CFX_CTTGSUBTable::ParseCoverageFormat2(const uint8_t* raw) {
+  const uint8_t* sp = raw + 2;
   auto rec = std::make_unique<CoverageFormat>(2);
   std::vector<RangeRecord> range_records(GetUInt16(sp));
   for (auto& range_rec : range_records) {
@@ -300,8 +302,8 @@ CFX_CTTGSUBTable::ParseCoverageFormat2(FT_Bytes raw) {
 }
 
 std::unique_ptr<CFX_CTTGSUBTable::SubTable> CFX_CTTGSUBTable::ParseSingleSubst(
-    FT_Bytes raw) {
-  FT_Bytes sp = raw;
+    const uint8_t* raw) {
+  const uint8_t* sp = raw;
   uint16_t format = GetUInt16(sp);
   if (format == 1)
     return ParseSingleSubstFormat1(raw);
@@ -311,8 +313,8 @@ std::unique_ptr<CFX_CTTGSUBTable::SubTable> CFX_CTTGSUBTable::ParseSingleSubst(
 }
 
 std::unique_ptr<CFX_CTTGSUBTable::SubTable>
-CFX_CTTGSUBTable::ParseSingleSubstFormat1(FT_Bytes raw) {
-  FT_Bytes sp = raw + 2;
+CFX_CTTGSUBTable::ParseSingleSubstFormat1(const uint8_t* raw) {
+  const uint8_t* sp = raw + 2;
   uint16_t offset = GetUInt16(sp);
   auto rec = std::make_unique<SubTable>(1);
   rec->coverage = ParseCoverage(&raw[offset]);
@@ -321,8 +323,8 @@ CFX_CTTGSUBTable::ParseSingleSubstFormat1(FT_Bytes raw) {
 }
 
 std::unique_ptr<CFX_CTTGSUBTable::SubTable>
-CFX_CTTGSUBTable::ParseSingleSubstFormat2(FT_Bytes raw) {
-  FT_Bytes sp = raw + 2;
+CFX_CTTGSUBTable::ParseSingleSubstFormat2(const uint8_t* raw) {
+  const uint8_t* sp = raw + 2;
   uint16_t offset = GetUInt16(sp);
   auto rec = std::make_unique<SubTable>(2);
   rec->coverage = ParseCoverage(&raw[offset]);
