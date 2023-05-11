@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bb63911_55817a7a",
+        "filename": "testing/resources/javascript/xfa_specific/bug_1444238.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-05-11T17:22:12Z",
+      "side": 1,
+      "message": "Change the value from an array of references to a single reference. Then objects 43, 49, and 50 can be combined into a single stream.",
+      "revId": "2e99afc871b788bb90cb80a3a27701da9f477b07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ea0f5a1_bd7755cc",
+        "filename": "testing/resources/javascript/xfa_specific/bug_1444238.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-05-11T17:22:12Z",
+      "side": 1,
+      "message": "Types first.",
+      "revId": "2e99afc871b788bb90cb80a3a27701da9f477b07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "906e3805_0b0b157b",
+        "filename": "testing/resources/javascript/xfa_specific/bug_1444238.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-05-11T17:22:12Z",
+      "side": 1,
+      "message": "Eh?",
+      "revId": "2e99afc871b788bb90cb80a3a27701da9f477b07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e70771e_7fc23e5d",
+        "filename": "testing/resources/javascript/xfa_specific/bug_1444238.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-05-11T17:22:12Z",
+      "side": 1,
+      "message": "No space here.",
+      "range": {
+        "startLine": 89,
+        "startChar": 17,
+        "endLine": 89,
+        "endChar": 19
+      },
+      "revId": "2e99afc871b788bb90cb80a3a27701da9f477b07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b70323de_83ae06f1",
+        "filename": "testing/resources/javascript/xfa_specific/bug_1444238.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-05-11T17:22:12Z",
+      "side": 1,
+      "message": "Put `stream` on its own line.",
+      "revId": "2e99afc871b788bb90cb80a3a27701da9f477b07",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
