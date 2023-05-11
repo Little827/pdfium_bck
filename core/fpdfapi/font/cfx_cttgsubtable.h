@@ -45,25 +45,14 @@ class CFX_CTTGSUBTable {
     uint16_t StartCoverageIndex = 0;
   };
 
-  struct TCoverageFormatBase {
-    explicit TCoverageFormatBase(uint16_t format) : CoverageFormat(format) {}
-    virtual ~TCoverageFormatBase() = default;
+  struct CoverageFormat {
+    explicit CoverageFormat(uint16_t format);
+    ~CoverageFormat();
 
-    const uint16_t CoverageFormat;
-  };
-
-  struct TCoverageFormat1 final : public TCoverageFormatBase {
-    explicit TCoverageFormat1(size_t initial_size);
-    ~TCoverageFormat1() override;
-
-    DataVector<uint16_t> GlyphArray;
-  };
-
-  struct TCoverageFormat2 final : public TCoverageFormatBase {
-    explicit TCoverageFormat2(size_t initial_size);
-    ~TCoverageFormat2() override;
-
-    std::vector<TRangeRecord> RangeRecords;
+    const uint16_t coverage_format;
+    // GlyphArray for format 1.
+    // RangeRecords for format 2.
+    absl::variant<DataVector<uint16_t>, std::vector<TRangeRecord>> table_data;
   };
 
   struct SubTable {
@@ -71,7 +60,7 @@ class CFX_CTTGSUBTable {
     ~SubTable();
 
     const uint16_t subst_format;
-    std::unique_ptr<TCoverageFormatBase> coverage;
+    std::unique_ptr<CoverageFormat> coverage;
     // DeltaGlyphID for format 1.
     // Substitutes for format 2.
     absl::variant<int16_t, DataVector<uint16_t>> table_data;
@@ -100,9 +89,9 @@ class CFX_CTTGSUBTable {
   DataVector<uint16_t> ParseFeatureLookupListIndices(FT_Bytes raw);
   void ParseLookupList(FT_Bytes raw);
   Lookup ParseLookup(FT_Bytes raw);
-  std::unique_ptr<TCoverageFormatBase> ParseCoverage(FT_Bytes raw);
-  std::unique_ptr<TCoverageFormat1> ParseCoverageFormat1(FT_Bytes raw);
-  std::unique_ptr<TCoverageFormat2> ParseCoverageFormat2(FT_Bytes raw);
+  std::unique_ptr<CoverageFormat> ParseCoverage(FT_Bytes raw);
+  std::unique_ptr<CoverageFormat> ParseCoverageFormat1(FT_Bytes raw);
+  std::unique_ptr<CoverageFormat> ParseCoverageFormat2(FT_Bytes raw);
   std::unique_ptr<SubTable> ParseSingleSubst(FT_Bytes raw);
   std::unique_ptr<SubTable> ParseSingleSubstFormat1(FT_Bytes raw);
   std::unique_ptr<SubTable> ParseSingleSubstFormat2(FT_Bytes raw);
@@ -111,7 +100,7 @@ class CFX_CTTGSUBTable {
                                                uint32_t glyphnum) const;
   absl::optional<uint32_t> GetVerticalGlyphSub2(const Lookup& lookup,
                                                 uint32_t glyphnum) const;
-  int GetCoverageIndex(TCoverageFormatBase* Coverage, uint32_t g) const;
+  int GetCoverageIndex(CoverageFormat* coverage, uint32_t g) const;
 
   uint8_t GetUInt8(FT_Bytes& p) const;
   int16_t GetInt16(FT_Bytes& p) const;
