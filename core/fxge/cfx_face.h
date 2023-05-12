@@ -5,6 +5,9 @@
 #ifndef CORE_FXGE_CFX_FACE_H_
 #define CORE_FXGE_CFX_FACE_H_
 
+#include <stdint.h>
+
+#include "build/build_config.h"
 #include "core/fxcrt/fx_coordinates.h"
 #include "core/fxcrt/observed_ptr.h"
 #include "core/fxcrt/retain_ptr.h"
@@ -39,6 +42,12 @@ class CFX_Face final : public Retainable, public Observable {
   const char* GetStyleName() const;
 
   FX_RECT GetBBox() const;
+  uint16_t GetUnitsPerEm() const;
+  int16_t GetAscender() const;
+  int16_t GetDescender() const;
+#if BUILDFLAG(IS_ANDROID)
+  int16_t GetHeight() const;
+#endif
 
   pdfium::span<uint8_t> GetStream() const;
 

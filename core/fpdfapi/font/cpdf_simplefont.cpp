@@ -77,22 +77,27 @@ void CPDF_SimpleFont::LoadCharMetrics(int charcode) {
     }
     return;
   }
-  FXFT_FaceRec* face = m_Font.GetFaceRec();
+  RetainPtr<CFX_Face> face = m_Font.GetFace();
+  if (!face) {
+    return;
+  }
+
+  FXFT_FaceRec* face_rec = face->GetRec();
   int err =
-      FT_Load_Glyph(face, glyph_index,
+      FT_Load_Glyph(face_rec, glyph_index,
                     FT_LOAD_NO_SCALE | FT_LOAD_IGNORE_GLOBAL_ADVANCE_WIDTH);
   if (err)
     return;
 
-  FT_Pos iHoriBearingX = FXFT_Get_Glyph_HoriBearingX(face);
-  FT_Pos iHoriBearingY = FXFT_Get_Glyph_HoriBearingY(face);
+  FT_Pos iHoriBearingX = FXFT_Get_Glyph_HoriBearingX(face_rec);
+  FT_Pos iHoriBearingY = FXFT_Get_Glyph_HoriBearingY(face_rec);
   m_CharBBox[charcode] =
       FX_RECT(TT2PDF(iHoriBearingX, face), TT2PDF(iHoriBearingY, face),
-              TT2PDF(iHoriBearingX + FXFT_Get_Glyph_Width(face), face),
-              TT2PDF(iHoriBearingY - FXFT_Get_Glyph_Height(face), face));
+              TT2PDF(iHoriBearingX + FXFT_Get_Glyph_Width(face_rec), face),
+              TT2PDF(iHoriBearingY - FXFT_Get_Glyph_Height(face_rec), face));
 
   if (m_bUseFontWidth) {
-    int TT_Width = TT2PDF(FXFT_Get_Glyph_HoriAdvance(face), face);
+    int TT_Width = TT2PDF(FXFT_Get_Glyph_HoriAdvance(face_rec), face);
     if (m_CharWidth[charcode] == 0xffff) {
       m_CharWidth[charcode] = TT_Width;
     } else if (TT_Width && !IsEmbedded()) {

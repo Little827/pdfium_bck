@@ -139,7 +139,7 @@ class CPDF_Font : public Retainable, public Observable {
  protected:
   CPDF_Font(CPDF_Document* pDocument, RetainPtr<CPDF_Dictionary> pFontDict);
 
-  static int TT2PDF(FT_Pos m, FXFT_FaceRec* face);
+  static int TT2PDF(FT_Pos m, const RetainPtr<CFX_Face>& face);
 
   // Commonly used wrappers for UseTTCharmap().
   static bool UseTTCharmapMSUnicode(FXFT_FaceRec* face) {
