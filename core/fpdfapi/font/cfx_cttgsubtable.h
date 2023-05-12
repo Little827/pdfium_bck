@@ -37,18 +37,18 @@ class CFX_CTTGSUBTable {
     DataVector<uint16_t> lookup_list_indices;
   };
 
-  struct TRangeRecord {
-    TRangeRecord();
+  struct RangeRecord {
+    RangeRecord();
 
-    uint16_t Start = 0;
-    uint16_t End = 0;
-    uint16_t StartCoverageIndex = 0;
+    uint16_t start = 0;
+    uint16_t end = 0;
+    uint16_t start_coverage_index = 0;
   };
 
   // GlyphArray for format 1.
   // RangeRecords for format 2.
   using CoverageFormat =
-      absl::variant<DataVector<uint16_t>, std::vector<TRangeRecord>>;
+      absl::variant<DataVector<uint16_t>, std::vector<RangeRecord>>;
 
   struct SubTable {
     SubTable();
@@ -90,7 +90,7 @@ class CFX_CTTGSUBTable {
                                                uint32_t glyphnum) const;
   absl::optional<uint32_t> GetVerticalGlyphSub2(const Lookup& lookup,
                                                 uint32_t glyphnum) const;
-  int GetCoverageIndex(CoverageFormat* coverage, uint32_t g) const;
+  int GetCoverageIndex(const CoverageFormat* coverage, uint32_t g) const;
 
   uint8_t GetUInt8(FT_Bytes& p) const;
   int16_t GetInt16(FT_Bytes& p) const;
