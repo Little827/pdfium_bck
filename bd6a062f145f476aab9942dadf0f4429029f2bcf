@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "821487f2_be8f2038",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-05-12T23:16:54Z",
+      "side": 1,
+      "message": "One other thought.",
+      "revId": "bd6a062f145f476aab9942dadf0f4429029f2bcf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0102d353_9a500b94",
+        "filename": "core/fpdfapi/font/cfx_cttgsubtable.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-05-12T23:16:54Z",
+      "side": 1,
+      "message": "As I mentioned on the other CL, if you wanted to go crazy on this, you might introduce a monostate variant at which point we don\u0027t need to return pointers for error results.",
+      "range": {
+        "startLine": 76,
+        "startChar": 4,
+        "endLine": 76,
+        "endChar": 46
+      },
+      "revId": "bd6a062f145f476aab9942dadf0f4429029f2bcf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
