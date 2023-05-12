@@ -22,6 +22,30 @@
       },
       "revId": "6ebb3a96d5ced6099be526557b0db11fca4b91d9",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6b95c72_bc089f87",
+        "filename": "core/fpdfapi/font/cfx_cttgsubtable.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-05-12T22:45:20Z",
+      "side": 1,
+      "message": "Good idea. Done. I simplified the code further as a result.",
+      "parentUuid": "d5e93b08_79d54b46",
+      "range": {
+        "startLine": 73,
+        "startChar": 19,
+        "endLine": 73,
+        "endChar": 31
+      },
+      "revId": "6ebb3a96d5ced6099be526557b0db11fca4b91d9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
