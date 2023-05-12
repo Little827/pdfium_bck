@@ -33,6 +33,24 @@
       "message": "comment what we\u0027re skipping over.",
       "revId": "ede749173341d9f2befb109d984915be71a93792",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48a51df0_d8dfada4",
+        "filename": "core/fpdfapi/font/cfx_cttgsubtable.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-05-12T03:26:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d426e00_2ae1843e",
+      "revId": "ede749173341d9f2befb109d984915be71a93792",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
