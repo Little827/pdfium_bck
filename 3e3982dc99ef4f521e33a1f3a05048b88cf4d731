@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36ccb51a_e7426b52",
+        "filename": "core/fpdfapi/font/cfx_cttgsubtable.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-05-12T21:59:33Z",
+      "side": 1,
+      "message": "I\u0027m not grokking how this macro applies to a span.",
+      "range": {
+        "startLine": 62,
+        "startChar": 28,
+        "endLine": 62,
+        "endChar": 53
+      },
+      "revId": "3e3982dc99ef4f521e33a1f3a05048b88cf4d731",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
