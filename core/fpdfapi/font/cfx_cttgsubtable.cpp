@@ -118,7 +118,7 @@ absl::optional<uint32_t> CFX_CTTGSUBTable::GetVerticalGlyphSub2(
   return absl::nullopt;
 }
 
-int CFX_CTTGSUBTable::GetCoverageIndex(CoverageFormat* coverage,
+int CFX_CTTGSUBTable::GetCoverageIndex(const CoverageFormat* coverage,
                                        uint32_t g) const {
   if (!coverage) {
     return -1;
@@ -138,11 +138,11 @@ int CFX_CTTGSUBTable::GetCoverageIndex(CoverageFormat* coverage,
     }
     case 2: {
       const auto& range_records =
-          absl::get<std::vector<TRangeRecord>>(coverage->table_data);
-      for (const auto& rangeRec : range_records) {
-        uint32_t s = rangeRec.Start;
-        uint32_t e = rangeRec.End;
-        uint32_t si = rangeRec.StartCoverageIndex;
+          absl::get<std::vector<RangeRecord>>(coverage->table_data);
+      for (const auto& range_rec : range_records) {
+        uint32_t s = range_rec.start;
+        uint32_t e = range_rec.end;
+        uint32_t si = range_rec.start_coverage_index;
         if (s <= g && g <= e)
           return si + g - s;
       }
@@ -161,7 +161,7 @@ uint8_t CFX_CTTGSUBTable::GetUInt8(FT_Bytes& p) const {
 int16_t CFX_CTTGSUBTable::GetInt16(FT_Bytes& p) const {
   uint16_t ret = FXSYS_UINT16_GET_MSBFIRST(p);
   p += 2;
-  return *(int16_t*)&ret;
+  return *reinterpret_cast<int16_t*>(&ret);
 }
 
 uint16_t CFX_CTTGSUBTable::GetUInt16(FT_Bytes& p) const {
@@ -173,7 +173,7 @@ uint16_t CFX_CTTGSUBTable::GetUInt16(FT_Bytes& p) const {
 int32_t CFX_CTTGSUBTable::GetInt32(FT_Bytes& p) const {
   uint32_t ret = FXSYS_UINT32_GET_MSBFIRST(p);
   p += 4;
-  return *(int32_t*)&ret;
+  return *reinterpret_cast<int32_t*>(&ret);
 }
 
 uint32_t CFX_CTTGSUBTable::GetUInt32(FT_Bytes& p) const {
@@ -295,11 +295,11 @@ std::unique_ptr<CFX_CTTGSUBTable::CoverageFormat>
 CFX_CTTGSUBTable::ParseCoverageFormat2(FT_Bytes raw) {
   FT_Bytes sp = raw + 2;
   auto rec = std::make_unique<CoverageFormat>(2);
-  std::vector<TRangeRecord> range_records(GetUInt16(sp));
+  std::vector<RangeRecord> range_records(GetUInt16(sp));
   for (auto& range_rec : range_records) {
-    range_rec.Start = GetUInt16(sp);
-    range_rec.End = GetUInt16(sp);
-    range_rec.StartCoverageIndex = GetUInt16(sp);
+    range_rec.start = GetUInt16(sp);
+    range_rec.end = GetUInt16(sp);
+    range_rec.start_coverage_index = GetUInt16(sp);
   }
   rec->table_data = std::move(range_records);
   return rec;
@@ -344,7 +344,7 @@ CFX_CTTGSUBTable::FeatureRecord::FeatureRecord() = default;
 
 CFX_CTTGSUBTable::FeatureRecord::~FeatureRecord() = default;
 
-CFX_CTTGSUBTable::TRangeRecord::TRangeRecord() = default;
+CFX_CTTGSUBTable::RangeRecord::RangeRecord() = default;
 
 CFX_CTTGSUBTable::CoverageFormat::CoverageFormat(uint16_t format)
     : coverage_format(format) {}
