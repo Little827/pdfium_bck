@@ -8,6 +8,9 @@
 
 #include <stdint.h>
 
+#include "core/fxge/cfx_fontmgr.h"
+#include "core/fxge/cfx_gemodule.h"
+
 #define DEFINE_PS_TABLES
 #include "third_party/freetype/include/pstables.h"
 
@@ -57,7 +60,63 @@ int xyq_search_node(char* glyph_name,
   return 0;
 }
 
+FT_MM_Var* GetVariationDescriptor(FXFT_FaceRec* face) {
+  FT_MM_Var* variation_desc = nullptr;
+  FT_Get_MM_Var(face, &variation_desc);
+  return variation_desc;
+}
+
 }  // namespace
+
+FXFTMMVarDeleter::FXFTMMVarDeleter(FXFT_FaceRec* face) : face_(face) {}
+
+FXFTMMVarDeleter::~FXFTMMVarDeleter() = default;
+
+// TODO(crbug.com/pdfium/1400): When FT_Done_MM_Var() is more likely to be
+// available to all users in the future, remove FXFTMMVarDeleter() and use
+// FT_Done_MM_Var() directly.
+//
+// Use weak symbols to check if FT_Done_MM_Var() is available at runtime.
+#if !BUILDFLAG(IS_WIN)
+extern "C" __attribute__((weak)) decltype(FT_Done_MM_Var) FT_Done_MM_Var;
+#endif
+
+void FXFTMMVarDeleter::operator()(FT_MM_Var* variation_desc) const {
+#if BUILDFLAG(IS_WIN)
+  // Assume `use_system_freetype` GN var is never set on Windows.
+  constexpr bool has_ft_done_mm_var_func = true;
+#else
+  static const bool has_ft_done_mm_var_func = !!FT_Done_MM_Var;
+#endif
+  if (has_ft_done_mm_var_func) {
+    FT_Done_MM_Var(CFX_GEModule::Get()->GetFontMgr()->GetFTLibrary(),
+                   variation_desc);
+  } else {
+    face_->memory->free(face_->memory, variation_desc);
+  }
+}
+
+FXFTMMVarDeleter::FXFTMMVarDeleter(FXFTMMVarDeleter&& that) noexcept = default;
+
+FXFTMMVarDeleter& FXFTMMVarDeleter::operator=(FXFTMMVarDeleter&&) noexcept =
+    default;
+
+ScopedFXFTMMVar::ScopedFXFTMMVar(FXFT_FaceRec* face)
+    : variation_desc_(GetVariationDescriptor(face), FXFTMMVarDeleter(face)) {}
+
+ScopedFXFTMMVar::~ScopedFXFTMMVar() = default;
+
+FT_Pos ScopedFXFTMMVar::GetAxisDefault(size_t index) const {
+  return variation_desc_->axis[index].def;
+}
+
+FT_Long ScopedFXFTMMVar::GetAxisMin(size_t index) const {
+  return variation_desc_->axis[index].minimum;
+}
+
+FT_Long ScopedFXFTMMVar::GetAxisMax(size_t index) const {
+  return variation_desc_->axis[index].maximum;
+}
 
 int FXFT_unicode_from_adobe_name(const char* glyph_name) {
   /* If the name begins with `uni', then the glyph name may be a */
