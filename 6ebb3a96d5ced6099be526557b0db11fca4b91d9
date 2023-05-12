@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5e93b08_79d54b46",
+        "filename": "core/fpdfapi/font/cfx_cttgsubtable.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-05-12T21:57:38Z",
+      "side": 1,
+      "message": "do we need this here as well?  Can we derive this from the type of the variant?",
+      "range": {
+        "startLine": 73,
+        "startChar": 19,
+        "endLine": 73,
+        "endChar": 31
+      },
+      "revId": "6ebb3a96d5ced6099be526557b0db11fca4b91d9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
