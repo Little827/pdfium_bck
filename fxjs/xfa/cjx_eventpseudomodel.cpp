@@ -11,7 +11,6 @@
 
 #include "fxjs/fxv8.h"
 #include "fxjs/xfa/cfxjse_engine.h"
-#include "third_party/base/check_op.h"
 #include "third_party/base/notreached.h"
 #include "third_party/base/numerics/safe_conversions.h"
 #include "v8/include/v8-primitive.h"
@@ -127,8 +126,8 @@ void CJX_EventPseudoModel::newText(v8::Isolate* pIsolate,
   if (bSetting)
     return;
 
-  CFXJSE_Engine* pScriptContext = GetDocument()->GetScriptContext();
-  CXFA_EventParam* pEventParam = pScriptContext->GetEventParam();
+  CXFA_EventParam* pEventParam =
+      GetDocument()->GetScriptContext()->GetEventParam();
   if (!pEventParam)
     return;
 
@@ -218,9 +217,7 @@ CJS_Result CJX_EventPseudoModel::emit(
 CJS_Result CJX_EventPseudoModel::reset(
     CFXJSE_Engine* runtime,
     const std::vector<v8::Local<v8::Value>>& params) {
-  CHECK_EQ(runtime, GetDocument()->GetScriptContext());
-  CFXJSE_Engine* pScriptContext = GetDocument()->GetScriptContext();
-  CXFA_EventParam* pEventParam = pScriptContext->GetEventParam();
+  CXFA_EventParam* pEventParam = runtime->GetEventParam();
   if (pEventParam)
     *pEventParam = CXFA_EventParam();
 
