@@ -113,32 +113,33 @@ absl::optional<uint32_t> CFX_CTTGSUBTable::GetVerticalGlyphSub2(
   return absl::nullopt;
 }
 
-int CFX_CTTGSUBTable::GetCoverageIndex(TCoverageFormatBase* Coverage,
+int CFX_CTTGSUBTable::GetCoverageIndex(CoverageFormat* coverage,
                                        uint32_t g) const {
-  if (!Coverage)
+  if (!coverage) {
     return -1;
+  }
 
-  switch (Coverage->CoverageFormat) {
-    case 1: {
-      int i = 0;
-      TCoverageFormat1* c1 = static_cast<TCoverageFormat1*>(Coverage);
-      for (const auto& glyph : c1->GlyphArray) {
-        if (static_cast<uint32_t>(glyph) == g)
-          return i;
-        ++i;
+  if (absl::holds_alternative<DataVector<uint16_t>>(coverage->table_data)) {
+    int i = 0;
+    const auto& glyph_array =
+        absl::get<DataVector<uint16_t>>(coverage->table_data);
+    for (const auto& glyph : glyph_array) {
+      if (static_cast<uint32_t>(glyph) == g) {
+        return i;
       }
-      return -1;
+      ++i;
     }
-    case 2: {
-      TCoverageFormat2* c2 = static_cast<TCoverageFormat2*>(Coverage);
-      for (const auto& rangeRec : c2->RangeRecords) {
-        uint32_t s = rangeRec.Start;
-        uint32_t e = rangeRec.End;
-        uint32_t si = rangeRec.StartCoverageIndex;
-        if (s <= g && g <= e)
-          return si + g - s;
-      }
-      return -1;
+    return -1;
+  }
+
+  const auto& range_records =
+      absl::get<std::vector<TRangeRecord>>(coverage->table_data);
+  for (const auto& rangeRec : range_records) {
+    uint32_t s = rangeRec.Start;
+    uint32_t e = rangeRec.End;
+    uint32_t si = rangeRec.StartCoverageIndex;
+    if (s <= g && g <= e) {
+      return si + g - s;
     }
   }
   return -1;
@@ -260,36 +261,29 @@ CFX_CTTGSUBTable::Lookup CFX_CTTGSUBTable::ParseLookup(FT_Bytes raw) {
   return result;
 }
 
-std::unique_ptr<CFX_CTTGSUBTable::TCoverageFormatBase>
+std::unique_ptr<CFX_CTTGSUBTable::CoverageFormat>
 CFX_CTTGSUBTable::ParseCoverage(FT_Bytes raw) {
   FT_Bytes sp = raw;
   uint16_t format = GetUInt16(sp);
-  if (format == 1)
-    return ParseCoverageFormat1(raw);
-  if (format == 2)
-    return ParseCoverageFormat2(raw);
-  return nullptr;
-}
+  if (format != 1 && format != 2) {
+    return nullptr;
+  }
 
-std::unique_ptr<CFX_CTTGSUBTable::TCoverageFormat1>
-CFX_CTTGSUBTable::ParseCoverageFormat1(FT_Bytes raw) {
-  FT_Bytes sp = raw;
-  (void)GetUInt16(sp);
-  auto rec = std::make_unique<TCoverageFormat1>(GetUInt16(sp));
-  for (auto& glyph : rec->GlyphArray)
-    glyph = GetUInt16(sp);
-  return rec;
-}
-
-std::unique_ptr<CFX_CTTGSUBTable::TCoverageFormat2>
-CFX_CTTGSUBTable::ParseCoverageFormat2(FT_Bytes raw) {
-  FT_Bytes sp = raw;
-  (void)GetUInt16(sp);
-  auto rec = std::make_unique<TCoverageFormat2>(GetUInt16(sp));
-  for (auto& rangeRec : rec->RangeRecords) {
-    rangeRec.Start = GetUInt16(sp);
-    rangeRec.End = GetUInt16(sp);
-    rangeRec.StartCoverageIndex = GetUInt16(sp);
+  auto rec = std::make_unique<CoverageFormat>();
+  if (format == 1) {
+    DataVector<uint16_t> glyph_array(GetUInt16(sp));
+    for (auto& glyph : glyph_array) {
+      glyph = GetUInt16(sp);
+    }
+    rec->table_data = std::move(glyph_array);
+  } else {
+    std::vector<TRangeRecord> range_records(GetUInt16(sp));
+    for (auto& range_rec : range_records) {
+      range_rec.Start = GetUInt16(sp);
+      range_rec.End = GetUInt16(sp);
+      range_rec.StartCoverageIndex = GetUInt16(sp);
+    }
+    rec->table_data = std::move(range_records);
   }
   return rec;
 }
@@ -323,15 +317,9 @@ CFX_CTTGSUBTable::FeatureRecord::~FeatureRecord() = default;
 
 CFX_CTTGSUBTable::TRangeRecord::TRangeRecord() = default;
 
-CFX_CTTGSUBTable::TCoverageFormat1::TCoverageFormat1(size_t initial_size)
-    : TCoverageFormatBase(1), GlyphArray(initial_size) {}
+CFX_CTTGSUBTable::CoverageFormat::CoverageFormat() = default;
 
-CFX_CTTGSUBTable::TCoverageFormat1::~TCoverageFormat1() = default;
-
-CFX_CTTGSUBTable::TCoverageFormat2::TCoverageFormat2(size_t initial_size)
-    : TCoverageFormatBase(2), RangeRecords(initial_size) {}
-
-CFX_CTTGSUBTable::TCoverageFormat2::~TCoverageFormat2() = default;
+CFX_CTTGSUBTable::CoverageFormat::~CoverageFormat() = default;
 
 CFX_CTTGSUBTable::SubTable::SubTable() = default;
 
