@@ -9,8 +9,6 @@
 
 #include <ft2build.h>
 
-#include <memory>
-
 #include FT_FREETYPE_H
 #include FT_GLYPH_H
 #include FT_LCD_FILTER_H
@@ -18,10 +16,13 @@
 #include FT_OUTLINE_H
 #include FT_TRUETYPE_TABLES_H
 
+#include <memory>
+
+#include "core/fxcrt/unowned_ptr.h"
+
 using FXFT_LibraryRec = struct FT_LibraryRec_;
 using FXFT_FaceRec = struct FT_FaceRec_;
 using FXFT_StreamRec = struct FT_StreamRec_;
-using FXFT_MM_VarPtr = FT_MM_Var*;
 
 struct FXFTFaceRecDeleter {
   inline void operator()(FXFT_FaceRec* pRec) { FT_Done_Face(pRec); }
@@ -31,9 +32,39 @@ struct FXFTLibraryRecDeleter {
   inline void operator()(FXFT_LibraryRec* pRec) { FT_Done_FreeType(pRec); }
 };
 
+class FXFTMMVarDeleter {
+ public:
+  explicit FXFTMMVarDeleter(FXFT_FaceRec* face);
+  FXFTMMVarDeleter(const FXFTMMVarDeleter& that) = delete;
+  FXFTMMVarDeleter& operator=(const FXFTMMVarDeleter&) = delete;
+  FXFTMMVarDeleter(FXFTMMVarDeleter&& that) noexcept;
+  FXFTMMVarDeleter& operator=(FXFTMMVarDeleter&&) noexcept;
+  ~FXFTMMVarDeleter();
+
+  void operator()(FT_MM_Var* variation_desc) const;
+
+ private:
+  UnownedPtr<FXFT_FaceRec> face_;
+};
+
 using ScopedFXFTFaceRec = std::unique_ptr<FXFT_FaceRec, FXFTFaceRecDeleter>;
 using ScopedFXFTLibraryRec =
     std::unique_ptr<FXFT_LibraryRec, FXFTLibraryRecDeleter>;
+
+class ScopedFXFTMMVar {
+ public:
+  explicit ScopedFXFTMMVar(FXFT_FaceRec* face);
+  ~ScopedFXFTMMVar();
+
+  explicit operator bool() const { return !!variation_desc_; }
+
+  FT_Pos GetAxisDefault(size_t index) const;
+  FT_Long GetAxisMin(size_t index) const;
+  FT_Long GetAxisMax(size_t index) const;
+
+ private:
+  std::unique_ptr<FT_MM_Var, FXFTMMVarDeleter> const variation_desc_;
+};
 
 #define FXFT_Select_Charmap(face, encoding) \
   FT_Select_Charmap(face, static_cast<FT_Encoding>(encoding))
@@ -72,11 +103,6 @@ using ScopedFXFTLibraryRec =
 #define FXFT_Get_Face_Ascender(face) (face)->ascender
 #define FXFT_Get_Face_Descender(face) (face)->descender
 #define FXFT_Get_Glyph_HoriAdvance(face) (face)->glyph->metrics.horiAdvance
-#define FXFT_Get_MM_Axis(var, index) (var)->axis[index]
-#define FXFT_Get_MM_Axis_Min(axis) (axis).minimum
-#define FXFT_Get_MM_Axis_Max(axis) (axis).maximum
-#define FXFT_Get_MM_Axis_Def(axis) (axis).def
-#define FXFT_Free(face, p) (face)->memory->free((face)->memory, p)
 #define FXFT_Get_Glyph_Outline(face) &((face)->glyph->outline)
 #define FXFT_Get_Glyph_Bitmap(face) (face)->glyph->bitmap
 #define FXFT_Get_Bitmap_Width(bitmap) (bitmap).width
