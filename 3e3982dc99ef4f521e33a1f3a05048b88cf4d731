@@ -46,6 +46,30 @@
       },
       "revId": "3e3982dc99ef4f521e33a1f3a05048b88cf4d731",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "190e9b63_945f49d8",
+        "filename": "core/fpdfapi/font/cfx_cttgsubtable.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-05-12T23:21:38Z",
+      "side": 1,
+      "message": "Multi-evaluation of subpan() as the macro expands, though. May not matter,",
+      "parentUuid": "a15fbd53_875951b2",
+      "range": {
+        "startLine": 62,
+        "startChar": 28,
+        "endLine": 62,
+        "endChar": 53
+      },
+      "revId": "3e3982dc99ef4f521e33a1f3a05048b88cf4d731",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
