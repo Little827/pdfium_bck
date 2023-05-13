@@ -47,6 +47,7 @@ int CheckPDFiumCApi() {
     CHK(FPDFAnnot_GetAP);
     CHK(FPDFAnnot_GetAttachmentPoints);
     CHK(FPDFAnnot_GetBorder);
+    CHK(FPDFAnnot_GetBorderWidth);
     CHK(FPDFAnnot_GetColor);
     CHK(FPDFAnnot_GetFlags);
     CHK(FPDFAnnot_GetFocusableSubtypes);
@@ -88,6 +89,7 @@ int CheckPDFiumCApi() {
     CHK(FPDFAnnot_SetAP);
     CHK(FPDFAnnot_SetAttachmentPoints);
     CHK(FPDFAnnot_SetBorder);
+    CHK(FPDFAnnot_SetBorderWidth);
     CHK(FPDFAnnot_SetColor);
     CHK(FPDFAnnot_SetFlags);
     CHK(FPDFAnnot_SetFocusableSubtypes);
