@@ -505,6 +505,26 @@ FPDFAnnot_GetBorder(FPDF_ANNOTATION annot,
                     float* border_width);
 
 // Experimental API.
+// Set the width of the annotation's border (include BS).
+//
+//   annot        - handle to an annotation
+//   border_width - border width, in default user space units
+//
+// Returns true if successful.
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFAnnot_SetBorderWidth(FPDF_ANNOTATION annot,
+                                                             float border_width);
+
+// Experimental API.
+// Get the width of the annotation's border (include BS).
+//
+//   annot        - handle to an annotation
+//   border_width - border width, in default user space units
+//
+// Returns true if successful.
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFAnnot_GetBorderWidth(FPDF_ANNOTATION annot,
+                                                             float* border_width);
+
+// Experimental API.
 // Get the JavaScript of an event of the annotation's additional actions.
 // |buffer| is only modified if |buflen| is large enough to hold the whole
 // JavaScript string. If |buflen| is smaller, the total size of the JavaScript

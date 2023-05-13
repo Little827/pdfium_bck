@@ -984,6 +984,45 @@ FPDFAnnot_GetBorder(FPDF_ANNOTATION annot,
   return true;
 }
 
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFAnnot_SetBorderWidth(FPDF_ANNOTATION annot,
+                                                             float border_width) {
+  if (!annot)
+    return false;
+
+  RetainPtr<CPDF_Dictionary> annot_dict = GetMutableAnnotDictFromFPDFAnnotation(annot);
+  if (!annot_dict)
+    return false;
+
+  RetainPtr<CPDF_Array> border = annot_dict->GetMutableArrayFor(pdfium::annotation::kBorder);
+  if (border) {
+    border->SetNewAt<CPDF_Number>(2, border_width);
+    return true;
+  }
+
+  annot_dict->GetOrCreateDictFor("BS")->SetNewFor<CPDF_Number>("W", border_width);
+  return true;
+}
+
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFAnnot_GetBorderWidth(FPDF_ANNOTATION annot,
+                                                             float* border_width) {
+  RetainPtr <CPDF_Dictionary> annot_dict = GetMutableAnnotDictFromFPDFAnnotation(annot);
+  if (!annot_dict)
+    return false;
+
+  RetainPtr<const CPDF_Array> border = annot_dict -> GetArrayFor(pdfium::annotation::kBorder);
+  if (border && border->size() >= 3) {
+      *border_width = border->GetFloatAt(2);
+      return true;
+  }
+
+  RetainPtr<const CPDF_Dictionary> pBSDict = annot_dict->GetDictFor("BS");
+  if (!pBSDict)
+    return false;
+
+  *border_width = pBSDict->GetFloatFor("W");
+  return true;
+}
+
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFAnnot_HasKey(FPDF_ANNOTATION annot,
                                                      FPDF_BYTESTRING key) {
   const CPDF_Dictionary* pAnnotDict = GetAnnotDictFromFPDFAnnotation(annot);
