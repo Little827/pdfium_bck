@@ -142,6 +142,24 @@
       "parentUuid": "f444a844_18a4f262",
       "revId": "1a1bb6b31fef574bb00589793a3d2e6a11e6061c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2981fd1_a6fc4621",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8461
+      },
+      "writtenOn": "2023-05-15T18:45:12Z",
+      "side": 1,
+      "message": "Nevermind, the second deduplication isn\u0027t relevant to PDFium since it needs to extend the class for other reasons anyways. So, this CL can be submitted as-is once the roll occurs.",
+      "parentUuid": "4522fe24_a2bc4b60",
+      "revId": "1a1bb6b31fef574bb00589793a3d2e6a11e6061c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
