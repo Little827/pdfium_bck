@@ -196,6 +196,24 @@
       "parentUuid": "133b908f_f6fb5f19",
       "revId": "1a1bb6b31fef574bb00589793a3d2e6a11e6061c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6997e9a8_1b2ae6a3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8461
+      },
+      "writtenOn": "2023-05-15T20:35:11Z",
+      "side": 1,
+      "message": "We shouldn\u0027t need a roll of Skia, just of Chromium\u0027s build directory.",
+      "parentUuid": "c482e7af_05e73aa1",
+      "revId": "1a1bb6b31fef574bb00589793a3d2e6a11e6061c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
