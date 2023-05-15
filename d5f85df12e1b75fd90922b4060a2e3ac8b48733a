@@ -51,6 +51,24 @@
       "parentUuid": "60cc70fc_1596312c",
       "revId": "d5f85df12e1b75fd90922b4060a2e3ac8b48733a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "134cdb5b_00ac3e59",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-05-15T17:02:18Z",
+      "side": 1,
+      "message": "Standalone PDFium builds with C++17. PDFium in Chromium builds with C++20.\n\nIIRC, MSVC does not like designated initializers, but MSVC also doesn\u0027t use PA. Let\u0027s see if the bots are happy.",
+      "parentUuid": "1067ae8c_cc0baa34",
+      "revId": "d5f85df12e1b75fd90922b4060a2e3ac8b48733a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
