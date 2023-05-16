@@ -402,10 +402,11 @@ FPDFText_FindStart(FPDF_TEXTPAGE text_page,
   if (!textpage)
     return nullptr;
 
-  CPDF_TextPageFind::Options options;
-  options.bMatchCase = !!(flags & FPDF_MATCHCASE);
-  options.bMatchWholeWord = !!(flags & FPDF_MATCHWHOLEWORD);
-  options.bConsecutive = !!(flags & FPDF_CONSECUTIVE);
+  const CPDF_TextPageFind::Options options = {
+      .bMatchCase = !!(flags & FPDF_MATCHCASE),
+      .bMatchWholeWord = !!(flags & FPDF_MATCHWHOLEWORD),
+      .bConsecutive = !!(flags & FPDF_CONSECUTIVE),
+  };
   auto find = CPDF_TextPageFind::Create(
       textpage, WideStringFromFPDFWideString(findwhat), options,
       start_index >= 0 ? absl::optional<size_t>(start_index) : absl::nullopt);
