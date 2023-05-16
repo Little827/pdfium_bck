@@ -286,6 +286,23 @@
       "parentUuid": "3c66c0f0_4f82053b",
       "revId": "1a1bb6b31fef574bb00589793a3d2e6a11e6061c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f75fd2e_b96ecca9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8461
+      },
+      "writtenOn": "2023-05-16T18:35:14Z",
+      "side": 1,
+      "message": "Looks like I\u0027ll need Lei to stamp this before I can submit.",
+      "revId": "1a1bb6b31fef574bb00589793a3d2e6a11e6061c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
