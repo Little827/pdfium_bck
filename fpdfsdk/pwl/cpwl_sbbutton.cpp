@@ -113,36 +113,40 @@ void CPWL_SBButton::DrawThisAppearance(CFX_RenderDevice* pDevice,
 
 bool CPWL_SBButton::OnLButtonDown(Mask<FWL_EVENTFLAG> nFlag,
                                   const CFX_PointF& point) {
-  CPWL_Wnd::OnLButtonDown(nFlag, point);
-
-  if (CPWL_Wnd* pParent = GetParentWindow())
+  if (!CPWL_Wnd::OnLButtonDown(nFlag, point)) {
+    return false;
+  }
+  CPWL_Wnd* pParent = GetParentWindow();
+  if (pParent) {
     pParent->NotifyLButtonDown(this, point);
-
+  }
   m_bMouseDown = true;
   SetCapture();
-
   return true;
 }
 
 bool CPWL_SBButton::OnLButtonUp(Mask<FWL_EVENTFLAG> nFlag,
                                 const CFX_PointF& point) {
-  CPWL_Wnd::OnLButtonUp(nFlag, point);
-
-  if (CPWL_Wnd* pParent = GetParentWindow())
+  if (!CPWL_Wnd::OnLButtonUp(nFlag, point)) {
+    return false;
+  }
+  CPWL_Wnd* pParent = GetParentWindow();
+  if (pParent) {
     pParent->NotifyLButtonUp(this, point);
-
+  }
   m_bMouseDown = false;
   ReleaseCapture();
-
   return true;
 }
 
 bool CPWL_SBButton::OnMouseMove(Mask<FWL_EVENTFLAG> nFlag,
                                 const CFX_PointF& point) {
-  CPWL_Wnd::OnMouseMove(nFlag, point);
-
-  if (CPWL_Wnd* pParent = GetParentWindow())
+  if (!CPWL_Wnd::OnMouseMove(nFlag, point)) {
+    return false;
+  }
+  CPWL_Wnd* pParent = GetParentWindow();
+  if (pParent) {
     pParent->NotifyMouseMove(this, point);
-
+  }
   return true;
 }

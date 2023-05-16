@@ -109,8 +109,7 @@ bool CFFL_FormField::OnLButtonUp(CPDFSDK_PageView* pPageView,
     return false;
 
   InvalidateRect(GetViewBBox(pPageView));
-  pWnd->OnLButtonUp(nFlags, FFLtoPWL(point));
-  return true;
+  return pWnd->OnLButtonUp(nFlags, FFLtoPWL(point));
 }
 
 bool CFFL_FormField::OnLButtonDblClk(CPDFSDK_PageView* pPageView,
@@ -120,8 +119,7 @@ bool CFFL_FormField::OnLButtonDblClk(CPDFSDK_PageView* pPageView,
   if (!pWnd)
     return false;
 
-  pWnd->OnLButtonDblClk(nFlags, FFLtoPWL(point));
-  return true;
+  return pWnd->OnLButtonDblClk(nFlags, FFLtoPWL(point));
 }
 
 bool CFFL_FormField::OnMouseMove(CPDFSDK_PageView* pPageView,
@@ -131,8 +129,7 @@ bool CFFL_FormField::OnMouseMove(CPDFSDK_PageView* pPageView,
   if (!pWnd)
     return false;
 
-  pWnd->OnMouseMove(nFlags, FFLtoPWL(point));
-  return true;
+  return pWnd->OnMouseMove(nFlags, FFLtoPWL(point));
 }
 
 bool CFFL_FormField::OnMouseWheel(CPDFSDK_PageView* pPageView,

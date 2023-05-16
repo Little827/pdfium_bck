@@ -238,9 +238,9 @@ void CPWL_Edit::OnKillFocus() {
   ObservedPtr<CPWL_Edit> observed_ptr(this);
   CPWL_ScrollBar* pScroll = GetVScrollBar();
   if (pScroll && pScroll->IsVisible()) {
-    pScroll->SetVisible(false);
-    if (!observed_ptr)
+    if (!pScroll->SetVisible(false) || !observed_ptr) {
       return;
+    }
 
     if (!Move(m_rcOldWindow, true, true))
       return;
@@ -621,7 +621,9 @@ bool CPWL_Edit::OnCharInternal(uint16_t nChar, Mask<FWL_EVENTFLAG> nFlag) {
   if (m_bMouseDown)
     return true;
 
-  CPWL_Wnd::OnChar(nChar, nFlag);
+  if (!CPWL_Wnd::OnChar(nChar, nFlag)) {
+    return false;
+  }
 
   // FILTER
   switch (nChar) {
@@ -691,11 +693,13 @@ bool CPWL_Edit::OnCharInternal(uint16_t nChar, Mask<FWL_EVENTFLAG> nFlag) {
 
 bool CPWL_Edit::OnLButtonDown(Mask<FWL_EVENTFLAG> nFlag,
                               const CFX_PointF& point) {
-  CPWL_Wnd::OnLButtonDown(nFlag, point);
+  if (!CPWL_Wnd::OnLButtonDown(nFlag, point)) {
+    return false;
+  }
   if (HasFlag(PES_TEXTOVERFLOW) || ClientHitTest(point)) {
-    if (m_bMouseDown && !InvalidateRect(nullptr))
+    if (m_bMouseDown && !InvalidateRect(nullptr)) {
       return true;
-
+    }
     m_bMouseDown = true;
     SetCapture();
     m_pEditImpl->OnMouseDown(point, IsSHIFTKeyDown(nFlag),
@@ -706,7 +710,9 @@ bool CPWL_Edit::OnLButtonDown(Mask<FWL_EVENTFLAG> nFlag,
 
 bool CPWL_Edit::OnLButtonUp(Mask<FWL_EVENTFLAG> nFlag,
                             const CFX_PointF& point) {
-  CPWL_Wnd::OnLButtonUp(nFlag, point);
+  if (!CPWL_Wnd::OnLButtonUp(nFlag, point)) {
+    return false;
+  }
   if (m_bMouseDown) {
     // can receive keybord message
     if (ClientHitTest(point) && !IsFocused())
@@ -720,33 +726,38 @@ bool CPWL_Edit::OnLButtonUp(Mask<FWL_EVENTFLAG> nFlag,
 
 bool CPWL_Edit::OnLButtonDblClk(Mask<FWL_EVENTFLAG> nFlag,
                                 const CFX_PointF& point) {
-  CPWL_Wnd::OnLButtonDblClk(nFlag, point);
-  if (HasFlag(PES_TEXTOVERFLOW) || ClientHitTest(point))
+  if (!CPWL_Wnd::OnLButtonDblClk(nFlag, point)) {
+    return false;
+  }
+  if (HasFlag(PES_TEXTOVERFLOW) || ClientHitTest(point)) {
     m_pEditImpl->SelectAll();
-
+  }
   return true;
 }
 
 bool CPWL_Edit::OnRButtonUp(Mask<FWL_EVENTFLAG> nFlag,
                             const CFX_PointF& point) {
-  if (m_bMouseDown)
+  if (!CPWL_Wnd::OnRButtonUp(nFlag, point)) {
     return false;
-
-  CPWL_Wnd::OnRButtonUp(nFlag, point);
-  if (!HasFlag(PES_TEXTOVERFLOW) && !ClientHitTest(point))
+  }
+  if (m_bMouseDown) {
+    return false;
+  }
+  if (!HasFlag(PES_TEXTOVERFLOW) && !ClientHitTest(point)) {
     return true;
-
+  }
   SetFocus();
   return false;
 }
 
 bool CPWL_Edit::OnMouseMove(Mask<FWL_EVENTFLAG> nFlag,
                             const CFX_PointF& point) {
-  CPWL_Wnd::OnMouseMove(nFlag, point);
-
-  if (m_bMouseDown)
+  if (!CPWL_Wnd::OnMouseMove(nFlag, point)) {
+    return false;
+  }
+  if (m_bMouseDown) {
     m_pEditImpl->OnMouseMove(point, false, false);
-
+  }
   return true;
 }
 

@@ -1234,7 +1234,9 @@ void CPWL_EditImpl::Refresh() {
         m_bNotifyFlag = true;
         if (std::vector<CFX_FloatRect>* pRects = m_Refresh.GetRefreshRects()) {
           for (auto& rect : *pRects)
-            m_pNotify->InvalidateRect(&rect);
+            if (!m_pNotify->InvalidateRect(&rect)) {
+              return;
+            }
         }
       }
     }
@@ -1302,7 +1304,9 @@ void CPWL_EditImpl::RefreshWordRange(const CPVT_WordRange& wr) {
           AutoRestorer<bool> restorer(&m_bNotifyFlag);
           m_bNotifyFlag = true;
           CFX_FloatRect rcRefresh = VTToEdit(rcWord);
-          m_pNotify->InvalidateRect(&rcRefresh);
+          if (!m_pNotify->InvalidateRect(&rcRefresh)) {
+            return;
+          }
         }
       }
     } else {
@@ -1316,7 +1320,9 @@ void CPWL_EditImpl::RefreshWordRange(const CPVT_WordRange& wr) {
           AutoRestorer<bool> restorer(&m_bNotifyFlag);
           m_bNotifyFlag = true;
           CFX_FloatRect rcRefresh = VTToEdit(rcLine);
-          m_pNotify->InvalidateRect(&rcRefresh);
+          if (!m_pNotify->InvalidateRect(&rcRefresh)) {
+            return;
+          }
         }
       }
 

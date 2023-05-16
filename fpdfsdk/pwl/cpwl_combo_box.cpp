@@ -277,8 +277,7 @@ bool CPWL_ComboBox::RePosChildWnd() {
   }
 
   if (m_pList) {
-    m_pList->SetVisible(false);
-    if (!this_observed) {
+    if (!m_pList->SetVisible(false) || !this_observed) {
       return false;
     }
   }

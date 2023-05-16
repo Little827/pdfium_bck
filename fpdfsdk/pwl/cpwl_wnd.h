@@ -138,22 +138,26 @@ class CPWL_Wnd : public Observable {
   virtual ~CPWL_Wnd();
 
   // Returns |true| iff this instance is still allocated.
-  virtual bool InvalidateRect(const CFX_FloatRect* pRect);
+  [[nodiscard]] virtual bool InvalidateRect(const CFX_FloatRect* pRect);
 
-  virtual bool OnKeyDown(FWL_VKEYCODE nKeyCode, Mask<FWL_EVENTFLAG> nFlag);
-  virtual bool OnChar(uint16_t nChar, Mask<FWL_EVENTFLAG> nFlag);
-  virtual bool OnLButtonDblClk(Mask<FWL_EVENTFLAG> nFlag,
-                               const CFX_PointF& point);
-  virtual bool OnLButtonDown(Mask<FWL_EVENTFLAG> nFlag,
-                             const CFX_PointF& point);
-  virtual bool OnLButtonUp(Mask<FWL_EVENTFLAG> nFlag, const CFX_PointF& point);
-  virtual bool OnRButtonDown(Mask<FWL_EVENTFLAG> nFlag,
-                             const CFX_PointF& point);
-  virtual bool OnRButtonUp(Mask<FWL_EVENTFLAG> nFlag, const CFX_PointF& point);
-  virtual bool OnMouseMove(Mask<FWL_EVENTFLAG> nFlag, const CFX_PointF& point);
-  virtual bool OnMouseWheel(Mask<FWL_EVENTFLAG> nFlag,
-                            const CFX_PointF& point,
-                            const CFX_Vector& delta);
+  [[nodiscard]] virtual bool OnKeyDown(FWL_VKEYCODE nKeyCode,
+                                       Mask<FWL_EVENTFLAG> nFlag);
+  [[nodiscard]] virtual bool OnChar(uint16_t nChar, Mask<FWL_EVENTFLAG> nFlag);
+  [[nodiscard]] virtual bool OnLButtonDblClk(Mask<FWL_EVENTFLAG> nFlag,
+                                             const CFX_PointF& point);
+  [[nodiscard]] virtual bool OnLButtonDown(Mask<FWL_EVENTFLAG> nFlag,
+                                           const CFX_PointF& point);
+  [[nodiscard]] virtual bool OnLButtonUp(Mask<FWL_EVENTFLAG> nFlag,
+                                         const CFX_PointF& point);
+  [[nodiscard]] virtual bool OnRButtonDown(Mask<FWL_EVENTFLAG> nFlag,
+                                           const CFX_PointF& point);
+  [[nodiscard]] virtual bool OnRButtonUp(Mask<FWL_EVENTFLAG> nFlag,
+                                         const CFX_PointF& point);
+  [[nodiscard]] virtual bool OnMouseMove(Mask<FWL_EVENTFLAG> nFlag,
+                                         const CFX_PointF& point);
+  [[nodiscard]] virtual bool OnMouseWheel(Mask<FWL_EVENTFLAG> nFlag,
+                                          const CFX_PointF& point,
+                                          const CFX_Vector& delta);
   virtual void SetScrollInfo(const PWL_SCROLL_INFO& info);
   virtual void SetScrollPosition(float pos);
   virtual void ScrollWindowVertically(float pos);
@@ -165,7 +169,7 @@ class CPWL_Wnd : public Observable {
   virtual void SetCursor();
 
   // Returns |true| iff this instance is still allocated.
-  virtual bool SetVisible(bool bVisible);
+  [[nodiscard]] virtual bool SetVisible(bool bVisible);
   virtual void SetFontSize(float fFontSize);
   virtual float GetFontSize() const;
 
@@ -224,7 +228,7 @@ class CPWL_Wnd : public Observable {
   virtual void CreateChildWnd(const CreateParams& cp);
 
   // Returns |true| iff this instance is still allocated.
-  virtual bool RePosChildWnd();
+  [[nodiscard]] virtual bool RePosChildWnd();
 
   virtual void DrawThisAppearance(CFX_RenderDevice* pDevice,
                                   const CFX_Matrix& mtUser2Device);

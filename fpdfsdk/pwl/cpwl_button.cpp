@@ -19,7 +19,9 @@ CPWL_Button::~CPWL_Button() = default;
 
 bool CPWL_Button::OnLButtonDown(Mask<FWL_EVENTFLAG> nFlag,
                                 const CFX_PointF& point) {
-  CPWL_Wnd::OnLButtonDown(nFlag, point);
+  if (!CPWL_Wnd::OnLButtonDown(nFlag, point)) {
+    return false;
+  }
   m_bMouseDown = true;
   SetCapture();
   return true;
@@ -27,7 +29,9 @@ bool CPWL_Button::OnLButtonDown(Mask<FWL_EVENTFLAG> nFlag,
 
 bool CPWL_Button::OnLButtonUp(Mask<FWL_EVENTFLAG> nFlag,
                               const CFX_PointF& point) {
-  CPWL_Wnd::OnLButtonUp(nFlag, point);
+  if (!CPWL_Wnd::OnLButtonUp(nFlag, point)) {
+    return false;
+  }
   ReleaseCapture();
   m_bMouseDown = false;
   return true;

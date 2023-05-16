@@ -557,8 +557,7 @@ bool CPWL_Wnd::SetVisible(bool bVisible) {
 
   ObservedPtr<CPWL_Wnd> this_observed(this);
   for (const auto& pChild : m_Children) {
-    pChild->SetVisible(bVisible);
-    if (!this_observed) {
+    if (!pChild->SetVisible(bVisible) || !this_observed) {
       return false;
     }
   }

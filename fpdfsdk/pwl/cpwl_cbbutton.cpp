@@ -60,20 +60,22 @@ void CPWL_CBButton::DrawThisAppearance(CFX_RenderDevice* pDevice,
 
 bool CPWL_CBButton::OnLButtonDown(Mask<FWL_EVENTFLAG> nFlag,
                                   const CFX_PointF& point) {
-  CPWL_Wnd::OnLButtonDown(nFlag, point);
-
+  if (!CPWL_Wnd::OnLButtonDown(nFlag, point)) {
+    return false;
+  }
   SetCapture();
   CPWL_Wnd* pParent = GetParentWindow();
-  if (pParent)
+  if (pParent) {
     pParent->NotifyLButtonDown(this, point);
-
+  }
   return true;
 }
 
 bool CPWL_CBButton::OnLButtonUp(Mask<FWL_EVENTFLAG> nFlag,
                                 const CFX_PointF& point) {
-  CPWL_Wnd::OnLButtonUp(nFlag, point);
-
+  if (!CPWL_Wnd::OnLButtonUp(nFlag, point)) {
+    return false;
+  }
   ReleaseCapture();
   return true;
 }
