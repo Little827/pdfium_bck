@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7a65f60_137d4cde",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-05-17T20:14:33Z",
+      "side": 1,
+      "message": "As you like",
+      "revId": "1bb72d5ef508516eed2ea3907a0680b622abba1a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6dfedbb_7da706e7",
+        "filename": "core/fxcrt/fx_string.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-05-17T20:14:33Z",
+      "side": 1,
+      "message": "nit: maybe AppendCodePointAsUTF8() to distinguish it from the overload below.",
+      "range": {
+        "startLine": 27,
+        "startChar": 20,
+        "endLine": 27,
+        "endChar": 21
+      },
+      "revId": "1bb72d5ef508516eed2ea3907a0680b622abba1a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab6ea614_2f204a31",
+        "filename": "core/fxcrt/fx_string.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-05-17T20:14:33Z",
+      "side": 1,
+      "message": "maybe AppendCodePointAsUtf16orUtf32()",
+      "range": {
+        "startLine": 62,
+        "startChar": 5,
+        "endLine": 62,
+        "endChar": 20
+      },
+      "revId": "1bb72d5ef508516eed2ea3907a0680b622abba1a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
