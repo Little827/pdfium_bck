@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "317b6fc1_fbf8d6d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-05-17T16:27:52Z",
+      "side": 1,
+      "message": "Thanks for the review! Going to defer namespace cleanup to a follow-up.",
+      "revId": "30ec117ddf9fa142928b861c1586aab175a48bd6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7d468303_8df925d1",
@@ -24,6 +41,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd0aedee_8c4f2946",
+        "filename": "core/fxcrt/code_point_view.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-05-17T16:27:52Z",
+      "side": 1,
+      "message": "I think a follow-up SGTM to clean this up generally would be good. We have pdfium:792 already; I have some questions that I\u0027ll put there.",
+      "parentUuid": "7d468303_8df925d1",
+      "range": {
+        "startLine": 13,
+        "startChar": 10,
+        "endLine": 13,
+        "endChar": 16
+      },
+      "revId": "30ec117ddf9fa142928b861c1586aab175a48bd6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6cf66098_eac38336",
@@ -37,6 +78,30 @@
       "writtenOn": "2023-05-17T16:03:08Z",
       "side": 1,
       "message": "see above.",
+      "range": {
+        "startLine": 10,
+        "startChar": 10,
+        "endLine": 10,
+        "endChar": 16
+      },
+      "revId": "30ec117ddf9fa142928b861c1586aab175a48bd6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7964b130_c955e290",
+        "filename": "core/fxcrt/utf16.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-05-17T16:27:52Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "6cf66098_eac38336",
       "range": {
         "startLine": 10,
         "startChar": 10,
