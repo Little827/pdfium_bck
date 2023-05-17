@@ -83,6 +83,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1600a265_217a03a8",
+        "filename": "core/fxcrt/fx_string.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-05-17T21:32:43Z",
+      "side": 1,
+      "message": "I like AppendCodePoint() methods as a cleaner approach. Then it wouldn\u0027t be an overload. Thanks!",
+      "parentUuid": "37afc0ab_c9a00552",
+      "range": {
+        "startLine": 27,
+        "startChar": 20,
+        "endLine": 27,
+        "endChar": 21
+      },
+      "revId": "1bb72d5ef508516eed2ea3907a0680b622abba1a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab6ea614_2f204a31",
