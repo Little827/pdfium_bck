@@ -16,6 +16,23 @@
       "message": "drott@: Would you like to review (parts of) this CL chain, or should I ask another reviewer?",
       "revId": "0241a6afff94980e853a988dfb5f417f11964da0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31c6172a_1758eec6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 6715
+      },
+      "writtenOn": "2023-05-17T08:19:30Z",
+      "side": 1,
+      "message": "I am okay reviewing some, but it\u0027d be good if you have an additional reviewer as well. This one LGTM. Again, thanks for digging into this topic.\n\nFor getting a sense of direction for future abstractions, it may make sense for us to talk a bit about what API we have in fontations, or you could start taking a look at \nhttps://source.chromium.org/chromium/chromium/src/+/main:third_party/skia/src/ports/fontations/src/ffi.rs\nand \nhttps://source.chromium.org/chromium/chromium/src/+/main:third_party/skia/src/ports/SkTypeface_fontations.cpp\nThis is the Skia implementation I am working on. The ffi.rs file defines the C++ to Rust interface that I am building so that Skia can talk to the new libraries.\n\nThe the read_fonts/ and skrifa/ src/lib.rs files\nhttps://github.com/googlefonts/fontations/blob/main/read-fonts/src/lib.rs\nhttps://github.com/googlefonts/fontations/blob/main/skrifa/src/lib.rs\nand neighbouring files which define the APIs may be a good reference as well.",
+      "revId": "0241a6afff94980e853a988dfb5f417f11964da0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
