@@ -16,6 +16,23 @@
       "message": "Not convinced yet that this is the right approach, but this is what it would look like.",
       "revId": "3a1a38c46db886a12f03f7a6ac5a1248c7c7781b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "544db4a5_b5ffc854",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-05-17T17:44:09Z",
+      "side": 1,
+      "message": "Mechanically, it looks good, but as you say, should we do this? +Lei to reviewer.",
+      "revId": "3a1a38c46db886a12f03f7a6ac5a1248c7c7781b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
