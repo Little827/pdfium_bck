@@ -6,7 +6,8 @@
 
 #include <string.h>
 
-#include "third_party/base/notreached.h"
+#include "core/fxcrt/fx_safe_types.h"
+#include "third_party/base/check_op.h"
 
 TestLoader::TestLoader(pdfium::span<const char> span) : m_Span(span) {}
 
@@ -16,10 +17,9 @@ int TestLoader::GetBlock(void* param,
                          unsigned char* pBuf,
                          unsigned long size) {
   TestLoader* pLoader = static_cast<TestLoader*>(param);
-  if (pos + size < pos || pos + size > pLoader->m_Span.size()) {
-    NOTREACHED();
-    return 0;
-  }
+  FX_SAFE_SIZE_T end = pos;
+  end += size;
+  CHECK_LE(end.ValueOrDie(), pLoader->m_Span.size());
 
   memcpy(pBuf, &pLoader->m_Span[pos], size);
   return 1;
