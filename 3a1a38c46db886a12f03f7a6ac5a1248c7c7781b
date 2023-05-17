@@ -53,6 +53,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b22a6b4a_b2d657a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-05-17T18:13:18Z",
+      "side": 1,
+      "message": "Acknowledged\n\nThis was a search-and-replace kind of change, so mostly treating this as a proof-of-concept.",
+      "parentUuid": "807fc26e_fe5fa409",
+      "revId": "3a1a38c46db886a12f03f7a6ac5a1248c7c7781b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a68c1184_fe2a5106",
@@ -66,6 +84,24 @@
       "writtenOn": "2023-05-17T17:55:19Z",
       "side": 1,
       "message": "Can this namespace be combined with the one above?",
+      "revId": "3a1a38c46db886a12f03f7a6ac5a1248c7c7781b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "988b3bc4_6b791d42",
+        "filename": "core/fxcrt/retain_ptr.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-05-17T18:13:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a68c1184_fe2a5106",
       "revId": "3a1a38c46db886a12f03f7a6ac5a1248c7c7781b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -93,6 +129,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9599ca64_72b7c80f",
+        "filename": "core/fxcrt/retain_ptr_unittest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-05-17T18:13:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8342b1cb_1d2b6415",
+      "range": {
+        "startLine": 139,
+        "startChar": 8,
+        "endLine": 139,
+        "endChar": 13
+      },
+      "revId": "3a1a38c46db886a12f03f7a6ac5a1248c7c7781b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "615802ad_0c7238aa",
@@ -106,6 +166,30 @@
       "writtenOn": "2023-05-17T17:51:47Z",
       "side": 1,
       "message": "nit: already in namespace so qualification not required below?",
+      "range": {
+        "startLine": 13,
+        "startChar": 10,
+        "endLine": 13,
+        "endChar": 15
+      },
+      "revId": "3a1a38c46db886a12f03f7a6ac5a1248c7c7781b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a4e5277_abe3e762",
+        "filename": "core/fxcrt/shared_copy_on_write.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-05-17T18:13:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "615802ad_0c7238aa",
       "range": {
         "startLine": 13,
         "startChar": 10,
