@@ -7,7 +7,7 @@
 
 #include "third_party/base/check.h"
 
-namespace pdfium {
+namespace fxcrt {
 
 // The number of suffix bits in a UTF-16 surrogate.
 inline constexpr int kSurrogateBits = 10;
@@ -102,6 +102,6 @@ class SurrogatePair final {
   char16_t low_;
 };
 
-}  // namespace pdfium
+}  // namespace fxcrt
 
 #endif  // CORE_FXCRT_UTF16_H_

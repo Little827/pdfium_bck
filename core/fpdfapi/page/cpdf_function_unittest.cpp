@@ -11,7 +11,7 @@
 #include "testing/gtest/include/gtest/gtest.h"
 
 TEST(CPDFFunction, BadFunctionType) {
-  auto pDict = pdfium::MakeRetain<CPDF_Dictionary>();
+  auto pDict = fxcrt::MakeRetain<CPDF_Dictionary>();
   pDict->SetNewFor<CPDF_Number>("FunctionType", -2);
   EXPECT_FALSE(CPDF_Function::Load(pDict));
 
@@ -20,20 +20,20 @@ TEST(CPDFFunction, BadFunctionType) {
 }
 
 TEST(CPDFFunction, NoDomain) {
-  auto pDict = pdfium::MakeRetain<CPDF_Dictionary>();
+  auto pDict = fxcrt::MakeRetain<CPDF_Dictionary>();
   pDict->SetNewFor<CPDF_Number>("FunctionType", 0);
   EXPECT_FALSE(CPDF_Function::Load(pDict));
 }
 
 TEST(CPDFFunction, EmptyDomain) {
-  auto pDict = pdfium::MakeRetain<CPDF_Dictionary>();
+  auto pDict = fxcrt::MakeRetain<CPDF_Dictionary>();
   pDict->SetNewFor<CPDF_Number>("FunctionType", 0);
   pDict->SetNewFor<CPDF_Array>("Domain");
   EXPECT_FALSE(CPDF_Function::Load(pDict));
 }
 
 TEST(CPDFFunction, NoRange) {
-  auto pDict = pdfium::MakeRetain<CPDF_Dictionary>();
+  auto pDict = fxcrt::MakeRetain<CPDF_Dictionary>();
   pDict->SetNewFor<CPDF_Number>("FunctionType", 0);
 
   auto pArray = pDict->SetNewFor<CPDF_Array>("Domain");

@@ -83,38 +83,38 @@ class CPDF_Array final : public CPDF_Object {
   template <typename T, typename... Args>
   typename std::enable_if<!CanInternStrings<T>::value, RetainPtr<T>>::type
   AppendNew(Args&&... args) {
-    return pdfium::WrapRetain(static_cast<T*>(
-        AppendInternal(pdfium::MakeRetain<T>(std::forward<Args>(args)...))));
+    return fxcrt::WrapRetain(static_cast<T*>(
+        AppendInternal(fxcrt::MakeRetain<T>(std::forward<Args>(args)...))));
   }
   template <typename T, typename... Args>
   typename std::enable_if<CanInternStrings<T>::value, RetainPtr<T>>::type
   AppendNew(Args&&... args) {
-    return pdfium::WrapRetain(static_cast<T*>(AppendInternal(
-        pdfium::MakeRetain<T>(m_pPool, std::forward<Args>(args)...))));
+    return fxcrt::WrapRetain(static_cast<T*>(AppendInternal(
+        fxcrt::MakeRetain<T>(m_pPool, std::forward<Args>(args)...))));
   }
   template <typename T, typename... Args>
   typename std::enable_if<!CanInternStrings<T>::value, RetainPtr<T>>::type
   SetNewAt(size_t index, Args&&... args) {
-    return pdfium::WrapRetain(static_cast<T*>(SetAtInternal(
-        index, pdfium::MakeRetain<T>(std::forward<Args>(args)...))));
+    return fxcrt::WrapRetain(static_cast<T*>(SetAtInternal(
+        index, fxcrt::MakeRetain<T>(std::forward<Args>(args)...))));
   }
   template <typename T, typename... Args>
   typename std::enable_if<CanInternStrings<T>::value, RetainPtr<T>>::type
   SetNewAt(size_t index, Args&&... args) {
-    return pdfium::WrapRetain(static_cast<T*>(SetAtInternal(
-        index, pdfium::MakeRetain<T>(m_pPool, std::forward<Args>(args)...))));
+    return fxcrt::WrapRetain(static_cast<T*>(SetAtInternal(
+        index, fxcrt::MakeRetain<T>(m_pPool, std::forward<Args>(args)...))));
   }
   template <typename T, typename... Args>
   typename std::enable_if<!CanInternStrings<T>::value, RetainPtr<T>>::type
   InsertNewAt(size_t index, Args&&... args) {
-    return pdfium::WrapRetain(static_cast<T*>(InsertAtInternal(
-        index, pdfium::MakeRetain<T>(std::forward<Args>(args)...))));
+    return fxcrt::WrapRetain(static_cast<T*>(InsertAtInternal(
+        index, fxcrt::MakeRetain<T>(std::forward<Args>(args)...))));
   }
   template <typename T, typename... Args>
   typename std::enable_if<CanInternStrings<T>::value, RetainPtr<T>>::type
   InsertNewAt(size_t index, Args&&... args) {
-    return pdfium::WrapRetain(static_cast<T*>(InsertAtInternal(
-        index, pdfium::MakeRetain<T>(m_pPool, std::forward<Args>(args)...))));
+    return fxcrt::WrapRetain(static_cast<T*>(InsertAtInternal(
+        index, fxcrt::MakeRetain<T>(m_pPool, std::forward<Args>(args)...))));
   }
 
   // Adds non-null `pObj` to the end of the array, growing as appropriate.

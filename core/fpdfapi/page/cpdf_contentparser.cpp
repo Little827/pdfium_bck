@@ -109,7 +109,7 @@ CPDF_ContentParser::CPDF_ContentParser(RetainPtr<const CPDF_Stream> pStream,
     pState->SetFillAlpha(1.0f);
     pState->SetSoftMask(nullptr);
   }
-  m_pSingleStream = pdfium::MakeRetain<CPDF_StreamAcc>(std::move(pStream));
+  m_pSingleStream = fxcrt::MakeRetain<CPDF_StreamAcc>(std::move(pStream));
   m_pSingleStream->LoadAllDataFiltered();
   m_Data = m_pSingleStream->GetSpan();
 }
@@ -151,7 +151,7 @@ CPDF_ContentParser::Stage CPDF_ContentParser::GetContent() {
   RetainPtr<const CPDF_Stream> pStreamObj = ToStream(
       pContent ? pContent->GetDirectObjectAt(m_CurrentOffset) : nullptr);
   m_StreamArray[m_CurrentOffset] =
-      pdfium::MakeRetain<CPDF_StreamAcc>(std::move(pStreamObj));
+      fxcrt::MakeRetain<CPDF_StreamAcc>(std::move(pStreamObj));
   m_StreamArray[m_CurrentOffset]->LoadAllDataFiltered();
   m_CurrentOffset++;
 
@@ -246,7 +246,7 @@ CPDF_ContentParser::Stage CPDF_ContentParser::CheckClip() {
 
 void CPDF_ContentParser::HandlePageContentStream(const CPDF_Stream* pStream) {
   m_pSingleStream =
-      pdfium::MakeRetain<CPDF_StreamAcc>(pdfium::WrapRetain(pStream));
+      fxcrt::MakeRetain<CPDF_StreamAcc>(fxcrt::WrapRetain(pStream));
   m_pSingleStream->LoadAllDataFiltered();
   m_CurrentStage = Stage::kPrepareContent;
 }

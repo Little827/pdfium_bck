@@ -43,7 +43,7 @@ CPDF_Form::CPDF_Form(CPDF_Document* pDoc,
     : CPDF_PageObjectHolder(pDoc,
                             pFormStream->GetMutableDict(),
                             pPageResources,
-                            pdfium::WrapRetain(ChooseResourcesDict(
+                            fxcrt::WrapRetain(ChooseResourcesDict(
                                 pFormStream->GetMutableDict()
                                     ->GetMutableDictFor("Resources")
                                     .Get(),

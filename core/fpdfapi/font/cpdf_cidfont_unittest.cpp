@@ -18,20 +18,20 @@ using CPDF_CIDFontTest = TestWithPageModule;
 
 TEST_F(CPDF_CIDFontTest, BUG_920636) {
   CPDF_TestDocument doc;
-  auto font_dict = pdfium::MakeRetain<CPDF_Dictionary>();
+  auto font_dict = fxcrt::MakeRetain<CPDF_Dictionary>();
   font_dict->SetNewFor<CPDF_Name>("Encoding", "Identity−H");
 
   {
-    auto descendant_fonts = pdfium::MakeRetain<CPDF_Array>();
+    auto descendant_fonts = fxcrt::MakeRetain<CPDF_Array>();
     {
-      auto descendant_font = pdfium::MakeRetain<CPDF_Dictionary>();
+      auto descendant_font = fxcrt::MakeRetain<CPDF_Dictionary>();
       descendant_font->SetNewFor<CPDF_Name>("BaseFont", "CourierStd");
       descendant_fonts->Append(std::move(descendant_font));
     }
     font_dict->SetFor("DescendantFonts", std::move(descendant_fonts));
   }
 
-  auto font = pdfium::MakeRetain<CPDF_CIDFont>(&doc, std::move(font_dict));
+  auto font = fxcrt::MakeRetain<CPDF_CIDFont>(&doc, std::move(font_dict));
   ASSERT_TRUE(font->Load());
 
   // It would be nice if we can test more values here. However, the glyph

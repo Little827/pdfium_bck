@@ -478,7 +478,7 @@ RetainPtr<IFX_SeekableReadStream> CreateFontStream(CFX_FontMapper* pFontMapper,
   if (buffer.empty())
     return nullptr;
 
-  return pdfium::MakeRetain<CFX_ReadOnlyVectorStream>(std::move(buffer));
+  return fxcrt::MakeRetain<CFX_ReadOnlyVectorStream>(std::move(buffer));
 }
 
 RetainPtr<IFX_SeekableReadStream> CreateFontStream(

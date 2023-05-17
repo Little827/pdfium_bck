@@ -143,5 +143,5 @@ CPDF_ClipPath::PathData::PathData(const PathData& that)
 CPDF_ClipPath::PathData::~PathData() = default;
 
 RetainPtr<CPDF_ClipPath::PathData> CPDF_ClipPath::PathData::Clone() const {
-  return pdfium::MakeRetain<CPDF_ClipPath::PathData>(*this);
+  return fxcrt::MakeRetain<CPDF_ClipPath::PathData>(*this);
 }

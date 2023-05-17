@@ -292,7 +292,7 @@ RetainPtr<const CPDF_Dictionary> CPDF_Document::GetPagesDict() const {
 }
 
 RetainPtr<CPDF_Dictionary> CPDF_Document::GetMutablePagesDict() {
-  return pdfium::WrapRetain(
+  return fxcrt::WrapRetain(
       const_cast<CPDF_Dictionary*>(this->GetPagesDict().Get()));
 }
 
@@ -327,7 +327,7 @@ RetainPtr<const CPDF_Dictionary> CPDF_Document::GetPageDictionary(int iPage) {
 }
 
 RetainPtr<CPDF_Dictionary> CPDF_Document::GetMutablePageDictionary(int iPage) {
-  return pdfium::WrapRetain(
+  return fxcrt::WrapRetain(
       const_cast<CPDF_Dictionary*>(GetPageDictionary(iPage).Get()));
 }
 
@@ -533,7 +533,7 @@ RetainPtr<CPDF_Dictionary> CPDF_Document::GetInfo() {
   if (info_obj_num == 0)
     return nullptr;
 
-  auto ref = pdfium::MakeRetain<CPDF_Reference>(this, info_obj_num);
+  auto ref = fxcrt::MakeRetain<CPDF_Reference>(this, info_obj_num);
   m_pInfoDict = ToDictionary(ref->GetMutableDirect());
   return m_pInfoDict;
 }

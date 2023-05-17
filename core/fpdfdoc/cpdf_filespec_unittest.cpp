@@ -73,7 +73,7 @@ TEST(cpdf_filespec, GetFileName) {
       L"/docs/test.pdf"
 #endif
     };
-    auto str_obj = pdfium::MakeRetain<CPDF_String>(nullptr, test_data.input);
+    auto str_obj = fxcrt::MakeRetain<CPDF_String>(nullptr, test_data.input);
     CPDF_FileSpec file_spec(str_obj);
     EXPECT_STREQ(test_data.expected, file_spec.GetFileName().c_str());
   }
@@ -103,7 +103,7 @@ TEST(cpdf_filespec, GetFileName) {
     // Keyword fields in reverse order of precedence to retrieve the file name.
     const char* const keywords[] = {"Unix", "Mac", "DOS", "F", "UF"};
     static_assert(std::size(test_data) == std::size(keywords), "size mismatch");
-    auto dict_obj = pdfium::MakeRetain<CPDF_Dictionary>();
+    auto dict_obj = fxcrt::MakeRetain<CPDF_Dictionary>();
     CPDF_FileSpec file_spec(dict_obj);
     EXPECT_TRUE(file_spec.GetFileName().IsEmpty());
     for (size_t i = 0; i < std::size(keywords); ++i) {
@@ -118,13 +118,13 @@ TEST(cpdf_filespec, GetFileName) {
   }
   {
     // Invalid object.
-    auto name_obj = pdfium::MakeRetain<CPDF_Name>(nullptr, "test.pdf");
+    auto name_obj = fxcrt::MakeRetain<CPDF_Name>(nullptr, "test.pdf");
     CPDF_FileSpec file_spec(name_obj);
     EXPECT_TRUE(file_spec.GetFileName().IsEmpty());
   }
   {
     // Invalid CPDF_Name objects in dictionary. See https://crbug.com/959183
-    auto dict_obj = pdfium::MakeRetain<CPDF_Dictionary>();
+    auto dict_obj = fxcrt::MakeRetain<CPDF_Dictionary>();
     CPDF_FileSpec file_spec(dict_obj);
     for (const char* key : {"Unix", "Mac", "DOS", "F", "UF"}) {
       dict_obj->SetNewFor<CPDF_Name>(key, "http://evil.org");
@@ -138,26 +138,26 @@ TEST(cpdf_filespec, GetFileName) {
 TEST(cpdf_filespec, GetFileStream) {
   {
     // Invalid object.
-    auto name_obj = pdfium::MakeRetain<CPDF_Name>(nullptr, "test.pdf");
+    auto name_obj = fxcrt::MakeRetain<CPDF_Name>(nullptr, "test.pdf");
     CPDF_FileSpec file_spec(name_obj);
     EXPECT_FALSE(file_spec.GetFileStream());
   }
   {
     // Dictionary object missing its embedded files dictionary.
-    auto dict_obj = pdfium::MakeRetain<CPDF_Dictionary>();
+    auto dict_obj = fxcrt::MakeRetain<CPDF_Dictionary>();
     CPDF_FileSpec file_spec(dict_obj);
     EXPECT_FALSE(file_spec.GetFileStream());
   }
   {
     // Dictionary object with an empty embedded files dictionary.
-    auto dict_obj = pdfium::MakeRetain<CPDF_Dictionary>();
+    auto dict_obj = fxcrt::MakeRetain<CPDF_Dictionary>();
     dict_obj->SetNewFor<CPDF_Dictionary>("EF");
     CPDF_FileSpec file_spec(dict_obj);
     EXPECT_FALSE(file_spec.GetFileStream());
   }
   {
     // Dictionary object with a non-empty embedded files dictionary.
-    auto dict_obj = pdfium::MakeRetain<CPDF_Dictionary>();
+    auto dict_obj = fxcrt::MakeRetain<CPDF_Dictionary>();
     dict_obj->SetNewFor<CPDF_Dictionary>("EF");
     CPDF_FileSpec file_spec(dict_obj);
 
@@ -173,7 +173,7 @@ TEST(cpdf_filespec, GetFileStream) {
       dict_obj->SetNewFor<CPDF_String>(keys[i], file_name);
 
       // Set the file stream.
-      auto pDict = pdfium::MakeRetain<CPDF_Dictionary>();
+      auto pDict = fxcrt::MakeRetain<CPDF_Dictionary>();
       size_t buf_len = strlen(streams[i]) + 1;
       file_dict->SetNewFor<CPDF_Stream>(
           keys[i], DataVector<uint8_t>(streams[i], streams[i] + buf_len),
@@ -195,13 +195,13 @@ TEST(cpdf_filespec, GetFileStream) {
 TEST(cpdf_filespec, GetParamsDict) {
   {
     // Invalid object.
-    auto name_obj = pdfium::MakeRetain<CPDF_Name>(nullptr, "test.pdf");
+    auto name_obj = fxcrt::MakeRetain<CPDF_Name>(nullptr, "test.pdf");
     CPDF_FileSpec file_spec(name_obj);
     EXPECT_FALSE(file_spec.GetParamsDict());
   }
   {
     // Dictionary object.
-    auto dict_obj = pdfium::MakeRetain<CPDF_Dictionary>();
+    auto dict_obj = fxcrt::MakeRetain<CPDF_Dictionary>();
     dict_obj->SetNewFor<CPDF_Dictionary>("EF");
     dict_obj->SetNewFor<CPDF_String>("UF", L"test.pdf");
     CPDF_FileSpec file_spec(dict_obj);
@@ -209,7 +209,7 @@ TEST(cpdf_filespec, GetParamsDict) {
 
     // Add a file stream to the embedded files dictionary.
     RetainPtr<CPDF_Dictionary> file_dict = dict_obj->GetMutableDictFor("EF");
-    auto pDict = pdfium::MakeRetain<CPDF_Dictionary>();
+    auto pDict = fxcrt::MakeRetain<CPDF_Dictionary>();
     static constexpr char kHello[] = "hello";
     file_dict->SetNewFor<CPDF_Stream>(
         "UF", DataVector<uint8_t>(std::begin(kHello), std::end(kHello)),

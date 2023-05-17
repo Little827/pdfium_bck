@@ -564,7 +564,7 @@ bool CPDF_Creator::Create(uint32_t flags) {
 void CPDF_Creator::InitID() {
   DCHECK(!m_pIDArray);
 
-  m_pIDArray = pdfium::MakeRetain<CPDF_Array>();
+  m_pIDArray = fxcrt::MakeRetain<CPDF_Array>();
   RetainPtr<const CPDF_Array> pOldIDArray =
       m_pParser ? m_pParser->GetIDArray() : nullptr;
   RetainPtr<const CPDF_Object> pID1 =
@@ -597,7 +597,7 @@ void CPDF_Creator::InitID() {
         m_pEncryptDict->GetByteStringFor("Filter") == "Standard") {
       m_pNewEncryptDict = ToDictionary(m_pEncryptDict->Clone());
       m_pEncryptDict = m_pNewEncryptDict;
-      m_pSecurityHandler = pdfium::MakeRetain<CPDF_SecurityHandler>();
+      m_pSecurityHandler = fxcrt::MakeRetain<CPDF_SecurityHandler>();
       m_pSecurityHandler->OnCreate(m_pNewEncryptDict.Get(), m_pIDArray.Get(),
                                    m_pParser->GetEncodedPassword());
       m_bSecurityChanged = true;

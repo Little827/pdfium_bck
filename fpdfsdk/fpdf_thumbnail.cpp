@@ -67,15 +67,15 @@ FPDFPage_GetThumbnailAsBitmap(FPDF_PAGE page) {
     return nullptr;
 
   const CPDF_Page* pdf_page = CPDFPageFromFPDFPage(page);
-  auto dib_source = pdfium::MakeRetain<CPDF_DIB>(pdf_page->GetDocument(),
-                                                 std::move(thumb_stream));
+  auto dib_source = fxcrt::MakeRetain<CPDF_DIB>(pdf_page->GetDocument(),
+                                                std::move(thumb_stream));
   const CPDF_DIB::LoadState start_status = dib_source->StartLoadDIBBase(
       false, nullptr, pdf_page->GetPageResources().Get(), false,
       CPDF_ColorSpace::Family::kUnknown, false, {0, 0});
   if (start_status == CPDF_DIB::LoadState::kFail)
     return nullptr;
 
-  auto thumb_bitmap = pdfium::MakeRetain<CFX_DIBitmap>();
+  auto thumb_bitmap = fxcrt::MakeRetain<CFX_DIBitmap>();
   if (!thumb_bitmap->Copy(dib_source))
     return nullptr;
 

@@ -56,7 +56,7 @@ void RunOverlapRectTest(const CFX_DIBitmap* bitmap,
 }  // namespace
 
 TEST(CFX_DIBBaseTest, GetOverlapRectTrivialOverlap) {
-  auto bitmap = pdfium::MakeRetain<CFX_DIBitmap>();
+  auto bitmap = fxcrt::MakeRetain<CFX_DIBitmap>();
   EXPECT_TRUE(bitmap->Create(400, 300, FXDIB_Format::k1bppRgb));
 
   const Input kInput = {/*src_top_left=*/{0, 0}, /*src_size=*/{400, 300},
@@ -69,7 +69,7 @@ TEST(CFX_DIBBaseTest, GetOverlapRectTrivialOverlap) {
 }
 
 TEST(CFX_DIBBaseTest, GetOverlapRectOverlapNoLimit) {
-  auto bitmap = pdfium::MakeRetain<CFX_DIBitmap>();
+  auto bitmap = fxcrt::MakeRetain<CFX_DIBitmap>();
   EXPECT_TRUE(bitmap->Create(400, 300, FXDIB_Format::k1bppRgb));
 
   const Input kInput = {/*src_top_left=*/{35, 41}, /*src_size=*/{400, 300},
@@ -82,7 +82,7 @@ TEST(CFX_DIBBaseTest, GetOverlapRectOverlapNoLimit) {
 }
 
 TEST(CFX_DIBBaseTest, GetOverlapRectOverlapLimitedBySource) {
-  auto bitmap = pdfium::MakeRetain<CFX_DIBitmap>();
+  auto bitmap = fxcrt::MakeRetain<CFX_DIBitmap>();
   EXPECT_TRUE(bitmap->Create(400, 300, FXDIB_Format::k1bppRgb));
 
   const Input kInput = {/*src_top_left=*/{141, 154}, /*src_size=*/{400, 300},
@@ -95,7 +95,7 @@ TEST(CFX_DIBBaseTest, GetOverlapRectOverlapLimitedBySource) {
 }
 
 TEST(CFX_DIBBaseTest, GetOverlapRectOverlapLimitedByDestination) {
-  auto bitmap = pdfium::MakeRetain<CFX_DIBitmap>();
+  auto bitmap = fxcrt::MakeRetain<CFX_DIBitmap>();
   EXPECT_TRUE(bitmap->Create(400, 300, FXDIB_Format::k1bppRgb));
 
   const Input kInput = {/*src_top_left=*/{35, 41}, /*src_size=*/{400, 300},
@@ -108,7 +108,7 @@ TEST(CFX_DIBBaseTest, GetOverlapRectOverlapLimitedByDestination) {
 }
 
 TEST(CFX_DIBBaseTest, GetOverlapRectBadInputs) {
-  auto bitmap = pdfium::MakeRetain<CFX_DIBitmap>();
+  auto bitmap = fxcrt::MakeRetain<CFX_DIBitmap>();
   EXPECT_TRUE(bitmap->Create(400, 300, FXDIB_Format::k1bppRgb));
 
   const Input kEmptyInputs[] = {

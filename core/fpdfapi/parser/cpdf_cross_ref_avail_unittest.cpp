@@ -16,7 +16,7 @@ namespace {
 std::unique_ptr<CPDF_SyntaxParser> MakeParserForBuffer(
     pdfium::span<const uint8_t> buffer) {
   return std::make_unique<CPDF_SyntaxParser>(
-      pdfium::MakeRetain<CFX_ReadOnlySpanStream>(buffer));
+      fxcrt::MakeRetain<CFX_ReadOnlySpanStream>(buffer));
 }
 
 }  // namespace

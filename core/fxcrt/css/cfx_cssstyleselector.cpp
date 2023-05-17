@@ -34,7 +34,7 @@ void CFX_CSSStyleSelector::SetDefaultFontSize(float fFontSize) {
 
 RetainPtr<CFX_CSSComputedStyle> CFX_CSSStyleSelector::CreateComputedStyle(
     const CFX_CSSComputedStyle* pParentStyle) {
-  auto pStyle = pdfium::MakeRetain<CFX_CSSComputedStyle>();
+  auto pStyle = fxcrt::MakeRetain<CFX_CSSComputedStyle>();
   if (pParentStyle)
     pStyle->m_InheritedData = pParentStyle->m_InheritedData;
   return pStyle;

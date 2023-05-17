@@ -86,7 +86,7 @@ RetainPtr<CPDF_Object> CPDF_Stream::CloneNonCyclic(
     bool bDirect,
     std::set<const CPDF_Object*>* pVisited) const {
   pVisited->insert(this);
-  auto pAcc = pdfium::MakeRetain<CPDF_StreamAcc>(pdfium::WrapRetain(this));
+  auto pAcc = fxcrt::MakeRetain<CPDF_StreamAcc>(fxcrt::WrapRetain(this));
   pAcc->LoadAllDataRaw();
 
   RetainPtr<const CPDF_Dictionary> pDict = GetDict();
@@ -95,8 +95,8 @@ RetainPtr<CPDF_Object> CPDF_Stream::CloneNonCyclic(
     pNewDict = ToDictionary(static_cast<const CPDF_Object*>(pDict.Get())
                                 ->CloneNonCyclic(bDirect, pVisited));
   }
-  return pdfium::MakeRetain<CPDF_Stream>(pAcc->DetachData(),
-                                         std::move(pNewDict));
+  return fxcrt::MakeRetain<CPDF_Stream>(pAcc->DetachData(),
+                                        std::move(pNewDict));
 }
 
 void CPDF_Stream::SetDataAndRemoveFilter(pdfium::span<const uint8_t> pData) {
@@ -155,7 +155,7 @@ bool CPDF_Stream::HasFilter() const {
 }
 
 WideString CPDF_Stream::GetUnicodeText() const {
-  auto pAcc = pdfium::MakeRetain<CPDF_StreamAcc>(pdfium::WrapRetain(this));
+  auto pAcc = fxcrt::MakeRetain<CPDF_StreamAcc>(fxcrt::WrapRetain(this));
   pAcc->LoadAllDataFiltered();
   return PDF_DecodeText(pAcc->GetSpan());
 }
@@ -163,7 +163,7 @@ WideString CPDF_Stream::GetUnicodeText() const {
 bool CPDF_Stream::WriteTo(IFX_ArchiveStream* archive,
                           const CPDF_Encryptor* encryptor) const {
   const bool is_metadata = IsMetaDataStreamDictionary(GetDict().Get());
-  CPDF_FlateEncoder encoder(pdfium::WrapRetain(this), !is_metadata);
+  CPDF_FlateEncoder encoder(fxcrt::WrapRetain(this), !is_metadata);
 
   DataVector<uint8_t> encrypted_data;
   pdfium::span<const uint8_t> data = encoder.GetSpan();
@@ -203,6 +203,6 @@ pdfium::span<const uint8_t> CPDF_Stream::GetInMemoryRawData() const {
 
 void CPDF_Stream::SetLengthInDict(int length) {
   if (!dict_)
-    dict_ = pdfium::MakeRetain<CPDF_Dictionary>();
+    dict_ = fxcrt::MakeRetain<CPDF_Dictionary>();
   dict_->SetNewFor<CPDF_Number>("Length", length);
 }

@@ -21,7 +21,7 @@ RetainPtr<CFX_Face> CFX_Face::New(FT_Library library,
     return nullptr;
   }
   // Private ctor.
-  return pdfium::WrapRetain(new CFX_Face(pRec, std::move(pDesc)));
+  return fxcrt::WrapRetain(new CFX_Face(pRec, std::move(pDesc)));
 }
 
 // static
@@ -33,7 +33,7 @@ RetainPtr<CFX_Face> CFX_Face::Open(FT_Library library,
     return nullptr;
 
   // Private ctor.
-  return pdfium::WrapRetain(new CFX_Face(pRec, nullptr));
+  return fxcrt::WrapRetain(new CFX_Face(pRec, nullptr));
 }
 
 CFX_Face::CFX_Face(FXFT_FaceRec* rec, RetainPtr<Retainable> pDesc)

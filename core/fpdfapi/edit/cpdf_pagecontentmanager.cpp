@@ -55,14 +55,14 @@ CPDF_PageContentManager::CPDF_PageContentManager(
       if (pdfium::Contains(objects_with_multi_refs_,
                            contents_array->GetObjNum())) {
         RetainPtr<CPDF_Array> cloned_contents_array =
-            pdfium::WrapRetain(contents_array->Clone()->AsMutableArray());
+            fxcrt::WrapRetain(contents_array->Clone()->AsMutableArray());
         page_dict->SetFor("Contents", cloned_contents_array);
         contents_ = std::move(cloned_contents_array);
       } else {
         contents_ = std::move(contents_array);
       }
     } else if (indirect_obj->IsStream()) {
-      contents_ = pdfium::WrapRetain(indirect_obj->AsMutableStream());
+      contents_ = fxcrt::WrapRetain(indirect_obj->AsMutableStream());
     }
   }
 }

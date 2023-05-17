@@ -39,7 +39,7 @@ class ObjectTreeTraverser {
       object_number_map_[root] = root_object_number;
     }
 
-    object_queue_.push(pdfium::WrapRetain(root));
+    object_queue_.push(fxcrt::WrapRetain(root));
     seen_objects_.insert(root);
   }
   ~ObjectTreeTraverser() = default;

@@ -239,7 +239,7 @@ void CFX_ImageTransformer::ContinueOther(PauseIndicatorIface* pPause) {
   if (!m_Storer.GetBitmap())
     return;
 
-  auto pTransformed = pdfium::MakeRetain<CFX_DIBitmap>();
+  auto pTransformed = fxcrt::MakeRetain<CFX_DIBitmap>();
   FXDIB_Format format = m_Stretcher->source()->IsMaskFormat()
                             ? FXDIB_Format::k8bppMask
                             : FXDIB_Format::kArgb;

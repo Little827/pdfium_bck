@@ -216,7 +216,7 @@ CJS_Result CJX_Node::loadXML(CFXJSE_Engine* runtime,
     bOverwrite = runtime->ToBoolean(params[2]);
 
   auto stream =
-      pdfium::MakeRetain<CFX_ReadOnlyStringStream>(std::move(expression));
+      fxcrt::MakeRetain<CFX_ReadOnlyStringStream>(std::move(expression));
 
   CFX_XMLParser parser(stream);
   std::unique_ptr<CFX_XMLDocument> xml_doc = parser.Parse();
@@ -358,7 +358,7 @@ CJS_Result CJX_Node::saveXML(CFXJSE_Engine* runtime,
     XFA_DataExporter_DealWithDataGroupNode(GetXFANode());
   }
 
-  auto pMemoryStream = pdfium::MakeRetain<CFX_MemoryStream>();
+  auto pMemoryStream = fxcrt::MakeRetain<CFX_MemoryStream>();
   pMemoryStream->WriteString(bsXMLHeader.AsStringView());
 
   if (GetXFANode()->GetPacketType() == XFA_PacketType::Form) {

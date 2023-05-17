@@ -54,7 +54,7 @@ bool CGdiDisplayDriver::GetDIBits(const RetainPtr<CFX_DIBitmap>& pBitmap,
     ret = ::GetDIBits(hDCMemory, hbmp, 0, height, pBitmap->GetBuffer().data(),
                       &bmi, DIB_RGB_COLORS) == height;
   } else {
-    auto bitmap = pdfium::MakeRetain<CFX_DIBitmap>();
+    auto bitmap = fxcrt::MakeRetain<CFX_DIBitmap>();
     if (bitmap->Create(width, height, FXDIB_Format::kRgb)) {
       bmi.bmiHeader.biBitCount = 24;
       ::GetDIBits(hDCMemory, hbmp, 0, height, bitmap->GetBuffer().data(), &bmi,
@@ -83,7 +83,7 @@ bool CGdiDisplayDriver::SetDIBits(const RetainPtr<CFX_DIBBase>& pSource,
     int width = pSource->GetWidth(), height = pSource->GetHeight();
     int alpha = FXARGB_A(color);
     if (pSource->GetBPP() != 1 || alpha != 255) {
-      auto background = pdfium::MakeRetain<CFX_DIBitmap>();
+      auto background = fxcrt::MakeRetain<CFX_DIBitmap>();
       if (!background->Create(width, height, FXDIB_Format::kRgb32) ||
           !GetDIBits(background, left, top) ||
           !background->CompositeMask(0, 0, width, height, pSource, color, 0, 0,
@@ -103,7 +103,7 @@ bool CGdiDisplayDriver::SetDIBits(const RetainPtr<CFX_DIBBase>& pSource,
   int width = src_rect.Width();
   int height = src_rect.Height();
   if (pSource->IsAlphaFormat()) {
-    auto bitmap = pdfium::MakeRetain<CFX_DIBitmap>();
+    auto bitmap = fxcrt::MakeRetain<CFX_DIBitmap>();
     if (!bitmap->Create(width, height, FXDIB_Format::kRgb) ||
         !GetDIBits(bitmap, left, top) ||
         !bitmap->CompositeBitmap(0, 0, width, height, pSource, src_rect.left,
@@ -180,7 +180,7 @@ bool CGdiDisplayDriver::StretchDIBits(const RetainPtr<CFX_DIBBase>& pSource,
     if (!pStretched)
       return true;
 
-    auto background = pdfium::MakeRetain<CFX_DIBitmap>();
+    auto background = fxcrt::MakeRetain<CFX_DIBitmap>();
     if (!background->Create(clip_width, clip_height, FXDIB_Format::kRgb32) ||
         !GetDIBits(background, image_rect.left + clip_rect.left,
                    image_rect.top + clip_rect.top) ||

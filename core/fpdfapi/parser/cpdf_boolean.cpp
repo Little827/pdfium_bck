@@ -19,7 +19,7 @@ CPDF_Object::Type CPDF_Boolean::GetType() const {
 }
 
 RetainPtr<CPDF_Object> CPDF_Boolean::Clone() const {
-  return pdfium::MakeRetain<CPDF_Boolean>(m_bValue);
+  return fxcrt::MakeRetain<CPDF_Boolean>(m_bValue);
 }
 
 ByteString CPDF_Boolean::GetString() const {

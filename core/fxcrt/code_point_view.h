@@ -10,7 +10,7 @@
 #include "core/fxcrt/utf16.h"
 #include "third_party/base/check_op.h"
 
-namespace pdfium {
+namespace fxcrt {
 
 #if defined(WCHAR_T_IS_UTF16)
 // A view over a UTF-16 `WideStringView` suitable for iterating by code point
@@ -86,6 +86,6 @@ class CodePointView final {
 using CodePointView = WideStringView;
 #endif  // defined(WCHAR_T_IS_UTF16)
 
-}  // namespace pdfium
+}  // namespace fxcrt
 
 #endif  // CORE_FXCRT_CODE_POINT_VIEW_H_

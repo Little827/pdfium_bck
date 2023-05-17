@@ -123,7 +123,7 @@ bool CPDFXFA_Page::LoadPage() {
 void CPDFXFA_Page::LoadPDFPageFromDict(RetainPtr<CPDF_Dictionary> pPageDict) {
   DCHECK(pPageDict);
   m_pPDFPage =
-      pdfium::MakeRetain<CPDF_Page>(GetDocument(), std::move(pPageDict));
+      fxcrt::MakeRetain<CPDF_Page>(GetDocument(), std::move(pPageDict));
   m_pPDFPage->AddPageImageCache();
   m_pPDFPage->ParseContent();
 }

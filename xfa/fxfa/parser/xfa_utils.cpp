@@ -194,7 +194,7 @@ void RegenerateFormFile_Changed(CXFA_Node* pNode,
         if (!pRichTextXML)
           break;
 
-        auto pMemStream = pdfium::MakeRetain<CFX_MemoryStream>();
+        auto pMemStream = fxcrt::MakeRetain<CFX_MemoryStream>();
         pRichTextXML->Save(pMemStream);
         wsChildren +=
             WideString::FromUTF8(ByteStringView(pMemStream->GetSpan()));

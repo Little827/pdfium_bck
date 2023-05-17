@@ -1710,11 +1710,11 @@ RetainPtr<CPDF_Object> CPDF_FontEncoding::Realize(
     else
       return nullptr;
 
-    return pdfium::MakeRetain<CPDF_Name>(pPool, pName);
+    return fxcrt::MakeRetain<CPDF_Name>(pPool, pName);
   }
   const uint16_t* pStandard =
       UnicodesForPredefinedCharSet(FontEncoding::kWinAnsi);
-  auto pDiff = pdfium::MakeRetain<CPDF_Array>();
+  auto pDiff = fxcrt::MakeRetain<CPDF_Array>();
   for (size_t i = 0; i < std::size(m_Unicodes); i++) {
     if (pStandard[i] == m_Unicodes[i])
       continue;
@@ -1723,7 +1723,7 @@ RetainPtr<CPDF_Object> CPDF_FontEncoding::Realize(
     pDiff->AppendNew<CPDF_Name>(AdobeNameFromUnicode(m_Unicodes[i]));
   }
 
-  auto pDict = pdfium::MakeRetain<CPDF_Dictionary>(pPool);
+  auto pDict = fxcrt::MakeRetain<CPDF_Dictionary>(pPool);
   pDict->SetNewFor<CPDF_Name>("BaseEncoding",
                               pdfium::font_encodings::kWinAnsiEncoding);
   pDict->SetFor("Differences", pDiff);

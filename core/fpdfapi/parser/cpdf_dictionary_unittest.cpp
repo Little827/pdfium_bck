@@ -12,7 +12,7 @@
 #include "testing/gtest/include/gtest/gtest.h"
 
 TEST(DictionaryTest, Iterators) {
-  auto dict = pdfium::MakeRetain<CPDF_Dictionary>();
+  auto dict = fxcrt::MakeRetain<CPDF_Dictionary>();
   dict->SetNewFor<CPDF_Dictionary>("the-dictionary");
   dict->SetNewFor<CPDF_Array>("the-array");
   dict->SetNewFor<CPDF_Stream>("the-stream");

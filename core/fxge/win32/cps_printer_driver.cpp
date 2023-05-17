@@ -63,7 +63,7 @@ CPSPrinterDriver::CPSPrinterDriver(HDC hDC,
   m_Height = ::GetDeviceCaps(m_hDC, VERTRES);
   m_nBitsPerPixel = ::GetDeviceCaps(m_hDC, BITSPIXEL);
 
-  m_PSRenderer.Init(pdfium::MakeRetain<CPSOutput>(m_hDC, output_mode), level,
+  m_PSRenderer.Init(fxcrt::MakeRetain<CPSOutput>(m_hDC, output_mode), level,
                     m_Width, m_Height);
   HRGN hRgn = ::CreateRectRgn(0, 0, 1, 1);
   if (::GetClipRgn(m_hDC, hRgn) == 1) {

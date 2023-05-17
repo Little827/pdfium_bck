@@ -17,7 +17,7 @@ CFX_BidiChar::CFX_BidiChar()
 
 bool CFX_BidiChar::AppendChar(wchar_t wch) {
   Direction direction;
-  switch (pdfium::unicode::GetBidiClass(wch)) {
+  switch (fxcrt::unicode::GetBidiClass(wch)) {
     case FX_BIDICLASS::kL:
       direction = Direction::kLeft;
       break;

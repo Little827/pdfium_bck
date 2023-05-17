@@ -46,9 +46,9 @@ RetainPtr<CPDF_Type3Cache> CPDF_DocRenderData::GetCachedType3(
     CPDF_Type3Font* pFont) {
   auto it = m_Type3FaceMap.find(pFont);
   if (it != m_Type3FaceMap.end() && it->second)
-    return pdfium::WrapRetain(it->second.Get());
+    return fxcrt::WrapRetain(it->second.Get());
 
-  auto pCache = pdfium::MakeRetain<CPDF_Type3Cache>(pFont);
+  auto pCache = fxcrt::MakeRetain<CPDF_Type3Cache>(pFont);
   m_Type3FaceMap[pFont].Reset(pCache.Get());
   return pCache;
 }
@@ -60,7 +60,7 @@ RetainPtr<CPDF_TransferFunc> CPDF_DocRenderData::GetTransferFunc(
 
   auto it = m_TransferFuncMap.find(pObj);
   if (it != m_TransferFuncMap.end() && it->second)
-    return pdfium::WrapRetain(it->second.Get());
+    return fxcrt::WrapRetain(it->second.Get());
 
   auto pFunc = CreateTransferFunc(pObj);
   m_TransferFuncMap[pObj].Reset(pFunc.Get());
@@ -135,7 +135,7 @@ RetainPtr<CPDF_TransferFunc> CPDF_DocRenderData::CreateTransferFunc(
     }
   }
 
-  return pdfium::MakeRetain<CPDF_TransferFunc>(bIdentity, std::move(samples_r),
-                                               std::move(samples_g),
-                                               std::move(samples_b));
+  return fxcrt::MakeRetain<CPDF_TransferFunc>(bIdentity, std::move(samples_r),
+                                              std::move(samples_g),
+                                              std::move(samples_b));
 }

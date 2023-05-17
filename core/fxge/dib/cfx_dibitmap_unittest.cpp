@@ -19,10 +19,10 @@ using ::testing::ElementsAre;
 }  // namespace
 
 TEST(CFX_DIBitmap, Create) {
-  auto pBitmap = pdfium::MakeRetain<CFX_DIBitmap>();
+  auto pBitmap = fxcrt::MakeRetain<CFX_DIBitmap>();
   EXPECT_FALSE(pBitmap->Create(400, 300, FXDIB_Format::kInvalid));
 
-  pBitmap = pdfium::MakeRetain<CFX_DIBitmap>();
+  pBitmap = fxcrt::MakeRetain<CFX_DIBitmap>();
   EXPECT_TRUE(pBitmap->Create(400, 300, FXDIB_Format::k1bppRgb));
 }
 
@@ -115,7 +115,7 @@ TEST(CFX_DIBitmap, CalculatePitchAndSizeBoundary) {
 
 #if defined(_SKIA_SUPPORT_)
 TEST(CFX_DIBitmap, PreMultiply_FromCleared) {
-  auto bitmap = pdfium::MakeRetain<CFX_DIBitmap>();
+  auto bitmap = fxcrt::MakeRetain<CFX_DIBitmap>();
   ASSERT_TRUE(bitmap->Create(1, 1, FXDIB_Format::kArgb));
   FXARGB_SETDIB(bitmap->GetBuffer().data(), 0x7f'ff'ff'ff);
 
@@ -125,7 +125,7 @@ TEST(CFX_DIBitmap, PreMultiply_FromCleared) {
 }
 
 TEST(CFX_DIBitmap, UnPreMultiply_FromCleared) {
-  auto bitmap = pdfium::MakeRetain<CFX_DIBitmap>();
+  auto bitmap = fxcrt::MakeRetain<CFX_DIBitmap>();
   ASSERT_TRUE(bitmap->Create(1, 1, FXDIB_Format::kArgb));
   FXARGB_SETDIB(bitmap->GetBuffer().data(), 0x7f'7f'7f'7f);
 
@@ -135,7 +135,7 @@ TEST(CFX_DIBitmap, UnPreMultiply_FromCleared) {
 }
 
 TEST(CFX_DIBitmap, PreMultiply_FromPreMultiplied) {
-  auto bitmap = pdfium::MakeRetain<CFX_DIBitmap>();
+  auto bitmap = fxcrt::MakeRetain<CFX_DIBitmap>();
   ASSERT_TRUE(bitmap->Create(1, 1, FXDIB_Format::kArgb));
   bitmap->PreMultiply();
   FXARGB_SETDIB(bitmap->GetBuffer().data(), 0x7f'7f'7f'7f);
@@ -146,7 +146,7 @@ TEST(CFX_DIBitmap, PreMultiply_FromPreMultiplied) {
 }
 
 TEST(CFX_DIBitmap, UnPreMultiply_FromPreMultiplied) {
-  auto bitmap = pdfium::MakeRetain<CFX_DIBitmap>();
+  auto bitmap = fxcrt::MakeRetain<CFX_DIBitmap>();
   ASSERT_TRUE(bitmap->Create(1, 1, FXDIB_Format::kArgb));
   bitmap->PreMultiply();
   FXARGB_SETDIB(bitmap->GetBuffer().data(), 0x7f'7f'7f'7f);
@@ -157,7 +157,7 @@ TEST(CFX_DIBitmap, UnPreMultiply_FromPreMultiplied) {
 }
 
 TEST(CFX_DIBitmap, PreMultiply_FromUnPreMultiplied) {
-  auto bitmap = pdfium::MakeRetain<CFX_DIBitmap>();
+  auto bitmap = fxcrt::MakeRetain<CFX_DIBitmap>();
   ASSERT_TRUE(bitmap->Create(1, 1, FXDIB_Format::kArgb));
   bitmap->UnPreMultiply();
   FXARGB_SETDIB(bitmap->GetBuffer().data(), 0x7f'ff'ff'ff);
@@ -168,7 +168,7 @@ TEST(CFX_DIBitmap, PreMultiply_FromUnPreMultiplied) {
 }
 
 TEST(CFX_DIBitmap, UnPreMultiply_FromUnPreMultiplied) {
-  auto bitmap = pdfium::MakeRetain<CFX_DIBitmap>();
+  auto bitmap = fxcrt::MakeRetain<CFX_DIBitmap>();
   ASSERT_TRUE(bitmap->Create(1, 1, FXDIB_Format::kArgb));
   bitmap->UnPreMultiply();
   FXARGB_SETDIB(bitmap->GetBuffer().data(), 0x7f'ff'ff'ff);
@@ -179,7 +179,7 @@ TEST(CFX_DIBitmap, UnPreMultiply_FromUnPreMultiplied) {
 }
 
 TEST(CFX_DIBitmap, ForcePreMultiply) {
-  auto bitmap = pdfium::MakeRetain<CFX_DIBitmap>();
+  auto bitmap = fxcrt::MakeRetain<CFX_DIBitmap>();
   ASSERT_TRUE(bitmap->Create(1, 1, FXDIB_Format::kArgb));
   FXARGB_SETDIB(bitmap->GetBuffer().data(), 0x7f'7f'7f'7f);
 
@@ -190,7 +190,7 @@ TEST(CFX_DIBitmap, ForcePreMultiply) {
 }
 
 TEST(CFX_DIBitmap, ForceUnPreMultiply) {
-  auto bitmap = pdfium::MakeRetain<CFX_DIBitmap>();
+  auto bitmap = fxcrt::MakeRetain<CFX_DIBitmap>();
   ASSERT_TRUE(bitmap->Create(1, 1, FXDIB_Format::kArgb));
   FXARGB_SETDIB(bitmap->GetBuffer().data(), 0x7f'ff'ff'ff);
 

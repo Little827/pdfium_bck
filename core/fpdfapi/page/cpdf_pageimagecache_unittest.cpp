@@ -41,7 +41,7 @@ TEST(CPDFPageImageCache, RenderBug1924) {
         document->GetMutablePageDictionary(0);
     ASSERT_TRUE(page_dict);
     auto page =
-        pdfium::MakeRetain<CPDF_Page>(document.get(), std::move(page_dict));
+        fxcrt::MakeRetain<CPDF_Page>(document.get(), std::move(page_dict));
     page->AddPageImageCache();
     page->ParseContent();
 

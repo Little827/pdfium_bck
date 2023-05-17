@@ -67,7 +67,7 @@ class CPDF_TestParser final : public CPDF_Parser {
   bool InitTestFromBufferWithOffset(pdfium::span<const uint8_t> buffer,
                                     FX_FILESIZE header_offset) {
     SetSyntaxParserForTesting(CPDF_SyntaxParser::CreateForTesting(
-        pdfium::MakeRetain<CFX_ReadOnlySpanStream>(buffer), header_offset));
+        fxcrt::MakeRetain<CFX_ReadOnlySpanStream>(buffer), header_offset));
     return true;
   }
 
@@ -366,7 +366,7 @@ TEST(ParserTest, XrefObjectIndicesTooBig) {
 
   // Satisfy CPDF_Parser's checks, so the test data below can concentrate on the
   // /XRef stream and avoid also providing other valid dictionaries.
-  auto dummy_root = pdfium::MakeRetain<CPDF_Dictionary>();
+  auto dummy_root = fxcrt::MakeRetain<CPDF_Dictionary>();
   EXPECT_CALL(parser.object_holder(), ParseIndirectObject)
       .WillRepeatedly(Return(dummy_root));
 
@@ -418,7 +418,7 @@ TEST(ParserTest, XrefHasInvalidArchiveObjectNumber) {
 
   // Satisfy CPDF_Parser's checks, so the test data below can concentrate on the
   // /XRef stream and avoid also providing other valid dictionaries.
-  auto dummy_root = pdfium::MakeRetain<CPDF_Dictionary>();
+  auto dummy_root = fxcrt::MakeRetain<CPDF_Dictionary>();
   EXPECT_CALL(parser.object_holder(), ParseIndirectObject)
       .WillRepeatedly(Return(dummy_root));
 

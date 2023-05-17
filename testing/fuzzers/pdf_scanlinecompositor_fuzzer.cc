@@ -64,8 +64,8 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
   if (!mem.IsValid() || mem.ValueOrDie() > kMemLimit)
     return 0;
 
-  auto src_bitmap = pdfium::MakeRetain<CFX_DIBitmap>();
-  auto dest_bitmap = pdfium::MakeRetain<CFX_DIBitmap>();
+  auto src_bitmap = fxcrt::MakeRetain<CFX_DIBitmap>();
+  auto dest_bitmap = fxcrt::MakeRetain<CFX_DIBitmap>();
   if (!src_bitmap->Create(width, height, src_format) ||
       !dest_bitmap->Create(width, height, dest_format)) {
     return 0;

@@ -560,7 +560,7 @@ bool CPDF_NPageToOneExporter::ExportNPagesToOne(
       if (!pSrcPageDict)
         return false;
 
-      auto pSrcPage = pdfium::MakeRetain<CPDF_Page>(src(), pSrcPageDict);
+      auto pSrcPage = fxcrt::MakeRetain<CPDF_Page>(src(), pSrcPageDict);
       pSrcPage->AddPageImageCache();
       NupPageSettings settings =
           nupState.CalculateNewPagePosition(pSrcPage->GetPageSize());
@@ -625,14 +625,14 @@ RetainPtr<CPDF_Stream> CPDF_NPageToOneExporter::MakeXObjectFromPageRaw(
     if (pSrcContentArray) {
       for (size_t i = 0; i < pSrcContentArray->size(); ++i) {
         RetainPtr<const CPDF_Stream> pStream = pSrcContentArray->GetStreamAt(i);
-        auto pAcc = pdfium::MakeRetain<CPDF_StreamAcc>(std::move(pStream));
+        auto pAcc = fxcrt::MakeRetain<CPDF_StreamAcc>(std::move(pStream));
         pAcc->LoadAllDataFiltered();
         bsSrcContentStream += ByteString(pAcc->GetSpan());
         bsSrcContentStream += "\n";
       }
     } else {
       RetainPtr<const CPDF_Stream> pStream(pSrcContentObj->AsStream());
-      auto pAcc = pdfium::MakeRetain<CPDF_StreamAcc>(std::move(pStream));
+      auto pAcc = fxcrt::MakeRetain<CPDF_StreamAcc>(std::move(pStream));
       pAcc->LoadAllDataFiltered();
       bsSrcContentStream = ByteString(pAcc->GetSpan());
     }
@@ -659,7 +659,7 @@ CPDF_NPageToOneExporter::CreateXObjectContextFromPage(int src_page_index) {
   if (!src_page_dict)
     return nullptr;
 
-  auto src_page = pdfium::MakeRetain<CPDF_Page>(src(), src_page_dict);
+  auto src_page = fxcrt::MakeRetain<CPDF_Page>(src(), src_page_dict);
   auto xobject = std::make_unique<XObjectContext>();
   xobject->dest_doc = dest();
   xobject->xobject.Reset(MakeXObjectFromPageRaw(src_page));
@@ -860,7 +860,7 @@ FPDF_CopyViewerPreferences(FPDF_DOCUMENT dest_doc, FPDF_DOCUMENT src_doc) {
   if (!pDstDict)
     return false;
 
-  auto cloned_dict = pdfium::MakeRetain<CPDF_Dictionary>();
+  auto cloned_dict = fxcrt::MakeRetain<CPDF_Dictionary>();
   CPDF_DictionaryLocker locker(pPrefDict);
   for (const auto& it : locker) {
     if (IsValidViewerPreferencesObject(it.second)) {

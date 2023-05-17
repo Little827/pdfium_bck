@@ -28,7 +28,7 @@ TEST(CFX_XMLTextTest, Clone) {
 }
 
 TEST(CFX_XMLTextTest, Save) {
-  auto stream = pdfium::MakeRetain<StringWriteStream>();
+  auto stream = fxcrt::MakeRetain<StringWriteStream>();
   CFX_XMLText data(L"My Data & this is < and > and ' and \" stuff.");
   data.Save(stream);
   EXPECT_EQ("My Data &amp; this is &lt; and &gt; and &apos; and &quot; stuff.",

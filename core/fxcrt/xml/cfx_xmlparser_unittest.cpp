@@ -17,7 +17,7 @@ class CFX_XMLParserTest : public testing::Test {
  public:
   std::unique_ptr<CFX_XMLDocument> Parse(pdfium::span<const char> input) {
     CFX_XMLParser parser(
-        pdfium::MakeRetain<CFX_ReadOnlySpanStream>(pdfium::as_bytes(input)));
+        fxcrt::MakeRetain<CFX_ReadOnlySpanStream>(pdfium::as_bytes(input)));
     return parser.Parse();
   }
 };

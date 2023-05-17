@@ -38,13 +38,13 @@ CPDF_PageModule* CPDF_PageModule::GetInstance() {
 }
 
 CPDF_PageModule::CPDF_PageModule()
-    : m_StockGrayCS(pdfium::MakeRetain<CPDF_DeviceCS>(
+    : m_StockGrayCS(fxcrt::MakeRetain<CPDF_DeviceCS>(
           CPDF_ColorSpace::Family::kDeviceGray)),
-      m_StockRGBCS(pdfium::MakeRetain<CPDF_DeviceCS>(
+      m_StockRGBCS(fxcrt::MakeRetain<CPDF_DeviceCS>(
           CPDF_ColorSpace::Family::kDeviceRGB)),
-      m_StockCMYKCS(pdfium::MakeRetain<CPDF_DeviceCS>(
+      m_StockCMYKCS(fxcrt::MakeRetain<CPDF_DeviceCS>(
           CPDF_ColorSpace::Family::kDeviceCMYK)),
-      m_StockPatternCS(pdfium::MakeRetain<CPDF_PatternCS>()) {
+      m_StockPatternCS(fxcrt::MakeRetain<CPDF_PatternCS>()) {
   m_StockPatternCS->InitializeStockPattern();
   CPDF_FontGlobals::Create();
   CPDF_FontGlobals::GetInstance()->LoadEmbeddedMaps();

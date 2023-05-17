@@ -69,11 +69,10 @@ class MockDownloadHints final : public CPDF_DataAvail::DownloadHints {
 
 TEST(ReadValidatorTest, UnavailableData) {
   DataVector<uint8_t> test_data(kTestDataSize);
-  auto file =
-      pdfium::MakeRetain<CFX_ReadOnlyVectorStream>(std::move(test_data));
+  auto file = fxcrt::MakeRetain<CFX_ReadOnlyVectorStream>(std::move(test_data));
   MockFileAvail file_avail;
   auto validator =
-      pdfium::MakeRetain<CPDF_ReadValidator>(std::move(file), &file_avail);
+      fxcrt::MakeRetain<CPDF_ReadValidator>(std::move(file), &file_avail);
 
   DataVector<uint8_t> read_buffer(100);
   EXPECT_FALSE(validator->ReadBlockAtOffset(read_buffer, 5000));
@@ -89,11 +88,10 @@ TEST(ReadValidatorTest, UnavailableData) {
 
 TEST(ReadValidatorTest, UnavailableDataWithHints) {
   DataVector<uint8_t> test_data(kTestDataSize);
-  auto file =
-      pdfium::MakeRetain<CFX_ReadOnlyVectorStream>(std::move(test_data));
+  auto file = fxcrt::MakeRetain<CFX_ReadOnlyVectorStream>(std::move(test_data));
   MockFileAvail file_avail;
   auto validator =
-      pdfium::MakeRetain<CPDF_ReadValidator>(std::move(file), &file_avail);
+      fxcrt::MakeRetain<CPDF_ReadValidator>(std::move(file), &file_avail);
 
   MockDownloadHints hints;
   validator->SetDownloadHints(&hints);
@@ -129,9 +127,9 @@ TEST(ReadValidatorTest, UnavailableDataWithHints) {
 }
 
 TEST(ReadValidatorTest, ReadError) {
-  auto file = pdfium::MakeRetain<InvalidSeekableReadStream>(kTestDataSize);
+  auto file = fxcrt::MakeRetain<InvalidSeekableReadStream>(kTestDataSize);
   auto validator =
-      pdfium::MakeRetain<CPDF_ReadValidator>(std::move(file), nullptr);
+      fxcrt::MakeRetain<CPDF_ReadValidator>(std::move(file), nullptr);
 
   static const uint32_t kBufferSize = 3 * 1000;
   DataVector<uint8_t> buffer(kBufferSize);
@@ -144,11 +142,10 @@ TEST(ReadValidatorTest, ReadError) {
 
 TEST(ReadValidatorTest, IntOverflow) {
   DataVector<uint8_t> test_data(kTestDataSize);
-  auto file =
-      pdfium::MakeRetain<CFX_ReadOnlyVectorStream>(std::move(test_data));
+  auto file = fxcrt::MakeRetain<CFX_ReadOnlyVectorStream>(std::move(test_data));
   MockFileAvail file_avail;
   auto validator =
-      pdfium::MakeRetain<CPDF_ReadValidator>(std::move(file), &file_avail);
+      fxcrt::MakeRetain<CPDF_ReadValidator>(std::move(file), &file_avail);
 
   DataVector<uint8_t> read_buffer(100);
 
@@ -164,11 +161,11 @@ TEST(ReadValidatorTest, IntOverflow) {
 TEST(ReadValidatorTest, Session) {
   DataVector<uint8_t> test_data(kTestDataSize);
 
-  auto file = pdfium::MakeRetain<InvalidSeekableReadStream>(kTestDataSize);
+  auto file = fxcrt::MakeRetain<InvalidSeekableReadStream>(kTestDataSize);
   MockFileAvail file_avail;
   MockDownloadHints hints;
   auto validator =
-      pdfium::MakeRetain<CPDF_ReadValidator>(std::move(file), &file_avail);
+      fxcrt::MakeRetain<CPDF_ReadValidator>(std::move(file), &file_avail);
   validator->SetDownloadHints(&hints);
 
   CPDF_ReadValidator::ScopedSession read_session(validator);
@@ -202,11 +199,11 @@ TEST(ReadValidatorTest, Session) {
 TEST(ReadValidatorTest, SessionReset) {
   DataVector<uint8_t> test_data(kTestDataSize);
 
-  auto file = pdfium::MakeRetain<InvalidSeekableReadStream>(kTestDataSize);
+  auto file = fxcrt::MakeRetain<InvalidSeekableReadStream>(kTestDataSize);
   MockFileAvail file_avail;
   MockDownloadHints hints;
   auto validator =
-      pdfium::MakeRetain<CPDF_ReadValidator>(std::move(file), &file_avail);
+      fxcrt::MakeRetain<CPDF_ReadValidator>(std::move(file), &file_avail);
   validator->SetDownloadHints(&hints);
 
   CPDF_ReadValidator::ScopedSession read_session(validator);
@@ -243,11 +240,10 @@ TEST(ReadValidatorTest, SessionReset) {
 
 TEST(ReadValidatorTest, CheckDataRangeAndRequestIfUnavailable) {
   DataVector<uint8_t> test_data(kTestDataSize);
-  auto file =
-      pdfium::MakeRetain<CFX_ReadOnlyVectorStream>(std::move(test_data));
+  auto file = fxcrt::MakeRetain<CFX_ReadOnlyVectorStream>(std::move(test_data));
   MockFileAvail file_avail;
   auto validator =
-      pdfium::MakeRetain<CPDF_ReadValidator>(std::move(file), &file_avail);
+      fxcrt::MakeRetain<CPDF_ReadValidator>(std::move(file), &file_avail);
 
   MockDownloadHints hints;
   validator->SetDownloadHints(&hints);

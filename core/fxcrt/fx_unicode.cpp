@@ -138,7 +138,7 @@ constexpr size_t kFXTextLayoutBidiMirrorSize =
 
 }  // namespace
 
-namespace pdfium {
+namespace fxcrt {
 namespace unicode {
 
 wchar_t GetMirrorChar(wchar_t wch) {
@@ -174,4 +174,4 @@ FX_BREAKPROPERTY GetBreakProperty(wchar_t wch) {
 #endif  // PDF_ENABLE_XFA
 
 }  // namespace unicode
-}  // namespace pdfium
+}  // namespace fxcrt

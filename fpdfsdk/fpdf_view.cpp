@@ -317,7 +317,7 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDF_LoadXFA(FPDF_DOCUMENT document) {
 FPDF_EXPORT FPDF_DOCUMENT FPDF_CALLCONV
 FPDF_LoadMemDocument(const void* data_buf, int size, FPDF_BYTESTRING password) {
   return LoadDocumentImpl(
-      pdfium::MakeRetain<CFX_ReadOnlySpanStream>(
+      fxcrt::MakeRetain<CFX_ReadOnlySpanStream>(
           pdfium::make_span(static_cast<const uint8_t*>(data_buf), size)),
       password);
 }
@@ -327,7 +327,7 @@ FPDF_LoadMemDocument64(const void* data_buf,
                        size_t size,
                        FPDF_BYTESTRING password) {
   return LoadDocumentImpl(
-      pdfium::MakeRetain<CFX_ReadOnlySpanStream>(
+      fxcrt::MakeRetain<CFX_ReadOnlySpanStream>(
           pdfium::make_span(static_cast<const uint8_t*>(data_buf), size)),
       password);
 }
@@ -337,7 +337,7 @@ FPDF_LoadCustomDocument(FPDF_FILEACCESS* pFileAccess,
                         FPDF_BYTESTRING password) {
   if (!pFileAccess)
     return nullptr;
-  return LoadDocumentImpl(pdfium::MakeRetain<CPDFSDK_CustomAccess>(pFileAccess),
+  return LoadDocumentImpl(fxcrt::MakeRetain<CPDFSDK_CustomAccess>(pFileAccess),
                           password);
 }
 
@@ -411,7 +411,7 @@ FPDF_EXPORT FPDF_PAGE FPDF_CALLCONV FPDF_LoadPage(FPDF_DOCUMENT document,
   if (!pDict)
     return nullptr;
 
-  auto pPage = pdfium::MakeRetain<CPDF_Page>(pDoc, std::move(pDict));
+  auto pPage = fxcrt::MakeRetain<CPDF_Page>(pDoc, std::move(pDict));
   pPage->AddPageImageCache();
   pPage->ParseContent();
 
@@ -496,7 +496,7 @@ RetainPtr<CFX_DIBitmap> GetMaskBitmap(CPDF_Page* pPage,
     return nullptr;
 
   // Create a new bitmap to transfer part of the page bitmap to.
-  RetainPtr<CFX_DIBitmap> pDst = pdfium::MakeRetain<CFX_DIBitmap>();
+  RetainPtr<CFX_DIBitmap> pDst = fxcrt::MakeRetain<CFX_DIBitmap>();
   if (!pDst->Create(bitmap_area->Width(), bitmap_area->Height(),
                     FXDIB_Format::kArgb)) {
     return nullptr;
@@ -516,7 +516,7 @@ void RenderBitmap(CFX_RenderDevice* device,
     return;
 
   // Create a new bitmap from the old one
-  RetainPtr<CFX_DIBitmap> pDst = pdfium::MakeRetain<CFX_DIBitmap>();
+  RetainPtr<CFX_DIBitmap> pDst = fxcrt::MakeRetain<CFX_DIBitmap>();
   if (!pDst->Create(size_x_bm, size_y_bm, FXDIB_Format::kRgb32))
     return;
 
@@ -573,7 +573,7 @@ FPDF_EXPORT void FPDF_CALLCONV FPDF_RenderPage(HDC dc,
     return;
   }
 
-  RetainPtr<CFX_DIBitmap> pBitmap = pdfium::MakeRetain<CFX_DIBitmap>();
+  RetainPtr<CFX_DIBitmap> pBitmap = fxcrt::MakeRetain<CFX_DIBitmap>();
   // Create will probably work fine even if it fails here: we will just attach
   // a zero-sized bitmap to |pDevice|.
   pBitmap->Create(size_x, size_y, FXDIB_Format::kArgb);
@@ -595,7 +595,7 @@ FPDF_EXPORT void FPDF_CALLCONV FPDF_RenderPage(HDC dc,
     CPDF_WindowsRenderDevice win_dc(dc, render_data->GetPSFontTracker());
     bool bitsStretched = false;
     if (win_dc.GetDeviceType() == DeviceType::kPrinter) {
-      auto pDst = pdfium::MakeRetain<CFX_DIBitmap>();
+      auto pDst = fxcrt::MakeRetain<CFX_DIBitmap>();
       if (pDst->Create(size_x, size_y, FXDIB_Format::kRgb32)) {
         fxcrt::spanset(pDst->GetBuffer().first(pBitmap->GetPitch() * size_y),
                        -1);
@@ -840,7 +840,7 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDF_PageToDevice(FPDF_PAGE page,
 FPDF_EXPORT FPDF_BITMAP FPDF_CALLCONV FPDFBitmap_Create(int width,
                                                         int height,
                                                         int alpha) {
-  auto pBitmap = pdfium::MakeRetain<CFX_DIBitmap>();
+  auto pBitmap = fxcrt::MakeRetain<CFX_DIBitmap>();
   if (!pBitmap->Create(width, height,
                        alpha ? FXDIB_Format::kArgb : FXDIB_Format::kRgb32)) {
     return nullptr;
@@ -873,7 +873,7 @@ FPDF_EXPORT FPDF_BITMAP FPDF_CALLCONV FPDFBitmap_CreateEx(int width,
 
   // Ensure external memory is good at least for the duration of this call.
   UnownedPtr<uint8_t> pChecker(static_cast<uint8_t*>(first_scan));
-  auto pBitmap = pdfium::MakeRetain<CFX_DIBitmap>();
+  auto pBitmap = fxcrt::MakeRetain<CFX_DIBitmap>();
   if (!pBitmap->Create(width, height, fx_format, pChecker, stride))
     return nullptr;
 
@@ -971,7 +971,7 @@ FPDF_GetPageSizeByIndexF(FPDF_DOCUMENT document,
   if (!pDict)
     return false;
 
-  auto page = pdfium::MakeRetain<CPDF_Page>(pDoc, std::move(pDict));
+  auto page = fxcrt::MakeRetain<CPDF_Page>(pDoc, std::move(pDict));
   page->AddPageImageCache();
   size->width = page->GetPageWidth();
   size->height = page->GetPageHeight();

@@ -108,7 +108,7 @@ bool SaveXFADocumentData(CPDFXFA_Context* pContext,
   // L"datasets"
   {
     RetainPtr<IFX_SeekableStream> pFileWrite =
-        pdfium::MakeRetain<CFX_MemoryStream>();
+        fxcrt::MakeRetain<CFX_MemoryStream>();
     if (pContext->SaveDatasetsPackage(pFileWrite) &&
         pFileWrite->GetSize() > 0) {
       auto pDataDict = pPDFDocument->New<CPDF_Dictionary>();
@@ -130,7 +130,7 @@ bool SaveXFADocumentData(CPDFXFA_Context* pContext,
   // L"form"
   {
     RetainPtr<IFX_SeekableStream> pFileWrite =
-        pdfium::MakeRetain<CFX_MemoryStream>();
+        fxcrt::MakeRetain<CFX_MemoryStream>();
     if (pContext->SaveFormPackage(pFileWrite) && pFileWrite->GetSize() > 0) {
       auto pDataDict = pPDFDocument->New<CPDF_Dictionary>();
       if (iFormIndex != -1) {
@@ -172,7 +172,7 @@ bool DoDocSave(FPDF_DOCUMENT document,
     flags = 0;
 
   CPDF_Creator fileMaker(
-      pPDFDoc, pdfium::MakeRetain<CPDFSDK_FileWriteAdapter>(pFileWrite));
+      pPDFDoc, fxcrt::MakeRetain<CPDFSDK_FileWriteAdapter>(pFileWrite));
   if (version.has_value())
     fileMaker.SetFileVersion(version.value());
   if (flags == FPDF_REMOVE_SECURITY) {

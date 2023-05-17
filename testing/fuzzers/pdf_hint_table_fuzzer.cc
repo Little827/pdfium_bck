@@ -61,7 +61,7 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
 
   const int32_t* data32 = reinterpret_cast<const int32_t*>(data);
 
-  auto linearized_dict = pdfium::MakeRetain<CPDF_Dictionary>();
+  auto linearized_dict = fxcrt::MakeRetain<CPDF_Dictionary>();
   // Set initial value.
   linearized_dict->SetNewFor<CPDF_Boolean>("Linearized", true);
   // Set first page end offset
@@ -73,7 +73,7 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
   // Set first page no
   linearized_dict->SetNewFor<CPDF_Number>("P", GetData(&data32, &data, &size));
 
-  auto hint_info = pdfium::MakeRetain<CPDF_Array>();
+  auto hint_info = fxcrt::MakeRetain<CPDF_Array>();
   // Add primary hint stream offset
   hint_info->AppendNew<CPDF_Number>(GetData(&data32, &data, &size));
   // Add primary hint stream size

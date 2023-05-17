@@ -343,8 +343,8 @@ RetainPtr<CPDF_Object> CPDF_StreamContentParser::GetObject(uint32_t index) {
     param.m_Type = ContentParam::Type::kObject;
     param.m_pObject =
         param.m_Number.IsInteger()
-            ? pdfium::MakeRetain<CPDF_Number>(param.m_Number.GetSigned())
-            : pdfium::MakeRetain<CPDF_Number>(param.m_Number.GetFloat());
+            ? fxcrt::MakeRetain<CPDF_Number>(param.m_Number.GetSigned())
+            : fxcrt::MakeRetain<CPDF_Number>(param.m_Number.GetFloat());
     return param.m_pObject;
   }
   if (param.m_Type == ContentParam::Type::kName) {
@@ -797,7 +797,7 @@ CPDF_ImageObject* CPDF_StreamContentParser::AddImageFromStream(
   auto pImageObj = std::make_unique<CPDF_ImageObject>(GetCurrentStreamIndex());
   pImageObj->SetResourceName(name);
   pImageObj->SetImage(
-      pdfium::MakeRetain<CPDF_Image>(m_pDocument, std::move(pStream)));
+      fxcrt::MakeRetain<CPDF_Image>(m_pDocument, std::move(pStream)));
 
   return AddImageObject(std::move(pImageObj));
 }

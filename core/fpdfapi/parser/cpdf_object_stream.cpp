@@ -63,7 +63,7 @@ std::unique_ptr<CPDF_ObjectStream> CPDF_ObjectStream::Create(
 }
 
 CPDF_ObjectStream::CPDF_ObjectStream(RetainPtr<const CPDF_Stream> obj_stream)
-    : stream_acc_(pdfium::MakeRetain<CPDF_StreamAcc>(obj_stream)),
+    : stream_acc_(fxcrt::MakeRetain<CPDF_StreamAcc>(obj_stream)),
       first_object_offset_(obj_stream->GetDict()->GetIntegerFor("First")) {
   DCHECK(IsObjectStream(obj_stream.Get()));
   Init(obj_stream.Get());
@@ -92,7 +92,7 @@ RetainPtr<CPDF_Object> CPDF_ObjectStream::ParseObject(
 void CPDF_ObjectStream::Init(const CPDF_Stream* stream) {
   stream_acc_->LoadAllDataFiltered();
   data_stream_ =
-      pdfium::MakeRetain<CFX_ReadOnlySpanStream>(stream_acc_->GetSpan());
+      fxcrt::MakeRetain<CFX_ReadOnlySpanStream>(stream_acc_->GetSpan());
 
   CPDF_SyntaxParser syntax(data_stream_);
   const int object_count = stream->GetDict()->GetIntegerFor("N");

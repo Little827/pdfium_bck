@@ -15,7 +15,7 @@ CPDF_PSFunc::~CPDF_PSFunc() = default;
 
 bool CPDF_PSFunc::v_Init(const CPDF_Object* pObj, VisitedSet* pVisited) {
   auto pAcc =
-      pdfium::MakeRetain<CPDF_StreamAcc>(pdfium::WrapRetain(pObj->AsStream()));
+      fxcrt::MakeRetain<CPDF_StreamAcc>(fxcrt::WrapRetain(pObj->AsStream()));
   pAcc->LoadAllDataFiltered();
   return m_PS.Parse(pAcc->GetSpan());
 }

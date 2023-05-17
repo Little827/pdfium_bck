@@ -512,7 +512,7 @@ void CPDFXFA_DocEnvironment::ExportData(CXFA_FFDoc* hDoc,
         ByteString content = ByteString::Format(kFormat, bPath.c_str());
         fileWrite->WriteString(content.AsStringView());
       }
-      auto pAcc = pdfium::MakeRetain<CPDF_StreamAcc>(std::move(pStream));
+      auto pAcc = fxcrt::MakeRetain<CPDF_StreamAcc>(std::move(pStream));
       pAcc->LoadAllDataFiltered();
       fileWrite->WriteBlock(pAcc->GetSpan());
     }

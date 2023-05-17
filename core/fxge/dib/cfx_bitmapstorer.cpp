@@ -39,7 +39,7 @@ bool CFX_BitmapStorer::SetInfo(int width,
                                pdfium::span<const uint32_t> src_palette) {
   DCHECK_NE(src_format, FXDIB_Format::k1bppMask);
   DCHECK_NE(src_format, FXDIB_Format::k1bppRgb);
-  auto pBitmap = pdfium::MakeRetain<CFX_DIBitmap>();
+  auto pBitmap = fxcrt::MakeRetain<CFX_DIBitmap>();
   if (!pBitmap->Create(width, height, src_format))
     return false;
 

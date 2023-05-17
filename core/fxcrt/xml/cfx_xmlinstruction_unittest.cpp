@@ -64,14 +64,14 @@ TEST(CFX_XMLInstructionTest, Clone) {
 }
 
 TEST(CFX_XMLInstructionTest, SaveXML) {
-  auto stream = pdfium::MakeRetain<StringWriteStream>();
+  auto stream = fxcrt::MakeRetain<StringWriteStream>();
   CFX_XMLInstruction node(L"xml");
   node.Save(stream);
   EXPECT_EQ("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n", stream->ToString());
 }
 
 TEST(CFX_XMLInstructionTest, SaveAcrobat) {
-  auto stream = pdfium::MakeRetain<StringWriteStream>();
+  auto stream = fxcrt::MakeRetain<StringWriteStream>();
   CFX_XMLInstruction node(L"acrobat");
   node.AppendData(L"http://www.xfa.org/schema/xfa-template/3.3/");
   node.AppendData(L"Display:1");
@@ -87,7 +87,7 @@ TEST(CFX_XMLInstructionTest, ParseAndReSave) {
       "<?acrobat http://www.xfa.org/schema/xfa-template/3.3/ Display:1 ?>\n"
       "<node></node>";
 
-  auto in_stream = pdfium::MakeRetain<CFX_ReadOnlySpanStream>(
+  auto in_stream = fxcrt::MakeRetain<CFX_ReadOnlySpanStream>(
       pdfium::as_bytes(pdfium::make_span(input)));
 
   CFX_XMLParser parser(in_stream);
@@ -107,7 +107,7 @@ TEST(CFX_XMLInstructionTest, ParseAndReSave) {
   EXPECT_EQ(L"http://www.xfa.org/schema/xfa-template/3.3/", data[0]);
   EXPECT_EQ(L"Display:1", data[1]);
 
-  auto out_stream = pdfium::MakeRetain<StringWriteStream>();
+  auto out_stream = fxcrt::MakeRetain<StringWriteStream>();
   node->Save(out_stream);
   EXPECT_EQ(
       "<?acrobat http://www.xfa.org/schema/xfa-template/3.3/ Display:1 ?>\n",
@@ -120,7 +120,7 @@ TEST(CFX_XMLInstructionTest, ParseAndReSaveInnerInstruction) {
       "<?acrobat http://www.xfa.org/schema/xfa-template/3.3/ Display:1 ?>\n"
       "</node>";
 
-  auto in_stream = pdfium::MakeRetain<CFX_ReadOnlySpanStream>(
+  auto in_stream = fxcrt::MakeRetain<CFX_ReadOnlySpanStream>(
       pdfium::as_bytes(pdfium::make_span(input)));
 
   CFX_XMLParser parser(in_stream);
@@ -147,7 +147,7 @@ TEST(CFX_XMLInstructionTest, ParseAndReSaveInnerInstruction) {
   EXPECT_EQ(L"http://www.xfa.org/schema/xfa-template/3.3/", data[0]);
   EXPECT_EQ(L"Display:1", data[1]);
 
-  auto out_stream = pdfium::MakeRetain<StringWriteStream>();
+  auto out_stream = fxcrt::MakeRetain<StringWriteStream>();
   node->Save(out_stream);
   EXPECT_EQ(
       "<node>\n\n"

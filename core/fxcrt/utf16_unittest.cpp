@@ -6,7 +6,7 @@
 
 #include "testing/gtest/include/gtest/gtest.h"
 
-namespace pdfium {
+namespace fxcrt {
 
 static_assert(kSurrogateMask == 0x3ff);
 static_assert(kMaximumSupplementaryCodePoint == 0x10ffff);
@@ -58,4 +58,4 @@ TEST(SurrogatePairTest, RoundTrip) {
   }
 }
 
-}  // namespace pdfium
+}  // namespace fxcrt

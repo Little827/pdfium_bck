@@ -145,7 +145,7 @@ const FX_ARBFORMTABLE* ParseChar(const CFGAS_Char* pTC,
                                  FX_CHARTYPE* eType) {
   if (!pTC) {
     *eType = FX_CHARTYPE::kUnknown;
-    *wChar = pdfium::unicode::kZeroWidthNoBreakSpace;
+    *wChar = fxcrt::unicode::kZeroWidthNoBreakSpace;
     return nullptr;
   }
 
@@ -191,7 +191,7 @@ wchar_t GetFormChar(const CFGAS_Char* cur,
   wchar_t wPrev;
   ParseChar(prev, &wPrev, &ePrev);
   if (wPrev == kArabicLetterLam && eCur == FX_CHARTYPE::kArabicAlef)
-    return pdfium::unicode::kZeroWidthNoBreakSpace;
+    return fxcrt::unicode::kZeroWidthNoBreakSpace;
 
   FX_CHARTYPE eNext;
   wchar_t wNext;

@@ -214,7 +214,7 @@ RetainPtr<CPDF_Stream> CPDF_StreamParser::ReadInlineStream(
     m_Pos += dwStreamSize;
   }
   pDict->SetNewFor<CPDF_Number>("Length", static_cast<int>(dwStreamSize));
-  return pdfium::MakeRetain<CPDF_Stream>(std::move(data), std::move(pDict));
+  return fxcrt::MakeRetain<CPDF_Stream>(std::move(data), std::move(pDict));
 }
 
 CPDF_StreamParser::ElementType CPDF_StreamParser::ParseNextElement() {
@@ -279,16 +279,16 @@ CPDF_StreamParser::ElementType CPDF_StreamParser::ParseNextElement() {
 
   if (m_WordSize == 4) {
     if (GetWord() == kTrue) {
-      m_pLastObj = pdfium::MakeRetain<CPDF_Boolean>(true);
+      m_pLastObj = fxcrt::MakeRetain<CPDF_Boolean>(true);
       return ElementType::kOther;
     }
     if (GetWord() == kNull) {
-      m_pLastObj = pdfium::MakeRetain<CPDF_Null>();
+      m_pLastObj = fxcrt::MakeRetain<CPDF_Null>();
       return ElementType::kOther;
     }
   } else if (m_WordSize == 5) {
     if (GetWord() == kFalse) {
-      m_pLastObj = pdfium::MakeRetain<CPDF_Boolean>(false);
+      m_pLastObj = fxcrt::MakeRetain<CPDF_Boolean>(false);
       return ElementType::kOther;
     }
   }
@@ -307,25 +307,25 @@ RetainPtr<CPDF_Object> CPDF_StreamParser::ReadNextObject(
 
   if (bIsNumber) {
     m_WordBuffer[m_WordSize] = 0;
-    return pdfium::MakeRetain<CPDF_Number>(GetWord());
+    return fxcrt::MakeRetain<CPDF_Number>(GetWord());
   }
 
   int first_char = m_WordBuffer[0];
   if (first_char == '/') {
     ByteString name = PDF_NameDecode(GetWord().Substr(1));
-    return pdfium::MakeRetain<CPDF_Name>(m_pPool, name);
+    return fxcrt::MakeRetain<CPDF_Name>(m_pPool, name);
   }
 
   if (first_char == '(') {
     ByteString str = ReadString();
-    return pdfium::MakeRetain<CPDF_String>(m_pPool, str, false);
+    return fxcrt::MakeRetain<CPDF_String>(m_pPool, str, false);
   }
 
   if (first_char == '<') {
     if (m_WordSize == 1)
-      return pdfium::MakeRetain<CPDF_String>(m_pPool, ReadHexString(), true);
+      return fxcrt::MakeRetain<CPDF_String>(m_pPool, ReadHexString(), true);
 
-    auto pDict = pdfium::MakeRetain<CPDF_Dictionary>(m_pPool);
+    auto pDict = fxcrt::MakeRetain<CPDF_Dictionary>(m_pPool);
     while (true) {
       GetNextWord(bIsNumber);
       if (m_WordSize == 2 && m_WordBuffer[0] == '>')
@@ -349,7 +349,7 @@ RetainPtr<CPDF_Object> CPDF_StreamParser::ReadNextObject(
     if ((!bAllowNestedArray && bInArray))
       return nullptr;
 
-    auto pArray = pdfium::MakeRetain<CPDF_Array>();
+    auto pArray = fxcrt::MakeRetain<CPDF_Array>();
     while (true) {
       RetainPtr<CPDF_Object> pObj =
           ReadNextObject(bAllowNestedArray, true, dwRecursionLevel + 1);
@@ -364,11 +364,11 @@ RetainPtr<CPDF_Object> CPDF_StreamParser::ReadNextObject(
   }
 
   if (GetWord() == kFalse)
-    return pdfium::MakeRetain<CPDF_Boolean>(false);
+    return fxcrt::MakeRetain<CPDF_Boolean>(false);
   if (GetWord() == kTrue)
-    return pdfium::MakeRetain<CPDF_Boolean>(true);
+    return fxcrt::MakeRetain<CPDF_Boolean>(true);
   if (GetWord() == kNull)
-    return pdfium::MakeRetain<CPDF_Null>();
+    return fxcrt::MakeRetain<CPDF_Null>();
   return nullptr;
 }
 

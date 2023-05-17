@@ -29,7 +29,7 @@ class TestReadValidator final : public CPDF_ReadValidator {
 
  private:
   TestReadValidator()
-      : CPDF_ReadValidator(pdfium::MakeRetain<InvalidSeekableReadStream>(100),
+      : CPDF_ReadValidator(fxcrt::MakeRetain<InvalidSeekableReadStream>(100),
                            nullptr) {}
   ~TestReadValidator() override = default;
 };
@@ -40,7 +40,7 @@ class TestHolder final : public CPDF_IndirectObjectHolder {
     Unavailable,
     Available,
   };
-  TestHolder() : validator_(pdfium::MakeRetain<TestReadValidator>()) {}
+  TestHolder() : validator_(fxcrt::MakeRetain<TestReadValidator>()) {}
   ~TestHolder() override = default;
 
   // CPDF_IndirectObjectHolder overrides:
@@ -96,24 +96,24 @@ class TestHolder final : public CPDF_IndirectObjectHolder {
 
 TEST(PageObjectAvailTest, ExcludePages) {
   TestHolder holder;
-  holder.AddObject(1, pdfium::MakeRetain<CPDF_Dictionary>(),
+  holder.AddObject(1, fxcrt::MakeRetain<CPDF_Dictionary>(),
                    TestHolder::ObjectState::Available);
   holder.GetTestObject(1)->GetMutableDict()->SetNewFor<CPDF_Reference>(
       "Kids", &holder, 2);
-  holder.AddObject(2, pdfium::MakeRetain<CPDF_Array>(),
+  holder.AddObject(2, fxcrt::MakeRetain<CPDF_Array>(),
                    TestHolder::ObjectState::Available);
   holder.GetTestObject(2)->AsMutableArray()->AppendNew<CPDF_Reference>(&holder,
                                                                        3);
 
-  holder.AddObject(3, pdfium::MakeRetain<CPDF_Dictionary>(),
+  holder.AddObject(3, fxcrt::MakeRetain<CPDF_Dictionary>(),
                    TestHolder::ObjectState::Available);
   holder.GetTestObject(3)->GetMutableDict()->SetFor(
-      "Type", pdfium::MakeRetain<CPDF_Name>(nullptr, "Page"));
+      "Type", fxcrt::MakeRetain<CPDF_Name>(nullptr, "Page"));
   holder.GetTestObject(3)->GetMutableDict()->SetNewFor<CPDF_Reference>(
       "OtherPageData", &holder, 4);
   // Add unavailable object related to other page.
   holder.AddObject(
-      4, pdfium::MakeRetain<CPDF_String>(nullptr, "Other page data", false),
+      4, fxcrt::MakeRetain<CPDF_String>(nullptr, "Other page data", false),
       TestHolder::ObjectState::Unavailable);
 
   CPDF_PageObjectAvail avail(holder.GetValidator(), &holder, 1);

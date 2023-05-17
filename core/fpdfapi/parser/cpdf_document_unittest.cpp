@@ -41,7 +41,7 @@ RetainPtr<CPDF_Dictionary> CreatePageTreeNode(RetainPtr<CPDF_Array> kids,
 }
 
 RetainPtr<CPDF_Dictionary> CreateNumberedPage(size_t number) {
-  auto page = pdfium::MakeRetain<CPDF_Dictionary>();
+  auto page = fxcrt::MakeRetain<CPDF_Dictionary>();
   page->SetNewFor<CPDF_Name>("Type", "Page");
   page->SetNewFor<CPDF_Number>("PageNumbering", static_cast<int>(number));
   return page;
@@ -51,7 +51,7 @@ class CPDF_TestDocumentForPages final : public CPDF_TestDocument {
  public:
   CPDF_TestDocumentForPages() {
     // Set up test
-    auto zeroToTwo = pdfium::MakeRetain<CPDF_Array>();
+    auto zeroToTwo = fxcrt::MakeRetain<CPDF_Array>();
     zeroToTwo->AppendNew<CPDF_Reference>(
         this, AddIndirectObject(CreateNumberedPage(0)));
     zeroToTwo->AppendNew<CPDF_Reference>(
@@ -61,14 +61,14 @@ class CPDF_TestDocumentForPages final : public CPDF_TestDocument {
     RetainPtr<CPDF_Dictionary> branch1 =
         CreatePageTreeNode(std::move(zeroToTwo), this, 3);
 
-    auto zeroToThree = pdfium::MakeRetain<CPDF_Array>();
+    auto zeroToThree = fxcrt::MakeRetain<CPDF_Array>();
     zeroToThree->AppendNew<CPDF_Reference>(this, branch1->GetObjNum());
     zeroToThree->AppendNew<CPDF_Reference>(
         this, AddIndirectObject(CreateNumberedPage(3)));
     RetainPtr<CPDF_Dictionary> branch2 =
         CreatePageTreeNode(std::move(zeroToThree), this, 4);
 
-    auto fourFive = pdfium::MakeRetain<CPDF_Array>();
+    auto fourFive = fxcrt::MakeRetain<CPDF_Array>();
     fourFive->AppendNew<CPDF_Reference>(
         this, AddIndirectObject(CreateNumberedPage(4)));
     fourFive->AppendNew<CPDF_Reference>(
@@ -76,13 +76,13 @@ class CPDF_TestDocumentForPages final : public CPDF_TestDocument {
     RetainPtr<CPDF_Dictionary> branch3 =
         CreatePageTreeNode(std::move(fourFive), this, 2);
 
-    auto justSix = pdfium::MakeRetain<CPDF_Array>();
+    auto justSix = fxcrt::MakeRetain<CPDF_Array>();
     justSix->AppendNew<CPDF_Reference>(
         this, AddIndirectObject(CreateNumberedPage(6)));
     RetainPtr<CPDF_Dictionary> branch4 =
         CreatePageTreeNode(std::move(justSix), this, 1);
 
-    auto allPages = pdfium::MakeRetain<CPDF_Array>();
+    auto allPages = fxcrt::MakeRetain<CPDF_Array>();
     allPages->AppendNew<CPDF_Reference>(this, branch2->GetObjNum());
     allPages->AppendNew<CPDF_Reference>(this, branch3->GetObjNum());
     allPages->AppendNew<CPDF_Reference>(this, branch4->GetObjNum());
@@ -105,7 +105,7 @@ class CPDF_TestDocumentWithPageWithoutPageNum final : public CPDF_TestDocument {
  public:
   CPDF_TestDocumentWithPageWithoutPageNum() {
     // Set up test
-    auto allPages = pdfium::MakeRetain<CPDF_Array>();
+    auto allPages = fxcrt::MakeRetain<CPDF_Array>();
     allPages->AppendNew<CPDF_Reference>(
         this, AddIndirectObject(CreateNumberedPage(0)));
     allPages->AppendNew<CPDF_Reference>(
@@ -223,17 +223,17 @@ TEST_F(DocumentTest, GetPagesInDisorder) {
 TEST_F(DocumentTest, IsValidPageObject) {
   CPDF_TestDocumentForPages document;
 
-  auto dict_type_name_page = pdfium::MakeRetain<CPDF_Dictionary>();
+  auto dict_type_name_page = fxcrt::MakeRetain<CPDF_Dictionary>();
   dict_type_name_page->SetNewFor<CPDF_Name>("Type", "Page");
   document.AddIndirectObject(dict_type_name_page);
   EXPECT_TRUE(CPDF_Document::IsValidPageObject(dict_type_name_page.Get()));
 
-  auto dict_type_string_page = pdfium::MakeRetain<CPDF_Dictionary>();
+  auto dict_type_string_page = fxcrt::MakeRetain<CPDF_Dictionary>();
   dict_type_string_page->SetNewFor<CPDF_String>("Type", "Page", false);
   document.AddIndirectObject(dict_type_string_page);
   EXPECT_FALSE(CPDF_Document::IsValidPageObject(dict_type_string_page.Get()));
 
-  auto dict_type_name_font = pdfium::MakeRetain<CPDF_Dictionary>();
+  auto dict_type_name_font = fxcrt::MakeRetain<CPDF_Dictionary>();
   dict_type_name_font->SetNewFor<CPDF_Name>("Type", "Font");
   document.AddIndirectObject(dict_type_name_font);
   EXPECT_FALSE(CPDF_Document::IsValidPageObject(dict_type_name_font.Get()));
@@ -249,7 +249,7 @@ TEST_F(DocumentTest, UseCachedPageObjNumIfHaveNotPagesDict) {
   constexpr int kPageCount = 100;
   constexpr int kTestPageNum = 33;
 
-  auto linearization_dict = pdfium::MakeRetain<CPDF_Dictionary>();
+  auto linearization_dict = fxcrt::MakeRetain<CPDF_Dictionary>();
   CPDF_TestDocumentAllowSetParser document;
 
   {

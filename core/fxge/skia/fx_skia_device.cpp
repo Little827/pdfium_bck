@@ -767,7 +767,7 @@ bool Upsample(const RetainPtr<CFX_DIBBase>& pSource,
 
 // Makes a bitmap filled with a solid color for debugging with `SkPicture`.
 RetainPtr<CFX_DIBitmap> MakeDebugBitmap(int width, int height, uint32_t color) {
-  auto bitmap = pdfium::MakeRetain<CFX_DIBitmap>();
+  auto bitmap = fxcrt::MakeRetain<CFX_DIBitmap>();
   if (!bitmap->Create(width, height, FXDIB_Format::kArgb))
     return nullptr;
 
@@ -848,7 +848,7 @@ CFX_SkiaDeviceDriver::CFX_SkiaDeviceDriver(
     // Save the input bitmap as `m_pOriginalBitmap` and save its 32 bpp
     // equivalent at `m_pBitmap` for Skia's internal process.
     m_pOriginalBitmap = std::move(m_pBitmap);
-    m_pBitmap = pdfium::MakeRetain<CFX_DIBitmap>();
+    m_pBitmap = fxcrt::MakeRetain<CFX_DIBitmap>();
     if (!m_pBitmap->Copy(m_pOriginalBitmap) ||
         !m_pBitmap->ConvertFormat(FXDIB_Format::kArgb)) {
       // Skip creating SkCanvas if we fail to create the 32 bpp bitmap to back
@@ -1848,7 +1848,7 @@ bool CFX_DefaultRenderDevice::CreateSkia(
     int height,
     FXDIB_Format format,
     RetainPtr<CFX_DIBitmap> pBackdropBitmap) {
-  auto pBitmap = pdfium::MakeRetain<CFX_DIBitmap>();
+  auto pBitmap = fxcrt::MakeRetain<CFX_DIBitmap>();
   if (!pBitmap->Create(width, height, format))
     return false;
 

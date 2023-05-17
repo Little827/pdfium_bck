@@ -18,12 +18,12 @@
 
 CPDF_FlateEncoder::CPDF_FlateEncoder(RetainPtr<const CPDF_Stream> pStream,
                                      bool bFlateEncode)
-    : m_pAcc(pdfium::MakeRetain<CPDF_StreamAcc>(pStream)) {
+    : m_pAcc(fxcrt::MakeRetain<CPDF_StreamAcc>(pStream)) {
   m_pAcc->LoadAllDataRaw();
 
   bool bHasFilter = pStream->HasFilter();
   if (bHasFilter && !bFlateEncode) {
-    auto pDestAcc = pdfium::MakeRetain<CPDF_StreamAcc>(pStream);
+    auto pDestAcc = fxcrt::MakeRetain<CPDF_StreamAcc>(pStream);
     pDestAcc->LoadAllDataFiltered();
 
     m_Data = m_pAcc->GetSpan();

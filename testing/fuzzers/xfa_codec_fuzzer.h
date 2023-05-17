@@ -24,7 +24,7 @@ class XFACodecFuzzer {
  public:
   static int Fuzz(const uint8_t* data, size_t size, FXCODEC_IMAGE_TYPE type) {
     auto decoder = std::make_unique<ProgressiveDecoder>();
-    auto source = pdfium::MakeRetain<CFX_ReadOnlySpanStream>(
+    auto source = fxcrt::MakeRetain<CFX_ReadOnlySpanStream>(
         pdfium::make_span(data, size));
     CFX_DIBAttribute attr;
     FXCODEC_STATUS status =
@@ -42,7 +42,7 @@ class XFACodecFuzzer {
       return 0;
     }
 
-    auto bitmap = pdfium::MakeRetain<CFX_DIBitmap>();
+    auto bitmap = fxcrt::MakeRetain<CFX_DIBitmap>();
     bitmap->Create(decoder->GetWidth(), decoder->GetHeight(),
                    FXDIB_Format::kArgb);
 

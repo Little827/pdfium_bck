@@ -89,14 +89,14 @@ class CPDF_Dictionary final : public CPDF_Object {
   template <typename T, typename... Args>
   typename std::enable_if<!CanInternStrings<T>::value, RetainPtr<T>>::type
   SetNewFor(const ByteString& key, Args&&... args) {
-    return pdfium::WrapRetain(static_cast<T*>(SetForInternal(
-        key, pdfium::MakeRetain<T>(std::forward<Args>(args)...))));
+    return fxcrt::WrapRetain(static_cast<T*>(SetForInternal(
+        key, fxcrt::MakeRetain<T>(std::forward<Args>(args)...))));
   }
   template <typename T, typename... Args>
   typename std::enable_if<CanInternStrings<T>::value, RetainPtr<T>>::type
   SetNewFor(const ByteString& key, Args&&... args) {
-    return pdfium::WrapRetain(static_cast<T*>(SetForInternal(
-        key, pdfium::MakeRetain<T>(m_pPool, std::forward<Args>(args)...))));
+    return fxcrt::WrapRetain(static_cast<T*>(SetForInternal(
+        key, fxcrt::MakeRetain<T>(m_pPool, std::forward<Args>(args)...))));
   }
 
   // If |pObj| is null, then |key| is erased from the map. Otherwise, takes

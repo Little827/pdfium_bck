@@ -42,7 +42,7 @@ partition_alloc::PartitionAllocator& GetStringPartitionAllocator() {
 
 }  // namespace
 
-namespace pdfium {
+namespace fxcrt {
 namespace internal {
 
 void* Alloc(size_t num_members, size_t member_size) {
@@ -91,7 +91,7 @@ void* StringAlloc(size_t num_members, size_t member_size) {
 }
 
 }  // namespace internal
-}  // namespace pdfium
+}  // namespace fxcrt
 
 void FX_InitializeMemoryAllocators() {
   static bool s_partition_allocators_initialized = false;

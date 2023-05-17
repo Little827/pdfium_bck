@@ -981,7 +981,7 @@ WideString EncodeURL(const ByteString& bsURL) {
   wchar_t szEncode[4];
   szEncode[0] = '%';
   szEncode[3] = 0;
-  for (char32_t ch : pdfium::CodePointView(wsURL.AsStringView())) {
+  for (char32_t ch : fxcrt::CodePointView(wsURL.AsStringView())) {
     size_t i = 0;
     size_t iCount = std::size(kStrUnsafe);
     while (i < iCount) {
@@ -1073,7 +1073,7 @@ WideString EncodeHTML(const ByteString& bsHTML) {
   szEncode[1] = '#';
   szEncode[2] = 'x';
   WideTextBuffer wsResultBuf;
-  for (char32_t ch : pdfium::CodePointView(wsHTML.AsStringView())) {
+  for (char32_t ch : fxcrt::CodePointView(wsHTML.AsStringView())) {
     WideString htmlReserve;
     if (HTMLCode2STR(ch, &htmlReserve)) {
       wsResultBuf.AppendChar(L'&');
@@ -1112,7 +1112,7 @@ WideString EncodeXML(const ByteString& bsXML) {
   szEncode[0] = '&';
   szEncode[1] = '#';
   szEncode[2] = 'x';
-  for (char32_t ch : pdfium::CodePointView(wsXML.AsStringView())) {
+  for (char32_t ch : fxcrt::CodePointView(wsXML.AsStringView())) {
     switch (ch) {
       case '"':
         wsResultBuf.AppendChar('&');

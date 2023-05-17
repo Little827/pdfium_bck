@@ -173,6 +173,6 @@ CPDF_NonConstObjectWalker::CPDF_NonConstObjectWalker(
     : CPDF_ObjectWalker(std::move(root)) {}
 
 RetainPtr<CPDF_Object> CPDF_NonConstObjectWalker::GetNext() {
-  return pdfium::WrapRetain(
+  return fxcrt::WrapRetain(
       const_cast<CPDF_Object*>(CPDF_ObjectWalker::GetNext().Get()));
 }
