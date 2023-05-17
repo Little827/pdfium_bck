@@ -15,7 +15,7 @@
 #include "testing/gtest/include/gtest/gtest.h"
 
 TEST(ArrayTest, GetBooleanAt) {
-  auto arr = pdfium::MakeRetain<CPDF_Array>();
+  auto arr = fxcrt::MakeRetain<CPDF_Array>();
   arr->AppendNew<CPDF_Boolean>(true);
   arr->AppendNew<CPDF_Boolean>(false);
   arr->AppendNew<CPDF_Number>(100);
@@ -37,7 +37,7 @@ TEST(ArrayTest, GetBooleanAt) {
 TEST(ArrayTest, RemoveAt) {
   {
     const int elems[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-    auto arr = pdfium::MakeRetain<CPDF_Array>();
+    auto arr = fxcrt::MakeRetain<CPDF_Array>();
     for (size_t i = 0; i < std::size(elems); ++i)
       arr->AppendNew<CPDF_Number>(elems[i]);
     for (size_t i = 0; i < 3; ++i)
@@ -56,7 +56,7 @@ TEST(ArrayTest, RemoveAt) {
   {
     // When the range is out of bound, RemoveAt() has no effect.
     const int elems[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-    auto arr = pdfium::MakeRetain<CPDF_Array>();
+    auto arr = fxcrt::MakeRetain<CPDF_Array>();
     for (size_t i = 0; i < std::size(elems); ++i)
       arr->AppendNew<CPDF_Number>(elems[i]);
     arr->RemoveAt(11);
@@ -66,7 +66,7 @@ TEST(ArrayTest, RemoveAt) {
 
 TEST(ArrayTest, Clear) {
   const int elems[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-  auto arr = pdfium::MakeRetain<CPDF_Array>();
+  auto arr = fxcrt::MakeRetain<CPDF_Array>();
   EXPECT_EQ(0U, arr->size());
   for (size_t i = 0; i < std::size(elems); ++i)
     arr->AppendNew<CPDF_Number>(elems[i]);
@@ -76,7 +76,7 @@ TEST(ArrayTest, Clear) {
 }
 
 TEST(ArrayTest, SetAtBeyond) {
-  auto arr = pdfium::MakeRetain<CPDF_Array>();
+  auto arr = fxcrt::MakeRetain<CPDF_Array>();
   EXPECT_FALSE(arr->SetNewAt<CPDF_Number>(0, 0));
   EXPECT_TRUE(arr->InsertNewAt<CPDF_Number>(0, 0));
   EXPECT_FALSE(arr->SetNewAt<CPDF_Number>(1, 0));
@@ -84,7 +84,7 @@ TEST(ArrayTest, SetAtBeyond) {
 
 TEST(ArrayTest, InsertAt) {
   const int elems[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-  auto arr = pdfium::MakeRetain<CPDF_Array>();
+  auto arr = fxcrt::MakeRetain<CPDF_Array>();
   for (size_t i = 0; i < std::size(elems); ++i)
     arr->InsertNewAt<CPDF_Number>(i, elems[i]);
   ASSERT_EQ(std::size(elems), arr->size());
@@ -100,7 +100,7 @@ TEST(ArrayTest, InsertAt) {
 }
 
 TEST(ArrayTest, InsertAtBeyond) {
-  auto arr = pdfium::MakeRetain<CPDF_Array>();
+  auto arr = fxcrt::MakeRetain<CPDF_Array>();
   EXPECT_FALSE(arr->InsertNewAt<CPDF_Number>(1, 0));
   EXPECT_TRUE(arr->InsertNewAt<CPDF_Number>(0, 0));
   EXPECT_FALSE(arr->InsertNewAt<CPDF_Number>(2, 0));
@@ -110,7 +110,7 @@ TEST(ArrayTest, Clone) {
   {
     // Basic case.
     const int elems[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-    auto arr = pdfium::MakeRetain<CPDF_Array>();
+    auto arr = fxcrt::MakeRetain<CPDF_Array>();
     for (size_t i = 0; i < std::size(elems); ++i)
       arr->InsertNewAt<CPDF_Number>(i, elems[i]);
     RetainPtr<CPDF_Array> arr2 = ToArray(arr->Clone());
@@ -127,13 +127,13 @@ TEST(ArrayTest, Clone) {
     static const size_t kNumOfRowElems = 5;
     const int elems[kNumOfRows][kNumOfRowElems] = {
         {1, 2, 3, 4, 5}, {10, 9, 8, 7, 6}, {11, 12, 13, 14, 15}};
-    auto arr = pdfium::MakeRetain<CPDF_Array>();
+    auto arr = fxcrt::MakeRetain<CPDF_Array>();
     // Indirect references to indirect objects.
     auto obj_holder = std::make_unique<CPDF_IndirectObjectHolder>();
     for (size_t i = 0; i < kNumOfRows; ++i) {
-      auto arr_elem = pdfium::MakeRetain<CPDF_Array>();
+      auto arr_elem = fxcrt::MakeRetain<CPDF_Array>();
       for (size_t j = 0; j < kNumOfRowElems; ++j) {
-        auto obj = pdfium::MakeRetain<CPDF_Number>(elems[i][j]);
+        auto obj = fxcrt::MakeRetain<CPDF_Number>(elems[i][j]);
         // Starts object number from 1.
         int obj_num = i * kNumOfRowElems + j + 1;
         obj_holder->ReplaceIndirectObjectIfHigherGeneration(obj_num,
@@ -190,10 +190,10 @@ TEST(ArrayTest, Clone) {
 }
 
 TEST(ArrayTest, Find) {
-  auto arr = pdfium::MakeRetain<CPDF_Array>();
-  auto dict0 = pdfium::MakeRetain<CPDF_Dictionary>();
-  auto dict1 = pdfium::MakeRetain<CPDF_Dictionary>();
-  auto dict2 = pdfium::MakeRetain<CPDF_Dictionary>();
+  auto arr = fxcrt::MakeRetain<CPDF_Array>();
+  auto dict0 = fxcrt::MakeRetain<CPDF_Dictionary>();
+  auto dict1 = fxcrt::MakeRetain<CPDF_Dictionary>();
+  auto dict2 = fxcrt::MakeRetain<CPDF_Dictionary>();
   arr->Append(dict0);
   arr->Append(dict1);
 
@@ -213,10 +213,10 @@ TEST(ArrayTest, Find) {
 }
 
 TEST(ArrayTest, Contains) {
-  auto arr = pdfium::MakeRetain<CPDF_Array>();
-  auto dict0 = pdfium::MakeRetain<CPDF_Dictionary>();
-  auto dict1 = pdfium::MakeRetain<CPDF_Dictionary>();
-  auto dict2 = pdfium::MakeRetain<CPDF_Dictionary>();
+  auto arr = fxcrt::MakeRetain<CPDF_Array>();
+  auto dict0 = fxcrt::MakeRetain<CPDF_Dictionary>();
+  auto dict1 = fxcrt::MakeRetain<CPDF_Dictionary>();
+  auto dict2 = fxcrt::MakeRetain<CPDF_Dictionary>();
   arr->Append(dict0);
   arr->Append(dict1);
   EXPECT_TRUE(arr->Contains(dict0.Get()));
@@ -227,7 +227,7 @@ TEST(ArrayTest, Contains) {
 TEST(ArrayTest, Iterator) {
   const int elems[] = {-23, -11,     3,         455,   2345877,
                        0,   7895330, -12564334, 10000, -100000};
-  auto arr = pdfium::MakeRetain<CPDF_Array>();
+  auto arr = fxcrt::MakeRetain<CPDF_Array>();
   for (size_t i = 0; i < std::size(elems); ++i)
     arr->InsertNewAt<CPDF_Number>(i, elems[i]);
 

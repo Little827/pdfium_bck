@@ -31,7 +31,7 @@ RetainPtr<CPDF_ReadValidator> MakeValidatorFromFile(
   std::string file_path;
   PathService::GetTestFilePath(file_name, &file_path);
   DCHECK(!file_path.empty());
-  return pdfium::MakeRetain<CPDF_ReadValidator>(
+  return fxcrt::MakeRetain<CPDF_ReadValidator>(
       IFX_SeekableReadStream::CreateFromFilename(file_path.c_str()), nullptr);
 }
 
@@ -50,7 +50,7 @@ class TestLinearizedHeader final : public CPDF_LinearizedHeader {
   static std::unique_ptr<CPDF_LinearizedHeader> MakeHeader(
       ByteString inline_data) {
     CPDF_SyntaxParser parser(
-        pdfium::MakeRetain<CFX_ReadOnlyStringStream>(std::move(inline_data)));
+        fxcrt::MakeRetain<CFX_ReadOnlyStringStream>(std::move(inline_data)));
     RetainPtr<CPDF_Dictionary> dict =
         ToDictionary(parser.GetObjectBody(nullptr));
     DCHECK(dict);

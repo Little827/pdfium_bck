@@ -72,7 +72,7 @@ RetainPtr<const CPDF_Object> CPDF_FormField::GetFieldAttrForDict(
 RetainPtr<CPDF_Object> CPDF_FormField::GetMutableFieldAttrForDict(
     CPDF_Dictionary* pFieldDict,
     const ByteString& name) {
-  return pdfium::WrapRetain(const_cast<CPDF_Object*>(
+  return fxcrt::WrapRetain(const_cast<CPDF_Object*>(
       GetFieldAttrRecursive(pFieldDict, name, 0).Get()));
 }
 
@@ -154,7 +154,7 @@ RetainPtr<const CPDF_Object> CPDF_FormField::GetFieldAttr(
 }
 
 RetainPtr<const CPDF_Dictionary> CPDF_FormField::GetFieldDict() const {
-  return pdfium::WrapRetain(GetFieldDictInternal());
+  return fxcrt::WrapRetain(GetFieldDictInternal());
 }
 
 bool CPDF_FormField::ResetField() {

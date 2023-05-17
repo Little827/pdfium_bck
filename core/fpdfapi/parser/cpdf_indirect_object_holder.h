@@ -46,13 +46,12 @@ class CPDF_IndirectObjectHolder {
   template <typename T, typename... Args>
   typename std::enable_if<CanInternStrings<T>::value, RetainPtr<T>>::type New(
       Args&&... args) {
-    return pdfium::MakeRetain<T>(m_pByteStringPool,
-                                 std::forward<Args>(args)...);
+    return fxcrt::MakeRetain<T>(m_pByteStringPool, std::forward<Args>(args)...);
   }
   template <typename T, typename... Args>
   typename std::enable_if<!CanInternStrings<T>::value, RetainPtr<T>>::type New(
       Args&&... args) {
-    return pdfium::MakeRetain<T>(std::forward<Args>(args)...);
+    return fxcrt::MakeRetain<T>(std::forward<Args>(args)...);
   }
 
   // Always Retains |pObj|, returns its new object number.

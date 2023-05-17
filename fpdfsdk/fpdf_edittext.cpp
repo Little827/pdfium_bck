@@ -167,7 +167,7 @@ void AddCharcode(fxcrt::ostringstream* pBuffer, uint32_t number) {
 // PDF spec 1.7 Section 5.9.2: "Unicode character sequences as expressed in
 // UTF-16BE encoding." See https://en.wikipedia.org/wiki/UTF-16#Description
 void AddUnicode(fxcrt::ostringstream* pBuffer, uint32_t unicode) {
-  if (pdfium::IsHighSurrogate(unicode) || pdfium::IsLowSurrogate(unicode)) {
+  if (fxcrt::IsHighSurrogate(unicode) || fxcrt::IsLowSurrogate(unicode)) {
     unicode = 0;
   }
 
@@ -373,14 +373,14 @@ RetainPtr<CPDF_Font> LoadCompositeFont(CPDF_Document* pDoc,
       FT_Get_First_Char(pFont->GetFaceRec(), &dwGlyphIndex));
   // If it doesn't have a single char, just fail
   if (dwGlyphIndex == 0 ||
-      dwCurrentChar > pdfium::kMaximumSupplementaryCodePoint) {
+      dwCurrentChar > fxcrt::kMaximumSupplementaryCodePoint) {
     return nullptr;
   }
 
   std::multimap<uint32_t, uint32_t> to_unicode;
   std::map<uint32_t, uint32_t> widths;
   while (true) {
-    if (dwCurrentChar > pdfium::kMaximumSupplementaryCodePoint) {
+    if (dwCurrentChar > fxcrt::kMaximumSupplementaryCodePoint) {
       break;
     }
 
@@ -398,7 +398,7 @@ RetainPtr<CPDF_Font> LoadCompositeFont(CPDF_Document* pDoc,
     int w = it->second;
     if (std::next(it) == widths.end()) {
       // Only one char left, use format c [w]
-      auto oneW = pdfium::MakeRetain<CPDF_Array>();
+      auto oneW = fxcrt::MakeRetain<CPDF_Array>();
       oneW->AppendNew<CPDF_Number>(w);
       widthsArray->AppendNew<CPDF_Number>(ch);
       widthsArray->Append(oneW);
@@ -428,7 +428,7 @@ RetainPtr<CPDF_Font> LoadCompositeFont(CPDF_Document* pDoc,
     // Otherwise we can have a group of the form c [w1 w2 ...]: c has width
     // w1, c+1 has width w2, etc.
     widthsArray->AppendNew<CPDF_Number>(ch);
-    auto curWidthArray = pdfium::MakeRetain<CPDF_Array>();
+    auto curWidthArray = fxcrt::MakeRetain<CPDF_Array>();
     curWidthArray->AppendNew<CPDF_Number>(w);
     curWidthArray->AppendNew<CPDF_Number>(next_w);
     while (true) {
@@ -622,7 +622,7 @@ FPDFTextObj_GetRenderedBitmap(FPDF_DOCUMENT document,
   if (rect.IsEmpty())
     return nullptr;
 
-  auto result_bitmap = pdfium::MakeRetain<CFX_DIBitmap>();
+  auto result_bitmap = fxcrt::MakeRetain<CFX_DIBitmap>();
   if (!result_bitmap->Create(rect.Width(), rect.Height(), FXDIB_Format::kArgb))
     return nullptr;
 

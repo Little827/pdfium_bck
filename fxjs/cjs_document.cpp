@@ -1246,7 +1246,7 @@ CJS_Result CJS_Document::getPageNthWord(
   if (!pPageDict)
     return CJS_Result::Failure(JSMessage::kBadObjectError);
 
-  auto page = pdfium::MakeRetain<CPDF_Page>(pDocument, std::move(pPageDict));
+  auto page = fxcrt::MakeRetain<CPDF_Page>(pDocument, std::move(pPageDict));
   page->AddPageImageCache();
   page->ParseContent();
 
@@ -1302,7 +1302,7 @@ CJS_Result CJS_Document::getPageNumWords(
   if (!pPageDict)
     return CJS_Result::Failure(JSMessage::kBadObjectError);
 
-  auto page = pdfium::MakeRetain<CPDF_Page>(pDocument, std::move(pPageDict));
+  auto page = fxcrt::MakeRetain<CPDF_Page>(pDocument, std::move(pPageDict));
   page->AddPageImageCache();
   page->ParseContent();
 

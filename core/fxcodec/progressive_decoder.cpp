@@ -1139,7 +1139,7 @@ bool ProgressiveDecoder::PngDetectImageTypeInBuffer(
       return false;
     }
     if (m_pCodecMemory && input_size > m_pCodecMemory->GetSize())
-      m_pCodecMemory = pdfium::MakeRetain<CFX_CodecMemory>(input_size);
+      m_pCodecMemory = fxcrt::MakeRetain<CFX_CodecMemory>(input_size);
 
     if (!m_pFile->ReadBlockAtOffset(
             m_pCodecMemory->GetBufferSpan().first(input_size), m_offSet)) {
@@ -1208,7 +1208,7 @@ FXCODEC_STATUS ProgressiveDecoder::PngContinueDecode() {
       return m_status;
     }
     if (m_pCodecMemory && input_size > m_pCodecMemory->GetSize())
-      m_pCodecMemory = pdfium::MakeRetain<CFX_CodecMemory>(input_size);
+      m_pCodecMemory = fxcrt::MakeRetain<CFX_CodecMemory>(input_size);
 
     bool bResult = m_pFile->ReadBlockAtOffset(
         m_pCodecMemory->GetBufferSpan().first(input_size), m_offSet);
@@ -1272,7 +1272,7 @@ FXCODEC_STATUS ProgressiveDecoder::TiffContinueDecode() {
     return m_status;
   }
 
-  auto pDIBitmap = pdfium::MakeRetain<CFX_DIBitmap>();
+  auto pDIBitmap = fxcrt::MakeRetain<CFX_DIBitmap>();
   pDIBitmap->Create(m_SrcWidth, m_SrcHeight, FXDIB_Format::kArgb);
   if (pDIBitmap->GetBuffer().empty()) {
     m_pDeviceBitmap = nullptr;
@@ -1301,22 +1301,22 @@ FXCODEC_STATUS ProgressiveDecoder::TiffContinueDecode() {
   RetainPtr<CFX_DIBitmap> pFormatBitmap;
   switch (m_pDeviceBitmap->GetFormat()) {
     case FXDIB_Format::k8bppRgb:
-      pFormatBitmap = pdfium::MakeRetain<CFX_DIBitmap>();
+      pFormatBitmap = fxcrt::MakeRetain<CFX_DIBitmap>();
       pFormatBitmap->Create(pClipBitmap->GetWidth(), pClipBitmap->GetHeight(),
                             FXDIB_Format::k8bppRgb);
       break;
     case FXDIB_Format::k8bppMask:
-      pFormatBitmap = pdfium::MakeRetain<CFX_DIBitmap>();
+      pFormatBitmap = fxcrt::MakeRetain<CFX_DIBitmap>();
       pFormatBitmap->Create(pClipBitmap->GetWidth(), pClipBitmap->GetHeight(),
                             FXDIB_Format::k8bppMask);
       break;
     case FXDIB_Format::kRgb:
-      pFormatBitmap = pdfium::MakeRetain<CFX_DIBitmap>();
+      pFormatBitmap = fxcrt::MakeRetain<CFX_DIBitmap>();
       pFormatBitmap->Create(pClipBitmap->GetWidth(), pClipBitmap->GetHeight(),
                             FXDIB_Format::kRgb);
       break;
     case FXDIB_Format::kRgb32:
-      pFormatBitmap = pdfium::MakeRetain<CFX_DIBitmap>();
+      pFormatBitmap = fxcrt::MakeRetain<CFX_DIBitmap>();
       pFormatBitmap->Create(pClipBitmap->GetWidth(), pClipBitmap->GetHeight(),
                             FXDIB_Format::kRgb32);
       break;
@@ -1401,7 +1401,7 @@ bool ProgressiveDecoder::DetectImageType(FXCODEC_IMAGE_TYPE imageType,
 
   size_t size = pdfium::base::checked_cast<size_t>(
       std::min<FX_FILESIZE>(m_pFile->GetSize(), kBlockSize));
-  m_pCodecMemory = pdfium::MakeRetain<CFX_CodecMemory>(size);
+  m_pCodecMemory = fxcrt::MakeRetain<CFX_CodecMemory>(size);
   m_offSet = 0;
   if (!m_pFile->ReadBlockAtOffset(m_pCodecMemory->GetBufferSpan().first(size),
                                   m_offSet)) {

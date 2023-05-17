@@ -31,12 +31,12 @@ CPDF_IndirectObjectHolder::~CPDF_IndirectObjectHolder() {
 
 RetainPtr<const CPDF_Object> CPDF_IndirectObjectHolder::GetIndirectObject(
     uint32_t objnum) const {
-  return pdfium::WrapRetain(GetIndirectObjectInternal(objnum));
+  return fxcrt::WrapRetain(GetIndirectObjectInternal(objnum));
 }
 
 RetainPtr<CPDF_Object> CPDF_IndirectObjectHolder::GetMutableIndirectObject(
     uint32_t objnum) {
-  return pdfium::WrapRetain(
+  return fxcrt::WrapRetain(
       const_cast<CPDF_Object*>(GetIndirectObjectInternal(objnum)));
 }
 
@@ -51,7 +51,7 @@ const CPDF_Object* CPDF_IndirectObjectHolder::GetIndirectObjectInternal(
 
 RetainPtr<CPDF_Object> CPDF_IndirectObjectHolder::GetOrParseIndirectObject(
     uint32_t objnum) {
-  return pdfium::WrapRetain(GetOrParseIndirectObjectInternal(objnum));
+  return fxcrt::WrapRetain(GetOrParseIndirectObjectInternal(objnum));
 }
 
 CPDF_Object* CPDF_IndirectObjectHolder::GetOrParseIndirectObjectInternal(

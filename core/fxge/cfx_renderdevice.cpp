@@ -761,8 +761,8 @@ bool CFX_RenderDevice::DrawFillStrokePath(
   if (!rect.Valid())
     return false;
 
-  auto bitmap = pdfium::MakeRetain<CFX_DIBitmap>();
-  auto backdrop = pdfium::MakeRetain<CFX_DIBitmap>();
+  auto bitmap = fxcrt::MakeRetain<CFX_DIBitmap>();
+  auto backdrop = fxcrt::MakeRetain<CFX_DIBitmap>();
   if (!CreateCompatibleBitmap(bitmap, rect.Width(), rect.Height()))
     return false;
 
@@ -800,7 +800,7 @@ bool CFX_RenderDevice::FillRectWithBlend(const FX_RECT& rect,
   if (!(m_RenderCaps & FXRC_GET_BITS))
     return false;
 
-  auto bitmap = pdfium::MakeRetain<CFX_DIBitmap>();
+  auto bitmap = fxcrt::MakeRetain<CFX_DIBitmap>();
   if (!CreateCompatibleBitmap(bitmap, rect.Width(), rect.Height()))
     return false;
 
@@ -906,7 +906,7 @@ bool CFX_RenderDevice::SetDIBitsWithBlend(const RetainPtr<CFX_DIBBase>& pBitmap,
 
   int bg_pixel_width = dest_rect.Width();
   int bg_pixel_height = dest_rect.Height();
-  auto background = pdfium::MakeRetain<CFX_DIBitmap>();
+  auto background = fxcrt::MakeRetain<CFX_DIBitmap>();
   if (!background->Create(bg_pixel_width, bg_pixel_height,
                           FXDIB_Format::kRgb32)) {
     return false;
@@ -1111,7 +1111,7 @@ bool CFX_RenderDevice::DrawNormalText(pdfium::span<const TextCharPos> pCharPos,
   int pixel_left = bmp_rect.left;
   int pixel_top = bmp_rect.top;
   if (anti_alias == FT_RENDER_MODE_MONO) {
-    auto bitmap = pdfium::MakeRetain<CFX_DIBitmap>();
+    auto bitmap = fxcrt::MakeRetain<CFX_DIBitmap>();
     if (!bitmap->Create(pixel_width, pixel_height, FXDIB_Format::k1bppMask))
       return false;
     for (const TextGlyphPos& glyph : glyphs) {
@@ -1130,7 +1130,7 @@ bool CFX_RenderDevice::DrawNormalText(pdfium::span<const TextCharPos> pCharPos,
     }
     return SetBitMask(bitmap, bmp_rect.left, bmp_rect.top, fill_color);
   }
-  auto bitmap = pdfium::MakeRetain<CFX_DIBitmap>();
+  auto bitmap = fxcrt::MakeRetain<CFX_DIBitmap>();
   if (m_bpp == 8) {
     if (!bitmap->Create(pixel_width, pixel_height, FXDIB_Format::k8bppMask))
       return false;

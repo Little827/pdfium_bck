@@ -36,5 +36,5 @@ CFX_RetainableGraphStateData::~CFX_RetainableGraphStateData() = default;
 
 RetainPtr<CFX_RetainableGraphStateData> CFX_RetainableGraphStateData::Clone()
     const {
-  return pdfium::MakeRetain<CFX_RetainableGraphStateData>(*this);
+  return fxcrt::MakeRetain<CFX_RetainableGraphStateData>(*this);
 }

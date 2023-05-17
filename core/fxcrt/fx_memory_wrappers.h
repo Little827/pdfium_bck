@@ -93,12 +93,12 @@ template <typename T,
                                       std::is_enum<T>::value ||
                                       IsFXDataPartitionException<T>::value>>
 using FxAllocAllocator =
-    FxPartitionAllocAllocator<T, pdfium::internal::AllocOrDie>;
+    FxPartitionAllocAllocator<T, fxcrt::internal::AllocOrDie>;
 
 // Used to put backing store for std::string<> and std::ostringstream<>
 // into the string partition.
 template <typename T>
 using FxStringAllocator =
-    FxPartitionAllocAllocator<T, pdfium::internal::StringAllocOrDie>;
+    FxPartitionAllocAllocator<T, fxcrt::internal::StringAllocOrDie>;
 
 #endif  // CORE_FXCRT_FX_MEMORY_WRAPPERS_H_

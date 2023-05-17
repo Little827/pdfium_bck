@@ -21,7 +21,7 @@ TEST(cpdf_dest, GetXYZ) {
   float zoom;
 
   // |array| must outlive |dest|.
-  auto array = pdfium::MakeRetain<CPDF_Array>();
+  auto array = fxcrt::MakeRetain<CPDF_Array>();
   array->AppendNew<CPDF_Number>(0);  // Page Index.
   array->AppendNew<CPDF_Name>("XYZ");
   array->AppendNew<CPDF_Number>(4);  // X

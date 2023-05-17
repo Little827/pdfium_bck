@@ -70,12 +70,12 @@ void ExecuteStretchTests(const FXDIB_ResampleOptions& options) {
 
 TEST(CStretchEngine, OverflowInCtor) {
   FX_RECT clip_rect;
-  RetainPtr<CPDF_Dictionary> dict_obj = pdfium::MakeRetain<CPDF_Dictionary>();
+  RetainPtr<CPDF_Dictionary> dict_obj = fxcrt::MakeRetain<CPDF_Dictionary>();
   dict_obj->SetNewFor<CPDF_Number>("Width", 71000);
   dict_obj->SetNewFor<CPDF_Number>("Height", 12500);
   RetainPtr<CPDF_Stream> stream =
-      pdfium::MakeRetain<CPDF_Stream>(std::move(dict_obj));
-  auto dib_source = pdfium::MakeRetain<CPDF_DIB>(nullptr, stream);
+      fxcrt::MakeRetain<CPDF_Stream>(std::move(dict_obj));
+  auto dib_source = fxcrt::MakeRetain<CPDF_DIB>(nullptr, stream);
   dib_source->Load();
   CStretchEngine engine(nullptr, FXDIB_Format::k8bppRgb, 500, 500, clip_rect,
                         dib_source, FXDIB_ResampleOptions());

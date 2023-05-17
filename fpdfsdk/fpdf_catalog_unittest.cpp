@@ -23,7 +23,7 @@ class PDFCatalogTest : public TestWithPageModule {
     TestWithPageModule::SetUp();
     auto pTestDoc = std::make_unique<CPDF_TestDocument>();
     m_pDoc.reset(FPDFDocumentFromCPDFDocument(pTestDoc.release()));
-    m_pRootObj = pdfium::MakeRetain<CPDF_Dictionary>();
+    m_pRootObj = fxcrt::MakeRetain<CPDF_Dictionary>();
   }
 
   void TearDown() override {

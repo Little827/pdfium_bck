@@ -249,7 +249,7 @@ void CFGAS_GEGraphics::FillPathWithPattern(
   RetainPtr<CFX_DIBitmap> bitmap = m_renderDevice->GetBitmap();
   int32_t width = bitmap->GetWidth();
   int32_t height = bitmap->GetHeight();
-  auto bmp = pdfium::MakeRetain<CFX_DIBitmap>();
+  auto bmp = fxcrt::MakeRetain<CFX_DIBitmap>();
   bmp->Create(width, height, FXDIB_Format::kArgb);
   m_renderDevice->GetDIBits(bmp, 0, 0);
 
@@ -258,7 +258,7 @@ void CFGAS_GEGraphics::FillPathWithPattern(
   const FX_HATCHDATA& data =
       GetHatchBitmapData(static_cast<size_t>(hatchStyle));
 
-  auto mask = pdfium::MakeRetain<CFX_DIBitmap>();
+  auto mask = fxcrt::MakeRetain<CFX_DIBitmap>();
   mask->Create(data.width, data.height, FXDIB_Format::k1bppMask);
   fxcrt::spancpy(
       mask->GetBuffer(),
@@ -292,7 +292,7 @@ void CFGAS_GEGraphics::FillPathWithShading(
   float start_y = m_info.fillColor.GetShading()->GetBeginPoint().y;
   float end_x = m_info.fillColor.GetShading()->GetEndPoint().x;
   float end_y = m_info.fillColor.GetShading()->GetEndPoint().y;
-  auto bmp = pdfium::MakeRetain<CFX_DIBitmap>();
+  auto bmp = fxcrt::MakeRetain<CFX_DIBitmap>();
   bmp->Create(width, height, FXDIB_Format::kArgb);
   m_renderDevice->GetDIBits(bmp, 0, 0);
   bool result = false;

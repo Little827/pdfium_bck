@@ -184,7 +184,7 @@ RetainPtr<CPDF_Font> CPDF_DocPageData::GetFont(
 
   auto it = m_FontMap.find(pFontDict);
   if (it != m_FontMap.end() && it->second)
-    return pdfium::WrapRetain(it->second.Get());
+    return fxcrt::WrapRetain(it->second.Get());
 
   RetainPtr<CPDF_Font> pFont =
       CPDF_Font::Create(GetDocument(), pFontDict, this);
@@ -218,7 +218,7 @@ RetainPtr<CPDF_Font> CPDF_DocPageData::GetStandardFont(
     if (pEncoding && !pT1Font->GetEncoding()->IsIdentical(pEncoding))
       continue;
 
-    return pdfium::WrapRetain(pFont);
+    return fxcrt::WrapRetain(pFont);
   }
 
   auto pDict = GetDocument()->NewIndirect<CPDF_Dictionary>();
@@ -318,7 +318,7 @@ RetainPtr<CPDF_ColorSpace> CPDF_DocPageData::GetColorSpaceInternal(
 
   auto it = m_ColorSpaceMap.find(pArray);
   if (it != m_ColorSpaceMap.end() && it->second)
-    return pdfium::WrapRetain(it->second.Get());
+    return fxcrt::WrapRetain(it->second.Get());
 
   RetainPtr<CPDF_ColorSpace> pCS =
       CPDF_ColorSpace::Load(GetDocument(), pArray.Get(), pVisited);
@@ -337,7 +337,7 @@ RetainPtr<CPDF_Pattern> CPDF_DocPageData::GetPattern(
 
   auto it = m_PatternMap.find(pPatternObj);
   if (it != m_PatternMap.end() && it->second)
-    return pdfium::WrapRetain(it->second.Get());
+    return fxcrt::WrapRetain(it->second.Get());
 
   RetainPtr<const CPDF_Dictionary> pDict = pPatternObj->GetDict();
   if (!pDict)
@@ -346,10 +346,10 @@ RetainPtr<CPDF_Pattern> CPDF_DocPageData::GetPattern(
   RetainPtr<CPDF_Pattern> pPattern;
   int type = pDict->GetIntegerFor("PatternType");
   if (type == CPDF_Pattern::kTiling) {
-    pPattern = pdfium::MakeRetain<CPDF_TilingPattern>(GetDocument(),
-                                                      pPatternObj, matrix);
+    pPattern = fxcrt::MakeRetain<CPDF_TilingPattern>(GetDocument(), pPatternObj,
+                                                     matrix);
   } else if (type == CPDF_Pattern::kShading) {
-    pPattern = pdfium::MakeRetain<CPDF_ShadingPattern>(
+    pPattern = fxcrt::MakeRetain<CPDF_ShadingPattern>(
         GetDocument(), pPatternObj, false, matrix);
   } else {
     return nullptr;
@@ -366,9 +366,9 @@ RetainPtr<CPDF_ShadingPattern> CPDF_DocPageData::GetShading(
 
   auto it = m_PatternMap.find(pPatternObj);
   if (it != m_PatternMap.end() && it->second)
-    return pdfium::WrapRetain(it->second->AsShadingPattern());
+    return fxcrt::WrapRetain(it->second->AsShadingPattern());
 
-  auto pPattern = pdfium::MakeRetain<CPDF_ShadingPattern>(
+  auto pPattern = fxcrt::MakeRetain<CPDF_ShadingPattern>(
       GetDocument(), pPatternObj, true, matrix);
   m_PatternMap[pPatternObj].Reset(pPattern.Get());
   return pPattern;
@@ -380,7 +380,7 @@ RetainPtr<CPDF_Image> CPDF_DocPageData::GetImage(uint32_t dwStreamObjNum) {
   if (it != m_ImageMap.end())
     return it->second;
 
-  auto pImage = pdfium::MakeRetain<CPDF_Image>(GetDocument(), dwStreamObjNum);
+  auto pImage = fxcrt::MakeRetain<CPDF_Image>(GetDocument(), dwStreamObjNum);
   m_ImageMap[dwStreamObjNum] = pImage;
   return pImage;
 }
@@ -399,9 +399,9 @@ RetainPtr<CPDF_IccProfile> CPDF_DocPageData::GetIccProfile(
 
   auto it = m_IccProfileMap.find(pProfileStream);
   if (it != m_IccProfileMap.end() && it->second)
-    return pdfium::WrapRetain(it->second.Get());
+    return fxcrt::WrapRetain(it->second.Get());
 
-  auto pAccessor = pdfium::MakeRetain<CPDF_StreamAcc>(pProfileStream);
+  auto pAccessor = fxcrt::MakeRetain<CPDF_StreamAcc>(pProfileStream);
   pAccessor->LoadAllDataFiltered();
 
   ByteString bsDigest = pAccessor->ComputeDigest();
@@ -409,10 +409,10 @@ RetainPtr<CPDF_IccProfile> CPDF_DocPageData::GetIccProfile(
   if (hash_it != m_HashProfileMap.end()) {
     auto it_copied_stream = m_IccProfileMap.find(hash_it->second);
     if (it_copied_stream != m_IccProfileMap.end() && it_copied_stream->second)
-      return pdfium::WrapRetain(it_copied_stream->second.Get());
+      return fxcrt::WrapRetain(it_copied_stream->second.Get());
   }
   auto pProfile =
-      pdfium::MakeRetain<CPDF_IccProfile>(pProfileStream, pAccessor->GetSpan());
+      fxcrt::MakeRetain<CPDF_IccProfile>(pProfileStream, pAccessor->GetSpan());
   m_IccProfileMap[pProfileStream].Reset(pProfile.Get());
   m_HashProfileMap[bsDigest] = std::move(pProfileStream);
   return pProfile;
@@ -437,7 +437,7 @@ RetainPtr<CPDF_StreamAcc> CPDF_DocPageData::GetFontFileStreamAcc(
     org_size = safe_org_size.ValueOrDefault(0);
   }
 
-  auto pFontAcc = pdfium::MakeRetain<CPDF_StreamAcc>(pFontStream);
+  auto pFontAcc = fxcrt::MakeRetain<CPDF_StreamAcc>(pFontStream);
   pFontAcc->LoadAllDataFilteredWithEstimatedSize(org_size);
   m_FontFileMap[std::move(pFontStream)] = pFontAcc;
   return pFontAcc;
@@ -495,7 +495,7 @@ RetainPtr<CPDF_Font> CPDF_DocPageData::AddFont(std::unique_ptr<CFX_Font> pFont,
   auto pEncoding = std::make_unique<CFX_UnicodeEncoding>(pFont.get());
   RetainPtr<CPDF_Dictionary> pFontDict = pBaseDict;
   if (!bCJK) {
-    auto pWidths = pdfium::MakeRetain<CPDF_Array>();
+    auto pWidths = fxcrt::MakeRetain<CPDF_Array>();
     for (int charcode = 32; charcode < 128; charcode++) {
       int glyph_index = pEncoding->GlyphFromCharCode(charcode);
       int char_width = pFont->GetGlyphWidth(glyph_index);
@@ -532,7 +532,7 @@ RetainPtr<CPDF_Font> CPDF_DocPageData::AddFont(std::unique_ptr<CFX_Font> pFont,
   }
   int italicangle = pFont->GetSubstFontItalicAngle();
   FX_RECT bbox = pFont->GetBBox().value_or(FX_RECT());
-  auto pBBox = pdfium::MakeRetain<CPDF_Array>();
+  auto pBBox = fxcrt::MakeRetain<CPDF_Array>();
   pBBox->AppendNew<CPDF_Number>(bbox.left);
   pBBox->AppendNew<CPDF_Number>(bbox.bottom);
   pBBox->AppendNew<CPDF_Number>(bbox.right);
@@ -616,7 +616,7 @@ RetainPtr<CPDF_Font> CPDF_DocPageData::AddWindowsFont(LOGFONTA* pLogFont) {
     }
     int char_widths[224];
     GetCharWidth(hDC, 32, 255, char_widths);
-    auto pWidths = pdfium::MakeRetain<CPDF_Array>();
+    auto pWidths = fxcrt::MakeRetain<CPDF_Array>();
     for (size_t i = 0; i < 224; i++)
       pWidths->AppendNew<CPDF_Number>(char_widths[i]);
     ProcessNonbCJK(pBaseDict, pLogFont->lfWeight > FW_MEDIUM,
@@ -628,7 +628,7 @@ RetainPtr<CPDF_Font> CPDF_DocPageData::AddWindowsFont(LOGFONTA* pLogFont) {
                       InsertWidthArray(hDC, start, end, widthArr);
                     });
   }
-  auto pBBox = pdfium::MakeRetain<CPDF_Array>();
+  auto pBBox = fxcrt::MakeRetain<CPDF_Array>();
   for (int i = 0; i < 4; i++)
     pBBox->AppendNew<CPDF_Number>(bbox[i]);
   RetainPtr<CPDF_Dictionary> pFontDesc =

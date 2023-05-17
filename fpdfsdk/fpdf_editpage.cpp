@@ -214,13 +214,13 @@ FPDF_EXPORT FPDF_PAGE FPDF_CALLCONV FPDFPage_New(FPDF_DOCUMENT document,
 
 #ifdef PDF_ENABLE_XFA
   if (pDoc->GetExtension()) {
-    auto pXFAPage = pdfium::MakeRetain<CPDFXFA_Page>(pDoc, page_index);
+    auto pXFAPage = fxcrt::MakeRetain<CPDFXFA_Page>(pDoc, page_index);
     pXFAPage->LoadPDFPageFromDict(pPageDict);
     return FPDFPageFromIPDFPage(pXFAPage.Leak());  // Caller takes ownership.
   }
 #endif  // PDF_ENABLE_XFA
 
-  auto pPage = pdfium::MakeRetain<CPDF_Page>(pDoc, pPageDict);
+  auto pPage = fxcrt::MakeRetain<CPDF_Page>(pDoc, pPageDict);
   pPage->AddPageImageCache();
   pPage->ParseContent();
 

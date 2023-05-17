@@ -167,7 +167,7 @@ bool CPDF_OCContext::GetOCGVisible(const CPDF_Dictionary* pOCGDict) const {
     return it->second;
 
   bool bState = LoadOCGState(pOCGDict);
-  m_OGCStateCache[pdfium::WrapRetain(pOCGDict)] = bState;
+  m_OGCStateCache[fxcrt::WrapRetain(pOCGDict)] = bState;
   return bState;
 }
 

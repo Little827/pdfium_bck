@@ -27,7 +27,7 @@ RetainPtr<const CPDF_Dictionary> CPDF_ContentMarkItem::GetParam() const {
 }
 
 RetainPtr<CPDF_Dictionary> CPDF_ContentMarkItem::GetParam() {
-  return pdfium::WrapRetain(
+  return fxcrt::WrapRetain(
       const_cast<CPDF_Dictionary*>(std::as_const(*this).GetParam().Get()));
 }
 

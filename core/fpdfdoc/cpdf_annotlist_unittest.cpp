@@ -31,9 +31,9 @@ class CPDFAnnotListTest : public TestWithPageModule {
     TestWithPageModule::SetUp();
 
     document_ = std::make_unique<CPDF_TestDocument>();
-    document_->SetRoot(pdfium::MakeRetain<CPDF_Dictionary>());
-    page_ = pdfium::MakeRetain<CPDF_Page>(
-        document_.get(), pdfium::MakeRetain<CPDF_Dictionary>());
+    document_->SetRoot(fxcrt::MakeRetain<CPDF_Dictionary>());
+    page_ = fxcrt::MakeRetain<CPDF_Page>(document_.get(),
+                                         fxcrt::MakeRetain<CPDF_Dictionary>());
   }
 
   void TearDown() override {

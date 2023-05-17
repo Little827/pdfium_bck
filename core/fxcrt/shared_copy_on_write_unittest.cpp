@@ -33,7 +33,7 @@ class Object final : public Retainable {
  public:
   CONSTRUCT_VIA_MAKE_RETAIN;
 
-  RetainPtr<Object> Clone() const { return pdfium::MakeRetain<Object>(*this); }
+  RetainPtr<Object> Clone() const { return fxcrt::MakeRetain<Object>(*this); }
 
  private:
   Object(Observer* observer, const std::string& name)

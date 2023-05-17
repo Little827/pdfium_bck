@@ -69,7 +69,7 @@ TEST(ProgressiveDecoder, Indexed8Bmp) {
 
   ProgressiveDecoder decoder;
 
-  auto source = pdfium::MakeRetain<CFX_ReadOnlySpanStream>(kInput);
+  auto source = fxcrt::MakeRetain<CFX_ReadOnlySpanStream>(kInput);
   CFX_DIBAttribute attr;
   FXCODEC_STATUS status =
       decoder.LoadImageInfo(std::move(source), FXCODEC_IMAGE_BMP, &attr, true);
@@ -78,7 +78,7 @@ TEST(ProgressiveDecoder, Indexed8Bmp) {
   ASSERT_EQ(1, decoder.GetWidth());
   ASSERT_EQ(1, decoder.GetHeight());
 
-  auto bitmap = pdfium::MakeRetain<CFX_DIBitmap>();
+  auto bitmap = fxcrt::MakeRetain<CFX_DIBitmap>();
   bitmap->Create(decoder.GetWidth(), decoder.GetHeight(), FXDIB_Format::kRgb);
 
   size_t frames;
@@ -102,7 +102,7 @@ TEST(ProgressiveDecoder, Indexed8BmpWithInvalidIndex) {
 
   ProgressiveDecoder decoder;
 
-  auto source = pdfium::MakeRetain<CFX_ReadOnlySpanStream>(kInput);
+  auto source = fxcrt::MakeRetain<CFX_ReadOnlySpanStream>(kInput);
   CFX_DIBAttribute attr;
   FXCODEC_STATUS status =
       decoder.LoadImageInfo(std::move(source), FXCODEC_IMAGE_BMP, &attr, true);
@@ -111,7 +111,7 @@ TEST(ProgressiveDecoder, Indexed8BmpWithInvalidIndex) {
   ASSERT_EQ(1, decoder.GetWidth());
   ASSERT_EQ(1, decoder.GetHeight());
 
-  auto bitmap = pdfium::MakeRetain<CFX_DIBitmap>();
+  auto bitmap = fxcrt::MakeRetain<CFX_DIBitmap>();
   bitmap->Create(decoder.GetWidth(), decoder.GetHeight(), FXDIB_Format::kRgb);
 
   size_t frames;
@@ -133,7 +133,7 @@ TEST(ProgressiveDecoder, Direct24Bmp) {
 
   ProgressiveDecoder decoder;
 
-  auto source = pdfium::MakeRetain<CFX_ReadOnlySpanStream>(kInput);
+  auto source = fxcrt::MakeRetain<CFX_ReadOnlySpanStream>(kInput);
   CFX_DIBAttribute attr;
   FXCODEC_STATUS status =
       decoder.LoadImageInfo(std::move(source), FXCODEC_IMAGE_BMP, &attr, true);
@@ -142,7 +142,7 @@ TEST(ProgressiveDecoder, Direct24Bmp) {
   ASSERT_EQ(1, decoder.GetWidth());
   ASSERT_EQ(1, decoder.GetHeight());
 
-  auto bitmap = pdfium::MakeRetain<CFX_DIBitmap>();
+  auto bitmap = fxcrt::MakeRetain<CFX_DIBitmap>();
   bitmap->Create(decoder.GetWidth(), decoder.GetHeight(), FXDIB_Format::kRgb);
 
   size_t frames;
@@ -165,7 +165,7 @@ TEST(ProgressiveDecoder, Direct32Bmp) {
 
   ProgressiveDecoder decoder;
 
-  auto source = pdfium::MakeRetain<CFX_ReadOnlySpanStream>(kInput);
+  auto source = fxcrt::MakeRetain<CFX_ReadOnlySpanStream>(kInput);
   CFX_DIBAttribute attr;
   FXCODEC_STATUS status =
       decoder.LoadImageInfo(std::move(source), FXCODEC_IMAGE_BMP, &attr, true);
@@ -174,7 +174,7 @@ TEST(ProgressiveDecoder, Direct32Bmp) {
   ASSERT_EQ(1, decoder.GetWidth());
   ASSERT_EQ(1, decoder.GetHeight());
 
-  auto bitmap = pdfium::MakeRetain<CFX_DIBitmap>();
+  auto bitmap = fxcrt::MakeRetain<CFX_DIBitmap>();
   bitmap->Create(decoder.GetWidth(), decoder.GetHeight(), FXDIB_Format::kRgb);
 
   size_t frames;
@@ -197,7 +197,7 @@ TEST(ProgressiveDecoder, BmpWithDataOffsetBeforeEndOfHeader) {
 
   ProgressiveDecoder decoder;
 
-  auto source = pdfium::MakeRetain<CFX_ReadOnlySpanStream>(kInput);
+  auto source = fxcrt::MakeRetain<CFX_ReadOnlySpanStream>(kInput);
   CFX_DIBAttribute attr;
   FXCODEC_STATUS status =
       decoder.LoadImageInfo(std::move(source), FXCODEC_IMAGE_BMP, &attr, true);
@@ -206,7 +206,7 @@ TEST(ProgressiveDecoder, BmpWithDataOffsetBeforeEndOfHeader) {
   ASSERT_EQ(1, decoder.GetWidth());
   ASSERT_EQ(1, decoder.GetHeight());
 
-  auto bitmap = pdfium::MakeRetain<CFX_DIBitmap>();
+  auto bitmap = fxcrt::MakeRetain<CFX_DIBitmap>();
   bitmap->Create(decoder.GetWidth(), decoder.GetHeight(), FXDIB_Format::kRgb);
 
   size_t frames;
@@ -229,7 +229,7 @@ TEST(ProgressiveDecoder, BmpWithDataOffsetAfterEndOfHeader) {
 
   ProgressiveDecoder decoder;
 
-  auto source = pdfium::MakeRetain<CFX_ReadOnlySpanStream>(kInput);
+  auto source = fxcrt::MakeRetain<CFX_ReadOnlySpanStream>(kInput);
   CFX_DIBAttribute attr;
   FXCODEC_STATUS status =
       decoder.LoadImageInfo(std::move(source), FXCODEC_IMAGE_BMP, &attr, true);
@@ -238,7 +238,7 @@ TEST(ProgressiveDecoder, BmpWithDataOffsetAfterEndOfHeader) {
   ASSERT_EQ(1, decoder.GetWidth());
   ASSERT_EQ(1, decoder.GetHeight());
 
-  auto bitmap = pdfium::MakeRetain<CFX_DIBitmap>();
+  auto bitmap = fxcrt::MakeRetain<CFX_DIBitmap>();
   bitmap->Create(decoder.GetWidth(), decoder.GetHeight(), FXDIB_Format::kRgb);
 
   size_t frames;
@@ -268,7 +268,7 @@ TEST(ProgressiveDecoder, LargeBmp) {
 
   ProgressiveDecoder decoder;
 
-  auto source = pdfium::MakeRetain<CFX_ReadOnlyVectorStream>(std::move(input));
+  auto source = fxcrt::MakeRetain<CFX_ReadOnlyVectorStream>(std::move(input));
   CFX_DIBAttribute attr;
   FXCODEC_STATUS status =
       decoder.LoadImageInfo(std::move(source), FXCODEC_IMAGE_BMP, &attr, true);
@@ -277,7 +277,7 @@ TEST(ProgressiveDecoder, LargeBmp) {
   ASSERT_EQ(kWidth, decoder.GetWidth());
   ASSERT_EQ(kHeight, decoder.GetHeight());
 
-  auto bitmap = pdfium::MakeRetain<CFX_DIBitmap>();
+  auto bitmap = fxcrt::MakeRetain<CFX_DIBitmap>();
   bitmap->Create(decoder.GetWidth(), decoder.GetHeight(), FXDIB_Format::kRgb);
 
   size_t frames;
@@ -312,7 +312,7 @@ TEST(ProgressiveDecoder, Gif87a) {
 
   ProgressiveDecoder decoder;
 
-  auto source = pdfium::MakeRetain<CFX_ReadOnlySpanStream>(kInput);
+  auto source = fxcrt::MakeRetain<CFX_ReadOnlySpanStream>(kInput);
   CFX_DIBAttribute attr;
   FXCODEC_STATUS status =
       decoder.LoadImageInfo(std::move(source), FXCODEC_IMAGE_GIF, &attr, true);
@@ -321,7 +321,7 @@ TEST(ProgressiveDecoder, Gif87a) {
   ASSERT_EQ(1, decoder.GetWidth());
   ASSERT_EQ(1, decoder.GetHeight());
 
-  auto bitmap = pdfium::MakeRetain<CFX_DIBitmap>();
+  auto bitmap = fxcrt::MakeRetain<CFX_DIBitmap>();
   bitmap->Create(decoder.GetWidth(), decoder.GetHeight(), FXDIB_Format::kArgb);
 
   size_t frames;
@@ -343,7 +343,7 @@ TEST(ProgressiveDecoder, Gif89a) {
 
   ProgressiveDecoder decoder;
 
-  auto source = pdfium::MakeRetain<CFX_ReadOnlySpanStream>(kInput);
+  auto source = fxcrt::MakeRetain<CFX_ReadOnlySpanStream>(kInput);
   CFX_DIBAttribute attr;
   FXCODEC_STATUS status =
       decoder.LoadImageInfo(std::move(source), FXCODEC_IMAGE_GIF, &attr, true);
@@ -352,7 +352,7 @@ TEST(ProgressiveDecoder, Gif89a) {
   ASSERT_EQ(1, decoder.GetWidth());
   ASSERT_EQ(1, decoder.GetHeight());
 
-  auto bitmap = pdfium::MakeRetain<CFX_DIBitmap>();
+  auto bitmap = fxcrt::MakeRetain<CFX_DIBitmap>();
   bitmap->Create(decoder.GetWidth(), decoder.GetHeight(), FXDIB_Format::kArgb);
 
   size_t frames;
@@ -377,7 +377,7 @@ TEST(ProgressiveDecoder, GifInsufficientCodeSize) {
 
   ProgressiveDecoder decoder;
 
-  auto source = pdfium::MakeRetain<CFX_ReadOnlySpanStream>(kInput);
+  auto source = fxcrt::MakeRetain<CFX_ReadOnlySpanStream>(kInput);
   CFX_DIBAttribute attr;
   FXCODEC_STATUS status =
       decoder.LoadImageInfo(std::move(source), FXCODEC_IMAGE_GIF, &attr, true);
@@ -386,7 +386,7 @@ TEST(ProgressiveDecoder, GifInsufficientCodeSize) {
   ASSERT_EQ(1, decoder.GetWidth());
   ASSERT_EQ(1, decoder.GetHeight());
 
-  auto bitmap = pdfium::MakeRetain<CFX_DIBitmap>();
+  auto bitmap = fxcrt::MakeRetain<CFX_DIBitmap>();
   bitmap->Create(decoder.GetWidth(), decoder.GetHeight(), FXDIB_Format::kArgb);
 
   size_t frames;
@@ -408,7 +408,7 @@ TEST(ProgressiveDecoder, GifDecodeAcrossScanlines) {
 
   ProgressiveDecoder decoder;
 
-  auto source = pdfium::MakeRetain<CFX_ReadOnlySpanStream>(kInput);
+  auto source = fxcrt::MakeRetain<CFX_ReadOnlySpanStream>(kInput);
   CFX_DIBAttribute attr;
   FXCODEC_STATUS status =
       decoder.LoadImageInfo(std::move(source), FXCODEC_IMAGE_GIF, &attr, true);
@@ -417,7 +417,7 @@ TEST(ProgressiveDecoder, GifDecodeAcrossScanlines) {
   ASSERT_EQ(4, decoder.GetWidth());
   ASSERT_EQ(2, decoder.GetHeight());
 
-  auto bitmap = pdfium::MakeRetain<CFX_DIBitmap>();
+  auto bitmap = fxcrt::MakeRetain<CFX_DIBitmap>();
   bitmap->Create(decoder.GetWidth(), decoder.GetHeight(), FXDIB_Format::kArgb);
 
   size_t frames;
@@ -446,7 +446,7 @@ TEST(ProgressiveDecoder, GifDecodeAcrossSubblocks) {
 
   ProgressiveDecoder decoder;
 
-  auto source = pdfium::MakeRetain<CFX_ReadOnlySpanStream>(kInput);
+  auto source = fxcrt::MakeRetain<CFX_ReadOnlySpanStream>(kInput);
   CFX_DIBAttribute attr;
   FXCODEC_STATUS status =
       decoder.LoadImageInfo(std::move(source), FXCODEC_IMAGE_GIF, &attr, true);
@@ -455,7 +455,7 @@ TEST(ProgressiveDecoder, GifDecodeAcrossSubblocks) {
   ASSERT_EQ(4, decoder.GetWidth());
   ASSERT_EQ(2, decoder.GetHeight());
 
-  auto bitmap = pdfium::MakeRetain<CFX_DIBitmap>();
+  auto bitmap = fxcrt::MakeRetain<CFX_DIBitmap>();
   bitmap->Create(decoder.GetWidth(), decoder.GetHeight(), FXDIB_Format::kArgb);
 
   size_t frames;

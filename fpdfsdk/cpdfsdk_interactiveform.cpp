@@ -197,7 +197,7 @@ int CPDFSDK_InteractiveForm::GetPageIndexByAnnotDict(
 
 void CPDFSDK_InteractiveForm::AddMap(CPDF_FormControl* pControl,
                                      CPDFSDK_Widget* pWidget) {
-  m_Map[pdfium::WrapUnowned(pControl)] = pWidget;
+  m_Map[fxcrt::WrapUnowned(pControl)] = pWidget;
 }
 
 void CPDFSDK_InteractiveForm::RemoveMap(CPDF_FormControl* pControl) {

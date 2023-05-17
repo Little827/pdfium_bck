@@ -134,7 +134,7 @@ RetainPtr<CPDF_Dictionary> CPDF_Image::InitJPEG(
   m_Width = info.width;
   m_Height = info.height;
   if (!m_pStream)
-    m_pStream = pdfium::MakeRetain<CPDF_Stream>();
+    m_pStream = fxcrt::MakeRetain<CPDF_Stream>();
   return pDict;
 }
 
@@ -173,8 +173,7 @@ void CPDF_Image::SetJpegImageInline(RetainPtr<IFX_SeekableReadStream> pFile) {
   if (!pDict)
     return;
 
-  m_pStream =
-      pdfium::MakeRetain<CPDF_Stream>(std::move(data), std::move(pDict));
+  m_pStream = fxcrt::MakeRetain<CPDF_Stream>(std::move(data), std::move(pDict));
 }
 
 void CPDF_Image::SetImage(const RetainPtr<CFX_DIBitmap>& pBitmap) {
@@ -321,7 +320,7 @@ void CPDF_Image::SetImage(const RetainPtr<CFX_DIBitmap>& pBitmap) {
   }
 
   m_pStream =
-      pdfium::MakeRetain<CPDF_Stream>(std::move(dest_buf), std::move(pDict));
+      fxcrt::MakeRetain<CPDF_Stream>(std::move(dest_buf), std::move(pDict));
   m_bIsMask = pBitmap->IsMaskFormat();
   m_Width = BitmapWidth;
   m_Height = BitmapHeight;
@@ -333,7 +332,7 @@ void CPDF_Image::ResetCache(CPDF_Page* pPage) {
 }
 
 RetainPtr<CPDF_DIB> CPDF_Image::CreateNewDIB() const {
-  return pdfium::MakeRetain<CPDF_DIB>(GetDocument(), GetStream());
+  return fxcrt::MakeRetain<CPDF_DIB>(GetDocument(), GetStream());
 }
 
 RetainPtr<CFX_DIBBase> CPDF_Image::LoadDIBBase() const {

@@ -33,11 +33,11 @@ uint64_t CPDF_Object::KeyForCache() const {
 }
 
 RetainPtr<CPDF_Object> CPDF_Object::GetMutableDirect() {
-  return pdfium::WrapRetain(const_cast<CPDF_Object*>(GetDirectInternal()));
+  return fxcrt::WrapRetain(const_cast<CPDF_Object*>(GetDirectInternal()));
 }
 
 RetainPtr<const CPDF_Object> CPDF_Object::GetDirect() const {
-  return pdfium::WrapRetain(GetDirectInternal());
+  return fxcrt::WrapRetain(GetDirectInternal());
 }
 
 const CPDF_Object* CPDF_Object::GetDirectInternal() const {
@@ -76,11 +76,11 @@ int CPDF_Object::GetInteger() const {
 }
 
 RetainPtr<const CPDF_Dictionary> CPDF_Object::GetDict() const {
-  return pdfium::WrapRetain(GetDictInternal());
+  return fxcrt::WrapRetain(GetDictInternal());
 }
 
 RetainPtr<CPDF_Dictionary> CPDF_Object::GetMutableDict() {
-  return pdfium::WrapRetain(const_cast<CPDF_Dictionary*>(GetDictInternal()));
+  return fxcrt::WrapRetain(const_cast<CPDF_Dictionary*>(GetDictInternal()));
 }
 
 const CPDF_Dictionary* CPDF_Object::GetDictInternal() const {
@@ -169,5 +169,5 @@ RetainPtr<CPDF_Reference> CPDF_Object::MakeReference(
     NOTREACHED();
     return nullptr;
   }
-  return pdfium::MakeRetain<CPDF_Reference>(holder, GetObjNum());
+  return fxcrt::MakeRetain<CPDF_Reference>(holder, GetObjNum());
 }

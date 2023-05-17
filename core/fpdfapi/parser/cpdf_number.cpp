@@ -24,8 +24,8 @@ CPDF_Object::Type CPDF_Number::GetType() const {
 
 RetainPtr<CPDF_Object> CPDF_Number::Clone() const {
   return m_Number.IsInteger()
-             ? pdfium::MakeRetain<CPDF_Number>(m_Number.GetSigned())
-             : pdfium::MakeRetain<CPDF_Number>(m_Number.GetFloat());
+             ? fxcrt::MakeRetain<CPDF_Number>(m_Number.GetSigned())
+             : fxcrt::MakeRetain<CPDF_Number>(m_Number.GetFloat());
 }
 
 float CPDF_Number::GetNumber() const {

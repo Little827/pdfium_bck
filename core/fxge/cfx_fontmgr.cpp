@@ -83,7 +83,7 @@ RetainPtr<CFX_FontMgr::FontDesc> CFX_FontMgr::GetCachedFontDesc(
     int weight,
     bool bItalic) {
   auto it = m_FaceMap.find({face_name, weight, bItalic});
-  return it != m_FaceMap.end() ? pdfium::WrapRetain(it->second.Get()) : nullptr;
+  return it != m_FaceMap.end() ? fxcrt::WrapRetain(it->second.Get()) : nullptr;
 }
 
 RetainPtr<CFX_FontMgr::FontDesc> CFX_FontMgr::AddCachedFontDesc(
@@ -91,7 +91,7 @@ RetainPtr<CFX_FontMgr::FontDesc> CFX_FontMgr::AddCachedFontDesc(
     int weight,
     bool bItalic,
     FixedUninitDataVector<uint8_t> data) {
-  auto pFontDesc = pdfium::MakeRetain<FontDesc>(std::move(data));
+  auto pFontDesc = fxcrt::MakeRetain<FontDesc>(std::move(data));
   m_FaceMap[{face_name, weight, bItalic}].Reset(pFontDesc.Get());
   return pFontDesc;
 }
@@ -100,7 +100,7 @@ RetainPtr<CFX_FontMgr::FontDesc> CFX_FontMgr::GetCachedTTCFontDesc(
     size_t ttc_size,
     uint32_t checksum) {
   auto it = m_TTCFaceMap.find({ttc_size, checksum});
-  return it != m_TTCFaceMap.end() ? pdfium::WrapRetain(it->second.Get())
+  return it != m_TTCFaceMap.end() ? fxcrt::WrapRetain(it->second.Get())
                                   : nullptr;
 }
 
@@ -108,7 +108,7 @@ RetainPtr<CFX_FontMgr::FontDesc> CFX_FontMgr::AddCachedTTCFontDesc(
     size_t ttc_size,
     uint32_t checksum,
     FixedUninitDataVector<uint8_t> data) {
-  auto pNewDesc = pdfium::MakeRetain<FontDesc>(std::move(data));
+  auto pNewDesc = fxcrt::MakeRetain<FontDesc>(std::move(data));
   m_TTCFaceMap[{ttc_size, checksum}].Reset(pNewDesc.Get());
   return pNewDesc;
 }

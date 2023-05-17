@@ -15,7 +15,7 @@ CPDF_Object::Type CPDF_Null::GetType() const {
 }
 
 RetainPtr<CPDF_Object> CPDF_Null::Clone() const {
-  return pdfium::MakeRetain<CPDF_Null>();
+  return fxcrt::MakeRetain<CPDF_Null>();
 }
 
 CPDF_Null* CPDF_Null::AsMutableNull() {

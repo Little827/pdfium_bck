@@ -307,19 +307,19 @@ RetainPtr<CPDF_Font> CPDF_Font::Create(CPDF_Document* pDoc,
         RetainPtr<const CPDF_Dictionary> pFontDesc =
             pFontDict->GetDictFor("FontDescriptor");
         if (!pFontDesc || !pFontDesc->KeyExist("FontFile2"))
-          pFont = pdfium::MakeRetain<CPDF_CIDFont>(pDoc, std::move(pFontDict));
+          pFont = fxcrt::MakeRetain<CPDF_CIDFont>(pDoc, std::move(pFontDict));
         break;
       }
     }
     if (!pFont)
-      pFont = pdfium::MakeRetain<CPDF_TrueTypeFont>(pDoc, std::move(pFontDict));
+      pFont = fxcrt::MakeRetain<CPDF_TrueTypeFont>(pDoc, std::move(pFontDict));
   } else if (type == "Type3") {
-    pFont = pdfium::MakeRetain<CPDF_Type3Font>(pDoc, std::move(pFontDict),
-                                               pFactory);
+    pFont =
+        fxcrt::MakeRetain<CPDF_Type3Font>(pDoc, std::move(pFontDict), pFactory);
   } else if (type == "Type0") {
-    pFont = pdfium::MakeRetain<CPDF_CIDFont>(pDoc, std::move(pFontDict));
+    pFont = fxcrt::MakeRetain<CPDF_CIDFont>(pDoc, std::move(pFontDict));
   } else {
-    pFont = pdfium::MakeRetain<CPDF_Type1Font>(pDoc, std::move(pFontDict));
+    pFont = fxcrt::MakeRetain<CPDF_Type1Font>(pDoc, std::move(pFontDict));
   }
   if (!pFont->Load())
     return nullptr;

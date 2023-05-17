@@ -86,7 +86,7 @@ RetainPtr<CPDF_SeekableMultiStream> CreateXFAMultiStream(
   if (xfa_streams.empty())
     return nullptr;
 
-  return pdfium::MakeRetain<CPDF_SeekableMultiStream>(std::move(xfa_streams));
+  return fxcrt::MakeRetain<CPDF_SeekableMultiStream>(std::move(xfa_streams));
 }
 
 }  // namespace
@@ -221,7 +221,7 @@ RetainPtr<CPDFXFA_Page> CPDFXFA_Context::GetOrCreateXFAPage(int page_index) {
     m_XFAPageList.resize(m_nPageCount);
   }
 
-  auto pPage = pdfium::MakeRetain<CPDFXFA_Page>(GetPDFDoc(), page_index);
+  auto pPage = fxcrt::MakeRetain<CPDFXFA_Page>(GetPDFDoc(), page_index);
   if (!pPage->LoadPage())
     return nullptr;
 

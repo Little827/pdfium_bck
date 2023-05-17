@@ -20,7 +20,7 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
     return 0;
 
   auto stream =
-      pdfium::MakeRetain<CFX_ReadOnlySpanStream>(pdfium::make_span(data, size));
+      fxcrt::MakeRetain<CFX_ReadOnlySpanStream>(pdfium::make_span(data, size));
   CFX_XMLParser parser(stream);
   std::unique_ptr<CFX_XMLDocument> doc = parser.Parse();
   if (!doc || !doc->GetRoot())

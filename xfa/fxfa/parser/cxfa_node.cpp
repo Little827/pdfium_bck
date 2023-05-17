@@ -488,11 +488,11 @@ RetainPtr<CFX_DIBitmap> XFA_LoadImageData(CXFA_FFDoc* pDoc,
       DataVector<uint8_t> buffer = XFA_Base64Decode(wsImage.ToUTF8());
       if (!buffer.empty()) {
         pImageFileRead =
-            pdfium::MakeRetain<CFX_ReadOnlyVectorStream>(std::move(buffer));
+            fxcrt::MakeRetain<CFX_ReadOnlyVectorStream>(std::move(buffer));
       }
     } else {
       pImageFileRead =
-          pdfium::MakeRetain<CFX_ReadOnlyStringStream>(wsImage.ToDefANSI());
+          fxcrt::MakeRetain<CFX_ReadOnlyStringStream>(wsImage.ToDefANSI());
     }
   } else {
     WideString wsURL = wsHref;

@@ -58,8 +58,8 @@ TEST_F(CPDF_PageContentGeneratorTest, ProcessRect) {
   pPathObj->set_filltype(CFX_FillRenderOptions::FillType::kEvenOdd);
   pPathObj->path().AppendRect(10, 5, 13, 30);
 
-  auto dummy_page_dict = pdfium::MakeRetain<CPDF_Dictionary>();
-  auto pTestPage = pdfium::MakeRetain<CPDF_Page>(nullptr, dummy_page_dict);
+  auto dummy_page_dict = fxcrt::MakeRetain<CPDF_Dictionary>();
+  auto pTestPage = fxcrt::MakeRetain<CPDF_Page>(nullptr, dummy_page_dict);
   CPDF_PageContentGenerator generator(pTestPage.Get());
   fxcrt::ostringstream buf;
   TestProcessPath(&generator, &buf, pPathObj.get());
@@ -96,8 +96,8 @@ TEST_F(CPDF_PageContentGeneratorTest, BUG_937) {
     pPathObj->Transform(CFX_Matrix(1, 0, 0, 1, 0.000000000000000000001,
                                    200000000000000.000002));
 
-    auto dummy_page_dict = pdfium::MakeRetain<CPDF_Dictionary>();
-    auto pTestPage = pdfium::MakeRetain<CPDF_Page>(nullptr, dummy_page_dict);
+    auto dummy_page_dict = fxcrt::MakeRetain<CPDF_Dictionary>();
+    auto pTestPage = fxcrt::MakeRetain<CPDF_Page>(nullptr, dummy_page_dict);
     CPDF_PageContentGenerator generator(pTestPage.Get());
     fxcrt::ostringstream buf;
     TestProcessPath(&generator, &buf, pPathObj.get());
@@ -129,8 +129,8 @@ TEST_F(CPDF_PageContentGeneratorTest, BUG_937) {
     pPathObj->path().AppendPointAndClose(
         CFX_PointF(53.4f, 5000000000000000000.00000000000000004),
         CFX_Path::Point::Type::kBezier);
-    auto dummy_page_dict = pdfium::MakeRetain<CPDF_Dictionary>();
-    auto pTestPage = pdfium::MakeRetain<CPDF_Page>(nullptr, dummy_page_dict);
+    auto dummy_page_dict = fxcrt::MakeRetain<CPDF_Dictionary>();
+    auto pTestPage = fxcrt::MakeRetain<CPDF_Page>(nullptr, dummy_page_dict);
     CPDF_PageContentGenerator generator(pTestPage.Get());
     fxcrt::ostringstream buf;
 
@@ -168,8 +168,8 @@ TEST_F(CPDF_PageContentGeneratorTest, ProcessPath) {
   pPathObj->path().AppendPointAndClose(CFX_PointF(12, 13.64f),
                                        CFX_Path::Point::Type::kBezier);
 
-  auto dummy_page_dict = pdfium::MakeRetain<CPDF_Dictionary>();
-  auto pTestPage = pdfium::MakeRetain<CPDF_Page>(nullptr, dummy_page_dict);
+  auto dummy_page_dict = fxcrt::MakeRetain<CPDF_Dictionary>();
+  auto pTestPage = fxcrt::MakeRetain<CPDF_Page>(nullptr, dummy_page_dict);
   CPDF_PageContentGenerator generator(pTestPage.Get());
   fxcrt::ostringstream buf;
   TestProcessPath(&generator, &buf, pPathObj.get());
@@ -204,7 +204,7 @@ TEST_F(CPDF_PageContentGeneratorTest, ProcessGraphics) {
   pDoc->CreateNewDoc();
 
   RetainPtr<CPDF_Dictionary> pPageDict(pDoc->CreateNewPage(0));
-  auto pTestPage = pdfium::MakeRetain<CPDF_Page>(pDoc.get(), pPageDict);
+  auto pTestPage = fxcrt::MakeRetain<CPDF_Page>(pDoc.get(), pPageDict);
   CPDF_PageContentGenerator generator(pTestPage.Get());
   fxcrt::ostringstream buf;
   TestProcessPath(&generator, &buf, pPathObj.get());
@@ -245,7 +245,7 @@ TEST_F(CPDF_PageContentGeneratorTest, ProcessStandardText) {
   pDoc->CreateNewDoc();
 
   RetainPtr<CPDF_Dictionary> pPageDict(pDoc->CreateNewPage(0));
-  auto pTestPage = pdfium::MakeRetain<CPDF_Page>(pDoc.get(), pPageDict);
+  auto pTestPage = fxcrt::MakeRetain<CPDF_Page>(pDoc.get(), pPageDict);
   CPDF_PageContentGenerator generator(pTestPage.Get());
   auto pTextObj = std::make_unique<CPDF_TextObject>();
   pTextObj->m_TextState.SetFont(
@@ -311,7 +311,7 @@ TEST_F(CPDF_PageContentGeneratorTest, ProcessText) {
   pDoc->CreateNewDoc();
 
   RetainPtr<CPDF_Dictionary> pPageDict(pDoc->CreateNewPage(0));
-  auto pTestPage = pdfium::MakeRetain<CPDF_Page>(pDoc.get(), pPageDict);
+  auto pTestPage = fxcrt::MakeRetain<CPDF_Page>(pDoc.get(), pPageDict);
   CPDF_PageContentGenerator generator(pTestPage.Get());
 
   fxcrt::ostringstream buf;
@@ -387,7 +387,7 @@ TEST_F(CPDF_PageContentGeneratorTest, ProcessEmptyForm) {
   auto pDoc = std::make_unique<CPDF_TestDocument>();
   pDoc->CreateNewDoc();
   auto pStream =
-      pdfium::MakeRetain<CPDF_Stream>(pdfium::MakeRetain<CPDF_Dictionary>());
+      fxcrt::MakeRetain<CPDF_Stream>(fxcrt::MakeRetain<CPDF_Dictionary>());
 
   // Create an empty form.
   auto pTestForm = std::make_unique<CPDF_Form>(pDoc.get(), nullptr, pStream);
@@ -408,9 +408,9 @@ TEST_F(CPDF_PageContentGeneratorTest, ProcessFormWithPath) {
   static constexpr uint8_t kContents[] =
       "q 1 0 0 1 0 0 cm 3.102 4.6700001 m 5.4500012 .28999999 "
       "l 4.2399998 3.1499999 4.65 2.98 3.456 0.24 c 3.102 4.6700001 l h f Q\n";
-  auto pStream = pdfium::MakeRetain<CPDF_Stream>(
+  auto pStream = fxcrt::MakeRetain<CPDF_Stream>(
       DataVector<uint8_t>(std::begin(kContents), std::end(kContents)),
-      pdfium::MakeRetain<CPDF_Dictionary>());
+      fxcrt::MakeRetain<CPDF_Dictionary>());
 
   // Create a form with a non-empty stream.
   auto pTestForm = std::make_unique<CPDF_Form>(pDoc.get(), nullptr, pStream);

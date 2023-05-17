@@ -14,7 +14,7 @@ namespace {
 
 RetainPtr<CPDF_Dictionary> CreateActionDictWithType(
     const ByteString& action_type) {
-  auto dict = pdfium::MakeRetain<CPDF_Dictionary>();
+  auto dict = fxcrt::MakeRetain<CPDF_Dictionary>();
   dict->SetNewFor<CPDF_Name>("Type", "Action");
   dict->SetNewFor<CPDF_Name>("S", action_type);
   return dict;
@@ -22,14 +22,14 @@ RetainPtr<CPDF_Dictionary> CreateActionDictWithType(
 
 RetainPtr<CPDF_Dictionary> CreateActionDictWithoutType(
     const ByteString& action_type) {
-  auto dict = pdfium::MakeRetain<CPDF_Dictionary>();
+  auto dict = fxcrt::MakeRetain<CPDF_Dictionary>();
   dict->SetNewFor<CPDF_Name>("S", action_type);
   return dict;
 }
 
 RetainPtr<CPDF_Dictionary> CreateActionDictWithInvalidType(
     const ByteString& action_type) {
-  auto dict = pdfium::MakeRetain<CPDF_Dictionary>();
+  auto dict = fxcrt::MakeRetain<CPDF_Dictionary>();
   dict->SetNewFor<CPDF_Name>("Type", "Lights");
   dict->SetNewFor<CPDF_Name>("S", action_type);
   return dict;
@@ -37,7 +37,7 @@ RetainPtr<CPDF_Dictionary> CreateActionDictWithInvalidType(
 
 RetainPtr<CPDF_Dictionary> CreateInvalidActionDictWithType(
     const ByteString& action_type) {
-  auto dict = pdfium::MakeRetain<CPDF_Dictionary>();
+  auto dict = fxcrt::MakeRetain<CPDF_Dictionary>();
   dict->SetNewFor<CPDF_Name>("Type", "Action");
   dict->SetNewFor<CPDF_String>("S", action_type, /*is_hex=*/false);
   return dict;
@@ -45,7 +45,7 @@ RetainPtr<CPDF_Dictionary> CreateInvalidActionDictWithType(
 
 RetainPtr<CPDF_Dictionary> CreateInvalidActionDictWithoutType(
     const ByteString& action_type) {
-  auto dict = pdfium::MakeRetain<CPDF_Dictionary>();
+  auto dict = fxcrt::MakeRetain<CPDF_Dictionary>();
   dict->SetNewFor<CPDF_String>("S", action_type, /*is_hex=*/false);
   return dict;
 }

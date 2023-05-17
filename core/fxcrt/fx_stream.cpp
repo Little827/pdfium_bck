@@ -70,7 +70,7 @@ RetainPtr<IFX_SeekableReadStream> IFX_SeekableReadStream::CreateFromFilename(
   std::unique_ptr<FileAccessIface> pFA = FileAccessIface::Create();
   if (!pFA->Open(filename))
     return nullptr;
-  return pdfium::MakeRetain<CFX_CRTFileStream>(std::move(pFA));
+  return fxcrt::MakeRetain<CFX_CRTFileStream>(std::move(pFA));
 }
 
 bool IFX_SeekableWriteStream::WriteBlock(pdfium::span<const uint8_t> buffer) {

@@ -19,7 +19,7 @@
 CPDF_SeekableMultiStream::CPDF_SeekableMultiStream(
     std::vector<RetainPtr<const CPDF_Stream>> streams) {
   for (auto& pStream : streams) {
-    m_Data.push_back(pdfium::MakeRetain<CPDF_StreamAcc>(std::move(pStream)));
+    m_Data.push_back(fxcrt::MakeRetain<CPDF_StreamAcc>(std::move(pStream)));
     m_Data.back()->LoadAllDataFiltered();
   }
 }

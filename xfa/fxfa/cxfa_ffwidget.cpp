@@ -179,7 +179,7 @@ RetainPtr<CFX_DIBitmap> XFA_LoadImageFromBuffer(
   int32_t iComponents = pProgressiveDecoder->GetNumComponents();
   int32_t iBpc = pProgressiveDecoder->GetBPC();
   FXDIB_Format dibFormat = XFA_GetDIBFormat(type, iComponents, iBpc);
-  RetainPtr<CFX_DIBitmap> pBitmap = pdfium::MakeRetain<CFX_DIBitmap>();
+  RetainPtr<CFX_DIBitmap> pBitmap = fxcrt::MakeRetain<CFX_DIBitmap>();
   pBitmap->Create(pProgressiveDecoder->GetWidth(),
                   pProgressiveDecoder->GetHeight(), dibFormat);
   pBitmap->Clear(0xffffffff);

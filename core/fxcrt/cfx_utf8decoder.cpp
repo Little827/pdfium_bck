@@ -54,17 +54,17 @@ WideString CFX_UTF8Decoder::TakeResult() {
 }
 
 void CFX_UTF8Decoder::AppendCodePoint(char32_t code_point) {
-  if (code_point > pdfium::kMaximumSupplementaryCodePoint) {
+  if (code_point > fxcrt::kMaximumSupplementaryCodePoint) {
     // Invalid code point above U+10FFFF.
     return;
   }
 
 #if defined(WCHAR_T_IS_UTF16)
-  if (code_point < pdfium::kMinimumSupplementaryCodePoint) {
+  if (code_point < fxcrt::kMinimumSupplementaryCodePoint) {
     buffer_ += static_cast<wchar_t>(code_point);
   } else {
     // Encode as UTF-16 surrogate pair.
-    pdfium::SurrogatePair surrogate_pair(code_point);
+    fxcrt::SurrogatePair surrogate_pair(code_point);
     buffer_ += surrogate_pair.high();
     buffer_ += surrogate_pair.low();
   }

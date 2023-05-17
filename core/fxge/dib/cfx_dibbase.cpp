@@ -648,7 +648,7 @@ RetainPtr<CFX_DIBitmap> CFX_DIBBase::ClipToInternal(
     if (rect.IsEmpty())
       return nullptr;
   }
-  auto pNewBitmap = pdfium::MakeRetain<CFX_DIBitmap>();
+  auto pNewBitmap = fxcrt::MakeRetain<CFX_DIBitmap>();
   if (!pNewBitmap->Create(rect.Width(), rect.Height(), GetFormat()))
     return nullptr;
 
@@ -865,7 +865,7 @@ void CFX_DIBBase::SetPalette(pdfium::span<const uint32_t> src_palette) {
 
 RetainPtr<CFX_DIBitmap> CFX_DIBBase::CloneAlphaMask() const {
   DCHECK_EQ(GetFormat(), FXDIB_Format::kArgb);
-  auto pMask = pdfium::MakeRetain<CFX_DIBitmap>();
+  auto pMask = fxcrt::MakeRetain<CFX_DIBitmap>();
   if (!pMask->Create(m_Width, m_Height, FXDIB_Format::k8bppMask))
     return nullptr;
 
@@ -881,7 +881,7 @@ RetainPtr<CFX_DIBitmap> CFX_DIBBase::CloneAlphaMask() const {
 }
 
 RetainPtr<CFX_DIBitmap> CFX_DIBBase::FlipImage(bool bXFlip, bool bYFlip) const {
-  auto pFlipped = pdfium::MakeRetain<CFX_DIBitmap>();
+  auto pFlipped = fxcrt::MakeRetain<CFX_DIBitmap>();
   if (!pFlipped->Create(m_Width, m_Height, GetFormat()))
     return nullptr;
 
@@ -937,7 +937,7 @@ RetainPtr<CFX_DIBitmap> CFX_DIBBase::ConvertTo(FXDIB_Format dest_format) const {
   if (dest_format == GetFormat())
     return Realize();
 
-  auto pClone = pdfium::MakeRetain<CFX_DIBitmap>();
+  auto pClone = fxcrt::MakeRetain<CFX_DIBitmap>();
   if (!pClone->Create(m_Width, m_Height, dest_format))
     return nullptr;
 
@@ -971,7 +971,7 @@ RetainPtr<CFX_DIBitmap> CFX_DIBBase::SwapXY(bool bXFlip, bool bYFlip) const {
   if (dest_clip.IsEmpty())
     return nullptr;
 
-  auto pTransBitmap = pdfium::MakeRetain<CFX_DIBitmap>();
+  auto pTransBitmap = fxcrt::MakeRetain<CFX_DIBitmap>();
   const int result_height = dest_clip.Height();
   const int result_width = dest_clip.Width();
   if (!pTransBitmap->Create(result_width, result_height, GetFormat()))

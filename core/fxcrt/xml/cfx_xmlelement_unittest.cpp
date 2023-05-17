@@ -108,7 +108,7 @@ TEST(CFX_XMLElementTest, Clone) {
 }
 
 TEST(CFX_XMLElementTest, Save) {
-  auto stream = pdfium::MakeRetain<StringWriteStream>();
+  auto stream = fxcrt::MakeRetain<StringWriteStream>();
   CFX_XMLElement node(L"root");
 
   node.Save(stream);
@@ -116,7 +116,7 @@ TEST(CFX_XMLElementTest, Save) {
 }
 
 TEST(CFX_XMLElementTest, SaveWithAttributes) {
-  auto stream = pdfium::MakeRetain<StringWriteStream>();
+  auto stream = fxcrt::MakeRetain<StringWriteStream>();
   CFX_XMLElement node(L"root");
   node.SetAttribute(L"first", L"one");
   node.SetAttribute(L"second", L"two");
@@ -126,7 +126,7 @@ TEST(CFX_XMLElementTest, SaveWithAttributes) {
 }
 
 TEST(CFX_XMLElementTest, SaveWithChildren) {
-  auto stream = pdfium::MakeRetain<StringWriteStream>();
+  auto stream = fxcrt::MakeRetain<StringWriteStream>();
   CFX_XMLElement node(L"node");
 
   CFX_XMLText text_child1(L"Text Child 1");
@@ -152,7 +152,7 @@ TEST(CFX_XMLElementTest, SaveWithChildren) {
 }
 
 TEST(CFX_XMLElementTest, SaveWithNamespace) {
-  auto stream = pdfium::MakeRetain<StringWriteStream>();
+  auto stream = fxcrt::MakeRetain<StringWriteStream>();
   CFX_XMLElement node(L"test:root");
   node.SetAttribute(L"xmlns:test", L"https://example.org/ns1");
 

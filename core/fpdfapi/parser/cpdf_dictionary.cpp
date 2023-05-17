@@ -54,7 +54,7 @@ RetainPtr<CPDF_Object> CPDF_Dictionary::CloneNonCyclic(
     bool bDirect,
     std::set<const CPDF_Object*>* pVisited) const {
   pVisited->insert(this);
-  auto pCopy = pdfium::MakeRetain<CPDF_Dictionary>(m_pPool);
+  auto pCopy = fxcrt::MakeRetain<CPDF_Dictionary>(m_pPool);
   CPDF_DictionaryLocker locker(this);
   for (const auto& it : locker) {
     if (!pdfium::Contains(*pVisited, it.second.Get())) {
@@ -75,13 +75,12 @@ const CPDF_Object* CPDF_Dictionary::GetObjectForInternal(
 
 RetainPtr<const CPDF_Object> CPDF_Dictionary::GetObjectFor(
     const ByteString& key) const {
-  return pdfium::WrapRetain(GetObjectForInternal(key));
+  return fxcrt::WrapRetain(GetObjectForInternal(key));
 }
 
 RetainPtr<CPDF_Object> CPDF_Dictionary::GetMutableObjectFor(
     const ByteString& key) {
-  return pdfium::WrapRetain(
-      const_cast<CPDF_Object*>(GetObjectForInternal(key)));
+  return fxcrt::WrapRetain(const_cast<CPDF_Object*>(GetObjectForInternal(key)));
 }
 
 const CPDF_Object* CPDF_Dictionary::GetDirectObjectForInternal(
@@ -92,12 +91,12 @@ const CPDF_Object* CPDF_Dictionary::GetDirectObjectForInternal(
 
 RetainPtr<const CPDF_Object> CPDF_Dictionary::GetDirectObjectFor(
     const ByteString& key) const {
-  return pdfium::WrapRetain(GetDirectObjectForInternal(key));
+  return fxcrt::WrapRetain(GetDirectObjectForInternal(key));
 }
 
 RetainPtr<CPDF_Object> CPDF_Dictionary::GetMutableDirectObjectFor(
     const ByteString& key) {
-  return pdfium::WrapRetain(
+  return fxcrt::WrapRetain(
       const_cast<CPDF_Object*>(GetDirectObjectForInternal(key)));
 }
 
@@ -162,12 +161,12 @@ const CPDF_Dictionary* CPDF_Dictionary::GetDictForInternal(
 
 RetainPtr<const CPDF_Dictionary> CPDF_Dictionary::GetDictFor(
     const ByteString& key) const {
-  return pdfium::WrapRetain(GetDictForInternal(key));
+  return fxcrt::WrapRetain(GetDictForInternal(key));
 }
 
 RetainPtr<CPDF_Dictionary> CPDF_Dictionary::GetMutableDictFor(
     const ByteString& key) {
-  return pdfium::WrapRetain(
+  return fxcrt::WrapRetain(
       const_cast<CPDF_Dictionary*>(GetDictForInternal(key)));
 }
 
@@ -186,12 +185,12 @@ const CPDF_Array* CPDF_Dictionary::GetArrayForInternal(
 
 RetainPtr<const CPDF_Array> CPDF_Dictionary::GetArrayFor(
     const ByteString& key) const {
-  return pdfium::WrapRetain(GetArrayForInternal(key));
+  return fxcrt::WrapRetain(GetArrayForInternal(key));
 }
 
 RetainPtr<CPDF_Array> CPDF_Dictionary::GetMutableArrayFor(
     const ByteString& key) {
-  return pdfium::WrapRetain(const_cast<CPDF_Array*>(GetArrayForInternal(key)));
+  return fxcrt::WrapRetain(const_cast<CPDF_Array*>(GetArrayForInternal(key)));
 }
 
 RetainPtr<CPDF_Array> CPDF_Dictionary::GetOrCreateArrayFor(
@@ -209,13 +208,12 @@ const CPDF_Stream* CPDF_Dictionary::GetStreamForInternal(
 
 RetainPtr<const CPDF_Stream> CPDF_Dictionary::GetStreamFor(
     const ByteString& key) const {
-  return pdfium::WrapRetain(GetStreamForInternal(key));
+  return fxcrt::WrapRetain(GetStreamForInternal(key));
 }
 
 RetainPtr<CPDF_Stream> CPDF_Dictionary::GetMutableStreamFor(
     const ByteString& key) {
-  return pdfium::WrapRetain(
-      const_cast<CPDF_Stream*>(GetStreamForInternal(key)));
+  return fxcrt::WrapRetain(const_cast<CPDF_Stream*>(GetStreamForInternal(key)));
 }
 
 const CPDF_Number* CPDF_Dictionary::GetNumberForInternal(
@@ -225,7 +223,7 @@ const CPDF_Number* CPDF_Dictionary::GetNumberForInternal(
 
 RetainPtr<const CPDF_Number> CPDF_Dictionary::GetNumberFor(
     const ByteString& key) const {
-  return pdfium::WrapRetain(GetNumberForInternal(key));
+  return fxcrt::WrapRetain(GetNumberForInternal(key));
 }
 
 const CPDF_String* CPDF_Dictionary::GetStringForInternal(
@@ -235,7 +233,7 @@ const CPDF_String* CPDF_Dictionary::GetStringForInternal(
 
 RetainPtr<const CPDF_String> CPDF_Dictionary::GetStringFor(
     const ByteString& key) const {
-  return pdfium::WrapRetain(GetStringForInternal(key));
+  return fxcrt::WrapRetain(GetStringForInternal(key));
 }
 
 CFX_FloatRect CPDF_Dictionary::GetRectFor(const ByteString& key) const {

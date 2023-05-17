@@ -15,7 +15,7 @@ namespace {
 
 RetainPtr<CPDF_Array> CreateQuadPointArrayFromVector(
     const std::vector<int>& points) {
-  auto array = pdfium::MakeRetain<CPDF_Array>();
+  auto array = fxcrt::MakeRetain<CPDF_Array>();
   for (float point : points)
     array->AppendNew<CPDF_Number>(point);
   return array;
@@ -40,7 +40,7 @@ TEST(CPDFAnnotTest, RectFromQuadPointsArray) {
 }
 
 TEST(CPDFAnnotTest, BoundingRectFromQuadPoints) {
-  auto dict = pdfium::MakeRetain<CPDF_Dictionary>();
+  auto dict = fxcrt::MakeRetain<CPDF_Dictionary>();
   CFX_FloatRect rect = CPDF_Annot::BoundingRectFromQuadPoints(dict.Get());
   EXPECT_EQ(0.0f, rect.left);
   EXPECT_EQ(0.0f, rect.bottom);
@@ -73,7 +73,7 @@ TEST(CPDFAnnotTest, BoundingRectFromQuadPoints) {
 }
 
 TEST(CPDFAnnotTest, RectFromQuadPoints) {
-  auto dict = pdfium::MakeRetain<CPDF_Dictionary>();
+  auto dict = fxcrt::MakeRetain<CPDF_Dictionary>();
   CFX_FloatRect rect = CPDF_Annot::RectFromQuadPoints(dict.Get(), 0);
   EXPECT_EQ(0.0f, rect.left);
   EXPECT_EQ(0.0f, rect.bottom);

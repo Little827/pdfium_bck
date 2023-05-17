@@ -32,13 +32,13 @@ static_assert(kNormalStreamContent[kNormalStreamContentOffset + 1] == '<',
 }  // namespace
 
 TEST(ObjectStreamTest, StreamDictNormal) {
-  auto dict = pdfium::MakeRetain<CPDF_Dictionary>();
+  auto dict = fxcrt::MakeRetain<CPDF_Dictionary>();
   dict->SetNewFor<CPDF_Name>("Type", "ObjStm");
   dict->SetNewFor<CPDF_Number>("N", 3);
   dict->SetNewFor<CPDF_Number>("First", kNormalStreamContentOffset);
 
   ByteStringView contents_view(kNormalStreamContent);
-  auto stream = pdfium::MakeRetain<CPDF_Stream>(
+  auto stream = fxcrt::MakeRetain<CPDF_Stream>(
       DataVector<uint8_t>(contents_view.begin(), contents_view.end()), dict);
   auto obj_stream = CPDF_ObjectStream::Create(std::move(stream));
   ASSERT_TRUE(obj_stream);
@@ -82,138 +82,138 @@ TEST(ObjectStreamTest, StreamDictNormal) {
 
 TEST(ObjectStreamTest, StreamNoDict) {
   ByteStringView contents_view(kNormalStreamContent);
-  auto stream = pdfium::MakeRetain<CPDF_Stream>(
+  auto stream = fxcrt::MakeRetain<CPDF_Stream>(
       DataVector<uint8_t>(contents_view.begin(), contents_view.end()),
       /*pDict=*/nullptr);
   EXPECT_FALSE(CPDF_ObjectStream::Create(std::move(stream)));
 }
 
 TEST(ObjectStreamTest, StreamDictNoType) {
-  auto dict = pdfium::MakeRetain<CPDF_Dictionary>();
+  auto dict = fxcrt::MakeRetain<CPDF_Dictionary>();
   dict->SetNewFor<CPDF_Number>("N", 3);
   dict->SetNewFor<CPDF_Number>("First", 5);
 
   ByteStringView contents_view(kNormalStreamContent);
-  auto stream = pdfium::MakeRetain<CPDF_Stream>(
+  auto stream = fxcrt::MakeRetain<CPDF_Stream>(
       DataVector<uint8_t>(contents_view.begin(), contents_view.end()), dict);
   EXPECT_FALSE(CPDF_ObjectStream::Create(std::move(stream)));
 }
 
 TEST(ObjectStreamTest, StreamDictWrongType) {
-  auto dict = pdfium::MakeRetain<CPDF_Dictionary>();
+  auto dict = fxcrt::MakeRetain<CPDF_Dictionary>();
   dict->SetNewFor<CPDF_String>("Type", "ObjStm", /*bHex=*/false);
   dict->SetNewFor<CPDF_Number>("N", 3);
   dict->SetNewFor<CPDF_Number>("First", 5);
 
   ByteStringView contents_view(kNormalStreamContent);
-  auto stream = pdfium::MakeRetain<CPDF_Stream>(
+  auto stream = fxcrt::MakeRetain<CPDF_Stream>(
       DataVector<uint8_t>(contents_view.begin(), contents_view.end()), dict);
   EXPECT_FALSE(CPDF_ObjectStream::Create(std::move(stream)));
 }
 
 TEST(ObjectStreamTest, StreamDictWrongTypeValue) {
-  auto dict = pdfium::MakeRetain<CPDF_Dictionary>();
+  auto dict = fxcrt::MakeRetain<CPDF_Dictionary>();
   dict->SetNewFor<CPDF_Name>("Type", "ObjStmmmm");
   dict->SetNewFor<CPDF_Number>("N", 3);
   dict->SetNewFor<CPDF_Number>("First", 5);
 
   ByteStringView contents_view(kNormalStreamContent);
-  auto stream = pdfium::MakeRetain<CPDF_Stream>(
+  auto stream = fxcrt::MakeRetain<CPDF_Stream>(
       DataVector<uint8_t>(contents_view.begin(), contents_view.end()), dict);
   EXPECT_FALSE(CPDF_ObjectStream::Create(std::move(stream)));
 }
 
 TEST(ObjectStreamTest, StreamDictNoCount) {
-  auto dict = pdfium::MakeRetain<CPDF_Dictionary>();
+  auto dict = fxcrt::MakeRetain<CPDF_Dictionary>();
   dict->SetNewFor<CPDF_Name>("Type", "ObjStm");
   dict->SetNewFor<CPDF_Number>("First", 5);
 
   ByteStringView contents_view(kNormalStreamContent);
-  auto stream = pdfium::MakeRetain<CPDF_Stream>(
+  auto stream = fxcrt::MakeRetain<CPDF_Stream>(
       DataVector<uint8_t>(contents_view.begin(), contents_view.end()), dict);
   EXPECT_FALSE(CPDF_ObjectStream::Create(std::move(stream)));
 }
 
 TEST(ObjectStreamTest, StreamDictFloatCount) {
-  auto dict = pdfium::MakeRetain<CPDF_Dictionary>();
+  auto dict = fxcrt::MakeRetain<CPDF_Dictionary>();
   dict->SetNewFor<CPDF_Name>("Type", "ObjStm");
   dict->SetNewFor<CPDF_Number>("N", 2.2f);
   dict->SetNewFor<CPDF_Number>("First", 5);
 
   ByteStringView contents_view(kNormalStreamContent);
-  auto stream = pdfium::MakeRetain<CPDF_Stream>(
+  auto stream = fxcrt::MakeRetain<CPDF_Stream>(
       DataVector<uint8_t>(contents_view.begin(), contents_view.end()), dict);
   EXPECT_FALSE(CPDF_ObjectStream::Create(std::move(stream)));
 }
 
 TEST(ObjectStreamTest, StreamDictNegativeCount) {
-  auto dict = pdfium::MakeRetain<CPDF_Dictionary>();
+  auto dict = fxcrt::MakeRetain<CPDF_Dictionary>();
   dict->SetNewFor<CPDF_Name>("Type", "ObjStm");
   dict->SetNewFor<CPDF_Number>("N", -1);
   dict->SetNewFor<CPDF_Number>("First", 5);
 
   ByteStringView contents_view(kNormalStreamContent);
-  auto stream = pdfium::MakeRetain<CPDF_Stream>(
+  auto stream = fxcrt::MakeRetain<CPDF_Stream>(
       DataVector<uint8_t>(contents_view.begin(), contents_view.end()), dict);
   EXPECT_FALSE(CPDF_ObjectStream::Create(std::move(stream)));
 }
 
 TEST(ObjectStreamTest, StreamDictCountTooBig) {
-  auto dict = pdfium::MakeRetain<CPDF_Dictionary>();
+  auto dict = fxcrt::MakeRetain<CPDF_Dictionary>();
   dict->SetNewFor<CPDF_Name>("Type", "ObjStm");
   dict->SetNewFor<CPDF_Number>("N", 999999999);
   dict->SetNewFor<CPDF_Number>("First", 5);
 
   ByteStringView contents_view(kNormalStreamContent);
-  auto stream = pdfium::MakeRetain<CPDF_Stream>(
+  auto stream = fxcrt::MakeRetain<CPDF_Stream>(
       DataVector<uint8_t>(contents_view.begin(), contents_view.end()), dict);
   EXPECT_FALSE(CPDF_ObjectStream::Create(std::move(stream)));
 }
 
 TEST(ObjectStreamTest, StreamDictNoOffset) {
-  auto dict = pdfium::MakeRetain<CPDF_Dictionary>();
+  auto dict = fxcrt::MakeRetain<CPDF_Dictionary>();
   dict->SetNewFor<CPDF_Name>("Type", "ObjStm");
   dict->SetNewFor<CPDF_Number>("N", 3);
 
   ByteStringView contents_view(kNormalStreamContent);
-  auto stream = pdfium::MakeRetain<CPDF_Stream>(
+  auto stream = fxcrt::MakeRetain<CPDF_Stream>(
       DataVector<uint8_t>(contents_view.begin(), contents_view.end()), dict);
   EXPECT_FALSE(CPDF_ObjectStream::Create(std::move(stream)));
 }
 
 TEST(ObjectStreamTest, StreamDictFloatOffset) {
-  auto dict = pdfium::MakeRetain<CPDF_Dictionary>();
+  auto dict = fxcrt::MakeRetain<CPDF_Dictionary>();
   dict->SetNewFor<CPDF_Name>("Type", "ObjStm");
   dict->SetNewFor<CPDF_Number>("N", 3);
   dict->SetNewFor<CPDF_Number>("First", 5.5f);
 
   ByteStringView contents_view(kNormalStreamContent);
-  auto stream = pdfium::MakeRetain<CPDF_Stream>(
+  auto stream = fxcrt::MakeRetain<CPDF_Stream>(
       DataVector<uint8_t>(contents_view.begin(), contents_view.end()), dict);
   EXPECT_FALSE(CPDF_ObjectStream::Create(std::move(stream)));
 }
 
 TEST(ObjectStreamTest, StreamDictNegativeOffset) {
-  auto dict = pdfium::MakeRetain<CPDF_Dictionary>();
+  auto dict = fxcrt::MakeRetain<CPDF_Dictionary>();
   dict->SetNewFor<CPDF_Name>("Type", "ObjStm");
   dict->SetNewFor<CPDF_Number>("N", 3);
   dict->SetNewFor<CPDF_Number>("First", -5);
 
   ByteStringView contents_view(kNormalStreamContent);
-  auto stream = pdfium::MakeRetain<CPDF_Stream>(
+  auto stream = fxcrt::MakeRetain<CPDF_Stream>(
       DataVector<uint8_t>(contents_view.begin(), contents_view.end()), dict);
   EXPECT_FALSE(CPDF_ObjectStream::Create(std::move(stream)));
 }
 
 TEST(ObjectStreamTest, StreamDictOffsetTooBig) {
-  auto dict = pdfium::MakeRetain<CPDF_Dictionary>();
+  auto dict = fxcrt::MakeRetain<CPDF_Dictionary>();
   dict->SetNewFor<CPDF_Name>("Type", "ObjStm");
   dict->SetNewFor<CPDF_Number>("N", 3);
   constexpr int kTooBigOffset = std::size(kNormalStreamContent);
   dict->SetNewFor<CPDF_Number>("First", kTooBigOffset);
 
   ByteStringView contents_view(kNormalStreamContent);
-  auto stream = pdfium::MakeRetain<CPDF_Stream>(
+  auto stream = fxcrt::MakeRetain<CPDF_Stream>(
       DataVector<uint8_t>(contents_view.begin(), contents_view.end()), dict);
   auto obj_stream = CPDF_ObjectStream::Create(std::move(stream));
   ASSERT_TRUE(obj_stream);
@@ -230,13 +230,13 @@ TEST(ObjectStreamTest, StreamDictOffsetTooBig) {
 }
 
 TEST(ObjectStreamTest, StreamDictTooFewCount) {
-  auto dict = pdfium::MakeRetain<CPDF_Dictionary>();
+  auto dict = fxcrt::MakeRetain<CPDF_Dictionary>();
   dict->SetNewFor<CPDF_Name>("Type", "ObjStm");
   dict->SetNewFor<CPDF_Number>("N", 2);
   dict->SetNewFor<CPDF_Number>("First", kNormalStreamContentOffset);
 
   ByteStringView contents_view(kNormalStreamContent);
-  auto stream = pdfium::MakeRetain<CPDF_Stream>(
+  auto stream = fxcrt::MakeRetain<CPDF_Stream>(
       DataVector<uint8_t>(contents_view.begin(), contents_view.end()), dict);
   auto obj_stream = CPDF_ObjectStream::Create(std::move(stream));
   ASSERT_TRUE(obj_stream);
@@ -262,13 +262,13 @@ TEST(ObjectStreamTest, StreamDictTooFewCount) {
 }
 
 TEST(ObjectStreamTest, StreamDictTooManyObject) {
-  auto dict = pdfium::MakeRetain<CPDF_Dictionary>();
+  auto dict = fxcrt::MakeRetain<CPDF_Dictionary>();
   dict->SetNewFor<CPDF_Name>("Type", "ObjStm");
   dict->SetNewFor<CPDF_Number>("N", 9);
   dict->SetNewFor<CPDF_Number>("First", kNormalStreamContentOffset);
 
   ByteStringView contents_view(kNormalStreamContent);
-  auto stream = pdfium::MakeRetain<CPDF_Stream>(
+  auto stream = fxcrt::MakeRetain<CPDF_Stream>(
       DataVector<uint8_t>(contents_view.begin(), contents_view.end()), dict);
   auto obj_stream = CPDF_ObjectStream::Create(std::move(stream));
   ASSERT_TRUE(obj_stream);
@@ -289,14 +289,14 @@ TEST(ObjectStreamTest, StreamDictTooManyObject) {
 }
 
 TEST(ObjectStreamTest, StreamDictGarbageObjNum) {
-  auto dict = pdfium::MakeRetain<CPDF_Dictionary>();
+  auto dict = fxcrt::MakeRetain<CPDF_Dictionary>();
   dict->SetNewFor<CPDF_Name>("Type", "ObjStm");
   dict->SetNewFor<CPDF_Number>("N", 3);
   dict->SetNewFor<CPDF_Number>("First", 19);
 
   const char kStreamContent[] = "10 0 hi 14 12 21<</Name /Foo>>[1 2 3]4";
   ByteStringView contents_view(kStreamContent);
-  auto stream = pdfium::MakeRetain<CPDF_Stream>(
+  auto stream = fxcrt::MakeRetain<CPDF_Stream>(
       DataVector<uint8_t>(contents_view.begin(), contents_view.end()), dict);
   auto obj_stream = CPDF_ObjectStream::Create(std::move(stream));
   ASSERT_TRUE(obj_stream);
@@ -307,14 +307,14 @@ TEST(ObjectStreamTest, StreamDictGarbageObjNum) {
 }
 
 TEST(ObjectStreamTest, StreamDictGarbageObjectOffset) {
-  auto dict = pdfium::MakeRetain<CPDF_Dictionary>();
+  auto dict = fxcrt::MakeRetain<CPDF_Dictionary>();
   dict->SetNewFor<CPDF_Name>("Type", "ObjStm");
   dict->SetNewFor<CPDF_Number>("N", 3);
   dict->SetNewFor<CPDF_Number>("First", 16);
 
   const char kStreamContent[] = "10 0 11 hi 12 21<</Name /Foo>>[1 2 3]4";
   ByteStringView contents_view(kStreamContent);
-  auto stream = pdfium::MakeRetain<CPDF_Stream>(
+  auto stream = fxcrt::MakeRetain<CPDF_Stream>(
       DataVector<uint8_t>(contents_view.begin(), contents_view.end()), dict);
   auto obj_stream = CPDF_ObjectStream::Create(std::move(stream));
   ASSERT_TRUE(obj_stream);
@@ -340,14 +340,14 @@ TEST(ObjectStreamTest, StreamDictGarbageObjectOffset) {
 }
 
 TEST(ObjectStreamTest, StreamDictNegativeObjectOffset) {
-  auto dict = pdfium::MakeRetain<CPDF_Dictionary>();
+  auto dict = fxcrt::MakeRetain<CPDF_Dictionary>();
   dict->SetNewFor<CPDF_Name>("Type", "ObjStm");
   dict->SetNewFor<CPDF_Number>("N", 3);
   dict->SetNewFor<CPDF_Number>("First", 16);
 
   const char kStreamContent[] = "10 0 11 -1 12 21<</Name /Foo>>[1 2 3]4";
   ByteStringView contents_view(kStreamContent);
-  auto stream = pdfium::MakeRetain<CPDF_Stream>(
+  auto stream = fxcrt::MakeRetain<CPDF_Stream>(
       DataVector<uint8_t>(contents_view.begin(), contents_view.end()), dict);
   auto obj_stream = CPDF_ObjectStream::Create(std::move(stream));
   ASSERT_TRUE(obj_stream);
@@ -363,14 +363,14 @@ TEST(ObjectStreamTest, StreamDictNegativeObjectOffset) {
 }
 
 TEST(ObjectStreamTest, StreamDictObjectOffsetTooBig) {
-  auto dict = pdfium::MakeRetain<CPDF_Dictionary>();
+  auto dict = fxcrt::MakeRetain<CPDF_Dictionary>();
   dict->SetNewFor<CPDF_Name>("Type", "ObjStm");
   dict->SetNewFor<CPDF_Number>("N", 3);
   dict->SetNewFor<CPDF_Number>("First", 17);
 
   const char kStreamContent[] = "10 0 11 999 12 21<</Name /Foo>>[1 2 3]4";
   ByteStringView contents_view(kStreamContent);
-  auto stream = pdfium::MakeRetain<CPDF_Stream>(
+  auto stream = fxcrt::MakeRetain<CPDF_Stream>(
       DataVector<uint8_t>(contents_view.begin(), contents_view.end()), dict);
   auto obj_stream = CPDF_ObjectStream::Create(std::move(stream));
   ASSERT_TRUE(obj_stream);
@@ -386,14 +386,14 @@ TEST(ObjectStreamTest, StreamDictObjectOffsetTooBig) {
 }
 
 TEST(ObjectStreamTest, StreamDictDuplicateObjNum) {
-  auto dict = pdfium::MakeRetain<CPDF_Dictionary>();
+  auto dict = fxcrt::MakeRetain<CPDF_Dictionary>();
   dict->SetNewFor<CPDF_Name>("Type", "ObjStm");
   dict->SetNewFor<CPDF_Number>("N", 3);
   dict->SetNewFor<CPDF_Number>("First", 16);
 
   const char kStreamContent[] = "10 0 10 14 12 21<</Name /Foo>>[1 2 3]4";
   ByteStringView contents_view(kStreamContent);
-  auto stream = pdfium::MakeRetain<CPDF_Stream>(
+  auto stream = fxcrt::MakeRetain<CPDF_Stream>(
       DataVector<uint8_t>(contents_view.begin(), contents_view.end()), dict);
   auto obj_stream = CPDF_ObjectStream::Create(std::move(stream));
   ASSERT_TRUE(obj_stream);
@@ -429,14 +429,14 @@ TEST(ObjectStreamTest, StreamDictDuplicateObjNum) {
 TEST(ObjectStreamTest, StreamDictUnorderedObjectNumbers) {
   // ISO 32000-1:2008 spec. section 7.5.7, note 6 says there is no restriction
   // on object number ordering.
-  auto dict = pdfium::MakeRetain<CPDF_Dictionary>();
+  auto dict = fxcrt::MakeRetain<CPDF_Dictionary>();
   dict->SetNewFor<CPDF_Name>("Type", "ObjStm");
   dict->SetNewFor<CPDF_Number>("N", 3);
   dict->SetNewFor<CPDF_Number>("First", 16);
 
   const char kStreamContent[] = "11 0 12 14 10 21<</Name /Foo>>[1 2 3]4";
   ByteStringView contents_view(kStreamContent);
-  auto stream = pdfium::MakeRetain<CPDF_Stream>(
+  auto stream = fxcrt::MakeRetain<CPDF_Stream>(
       DataVector<uint8_t>(contents_view.begin(), contents_view.end()), dict);
   auto obj_stream = CPDF_ObjectStream::Create(std::move(stream));
   ASSERT_TRUE(obj_stream);
@@ -471,14 +471,14 @@ TEST(ObjectStreamTest, StreamDictUnorderedObjectOffsets) {
   // order.
   // TODO(thestig): Should CPDF_ObjectStream check for this and reject this
   // object stream?
-  auto dict = pdfium::MakeRetain<CPDF_Dictionary>();
+  auto dict = fxcrt::MakeRetain<CPDF_Dictionary>();
   dict->SetNewFor<CPDF_Name>("Type", "ObjStm");
   dict->SetNewFor<CPDF_Number>("N", 3);
   dict->SetNewFor<CPDF_Number>("First", 16);
 
   const char kStreamContent[] = "10 21 11 0 12 14<</Name /Foo>>[1 2 3]4";
   ByteStringView contents_view(kStreamContent);
-  auto stream = pdfium::MakeRetain<CPDF_Stream>(
+  auto stream = fxcrt::MakeRetain<CPDF_Stream>(
       DataVector<uint8_t>(contents_view.begin(), contents_view.end()), dict);
   auto obj_stream = CPDF_ObjectStream::Create(std::move(stream));
   ASSERT_TRUE(obj_stream);

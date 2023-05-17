@@ -93,7 +93,7 @@ enum class FX_CHARTYPE : uint8_t {
 };
 #endif  // PDF_ENABLE_XFA
 
-namespace pdfium {
+namespace fxcrt {
 namespace unicode {
 
 constexpr wchar_t kRightSingleQuotationMark = 0x2019;
@@ -114,6 +114,6 @@ FX_BREAKPROPERTY GetBreakProperty(wchar_t wch);
 #endif  // PDF_ENABLE_XFA
 
 }  // namespace unicode
-}  // namespace pdfium
+}  // namespace fxcrt
 
 #endif  // CORE_FXCRT_FX_UNICODE_H_

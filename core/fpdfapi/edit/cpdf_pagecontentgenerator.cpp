@@ -250,7 +250,7 @@ void CPDF_PageContentGenerator::UpdateResourcesDict() {
     // it has multiple references.
     if (pdfium::Contains(GetObjectsWithMultipleReferences(m_pDocument),
                          resources_object_number)) {
-      resources = pdfium::WrapRetain(resources->Clone()->AsMutableDictionary());
+      resources = fxcrt::WrapRetain(resources->Clone()->AsMutableDictionary());
       const uint32_t clone_object_number =
           m_pDocument->AddIndirectObject(resources);
       m_pObjHolder->SetResources(resources);
@@ -599,7 +599,7 @@ void CPDF_PageContentGenerator::ProcessGraphics(fxcrt::ostringstream* buf,
   if (maybe_name.has_value()) {
     name = std::move(maybe_name.value());
   } else {
-    auto gsDict = pdfium::MakeRetain<CPDF_Dictionary>();
+    auto gsDict = fxcrt::MakeRetain<CPDF_Dictionary>();
     if (graphD.fillAlpha != 1.0f)
       gsDict->SetNewFor<CPDF_Number>("ca", graphD.fillAlpha);
 
@@ -638,7 +638,7 @@ ByteString CPDF_PageContentGenerator::GetOrCreateDefaultGraphics() const {
   if (maybe_name.has_value())
     return maybe_name.value();
 
-  auto gsDict = pdfium::MakeRetain<CPDF_Dictionary>();
+  auto gsDict = fxcrt::MakeRetain<CPDF_Dictionary>();
   gsDict->SetNewFor<CPDF_Number>("ca", defaultGraphics.fillAlpha);
   gsDict->SetNewFor<CPDF_Number>("CA", defaultGraphics.strokeAlpha);
   gsDict->SetNewFor<CPDF_Name>("BM", "Normal");
@@ -685,7 +685,7 @@ void CPDF_PageContentGenerator::ProcessText(fxcrt::ostringstream* buf,
     RetainPtr<const CPDF_Object> pIndirectFont = pFont->GetFontDict();
     if (pIndirectFont->IsInline()) {
       // In this case we assume it must be a standard font
-      auto pFontDict = pdfium::MakeRetain<CPDF_Dictionary>();
+      auto pFontDict = fxcrt::MakeRetain<CPDF_Dictionary>();
       pFontDict->SetNewFor<CPDF_Name>("Type", "Font");
       pFontDict->SetNewFor<CPDF_Name>("Subtype", data.type);
       pFontDict->SetNewFor<CPDF_Name>("BaseFont", data.baseFont);

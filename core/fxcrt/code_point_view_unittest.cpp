@@ -9,9 +9,9 @@
 #include "build/build_config.h"
 #include "testing/gtest/include/gtest/gtest.h"
 
-namespace {
+namespace fxcrt {
 
-using ::pdfium::CodePointView;
+namespace {
 
 std::u32string Materialize(CodePointView view) {
   std::u32string materialized;
@@ -53,3 +53,5 @@ TEST(CodePointViewTest, SurrogateErrorRecovery) {
       << "Low-low";
 }
 #endif  // defined(WCHAR_T_IS_UTF16)
+
+}  // namespace fxcrt

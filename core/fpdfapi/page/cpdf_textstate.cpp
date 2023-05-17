@@ -105,7 +105,7 @@ CPDF_TextState::TextData::TextData(const TextData& that)
 CPDF_TextState::TextData::~TextData() = default;
 
 RetainPtr<CPDF_TextState::TextData> CPDF_TextState::TextData::Clone() const {
-  return pdfium::MakeRetain<CPDF_TextState::TextData>(*this);
+  return fxcrt::MakeRetain<CPDF_TextState::TextData>(*this);
 }
 
 void CPDF_TextState::TextData::SetFont(RetainPtr<CPDF_Font> pFont) {

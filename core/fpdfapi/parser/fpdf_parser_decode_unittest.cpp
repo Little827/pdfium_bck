@@ -19,38 +19,38 @@
 TEST(ParserDecodeTest, ValidateDecoderPipeline) {
   {
     // Empty decoder list is always valid.
-    auto decoders = pdfium::MakeRetain<CPDF_Array>();
+    auto decoders = fxcrt::MakeRetain<CPDF_Array>();
     EXPECT_TRUE(ValidateDecoderPipeline(decoders.Get()));
   }
   {
     // 1 decoder is almost always valid.
-    auto decoders = pdfium::MakeRetain<CPDF_Array>();
+    auto decoders = fxcrt::MakeRetain<CPDF_Array>();
     decoders->AppendNew<CPDF_Name>("FlateEncode");
     EXPECT_TRUE(ValidateDecoderPipeline(decoders.Get()));
   }
   {
     // 1 decoder is almost always valid, even with an unknown decoder.
-    auto decoders = pdfium::MakeRetain<CPDF_Array>();
+    auto decoders = fxcrt::MakeRetain<CPDF_Array>();
     decoders->AppendNew<CPDF_Name>("FooBar");
     EXPECT_TRUE(ValidateDecoderPipeline(decoders.Get()));
   }
   {
     // Valid 2 decoder pipeline.
-    auto decoders = pdfium::MakeRetain<CPDF_Array>();
+    auto decoders = fxcrt::MakeRetain<CPDF_Array>();
     decoders->AppendNew<CPDF_Name>("AHx");
     decoders->AppendNew<CPDF_Name>("LZWDecode");
     EXPECT_TRUE(ValidateDecoderPipeline(decoders.Get()));
   }
   {
     // Valid 2 decoder pipeline.
-    auto decoders = pdfium::MakeRetain<CPDF_Array>();
+    auto decoders = fxcrt::MakeRetain<CPDF_Array>();
     decoders->AppendNew<CPDF_Name>("ASCII85Decode");
     decoders->AppendNew<CPDF_Name>("ASCII85Decode");
     EXPECT_TRUE(ValidateDecoderPipeline(decoders.Get()));
   }
   {
     // Valid 5 decoder pipeline.
-    auto decoders = pdfium::MakeRetain<CPDF_Array>();
+    auto decoders = fxcrt::MakeRetain<CPDF_Array>();
     decoders->AppendNew<CPDF_Name>("ASCII85Decode");
     decoders->AppendNew<CPDF_Name>("A85");
     decoders->AppendNew<CPDF_Name>("RunLengthDecode");
@@ -60,7 +60,7 @@ TEST(ParserDecodeTest, ValidateDecoderPipeline) {
   }
   {
     // Valid 5 decoder pipeline, with an image decoder at the end.
-    auto decoders = pdfium::MakeRetain<CPDF_Array>();
+    auto decoders = fxcrt::MakeRetain<CPDF_Array>();
     decoders->AppendNew<CPDF_Name>("RunLengthDecode");
     decoders->AppendNew<CPDF_Name>("ASCII85Decode");
     decoders->AppendNew<CPDF_Name>("FlateDecode");
@@ -70,34 +70,34 @@ TEST(ParserDecodeTest, ValidateDecoderPipeline) {
   }
   {
     // Invalid 1 decoder pipeline due to wrong type.
-    auto decoders = pdfium::MakeRetain<CPDF_Array>();
+    auto decoders = fxcrt::MakeRetain<CPDF_Array>();
     decoders->AppendNew<CPDF_String>("FlateEncode", false);
     EXPECT_FALSE(ValidateDecoderPipeline(decoders.Get()));
   }
   {
     // Invalid 2 decoder pipeline, with 2 image decoders.
-    auto decoders = pdfium::MakeRetain<CPDF_Array>();
+    auto decoders = fxcrt::MakeRetain<CPDF_Array>();
     decoders->AppendNew<CPDF_Name>("DCTDecode");
     decoders->AppendNew<CPDF_Name>("CCITTFaxDecode");
     EXPECT_FALSE(ValidateDecoderPipeline(decoders.Get()));
   }
   {
     // Invalid 2 decoder pipeline, with 1 image decoder at the start.
-    auto decoders = pdfium::MakeRetain<CPDF_Array>();
+    auto decoders = fxcrt::MakeRetain<CPDF_Array>();
     decoders->AppendNew<CPDF_Name>("DCTDecode");
     decoders->AppendNew<CPDF_Name>("FlateDecode");
     EXPECT_FALSE(ValidateDecoderPipeline(decoders.Get()));
   }
   {
     // Invalid 2 decoder pipeline due to wrong type.
-    auto decoders = pdfium::MakeRetain<CPDF_Array>();
+    auto decoders = fxcrt::MakeRetain<CPDF_Array>();
     decoders->AppendNew<CPDF_String>("AHx", false);
     decoders->AppendNew<CPDF_Name>("LZWDecode");
     EXPECT_FALSE(ValidateDecoderPipeline(decoders.Get()));
   }
   {
     // Invalid 5 decoder pipeline.
-    auto decoders = pdfium::MakeRetain<CPDF_Array>();
+    auto decoders = fxcrt::MakeRetain<CPDF_Array>();
     decoders->AppendNew<CPDF_Name>("FlateDecode");
     decoders->AppendNew<CPDF_Name>("FlateDecode");
     decoders->AppendNew<CPDF_Name>("DCTDecode");
@@ -107,7 +107,7 @@ TEST(ParserDecodeTest, ValidateDecoderPipeline) {
   }
   {
     // Invalid 5 decoder pipeline due to wrong type.
-    auto decoders = pdfium::MakeRetain<CPDF_Array>();
+    auto decoders = fxcrt::MakeRetain<CPDF_Array>();
     decoders->AppendNew<CPDF_Name>("ASCII85Decode");
     decoders->AppendNew<CPDF_Name>("A85");
     decoders->AppendNew<CPDF_Name>("RunLengthDecode");
@@ -121,11 +121,11 @@ TEST(ParserDecodeTest, ValidateDecoderPipelineWithIndirectObjects) {
   {
     // Valid 2 decoder pipeline with indirect objects.
     CPDF_IndirectObjectHolder objects_holder;
-    auto decoder = pdfium::MakeRetain<CPDF_Name>(nullptr, "FlateDecode");
+    auto decoder = fxcrt::MakeRetain<CPDF_Name>(nullptr, "FlateDecode");
     uint32_t decoder_number =
         objects_holder.AddIndirectObject(std::move(decoder));
 
-    auto decoders = pdfium::MakeRetain<CPDF_Array>();
+    auto decoders = fxcrt::MakeRetain<CPDF_Array>();
     decoders->AppendNew<CPDF_Reference>(&objects_holder, decoder_number);
     decoders->AppendNew<CPDF_Name>("LZW");
     EXPECT_TRUE(ValidateDecoderPipeline(decoders.Get()));
@@ -134,11 +134,11 @@ TEST(ParserDecodeTest, ValidateDecoderPipelineWithIndirectObjects) {
     // Valid 5 decoder pipeline with indirect objects, with an image decoder at
     // the end.
     CPDF_IndirectObjectHolder objects_holder;
-    auto decoder = pdfium::MakeRetain<CPDF_Name>(nullptr, "LZW");
+    auto decoder = fxcrt::MakeRetain<CPDF_Name>(nullptr, "LZW");
     uint32_t decoder_number =
         objects_holder.AddIndirectObject(std::move(decoder));
 
-    auto decoders = pdfium::MakeRetain<CPDF_Array>();
+    auto decoders = fxcrt::MakeRetain<CPDF_Array>();
     decoders->AppendNew<CPDF_Name>("RunLengthDecode");
     decoders->AppendNew<CPDF_Name>("ASCII85Decode");
     decoders->AppendNew<CPDF_Name>("FlateDecode");
@@ -150,11 +150,11 @@ TEST(ParserDecodeTest, ValidateDecoderPipelineWithIndirectObjects) {
     // Invalid 2 decoder pipeline due to wrong type indirect object.
     CPDF_IndirectObjectHolder objects_holder;
     auto decoder =
-        pdfium::MakeRetain<CPDF_String>(nullptr, "FlateDecode", false);
+        fxcrt::MakeRetain<CPDF_String>(nullptr, "FlateDecode", false);
     uint32_t decoder_number =
         objects_holder.AddIndirectObject(std::move(decoder));
 
-    auto decoders = pdfium::MakeRetain<CPDF_Array>();
+    auto decoders = fxcrt::MakeRetain<CPDF_Array>();
     decoders->AppendNew<CPDF_Reference>(&objects_holder, decoder_number);
     decoders->AppendNew<CPDF_Name>("LZW");
     EXPECT_FALSE(ValidateDecoderPipeline(decoders.Get()));
@@ -162,11 +162,11 @@ TEST(ParserDecodeTest, ValidateDecoderPipelineWithIndirectObjects) {
   {
     // Invalid 2 decoder pipeline due to invalid indirect object.
     CPDF_IndirectObjectHolder objects_holder;
-    auto decoder = pdfium::MakeRetain<CPDF_Name>(nullptr, "DCTDecode");
+    auto decoder = fxcrt::MakeRetain<CPDF_Name>(nullptr, "DCTDecode");
     uint32_t decoder_number =
         objects_holder.AddIndirectObject(std::move(decoder));
 
-    auto decoders = pdfium::MakeRetain<CPDF_Array>();
+    auto decoders = fxcrt::MakeRetain<CPDF_Array>();
     decoders->AppendNew<CPDF_Reference>(&objects_holder, decoder_number);
     decoders->AppendNew<CPDF_Name>("LZW");
     EXPECT_FALSE(ValidateDecoderPipeline(decoders.Get()));
@@ -177,21 +177,21 @@ TEST(ParserDecodeTest, ValidateDecoderPipelineWithIndirectObjects) {
 TEST(ParserDecodeTest, GetDecoderArray) {
   {
     // Treat no filter as an empty filter array.
-    auto dict = pdfium::MakeRetain<CPDF_Dictionary>();
+    auto dict = fxcrt::MakeRetain<CPDF_Dictionary>();
     absl::optional<DecoderArray> decoder_array = GetDecoderArray(dict);
     ASSERT_TRUE(decoder_array.has_value());
     EXPECT_TRUE(decoder_array.value().empty());
   }
   {
     // Wrong filter type.
-    auto dict = pdfium::MakeRetain<CPDF_Dictionary>();
+    auto dict = fxcrt::MakeRetain<CPDF_Dictionary>();
     dict->SetNewFor<CPDF_String>("Filter", "RL", false);
     absl::optional<DecoderArray> decoder_array = GetDecoderArray(dict);
     EXPECT_FALSE(decoder_array.has_value());
   }
   {
     // Filter name.
-    auto dict = pdfium::MakeRetain<CPDF_Dictionary>();
+    auto dict = fxcrt::MakeRetain<CPDF_Dictionary>();
     dict->SetNewFor<CPDF_Name>("Filter", "RL");
     absl::optional<DecoderArray> decoder_array = GetDecoderArray(dict);
     ASSERT_TRUE(decoder_array.has_value());
@@ -200,7 +200,7 @@ TEST(ParserDecodeTest, GetDecoderArray) {
   }
   {
     // Empty filter array.
-    auto dict = pdfium::MakeRetain<CPDF_Dictionary>();
+    auto dict = fxcrt::MakeRetain<CPDF_Dictionary>();
     dict->SetNewFor<CPDF_Array>("Filter");
     absl::optional<DecoderArray> decoder_array = GetDecoderArray(dict);
     ASSERT_TRUE(decoder_array.has_value());
@@ -208,7 +208,7 @@ TEST(ParserDecodeTest, GetDecoderArray) {
   }
   {
     // Valid 1 element filter array.
-    auto dict = pdfium::MakeRetain<CPDF_Dictionary>();
+    auto dict = fxcrt::MakeRetain<CPDF_Dictionary>();
     auto filter_array = dict->SetNewFor<CPDF_Array>("Filter");
     filter_array->AppendNew<CPDF_Name>("FooBar");
     absl::optional<DecoderArray> decoder_array = GetDecoderArray(dict);
@@ -218,7 +218,7 @@ TEST(ParserDecodeTest, GetDecoderArray) {
   }
   {
     // Valid 2 element filter array.
-    auto dict = pdfium::MakeRetain<CPDF_Dictionary>();
+    auto dict = fxcrt::MakeRetain<CPDF_Dictionary>();
     auto filter_array = dict->SetNewFor<CPDF_Array>("Filter");
     filter_array->AppendNew<CPDF_Name>("AHx");
     filter_array->AppendNew<CPDF_Name>("LZWDecode");
@@ -230,7 +230,7 @@ TEST(ParserDecodeTest, GetDecoderArray) {
   }
   {
     // Invalid 2 element filter array.
-    auto dict = pdfium::MakeRetain<CPDF_Dictionary>();
+    auto dict = fxcrt::MakeRetain<CPDF_Dictionary>();
     auto invalid_filter_array = dict->SetNewFor<CPDF_Array>("Filter");
     invalid_filter_array->AppendNew<CPDF_Name>("DCTDecode");
     invalid_filter_array->AppendNew<CPDF_Name>("CCITTFaxDecode");

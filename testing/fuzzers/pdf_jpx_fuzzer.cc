@@ -60,7 +60,7 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
     image_info.width = (image_info.width * image_info.channels + 2) / 3;
     format = FXDIB_Format::kRgb;
   }
-  auto bitmap = pdfium::MakeRetain<CFX_DIBitmap>();
+  auto bitmap = fxcrt::MakeRetain<CFX_DIBitmap>();
   if (!bitmap->Create(image_info.width, image_info.height, format))
     return 0;
 

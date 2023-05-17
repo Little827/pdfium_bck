@@ -221,7 +221,7 @@ using fxcrt::UnownedPtr;
 
 #endif  // defined(UNOWNED_PTR_IS_BASE_RAW_PTR)
 
-namespace pdfium {
+namespace fxcrt {
 
 // Type-deducing wrapper to make an UnownedPtr from an ordinary pointer,
 // since equivalent constructor is explicit.
@@ -230,6 +230,6 @@ UnownedPtr<T> WrapUnowned(T* that) {
   return UnownedPtr<T>(that);
 }
 
-}  // namespace pdfium
+}  // namespace fxcrt
 
 #endif  // CORE_FXCRT_UNOWNED_PTR_H_

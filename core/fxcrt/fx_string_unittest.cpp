@@ -112,8 +112,8 @@ TEST(fxstring, FXUTF8DecodeErrorRecovery) {
 TEST(fxstring, FXUTF8EncodeDecodeConsistency) {
   WideString wstr;
   wstr.Reserve(0x10000);
-  for (char32_t w = 0; w < pdfium::kMinimumSupplementaryCodePoint; ++w) {
-    if (pdfium::IsHighSurrogate(w) || pdfium::IsLowSurrogate(w)) {
+  for (char32_t w = 0; w < fxcrt::kMinimumSupplementaryCodePoint; ++w) {
+    if (fxcrt::IsHighSurrogate(w) || fxcrt::IsLowSurrogate(w)) {
       // Skip UTF-16 surrogates.
       continue;
     }
@@ -129,8 +129,8 @@ TEST(fxstring, FXUTF8EncodeDecodeConsistency) {
 TEST(fxstring, FXUTF8EncodeDecodeConsistencyUnpairedHighSurrogates) {
   WideString wstr;
   wstr.Reserve(0x400);
-  for (wchar_t w = pdfium::kMinimumHighSurrogateCodeUnit;
-       w <= pdfium::kMaximumHighSurrogateCodeUnit; ++w) {
+  for (wchar_t w = fxcrt::kMinimumHighSurrogateCodeUnit;
+       w <= fxcrt::kMaximumHighSurrogateCodeUnit; ++w) {
     wstr += w;
   }
   ASSERT_EQ(0x400u, wstr.GetLength());
@@ -143,8 +143,8 @@ TEST(fxstring, FXUTF8EncodeDecodeConsistencyUnpairedHighSurrogates) {
 TEST(fxstring, FXUTF8EncodeDecodeConsistencyUnpairedLowSurrogates) {
   WideString wstr;
   wstr.Reserve(0x400);
-  for (wchar_t w = pdfium::kMinimumLowSurrogateCodeUnit;
-       w <= pdfium::kMaximumLowSurrogateCodeUnit; ++w) {
+  for (wchar_t w = fxcrt::kMinimumLowSurrogateCodeUnit;
+       w <= fxcrt::kMaximumLowSurrogateCodeUnit; ++w) {
     wstr += w;
   }
   ASSERT_EQ(0x400u, wstr.GetLength());

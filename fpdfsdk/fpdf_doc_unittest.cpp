@@ -203,7 +203,7 @@ TEST_F(PDFDocTest, FindBookmark) {
 }
 
 TEST_F(PDFDocTest, GetLocationInPage) {
-  auto array = pdfium::MakeRetain<CPDF_Array>();
+  auto array = fxcrt::MakeRetain<CPDF_Array>();
   array->AppendNew<CPDF_Number>(0);  // Page Index.
   array->AppendNew<CPDF_Name>("XYZ");
   array->AppendNew<CPDF_Number>(4);  // X
@@ -237,7 +237,7 @@ TEST_F(PDFDocTest, GetLocationInPage) {
   EXPECT_FALSE(hasY);
   EXPECT_FALSE(hasZoom);
 
-  array = pdfium::MakeRetain<CPDF_Array>();
+  array = fxcrt::MakeRetain<CPDF_Array>();
   EXPECT_FALSE(FPDFDest_GetLocationInPage(FPDFDestFromCPDFArray(array.Get()),
                                           &hasX, &hasY, &hasZoom, &x, &y,
                                           &zoom));

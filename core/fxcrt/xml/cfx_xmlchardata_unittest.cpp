@@ -29,7 +29,7 @@ TEST(CFX_XMLCharDataTest, Clone) {
 }
 
 TEST(CFX_XMLCharDataTest, Save) {
-  auto stream = pdfium::MakeRetain<StringWriteStream>();
+  auto stream = fxcrt::MakeRetain<StringWriteStream>();
   CFX_XMLCharData data(L"My Data");
   data.Save(stream);
   EXPECT_EQ("<![CDATA[My Data]]>", stream->ToString());

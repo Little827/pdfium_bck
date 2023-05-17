@@ -43,7 +43,7 @@ void CFX_ClipRgn::IntersectMaskRect(FX_RECT rect,
     m_Mask = std::move(pOldMask);
     return;
   }
-  m_Mask = pdfium::MakeRetain<CFX_DIBitmap>();
+  m_Mask = fxcrt::MakeRetain<CFX_DIBitmap>();
   m_Mask->Create(m_Box.Width(), m_Box.Height(), FXDIB_Format::k8bppMask);
   const int offset = m_Box.left - mask_rect.left;
   for (int row = m_Box.top; row < m_Box.bottom; row++) {
@@ -74,7 +74,7 @@ void CFX_ClipRgn::IntersectMaskF(int left,
     m_Box = new_box;
     return;
   }
-  auto new_dib = pdfium::MakeRetain<CFX_DIBitmap>();
+  auto new_dib = fxcrt::MakeRetain<CFX_DIBitmap>();
   new_dib->Create(new_box.Width(), new_box.Height(), FXDIB_Format::k8bppMask);
   for (int row = new_box.top; row < new_box.bottom; row++) {
     pdfium::span<const uint8_t> old_scan = m_Mask->GetScanline(row - m_Box.top);

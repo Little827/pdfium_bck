@@ -144,7 +144,7 @@ std::vector<WideString> ExtractFindWhat(const WideString& findwhat) {
       WideString curStr = word->Substr(pos, 1);
       wchar_t curChar = word.value()[pos];
       if (IsIgnoreSpaceCharacter(curChar)) {
-        if (pos > 0 && curChar == pdfium::unicode::kRightSingleQuotationMark) {
+        if (pos > 0 && curChar == fxcrt::unicode::kRightSingleQuotationMark) {
           pos++;
           continue;
         }

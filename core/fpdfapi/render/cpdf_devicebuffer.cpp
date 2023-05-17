@@ -58,7 +58,7 @@ CPDF_DeviceBuffer::CPDF_DeviceBuffer(CPDF_RenderContext* pContext,
     : m_pDevice(pDevice),
       m_pContext(pContext),
       m_pObject(pObj),
-      m_pBitmap(pdfium::MakeRetain<CFX_DIBitmap>()),
+      m_pBitmap(fxcrt::MakeRetain<CFX_DIBitmap>()),
       m_Rect(rect),
       m_Matrix(CalculateMatrix(pDevice, rect, max_dpi, kScaleDeviceBuffer)) {}
 
@@ -81,7 +81,7 @@ void CPDF_DeviceBuffer::OutputToDevice() {
     }
     return;
   }
-  auto pBuffer = pdfium::MakeRetain<CFX_DIBitmap>();
+  auto pBuffer = fxcrt::MakeRetain<CFX_DIBitmap>();
   m_pDevice->CreateCompatibleBitmap(pBuffer, m_pBitmap->GetWidth(),
                                     m_pBitmap->GetHeight());
   m_pContext->GetBackground(pBuffer, m_pObject, nullptr, m_Matrix);

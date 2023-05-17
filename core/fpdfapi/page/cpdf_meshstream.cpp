@@ -106,7 +106,7 @@ CPDF_MeshStream::CPDF_MeshStream(
       m_funcs(funcs),
       m_pShadingStream(std::move(pShadingStream)),
       m_pCS(std::move(pCS)),
-      m_pStream(pdfium::MakeRetain<CPDF_StreamAcc>(m_pShadingStream)) {}
+      m_pStream(fxcrt::MakeRetain<CPDF_StreamAcc>(m_pShadingStream)) {}
 
 CPDF_MeshStream::~CPDF_MeshStream() = default;
 
