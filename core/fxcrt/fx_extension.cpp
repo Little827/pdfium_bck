@@ -151,15 +151,15 @@ void FXSYS_IntToFourHexChars(uint16_t n, char* buf) {
 }
 
 size_t FXSYS_ToUTF16BE(uint32_t unicode, char* buf) {
-  DCHECK(unicode <= pdfium::kMaximumSupplementaryCodePoint);
-  DCHECK(!pdfium::IsHighSurrogate(unicode));
-  DCHECK(!pdfium::IsLowSurrogate(unicode));
+  DCHECK(unicode <= fxcrt::kMaximumSupplementaryCodePoint);
+  DCHECK(!fxcrt::IsHighSurrogate(unicode));
+  DCHECK(!fxcrt::IsLowSurrogate(unicode));
 
   if (unicode <= 0xFFFF) {
     FXSYS_IntToFourHexChars(unicode, buf);
     return 4;
   }
-  pdfium::SurrogatePair surrogate_pair(unicode);
+  fxcrt::SurrogatePair surrogate_pair(unicode);
   FXSYS_IntToFourHexChars(surrogate_pair.high(), buf);
   FXSYS_IntToFourHexChars(surrogate_pair.low(), buf + 4);
   return 8;

@@ -136,7 +136,7 @@ TEST(RetainPtr, NullptrAssign) {
 TEST(RetainPtr, RawAssign) {
   PseudoRetainable obj;
   RetainPtr<PseudoRetainable> ptr;
-  ptr = pdfium::WrapRetain(&obj);
+  ptr = WrapRetain(&obj);
   EXPECT_EQ(&obj, ptr);
 }
 
@@ -153,7 +153,7 @@ TEST(RetainPtr, CopyAssign) {
     {
       // Test assignment from wrapped underlying type.
       RetainPtr<PseudoRetainable> ptr2;
-      ptr2 = pdfium::WrapRetain(ptr.Get());
+      ptr2 = WrapRetain(ptr.Get());
       EXPECT_EQ(3, obj.retain_count());
       EXPECT_EQ(1, obj.release_count());
     }
@@ -198,7 +198,7 @@ TEST(RetainPtr, CopyConvertAssign) {
     {
       // Test assignment from wrapped underlying type.
       RetainPtr<const PseudoRetainable> ptr2;
-      ptr2 = pdfium::WrapRetain(ptr.Get());
+      ptr2 = WrapRetain(ptr.Get());
       EXPECT_EQ(3, obj.retain_count());
       EXPECT_EQ(1, obj.release_count());
     }
@@ -233,7 +233,7 @@ TEST(RetainPtr, AmbiguousExpression) {
   class B : public A {};
 
   // Test passes if it compiles without error.
-  RetainPtr<A> var = (0) ? pdfium::MakeRetain<A>() : pdfium::MakeRetain<B>();
+  RetainPtr<A> var = (0) ? MakeRetain<A>() : MakeRetain<B>();
   EXPECT_TRUE(var);
 }
 
@@ -413,7 +413,7 @@ TEST(RetainPtr, Bool) {
 }
 
 TEST(RetainPtr, MakeRetained) {
-  auto ptr = pdfium::MakeRetain<Retainable>();
+  auto ptr = MakeRetain<Retainable>();
   EXPECT_TRUE(ptr->HasOneRef());
   {
     RetainPtr<Retainable> other = ptr;

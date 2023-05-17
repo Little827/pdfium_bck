@@ -619,7 +619,7 @@ bool CPDF_RenderStatus::ProcessTransparency(CPDF_PageObject* pPageObj,
   RetainPtr<CFX_DIBitmap> backdrop;
   if (!transparency.IsIsolated() &&
       (m_pDevice->GetRenderCaps() & FXRC_GET_BITS)) {
-    backdrop = pdfium::MakeRetain<CFX_DIBitmap>();
+    backdrop = fxcrt::MakeRetain<CFX_DIBitmap>();
     if (!m_pDevice->CreateCompatibleBitmap(backdrop, width, height))
       return true;
     m_pDevice->GetDIBits(backdrop, rect.left, rect.top);
@@ -632,7 +632,7 @@ bool CPDF_RenderStatus::ProcessTransparency(CPDF_PageObject* pPageObj,
 
   RetainPtr<CFX_DIBitmap> pTextMask;
   if (bTextClip) {
-    pTextMask = pdfium::MakeRetain<CFX_DIBitmap>();
+    pTextMask = fxcrt::MakeRetain<CFX_DIBitmap>();
     if (!pTextMask->Create(width, height, FXDIB_Format::k8bppMask))
       return true;
 
@@ -704,7 +704,7 @@ RetainPtr<CFX_DIBitmap> CPDF_RenderStatus::GetBackdrop(
     bool bBackAlphaRequired) {
   int width = bbox.Width();
   int height = bbox.Height();
-  auto pBackdrop = pdfium::MakeRetain<CFX_DIBitmap>();
+  auto pBackdrop = fxcrt::MakeRetain<CFX_DIBitmap>();
   if (bBackAlphaRequired && !m_bDropObjects)
     pBackdrop->Create(width, height, FXDIB_Format::kArgb);
   else
@@ -1008,7 +1008,7 @@ bool CPDF_RenderStatus::ProcessType3Text(CPDF_TextObject* textobj,
     return true;
 
   FX_RECT rect = GetGlyphsBBox(glyphs, 0);
-  auto pBitmap = pdfium::MakeRetain<CFX_DIBitmap>();
+  auto pBitmap = fxcrt::MakeRetain<CFX_DIBitmap>();
   if (!pBitmap->Create(rect.Width(), rect.Height(), FXDIB_Format::k8bppMask))
     return true;
 
@@ -1300,7 +1300,7 @@ void CPDF_RenderStatus::CompositeDIBitmap(
                                pDIBitmap, 0, 0, blend_mode, nullptr, false);
   }
 
-  auto pBackdrop1 = pdfium::MakeRetain<CFX_DIBitmap>();
+  auto pBackdrop1 = fxcrt::MakeRetain<CFX_DIBitmap>();
   pBackdrop1->Create(pBackdrop->GetWidth(), pBackdrop->GetHeight(),
                      FXDIB_Format::kRgb32);
   pBackdrop1->Clear((uint32_t)-1);
@@ -1371,7 +1371,7 @@ RetainPtr<CFX_DIBitmap> CPDF_RenderStatus::LoadSMask(
   status.Initialize(nullptr, nullptr);
   status.RenderObjectList(&form, matrix);
 
-  auto pMask = pdfium::MakeRetain<CFX_DIBitmap>();
+  auto pMask = fxcrt::MakeRetain<CFX_DIBitmap>();
   if (!pMask->Create(width, height, FXDIB_Format::k8bppMask))
     return nullptr;
 

@@ -27,7 +27,7 @@ class SharedCopyOnWrite {
 
   template <typename... Args>
   ObjClass* Emplace(Args... params) {
-    m_pObject = pdfium::MakeRetain<ObjClass>(params...);
+    m_pObject = MakeRetain<ObjClass>(params...);
     return m_pObject.Get();
   }
 

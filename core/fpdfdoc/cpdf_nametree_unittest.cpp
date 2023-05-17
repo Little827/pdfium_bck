@@ -103,7 +103,7 @@ void FillNameTreeDict(CPDF_Dictionary* pRootDict) {
 
 TEST(cpdf_nametree, GetUnicodeNameWithBOM) {
   // Set up the root dictionary with a Names array.
-  auto pRootDict = pdfium::MakeRetain<CPDF_Dictionary>();
+  auto pRootDict = fxcrt::MakeRetain<CPDF_Dictionary>();
   auto pNames = pRootDict->SetNewFor<CPDF_Array>("Names");
 
   // Add the key "1" (with BOM) and value 100 into the array.
@@ -127,7 +127,7 @@ TEST(cpdf_nametree, GetUnicodeNameWithBOM) {
 TEST(cpdf_nametree, GetFromTreeWithLimitsArrayWith4Items) {
   // After creating a name tree, mutate a /Limits array so it has excess
   // elements.
-  auto pRootDict = pdfium::MakeRetain<CPDF_Dictionary>();
+  auto pRootDict = fxcrt::MakeRetain<CPDF_Dictionary>();
   FillNameTreeDict(pRootDict.Get());
   RetainPtr<CPDF_Dictionary> pKid1 =
       pRootDict->GetMutableArrayFor("Kids")->GetMutableDictAt(0);
@@ -151,7 +151,7 @@ TEST(cpdf_nametree, GetFromTreeWithLimitsArrayWith4Items) {
 
 TEST(cpdf_nametree, AddIntoNames) {
   // Set up a name tree with a single Names array.
-  auto pRootDict = pdfium::MakeRetain<CPDF_Dictionary>();
+  auto pRootDict = fxcrt::MakeRetain<CPDF_Dictionary>();
   auto pNames = pRootDict->SetNewFor<CPDF_Array>("Names");
   AddNameKeyValue(pNames.Get(), "2.txt", 222);
   AddNameKeyValue(pNames.Get(), "7.txt", 777);
@@ -160,19 +160,19 @@ TEST(cpdf_nametree, AddIntoNames) {
       CPDF_NameTree::CreateForTesting(pRootDict.Get());
 
   // Insert a name that already exists in the names array.
-  EXPECT_FALSE(name_tree->AddValueAndName(pdfium::MakeRetain<CPDF_Number>(111),
+  EXPECT_FALSE(name_tree->AddValueAndName(fxcrt::MakeRetain<CPDF_Number>(111),
                                           L"2.txt"));
 
   // Insert in the beginning of the names array.
-  EXPECT_TRUE(name_tree->AddValueAndName(pdfium::MakeRetain<CPDF_Number>(111),
+  EXPECT_TRUE(name_tree->AddValueAndName(fxcrt::MakeRetain<CPDF_Number>(111),
                                          L"1.txt"));
 
   // Insert in the middle of the names array.
-  EXPECT_TRUE(name_tree->AddValueAndName(pdfium::MakeRetain<CPDF_Number>(555),
+  EXPECT_TRUE(name_tree->AddValueAndName(fxcrt::MakeRetain<CPDF_Number>(555),
                                          L"5.txt"));
 
   // Insert at the end of the names array.
-  EXPECT_TRUE(name_tree->AddValueAndName(pdfium::MakeRetain<CPDF_Number>(999),
+  EXPECT_TRUE(name_tree->AddValueAndName(fxcrt::MakeRetain<CPDF_Number>(999),
                                          L"9.txt"));
 
   // Check that the names array has the expected key-value pairs.
@@ -185,30 +185,30 @@ TEST(cpdf_nametree, AddIntoNames) {
 
 TEST(cpdf_nametree, AddIntoEmptyNames) {
   // Set up a name tree with an empty Names array.
-  auto pRootDict = pdfium::MakeRetain<CPDF_Dictionary>();
+  auto pRootDict = fxcrt::MakeRetain<CPDF_Dictionary>();
   auto pNames = pRootDict->SetNewFor<CPDF_Array>("Names");
 
   std::unique_ptr<CPDF_NameTree> name_tree =
       CPDF_NameTree::CreateForTesting(pRootDict.Get());
 
   // Insert a name should work.
-  EXPECT_TRUE(name_tree->AddValueAndName(pdfium::MakeRetain<CPDF_Number>(111),
+  EXPECT_TRUE(name_tree->AddValueAndName(fxcrt::MakeRetain<CPDF_Number>(111),
                                          L"2.txt"));
 
   // Insert a name that already exists in the names array.
-  EXPECT_FALSE(name_tree->AddValueAndName(pdfium::MakeRetain<CPDF_Number>(111),
+  EXPECT_FALSE(name_tree->AddValueAndName(fxcrt::MakeRetain<CPDF_Number>(111),
                                           L"2.txt"));
 
   // Insert in the beginning of the names array.
-  EXPECT_TRUE(name_tree->AddValueAndName(pdfium::MakeRetain<CPDF_Number>(111),
+  EXPECT_TRUE(name_tree->AddValueAndName(fxcrt::MakeRetain<CPDF_Number>(111),
                                          L"1.txt"));
 
   // Insert in the middle of the names array.
-  EXPECT_TRUE(name_tree->AddValueAndName(pdfium::MakeRetain<CPDF_Number>(555),
+  EXPECT_TRUE(name_tree->AddValueAndName(fxcrt::MakeRetain<CPDF_Number>(555),
                                          L"5.txt"));
 
   // Insert at the end of the names array.
-  EXPECT_TRUE(name_tree->AddValueAndName(pdfium::MakeRetain<CPDF_Number>(999),
+  EXPECT_TRUE(name_tree->AddValueAndName(fxcrt::MakeRetain<CPDF_Number>(999),
                                          L"9.txt"));
 
   // Check that the names array has the expected key-value pairs.
@@ -219,36 +219,36 @@ TEST(cpdf_nametree, AddIntoEmptyNames) {
 }
 
 TEST(cpdf_nametree, AddIntoKids) {
-  auto pRootDict = pdfium::MakeRetain<CPDF_Dictionary>();
+  auto pRootDict = fxcrt::MakeRetain<CPDF_Dictionary>();
   FillNameTreeDict(pRootDict.Get());
   std::unique_ptr<CPDF_NameTree> name_tree =
       CPDF_NameTree::CreateForTesting(pRootDict.Get());
 
   // Check that adding an existing name would fail.
-  EXPECT_FALSE(name_tree->AddValueAndName(pdfium::MakeRetain<CPDF_Number>(444),
+  EXPECT_FALSE(name_tree->AddValueAndName(fxcrt::MakeRetain<CPDF_Number>(444),
                                           L"9.txt"));
 
   // Add a name within the limits of a leaf node.
-  EXPECT_TRUE(name_tree->AddValueAndName(pdfium::MakeRetain<CPDF_Number>(444),
+  EXPECT_TRUE(name_tree->AddValueAndName(fxcrt::MakeRetain<CPDF_Number>(444),
                                          L"4.txt"));
   ASSERT_TRUE(name_tree->LookupValue(L"4.txt"));
   EXPECT_EQ(444, name_tree->LookupValue(L"4.txt")->GetInteger());
 
   // Add a name that requires changing the limits of two bottom levels.
-  EXPECT_TRUE(name_tree->AddValueAndName(pdfium::MakeRetain<CPDF_Number>(666),
+  EXPECT_TRUE(name_tree->AddValueAndName(fxcrt::MakeRetain<CPDF_Number>(666),
                                          L"6.txt"));
   ASSERT_TRUE(name_tree->LookupValue(L"6.txt"));
   EXPECT_EQ(666, name_tree->LookupValue(L"6.txt")->GetInteger());
 
   // Add a name that requires changing the limits of two top levels.
-  EXPECT_TRUE(name_tree->AddValueAndName(pdfium::MakeRetain<CPDF_Number>(99),
+  EXPECT_TRUE(name_tree->AddValueAndName(fxcrt::MakeRetain<CPDF_Number>(99),
                                          L"99.txt"));
   ASSERT_TRUE(name_tree->LookupValue(L"99.txt"));
   EXPECT_EQ(99, name_tree->LookupValue(L"99.txt")->GetInteger());
 
   // Add a name that requires changing the lower limit of all levels.
-  EXPECT_TRUE(name_tree->AddValueAndName(pdfium::MakeRetain<CPDF_Number>(-5),
-                                         L"0.txt"));
+  EXPECT_TRUE(
+      name_tree->AddValueAndName(fxcrt::MakeRetain<CPDF_Number>(-5), L"0.txt"));
   ASSERT_TRUE(name_tree->LookupValue(L"0.txt"));
   EXPECT_EQ(-5, name_tree->LookupValue(L"0.txt")->GetInteger());
 
@@ -294,7 +294,7 @@ TEST(cpdf_nametree, AddIntoKids) {
 }
 
 TEST(cpdf_nametree, DeleteFromKids) {
-  auto pRootDict = pdfium::MakeRetain<CPDF_Dictionary>();
+  auto pRootDict = fxcrt::MakeRetain<CPDF_Dictionary>();
   FillNameTreeDict(pRootDict.Get());
   std::unique_ptr<CPDF_NameTree> name_tree =
       CPDF_NameTree::CreateForTesting(pRootDict.Get());

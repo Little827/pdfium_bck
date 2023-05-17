@@ -689,7 +689,7 @@ void CPDF_TextPage::AddCharInfoByRLDirection(wchar_t wChar,
     return;
   }
   info2.m_Index = m_TextBuf.GetLength();
-  wChar = pdfium::unicode::GetMirrorChar(wChar);
+  wChar = fxcrt::unicode::GetMirrorChar(wChar);
   DataVector<wchar_t> normalized = GetUnicodeNormalization(wChar);
   if (normalized.empty()) {
     info2.m_Unicode = wChar;

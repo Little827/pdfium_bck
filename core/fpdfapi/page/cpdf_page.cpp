@@ -76,7 +76,7 @@ void CPDF_Page::ParseContent() {
 }
 
 RetainPtr<CPDF_Object> CPDF_Page::GetMutablePageAttr(const ByteString& name) {
-  return pdfium::WrapRetain(const_cast<CPDF_Object*>(GetPageAttr(name).Get()));
+  return fxcrt::WrapRetain(const_cast<CPDF_Object*>(GetPageAttr(name).Get()));
 }
 
 RetainPtr<const CPDF_Object> CPDF_Page::GetPageAttr(

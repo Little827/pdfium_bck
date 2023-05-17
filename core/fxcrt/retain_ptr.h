@@ -193,14 +193,6 @@ class Retainable {
                 "to work properly in Retain()");
 };
 
-}  // namespace fxcrt
-
-using fxcrt::ReleaseDeleter;
-using fxcrt::Retainable;
-using fxcrt::RetainPtr;
-
-namespace pdfium {
-
 // Helper to make a RetainPtr along the lines of std::make_unique<>().
 // Arguments are forwarded to T's constructor. Classes managed by RetainPtr
 // should have protected (or private) constructors, and should friend this
@@ -217,12 +209,16 @@ RetainPtr<T> WrapRetain(T* that) {
   return RetainPtr<T>(that);
 }
 
-}  // namespace pdfium
+}  // namespace fxcrt
+
+using fxcrt::ReleaseDeleter;
+using fxcrt::Retainable;
+using fxcrt::RetainPtr;
 
 // Macro to allow construction via MakeRetain<>() only, when used
 // with a private constructor in a class.
 #define CONSTRUCT_VIA_MAKE_RETAIN         \
   template <typename T, typename... Args> \
-  friend RetainPtr<T> pdfium::MakeRetain(Args&&... args)
+  friend RetainPtr<T> fxcrt::MakeRetain(Args&&... args)
 
 #endif  // CORE_FXCRT_RETAIN_PTR_H_

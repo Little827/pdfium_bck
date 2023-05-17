@@ -236,9 +236,10 @@ bool CPDF_Parser::ParseFileVersion() {
 CPDF_Parser::Error CPDF_Parser::StartParse(
     RetainPtr<IFX_SeekableReadStream> pFileAccess,
     const ByteString& password) {
-  if (!InitSyntaxParser(pdfium::MakeRetain<CPDF_ReadValidator>(
-          std::move(pFileAccess), nullptr)))
+  if (!InitSyntaxParser(fxcrt::MakeRetain<CPDF_ReadValidator>(
+          std::move(pFileAccess), nullptr))) {
     return FORMAT_ERROR;
+  }
   SetPassword(password);
   return StartParseInternal();
 }
@@ -337,7 +338,7 @@ CPDF_Parser::Error CPDF_Parser::SetEncryptHandler() {
   if (pEncryptDict->GetNameFor("Filter") != "Standard")
     return HANDLER_ERROR;
 
-  auto pSecurityHandler = pdfium::MakeRetain<CPDF_SecurityHandler>();
+  auto pSecurityHandler = fxcrt::MakeRetain<CPDF_SecurityHandler>();
   if (!pSecurityHandler->OnInit(pEncryptDict, GetIDArray(), GetPassword()))
     return PASSWORD_ERROR;
 
@@ -799,7 +800,7 @@ bool CPDF_Parser::LoadCrossRefV5(FX_FILESIZE* pos, bool bMainXRef) {
     return false;
 
   uint32_t total_width = dwAccWidth.ValueOrDie();
-  auto pAcc = pdfium::MakeRetain<CPDF_StreamAcc>(std::move(pStream));
+  auto pAcc = fxcrt::MakeRetain<CPDF_StreamAcc>(std::move(pStream));
   pAcc->LoadAllDataFiltered();
 
   pdfium::span<const uint8_t> data_span = pAcc->GetSpan();
@@ -903,7 +904,7 @@ RetainPtr<const CPDF_Dictionary> CPDF_Parser::GetEncryptDict() const {
     return nullptr;
 
   if (pEncryptObj->IsDictionary())
-    return pdfium::WrapRetain(pEncryptObj->AsDictionary());
+    return fxcrt::WrapRetain(pEncryptObj->AsDictionary());
 
   if (pEncryptObj->IsReference()) {
     return ToDictionary(m_pObjectsHolder->GetOrParseIndirectObject(

@@ -257,7 +257,7 @@ RetainPtr<CPDF_Dictionary> SetExtGStateInResourceDict(
     const CPDF_Dictionary* pAnnotDict,
     const ByteString& sBlendMode) {
   auto pGSDict =
-      pdfium::MakeRetain<CPDF_Dictionary>(pAnnotDict->GetByteStringPool());
+      fxcrt::MakeRetain<CPDF_Dictionary>(pAnnotDict->GetByteStringPool());
 
   // ExtGState represents a graphics state parameter dictionary.
   pGSDict->SetNewFor<CPDF_Name>("Type", "ExtGState");
@@ -281,7 +281,7 @@ RetainPtr<CPDF_Dictionary> SetExtGStateInResourceDict(
   pGSDict->SetNewFor<CPDF_Name>("BM", sBlendMode);
 
   auto pExtGStateDict =
-      pdfium::MakeRetain<CPDF_Dictionary>(pAnnotDict->GetByteStringPool());
+      fxcrt::MakeRetain<CPDF_Dictionary>(pAnnotDict->GetByteStringPool());
 
   pExtGStateDict->SetFor("GS", pGSDict);
 

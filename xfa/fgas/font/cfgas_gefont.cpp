@@ -25,7 +25,7 @@ RetainPtr<CFGAS_GEFont> CFGAS_GEFont::LoadFont(const wchar_t* pszFontFamily,
                                                uint32_t dwFontStyles,
                                                FX_CodePage wCodePage) {
 #if BUILDFLAG(IS_WIN)
-  auto pFont = pdfium::MakeRetain<CFGAS_GEFont>();
+  auto pFont = fxcrt::MakeRetain<CFGAS_GEFont>();
   if (!pFont->LoadFontInternal(pszFontFamily, dwFontStyles, wCodePage))
     return nullptr;
   return pFont;
@@ -37,7 +37,7 @@ RetainPtr<CFGAS_GEFont> CFGAS_GEFont::LoadFont(const wchar_t* pszFontFamily,
 
 // static
 RetainPtr<CFGAS_GEFont> CFGAS_GEFont::LoadFont(RetainPtr<CPDF_Font> pPDFFont) {
-  auto pFont = pdfium::MakeRetain<CFGAS_GEFont>();
+  auto pFont = fxcrt::MakeRetain<CFGAS_GEFont>();
   if (!pFont->LoadFontInternal(std::move(pPDFFont)))
     return nullptr;
 
@@ -47,7 +47,7 @@ RetainPtr<CFGAS_GEFont> CFGAS_GEFont::LoadFont(RetainPtr<CPDF_Font> pPDFFont) {
 // static
 RetainPtr<CFGAS_GEFont> CFGAS_GEFont::LoadFont(
     std::unique_ptr<CFX_Font> pInternalFont) {
-  auto pFont = pdfium::MakeRetain<CFGAS_GEFont>();
+  auto pFont = fxcrt::MakeRetain<CFGAS_GEFont>();
   if (!pFont->LoadFontInternal(std::move(pInternalFont)))
     return nullptr;
 
@@ -208,7 +208,7 @@ std::pair<int32_t, RetainPtr<CFGAS_GEFont>> CFGAS_GEFont::GetGlyphIndexAndFont(
     bool bRecursive) {
   int32_t iGlyphIndex = m_pFontEncoding->GlyphFromCharCode(wUnicode);
   if (iGlyphIndex > 0)
-    return {iGlyphIndex, pdfium::WrapRetain(this)};
+    return {iGlyphIndex, fxcrt::WrapRetain(this)};
 
   const FGAS_FONTUSB* pFontUSB = FGAS_GetUnicodeBitField(wUnicode);
   if (!pFontUSB)
@@ -266,6 +266,6 @@ int32_t CFGAS_GEFont::GetDescent() const {
 RetainPtr<CFGAS_GEFont> CFGAS_GEFont::GetSubstFont(int32_t iGlyphIndex) {
   iGlyphIndex = static_cast<uint32_t>(iGlyphIndex) >> 24;
   if (iGlyphIndex == 0)
-    return pdfium::WrapRetain(this);
+    return fxcrt::WrapRetain(this);
   return m_SubstFonts[iGlyphIndex - 1];
 }

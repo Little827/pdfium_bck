@@ -184,7 +184,7 @@ CPDF_Action CPDF_Action::GetSubAction(size_t iIndex) const {
 
   if (const CPDF_Dictionary* pDict = pNext->AsDictionary()) {
     if (iIndex == 0)
-      return CPDF_Action(pdfium::WrapRetain(pDict));
+      return CPDF_Action(fxcrt::WrapRetain(pDict));
   }
   return CPDF_Action(nullptr);
 }

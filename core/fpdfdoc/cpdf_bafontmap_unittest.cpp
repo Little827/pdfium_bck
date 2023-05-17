@@ -21,7 +21,7 @@ TEST_F(BAFontMapTest, DefaultFont) {
   // Without any font resources, CPDF_BAFontMap generates a default font.
   CPDF_TestDocument doc;
 
-  auto annot_dict = pdfium::MakeRetain<CPDF_Dictionary>();
+  auto annot_dict = fxcrt::MakeRetain<CPDF_Dictionary>();
   annot_dict->SetNewFor<CPDF_Name>(pdfium::annotation::kSubtype, "Widget");
   annot_dict->SetNewFor<CPDF_String>("DA", "0 0 0 rg /F1 12 Tf",
                                      /*bHex=*/false);
@@ -39,7 +39,7 @@ TEST_F(BAFontMapTest, DefaultFont) {
 
 TEST_F(BAFontMapTest, Bug853238) {
   CPDF_TestDocument doc;
-  auto root_dict = pdfium::MakeRetain<CPDF_Dictionary>();
+  auto root_dict = fxcrt::MakeRetain<CPDF_Dictionary>();
   auto acroform_dict = root_dict->SetNewFor<CPDF_Dictionary>("AcroForm");
   auto annot_dr_dict = acroform_dict->SetNewFor<CPDF_Dictionary>("DR");
   auto annot_font_dict = annot_dr_dict->SetNewFor<CPDF_Dictionary>("Font");
@@ -49,7 +49,7 @@ TEST_F(BAFontMapTest, Bug853238) {
   annot_font_f1_dict->SetNewFor<CPDF_Name>("BaseFont", "Times-Roman");
   doc.SetRoot(root_dict);
 
-  auto annot_dict = pdfium::MakeRetain<CPDF_Dictionary>();
+  auto annot_dict = fxcrt::MakeRetain<CPDF_Dictionary>();
   annot_dict->SetNewFor<CPDF_Name>(pdfium::annotation::kSubtype, "Widget");
   annot_dict->SetNewFor<CPDF_String>("DA", "0 0 0 rg /F1 12 Tf",
                                      /*bHex=*/false);

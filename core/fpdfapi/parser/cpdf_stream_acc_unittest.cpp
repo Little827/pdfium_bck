@@ -13,11 +13,10 @@
 #include "testing/invalid_seekable_read_stream.h"
 
 TEST(StreamAccTest, ReadRawDataFailed) {
-  auto stream = pdfium::MakeRetain<CPDF_Stream>();
-  stream->InitStreamFromFile(
-      pdfium::MakeRetain<InvalidSeekableReadStream>(1024),
-      pdfium::MakeRetain<CPDF_Dictionary>());
-  auto stream_acc = pdfium::MakeRetain<CPDF_StreamAcc>(std::move(stream));
+  auto stream = fxcrt::MakeRetain<CPDF_Stream>();
+  stream->InitStreamFromFile(fxcrt::MakeRetain<InvalidSeekableReadStream>(1024),
+                             fxcrt::MakeRetain<CPDF_Dictionary>());
+  auto stream_acc = fxcrt::MakeRetain<CPDF_StreamAcc>(std::move(stream));
   stream_acc->LoadAllDataRaw();
   EXPECT_TRUE(stream_acc->GetSpan().empty());
 }
@@ -26,9 +25,9 @@ TEST(StreamAccTest, ReadRawDataFailed) {
 // ProbeForLowSeverityLifetimeIssue() failure.
 TEST(StreamAccTest, DataStreamLifeTime) {
   constexpr uint8_t kData[] = {'a', 'b', 'c'};
-  auto stream = pdfium::MakeRetain<CPDF_Stream>();
+  auto stream = fxcrt::MakeRetain<CPDF_Stream>();
   stream->SetData(kData);
-  auto stream_acc = pdfium::MakeRetain<CPDF_StreamAcc>(stream);
+  auto stream_acc = fxcrt::MakeRetain<CPDF_StreamAcc>(stream);
   stream_acc->LoadAllDataRaw();
   stream.Reset();
   EXPECT_EQ(pdfium::make_span(kData), stream_acc->GetSpan());

@@ -35,7 +35,7 @@ TEST(ParserUtilityTest, NameEncode) {
 }
 
 TEST(ParserUtilityTest, ValidateDictType) {
-  auto dict = pdfium::MakeRetain<CPDF_Dictionary>();
+  auto dict = fxcrt::MakeRetain<CPDF_Dictionary>();
 
   // No type.
   EXPECT_FALSE(ValidateDictType(dict.Get(), "foo"));
@@ -57,7 +57,7 @@ TEST(ParserUtilityTest, ValidateDictAllResourcesOfType) {
 
   {
     // Direct dictionary.
-    auto dict = pdfium::MakeRetain<CPDF_Dictionary>();
+    auto dict = fxcrt::MakeRetain<CPDF_Dictionary>();
 
     // Empty dict is ok.
     EXPECT_TRUE(ValidateDictAllResourcesOfType(dict.Get(), "foo"));
@@ -106,7 +106,7 @@ TEST(ParserUtilityTest, ValidateDictAllResourcesOfType) {
 }
 
 TEST(ParserUtilityTest, ValidateDictOptionalType) {
-  auto dict = pdfium::MakeRetain<CPDF_Dictionary>();
+  auto dict = fxcrt::MakeRetain<CPDF_Dictionary>();
 
   // No type is ok.
   EXPECT_TRUE(ValidateDictOptionalType(dict.Get(), "foo"));

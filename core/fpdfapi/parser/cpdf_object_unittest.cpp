@@ -53,36 +53,36 @@ class PDFObjectsTest : public testing::Test {
   void SetUp() override {
     // Initialize different kinds of objects.
     // Boolean objects.
-    auto boolean_false_obj = pdfium::MakeRetain<CPDF_Boolean>(false);
-    auto boolean_true_obj = pdfium::MakeRetain<CPDF_Boolean>(true);
+    auto boolean_false_obj = fxcrt::MakeRetain<CPDF_Boolean>(false);
+    auto boolean_true_obj = fxcrt::MakeRetain<CPDF_Boolean>(true);
     // Number objects.
-    auto number_int_obj = pdfium::MakeRetain<CPDF_Number>(1245);
-    auto number_float_obj = pdfium::MakeRetain<CPDF_Number>(9.00345f);
+    auto number_int_obj = fxcrt::MakeRetain<CPDF_Number>(1245);
+    auto number_float_obj = fxcrt::MakeRetain<CPDF_Number>(9.00345f);
     // String objects.
     auto str_reg_obj =
-        pdfium::MakeRetain<CPDF_String>(nullptr, L"A simple test");
-    auto str_spec_obj = pdfium::MakeRetain<CPDF_String>(nullptr, L"\t\n");
+        fxcrt::MakeRetain<CPDF_String>(nullptr, L"A simple test");
+    auto str_spec_obj = fxcrt::MakeRetain<CPDF_String>(nullptr, L"\t\n");
     // Name object.
-    auto name_obj = pdfium::MakeRetain<CPDF_Name>(nullptr, "space");
+    auto name_obj = fxcrt::MakeRetain<CPDF_Name>(nullptr, "space");
     // Array object.
-    m_ArrayObj = pdfium::MakeRetain<CPDF_Array>();
+    m_ArrayObj = fxcrt::MakeRetain<CPDF_Array>();
     m_ArrayObj->InsertNewAt<CPDF_Number>(0, 8902);
     m_ArrayObj->InsertNewAt<CPDF_Name>(1, "address");
     // Dictionary object.
-    m_DictObj = pdfium::MakeRetain<CPDF_Dictionary>();
+    m_DictObj = fxcrt::MakeRetain<CPDF_Dictionary>();
     m_DictObj->SetNewFor<CPDF_Boolean>("bool", false);
     m_DictObj->SetNewFor<CPDF_Number>("num", 0.23f);
     // Stream object.
     static constexpr char kContents[] = "abcdefghijklmnopqrstuvwxyz";
-    auto pNewDict = pdfium::MakeRetain<CPDF_Dictionary>();
+    auto pNewDict = fxcrt::MakeRetain<CPDF_Dictionary>();
     m_StreamDictObj = pNewDict;
     m_StreamDictObj->SetNewFor<CPDF_String>("key1", L" test dict");
     m_StreamDictObj->SetNewFor<CPDF_Number>("key2", -1);
-    auto stream_obj = pdfium::MakeRetain<CPDF_Stream>(
+    auto stream_obj = fxcrt::MakeRetain<CPDF_Stream>(
         DataVector<uint8_t>(std::begin(kContents), std::end(kContents)),
         std::move(pNewDict));
     // Null Object.
-    auto null_obj = pdfium::MakeRetain<CPDF_Null>();
+    auto null_obj = fxcrt::MakeRetain<CPDF_Null>();
     // All direct objects.
     CPDF_Object* objs[] = {
         boolean_false_obj.Get(), boolean_true_obj.Get(), number_int_obj.Get(),
@@ -109,7 +109,7 @@ class PDFObjectsTest : public testing::Test {
         m_ObjHolder->AddIndirectObject(stream_obj->Clone())};
     for (uint32_t objnum : m_IndirectObjNums) {
       m_RefObjs.emplace_back(
-          pdfium::MakeRetain<CPDF_Reference>(m_ObjHolder.get(), objnum));
+          fxcrt::MakeRetain<CPDF_Reference>(m_ObjHolder.get(), objnum));
     }
   }
 
@@ -163,11 +163,9 @@ class PDFObjectsTest : public testing::Test {
         if (!Equal(stream1->GetDict().Get(), stream2->GetDict().Get()))
           return false;
 
-        auto streamAcc1 =
-            pdfium::MakeRetain<CPDF_StreamAcc>(std::move(stream1));
+        auto streamAcc1 = fxcrt::MakeRetain<CPDF_StreamAcc>(std::move(stream1));
         streamAcc1->LoadAllDataRaw();
-        auto streamAcc2 =
-            pdfium::MakeRetain<CPDF_StreamAcc>(std::move(stream2));
+        auto streamAcc2 = fxcrt::MakeRetain<CPDF_StreamAcc>(std::move(stream2));
         streamAcc2->LoadAllDataRaw();
         pdfium::span<const uint8_t> span1 = streamAcc1->GetSpan();
         pdfium::span<const uint8_t> span2 = streamAcc2->GetSpan();
@@ -422,7 +420,7 @@ TEST_F(PDFObjectsTest, IsTypeAndAsType) {
 }
 
 TEST_F(PDFObjectsTest, MakeReferenceGeneric) {
-  auto original_obj = pdfium::MakeRetain<CPDF_Null>();
+  auto original_obj = fxcrt::MakeRetain<CPDF_Null>();
   original_obj->SetObjNum(42);
   ASSERT_FALSE(original_obj->IsInline());
 
@@ -455,7 +453,7 @@ TEST(PDFArrayTest, GetMatrix) {
                       {2.3f, 4.05f, 3, -2, -3, 0.0f},
                       {0.05f, 0.1f, 0.56f, 0.67f, 1.34f, 99.9f}};
   for (size_t i = 0; i < std::size(elems); ++i) {
-    auto arr = pdfium::MakeRetain<CPDF_Array>();
+    auto arr = fxcrt::MakeRetain<CPDF_Array>();
     CFX_Matrix matrix(elems[i][0], elems[i][1], elems[i][2], elems[i][3],
                       elems[i][4], elems[i][5]);
     for (size_t j = 0; j < 6; ++j)
@@ -476,7 +474,7 @@ TEST(PDFArrayTest, GetRect) {
                       {2.3f, 4.05f, -3, 0.0f},
                       {0.05f, 0.1f, 1.34f, 99.9f}};
   for (size_t i = 0; i < std::size(elems); ++i) {
-    auto arr = pdfium::MakeRetain<CPDF_Array>();
+    auto arr = fxcrt::MakeRetain<CPDF_Array>();
     CFX_FloatRect rect(elems[i][0], elems[i][1], elems[i][2], elems[i][3]);
     for (size_t j = 0; j < 4; ++j)
       arr->AppendNew<CPDF_Number>(elems[i][j]);
@@ -492,7 +490,7 @@ TEST(PDFArrayTest, GetTypeAt) {
   {
     // Boolean array.
     const bool vals[] = {true, false, false, true, true};
-    auto arr = pdfium::MakeRetain<CPDF_Array>();
+    auto arr = fxcrt::MakeRetain<CPDF_Array>();
     for (size_t i = 0; i < std::size(vals); ++i)
       arr->InsertNewAt<CPDF_Boolean>(i, vals[i]);
     for (size_t i = 0; i < std::size(vals); ++i) {
@@ -509,7 +507,7 @@ TEST(PDFArrayTest, GetTypeAt) {
   {
     // Integer array.
     const int vals[] = {10, 0, -345, 2089345456, -1000000000, 567, 93658767};
-    auto arr = pdfium::MakeRetain<CPDF_Array>();
+    auto arr = fxcrt::MakeRetain<CPDF_Array>();
     for (size_t i = 0; i < std::size(vals); ++i)
       arr->InsertNewAt<CPDF_Number>(i, vals[i]);
     for (size_t i = 0; i < std::size(vals); ++i) {
@@ -530,7 +528,7 @@ TEST(PDFArrayTest, GetTypeAt) {
                           897.34f, -2.5f, -1.0f, -345.0f, -0.0f};
     const char* const expected_str[] = {
         "0", "0", "10", "10", "0.0345", "897.34", "-2.5", "-1", "-345", "0"};
-    auto arr = pdfium::MakeRetain<CPDF_Array>();
+    auto arr = fxcrt::MakeRetain<CPDF_Array>();
     for (size_t i = 0; i < std::size(vals); ++i)
       arr->InsertNewAt<CPDF_Number>(i, vals[i]);
     for (size_t i = 0; i < std::size(vals); ++i) {
@@ -548,8 +546,8 @@ TEST(PDFArrayTest, GetTypeAt) {
     // String and name array
     const char* const vals[] = {"this", "adsde$%^", "\r\t",           "\"012",
                                 ".",    "EYREW",    "It is a joke :)"};
-    auto string_array = pdfium::MakeRetain<CPDF_Array>();
-    auto name_array = pdfium::MakeRetain<CPDF_Array>();
+    auto string_array = fxcrt::MakeRetain<CPDF_Array>();
+    auto name_array = fxcrt::MakeRetain<CPDF_Array>();
     for (size_t i = 0; i < std::size(vals); ++i) {
       string_array->InsertNewAt<CPDF_String>(i, vals[i], false);
       name_array->InsertNewAt<CPDF_Name>(i, vals[i]);
@@ -575,7 +573,7 @@ TEST(PDFArrayTest, GetTypeAt) {
   }
   {
     // Null element array.
-    auto arr = pdfium::MakeRetain<CPDF_Array>();
+    auto arr = fxcrt::MakeRetain<CPDF_Array>();
     for (size_t i = 0; i < 3; ++i)
       arr->InsertNewAt<CPDF_Null>(i);
     for (size_t i = 0; i < 3; ++i) {
@@ -592,7 +590,7 @@ TEST(PDFArrayTest, GetTypeAt) {
   {
     // Array of array.
     RetainPtr<CPDF_Array> vals[3];
-    auto arr = pdfium::MakeRetain<CPDF_Array>();
+    auto arr = fxcrt::MakeRetain<CPDF_Array>();
     for (size_t i = 0; i < 3; ++i) {
       vals[i] = arr->AppendNew<CPDF_Array>();
       for (size_t j = 0; j < 3; ++j) {
@@ -614,7 +612,7 @@ TEST(PDFArrayTest, GetTypeAt) {
   {
     // Dictionary array.
     RetainPtr<CPDF_Dictionary> vals[3];
-    auto arr = pdfium::MakeRetain<CPDF_Array>();
+    auto arr = fxcrt::MakeRetain<CPDF_Array>();
     for (size_t i = 0; i < 3; ++i) {
       vals[i] = arr->AppendNew<CPDF_Dictionary>();
       for (size_t j = 0; j < 3; ++j) {
@@ -640,9 +638,9 @@ TEST(PDFArrayTest, GetTypeAt) {
     // Stream array.
     RetainPtr<CPDF_Dictionary> vals[3];
     RetainPtr<CPDF_Stream> stream_vals[3];
-    auto arr = pdfium::MakeRetain<CPDF_Array>();
+    auto arr = fxcrt::MakeRetain<CPDF_Array>();
     for (size_t i = 0; i < 3; ++i) {
-      vals[i] = pdfium::MakeRetain<CPDF_Dictionary>();
+      vals[i] = fxcrt::MakeRetain<CPDF_Dictionary>();
       for (size_t j = 0; j < 3; ++j) {
         std::string key("key");
         char buf[33];
@@ -668,7 +666,7 @@ TEST(PDFArrayTest, GetTypeAt) {
   }
   {
     // Mixed array.
-    auto arr = pdfium::MakeRetain<CPDF_Array>();
+    auto arr = fxcrt::MakeRetain<CPDF_Array>();
     arr->InsertNewAt<CPDF_Boolean>(0, true);
     arr->InsertNewAt<CPDF_Boolean>(1, false);
     arr->InsertNewAt<CPDF_Number>(2, 0);
@@ -689,7 +687,7 @@ TEST(PDFArrayTest, GetTypeAt) {
     dict_val->SetNewFor<CPDF_String>("key1", "Linda", false);
     dict_val->SetNewFor<CPDF_String>("key2", "Zoe", false);
 
-    auto stream_dict = pdfium::MakeRetain<CPDF_Dictionary>();
+    auto stream_dict = fxcrt::MakeRetain<CPDF_Dictionary>();
     stream_dict->SetNewFor<CPDF_String>("key1", "John", false);
     stream_dict->SetNewFor<CPDF_String>("key2", "King", false);
     static constexpr uint8_t kData[] = "A stream for test";
@@ -730,7 +728,7 @@ TEST(PDFArrayTest, GetTypeAt) {
 TEST(PDFArrayTest, AddNumber) {
   float vals[] = {1.0f,         -1.0f, 0,    0.456734f,
                   12345.54321f, 0.5f,  1000, 0.000045f};
-  auto arr = pdfium::MakeRetain<CPDF_Array>();
+  auto arr = fxcrt::MakeRetain<CPDF_Array>();
   for (size_t i = 0; i < std::size(vals); ++i)
     arr->AppendNew<CPDF_Number>(vals[i]);
   for (size_t i = 0; i < std::size(vals); ++i) {
@@ -741,7 +739,7 @@ TEST(PDFArrayTest, AddNumber) {
 
 TEST(PDFArrayTest, AddInteger) {
   int vals[] = {0, 1, 934435456, 876, 10000, -1, -24354656, -100};
-  auto arr = pdfium::MakeRetain<CPDF_Array>();
+  auto arr = fxcrt::MakeRetain<CPDF_Array>();
   for (size_t i = 0; i < std::size(vals); ++i)
     arr->AppendNew<CPDF_Number>(vals[i]);
   for (size_t i = 0; i < std::size(vals); ++i) {
@@ -754,8 +752,8 @@ TEST(PDFArrayTest, AddStringAndName) {
   static constexpr const char* kVals[] = {
       "",        "a", "ehjhRIOYTTFdfcdnv",  "122323",
       "$#%^&**", " ", "This is a test.\r\n"};
-  auto string_array = pdfium::MakeRetain<CPDF_Array>();
-  auto name_array = pdfium::MakeRetain<CPDF_Array>();
+  auto string_array = fxcrt::MakeRetain<CPDF_Array>();
+  auto name_array = fxcrt::MakeRetain<CPDF_Array>();
   for (const char* val : kVals) {
     string_array->AppendNew<CPDF_String>(val, false);
     name_array->AppendNew<CPDF_Name>(val);
@@ -770,18 +768,18 @@ TEST(PDFArrayTest, AddStringAndName) {
 
 TEST(PDFArrayTest, AddReferenceAndGetObjectAt) {
   auto holder = std::make_unique<CPDF_IndirectObjectHolder>();
-  auto boolean_obj = pdfium::MakeRetain<CPDF_Boolean>(true);
-  auto int_obj = pdfium::MakeRetain<CPDF_Number>(-1234);
-  auto float_obj = pdfium::MakeRetain<CPDF_Number>(2345.089f);
+  auto boolean_obj = fxcrt::MakeRetain<CPDF_Boolean>(true);
+  auto int_obj = fxcrt::MakeRetain<CPDF_Number>(-1234);
+  auto float_obj = fxcrt::MakeRetain<CPDF_Number>(2345.089f);
   auto str_obj =
-      pdfium::MakeRetain<CPDF_String>(nullptr, "Adsfdsf 343434 %&&*\n", false);
-  auto name_obj = pdfium::MakeRetain<CPDF_Name>(nullptr, "Title:");
-  auto null_obj = pdfium::MakeRetain<CPDF_Null>();
+      fxcrt::MakeRetain<CPDF_String>(nullptr, "Adsfdsf 343434 %&&*\n", false);
+  auto name_obj = fxcrt::MakeRetain<CPDF_Name>(nullptr, "Title:");
+  auto null_obj = fxcrt::MakeRetain<CPDF_Null>();
   RetainPtr<CPDF_Object> indirect_objs[] = {boolean_obj, int_obj,  float_obj,
                                             str_obj,     name_obj, null_obj};
   unsigned int obj_nums[] = {2, 4, 7, 2345, 799887, 1};
-  auto arr = pdfium::MakeRetain<CPDF_Array>();
-  auto arr1 = pdfium::MakeRetain<CPDF_Array>();
+  auto arr = fxcrt::MakeRetain<CPDF_Array>();
+  auto arr1 = fxcrt::MakeRetain<CPDF_Array>();
   // Create two arrays of references by different AddReference() APIs.
   for (size_t i = 0; i < std::size(indirect_objs); ++i) {
     holder->ReplaceIndirectObjectIfHigherGeneration(obj_nums[i],
@@ -807,7 +805,7 @@ TEST(PDFArrayTest, AddReferenceAndGetObjectAt) {
 
 TEST(PDFArrayTest, CloneDirectObject) {
   CPDF_IndirectObjectHolder objects_holder;
-  auto array = pdfium::MakeRetain<CPDF_Array>();
+  auto array = fxcrt::MakeRetain<CPDF_Array>();
   array->AppendNew<CPDF_Reference>(&objects_holder, 1234);
   ASSERT_EQ(1U, array->size());
   RetainPtr<const CPDF_Object> obj = array->GetObjectAt(0);
@@ -826,7 +824,7 @@ TEST(PDFArrayTest, CloneDirectObject) {
 
 TEST(PDFArrayTest, ConvertIndirect) {
   CPDF_IndirectObjectHolder objects_holder;
-  auto array = pdfium::MakeRetain<CPDF_Array>();
+  auto array = fxcrt::MakeRetain<CPDF_Array>();
   auto pObj = array->AppendNew<CPDF_Number>(42);
   array->ConvertToIndirectObjectAt(0, &objects_holder);
   RetainPtr<const CPDF_Object> pRef = array->GetObjectAt(0);
@@ -840,8 +838,8 @@ TEST(PDFArrayTest, ConvertIndirect) {
 
 TEST(PDFStreamTest, SetData) {
   DataVector<uint8_t> data(100);
-  auto stream = pdfium::MakeRetain<CPDF_Stream>(
-      data, pdfium::MakeRetain<CPDF_Dictionary>());
+  auto stream = fxcrt::MakeRetain<CPDF_Stream>(
+      data, fxcrt::MakeRetain<CPDF_Dictionary>());
   EXPECT_EQ(static_cast<int>(data.size()),
             stream->GetDict()->GetIntegerFor(pdfium::stream::kLength));
 
@@ -866,8 +864,8 @@ TEST(PDFStreamTest, SetData) {
 
 TEST(PDFStreamTest, SetDataAndRemoveFilter) {
   DataVector<uint8_t> data(100);
-  auto stream = pdfium::MakeRetain<CPDF_Stream>(
-      data, pdfium::MakeRetain<CPDF_Dictionary>());
+  auto stream = fxcrt::MakeRetain<CPDF_Stream>(
+      data, fxcrt::MakeRetain<CPDF_Dictionary>());
   EXPECT_EQ(static_cast<int>(data.size()),
             stream->GetDict()->GetIntegerFor(pdfium::stream::kLength));
 
@@ -891,17 +889,17 @@ TEST(PDFStreamTest, LengthInDictionaryOnCreate) {
   static constexpr uint32_t kBufSize = 100;
   // The length field should be created on stream create.
   {
-    auto stream = pdfium::MakeRetain<CPDF_Stream>(
-        DataVector<uint8_t>(kBufSize), pdfium::MakeRetain<CPDF_Dictionary>());
+    auto stream = fxcrt::MakeRetain<CPDF_Stream>(
+        DataVector<uint8_t>(kBufSize), fxcrt::MakeRetain<CPDF_Dictionary>());
     EXPECT_EQ(static_cast<int>(kBufSize),
               stream->GetDict()->GetIntegerFor(pdfium::stream::kLength));
   }
   // The length field should be corrected on stream create.
   {
-    auto dict = pdfium::MakeRetain<CPDF_Dictionary>();
+    auto dict = fxcrt::MakeRetain<CPDF_Dictionary>();
     dict->SetNewFor<CPDF_Number>(pdfium::stream::kLength, 30000);
-    auto stream = pdfium::MakeRetain<CPDF_Stream>(DataVector<uint8_t>(kBufSize),
-                                                  std::move(dict));
+    auto stream = fxcrt::MakeRetain<CPDF_Stream>(DataVector<uint8_t>(kBufSize),
+                                                 std::move(dict));
     EXPECT_EQ(static_cast<int>(kBufSize),
               stream->GetDict()->GetIntegerFor(pdfium::stream::kLength));
   }
@@ -909,7 +907,7 @@ TEST(PDFStreamTest, LengthInDictionaryOnCreate) {
 
 TEST(PDFDictionaryTest, CloneDirectObject) {
   CPDF_IndirectObjectHolder objects_holder;
-  auto dict = pdfium::MakeRetain<CPDF_Dictionary>();
+  auto dict = fxcrt::MakeRetain<CPDF_Dictionary>();
   dict->SetNewFor<CPDF_Reference>("foo", &objects_holder, 1234);
   ASSERT_EQ(1U, dict->size());
   RetainPtr<const CPDF_Object> obj = dict->GetObjectFor("foo");
@@ -930,7 +928,7 @@ TEST(PDFDictionaryTest, CloneDirectObject) {
 TEST(PDFObjectTest, CloneCheckLoop) {
   {
     // Create a dictionary/array pair with a reference loop.
-    auto arr_obj = pdfium::MakeRetain<CPDF_Array>();
+    auto arr_obj = fxcrt::MakeRetain<CPDF_Array>();
     auto dict_obj = arr_obj->InsertNewAt<CPDF_Dictionary>(0);
     dict_obj->SetFor("arr", arr_obj);
     // Clone this object to see whether stack overflow will be triggered.
@@ -947,7 +945,7 @@ TEST(PDFObjectTest, CloneCheckLoop) {
   }
   {
     // Create a dictionary/stream pair with a reference loop.
-    auto dict_obj = pdfium::MakeRetain<CPDF_Dictionary>();
+    auto dict_obj = fxcrt::MakeRetain<CPDF_Dictionary>();
     auto stream_obj = dict_obj->SetNewFor<CPDF_Stream>("stream", dict_obj);
     // Clone this object to see whether stack overflow will be triggered.
     RetainPtr<CPDF_Stream> cloned_stream = ToStream(stream_obj->Clone());
@@ -964,7 +962,7 @@ TEST(PDFObjectTest, CloneCheckLoop) {
     CPDF_IndirectObjectHolder objects_holder;
     // Create an object with a reference loop.
     auto dict_obj = objects_holder.NewIndirect<CPDF_Dictionary>();
-    auto arr_obj = pdfium::MakeRetain<CPDF_Array>();
+    auto arr_obj = fxcrt::MakeRetain<CPDF_Array>();
     arr_obj->InsertNewAt<CPDF_Reference>(0, &objects_holder,
                                          dict_obj->GetObjNum());
     RetainPtr<const CPDF_Object> elem0 = arr_obj->GetObjectAt(0);
@@ -992,7 +990,7 @@ TEST(PDFObjectTest, CloneCheckLoop) {
 
 TEST(PDFDictionaryTest, ConvertIndirect) {
   CPDF_IndirectObjectHolder objects_holder;
-  auto dict = pdfium::MakeRetain<CPDF_Dictionary>();
+  auto dict = fxcrt::MakeRetain<CPDF_Dictionary>();
   auto pObj = dict->SetNewFor<CPDF_Number>("clams", 42);
   dict->ConvertToIndirectObjectFor("clams", &objects_holder);
   RetainPtr<const CPDF_Object> pRef = dict->GetObjectFor("clams");
@@ -1005,7 +1003,7 @@ TEST(PDFDictionaryTest, ConvertIndirect) {
 }
 
 TEST(PDFDictionaryTest, ExtractObjectOnRemove) {
-  auto dict = pdfium::MakeRetain<CPDF_Dictionary>();
+  auto dict = fxcrt::MakeRetain<CPDF_Dictionary>();
   auto pObj = dict->SetNewFor<CPDF_Number>("child", 42);
   auto extracted_object = dict->RemoveFor("child");
   EXPECT_EQ(pObj, extracted_object.Get());
@@ -1016,7 +1014,7 @@ TEST(PDFDictionaryTest, ExtractObjectOnRemove) {
 
 TEST(PDFRefernceTest, MakeReferenceToReference) {
   auto obj_holder = std::make_unique<CPDF_IndirectObjectHolder>();
-  auto original_ref = pdfium::MakeRetain<CPDF_Reference>(obj_holder.get(), 42);
+  auto original_ref = fxcrt::MakeRetain<CPDF_Reference>(obj_holder.get(), 42);
   original_ref->SetObjNum(1952);
   ASSERT_FALSE(original_ref->IsInline());
 

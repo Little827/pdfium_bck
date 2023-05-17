@@ -164,5 +164,5 @@ void CPDF_ColorState::ColorData::SetDefault() {
 
 RetainPtr<CPDF_ColorState::ColorData> CPDF_ColorState::ColorData::Clone()
     const {
-  return pdfium::MakeRetain<CPDF_ColorState::ColorData>(*this);
+  return fxcrt::MakeRetain<CPDF_ColorState::ColorData>(*this);
 }

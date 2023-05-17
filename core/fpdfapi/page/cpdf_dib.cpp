@@ -333,7 +333,7 @@ CPDF_DIB::LoadState CPDF_DIB::ContinueLoadDIBBase(PauseIndicatorIface* pPause) {
       RetainPtr<const CPDF_Stream> pGlobals =
           m_pStreamAcc->GetImageParam()->GetStreamFor("JBIG2Globals");
       if (pGlobals) {
-        m_pGlobalAcc = pdfium::MakeRetain<CPDF_StreamAcc>(std::move(pGlobals));
+        m_pGlobalAcc = fxcrt::MakeRetain<CPDF_StreamAcc>(std::move(pGlobals));
         m_pGlobalAcc->LoadAllDataFiltered();
       }
     }
@@ -514,7 +514,7 @@ CPDF_DIB::LoadState CPDF_DIB::CreateDecoder(uint8_t resolution_levels_to_skip) {
   }
 
   if (decoder == "JBIG2Decode") {
-    m_pCachedBitmap = pdfium::MakeRetain<CFX_DIBitmap>();
+    m_pCachedBitmap = fxcrt::MakeRetain<CFX_DIBitmap>();
     if (!m_pCachedBitmap->Create(
             m_Width, m_Height,
             m_bImageMask ? FXDIB_Format::k1bppMask : FXDIB_Format::k1bppRgb)) {
@@ -710,7 +710,7 @@ RetainPtr<CFX_DIBitmap> CPDF_DIB::LoadJpxBitmap(
     format = FXDIB_Format::kRgb;
   }
 
-  auto result_bitmap = pdfium::MakeRetain<CFX_DIBitmap>();
+  auto result_bitmap = fxcrt::MakeRetain<CFX_DIBitmap>();
   if (!result_bitmap->Create(image_info.width, image_info.height, format))
     return nullptr;
 
@@ -722,7 +722,7 @@ RetainPtr<CFX_DIBitmap> CPDF_DIB::LoadJpxBitmap(
 
   if (convert_argb_to_rgb) {
     DCHECK_EQ(3, m_nComponents);
-    auto rgb_bitmap = pdfium::MakeRetain<CFX_DIBitmap>();
+    auto rgb_bitmap = fxcrt::MakeRetain<CFX_DIBitmap>();
     if (!rgb_bitmap->Create(image_info.width, image_info.height,
                             FXDIB_Format::kRgb)) {
       return nullptr;
@@ -814,7 +814,7 @@ bool CPDF_DIB::LoadInternal(const CPDF_Dictionary* pFormResources,
   if (!src_size.IsValid())
     return false;
 
-  m_pStreamAcc = pdfium::MakeRetain<CPDF_StreamAcc>(m_pStream);
+  m_pStreamAcc = fxcrt::MakeRetain<CPDF_StreamAcc>(m_pStream);
   m_pStreamAcc->LoadAllDataImageAcc(src_size.ValueOrDie());
   return !m_pStreamAcc->GetSpan().empty();
 }
@@ -823,7 +823,7 @@ CPDF_DIB::LoadState CPDF_DIB::StartLoadMask() {
   m_MatteColor = 0XFFFFFFFF;
 
   if (!m_JpxInlineData.data.empty()) {
-    auto dict = pdfium::MakeRetain<CPDF_Dictionary>();
+    auto dict = fxcrt::MakeRetain<CPDF_Dictionary>();
     dict->SetNewFor<CPDF_Name>("Type", "XObject");
     dict->SetNewFor<CPDF_Name>("Subtype", "Image");
     dict->SetNewFor<CPDF_Name>("ColorSpace", "DeviceGray");
@@ -832,7 +832,7 @@ CPDF_DIB::LoadState CPDF_DIB::StartLoadMask() {
     dict->SetNewFor<CPDF_Number>("BitsPerComponent", 8);
 
     return StartLoadMaskDIB(
-        pdfium::MakeRetain<CPDF_Stream>(m_JpxInlineData.data, std::move(dict)));
+        fxcrt::MakeRetain<CPDF_Stream>(m_JpxInlineData.data, std::move(dict)));
   }
 
   RetainPtr<const CPDF_Stream> mask(m_pDict->GetStreamFor("SMask"));
@@ -887,7 +887,7 @@ bool CPDF_DIB::IsJBigImage() const {
 
 CPDF_DIB::LoadState CPDF_DIB::StartLoadMaskDIB(
     RetainPtr<const CPDF_Stream> mask_stream) {
-  m_pMask = pdfium::MakeRetain<CPDF_DIB>(m_pDocument, std::move(mask_stream));
+  m_pMask = fxcrt::MakeRetain<CPDF_DIB>(m_pDocument, std::move(mask_stream));
   LoadState ret = m_pMask->StartLoadDIBBase(false, nullptr, nullptr, true,
                                             CPDF_ColorSpace::Family::kUnknown,
                                             false, {0, 0});

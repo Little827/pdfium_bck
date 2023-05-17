@@ -189,7 +189,7 @@ Q
 
 restore
 )";
-  auto output_stream = pdfium::MakeRetain<TestWriteStream>();
+  auto output_stream = fxcrt::MakeRetain<TestWriteStream>();
 
   {
     constexpr int kWidth = 10;
@@ -201,7 +201,7 @@ restore
     renderer.Init(output_stream, CFX_PSRenderer::RenderingLevel::kLevel2,
                   kWidth, kHeight);
 
-    auto bitmap = pdfium::MakeRetain<CFX_DIBitmap>();
+    auto bitmap = fxcrt::MakeRetain<CFX_DIBitmap>();
     bool result = bitmap->Create(kWidth, kHeight, FXDIB_Format::k1bppRgb);
     ASSERT_TRUE(result);
     ASSERT_TRUE(renderer.DrawDIBits(bitmap, /*color=*/0, CFX_Matrix(),

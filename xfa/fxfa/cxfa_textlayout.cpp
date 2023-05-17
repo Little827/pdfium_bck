@@ -790,7 +790,7 @@ bool CXFA_TextLayout::LoadRichText(const CFX_XMLNode* pXMLNode,
       if (wsName.EqualsASCII("a")) {
         WideString wsLinkContent = pElement->GetAttribute(L"href");
         if (!wsLinkContent.IsEmpty())
-          pLinkData = pdfium::MakeRetain<CFGAS_LinkUserData>(wsLinkContent);
+          pLinkData = fxcrt::MakeRetain<CFGAS_LinkUserData>(wsLinkContent);
       }
 
       int32_t iTabCount = m_pTextParser->CountTabs(
@@ -841,7 +841,7 @@ bool CXFA_TextLayout::LoadRichText(const CFX_XMLNode* pXMLNode,
 
       if (wsText.GetLength() > 0) {
         if (!m_pLoader || m_pLoader->nCharIdx == 0) {
-          auto pUserData = pdfium::MakeRetain<CFGAS_TextUserData>(
+          auto pUserData = fxcrt::MakeRetain<CFGAS_TextUserData>(
               bContentNode ? pParentStyle : pStyle, pLinkData);
           m_pBreak->SetUserData(pUserData);
         }

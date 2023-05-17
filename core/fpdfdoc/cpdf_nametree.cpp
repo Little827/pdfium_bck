@@ -463,7 +463,7 @@ std::unique_ptr<CPDF_NameTree> CPDF_NameTree::CreateWithRootNameArray(
 std::unique_ptr<CPDF_NameTree> CPDF_NameTree::CreateForTesting(
     CPDF_Dictionary* pRoot) {
   return pdfium::WrapUnique(
-      new CPDF_NameTree(pdfium::WrapRetain(pRoot)));  // Private ctor.
+      new CPDF_NameTree(fxcrt::WrapRetain(pRoot)));  // Private ctor.
 }
 
 // static

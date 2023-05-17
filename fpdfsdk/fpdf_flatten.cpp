@@ -56,7 +56,7 @@ bool IsValidRect(const CFX_FloatRect& rect, const CFX_FloatRect& rcPage) {
 void GetContentsRect(CPDF_Document* pDoc,
                      RetainPtr<CPDF_Dictionary> pDict,
                      std::vector<CFX_FloatRect>* pRectArray) {
-  auto pPDFPage = pdfium::MakeRetain<CPDF_Page>(pDoc, pDict);
+  auto pPDFPage = fxcrt::MakeRetain<CPDF_Page>(pDoc, pDict);
   pPDFPage->ParseContent();
 
   for (const auto& pPageObject : *pPDFPage) {
@@ -210,7 +210,7 @@ void SetPageContents(const ByteString& key,
   } else {
     ByteString sStream = "q\n";
     {
-      auto pAcc = pdfium::MakeRetain<CPDF_StreamAcc>(pContentsStream);
+      auto pAcc = fxcrt::MakeRetain<CPDF_StreamAcc>(pContentsStream);
       pAcc->LoadAllDataFiltered();
       sStream += ByteString(pAcc->GetSpan());
       sStream += "\nQ";
@@ -394,7 +394,7 @@ FPDF_EXPORT int FPDF_CALLCONV FPDFPage_Flatten(FPDF_PAGE page, int nFlag) {
 
     ByteString sStream;
     {
-      auto pAcc = pdfium::MakeRetain<CPDF_StreamAcc>(pNewXObject);
+      auto pAcc = fxcrt::MakeRetain<CPDF_StreamAcc>(pNewXObject);
       pAcc->LoadAllDataFiltered();
       sStream = ByteString(pAcc->GetSpan());
     }

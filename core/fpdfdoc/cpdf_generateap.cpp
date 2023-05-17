@@ -470,7 +470,7 @@ RetainPtr<CPDF_Dictionary> GenerateExtGStateDict(
     const ByteString& sExtGSDictName,
     const ByteString& sBlendMode) {
   auto pGSDict =
-      pdfium::MakeRetain<CPDF_Dictionary>(pAnnotDict.GetByteStringPool());
+      fxcrt::MakeRetain<CPDF_Dictionary>(pAnnotDict.GetByteStringPool());
   pGSDict->SetNewFor<CPDF_Name>("Type", "ExtGState");
 
   float fOpacity = pAnnotDict.KeyExist("CA") ? pAnnotDict.GetFloatFor("CA") : 1;
@@ -480,7 +480,7 @@ RetainPtr<CPDF_Dictionary> GenerateExtGStateDict(
   pGSDict->SetNewFor<CPDF_Name>("BM", sBlendMode);
 
   auto pExtGStateDict =
-      pdfium::MakeRetain<CPDF_Dictionary>(pAnnotDict.GetByteStringPool());
+      fxcrt::MakeRetain<CPDF_Dictionary>(pAnnotDict.GetByteStringPool());
   pExtGStateDict->SetFor(sExtGSDictName, pGSDict);
   return pExtGStateDict;
 }

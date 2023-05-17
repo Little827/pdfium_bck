@@ -295,14 +295,14 @@ RetainPtr<CFX_CSSValue> CFX_CSSDeclaration::ParseNumber(const wchar_t* pszValue,
   CFX_CSSNumberValue::Unit eUnit;
   if (!ParseCSSNumber(pszValue, nValueLen, &fValue, &eUnit))
     return nullptr;
-  return pdfium::MakeRetain<CFX_CSSNumberValue>(eUnit, fValue);
+  return fxcrt::MakeRetain<CFX_CSSNumberValue>(eUnit, fValue);
 }
 
 RetainPtr<CFX_CSSValue> CFX_CSSDeclaration::ParseEnum(const wchar_t* pszValue,
                                                       size_t nValueLen) {
   const CFX_CSSData::PropertyValue* pValue =
       CFX_CSSData::GetPropertyValueByName(WideStringView(pszValue, nValueLen));
-  return pValue ? pdfium::MakeRetain<CFX_CSSEnumValue>(pValue->eName) : nullptr;
+  return pValue ? fxcrt::MakeRetain<CFX_CSSEnumValue>(pValue->eName) : nullptr;
 }
 
 RetainPtr<CFX_CSSValue> CFX_CSSDeclaration::ParseColor(const wchar_t* pszValue,
@@ -310,7 +310,7 @@ RetainPtr<CFX_CSSValue> CFX_CSSDeclaration::ParseColor(const wchar_t* pszValue,
   FX_ARGB dwColor;
   if (!ParseCSSColor(pszValue, nValueLen, &dwColor))
     return nullptr;
-  return pdfium::MakeRetain<CFX_CSSColorValue>(dwColor);
+  return fxcrt::MakeRetain<CFX_CSSColorValue>(dwColor);
 }
 
 RetainPtr<CFX_CSSValue> CFX_CSSDeclaration::ParseString(const wchar_t* pszValue,
@@ -322,7 +322,7 @@ RetainPtr<CFX_CSSValue> CFX_CSSDeclaration::ParseString(const wchar_t* pszValue,
   if (nValueLen == 0)
     return nullptr;
 
-  return pdfium::MakeRetain<CFX_CSSStringValue>(
+  return fxcrt::MakeRetain<CFX_CSSStringValue>(
       WideString(pszValue + iOffset, nValueLen));
 }
 
@@ -346,14 +346,14 @@ void CFX_CSSDeclaration::ParseValueListProperty(
           CFX_CSSNumberValue::Unit eNumType;
           if (ParseCSSNumber(pszValue, nValueLen, &fValue, &eNumType))
             list.push_back(
-                pdfium::MakeRetain<CFX_CSSNumberValue>(eNumType, fValue));
+                fxcrt::MakeRetain<CFX_CSSNumberValue>(eNumType, fValue));
         }
         break;
       case CFX_CSSValue::PrimitiveType::kString:
         if (dwType & CFX_CSSVALUETYPE_MaybeColor) {
           FX_ARGB dwColor;
           if (ParseCSSColor(pszValue, nValueLen, &dwColor)) {
-            list.push_back(pdfium::MakeRetain<CFX_CSSColorValue>(dwColor));
+            list.push_back(fxcrt::MakeRetain<CFX_CSSColorValue>(dwColor));
             continue;
           }
         }
@@ -362,12 +362,12 @@ void CFX_CSSDeclaration::ParseValueListProperty(
               CFX_CSSData::GetPropertyValueByName(
                   WideStringView(pszValue, nValueLen));
           if (pValue) {
-            list.push_back(pdfium::MakeRetain<CFX_CSSEnumValue>(pValue->eName));
+            list.push_back(fxcrt::MakeRetain<CFX_CSSEnumValue>(pValue->eName));
             continue;
           }
         }
         if (dwType & CFX_CSSVALUETYPE_MaybeString) {
-          list.push_back(pdfium::MakeRetain<CFX_CSSStringValue>(
+          list.push_back(fxcrt::MakeRetain<CFX_CSSStringValue>(
               WideString(pszValue, nValueLen)));
         }
         break;
@@ -375,7 +375,7 @@ void CFX_CSSDeclaration::ParseValueListProperty(
         if (dwType & CFX_CSSVALUETYPE_MaybeColor) {
           FX_ARGB dwColor;
           if (ParseCSSColor(pszValue, nValueLen, &dwColor)) {
-            list.push_back(pdfium::MakeRetain<CFX_CSSColorValue>(dwColor));
+            list.push_back(fxcrt::MakeRetain<CFX_CSSColorValue>(dwColor));
           }
         }
         break;
@@ -406,7 +406,7 @@ void CFX_CSSDeclaration::ParseValueListProperty(
                          CFX_CSSProperty::PaddingBottom);
       return;
     default: {
-      auto value_list = pdfium::MakeRetain<CFX_CSSValueList>(std::move(list));
+      auto value_list = fxcrt::MakeRetain<CFX_CSSValueList>(std::move(list));
       AddPropertyHolder(pProperty->eName, value_list, bImportant);
       return;
     }
@@ -467,7 +467,7 @@ bool CFX_CSSDeclaration::ParseBorderProperty(
         float fValue;
         CFX_CSSNumberValue::Unit eNumType;
         if (ParseCSSNumber(pszValue, nValueLen, &fValue, &eNumType))
-          pWidth = pdfium::MakeRetain<CFX_CSSNumberValue>(eNumType, fValue);
+          pWidth = fxcrt::MakeRetain<CFX_CSSNumberValue>(eNumType, fValue);
         break;
       }
       case CFX_CSSValue::PrimitiveType::kString: {
@@ -487,7 +487,7 @@ bool CFX_CSSDeclaration::ParseBorderProperty(
           case CFX_CSSPropertyValue::Thick:
           case CFX_CSSPropertyValue::Medium:
             if (!pWidth)
-              pWidth = pdfium::MakeRetain<CFX_CSSEnumValue>(pValue->eName);
+              pWidth = fxcrt::MakeRetain<CFX_CSSEnumValue>(pValue->eName);
             break;
           default:
             break;
@@ -499,7 +499,7 @@ bool CFX_CSSDeclaration::ParseBorderProperty(
     }
   }
   if (!pWidth) {
-    pWidth = pdfium::MakeRetain<CFX_CSSNumberValue>(
+    pWidth = fxcrt::MakeRetain<CFX_CSSNumberValue>(
         CFX_CSSNumberValue::Unit::kNumber, 0.0f);
   }
   return true;
@@ -534,42 +534,42 @@ void CFX_CSSDeclaration::ParseFontProperty(const wchar_t* pszValue,
             case CFX_CSSPropertyValue::Smaller:
             case CFX_CSSPropertyValue::Larger:
               if (!pFontSize)
-                pFontSize = pdfium::MakeRetain<CFX_CSSEnumValue>(pValue->eName);
+                pFontSize = fxcrt::MakeRetain<CFX_CSSEnumValue>(pValue->eName);
               continue;
             case CFX_CSSPropertyValue::Bold:
             case CFX_CSSPropertyValue::Bolder:
             case CFX_CSSPropertyValue::Lighter:
               if (!pWeight)
-                pWeight = pdfium::MakeRetain<CFX_CSSEnumValue>(pValue->eName);
+                pWeight = fxcrt::MakeRetain<CFX_CSSEnumValue>(pValue->eName);
               continue;
             case CFX_CSSPropertyValue::Italic:
             case CFX_CSSPropertyValue::Oblique:
               if (!pStyle)
-                pStyle = pdfium::MakeRetain<CFX_CSSEnumValue>(pValue->eName);
+                pStyle = fxcrt::MakeRetain<CFX_CSSEnumValue>(pValue->eName);
               continue;
             case CFX_CSSPropertyValue::SmallCaps:
               if (!pVariant)
-                pVariant = pdfium::MakeRetain<CFX_CSSEnumValue>(pValue->eName);
+                pVariant = fxcrt::MakeRetain<CFX_CSSEnumValue>(pValue->eName);
               continue;
             case CFX_CSSPropertyValue::Normal:
               if (!pStyle)
-                pStyle = pdfium::MakeRetain<CFX_CSSEnumValue>(pValue->eName);
+                pStyle = fxcrt::MakeRetain<CFX_CSSEnumValue>(pValue->eName);
               else if (!pVariant)
-                pVariant = pdfium::MakeRetain<CFX_CSSEnumValue>(pValue->eName);
+                pVariant = fxcrt::MakeRetain<CFX_CSSEnumValue>(pValue->eName);
               else if (!pWeight)
-                pWeight = pdfium::MakeRetain<CFX_CSSEnumValue>(pValue->eName);
+                pWeight = fxcrt::MakeRetain<CFX_CSSEnumValue>(pValue->eName);
               else if (!pFontSize)
-                pFontSize = pdfium::MakeRetain<CFX_CSSEnumValue>(pValue->eName);
+                pFontSize = fxcrt::MakeRetain<CFX_CSSEnumValue>(pValue->eName);
               else if (!pLineHeight)
                 pLineHeight =
-                    pdfium::MakeRetain<CFX_CSSEnumValue>(pValue->eName);
+                    fxcrt::MakeRetain<CFX_CSSEnumValue>(pValue->eName);
               continue;
             default:
               break;
           }
         }
         if (pFontSize) {
-          family_list.push_back(pdfium::MakeRetain<CFX_CSSStringValue>(
+          family_list.push_back(fxcrt::MakeRetain<CFX_CSSStringValue>(
               WideString(pszValue, nValueLen)));
         }
         parser.UseCommaSeparator();
@@ -592,17 +592,16 @@ void CFX_CSSDeclaration::ParseFontProperty(const wchar_t* pszValue,
             case 800:
             case 900:
               if (!pWeight) {
-                pWeight = pdfium::MakeRetain<CFX_CSSNumberValue>(
+                pWeight = fxcrt::MakeRetain<CFX_CSSNumberValue>(
                     CFX_CSSNumberValue::Unit::kNumber, fValue);
               }
               continue;
           }
         }
         if (!pFontSize)
-          pFontSize = pdfium::MakeRetain<CFX_CSSNumberValue>(eNumType, fValue);
+          pFontSize = fxcrt::MakeRetain<CFX_CSSNumberValue>(eNumType, fValue);
         else if (!pLineHeight)
-          pLineHeight =
-              pdfium::MakeRetain<CFX_CSSNumberValue>(eNumType, fValue);
+          pLineHeight = fxcrt::MakeRetain<CFX_CSSNumberValue>(eNumType, fValue);
         break;
       }
       default:
@@ -611,23 +610,22 @@ void CFX_CSSDeclaration::ParseFontProperty(const wchar_t* pszValue,
   }
 
   if (!pStyle) {
-    pStyle = pdfium::MakeRetain<CFX_CSSEnumValue>(CFX_CSSPropertyValue::Normal);
+    pStyle = fxcrt::MakeRetain<CFX_CSSEnumValue>(CFX_CSSPropertyValue::Normal);
   }
   if (!pVariant) {
     pVariant =
-        pdfium::MakeRetain<CFX_CSSEnumValue>(CFX_CSSPropertyValue::Normal);
+        fxcrt::MakeRetain<CFX_CSSEnumValue>(CFX_CSSPropertyValue::Normal);
   }
   if (!pWeight) {
-    pWeight =
-        pdfium::MakeRetain<CFX_CSSEnumValue>(CFX_CSSPropertyValue::Normal);
+    pWeight = fxcrt::MakeRetain<CFX_CSSEnumValue>(CFX_CSSPropertyValue::Normal);
   }
   if (!pFontSize) {
     pFontSize =
-        pdfium::MakeRetain<CFX_CSSEnumValue>(CFX_CSSPropertyValue::Medium);
+        fxcrt::MakeRetain<CFX_CSSEnumValue>(CFX_CSSPropertyValue::Medium);
   }
   if (!pLineHeight) {
     pLineHeight =
-        pdfium::MakeRetain<CFX_CSSEnumValue>(CFX_CSSPropertyValue::Normal);
+        fxcrt::MakeRetain<CFX_CSSEnumValue>(CFX_CSSPropertyValue::Normal);
   }
 
   AddPropertyHolder(CFX_CSSProperty::FontStyle, pStyle, bImportant);
@@ -637,7 +635,7 @@ void CFX_CSSDeclaration::ParseFontProperty(const wchar_t* pszValue,
   AddPropertyHolder(CFX_CSSProperty::LineHeight, pLineHeight, bImportant);
   if (!family_list.empty()) {
     auto value_list =
-        pdfium::MakeRetain<CFX_CSSValueList>(std::move(family_list));
+        fxcrt::MakeRetain<CFX_CSSValueList>(std::move(family_list));
     AddPropertyHolder(CFX_CSSProperty::FontFamily, value_list, bImportant);
   }
 }

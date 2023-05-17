@@ -33,7 +33,7 @@ TEST(IndirectObjectHolderTest, RecursiveParseOfSameObject) {
             RetainPtr<const CPDF_Object> same_parse =
                 mock_holder.GetOrParseIndirectObject(objnum);
             CHECK(!same_parse);
-            return pdfium::MakeRetain<CPDF_Null>();
+            return fxcrt::MakeRetain<CPDF_Null>();
           })));
 
   EXPECT_TRUE(mock_holder.GetOrParseIndirectObject(1000));
@@ -50,7 +50,7 @@ TEST(IndirectObjectHolderTest, GetObjectMethods) {
   EXPECT_CALL(mock_holder, ParseIndirectObject(::testing::_))
       .WillOnce(::testing::WithArg<0>(
           ::testing::Invoke([](uint32_t objnum) -> RetainPtr<CPDF_Object> {
-            return pdfium::MakeRetain<CPDF_Null>();
+            return fxcrt::MakeRetain<CPDF_Null>();
           })));
   EXPECT_TRUE(mock_holder.GetOrParseIndirectObject(kObjNum));
   ::testing::Mock::VerifyAndClearExpectations(&mock_holder);
@@ -75,7 +75,7 @@ TEST(IndirectObjectHolderTest, ReplaceObjectWithInvalidObjNum) {
 
   EXPECT_CALL(mock_holder, ParseIndirectObject(::testing::_)).Times(0);
   EXPECT_FALSE(mock_holder.ReplaceIndirectObjectIfHigherGeneration(
-      CPDF_Object::kInvalidObjNum, pdfium::MakeRetain<CPDF_Null>()));
+      CPDF_Object::kInvalidObjNum, fxcrt::MakeRetain<CPDF_Null>()));
 }
 
 TEST(IndirectObjectHolderTest, TemplateNewMethods) {

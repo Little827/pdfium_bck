@@ -16,7 +16,7 @@
 #include "core/fxcrt/utf16.h"
 
 CFX_UTF8Encoder::CFX_UTF8Encoder(WideStringView input) {
-  for (char32_t code_point : pdfium::CodePointView(input)) {
+  for (char32_t code_point : fxcrt::CodePointView(input)) {
     AppendCodePoint(code_point);
   }
 }
@@ -28,7 +28,7 @@ ByteString CFX_UTF8Encoder::TakeResult() {
 }
 
 void CFX_UTF8Encoder::AppendCodePoint(char32_t code_point) {
-  if (code_point > pdfium::kMaximumSupplementaryCodePoint) {
+  if (code_point > fxcrt::kMaximumSupplementaryCodePoint) {
     // Invalid code point above U+10FFFF.
     return;
   }

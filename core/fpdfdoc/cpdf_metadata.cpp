@@ -70,10 +70,10 @@ CPDF_Metadata::CPDF_Metadata(RetainPtr<const CPDF_Stream> pStream)
 CPDF_Metadata::~CPDF_Metadata() = default;
 
 std::vector<UnsupportedFeature> CPDF_Metadata::CheckForSharedForm() const {
-  auto pAcc = pdfium::MakeRetain<CPDF_StreamAcc>(stream_);
+  auto pAcc = fxcrt::MakeRetain<CPDF_StreamAcc>(stream_);
   pAcc->LoadAllDataFiltered();
 
-  auto stream = pdfium::MakeRetain<CFX_ReadOnlySpanStream>(pAcc->GetSpan());
+  auto stream = fxcrt::MakeRetain<CFX_ReadOnlySpanStream>(pAcc->GetSpan());
   CFX_XMLParser parser(stream);
   std::unique_ptr<CFX_XMLDocument> doc = parser.Parse();
   if (!doc)

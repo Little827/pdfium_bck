@@ -17,7 +17,7 @@
 #error "File compiled under wrong build option."
 #endif
 
-namespace pdfium {
+namespace fxcrt {
 namespace internal {
 
 // Slightly less than 2GB, typically.
@@ -56,7 +56,7 @@ void* StringAlloc(size_t num_members, size_t member_size) {
 }
 
 }  // namespace internal
-}  // namespace pdfium
+}  // namespace fxcrt
 
 void FX_InitializeMemoryAllocators() {}
 

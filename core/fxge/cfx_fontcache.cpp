@@ -21,9 +21,9 @@ RetainPtr<CFX_GlyphCache> CFX_FontCache::GetGlyphCache(const CFX_Font* pFont) {
   auto& map = bExternal ? m_ExtGlyphCacheMap : m_GlyphCacheMap;
   auto it = map.find(face.Get());
   if (it != map.end() && it->second)
-    return pdfium::WrapRetain(it->second.Get());
+    return fxcrt::WrapRetain(it->second.Get());
 
-  auto new_cache = pdfium::MakeRetain<CFX_GlyphCache>(face);
+  auto new_cache = fxcrt::MakeRetain<CFX_GlyphCache>(face);
   map[face.Get()].Reset(new_cache.Get());
   return new_cache;
 }

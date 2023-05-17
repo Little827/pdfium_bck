@@ -26,7 +26,7 @@ class CFX_GifContextForTest final : public CFX_GifContext {
 
   CFX_CodecMemory* InputBuffer() const { return input_buffer_.Get(); }
   void SetTestInputBuffer(pdfium::span<uint8_t> input) {
-    auto pMemory = pdfium::MakeRetain<CFX_CodecMemory>(input.size());
+    auto pMemory = fxcrt::MakeRetain<CFX_CodecMemory>(input.size());
     fxcrt::spancpy(pMemory->GetBufferSpan(), input);
     SetInputBuffer(std::move(pMemory));
   }

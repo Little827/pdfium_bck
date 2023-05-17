@@ -32,7 +32,7 @@ CPDF_ObjectAvail::CPDF_ObjectAvail(RetainPtr<CPDF_ReadValidator> validator,
                                    uint32_t obj_num)
     : validator_(std::move(validator)),
       holder_(holder),
-      root_(pdfium::MakeRetain<CPDF_Reference>(holder, obj_num)) {
+      root_(fxcrt::MakeRetain<CPDF_Reference>(holder, obj_num)) {
   DCHECK(validator_);
   DCHECK(holder);
 }

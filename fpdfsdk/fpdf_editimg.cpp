@@ -67,7 +67,7 @@ static_assert(static_cast<int>(CPDF_ColorSpace::Family::kPattern) ==
 
 RetainPtr<IFX_SeekableReadStream> MakeSeekableReadStream(
     FPDF_FILEACCESS* pFileAccess) {
-  return pdfium::MakeRetain<CPDFSDK_CustomAccess>(pFileAccess);
+  return fxcrt::MakeRetain<CPDFSDK_CustomAccess>(pFileAccess);
 }
 
 CPDF_ImageObject* CPDFImageObjectFromFPDFPageObject(
@@ -115,7 +115,7 @@ FPDFPageObj_NewImageObj(FPDF_DOCUMENT document) {
     return nullptr;
 
   auto pImageObj = std::make_unique<CPDF_ImageObject>();
-  pImageObj->SetImage(pdfium::MakeRetain<CPDF_Image>(pDoc));
+  pImageObj->SetImage(fxcrt::MakeRetain<CPDF_Image>(pDoc));
 
   // Caller takes ownership.
   return FPDFPageObjectFromCPDFPageObject(pImageObj.release());
@@ -228,7 +228,7 @@ FPDFImageObj_GetRenderedBitmap(FPDF_DOCUMENT document,
   const CFX_Matrix& image_matrix = image->matrix();
   int output_width = image_matrix.a;
   int output_height = image_matrix.d;
-  auto result_bitmap = pdfium::MakeRetain<CFX_DIBitmap>();
+  auto result_bitmap = fxcrt::MakeRetain<CFX_DIBitmap>();
   if (!result_bitmap->Create(output_width, output_height, FXDIB_Format::kArgb))
     return nullptr;
 

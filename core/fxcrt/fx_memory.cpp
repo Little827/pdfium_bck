@@ -19,15 +19,15 @@
 #endif
 
 void* FXMEM_DefaultAlloc(size_t byte_size) {
-  return pdfium::internal::Alloc(byte_size, 1);
+  return fxcrt::internal::Alloc(byte_size, 1);
 }
 
 void* FXMEM_DefaultCalloc(size_t num_elems, size_t byte_size) {
-  return pdfium::internal::Calloc(num_elems, byte_size);
+  return fxcrt::internal::Calloc(num_elems, byte_size);
 }
 
 void* FXMEM_DefaultRealloc(void* pointer, size_t new_size) {
-  return pdfium::internal::Realloc(pointer, new_size, 1);
+  return fxcrt::internal::Realloc(pointer, new_size, 1);
 }
 
 void FXMEM_DefaultFree(void* pointer) {
@@ -52,7 +52,7 @@ NOINLINE void FX_OutOfMemoryTerminate(size_t size) {
   abort();
 }
 
-namespace pdfium {
+namespace fxcrt {
 namespace internal {
 
 void* AllocOrDie(size_t num_members, size_t member_size) {
@@ -100,4 +100,4 @@ void* StringAllocOrDie(size_t num_members, size_t member_size) {
   return result;
 }
 }  // namespace internal
-}  // namespace pdfium
+}  // namespace fxcrt

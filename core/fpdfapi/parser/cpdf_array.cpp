@@ -50,7 +50,7 @@ RetainPtr<CPDF_Object> CPDF_Array::CloneNonCyclic(
     bool bDirect,
     std::set<const CPDF_Object*>* pVisited) const {
   pVisited->insert(this);
-  auto pCopy = pdfium::MakeRetain<CPDF_Array>();
+  auto pCopy = fxcrt::MakeRetain<CPDF_Array>();
   for (const auto& pValue : m_Objects) {
     if (!pdfium::Contains(*pVisited, pValue.Get())) {
       std::set<const CPDF_Object*> visited(*pVisited);
@@ -102,11 +102,11 @@ const CPDF_Object* CPDF_Array::GetObjectAtInternal(size_t index) const {
 }
 
 RetainPtr<CPDF_Object> CPDF_Array::GetMutableObjectAt(size_t index) {
-  return pdfium::WrapRetain(GetMutableObjectAtInternal(index));
+  return fxcrt::WrapRetain(GetMutableObjectAtInternal(index));
 }
 
 RetainPtr<const CPDF_Object> CPDF_Array::GetObjectAt(size_t index) const {
-  return pdfium::WrapRetain(GetObjectAtInternal(index));
+  return fxcrt::WrapRetain(GetObjectAtInternal(index));
 }
 
 RetainPtr<const CPDF_Object> CPDF_Array::GetDirectObjectAt(size_t index) const {
@@ -155,7 +155,7 @@ RetainPtr<CPDF_Dictionary> CPDF_Array::GetMutableDictAt(size_t index) {
     return nullptr;
   CPDF_Dictionary* pDict = p->AsMutableDictionary();
   if (pDict)
-    return pdfium::WrapRetain(pDict);
+    return fxcrt::WrapRetain(pDict);
   CPDF_Stream* pStream = p->AsMutableStream();
   if (pStream)
     return pStream->GetMutableDict();

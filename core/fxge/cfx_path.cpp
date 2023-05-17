@@ -448,5 +448,5 @@ CFX_RetainablePath::CFX_RetainablePath(const CFX_RetainablePath& src)
 CFX_RetainablePath::~CFX_RetainablePath() = default;
 
 RetainPtr<CFX_RetainablePath> CFX_RetainablePath::Clone() const {
-  return pdfium::MakeRetain<CFX_RetainablePath>(*this);
+  return fxcrt::MakeRetain<CFX_RetainablePath>(*this);
 }

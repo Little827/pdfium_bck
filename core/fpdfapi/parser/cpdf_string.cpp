@@ -38,7 +38,7 @@ CPDF_Object::Type CPDF_String::GetType() const {
 }
 
 RetainPtr<CPDF_Object> CPDF_String::Clone() const {
-  auto pRet = pdfium::MakeRetain<CPDF_String>();
+  auto pRet = fxcrt::MakeRetain<CPDF_String>();
   pRet->m_String = m_String;
   pRet->m_bHex = m_bHex;
   return pRet;

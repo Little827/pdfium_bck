@@ -84,15 +84,15 @@ std::unique_ptr<CPDF_SyntaxParser> CPDF_SyntaxParser::CreateForTesting(
     RetainPtr<IFX_SeekableReadStream> pFileAccess,
     FX_FILESIZE HeaderOffset) {
   return std::make_unique<CPDF_SyntaxParser>(
-      pdfium::MakeRetain<CPDF_ReadValidator>(std::move(pFileAccess), nullptr),
+      fxcrt::MakeRetain<CPDF_ReadValidator>(std::move(pFileAccess), nullptr),
       HeaderOffset);
 }
 
 CPDF_SyntaxParser::CPDF_SyntaxParser(
     RetainPtr<IFX_SeekableReadStream> pFileAccess)
     : CPDF_SyntaxParser(
-          pdfium::MakeRetain<CPDF_ReadValidator>(std::move(pFileAccess),
-                                                 nullptr),
+          fxcrt::MakeRetain<CPDF_ReadValidator>(std::move(pFileAccess),
+                                                nullptr),
           0) {}
 
 CPDF_SyntaxParser::CPDF_SyntaxParser(RetainPtr<CPDF_ReadValidator> validator,
@@ -510,36 +510,36 @@ RetainPtr<CPDF_Object> CPDF_SyntaxParser::GetObjectBodyInternal(
     AutoRestorer<FX_FILESIZE> pos_restorer(&m_Pos);
     WordResult nextword = GetNextWord();
     if (!nextword.is_number)
-      return pdfium::MakeRetain<CPDF_Number>(word.AsStringView());
+      return fxcrt::MakeRetain<CPDF_Number>(word.AsStringView());
 
     WordResult nextword2 = GetNextWord();
     if (nextword2.word != "R")
-      return pdfium::MakeRetain<CPDF_Number>(word.AsStringView());
+      return fxcrt::MakeRetain<CPDF_Number>(word.AsStringView());
 
     pos_restorer.AbandonRestoration();
     uint32_t refnum = FXSYS_atoui(word.c_str());
     if (refnum == CPDF_Object::kInvalidObjNum)
       return nullptr;
 
-    return pdfium::MakeRetain<CPDF_Reference>(pObjList, refnum);
+    return fxcrt::MakeRetain<CPDF_Reference>(pObjList, refnum);
   }
 
   if (word == "true" || word == "false")
-    return pdfium::MakeRetain<CPDF_Boolean>(word == "true");
+    return fxcrt::MakeRetain<CPDF_Boolean>(word == "true");
 
   if (word == "null")
-    return pdfium::MakeRetain<CPDF_Null>();
+    return fxcrt::MakeRetain<CPDF_Null>();
 
   if (word == "(") {
     ByteString str = ReadString();
-    return pdfium::MakeRetain<CPDF_String>(m_pPool, str, false);
+    return fxcrt::MakeRetain<CPDF_String>(m_pPool, str, false);
   }
   if (word == "<") {
     ByteString str = ReadHexString();
-    return pdfium::MakeRetain<CPDF_String>(m_pPool, str, true);
+    return fxcrt::MakeRetain<CPDF_String>(m_pPool, str, true);
   }
   if (word == "[") {
-    auto pArray = pdfium::MakeRetain<CPDF_Array>();
+    auto pArray = fxcrt::MakeRetain<CPDF_Array>();
     while (RetainPtr<CPDF_Object> pObj =
                GetObjectBodyInternal(pObjList, ParseType::kLoose)) {
       pArray->Append(std::move(pObj));
@@ -549,13 +549,13 @@ RetainPtr<CPDF_Object> CPDF_SyntaxParser::GetObjectBodyInternal(
                : nullptr;
   }
   if (word[0] == '/') {
-    return pdfium::MakeRetain<CPDF_Name>(
+    return fxcrt::MakeRetain<CPDF_Name>(
         m_pPool,
         PDF_NameDecode(ByteStringView(m_WordBuffer + 1, m_WordSize - 1)));
   }
   if (word == "<<") {
     RetainPtr<CPDF_Dictionary> pDict =
-        pdfium::MakeRetain<CPDF_Dictionary>(m_pPool);
+        fxcrt::MakeRetain<CPDF_Dictionary>(m_pPool);
     while (true) {
       WordResult inner_word_result = GetNextWord();
       const ByteString& inner_word = inner_word_result.word;
@@ -732,7 +732,7 @@ RetainPtr<CPDF_Stream> CPDF_SyntaxParser::ReadStream(
       return nullptr;
     }
 
-    substream = pdfium::MakeRetain<ReadableSubStream>(
+    substream = fxcrt::MakeRetain<ReadableSubStream>(
         GetValidator(), m_HeaderOffset + GetPos(), len);
     SetPos(GetPos() + len);
   }
@@ -779,7 +779,7 @@ RetainPtr<CPDF_Stream> CPDF_SyntaxParser::ReadStream(
         return nullptr;
       }
 
-      substream = pdfium::MakeRetain<ReadableSubStream>(
+      substream = fxcrt::MakeRetain<ReadableSubStream>(
           GetValidator(), m_HeaderOffset + GetPos(), len);
       SetPos(GetPos() + len);
     }
@@ -795,13 +795,13 @@ RetainPtr<CPDF_Stream> CPDF_SyntaxParser::ReadStream(
     bool did_read = substream->ReadBlockAtOffset(data.writable_span(), 0);
     CHECK(did_read);
     auto data_as_stream =
-        pdfium::MakeRetain<CFX_ReadOnlyVectorStream>(std::move(data));
+        fxcrt::MakeRetain<CFX_ReadOnlyVectorStream>(std::move(data));
 
-    pStream = pdfium::MakeRetain<CPDF_Stream>();
+    pStream = fxcrt::MakeRetain<CPDF_Stream>();
     pStream->InitStreamFromFile(std::move(data_as_stream), std::move(pDict));
   } else {
     DCHECK(!len);
-    pStream = pdfium::MakeRetain<CPDF_Stream>(std::move(pDict));
+    pStream = fxcrt::MakeRetain<CPDF_Stream>(std::move(pDict));
   }
   const FX_FILESIZE end_stream_offset = GetPos();
   memset(m_WordBuffer, 0, kEndObjStr.GetLength() + 1);

@@ -67,7 +67,7 @@ bool CFX_XMLParser::IsXMLNameChar(wchar_t ch, bool bFirstChar) {
 CFX_XMLParser::CFX_XMLParser(const RetainPtr<IFX_SeekableReadStream>& pStream) {
   DCHECK(pStream);
 
-  auto proxy = pdfium::MakeRetain<CFX_SeekableStreamProxy>(pStream);
+  auto proxy = fxcrt::MakeRetain<CFX_SeekableStreamProxy>(pStream);
   FX_CodePage wCodePage = proxy->GetCodePage();
   if (wCodePage != FX_CodePage::kUTF16LE &&
       wCodePage != FX_CodePage::kUTF16BE && wCodePage != FX_CodePage::kUTF8) {

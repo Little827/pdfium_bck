@@ -27,7 +27,7 @@ class CFDETextOutTest : public testing::Test {
 
   void SetUp() override {
     CFX_Size bitmap_size = GetBitmapSize();
-    bitmap_ = pdfium::MakeRetain<CFX_DIBitmap>();
+    bitmap_ = fxcrt::MakeRetain<CFX_DIBitmap>();
     ASSERT_TRUE(bitmap_->Create(bitmap_size.width, bitmap_size.height,
                                 FXDIB_Format::kArgb));
 

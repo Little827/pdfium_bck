@@ -441,10 +441,10 @@ bool CPDF_CIDFont::Load() {
   const CPDF_Stream* pEncodingStream = pEncoding->AsStream();
   if (pEncodingStream) {
     auto pAcc =
-        pdfium::MakeRetain<CPDF_StreamAcc>(pdfium::WrapRetain(pEncodingStream));
+        fxcrt::MakeRetain<CPDF_StreamAcc>(fxcrt::WrapRetain(pEncodingStream));
     pAcc->LoadAllDataFiltered();
     pdfium::span<const uint8_t> span = pAcc->GetSpan();
-    m_pCMap = pdfium::MakeRetain<CPDF_CMap>(span);
+    m_pCMap = fxcrt::MakeRetain<CPDF_CMap>(span);
   } else {
     DCHECK(pEncoding->IsName());
     ByteString cmap = pEncoding->GetString();
@@ -487,7 +487,7 @@ bool CPDF_CIDFont::Load() {
   if (pmap) {
     RetainPtr<const CPDF_Stream> pMapStream(pmap->AsStream());
     if (pMapStream) {
-      m_pStreamAcc = pdfium::MakeRetain<CPDF_StreamAcc>(std::move(pMapStream));
+      m_pStreamAcc = fxcrt::MakeRetain<CPDF_StreamAcc>(std::move(pMapStream));
       m_pStreamAcc->LoadAllDataFiltered();
     } else if (m_pFontFile && pmap->IsName() &&
                pmap->GetString() == "Identity") {
@@ -650,8 +650,9 @@ int CPDF_CIDFont::GetGlyphIndex(uint32_t unicode, bool* pVertGlyph) {
 
   FXFT_FaceRec* face = m_Font.GetFaceRec();
   int index = FT_Get_Char_Index(face, unicode);
-  if (unicode == pdfium::unicode::kBoxDrawingsLightVerical)
+  if (unicode == fxcrt::unicode::kBoxDrawingsLightVerical) {
     return index;
+  }
 
   if (!index || !IsVertWriting())
     return index;

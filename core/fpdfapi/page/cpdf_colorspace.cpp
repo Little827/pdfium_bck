@@ -519,22 +519,22 @@ RetainPtr<CPDF_ColorSpace> CPDF_ColorSpace::AllocateColorSpace(
     ByteStringView bsFamilyName) {
   switch (bsFamilyName.GetID()) {
     case FXBSTR_ID('C', 'a', 'l', 'G'):
-      return pdfium::MakeRetain<CPDF_CalGray>();
+      return fxcrt::MakeRetain<CPDF_CalGray>();
     case FXBSTR_ID('C', 'a', 'l', 'R'):
-      return pdfium::MakeRetain<CPDF_CalRGB>();
+      return fxcrt::MakeRetain<CPDF_CalRGB>();
     case FXBSTR_ID('L', 'a', 'b', 0):
-      return pdfium::MakeRetain<CPDF_LabCS>();
+      return fxcrt::MakeRetain<CPDF_LabCS>();
     case FXBSTR_ID('I', 'C', 'C', 'B'):
-      return pdfium::MakeRetain<CPDF_ICCBasedCS>();
+      return fxcrt::MakeRetain<CPDF_ICCBasedCS>();
     case FXBSTR_ID('I', 'n', 'd', 'e'):
     case FXBSTR_ID('I', 0, 0, 0):
-      return pdfium::MakeRetain<CPDF_IndexedCS>();
+      return fxcrt::MakeRetain<CPDF_IndexedCS>();
     case FXBSTR_ID('S', 'e', 'p', 'a'):
-      return pdfium::MakeRetain<CPDF_SeparationCS>();
+      return fxcrt::MakeRetain<CPDF_SeparationCS>();
     case FXBSTR_ID('D', 'e', 'v', 'i'):
-      return pdfium::MakeRetain<CPDF_DeviceNCS>();
+      return fxcrt::MakeRetain<CPDF_DeviceNCS>();
     case FXBSTR_ID('P', 'a', 't', 't'):
-      return pdfium::MakeRetain<CPDF_PatternCS>();
+      return fxcrt::MakeRetain<CPDF_PatternCS>();
     default:
       return nullptr;
   }

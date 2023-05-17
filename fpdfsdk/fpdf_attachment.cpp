@@ -129,7 +129,7 @@ FPDFAttachment_GetName(FPDF_ATTACHMENT attachment,
   if (!pFile)
     return 0;
 
-  CPDF_FileSpec spec(pdfium::WrapRetain(pFile));
+  CPDF_FileSpec spec(fxcrt::WrapRetain(pFile));
   return Utf16EncodeMaybeCopyAndReturnLength(spec.GetFileName(), buffer,
                                              buflen);
 }
@@ -140,7 +140,7 @@ FPDFAttachment_HasKey(FPDF_ATTACHMENT attachment, FPDF_BYTESTRING key) {
   if (!pFile)
     return 0;
 
-  CPDF_FileSpec spec(pdfium::WrapRetain(pFile));
+  CPDF_FileSpec spec(fxcrt::WrapRetain(pFile));
   RetainPtr<const CPDF_Dictionary> pParamsDict = spec.GetParamsDict();
   return pParamsDict ? pParamsDict->KeyExist(key) : 0;
 }
@@ -151,7 +151,7 @@ FPDFAttachment_GetValueType(FPDF_ATTACHMENT attachment, FPDF_BYTESTRING key) {
     return FPDF_OBJECT_UNKNOWN;
 
   CPDF_FileSpec spec(
-      pdfium::WrapRetain(CPDFObjectFromFPDFAttachment(attachment)));
+      fxcrt::WrapRetain(CPDFObjectFromFPDFAttachment(attachment)));
   RetainPtr<const CPDF_Object> pObj = spec.GetParamsDict()->GetObjectFor(key);
   return pObj ? pObj->GetType() : FPDF_OBJECT_UNKNOWN;
 }
@@ -164,7 +164,7 @@ FPDFAttachment_SetStringValue(FPDF_ATTACHMENT attachment,
   if (!pFile)
     return false;
 
-  CPDF_FileSpec spec(pdfium::WrapRetain(pFile));
+  CPDF_FileSpec spec(fxcrt::WrapRetain(pFile));
   RetainPtr<CPDF_Dictionary> pParamsDict = spec.GetMutableParamsDict();
   if (!pParamsDict)
     return false;
@@ -188,7 +188,7 @@ FPDFAttachment_GetStringValue(FPDF_ATTACHMENT attachment,
   if (!pFile)
     return 0;
 
-  CPDF_FileSpec spec(pdfium::WrapRetain(pFile));
+  CPDF_FileSpec spec(fxcrt::WrapRetain(pFile));
   RetainPtr<const CPDF_Dictionary> pParamsDict = spec.GetParamsDict();
   if (!pParamsDict)
     return 0;
@@ -201,7 +201,7 @@ FPDFAttachment_GetStringValue(FPDF_ATTACHMENT attachment,
     if (stringValue->IsHex()) {
       ByteString encoded =
           PDF_HexEncodeString(stringValue->GetString().AsStringView());
-      value = pdfium::MakeRetain<CPDF_String>(nullptr, encoded, false)
+      value = fxcrt::MakeRetain<CPDF_String>(nullptr, encoded, false)
                   ->GetUnicodeText();
     }
   }
@@ -224,7 +224,7 @@ FPDFAttachment_SetFile(FPDF_ATTACHMENT attachment,
     return false;
 
   // Create a dictionary for the new embedded file stream.
-  auto pFileStreamDict = pdfium::MakeRetain<CPDF_Dictionary>();
+  auto pFileStreamDict = fxcrt::MakeRetain<CPDF_Dictionary>();
   auto pParamsDict = pFileStreamDict->SetNewFor<CPDF_Dictionary>("Params");
 
   // Set the size of the new file in the dictionary.
@@ -269,7 +269,7 @@ FPDFAttachment_GetFile(FPDF_ATTACHMENT attachment,
   if (!pFile)
     return false;
 
-  CPDF_FileSpec spec(pdfium::WrapRetain(pFile));
+  CPDF_FileSpec spec(fxcrt::WrapRetain(pFile));
   RetainPtr<const CPDF_Stream> pFileStream = spec.GetFileStream();
   if (!pFileStream)
     return false;

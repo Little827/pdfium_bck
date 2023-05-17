@@ -31,30 +31,30 @@ NOINLINE void FX_OutOfMemoryTerminate(size_t size);
 
 // These never return nullptr, and must return cleared memory.
 #define FX_Alloc(type, size) \
-  static_cast<type*>(pdfium::internal::CallocOrDie(size, sizeof(type)))
+  static_cast<type*>(fxcrt::internal::CallocOrDie(size, sizeof(type)))
 #define FX_Alloc2D(type, w, h) \
-  static_cast<type*>(pdfium::internal::CallocOrDie2D(w, h, sizeof(type)))
+  static_cast<type*>(fxcrt::internal::CallocOrDie2D(w, h, sizeof(type)))
 #define FX_Realloc(type, ptr, size) \
-  static_cast<type*>(pdfium::internal::ReallocOrDie(ptr, size, sizeof(type)))
+  static_cast<type*>(fxcrt::internal::ReallocOrDie(ptr, size, sizeof(type)))
 
 // May return nullptr, but returns cleared memory otherwise.
 #define FX_TryAlloc(type, size) \
-  static_cast<type*>(pdfium::internal::Calloc(size, sizeof(type)))
+  static_cast<type*>(fxcrt::internal::Calloc(size, sizeof(type)))
 #define FX_TryRealloc(type, ptr, size) \
-  static_cast<type*>(pdfium::internal::Realloc(ptr, size, sizeof(type)))
+  static_cast<type*>(fxcrt::internal::Realloc(ptr, size, sizeof(type)))
 
 // These never return nullptr, but return uninitialized memory.
 // TODO(thestig): Add FX_TryAllocUninit() if there is a use case.
 #define FX_AllocUninit(type, size) \
-  static_cast<type*>(pdfium::internal::AllocOrDie(size, sizeof(type)))
+  static_cast<type*>(fxcrt::internal::AllocOrDie(size, sizeof(type)))
 #define FX_AllocUninit2D(type, w, h) \
-  static_cast<type*>(pdfium::internal::AllocOrDie2D(w, h, sizeof(type)))
+  static_cast<type*>(fxcrt::internal::AllocOrDie2D(w, h, sizeof(type)))
 
 // String Partition Allocators.
 
 // This never returns nullptr, but returns uninitialized memory.
 #define FX_StringAlloc(type, size) \
-  static_cast<type*>(pdfium::internal::StringAllocOrDie(size, sizeof(type)))
+  static_cast<type*>(fxcrt::internal::StringAllocOrDie(size, sizeof(type)))
 
 // FX_Free accepts memory from all of the above.
 void FX_Free(void* ptr);
@@ -72,7 +72,7 @@ void* FX_ArrayBufferAllocateUninitialized(size_t length);
 void FX_ArrayBufferFree(void* data);
 #endif  // V8_ENABLE_SANDBOX
 
-namespace pdfium {
+namespace fxcrt {
 namespace internal {
 
 // General partition.
@@ -90,7 +90,7 @@ void* StringAlloc(size_t num_members, size_t member_size);
 void* StringAllocOrDie(size_t num_members, size_t member_size);
 
 }  // namespace internal
-}  // namespace pdfium
+}  // namespace fxcrt
 
 // Force stack allocation of a class. Classes that do complex work in a
 // destructor, such as the flushing of buffers, should be declared as

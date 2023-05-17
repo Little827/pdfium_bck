@@ -292,5 +292,5 @@ CPDF_GeneralState::StateData::~StateData() = default;
 
 RetainPtr<CPDF_GeneralState::StateData> CPDF_GeneralState::StateData::Clone()
     const {
-  return pdfium::MakeRetain<CPDF_GeneralState::StateData>(*this);
+  return fxcrt::MakeRetain<CPDF_GeneralState::StateData>(*this);
 }

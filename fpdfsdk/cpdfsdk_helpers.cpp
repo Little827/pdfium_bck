@@ -59,7 +59,7 @@ unsigned long GetStreamMaybeCopyAndReturnLengthImpl(
     pdfium::span<uint8_t> buffer,
     bool decode) {
   DCHECK(stream);
-  auto stream_acc = pdfium::MakeRetain<CPDF_StreamAcc>(std::move(stream));
+  auto stream_acc = fxcrt::MakeRetain<CPDF_StreamAcc>(std::move(stream));
   if (decode)
     stream_acc->LoadAllDataFiltered();
   else
@@ -217,7 +217,7 @@ WideString WideStringFromFPDFWideString(FPDF_WIDESTRING wide_string) {
 #ifdef PDF_ENABLE_XFA
 RetainPtr<IFX_SeekableStream> MakeSeekableStream(
     FPDF_FILEHANDLER* pFilehandler) {
-  return pdfium::MakeRetain<FPDF_FileHandlerContext>(pFilehandler);
+  return fxcrt::MakeRetain<FPDF_FileHandlerContext>(pFilehandler);
 }
 #endif  // PDF_ENABLE_XFA
 
@@ -228,7 +228,7 @@ RetainPtr<const CPDF_Array> GetQuadPointsArrayFromDictionary(
 
 RetainPtr<CPDF_Array> GetMutableQuadPointsArrayFromDictionary(
     CPDF_Dictionary* dict) {
-  return pdfium::WrapRetain(
+  return fxcrt::WrapRetain(
       const_cast<CPDF_Array*>(GetQuadPointsArrayFromDictionary(dict).Get()));
 }
 
