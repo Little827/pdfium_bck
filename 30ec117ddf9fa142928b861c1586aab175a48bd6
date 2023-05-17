@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d468303_8df925d1",
+        "filename": "core/fxcrt/code_point_view.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-05-17T16:03:08Z",
+      "side": 1,
+      "message": "pre-existing: this should probably be fxcrt. In an ideal namspaced world, the core/fxcrt stuff would be all be in fxcrt. \n\nMaybe file a follow-up bug to convert the dozen or so instances of this in various fxcrt files.",
+      "range": {
+        "startLine": 13,
+        "startChar": 10,
+        "endLine": 13,
+        "endChar": 16
+      },
+      "revId": "30ec117ddf9fa142928b861c1586aab175a48bd6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cf66098_eac38336",
+        "filename": "core/fxcrt/utf16.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-05-17T16:03:08Z",
+      "side": 1,
+      "message": "see above.",
+      "range": {
+        "startLine": 10,
+        "startChar": 10,
+        "endLine": 10,
+        "endChar": 16
+      },
+      "revId": "30ec117ddf9fa142928b861c1586aab175a48bd6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
