@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b84a0141_73ba2f14",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-05-17T17:38:17Z",
+      "side": 1,
+      "message": "Not convinced yet that this is the right approach, but this is what it would look like.",
+      "revId": "3a1a38c46db886a12f03f7a6ac5a1248c7c7781b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
