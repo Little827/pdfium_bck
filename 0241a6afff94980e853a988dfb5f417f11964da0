@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4aacb2a6_7252c9e9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-05-17T03:10:14Z",
+      "side": 1,
+      "message": "drott@: Would you like to review (parts of) this CL chain, or should I ask another reviewer?",
+      "revId": "0241a6afff94980e853a988dfb5f417f11964da0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
