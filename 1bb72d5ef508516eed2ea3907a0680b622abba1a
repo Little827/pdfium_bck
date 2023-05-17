@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6e0ba19_05804c53",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-05-17T21:30:36Z",
+      "side": 1,
+      "message": "Thanks for the review!",
+      "parentUuid": "f7a65f60_137d4cde",
+      "revId": "1bb72d5ef508516eed2ea3907a0680b622abba1a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c6dfedbb_7da706e7",
@@ -41,6 +59,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "37afc0ab_c9a00552",
+        "filename": "core/fxcrt/fx_string.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-05-17T21:30:36Z",
+      "side": 1,
+      "message": "Done\n\nI went back and forth on whether I wanted to use \"ToByteString()\" and \"ToWideString()\" suffixes or an overload. I think either is fine, so going with the former.\n\nI think the best option would be to add AppendCodePoint() APIs directly to ByteString and WideString, but haven\u0027t thought it through. I\u0027ll file a follow-up bug (but Monorail currently is rejecting all my requests to file new bugs).",
+      "parentUuid": "c6dfedbb_7da706e7",
+      "range": {
+        "startLine": 27,
+        "startChar": 20,
+        "endLine": 27,
+        "endChar": 21
+      },
+      "revId": "1bb72d5ef508516eed2ea3907a0680b622abba1a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab6ea614_2f204a31",
@@ -54,6 +96,30 @@
       "writtenOn": "2023-05-17T20:14:33Z",
       "side": 1,
       "message": "maybe AppendCodePointAsUtf16orUtf32()",
+      "range": {
+        "startLine": 62,
+        "startChar": 5,
+        "endLine": 62,
+        "endChar": 20
+      },
+      "revId": "1bb72d5ef508516eed2ea3907a0680b622abba1a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfdcb1e6_31c19901",
+        "filename": "core/fxcrt/fx_string.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-05-17T21:30:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab6ea614_2f204a31",
       "range": {
         "startLine": 62,
         "startChar": 5,
