@@ -94,9 +94,7 @@ TEST_F(CPDFAnnotListTest, CreatePopupAnnotFromUnicode) {
   ASSERT_EQ(2u, list.Count());
   EXPECT_EQ(kContents, GetRawContents(list.GetAt(1)));
 
-  // TODO(crbug.com/pdfium/2029): `WideString::FromUTF8()` mishandles '📄'.
-  EXPECT_EQ(WideString::FromUTF8("Aaä€\xED\xA0\xBD\xED\xB3\x84"),
-            GetDecodedContents(list.GetAt(1)));
+  EXPECT_EQ(WideString::FromUTF8("Aaä€📄"), GetDecodedContents(list.GetAt(1)));
 }
 
 TEST_F(CPDFAnnotListTest, CreatePopupAnnotFromEmptyPdfEncoded) {
