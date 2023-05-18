@@ -16,6 +16,29 @@
       "message": "TIL Gerrit doesn\u0027t like emoji in patchset descriptions.",
       "revId": "ea3c50361a04e4391dbcb1181b2cfeb52632729b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e52d4f28_eef6e708",
+        "filename": "core/fpdfapi/parser/fpdf_parser_decode_unittest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-05-18T22:31:21Z",
+      "side": 1,
+      "message": "nit: maybe L\"\\uXXXX\" to keep these files as plain text.\n(Several places)",
+      "range": {
+        "startLine": 424,
+        "startChar": 14,
+        "endLine": 424,
+        "endChar": 16
+      },
+      "revId": "ea3c50361a04e4391dbcb1181b2cfeb52632729b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
