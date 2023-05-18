@@ -18,6 +18,23 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4789c124_831e037b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-05-18T22:53:05Z",
+      "side": 1,
+      "message": "Thanks for the reviews!",
+      "revId": "ea3c50361a04e4391dbcb1181b2cfeb52632729b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e52d4f28_eef6e708",
@@ -31,6 +48,30 @@
       "writtenOn": "2023-05-18T22:31:21Z",
       "side": 1,
       "message": "nit: maybe L\"\\uXXXX\" to keep these files as plain text.\n(Several places)",
+      "range": {
+        "startLine": 424,
+        "startChar": 14,
+        "endLine": 424,
+        "endChar": 16
+      },
+      "revId": "ea3c50361a04e4391dbcb1181b2cfeb52632729b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e244d16_9c66785b",
+        "filename": "core/fpdfapi/parser/fpdf_parser_decode_unittest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-05-18T22:53:05Z",
+      "side": 1,
+      "message": "https://google.github.io/styleguide/cppguide.html#Non-ASCII_Characters permits UTF-8 or hex encoding, depending on what\u0027s more readable. For characters where the identity is more important than the encoding, I prefer to use the actual character.",
+      "parentUuid": "e52d4f28_eef6e708",
       "range": {
         "startLine": 424,
         "startChar": 14,
