@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "094b7f31_82968225",
+        "filename": "core/fpdfdoc/cpdf_annotlist_unittest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-05-18T22:21:34Z",
+      "side": 0,
+      "message": "It was actually PDF_DecodeText(), but moot now.",
+      "revId": "68343e3470315b78298aaabda7820f71d9fc070d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
