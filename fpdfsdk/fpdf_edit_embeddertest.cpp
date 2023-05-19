@@ -1246,7 +1246,7 @@ TEST_F(FPDFEditEmbedderTest, RemoveMarkedObjectsPrime) {
         return "34ac4e0f3ba510760be09d0e19c1b43e";
 #if BUILDFLAG(IS_APPLE)
 #ifdef ARCH_CPU_ARM64
-      return "cdc8e22cf1e7e06999dc456288672a3b";
+      return "401858d37db450bfd3f9458ac490eb08";
 #else
       return "966579fb98206858ce2f0a1f94a74d05";
 #endif  // ARCH_CPU_ARM64
@@ -1296,7 +1296,7 @@ TEST_F(FPDFEditEmbedderTest, RemoveMarkedObjectsPrime) {
       return "c671fa07b63e85c4201b9926e880fda8";
 #if BUILDFLAG(IS_APPLE)
 #ifdef ARCH_CPU_ARM64
-    return "23c4aec321547f51591fe7363a9ea2d6";
+    return "6a1e31ffe451997946e449250b97d5b2";
 #else
     return "6e19a4dd674b522cd39cf41956559bd6";
 #endif  // ARCH_CPU_ARM64
@@ -1309,7 +1309,7 @@ TEST_F(FPDFEditEmbedderTest, RemoveMarkedObjectsPrime) {
       return "c671fa07b63e85c4201b9926e880fda8";
 #if BUILDFLAG(IS_APPLE)
 #ifdef ARCH_CPU_ARM64
-    return "6bb1ea0d0a512f29edabda33064a0725";
+    return "d250bee3658c74e5d74729a09cbd80cd";
 #else
     return "3cb35c681f8fb5a43a49146ac7caa818";
 #endif  // ARCH_CPU_ARM64
@@ -1753,7 +1753,7 @@ TEST_F(FPDFEditEmbedderTest, RemoveAllFromStream) {
       return "b9bb0acfdba4bb5d2e578e7b73341baf";
 #if BUILDFLAG(IS_APPLE)
 #if ARCH_CPU_ARM64
-    return "08505db7b598f7397a2260ecb1f6d86d";
+    return "a47297bbcfa01e27891eeb52375b6f9e";
 #else
     return "3cdc75af44c15bed80998facd6e674c9";
 #endif  // ARCH_CPU_ARM64
