@@ -989,6 +989,9 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFAnnot_SetBorderWidth(FPDF_ANNOTATION ann
   if (!annot)
     return false;
 
+  if (border_width <= 0)
+    return false;
+
   RetainPtr<CPDF_Dictionary> annot_dict = GetMutableAnnotDictFromFPDFAnnotation(annot);
   if (!annot_dict)
     return false;
@@ -1005,6 +1008,9 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFAnnot_SetBorderWidth(FPDF_ANNOTATION ann
 
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFAnnot_GetBorderWidth(FPDF_ANNOTATION annot,
                                                              float* border_width) {
+  if (!annot)
+    return false;
+
   RetainPtr <CPDF_Dictionary> annot_dict = GetMutableAnnotDictFromFPDFAnnotation(annot);
   if (!annot_dict)
     return false;
@@ -1015,11 +1021,11 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFAnnot_GetBorderWidth(FPDF_ANNOTATION ann
       return true;
   }
 
-  RetainPtr<const CPDF_Dictionary> pBSDict = annot_dict->GetDictFor("BS");
-  if (!pBSDict)
+  RetainPtr<const CPDF_Dictionary> pBs = annot_dict->GetDictFor("BS");
+  if (!pBs)
     return false;
 
-  *border_width = pBSDict->GetFloatFor("W");
+  *border_width = pBs->GetFloatFor("W");
   return true;
 }
 
