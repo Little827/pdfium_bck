@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "56ae854d_7bab968e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-05-22T17:47:30Z",
+      "side": 1,
+      "message": "For clarity, this is referring to Chromium\u0027s pdf/pdfium/fuzzers/initialize_process.cc, right? I\u0027m wondering, if crrev.com/1077592 set up the DiscardableMemoryAllocator already, then why was https://pdfium-review.googlesource.com/106270 necessary in the first place?",
+      "range": {
+        "startLine": 9,
+        "startChar": 48,
+        "endLine": 9,
+        "endChar": 68
+      },
+      "revId": "d2402c64eb05ceee5912748e7340d2736c2c633d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6da0fca5_32936b24",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
