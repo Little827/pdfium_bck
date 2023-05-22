@@ -71,6 +71,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f46025b_92b72a6b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-05-22T18:08:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6da0fca5_32936b24",
+      "range": {
+        "startLine": 17,
+        "startChar": 49,
+        "endLine": 17,
+        "endChar": 61
+      },
+      "revId": "d2402c64eb05ceee5912748e7340d2736c2c633d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "958196d9_027fb61e",
@@ -84,6 +108,30 @@
       "writtenOn": "2023-05-22T17:43:32Z",
       "side": 1,
       "message": "Needs `chromium:` prefix.",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 19,
+        "endChar": 12
+      },
+      "revId": "d2402c64eb05ceee5912748e7340d2736c2c633d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1eb5e17b_3e1f6a8d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-05-22T18:08:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "958196d9_027fb61e",
       "range": {
         "startLine": 19,
         "startChar": 5,
