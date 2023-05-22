@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a10f4f75_3f3fa537",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-05-22T18:02:06Z",
+      "side": 1,
+      "message": "Yes, it was referring to pdf/pdfium/fuzzers/initilaize_process.cc.\nFor some reason, when chromium:1433189 was reported, LLVMFuzzerInitialize() wasn\u0027t setting up the allocator and I was able to reproduce the issue in chromium:1433189. Therefore I added code in pdfium repo so that the allocator can be set up.\n\nOn Friday, I tried the same build used in chromium:1433189 and LLVMFuzzerInitialize() was setting up the allocator correctly. If enabling DCHECK, the reproduce case for 1433189 can also cause the failure just like the current bug 1440491.",
+      "parentUuid": "56ae854d_7bab968e",
+      "range": {
+        "startLine": 9,
+        "startChar": 48,
+        "endLine": 9,
+        "endChar": 68
+      },
+      "revId": "d2402c64eb05ceee5912748e7340d2736c2c633d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6da0fca5_32936b24",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
