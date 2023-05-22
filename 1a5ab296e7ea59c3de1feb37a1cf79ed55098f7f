@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5480f21_030b4fe2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-05-22T19:28:26Z",
+      "side": 1,
+      "message": "Wrap at 72 columns. Also line 16.",
+      "revId": "1a5ab296e7ea59c3de1feb37a1cf79ed55098f7f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5fbd648_8a755242",
+        "filename": "testing/fuzzers/BUILD.gn",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-05-22T19:28:26Z",
+      "side": 1,
+      "message": "Still needed?",
+      "revId": "1a5ab296e7ea59c3de1feb37a1cf79ed55098f7f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8aa1d72_3057301a",
+        "filename": "testing/fuzzers/BUILD.gn",
+        "patchSetId": 4
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-05-22T19:28:26Z",
+      "side": 1,
+      "message": "Still needed?",
+      "revId": "1a5ab296e7ea59c3de1feb37a1cf79ed55098f7f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}

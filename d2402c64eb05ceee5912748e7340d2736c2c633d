@@ -48,6 +48,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "81552164_72ff4685",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-05-22T19:28:26Z",
+      "side": 1,
+      "message": "Thanks for checking. Hopefully the bots will be happier with this CL.",
+      "parentUuid": "a10f4f75_3f3fa537",
+      "range": {
+        "startLine": 9,
+        "startChar": 48,
+        "endLine": 9,
+        "endChar": 68
+      },
+      "revId": "d2402c64eb05ceee5912748e7340d2736c2c633d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6da0fca5_32936b24",
@@ -190,6 +214,24 @@
       "side": 1,
       "message": "I saved the `testonly` changes and reverted the rest since `testonly` indicators are good to have for fuzzers.",
       "parentUuid": "d464bd20_fa70837b",
+      "revId": "d2402c64eb05ceee5912748e7340d2736c2c633d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71b983d6_f90db6b0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-05-22T19:28:26Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "aa5624e5_db123c9d",
       "revId": "d2402c64eb05ceee5912748e7340d2736c2c633d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
