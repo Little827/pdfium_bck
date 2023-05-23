@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0185de43_9bc51de7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-05-23T20:35:09Z",
+      "side": 1,
+      "message": "I actually uploaded https://pdfium-review.googlesource.com/107970, which was created with the roll-dep tool to do this.",
+      "revId": "6783d92011bd161fd52a9dd4dc8b3381c2ae0259",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
