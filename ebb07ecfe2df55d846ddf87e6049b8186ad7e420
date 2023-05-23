@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45b33047_d1a02728",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-05-23T18:46:45Z",
+      "side": 1,
+      "message": "Longstanding irritation. Straight rename + clang format, no funny business.",
+      "revId": "ebb07ecfe2df55d846ddf87e6049b8186ad7e420",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
