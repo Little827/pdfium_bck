@@ -16,6 +16,23 @@
       "message": "See: https://skia-review.googlesource.com/c/skia/+/701524",
       "revId": "33199c43457a360f63932cbc294d140bbf185d5f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a71d80f_8c7dcf54",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7361
+      },
+      "writtenOn": "2023-05-23T18:37:51Z",
+      "side": 1,
+      "message": "Looks like I don\u0027t have permissions to CQ +1/+2. Can someone trigger that on this CL? Thanks!",
+      "revId": "33199c43457a360f63932cbc294d140bbf185d5f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
