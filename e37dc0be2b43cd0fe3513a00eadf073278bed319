@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b89894b4_126f3dfe",
+        "filename": "fpdfsdk/pwl/cpwl_wnd.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-05-23T18:59:12Z",
+      "side": 1,
+      "message": "It is a vector, so no, can\u0027t erase by key.",
+      "parentUuid": "55dd5076_ace57a34",
+      "range": {
+        "startLine": 99,
+        "startChar": 4,
+        "endLine": 102,
+        "endChar": 5
+      },
+      "revId": "e37dc0be2b43cd0fe3513a00eadf073278bed319",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3f2d7703_5f40d16e",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-05-23T18:52:45Z",
       "side": 1,
       "message": "owned?",
+      "range": {
+        "startLine": 650,
+        "startChar": 13,
+        "endLine": 650,
+        "endChar": 18
+      },
+      "revId": "e37dc0be2b43cd0fe3513a00eadf073278bed319",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "370f505e_f9f70f27",
+        "filename": "fpdfsdk/pwl/cpwl_wnd.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-05-23T18:59:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f2d7703_5f40d16e",
       "range": {
         "startLine": 650,
         "startChar": 13,
@@ -64,6 +112,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "73a94065_6caae35b",
+        "filename": "testing/resources/javascript/bug_1447268.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-05-23T18:59:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a66ee572_93389726",
+      "revId": "e37dc0be2b43cd0fe3513a00eadf073278bed319",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b4253c8a_c8727af3",
@@ -77,6 +143,24 @@
       "writtenOn": "2023-05-23T18:52:45Z",
       "side": 1,
       "message": "Not needed? Also line 139.",
+      "revId": "e37dc0be2b43cd0fe3513a00eadf073278bed319",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed7ddaac_3eaf5853",
+        "filename": "testing/resources/javascript/bug_1447268.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-05-23T18:59:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4253c8a_c8727af3",
       "revId": "e37dc0be2b43cd0fe3513a00eadf073278bed319",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -104,6 +188,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6d9a85b_b8237c42",
+        "filename": "testing/resources/javascript/bug_1447268.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-05-23T18:59:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65fd8ca9_b13d30e2",
+      "range": {
+        "startLine": 147,
+        "startChar": 17,
+        "endLine": 147,
+        "endChar": 19
+      },
+      "revId": "e37dc0be2b43cd0fe3513a00eadf073278bed319",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dc9a7834_cf969505",
@@ -117,6 +225,24 @@
       "writtenOn": "2023-05-23T18:52:45Z",
       "side": 1,
       "message": "Sort or renumber?",
+      "revId": "e37dc0be2b43cd0fe3513a00eadf073278bed319",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c490a71_7d80f03d",
+        "filename": "testing/resources/javascript/bug_1447268.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-05-23T18:59:12Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "dc9a7834_cf969505",
       "revId": "e37dc0be2b43cd0fe3513a00eadf073278bed319",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
