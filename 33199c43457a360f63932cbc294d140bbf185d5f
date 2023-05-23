@@ -33,6 +33,23 @@
       "message": "Looks like I don\u0027t have permissions to CQ +1/+2. Can someone trigger that on this CL? Thanks!",
       "revId": "33199c43457a360f63932cbc294d140bbf185d5f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19acc198_d0657508",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-05-23T18:53:30Z",
+      "side": 1,
+      "message": "Do we need to roll DEPS for Skia in PDFium first?",
+      "revId": "33199c43457a360f63932cbc294d140bbf185d5f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
