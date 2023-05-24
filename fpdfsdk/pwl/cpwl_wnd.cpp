@@ -51,13 +51,11 @@ CPWL_Wnd::CreateParams::~CreateParams() = default;
 // shared amongst the paernt and children.
 class CPWL_Wnd::SharedCaptureFocusState final : public Observable {
  public:
-  explicit SharedCaptureFocusState(const CPWL_Wnd* pWnd)
-      : m_pCreatedWnd(pWnd) {}
+  explicit SharedCaptureFocusState(const CPWL_Wnd* pOwnerWnd)
+      : m_pOwnerWnd(pOwnerWnd) {}
   ~SharedCaptureFocusState() = default;
 
-  bool IsWndCreated(const CPWL_Wnd* pWnd) const {
-    return m_pCreatedWnd == pWnd;
-  }
+  bool IsOwnedByWnd(const CPWL_Wnd* pWnd) const { return m_pOwnerWnd == pWnd; }
 
   bool IsWndCaptureMouse(const CPWL_Wnd* pWnd) const {
     return pWnd && pdfium::Contains(m_MousePaths, pWnd);
@@ -94,8 +92,8 @@ class CPWL_Wnd::SharedCaptureFocusState final : public Observable {
   }
 
   void RemoveWnd(CPWL_Wnd* pWnd) {
-    if (pWnd == m_pCreatedWnd) {
-      m_pCreatedWnd = nullptr;
+    if (pWnd == m_pOwnerWnd) {
+      m_pOwnerWnd = nullptr;
     }
     if (pWnd == m_pMainKeyboardWnd) {
       m_pMainKeyboardWnd = nullptr;
@@ -115,10 +113,10 @@ class CPWL_Wnd::SharedCaptureFocusState final : public Observable {
   void ReleaseCapture() { m_MousePaths.clear(); }
 
  private:
+  UnownedPtr<const CPWL_Wnd> m_pOwnerWnd;
+  UnownedPtr<const CPWL_Wnd> m_pMainKeyboardWnd;
   std::vector<UnownedPtr<CPWL_Wnd>> m_MousePaths;
   std::vector<UnownedPtr<CPWL_Wnd>> m_KeyboardPaths;
-  UnownedPtr<const CPWL_Wnd> m_pCreatedWnd;
-  UnownedPtr<const CPWL_Wnd> m_pMainKeyboardWnd;
 };
 
 // static
@@ -655,7 +653,7 @@ void CPWL_Wnd::DestroySharedCaptureFocusState() {
   if (!pSharedCaptureFocusState) {
     return;
   }
-  const bool owned = pSharedCaptureFocusState->IsWndCreated(this);
+  const bool owned = pSharedCaptureFocusState->IsOwnedByWnd(this);
   pSharedCaptureFocusState->RemoveWnd(this);
   if (owned) {
     delete pSharedCaptureFocusState;
