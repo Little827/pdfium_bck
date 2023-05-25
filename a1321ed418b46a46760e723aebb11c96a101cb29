@@ -170,6 +170,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "046de1ee_bbc87df6",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1006,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-05-25T20:50:54Z",
+      "side": 1,
+      "message": "So did you run the experiment, even if it produces wrong results? What\u0027s the overhead of calling the Skia API 10,000 times vs. actually drawing 10,000 characters? That\u0027s the question I need you to answer; my suggestion is just a quick and easy way to do it.\n\ndrawTextRSXform() allows applying an individual rotation/scale/translation to every glyph; this covers most common transformations, other than something like a perspective transforms.",
+      "parentUuid": "8ac41641_1a803d5d",
+      "range": {
+        "startLine": 1006,
+        "startChar": 16,
+        "endLine": 1006,
+        "endChar": 22
+      },
+      "revId": "a1321ed418b46a46760e723aebb11c96a101cb29",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "be6a7032_55e6541d",
         "filename": "core/fxge/skia/fx_skia_device.cpp",
         "patchSetId": 1
