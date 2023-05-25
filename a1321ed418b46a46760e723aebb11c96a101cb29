@@ -266,6 +266,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "63aadc4f_d4db43da",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1006,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-05-25T23:38:15Z",
+      "side": 1,
+      "message": "Can you upload the code you used for your comparison? I did a quick experiment, and the average time dropped from 4.9 seconds to 3.8 seconds (AGG was 3.7 seconds), indicating API call overhead is the bulk of the extra cost.",
+      "parentUuid": "a51d8ce9_aa7ca3a9",
+      "range": {
+        "startLine": 1006,
+        "startChar": 16,
+        "endLine": 1006,
+        "endChar": 22
+      },
+      "revId": "a1321ed418b46a46760e723aebb11c96a101cb29",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "be6a7032_55e6541d",
         "filename": "core/fxge/skia/fx_skia_device.cpp",
         "patchSetId": 1
@@ -295,6 +319,24 @@
       "side": 1,
       "message": "Option 2 is just another equivalent way to draw the text blobs. But I noticed significant slow down when comparing to using the APIs in option 1.",
       "parentUuid": "be6a7032_55e6541d",
+      "revId": "a1321ed418b46a46760e723aebb11c96a101cb29",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c6aead1_4b760b1a",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1124,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-05-25T23:38:15Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "c432f3df_79eb2d63",
       "revId": "a1321ed418b46a46760e723aebb11c96a101cb29",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
