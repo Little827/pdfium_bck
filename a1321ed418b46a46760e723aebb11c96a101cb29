@@ -242,6 +242,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a51d8ce9_aa7ca3a9",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1006,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-05-25T23:17:18Z",
+      "side": 1,
+      "message": "Thanks, that\u0027s useful data. Have you had a chance to perform CPU profiling? On Linux, you can use \"perf\" for this.",
+      "parentUuid": "708781c4_539c65b1",
+      "range": {
+        "startLine": 1006,
+        "startChar": 16,
+        "endLine": 1006,
+        "endChar": 22
+      },
+      "revId": "a1321ed418b46a46760e723aebb11c96a101cb29",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "be6a7032_55e6541d",
         "filename": "core/fxge/skia/fx_skia_device.cpp",
         "patchSetId": 1
