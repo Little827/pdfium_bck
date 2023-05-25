@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ea30f9da_1c333e21",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1006,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-05-25T19:41:02Z",
+      "side": 1,
+      "message": "This change should has nothing to do with `hasRSX`.\n\nPreviously the horizontal scaling was done only to non-RSX text inside TryDrawText(). But due to some unideal rendering results for certain PDFs, we decided to not let SkiaDevice handle it and fallback to the common AGG path. So the horizontal scaling process got removed from Skia.\n\nThis CL improved those unideal rendering issue inside Skia and therefore we are able to move the horizontal scaling process back to Skia to avoid premultiplication.",
+      "parentUuid": "096e2f56_3fa2373c",
+      "range": {
+        "startLine": 1006,
+        "startChar": 16,
+        "endLine": 1006,
+        "endChar": 22
+      },
+      "revId": "a1321ed418b46a46760e723aebb11c96a101cb29",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "be6a7032_55e6541d",
         "filename": "core/fxge/skia/fx_skia_device.cpp",
         "patchSetId": 1
@@ -85,6 +109,24 @@
       "writtenOn": "2023-05-25T18:01:10Z",
       "side": 1,
       "message": "Option 2 is the original code, right?",
+      "revId": "a1321ed418b46a46760e723aebb11c96a101cb29",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c432f3df_79eb2d63",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1124,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-05-25T19:41:02Z",
+      "side": 1,
+      "message": "Option 2 is just another equivalent way to draw the text blobs. But I noticed significant slow down when comparing to using the APIs in option 1.",
+      "parentUuid": "be6a7032_55e6541d",
       "revId": "a1321ed418b46a46760e723aebb11c96a101cb29",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
