@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f70c09d5_2db54965",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-05-25T20:14:22Z",
+      "side": 1,
+      "message": "It\u0027s more useful to use SkCanvas almost everywhere, so made that change as well.",
+      "revId": "1542b8af79441f20c7f0c57f53e2a1061c13ac29",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
