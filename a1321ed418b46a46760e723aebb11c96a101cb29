@@ -146,6 +146,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8ac41641_1a803d5d",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1006,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-05-25T20:41:05Z",
+      "side": 1,
+      "message": "I tried to draw all the characters in a string all together if `use_gap` is true, it didn\u0027t improve the performance (and it would be wrong to scale a whole string at the same scale level since it ignores each character\u0027s specific position). So I ruled out that path for improvement.",
+      "parentUuid": "0f59d247_1f99d51d",
+      "range": {
+        "startLine": 1006,
+        "startChar": 16,
+        "endLine": 1006,
+        "endChar": 22
+      },
+      "revId": "a1321ed418b46a46760e723aebb11c96a101cb29",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "be6a7032_55e6541d",
         "filename": "core/fxge/skia/fx_skia_device.cpp",
         "patchSetId": 1
