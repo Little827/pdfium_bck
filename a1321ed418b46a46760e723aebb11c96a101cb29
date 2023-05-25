@@ -290,6 +290,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7096e7e5_56618530",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1006,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-05-25T23:49:56Z",
+      "side": 1,
+      "message": "I ran a more realistic experiment, and the average was 4.7 seconds, which was around the time I got for Skia before this change (4.8 seconds), but doesn\u0027t close the gap with AGG.",
+      "parentUuid": "63aadc4f_d4db43da",
+      "range": {
+        "startLine": 1006,
+        "startChar": 16,
+        "endLine": 1006,
+        "endChar": 22
+      },
+      "revId": "a1321ed418b46a46760e723aebb11c96a101cb29",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "be6a7032_55e6541d",
         "filename": "core/fxge/skia/fx_skia_device.cpp",
         "patchSetId": 1
