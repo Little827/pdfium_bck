@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a76e091a_447aa8ef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8751
+      },
+      "writtenOn": "2023-05-26T13:13:51Z",
+      "side": 1,
+      "message": "Thanks, that\u0027s a good clarification!\n\nPerhaps a similar comment could be added on closing objects, as per https://groups.google.com/g/pdfium/c/7qLFskabmnk/m/xQEnXiG5BgAJ ?",
+      "revId": "88ad8bf36b79ce341898817b44f3620ca188a695",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
