@@ -304,16 +304,19 @@ FPDF_EXPORT void FPDF_CALLCONV
 FPDF_InitLibraryWithConfig(const FPDF_LIBRARY_CONFIG* config);
 
 // Function: FPDF_DestroyLibary
-//          Release all resources allocated by the FPDFSDK library.
+//          Release global resources allocated to the FPDFSDK library by
+//          FPDF_InitLibrary() or FPDF_InitLibraryWithConfig().
 // Parameters:
 //          None.
 // Return value:
 //          None.
 // Comments:
-//          You can call this function to release all memory blocks allocated by
-//          the library.
-//          After this function is called, you should not call any PDF
+//          After this function is called, you must not call any PDF
 //          processing functions.
+//
+//          Calling this function does not automatically close other
+//          objects. It is recommended to close other objects before
+//          closing the library with this function.
 FPDF_EXPORT void FPDF_CALLCONV FPDF_DestroyLibrary();
 
 // Policy for accessing the local machine time.
