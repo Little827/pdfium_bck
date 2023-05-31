@@ -51,6 +51,24 @@
       "parentUuid": "31c6172a_1758eec6",
       "revId": "0241a6afff94980e853a988dfb5f417f11964da0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21b06b4b_ea93853b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 6715
+      },
+      "writtenOn": "2023-05-31T09:17:26Z",
+      "side": 1,
+      "message": "Went through the CLs in this chain, thanks for the refactorings and the explanations in email regarding the direction of your FreeType encapsulation efforts. SGTM.",
+      "parentUuid": "6fc78527_081f3ac5",
+      "revId": "0241a6afff94980e853a988dfb5f417f11964da0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
