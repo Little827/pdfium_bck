@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e146a0f3_a4534140",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-05-31T18:35:54Z",
+      "side": 1,
+      "message": "Maybe just chain this to https://pdfium-review.googlesource.com/c/pdfium/+/108210 and only modify BUILD.gn?",
+      "revId": "5cf6b184e008a932dc070a032e2bcccb520edbd1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
