@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9df6f70c_29f2a9ea",
+        "filename": "core/fxge/cfx_face.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 6715
+      },
+      "writtenOn": "2023-05-31T07:57:01Z",
+      "side": 1,
+      "message": "Nit, naming: Maybe GetData(), as it\u0027s now the full buffer returnd from this function? (Is there a possibility that the data is a TrueType collection, ttc, in some case?)",
+      "range": {
+        "startLine": 37,
+        "startChar": 24,
+        "endLine": 37,
+        "endChar": 33
+      },
+      "revId": "9024519852366634eb428cc3f86495397091e932",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
