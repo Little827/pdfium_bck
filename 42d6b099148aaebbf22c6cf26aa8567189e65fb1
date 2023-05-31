@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7b4bb6c_250bffc7",
+        "filename": "core/fxge/cfx_face.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 6715
+      },
+      "writtenOn": "2023-05-31T08:23:13Z",
+      "side": 1,
+      "message": "For safety reasons, would it be better to expose a string type with length information at the interface here (is there an internal one in PDFium, maybe `ByteString`, or otherwise `std::string`?",
+      "revId": "42d6b099148aaebbf22c6cf26aa8567189e65fb1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
