@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b3f371e_8a3ae1c8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-06-01T22:21:46Z",
+      "side": 1,
+      "message": "Nit: I don\u0027t think you need the \"git_revision:\" prefix, the instructions say to just supply the Git hash.",
+      "range": {
+        "startLine": 7,
+        "startChar": 21,
+        "endLine": 7,
+        "endChar": 34
+      },
+      "revId": "7722dd143d97f347dbf19e18d213d388b62a9c32",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
