@@ -16,6 +16,24 @@
       "message": "Need to include the Clang version numbers.",
       "revId": "80321039aa5ac1b75ccb22f18dee6331e70ef7f3",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7dc685b_25f1b9c0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-06-01T18:27:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b6cf04f_f6931c54",
+      "revId": "80321039aa5ac1b75ccb22f18dee6331e70ef7f3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
