@@ -25,10 +25,14 @@ class CPDF_Form final : public CPDF_PageObjectHolder,
                         public CPDF_Font::FormIface {
  public:
   struct RecursionState {
+    // Upper limit for the number of form XObjects within a form XObject.
+    static constexpr int kFormLimit = 4096;
+
     RecursionState();
     ~RecursionState();
 
     std::set<const uint8_t*> parsed_set;
+    int form_count = 0;
   };
 
   // Helper method to choose the first non-null resources dictionary.
