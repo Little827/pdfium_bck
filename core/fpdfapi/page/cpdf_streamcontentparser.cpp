@@ -744,7 +744,16 @@ void CPDF_StreamContentParser::Handle_ExecuteXObject() {
     type = pXObject->GetDict()->GetByteStringFor("Subtype");
 
   if (type == "Form") {
+    if (m_RecursionState->form_count > CPDF_Form::RecursionState::kFormLimit) {
+      return;
+    }
+
+    const bool is_first = m_RecursionState->form_count == 0;
+    ++m_RecursionState->form_count;
     AddForm(std::move(pXObject), name);
+    if (is_first) {
+      m_RecursionState->form_count = 0;
+    }
     return;
   }
 
