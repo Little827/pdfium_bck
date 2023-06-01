@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58031a9e_5eea5d06",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-06-01T07:24:38Z",
+      "side": 1,
+      "message": "Similar to chromium change https://crrev.com/c/4545271.",
+      "revId": "07155b94c6756d1e1fec6e35af5c2a20d6c6be31",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
