@@ -920,7 +920,7 @@ FPDF_EXPORT void FPDF_CALLCONV FPDFBitmap_FillRect(FPDF_BITMAP bitmap,
 }
 
 FPDF_EXPORT void* FPDF_CALLCONV FPDFBitmap_GetBuffer(FPDF_BITMAP bitmap) {
-  return bitmap ? CFXDIBitmapFromFPDFBitmap(bitmap)->GetBuffer().data()
+  return bitmap ? CFXDIBitmapFromFPDFBitmap(bitmap)->GetWritableBuffer().data()
                 : nullptr;
 }
 
