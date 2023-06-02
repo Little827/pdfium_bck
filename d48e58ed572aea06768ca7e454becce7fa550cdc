@@ -48,6 +48,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7caccf1c_78f5c81f",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 767,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-06-02T22:39:39Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "e84c5119_de69c365",
+      "range": {
+        "startLine": 767,
+        "startChar": 9,
+        "endLine": 767,
+        "endChar": 45
+      },
+      "revId": "d48e58ed572aea06768ca7e454becce7fa550cdc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f88e9c38_fee1aee5",
@@ -79,6 +103,24 @@
       "side": 1,
       "message": "Intentional. This makes the beginning and the ending of the function more consistent.",
       "parentUuid": "f88e9c38_fee1aee5",
+      "revId": "d48e58ed572aea06768ca7e454becce7fa550cdc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f0b2bab_77074397",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1800,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-06-02T22:39:39Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "8dde158d_20e53ae6",
       "revId": "d48e58ed572aea06768ca7e454becce7fa550cdc",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
