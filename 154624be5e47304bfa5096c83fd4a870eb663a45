@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43c21f06_36092eab",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1514,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-06-02T03:29:31Z",
+      "side": 1,
+      "message": "Is this restricted due to it\u0027s a parameter for `installPixels()`?",
+      "range": {
+        "startLine": 1514,
+        "startChar": 34,
+        "endLine": 1514,
+        "endChar": 77
+      },
+      "revId": "154624be5e47304bfa5096c83fd4a870eb663a45",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
