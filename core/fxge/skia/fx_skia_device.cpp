@@ -671,8 +671,8 @@ bool Upsample(const RetainPtr<CFX_DIBBase>& pSource,
               DataVector<uint32_t>& dst32_storage,
               SkBitmap* skBitmap,
               bool forceAlpha) {
-  // TODO(crbug.com/pdfium/2034): Does not need to use `GetWritableBuffer()`.
-  void* buffer = pSource->GetWritableBuffer().data();
+  // TODO(crbug.com/pdfium/2034): Does not need to use `const_cast`.
+  void* buffer = const_cast<uint8_t*>(pSource->GetBuffer().data());
   if (!buffer)
     return false;
   SkColorType colorType = forceAlpha || pSource->IsMaskFormat()
