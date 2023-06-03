@@ -3578,6 +3578,47 @@ TEST_F(FPDFAnnotEmbedderTest, AnnotationBorder) {
   UnloadPage(page);
 }
 
+TEST_F(FPDFAnnotEmbedderTest, AnnotationBorderWidth) {
+  ASSERT_TRUE(OpenDocument("annots.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+  EXPECT_EQ(2, FPDFPage_GetAnnotCount(page));
+
+  {
+    ScopedFPDFAnnotation annot(FPDFPage_GetAnnot(page, 0));
+    ASSERT_TRUE(annot);
+
+    // FPDFAnnot_GetBorder() positive testing.
+    float border_width;
+    ASSERT_TRUE(FPDFAnnot_GetBorderWidth(annot.get(), &border_width));
+    EXPECT_FLOAT_EQ(0.0f, border_width);
+
+    // FPDFAnnot_GetBorderWidth() negative testing.
+    EXPECT_FALSE(FPDFAnnot_GetBorderWidth(nullptr, nullptr));
+    EXPECT_FALSE(FPDFAnnot_GetBorderWidth(annot.get(), nullptr));
+  }
+
+  {
+    ScopedFPDFAnnotation annot(FPDFPage_GetAnnot(page, 0));
+    ASSERT_TRUE(annot);
+
+    // Too few elements in the border array.
+    float border_width;
+    EXPECT_FALSE(FPDFAnnot_GetBorderWidth(annot.get(), &border_width));
+
+    // FPDFAnnot_SetBorder() positive testing.
+    EXPECT_TRUE(FPDFAnnot_SetBorderWidth(annot.get(), /*border_width=*/4.0f));
+
+    EXPECT_TRUE(FPDFAnnot_GetBorderWidth(annot.get(), &border_width));
+    EXPECT_FLOAT_EQ(4.0f, border_width);
+
+    // FPDFAnnot_SetBorder() negative testing.
+    EXPECT_FALSE(FPDFAnnot_SetBorderWidth(nullptr, /*border_width=*/3.0f));
+  }
+
+  UnloadPage(page);
+}
+
 TEST_F(FPDFAnnotEmbedderTest, AnnotationJavaScript) {
   ASSERT_TRUE(OpenDocument("annot_javascript.pdf"));
   FPDF_PAGE page = LoadPage(0);
