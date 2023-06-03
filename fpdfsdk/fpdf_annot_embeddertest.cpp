@@ -3582,7 +3582,7 @@ TEST_F(FPDFAnnotEmbedderTest, AnnotationBorderWidth) {
   ASSERT_TRUE(OpenDocument("annots.pdf"));
   FPDF_PAGE page = LoadPage(0);
   ASSERT_TRUE(page);
-  EXPECT_EQ(2, FPDFPage_GetAnnotCount(page));
+  EXPECT_EQ(3, FPDFPage_GetAnnotCount(page));
 
   {
     ScopedFPDFAnnotation annot(FPDFPage_GetAnnot(page, 0));
