@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f57130ce_6730f55f",
+        "filename": "README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 8751
+      },
+      "writtenOn": "2023-06-05T11:36:33Z",
+      "side": 1,
+      "message": "I would suggest to remove this first table since it\u0027s already implicated in the second table and only tends to confuse readers.",
+      "parentUuid": "8111626d_d348d3c1",
+      "revId": "9945002cc7755e27797ae5c067905fc07102e9c0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2e8b6829_f21e9dd3",
         "filename": "README.md",
         "patchSetId": 3
@@ -77,6 +95,30 @@
       "writtenOn": "2023-05-09T23:59:43Z",
       "side": 1,
       "message": "Perhaps it\u0027d be even more accurate to say, \"Only specific combinations.\"",
+      "range": {
+        "startLine": 50,
+        "startChar": 71,
+        "endLine": 50,
+        "endChar": 78
+      },
+      "revId": "9945002cc7755e27797ae5c067905fc07102e9c0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3643b346_0117f787",
+        "filename": "README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 8751
+      },
+      "writtenOn": "2023-06-05T11:36:33Z",
+      "side": 1,
+      "message": "The phrase is a bit vague.\nI guess you mean, for example, that mips can only be combined with Linux since macOS and Windows don\u0027t support it, right?\nOr do you mean that certain combinations which do exist just aren\u0027t supported by pdfium?",
+      "parentUuid": "fe4d2fee_33671ed3",
       "range": {
         "startLine": 50,
         "startChar": 71,
