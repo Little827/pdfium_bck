@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fead900_f48a55f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-06-05T15:43:43Z",
+      "side": 1,
+      "message": "The Chromium system requirements state:\n\"Most development is done on Ubuntu (currently 18.04, Bionic Beaver). There are some instructions for other distros below, but they are mostly unsupported.\"\n\nTo the extent that Ubuntu isn\u0027t using musl as its default libc, we won\u0027t support it.",
+      "parentUuid": "57e2a21f_0cf3f1fb",
+      "revId": "9945002cc7755e27797ae5c067905fc07102e9c0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8111626d_d348d3c1",
@@ -136,6 +154,30 @@
       "side": 1,
       "message": "The phrase is a bit vague.\nI guess you mean, for example, that mips can only be combined with Linux since macOS and Windows don\u0027t support it, right?\nOr do you mean that certain combinations which do exist just aren\u0027t supported by pdfium?",
       "parentUuid": "fe4d2fee_33671ed3",
+      "range": {
+        "startLine": 50,
+        "startChar": 71,
+        "endLine": 50,
+        "endChar": 78
+      },
+      "revId": "9945002cc7755e27797ae5c067905fc07102e9c0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55092cd2_f5eb2c7d",
+        "filename": "README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-06-05T15:43:43Z",
+      "side": 1,
+      "message": "I think we\u0027d keep \"support\" deliberately vague, which I think is closer to the latter interpretation. Combination X may or may not work; we\u0027re not going to spend time and effort to make any statements one way or the other.",
+      "parentUuid": "3643b346_0117f787",
       "range": {
         "startLine": 50,
         "startChar": 71,
