@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "73a6e739_e877b55b",
+        "filename": "core/fpdfapi/page/cpdf_pageobject.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-06-07T01:09:13Z",
+      "side": 1,
+      "message": "Sure, done. That saves a copy in cpdf_pagecontentgenerator.cpp, but not in cpdf_streamcontentparser.cpp.",
+      "parentUuid": "0bb1d232_c8e6a627",
+      "range": {
+        "startLine": 102,
+        "startChar": 32,
+        "endLine": 102,
+        "endChar": 80
+      },
+      "revId": "12947816e62873db76afd1f50d9f8adfa4e4b95f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "ae01e664_4c25dda7",
         "filename": "core/fpdfapi/page/cpdf_streamcontentparser.cpp",
         "patchSetId": 2
@@ -71,6 +95,30 @@
       "writtenOn": "2023-06-07T01:00:40Z",
       "side": 1,
       "message": "what\u0027s all this then?  Do we need the lambda?",
+      "range": {
+        "startLine": 4668,
+        "startChar": 24,
+        "endLine": 4668,
+        "endChar": 31
+      },
+      "revId": "12947816e62873db76afd1f50d9f8adfa4e4b95f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9429b8ef_45a31316",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 4668,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-06-07T01:09:13Z",
+      "side": 1,
+      "message": "Removed the copy pasta. I think it made a bit more sense when the logic was more complex.",
+      "parentUuid": "6c50986d_dab7caa7",
       "range": {
         "startLine": 4668,
         "startChar": 24,
