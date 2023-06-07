@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae01e664_4c25dda7",
+        "filename": "core/fpdfapi/page/cpdf_streamcontentparser.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 918,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-06-07T00:29:01Z",
+      "side": 1,
+      "message": "If `name` is empty, I would expected `pGS` to be null.",
+      "revId": "12947816e62873db76afd1f50d9f8adfa4e4b95f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "566252fd_2b29f00d",
+        "filename": "core/fpdfapi/page/cpdf_streamcontentparser.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 919,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-06-07T00:29:01Z",
+      "side": 1,
+      "message": "This vector won\u0027t just keep growing in size, because Handle_RestoreGraphState() will run eventually and set `m_pCurStates` to a state where the vector is smaller.",
+      "revId": "12947816e62873db76afd1f50d9f8adfa4e4b95f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
