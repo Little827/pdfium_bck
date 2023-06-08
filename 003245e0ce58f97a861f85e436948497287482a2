@@ -1,4 +1,68 @@
 {
   "pushCert": "certificate version 0.1\npusher 5A66FD7B 1560934627 -0700\nnonce AC6AUtMGoMKCOVgLmss987HV+sxQo9juqGTWrjDoKRK12sj+6OWD5ucSTFpKAOAHON2/TZMEk4JK\n\n0000000000000000000000000000000000000000 003245e0ce58f97a861f85e436948497287482a2 refs/for/refs/heads/master%wip,m\u003dInitial_upload,cc\u003dpdfium-reviews@googlegroups.com\n-----BEGIN PGP SIGNATURE-----\n\niQEzBAABCgAdFiEE5k8iyLVP2jn8A19DqzYtYVpm/XsFAl0J+OMACgkQqzYtYVpm\n/XsHkggAigrLhC+LiA3T1L9h0gbVSMfDlK/CFlSh6b+TzgD+cvqGPoJ/CrtStkgV\nNx5ASdtkUxbZ/l5DMTKBKlPxres4owyZqAK8G7vdL6PaYT7XBkxkA7HLWYOquRBT\n/Gk/ogHodXVGu5a9XLYaUW+ndLkoRCdOuzrE3rTFyuiELiOpOOfNLa5aeOgYEJLU\nmioF7oUiUaV7ps995GegOjLI8vGJad+e0soRmn5JQHdDXj72Ta1GnyLtlGx5gbBk\nxx32uUTF9+zUDcop7uh/9FUnEyA1Yg5YrQEQE/0duWN4y7hxC2DiCsHRKOvG+riJ\nNoLqFfPRYeZSUWq/v80o/XqhJ3liHw\u003d\u003d\n\u003drVRg\n-----END PGP SIGNATURE-----\n",
-  "comments": []
+  "comments": [],
+  "submitRequirementResults": [
+    {
+      "submitRequirement": {
+        "name": "Code-Review",
+        "description": {
+          "value": "At least one maximum vote for label \u0027Code-Review\u0027 is required"
+        },
+        "applicabilityExpression": {},
+        "submittabilityExpression": {
+          "expressionString": "label:Code-Review\u003dMAX,user\u003dnon_uploader AND -label:Code-Review\u003dMIN"
+        },
+        "overrideExpression": {
+          "value": {
+            "expressionString": "label:Bot-Commit\u003d+1 AND -label:Code-Review\u003dMIN"
+          }
+        },
+        "allowOverrideInChildProjects": true
+      },
+      "applicabilityExpressionResult": {},
+      "submittabilityExpressionResult": {
+        "value": {"expression":{"expressionString":"label:Code-Review=MAX,user=non_uploader AND -label:Code-Review=MIN"},"status":"FAIL","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["label:Code-Review=MAX,user=non_uploader","label:Code-Review=MIN"]}
+      },
+      "overrideExpressionResult": {
+        "value": {"expression":{"expressionString":"label:Bot-Commit=+1 AND -label:Code-Review=MIN"},"status":"FAIL","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["label:Bot-Commit=+1","label:Code-Review=MIN"]}
+      },
+      "patchSetCommitId": "003245e0ce58f97a861f85e436948497287482a2",
+      "legacy": {
+        "value": false
+      },
+      "forced": {},
+      "hidden": {}
+    },
+    {
+      "submitRequirement": {
+        "name": "Review-Enforcement",
+        "description": {
+          "value": "Two Google employees must approve the change. Uploading the change or voting positively on Code-Review count as approval."
+        },
+        "applicabilityExpression": {
+          "value": {
+            "expressionString": "is:review-enforced_gerrit"
+          }
+        },
+        "submittabilityExpression": {
+          "expressionString": "is:review-enforcement-satisfied_gerrit"
+        },
+        "overrideExpression": {},
+        "allowOverrideInChildProjects": false
+      },
+      "applicabilityExpressionResult": {
+        "value": {"expression":{"expressionString":"is:review-enforced_gerrit"},"status":"FAIL","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["is:review-enforced_gerrit"]}
+      },
+      "submittabilityExpressionResult": {
+        "value": {"expression":{"expressionString":"is:review-enforcement-satisfied_gerrit"},"status":"NOT_EVALUATED","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":[]}
+      },
+      "overrideExpressionResult": {},
+      "patchSetCommitId": "003245e0ce58f97a861f85e436948497287482a2",
+      "legacy": {
+        "value": false
+      },
+      "forced": {},
+      "hidden": {}
+    }
+  ]
 }
