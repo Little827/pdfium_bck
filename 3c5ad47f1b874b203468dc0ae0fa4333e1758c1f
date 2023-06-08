@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e53380e_3bf833b4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-06-08T18:47:54Z",
+      "side": 1,
+      "message": "This change mostly just moves Upsample() to CFX_DIBBase::RealizeSkImage(). A future change will make improvements.",
+      "revId": "3c5ad47f1b874b203468dc0ae0fa4333e1758c1f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
