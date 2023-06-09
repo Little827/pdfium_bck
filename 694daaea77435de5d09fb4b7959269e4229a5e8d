@@ -70,6 +70,24 @@
       "parentUuid": "85c5c46f_38c4f1c9",
       "revId": "694daaea77435de5d09fb4b7959269e4229a5e8d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7e07904_cbb16a4d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-06-09T17:21:53Z",
+      "side": 1,
+      "message": "OK, I uploaded crrev.com/c/4605813. Hopefully that works.",
+      "parentUuid": "1c616d0d_903b9b1a",
+      "revId": "694daaea77435de5d09fb4b7959269e4229a5e8d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
