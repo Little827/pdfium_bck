@@ -262,8 +262,17 @@ void CPDFXFA_Context::DeletePage(int page_index) {
   // if it's a valid page in the document.
   m_pPDFDoc->DeletePage(page_index);
 
-  if (fxcrt::IndexInBounds(m_XFAPageList, page_index))
-    m_XFAPageList[page_index].Reset();
+  if (fxcrt::IndexInBounds(m_XFAPageList, page_index)) {
+    if(m_XFAPageList[page_index]) {
+      m_XFAPageList[page_index].Reset();
+    }
+    m_XFAPageList.erase(m_XFAPageList.begin() + page_index);
+    for (int i = page_index; i < (int) m_XFAPageList.size(); i++) {
+      if(m_XFAPageList[i]) {
+        m_XFAPageList[i]->SetXFAPageViewIndex(i);
+      }
+    }
+  }
 }
 
 uint32_t CPDFXFA_Context::GetUserPermissions() const {
