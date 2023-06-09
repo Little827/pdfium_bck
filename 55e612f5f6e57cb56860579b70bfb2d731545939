@@ -22,6 +22,30 @@
       },
       "revId": "55e612f5f6e57cb56860579b70bfb2d731545939",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c9205d6_4a77d731",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-06-09T21:53:38Z",
+      "side": 0,
+      "message": "Acknowledged. I went with this option because it\u0027s closer to the \"treat raw_ptr as a regular raw pointer\" philosophy.\n\nAs it happens, this is all going away anyway because I\u0027m moving this logic from a class into a function (https://pdfium-review.googlesource.com/c/pdfium/+/108570).",
+      "parentUuid": "f13d74ee_8a1ed6c8",
+      "range": {
+        "startLine": 235,
+        "startChar": 76,
+        "endLine": 235,
+        "endChar": 77
+      },
+      "revId": "55e612f5f6e57cb56860579b70bfb2d731545939",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
