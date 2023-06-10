@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea969a02_5497d5cc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-06-10T00:36:51Z",
+      "side": 1,
+      "message": "Thanks for the review! Just a few more of these, I think, and should be simpler.",
+      "revId": "c662a8b17292ab7e03634dda8bc994f4b98313c3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
