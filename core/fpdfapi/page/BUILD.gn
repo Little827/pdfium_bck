@@ -118,6 +118,7 @@ source_set("page") {
   ]
   allow_circular_includes_from = []
   if (pdf_use_skia) {
+    public_deps += [ "//skia" ]
     allow_circular_includes_from += [ "../../fxge" ]
   }
   visibility = [ "../../../*" ]
