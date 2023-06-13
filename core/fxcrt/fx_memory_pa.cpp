@@ -16,9 +16,7 @@
 
 namespace {
 
-constexpr partition_alloc::PartitionOptions kOptions = {
-    .cookie = partition_alloc::PartitionOptions::Cookie::kAllowed,
-};
+constexpr partition_alloc::PartitionOptions kOptions = {};
 
 #ifndef V8_ENABLE_SANDBOX
 partition_alloc::PartitionAllocator& GetArrayBufferPartitionAllocator() {
@@ -48,8 +46,9 @@ namespace internal {
 void* Alloc(size_t num_members, size_t member_size) {
   FX_SAFE_SIZE_T total = member_size;
   total *= num_members;
-  if (!total.IsValid())
+  if (!total.IsValid()) {
     return nullptr;
+  }
 
   return GetGeneralPartitionAllocator().root()->AllocWithFlags(
       partition_alloc::AllocFlags::kReturnNull, total.ValueOrDie(),
@@ -59,8 +58,9 @@ void* Alloc(size_t num_members, size_t member_size) {
 void* Calloc(size_t num_members, size_t member_size) {
   FX_SAFE_SIZE_T total = member_size;
   total *= num_members;
-  if (!total.IsValid())
+  if (!total.IsValid()) {
     return nullptr;
+  }
 
   return GetGeneralPartitionAllocator().root()->AllocWithFlags(
       partition_alloc::AllocFlags::kReturnNull |
@@ -71,8 +71,9 @@ void* Calloc(size_t num_members, size_t member_size) {
 void* Realloc(void* ptr, size_t num_members, size_t member_size) {
   FX_SAFE_SIZE_T size = num_members;
   size *= member_size;
-  if (!size.IsValid())
+  if (!size.IsValid()) {
     return nullptr;
+  }
 
   return GetGeneralPartitionAllocator().root()->ReallocWithFlags(
       partition_alloc::AllocFlags::kReturnNull, ptr, size.ValueOrDie(),
@@ -82,8 +83,9 @@ void* Realloc(void* ptr, size_t num_members, size_t member_size) {
 void* StringAlloc(size_t num_members, size_t member_size) {
   FX_SAFE_SIZE_T total = member_size;
   total *= num_members;
-  if (!total.IsValid())
+  if (!total.IsValid()) {
     return nullptr;
+  }
 
   return GetStringPartitionAllocator().root()->AllocWithFlags(
       partition_alloc::AllocFlags::kReturnNull, total.ValueOrDie(),
@@ -131,6 +133,7 @@ void FX_Free(void* ptr) {
   //
   // So this check is hiding (what I consider to be) bugs, and we should try to
   // fix them. https://bugs.chromium.org/p/pdfium/issues/detail?id=690
-  if (ptr)
+  if (ptr) {
     partition_alloc::ThreadSafePartitionRoot::Free(ptr);
+  }
 }
