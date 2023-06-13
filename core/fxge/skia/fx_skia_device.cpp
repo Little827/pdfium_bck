@@ -754,21 +754,6 @@ bool CFX_SkiaDeviceDriver::DrawDeviceText(
   if (pFont->GetFontSpan().empty())
     return false;
 
-  // If a glyph's default width is no less than its width defined in the PDF,
-  // draw the glyph with path since it can be scaled to avoid overlapping with
-  // the adjacent glyphs (if there are any). Otherwise, use the device driver
-  // to render the glyph without any adjustments.
-  const CFX_SubstFont* subst_font = pFont->GetSubstFont();
-  const int subst_font_weight =
-      (subst_font && subst_font->IsBuiltInGenericFont()) ? subst_font->m_Weight
-                                                         : 0;
-  for (const TextCharPos& cp : pCharPos) {
-    const int glyph_width = pFont->GetGlyphWidth(
-        cp.m_GlyphIndex, cp.m_FontCharWidth, subst_font_weight);
-    if (cp.m_FontCharWidth <= glyph_width)
-      return false;
-  }
-
   if (TryDrawText(pCharPos, pFont, mtObject2Device, font_size, color,
                   options)) {
     return true;
@@ -928,13 +913,24 @@ bool CFX_SkiaDeviceDriver::TryDrawText(pdfium::span<const TextCharPos> char_pos,
         glyphs.data(), glyphs.size() * sizeof(uint16_t), m_rsxform.data(), font,
         SkTextEncoding::kGlyphID);
     m_pCanvas->drawTextBlob(blob, 0, 0, skPaint);
-  } else {
-    const DataVector<SkPoint>& positions = m_charDetails.GetPositions();
-    for (size_t i = 0; i < m_charDetails.Count(); ++i) {
-      sk_sp<SkTextBlob> blob = SkTextBlob::MakeFromText(
-          &glyphs[i], sizeof(glyphs[i]), font, SkTextEncoding::kGlyphID);
-      m_pCanvas->drawTextBlob(blob, positions[i].fX, positions[i].fY, skPaint);
+    return true;
+  }
+  const DataVector<SkPoint>& positions = m_charDetails.GetPositions();
+  const DataVector<uint32_t>& widths = m_charDetails.GetFontCharWidths();
+  for (size_t i = 0; i < m_charDetails.Count(); ++i) {
+    const uint32_t font_glyph_width =
+        pFont ? pFont->GetGlyphWidth(glyphs[i]) : 0;
+    const uint32_t pdf_glyph_width = widths[i];
+    if (pdf_glyph_width > 0 && font_glyph_width > 0) {
+      font.setScaleX(scaleX * SkIntToScalar(pdf_glyph_width) /
+                     font_glyph_width);
+    } else {
+      font.setScaleX(scaleX);
     }
+    auto blob = SkTextBlob::MakeFromPosText(&glyphs[i], sizeof(glyphs[i]),
+                                            &positions[i], font,
+                                            SkTextEncoding::kGlyphID);
+    m_pCanvas->drawTextBlob(blob, 0, 0, skPaint);
   }
   return true;
 }
