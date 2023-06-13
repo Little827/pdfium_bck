@@ -18,11 +18,20 @@
 #include "core/fxcrt/retain_ptr.h"
 #include "core/fxcrt/unowned_ptr.h"
 
+#if defined(_SKIA_SUPPORT_)
+#include "core/fxge/dib/cfx_dibbase.h"
+#include "third_party/skia/include/core/SkRefCnt.h"  // nogncheck
+#endif
+
 class CPDF_Dictionary;
 class CPDF_Image;
 class CPDF_Page;
 class CPDF_Stream;
 class PauseIndicatorIface;
+
+#if defined(_SKIA_SUPPORT_)
+class SkImage;
+#endif  // defined(_SKIA_SUPPORT_)
 
 class CPDF_PageImageCache {
  public:
@@ -49,6 +58,27 @@ class CPDF_PageImageCache {
   RetainPtr<CFX_DIBBase> DetachCurMask();
 
  private:
+#if defined(_SKIA_SUPPORT_)
+  // Wrapper around a `CFX_DIBBase` that memoizes `RealizeSkImage()`. This is
+  // only safe if the underlying `CFX_DIBBase` is not mutable.
+  class CachedImage final : public CFX_DIBBase {
+   public:
+    explicit CachedImage(RetainPtr<CFX_DIBBase> image);
+    ~CachedImage() override;
+
+    // `CFX_DIBBase`:
+    pdfium::span<const uint8_t> GetBuffer() const override;
+    pdfium::span<const uint8_t> GetScanline(int line) const override;
+    bool SkipToScanline(int line, PauseIndicatorIface* pause) const override;
+    size_t GetEstimatedImageMemoryBurden() const override;
+    sk_sp<SkImage> RealizeSkImage() const override;
+
+   private:
+    RetainPtr<CFX_DIBBase> image_;
+    mutable sk_sp<SkImage> cached_skia_image_;
+  };
+#endif  // defined(_SKIA_SUPPORT_)
+
   class Entry {
    public:
     explicit Entry(RetainPtr<CPDF_Image> pImage);
@@ -92,6 +122,12 @@ class CPDF_PageImageCache {
     RetainPtr<CFX_DIBBase> m_pCachedMask;
     bool m_bCachedSetMaxSizeRequired = false;
   };
+
+  // Makes a `CachedImage` backed by `image` if Skia is the default renderer,
+  // otherwise return the image itself. `realize_hint` indicates whether it
+  // would be beneficial to realize `image` before caching.
+  static RetainPtr<CFX_DIBBase> MakeCachedImage(RetainPtr<CFX_DIBBase> image,
+                                                bool realize_hint);
 
   void ClearImageCacheEntry(const CPDF_Stream* pStream);
 
