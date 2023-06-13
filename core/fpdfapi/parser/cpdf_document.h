@@ -105,7 +105,7 @@ class CPDF_Document : public Observable,
   RetainPtr<const CPDF_Dictionary> GetPageDictionary(int iPage);
   RetainPtr<CPDF_Dictionary> GetMutablePageDictionary(int iPage);
   int GetPageIndex(uint32_t objnum);
-  uint32_t GetUserPermissions() const;
+  uint32_t GetUserPermissions(bool ignore_owner) const;
 
   // PageDataIface wrappers, try to avoid explicit getter calls.
   RetainPtr<CPDF_StreamAcc> GetFontFileStreamAcc(

@@ -225,6 +225,17 @@ uint32_t CPDF_SecurityHandler::GetPermissions() const {
   return dwPermission;
 }
 
+uint32_t CPDF_SecurityHandler::GetUserPermissions() const {
+  uint32_t dwPermission = m_Permissions;
+  if (m_pEncryptDict &&
+      m_pEncryptDict->GetByteStringFor("Filter") == "Standard") {
+    // See PDF Reference 1.7, page 123, table 3.20.
+    dwPermission &= 0xFFFFFFFC;
+    dwPermission |= 0xFFFFF0C0;
+  }
+  return dwPermission;
+}
+
 static bool LoadCryptInfo(const CPDF_Dictionary* pEncryptDict,
                           const ByteString& name,
                           CPDF_CryptoHandler::Cipher* cipher,

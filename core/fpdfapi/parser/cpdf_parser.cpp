@@ -1055,6 +1055,11 @@ uint32_t CPDF_Parser::GetPermissions() const {
   return m_pSecurityHandler ? m_pSecurityHandler->GetPermissions() : 0xFFFFFFFF;
 }
 
+uint32_t CPDF_Parser::GetUserPermissions() const {
+  return m_pSecurityHandler ? m_pSecurityHandler->GetUserPermissions()
+                            : 0xFFFFFFFF;
+}
+
 std::unique_ptr<CPDF_LinearizedHeader> CPDF_Parser::ParseLinearizedHeader() {
   return CPDF_LinearizedHeader::Parse(m_pSyntax.get());
 }
