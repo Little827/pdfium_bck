@@ -46,6 +46,30 @@
       },
       "revId": "3195d8e7ab84b2dc1db11969ea584632bb4fad53",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d376f7d8_7ed778ca",
+        "filename": "core/fpdfapi/page/cpdf_pageimagecache.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 8281
+      },
+      "writtenOn": "2023-06-14T17:38:36Z",
+      "side": 1,
+      "message": "The point of using NOTREACHED_NORETURN() is that you don\u0027t need the \"return\" line after calling it.",
+      "parentUuid": "d4a130bc_96b5b469",
+      "range": {
+        "startLine": 206,
+        "startChar": 2,
+        "endLine": 206,
+        "endChar": 15
+      },
+      "revId": "3195d8e7ab84b2dc1db11969ea584632bb4fad53",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
