@@ -16,6 +16,24 @@
       "message": "I have one more change I want to make, as since patchset 2, CachedImage no longer needs to be in the CPDF_PageImageCache header.",
       "revId": "a28b89870c893c40c8017c421d1f5a2f6d384c8a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54d5a1de_2a027596",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-06-14T19:07:38Z",
+      "side": 1,
+      "message": "Done\n\nNote that this class is now in a single translation unit, so everything can be defined inline.",
+      "parentUuid": "06545e33_adbb5233",
+      "revId": "a28b89870c893c40c8017c421d1f5a2f6d384c8a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
