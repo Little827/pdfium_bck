@@ -166,6 +166,30 @@
       },
       "revId": "3195d8e7ab84b2dc1db11969ea584632bb4fad53",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41e21256_31bbd2c7",
+        "filename": "core/fpdfapi/page/cpdf_pageimagecache.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-06-14T18:03:45Z",
+      "side": 1,
+      "message": "I\u0027d rather take out the NOTREACHED() than take out the implementation, as the implementation is correct and crashing is risky.\n\nBut I\u0027d prefer not to introduce new uses, as it\u0027s not efficient. Once we have more confidence that it\u0027s not used (preferably enforced by the type system), then it could be removed entirely.",
+      "parentUuid": "1f7a1561_da7ac157",
+      "range": {
+        "startLine": 206,
+        "startChar": 2,
+        "endLine": 206,
+        "endChar": 15
+      },
+      "revId": "3195d8e7ab84b2dc1db11969ea584632bb4fad53",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
