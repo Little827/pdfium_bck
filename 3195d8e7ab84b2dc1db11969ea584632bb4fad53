@@ -238,6 +238,30 @@
       },
       "revId": "3195d8e7ab84b2dc1db11969ea584632bb4fad53",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59035a5b_899a433e",
+        "filename": "core/fpdfapi/page/cpdf_pageimagecache.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-06-14T18:48:50Z",
+      "side": 1,
+      "message": "I see kmoon@ \u0027s concern now: Due to the change is viral, it might cause unwanted crashes for stable users in the future (if these code are not completely removed by then). It\u0027s safer to rely on the correct implementation even though we do not want those implementation to be called.\nMeanwhile, it still allows fuzzers or other tests to catch potential issues before these code goes to stable. \n\nIs this correct, kmoon@?",
+      "parentUuid": "b480eaab_a2b6e564",
+      "range": {
+        "startLine": 206,
+        "startChar": 2,
+        "endLine": 206,
+        "endChar": 15
+      },
+      "revId": "3195d8e7ab84b2dc1db11969ea584632bb4fad53",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
