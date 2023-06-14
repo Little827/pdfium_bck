@@ -22,6 +22,30 @@
       },
       "revId": "3195d8e7ab84b2dc1db11969ea584632bb4fad53",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4a130bc_96b5b469",
+        "filename": "core/fpdfapi/page/cpdf_pageimagecache.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-06-14T17:34:07Z",
+      "side": 1,
+      "message": "This function does return, so NOTREACHED_NORETURN() wouldn\u0027t be appropriate. The code here works, I just don\u0027t want anyone to use it. 😊",
+      "parentUuid": "cb65590c_76ddefaf",
+      "range": {
+        "startLine": 206,
+        "startChar": 2,
+        "endLine": 206,
+        "endChar": 15
+      },
+      "revId": "3195d8e7ab84b2dc1db11969ea584632bb4fad53",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
