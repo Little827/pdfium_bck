@@ -2042,3 +2042,32 @@ TEST_F(FPDFViewEmbedderTest, NoSmoothTextItalicOverlappingGlyphs) {
                                 "4ef1f65ab1ac76acb97a3540dcb10b4e");
   UnloadPage(page);
 }
+
+TEST_F(FPDFViewEmbedderTest, ScrollBigImage) {
+  static constexpr int kImageWidth = 5100;
+  static constexpr int kImageHeight = 6600;
+
+  // Page size that renders 20 image pixels per output pixel. This value evenly
+  // divides both the image width and half the image height.
+  static constexpr int kPageToImageFactor = 20;
+  static constexpr int kPageWidth = kImageWidth / kPageToImageFactor;
+  static constexpr int kPageHeight = kImageHeight / kPageToImageFactor;
+
+  ASSERT_TRUE(OpenDocument("bug_2034.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  ScopedFPDFBitmap bitmap(FPDFBitmap_Create(kPageWidth, kPageHeight / 2, true));
+
+  for (int ii = 0; ii < 10; ++ii) {
+    // Render top half.
+    FPDF_RenderPageBitmap(bitmap.get(), page, 0, 0, kPageWidth, kPageHeight, 0,
+                          0);
+
+    // Render bottom half.
+    FPDF_RenderPageBitmap(bitmap.get(), page, 0, -kPageHeight / 2, kPageWidth,
+                          kPageHeight, 0, 0);
+  }
+
+  UnloadPage(page);
+}
