@@ -190,6 +190,30 @@
       },
       "revId": "3195d8e7ab84b2dc1db11969ea584632bb4fad53",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b480eaab_a2b6e564",
+        "filename": "core/fpdfapi/page/cpdf_pageimagecache.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-06-14T18:06:30Z",
+      "side": 1,
+      "message": "Essentially, I\u0027d like to get the type returned from CPDF_PageImageCache to a state where the only calls are to RealizeSkImage() (and perhaps some future successor that implements tiled rendering). The best way to do that would be to introduce an interface that only allows calls to RealizeSkImage(), but such a change is viral, so it\u0027s simpler to lean on CFX_DIBBase for now.",
+      "parentUuid": "41e21256_31bbd2c7",
+      "range": {
+        "startLine": 206,
+        "startChar": 2,
+        "endLine": 206,
+        "endChar": 15
+      },
+      "revId": "3195d8e7ab84b2dc1db11969ea584632bb4fad53",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
