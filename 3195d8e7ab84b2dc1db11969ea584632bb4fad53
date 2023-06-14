@@ -70,6 +70,30 @@
       },
       "revId": "3195d8e7ab84b2dc1db11969ea584632bb4fad53",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "279d7482_e946722c",
+        "filename": "core/fpdfapi/page/cpdf_pageimagecache.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-06-14T17:52:37Z",
+      "side": 1,
+      "message": "Yes, but my point is that this is the behavior I want in non-DCHECK builds. I want to discourage use of this call site, but if we missed a spot in production, I don\u0027t want it to crash, because the implementation works.",
+      "parentUuid": "d376f7d8_7ed778ca",
+      "range": {
+        "startLine": 206,
+        "startChar": 2,
+        "endLine": 206,
+        "endChar": 15
+      },
+      "revId": "3195d8e7ab84b2dc1db11969ea584632bb4fad53",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
