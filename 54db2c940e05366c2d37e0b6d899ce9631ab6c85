@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc4f225a_6b6565dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-06-15T18:55:12Z",
+      "side": 1,
+      "message": "LGTM.\nIs this related to an existing bug?",
+      "revId": "54db2c940e05366c2d37e0b6d899ce9631ab6c85",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
