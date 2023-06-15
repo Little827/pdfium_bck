@@ -34,6 +34,24 @@
       "parentUuid": "bc4f225a_6b6565dd",
       "revId": "54db2c940e05366c2d37e0b6d899ce9631ab6c85",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0b228c0_be7cfa4b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-06-15T19:18:05Z",
+      "side": 1,
+      "message": "That bug is about V5 xref, and this is V4 xref. So this is not directly related to that bug. All this does is verify the behavior for how PDFium handles the wrong /Size for V4 xref. Since the PDF spec says the V5 xref /Size is equivalent to the V4 /Size, this helps the argument made in https://pdfium-review.googlesource.com/108832.",
+      "parentUuid": "7b19ae97_a653909c",
+      "revId": "54db2c940e05366c2d37e0b6d899ce9631ab6c85",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
