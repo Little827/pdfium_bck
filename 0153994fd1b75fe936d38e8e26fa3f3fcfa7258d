@@ -53,6 +53,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0beda7be_c5da1e17",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 926,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-06-15T18:00:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9776fb7_32974e41",
+      "revId": "0153994fd1b75fe936d38e8e26fa3f3fcfa7258d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d18baa57_3ef969f8",
@@ -66,6 +84,30 @@
       "writtenOn": "2023-06-15T17:34:14Z",
       "side": 1,
       "message": "This is probably clearer as sizeof(uint16_t).",
+      "range": {
+        "startLine": 930,
+        "startChar": 56,
+        "endLine": 930,
+        "endChar": 73
+      },
+      "revId": "0153994fd1b75fe936d38e8e26fa3f3fcfa7258d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e6dd41c_b17e44a2",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 930,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-06-15T18:00:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d18baa57_3ef969f8",
       "range": {
         "startLine": 930,
         "startChar": 56,
@@ -124,6 +166,24 @@
       "writtenOn": "2023-06-15T17:34:14Z",
       "side": 1,
       "message": "Nit: Add {} for modified if statements.",
+      "revId": "0153994fd1b75fe936d38e8e26fa3f3fcfa7258d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b579b65c_5e50fcbe",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 900,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-06-15T18:00:56Z",
+      "side": 1,
+      "message": "Let\u0027s defer this to a separate CL since majority of such if statements are in the same format and this CL is already pretty big.",
+      "parentUuid": "6a4ae4f9_db8af615",
       "revId": "0153994fd1b75fe936d38e8e26fa3f3fcfa7258d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
