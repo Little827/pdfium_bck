@@ -90,6 +90,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd56ed8c_674d2828",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-06-15T20:40:08Z",
+      "side": 1,
+      "message": "I don\u0027t think it\u0027s unclear unless one is trying to find a loophole, but yes, the overall point is that the common scenarios we actually develop under are the only ones that are \"supported.\" If another scenario works, great! But if someone runs into trouble, we can\u0027t help them.",
+      "parentUuid": "da8c8022_197fc107",
+      "revId": "9945002cc7755e27797ae5c067905fc07102e9c0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8111626d_d348d3c1",
