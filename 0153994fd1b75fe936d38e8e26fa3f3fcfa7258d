@@ -180,6 +180,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aef7852e_84d2ce79",
+        "filename": "testing/resources/pixel/bug_1922_expected.pdf.0.png",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-06-15T17:59:44Z",
+      "side": 1,
+      "message": "If the pixels are the same, no need. Just unsure why the file was changed.",
+      "parentUuid": "ce8ecab9_80801bd3",
+      "revId": "0153994fd1b75fe936d38e8e26fa3f3fcfa7258d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "91c957e3_1dba8384",
