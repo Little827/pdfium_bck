@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f73d25c8_7e704ff2",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 767,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-06-15T16:27:48Z",
+      "side": 0,
+      "message": "Note that this `glyph_width` is not the default glyph width. because it has been adjusted by the target width `cp.m_FontCharWidth`.\n\nThe default glyph width can be retrieved by calling pFont-\u003eGetGlyphWidth(glyphs[i]).",
+      "range": {
+        "startLine": 766,
+        "startChar": 4,
+        "endLine": 767,
+        "endChar": 64
+      },
+      "revId": "1b2a3b54907b2b31d7e2bbebc1c06473a82584c8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
