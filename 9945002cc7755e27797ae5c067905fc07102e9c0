@@ -36,6 +36,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b438475b_dc8e39f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8751
+      },
+      "writtenOn": "2023-06-15T12:44:40Z",
+      "side": 1,
+      "message": "Since one can cross-compile for musl on a Ubuntu host, it\u0027s not necessarily covered by this statement. Anyway, I understand musl is not supported.",
+      "parentUuid": "5fead900_f48a55f9",
+      "revId": "9945002cc7755e27797ae5c067905fc07102e9c0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8111626d_d348d3c1",
