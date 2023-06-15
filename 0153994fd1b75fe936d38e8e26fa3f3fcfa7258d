@@ -311,6 +311,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c8d528f_f9872352",
+        "filename": "testing/resources/pixel/bug_1922_expected_skia.pdf.0.png",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-06-15T18:11:42Z",
+      "side": 1,
+      "message": "We have an existing crbug.com/pdfium/1774 regarding improving font weight rendering in pdfium (For both AGG and Skia). I will add a TODO comment in the code.",
+      "parentUuid": "46a8938a_a1ed8ec8",
+      "revId": "0153994fd1b75fe936d38e8e26fa3f3fcfa7258d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd6aa4fc_e68cbf20",
