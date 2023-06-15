@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a807a1f0_6c18a8a2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 19
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-06-15T17:54:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b4f2ce1_5d0979d9",
+      "revId": "0153994fd1b75fe936d38e8e26fa3f3fcfa7258d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d9776fb7_32974e41",
@@ -75,6 +93,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "68fa793f_b8e9cfc7",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 932,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-06-15T17:54:58Z",
+      "side": 1,
+      "message": "I checked drawing 1000 blobs of individual glyph and drawing 1 blob of 1000 glyphs, the performance didn\u0027t improve.",
+      "parentUuid": "6ce98b23_8d543687",
+      "revId": "0153994fd1b75fe936d38e8e26fa3f3fcfa7258d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a4ae4f9_db8af615",
@@ -128,6 +164,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ce8ecab9_80801bd3",
+        "filename": "testing/resources/pixel/bug_1922_expected.pdf.0.png",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-06-15T17:54:58Z",
+      "side": 1,
+      "message": "Yeah, the file size decreased a lot. Should I revert it?",
+      "parentUuid": "c2ecd766_e3e312cb",
+      "revId": "0153994fd1b75fe936d38e8e26fa3f3fcfa7258d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "91c957e3_1dba8384",
         "filename": "testing/resources/pixel/bug_1922_expected_skia.pdf.0.png",
         "patchSetId": 19
@@ -145,6 +199,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c88b49d5_1c33da1b",
+        "filename": "testing/resources/pixel/bug_1922_expected_skia.pdf.0.png",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-06-15T17:54:58Z",
+      "side": 1,
+      "message": "If you compare Acrobat with AGG, Acrobat result clearly scaled down U and v a lot more than AGG (make sure to scale down the whole PDF so that you can see it more clearly). Skia results does look more narrow than Acrobat, but it\u0027s an improvement from AGG result.\nI think we still need more font weight support for Skia to get closer to Acrobat results.",
+      "parentUuid": "91c957e3_1dba8384",
+      "revId": "0153994fd1b75fe936d38e8e26fa3f3fcfa7258d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dd6aa4fc_e68cbf20",
         "filename": "testing/resources/pixel/bug_846_expected_skia.pdf.0.png",
         "patchSetId": 19
@@ -156,6 +228,24 @@
       "writtenOn": "2023-06-15T17:34:14Z",
       "side": 1,
       "message": "The glyph shapes on the second line look particularly different (on the left side of the glyphs). Is this OK?",
+      "revId": "0153994fd1b75fe936d38e8e26fa3f3fcfa7258d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e0858ef_abd583b9",
+        "filename": "testing/resources/pixel/bug_846_expected_skia.pdf.0.png",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-06-15T17:54:58Z",
+      "side": 1,
+      "message": "This is due to Skia scaled the whole glyph horizontally and AGG does it by loading a bitmap that\u0027s strethced according to the targeted width and targeted font weight. Skia still needs some improvement around font weight, but for now it\u0027s OK.",
+      "parentUuid": "dd6aa4fc_e68cbf20",
       "revId": "0153994fd1b75fe936d38e8e26fa3f3fcfa7258d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
