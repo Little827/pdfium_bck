@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fabf4f31_78ab9303",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 20
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-06-15T17:57:47Z",
+      "side": 1,
+      "message": "LGTM, pending outstanding issues.",
+      "revId": "58c1ce27b8ae969de0a7c9b4d954d01c98f73987",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}

@@ -217,6 +217,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "46a8938a_a1ed8ec8",
+        "filename": "testing/resources/pixel/bug_1922_expected_skia.pdf.0.png",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-06-15T17:57:47Z",
+      "side": 1,
+      "message": "Your explanation sounds reasonable. Can we add a TODO or follow-up bug to that effect?",
+      "parentUuid": "c88b49d5_1c33da1b",
+      "revId": "0153994fd1b75fe936d38e8e26fa3f3fcfa7258d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dd6aa4fc_e68cbf20",
         "filename": "testing/resources/pixel/bug_846_expected_skia.pdf.0.png",
         "patchSetId": 19
