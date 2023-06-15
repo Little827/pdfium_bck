@@ -1,0 +1,163 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b4f2ce1_5d0979d9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 19
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-06-15T17:34:14Z",
+      "side": 1,
+      "message": "Nit: This line is too long; break at 72 characters.",
+      "revId": "0153994fd1b75fe936d38e8e26fa3f3fcfa7258d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9776fb7_32974e41",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 926,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-06-15T17:34:14Z",
+      "side": 1,
+      "message": "Can you describe (comment) as to what this calculation is doing?",
+      "revId": "0153994fd1b75fe936d38e8e26fa3f3fcfa7258d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d18baa57_3ef969f8",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 930,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-06-15T17:34:14Z",
+      "side": 1,
+      "message": "This is probably clearer as sizeof(uint16_t).",
+      "range": {
+        "startLine": 930,
+        "startChar": 56,
+        "endLine": 930,
+        "endChar": 73
+      },
+      "revId": "0153994fd1b75fe936d38e8e26fa3f3fcfa7258d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ce98b23_8d543687",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 932,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-06-15T17:34:14Z",
+      "side": 1,
+      "message": "Optional: If the value of setScaleX() doesn\u0027t change between two glyphs, would it be possible to build up a run with the same scaleX, instead of a blob per glyph? (Maybe as a possible future improvement.)",
+      "revId": "0153994fd1b75fe936d38e8e26fa3f3fcfa7258d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a4ae4f9_db8af615",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 900,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-06-15T17:34:14Z",
+      "side": 1,
+      "message": "Nit: Add {} for modified if statements.",
+      "revId": "0153994fd1b75fe936d38e8e26fa3f3fcfa7258d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1acd7ae_3f235686",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 4545,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-06-15T17:34:14Z",
+      "side": 1,
+      "message": "Optional: Instead of using lambdas everywhere, I wonder if we shouldn\u0027t just have a helper function that looks like this:\n\n```\nconst char* GetChecksumForRenderer(const char* agg_checksum, const char* skia_checksum) {\n  return CFX_DefaultRenderDevice::SkiaIsDefaultRenderer() ? skia_checksum : agg_checksum;\n}\n```\n\nThis probably would avoid the need for 75% of these. A variant with Apple-specific checksums would probably support the other 25%.\n\nIf we want to get extra clever, we could use aggregate initialization to support \"named\" parameters.",
+      "revId": "0153994fd1b75fe936d38e8e26fa3f3fcfa7258d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2ecd766_e3e312cb",
+        "filename": "testing/resources/pixel/bug_1922_expected.pdf.0.png",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-06-15T17:34:14Z",
+      "side": 1,
+      "message": "This is the non-Skia case, right? Why did it change? (optipng?)",
+      "revId": "0153994fd1b75fe936d38e8e26fa3f3fcfa7258d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91c957e3_1dba8384",
+        "filename": "testing/resources/pixel/bug_1922_expected_skia.pdf.0.png",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-06-15T17:34:14Z",
+      "side": 1,
+      "message": "The widths or positioning don\u0027t look right here. Let\u0027s investigate this before we submit.\n\nComparing with Adobe Acrobat Reader, Preview, and Firefox, the base case looks a little different, too, but in Skia, the spacing after \"U\" and \"v\" looks much too big; the \"U\" and \"v\" look too narrow.",
+      "revId": "0153994fd1b75fe936d38e8e26fa3f3fcfa7258d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd6aa4fc_e68cbf20",
+        "filename": "testing/resources/pixel/bug_846_expected_skia.pdf.0.png",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-06-15T17:34:14Z",
+      "side": 1,
+      "message": "The glyph shapes on the second line look particularly different (on the left side of the glyphs). Is this OK?",
+      "revId": "0153994fd1b75fe936d38e8e26fa3f3fcfa7258d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
