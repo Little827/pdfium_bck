@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcaf88a9_e24512e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8721
+      },
+      "writtenOn": "2023-06-15T11:07:49Z",
+      "side": 1,
+      "message": "Hi Tom, I think we don\u0027t have owners-override permissions, or permissions to submit the change, could you please review and submit this CL?",
+      "revId": "7e58631712ad16de28b3518deaf9ec3c58e77edb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
