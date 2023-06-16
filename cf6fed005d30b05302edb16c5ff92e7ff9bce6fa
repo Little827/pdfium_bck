@@ -121,6 +121,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "375b14ed_e256371e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-06-16T21:22:25Z",
+      "side": 1,
+      "message": "The two URls should be equivalent. Not sure why the shorter one did not work for you, but please do file a bug and at the bug ID here.",
+      "parentUuid": "bfdf8236_fd7adcda",
+      "revId": "cf6fed005d30b05302edb16c5ff92e7ff9bce6fa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9f35523d_25f682be",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -185,6 +203,24 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "73095f0e_3ca738e1",
+      "revId": "cf6fed005d30b05302edb16c5ff92e7ff9bce6fa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c0b5172_0bf8ddc4",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 988,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-06-16T21:22:25Z",
+      "side": 1,
+      "message": "Patch set 2 is the latest patch set. I don\u0027t see any C++ code changes, yet this is simply marked as done. I don\u0027t understand what was done.",
+      "parentUuid": "6beeff82_3a6dd4f9",
       "revId": "cf6fed005d30b05302edb16c5ff92e7ff9bce6fa",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },

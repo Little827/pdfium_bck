@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbc516cc_c4eb470a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-06-16T21:22:25Z",
+      "side": 1,
+      "message": "This changelist (CL) just adds new APIs. I don\u0027t understand how it\u0027s ensuring anything in the existing codebase.",
+      "revId": "09045561b8df60961e0c2977ba84e13afc36277d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
