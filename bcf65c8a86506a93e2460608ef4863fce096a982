@@ -1,6 +1,86 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "a415ad5f_a8b75dec",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-06-16T22:26:47Z",
+      "side": 1,
+      "message": "Please format the CL description, AKA git commit, as follows:\n\n```\n1 line summary\n[blank line]\nDetails go here. Wrap at 72 columns when possible.\n\nMultiple paragraphs is of course ok.\n[blank line]\nMetadataKey: MetadataValue\nChange-Id: 1234567\n```",
+      "revId": "bcf65c8a86506a93e2460608ef4863fce096a982",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed368929_0d604391",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-06-16T22:26:47Z",
+      "side": 1,
+      "message": "Can the entire call stack consistently be GetFoo(bool ignore_owner), or consistently GetFoo() and GetBar()?",
+      "revId": "bcf65c8a86506a93e2460608ef4863fce096a982",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bedd080_e935b6b9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-06-16T22:26:47Z",
+      "side": 1,
+      "message": "\"existing\" ? Or are you saying it\u0027s obsolete?",
+      "range": {
+        "startLine": 23,
+        "startChar": 3,
+        "endLine": 23,
+        "endChar": 9
+      },
+      "revId": "bcf65c8a86506a93e2460608ef4863fce096a982",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd25bc93_8883bc49",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-06-16T22:26:47Z",
+      "side": 1,
+      "message": "pdfium:2040",
+      "range": {
+        "startLine": 29,
+        "startChar": 5,
+        "endLine": 29,
+        "endChar": 69
+      },
+      "revId": "bcf65c8a86506a93e2460608ef4863fce096a982",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "547dc86a_21f7b31b",
@@ -14,6 +94,40 @@
       "writtenOn": "2023-06-13T06:49:08Z",
       "side": 1,
       "message": "In reference to https://bugs.chromium.org/p/pdfium/issues/detail?id\u003d2040",
+      "revId": "bcf65c8a86506a93e2460608ef4863fce096a982",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91b9e8c5_212686a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-06-16T22:26:47Z",
+      "side": 1,
+      "message": "Please include tests for FPDF_GetDocPermissions()",
+      "revId": "bcf65c8a86506a93e2460608ef4863fce096a982",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d665d1d_08e328f3",
+        "filename": "core/fpdfapi/parser/cpdf_security_handler.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-06-16T22:26:47Z",
+      "side": 1,
+      "message": "Can this avoid/minimize the code duplication with CPDF_SecurityHandler::GetPermissions()?",
       "revId": "bcf65c8a86506a93e2460608ef4863fce096a982",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
