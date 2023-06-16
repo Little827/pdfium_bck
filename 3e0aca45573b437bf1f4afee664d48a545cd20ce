@@ -46,6 +46,30 @@
       },
       "revId": "3e0aca45573b437bf1f4afee664d48a545cd20ce",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4531fe48_f4b9d10f",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1136,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-06-16T23:46:50Z",
+      "side": 0,
+      "message": "I randomly sampled GetBuffer() callers, and I see CPDF_Image::SetImage() and CPDF_RenderTiling::Draw() just trying to use the GetBuffer() result directly, without considering GetScanline().\n\nFrom my perspective, it\u0027s a bit hard to tell who the actual callers of CPDF_DIB::GetBuffer() are.",
+      "parentUuid": "52cca5fe_eff5cfca",
+      "range": {
+        "startLine": 1136,
+        "startChar": 9,
+        "endLine": 1136,
+        "endChar": 55
+      },
+      "revId": "3e0aca45573b437bf1f4afee664d48a545cd20ce",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
