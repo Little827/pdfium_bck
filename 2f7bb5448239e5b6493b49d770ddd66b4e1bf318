@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f39004b1_1e772040",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-06-16T21:25:49Z",
+      "side": 1,
+      "message": "This should be part of https://pdfium-review.googlesource.com/107610 and not a new CL.\n\nPlease adjust your development workflow and use git-cl correctly. If https://pdfium-review.googlesource.com/107610 is associated with a local git branch foo, then please keep working on branch foo. When running `git cl upload`, git-cl will upload new patch sets to https://pdfium-review.googlesource.com/107610.\n\nIf you are not using git-cl, then please check the Gerrit documentation on how to manage branches and CLs.",
+      "revId": "2f7bb5448239e5b6493b49d770ddd66b4e1bf318",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
