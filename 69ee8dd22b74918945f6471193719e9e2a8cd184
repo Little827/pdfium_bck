@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "724e6e54_3b985a32",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-06-16T21:40:12Z",
+      "side": 1,
+      "message": "What is current a CL chain with 4 CLs should be squashed into 1 CL. The rest can be abandoned in the Gerrit UI.",
+      "revId": "69ee8dd22b74918945f6471193719e9e2a8cd184",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
