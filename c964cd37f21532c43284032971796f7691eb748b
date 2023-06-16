@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88d12838_3b262c98",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-06-16T22:16:54Z",
+      "side": 1,
+      "message": "Is there a Bug: entry that we can associate with this CL?",
+      "revId": "c964cd37f21532c43284032971796f7691eb748b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cdd8158_5d045317",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-06-16T22:16:54Z",
+      "side": 1,
+      "message": "Apologies for the long delay on this code review.",
+      "revId": "c964cd37f21532c43284032971796f7691eb748b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35da57f0_b9edf8c5",
+        "filename": "core/fpdfapi/page/cpdf_imageobject.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-06-16T22:16:54Z",
+      "side": 1,
+      "message": "This check never evaluates to true either, as SetImage() never gets called with a null image.",
+      "range": {
+        "startLine": 107,
+        "startChar": 5,
+        "endLine": 107,
+        "endChar": 15
+      },
+      "revId": "c964cd37f21532c43284032971796f7691eb748b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92658ab3_99b18088",
+        "filename": "core/fpdfapi/page/cpdf_imageobject.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-06-16T22:16:54Z",
+      "side": 1,
+      "message": "Move this closer to line 128.",
+      "revId": "c964cd37f21532c43284032971796f7691eb748b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7855782_45278185",
+        "filename": "core/fpdfapi/page/cpdf_imageobject.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-06-16T22:16:54Z",
+      "side": 1,
+      "message": "Does this need to clone? Can the caller here just pass in the existing `pMaskStream`, if it is declared as RetainPtr\u003cCPDF_Stream\u003e?",
+      "range": {
+        "startLine": 129,
+        "startChar": 65,
+        "endLine": 129,
+        "endChar": 70
+      },
+      "revId": "c964cd37f21532c43284032971796f7691eb748b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
