@@ -70,6 +70,30 @@
       },
       "revId": "3e0aca45573b437bf1f4afee664d48a545cd20ce",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b913181_9142adaf",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1136,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-06-16T23:51:48Z",
+      "side": 0,
+      "message": "CPDF_DIB only gets used within CPDF_PageImageCache. In the AGG code path, there\u0027s an immediate Realize() operation which triggers a copy. Notably, it doesn\u0027t do this if images exceed a certain size, which means there\u0027s a latent bug in the AGG code path where GetBuffer() actually gets used.\n\nI wanted to get rid of the Realize() operation in the Skia code path (since it\u0027s redundant with RealizeSkImage()). The images returned from CPDF_PageImageCache just get passed back to CFX_SkiaRenderDevice in the end (which was part of the point of adding DCHECKs to CachedImage).\n\nAs long as there\u0027s an intervening Realize(), directly calling GetBuffer() works, but it\u0027s technically a bug. CFX_DIBitmap::GetBuffer() is always implemented correctly. The question mark is on CFX_DIBBase::GetBuffer() operations.\n\nNote that some CPDF_DIBs aren\u0027t even backed by a cached bitmap in the first place, so GetBuffer() already returns an empty span.",
+      "parentUuid": "4531fe48_f4b9d10f",
+      "range": {
+        "startLine": 1136,
+        "startChar": 9,
+        "endLine": 1136,
+        "endChar": 55
+      },
+      "revId": "3e0aca45573b437bf1f4afee664d48a545cd20ce",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
