@@ -22,6 +22,30 @@
       },
       "revId": "3e0aca45573b437bf1f4afee664d48a545cd20ce",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52cca5fe_eff5cfca",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1136,
+      "author": {
+        "id": 7598
+      },
+      "writtenOn": "2023-06-16T23:36:31Z",
+      "side": 0,
+      "message": "CFX_DIBBase callers already have to deal with GetBuffer() possibly returning empty (indicating that only GetScanline() is usable).\n\nIn the AGG code path, sometimes this is done by forcing a call to CFX_DIBBase::Realize(), which reads from GetScanline() and writes to a new CFX_DIBitmap. In the Skia code path, RealizeSkImage() does something similar, but creates an SkImage instead. (It may share the underlying buffer if GetBuffer() is available.)\n\nThis is mostly a problem for the /JPXDecode pixel tests bug_453723.in and jpxdecode_without_smaskindata.in, because the m_pCachedBitmap doesn\u0027t match the format the CPDF_DIB claims it is.\n\nIt\u0027s possible to fix this (and I plan to), but it\u0027s non-trivial, and doesn\u0027t buy us much if we\u0027re just going to copy the pixels into another format again anyway (which is another thing to fix; see pdfium:2048).",
+      "parentUuid": "42b0cea3_39d74eab",
+      "range": {
+        "startLine": 1136,
+        "startChar": 9,
+        "endLine": 1136,
+        "endChar": 55
+      },
+      "revId": "3e0aca45573b437bf1f4afee664d48a545cd20ce",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
