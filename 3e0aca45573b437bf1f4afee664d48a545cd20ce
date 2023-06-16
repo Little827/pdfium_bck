@@ -118,6 +118,30 @@
       },
       "revId": "3e0aca45573b437bf1f4afee664d48a545cd20ce",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "286e9ec5_9ba020e4",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1136,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-06-16T23:54:03Z",
+      "side": 0,
+      "message": "We don\u0027t have any existing test cases where kHugeImageSize is exceeded, so AGG always realizes. This is a test coverage problem, but could certainly explain some of the more mysterious bug reports we get.",
+      "parentUuid": "2e79fd71_b83895b1",
+      "range": {
+        "startLine": 1136,
+        "startChar": 9,
+        "endLine": 1136,
+        "endChar": 55
+      },
+      "revId": "3e0aca45573b437bf1f4afee664d48a545cd20ce",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
