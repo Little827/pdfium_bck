@@ -166,6 +166,30 @@
       },
       "revId": "3e0aca45573b437bf1f4afee664d48a545cd20ce",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc06d495_ccdfc17b",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1136,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-06-17T00:13:12Z",
+      "side": 0,
+      "message": "OK, I tried looking at CPDF_DIB instantiations and follow where they go, but didn\u0027t see any obvious GetBuffer() callers. I also ran a local Skia build and only saw it getting call from  CreateSkiaImageFromTransformedDib(), where `m_pCachedBitmap` always seem to be null. Since CreateSkiaImageFromTransformedDib() does fall back to using GetScanline(), and it\u0027s the only caller I can see, this works for me.",
+      "parentUuid": "a3cee173_9f973191",
+      "range": {
+        "startLine": 1136,
+        "startChar": 9,
+        "endLine": 1136,
+        "endChar": 55
+      },
+      "revId": "3e0aca45573b437bf1f4afee664d48a545cd20ce",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
