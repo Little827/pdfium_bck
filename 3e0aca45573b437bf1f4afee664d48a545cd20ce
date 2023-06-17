@@ -142,6 +142,30 @@
       },
       "revId": "3e0aca45573b437bf1f4afee664d48a545cd20ce",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3cee173_9f973191",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1136,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-06-17T00:01:22Z",
+      "side": 0,
+      "message": "Incidentally, there are 3 (now 4) implementations of CFX_DIBBase, with the following GetBuffer() behavior:\n\nCFX_DIBitmap: Always backed by a buffer.\nCPDF_DIB: Maybe backed by a buffer. GetBuffer() is broken, but the bug is only surfaced in certain edge cases.\nCPDF_TransferFuncDIB: Never backed by a buffer. GetBuffer() returns empty.\nCachedImage: Delegates to CPDF_DIB.",
+      "parentUuid": "286e9ec5_9ba020e4",
+      "range": {
+        "startLine": 1136,
+        "startChar": 9,
+        "endLine": 1136,
+        "endChar": 55
+      },
+      "revId": "3e0aca45573b437bf1f4afee664d48a545cd20ce",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
