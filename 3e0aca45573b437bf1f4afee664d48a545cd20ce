@@ -190,6 +190,30 @@
       },
       "revId": "3e0aca45573b437bf1f4afee664d48a545cd20ce",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0ac158c_e2ca4636",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1136,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-06-17T00:15:28Z",
+      "side": 0,
+      "message": "Thanks!\n\nFYI, `m_pCachedBitmap` only gets set with JPXDecode and JBIG2Decode:\nhttps://source.chromium.org/chromium/chromium/src/+/main:third_party/pdfium/core/fpdfapi/page/cpdf_dib.cpp;l\u003d504;drc\u003dc618dbcfa076ee1fdd2a6ea963b29fe6222e6feb\n\nJBIG2Decode seems to be implemented correctly, so all of the problems I\u0027ve seen are with JPEG2000.",
+      "parentUuid": "fc06d495_ccdfc17b",
+      "range": {
+        "startLine": 1136,
+        "startChar": 9,
+        "endLine": 1136,
+        "endChar": 55
+      },
+      "revId": "3e0aca45573b437bf1f4afee664d48a545cd20ce",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
