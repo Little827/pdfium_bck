@@ -169,6 +169,24 @@
       "parentUuid": "76fb627a_5dd1fc56",
       "revId": "887e89d5fefeea0f54bb75a279f5b09d5c0d2fb6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7695c619_9c27cad9",
+        "filename": "fpdfsdk/fpdf_editimg.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 8606
+      },
+      "writtenOn": "2023-06-19T08:04:12Z",
+      "side": 1,
+      "message": "Of course, it\u0027s strange. Simplified it to one condition",
+      "parentUuid": "8bfc6ff8_8810cdbc",
+      "revId": "887e89d5fefeea0f54bb75a279f5b09d5c0d2fb6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }

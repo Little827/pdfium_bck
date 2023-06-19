@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "66022d9c_1262280b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 8606
+      },
+      "writtenOn": "2023-06-19T08:04:12Z",
+      "side": 1,
+      "message": "It\u0027s not a bug. It\u0027s just an extension for the API",
+      "parentUuid": "88d12838_3b262c98",
+      "revId": "c964cd37f21532c43284032971796f7691eb748b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "9cdd8158_5d045317",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
@@ -58,6 +76,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e894a14_39f7fa6f",
+        "filename": "core/fpdfapi/page/cpdf_imageobject.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 8606
+      },
+      "writtenOn": "2023-06-19T08:04:12Z",
+      "side": 1,
+      "message": "removed",
+      "parentUuid": "35da57f0_b9edf8c5",
+      "range": {
+        "startLine": 107,
+        "startChar": 5,
+        "endLine": 107,
+        "endChar": 15
+      },
+      "revId": "c964cd37f21532c43284032971796f7691eb748b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "92658ab3_99b18088",
@@ -75,6 +117,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8acfcd8_d4487495",
+        "filename": "core/fpdfapi/page/cpdf_imageobject.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 8606
+      },
+      "writtenOn": "2023-06-19T08:04:12Z",
+      "side": 1,
+      "message": "moved",
+      "parentUuid": "92658ab3_99b18088",
+      "revId": "c964cd37f21532c43284032971796f7691eb748b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b7855782_45278185",
@@ -88,6 +148,30 @@
       "writtenOn": "2023-06-16T22:16:54Z",
       "side": 1,
       "message": "Does this need to clone? Can the caller here just pass in the existing `pMaskStream`, if it is declared as RetainPtr\u003cCPDF_Stream\u003e?",
+      "range": {
+        "startLine": 129,
+        "startChar": 65,
+        "endLine": 129,
+        "endChar": 70
+      },
+      "revId": "c964cd37f21532c43284032971796f7691eb748b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff07e49b_ee4cfbbe",
+        "filename": "core/fpdfapi/page/cpdf_imageobject.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 8606
+      },
+      "writtenOn": "2023-06-19T08:04:12Z",
+      "side": 1,
+      "message": "I think it\u0027s possible. Fixed",
+      "parentUuid": "b7855782_45278185",
       "range": {
         "startLine": 129,
         "startChar": 65,
