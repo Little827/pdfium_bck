@@ -486,7 +486,6 @@ bool ParseCommandLine(const std::vector<std::string>& args,
       options->save_thumbnails_decoded = true;
     } else if (cur_arg == "--save-thumbs-raw") {
       options->save_thumbnails_raw = true;
-#if defined(_SKIA_SUPPORT_)
     } else if (ParseSwitchKeyValue(cur_arg, "--use-renderer=", &value)) {
       if (options->use_renderer_type.has_value()) {
         fprintf(stderr, "Duplicate --use-renderer argument\n");
@@ -494,15 +493,14 @@ bool ParseCommandLine(const std::vector<std::string>& args,
       }
       if (value == "agg") {
         options->use_renderer_type = FPDF_RENDERERTYPE_AGG;
+#if defined(_SKIA_SUPPORT_)
       } else if (value == "skia") {
         options->use_renderer_type = FPDF_RENDERERTYPE_SKIA;
+#endif  // defined(_SKIA_SUPPORT_)
       } else {
-        fprintf(stderr,
-                "Invalid --use-renderer argument, value must be one of agg or "
-                "skia\n");
+        fprintf(stderr, "Invalid --use-renderer argument\n");
         return false;
       }
-#endif  // defined(_SKIA_SUPPORT_)
 #ifdef PDF_ENABLE_V8
     } else if (cur_arg == "--disable-javascript") {
       options->disable_javascript = true;
@@ -1387,7 +1385,9 @@ constexpr char kUsageString[] =
     "<pdf-name>.thumbnail.raw.<page-number>.png\n"
 #if defined(_SKIA_SUPPORT_)
     "  --use-renderer         - renderer to use, one of [agg | skia]\n"
-#endif
+#else
+    "  --use-renderer         - renderer to use, one of [agg]\n"
+#endif  // defined(_SKIA_SUPPORT_)
 #ifdef PDF_ENABLE_V8
     "  --disable-javascript   - do not execute JS in PDF files\n"
     "  --js-flags=<flags>     - additional flags to pass to V8\n"
