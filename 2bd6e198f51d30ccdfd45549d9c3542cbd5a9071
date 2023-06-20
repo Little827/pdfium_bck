@@ -16,6 +16,24 @@
       "message": "`return writer_ \u0026\u0026 writer_(...);` instead of using the ternary operator?",
       "revId": "2bd6e198f51d30ccdfd45549d9c3542cbd5a9071",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e755854_8391ca62",
+        "filename": "samples/pdfium_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 895,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-06-20T21:55:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "adb9c96c_4075a9a0",
+      "revId": "2bd6e198f51d30ccdfd45549d9c3542cbd5a9071",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
