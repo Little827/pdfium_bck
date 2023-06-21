@@ -22,6 +22,30 @@
       },
       "revId": "f52f5911c0b8d6490c62da82366b8626ea6b56ee",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2117d93_8ca72165",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-06-21T17:18:35Z",
+      "side": 1,
+      "message": "1) Doing this conversion in smaller chunks over time. So if something goes wrong, it\u0027s easier to revert.\n2) The cross-platform code is probably better tested and less risky to convert.",
+      "parentUuid": "4df1e821_3ce4acde",
+      "range": {
+        "startLine": 7,
+        "startChar": 29,
+        "endLine": 7,
+        "endChar": 38
+      },
+      "revId": "f52f5911c0b8d6490c62da82366b8626ea6b56ee",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
