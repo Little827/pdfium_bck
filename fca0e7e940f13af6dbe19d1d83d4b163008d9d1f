@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7feef18a_7f7dd586",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-06-21T19:49:21Z",
+      "side": 1,
+      "message": "Needs \"chromium:\" prefix.",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 19,
+        "endChar": 12
+      },
+      "revId": "fca0e7e940f13af6dbe19d1d83d4b163008d9d1f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55ff9e19_00e1bb17",
+        "filename": "core/fpdfdoc/cpdf_metadata.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-06-21T19:49:21Z",
+      "side": 1,
+      "message": "Combine the 2 if-statements?",
+      "revId": "fca0e7e940f13af6dbe19d1d83d4b163008d9d1f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1cb92a8_a1f4c4b8",
+        "filename": "core/fpdfdoc/cpdf_metadata_unittest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-06-21T19:49:21Z",
+      "side": 1,
+      "message": "kFoo (even though the surrounding tests use `data`)",
+      "range": {
+        "startLine": 112,
+        "startChar": 20,
+        "endLine": 112,
+        "endChar": 24
+      },
+      "revId": "fca0e7e940f13af6dbe19d1d83d4b163008d9d1f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
