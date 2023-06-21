@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cc50951_8881209f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-06-21T22:35:17Z",
+      "side": 1,
+      "message": "Done\n\nThere was also a sign mismatch with the DCHECK_EQ(); not sure why I\u0027m not seeing it in my cross-compile configuration.",
+      "parentUuid": "d8420427_491ab27a",
+      "revId": "6b5edf3c115f0c435c7a10da1ae453a7c46803e3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "44039743_3520f1c5",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-06-21T22:11:30Z",
       "side": 1,
       "message": "Maybe a slightly different name to avoid overloading?",
+      "range": {
+        "startLine": 928,
+        "startChar": 7,
+        "endLine": 928,
+        "endChar": 23
+      },
+      "revId": "6b5edf3c115f0c435c7a10da1ae453a7c46803e3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "423fc79b_045effbb",
+        "filename": "samples/pdfium_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 928,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-06-21T22:35:17Z",
+      "side": 1,
+      "message": "Done\n\nSince first_scan\u003dnullptr does the right thing, I decided to get rid of the FPDFBitmap_Create()-based version.",
+      "parentUuid": "44039743_3520f1c5",
       "range": {
         "startLine": 928,
         "startChar": 7,
@@ -64,6 +106,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce12dbdb_ebb695dc",
+        "filename": "samples/pdfium_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 943,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-06-21T22:35:17Z",
+      "side": 1,
+      "message": "Done\n\nNot deeply const-correct, but shallowly const-correct. This change was only needed by an earlier version of this code, so I\u0027ll revert it, but may need this or an overload in the future.",
+      "parentUuid": "6bacced1_5767d541",
+      "range": {
+        "startLine": 943,
+        "startChar": 23,
+        "endLine": 943,
+        "endChar": 28
+      },
+      "revId": "6b5edf3c115f0c435c7a10da1ae453a7c46803e3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7740c395_4786f117",
@@ -77,6 +143,30 @@
       "writtenOn": "2023-06-21T22:11:30Z",
       "side": 1,
       "message": "Over-parenthesized?",
+      "range": {
+        "startLine": 947,
+        "startChar": 17,
+        "endLine": 947,
+        "endChar": 18
+      },
+      "revId": "6b5edf3c115f0c435c7a10da1ae453a7c46803e3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a785f75a_4eae419f",
+        "filename": "samples/pdfium_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 947,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-06-21T22:35:17Z",
+      "side": 1,
+      "message": "Done\n\nI did this intentionally to emphasize that we\u0027re taking the value of the \u003d\u003d expression, rather than FPDF_GetFormat(), but if it\u0027s not unclear, I\u0027ll remove the extra ().",
+      "parentUuid": "7740c395_4786f117",
       "range": {
         "startLine": 947,
         "startChar": 17,
