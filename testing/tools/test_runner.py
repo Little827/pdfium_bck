@@ -223,7 +223,7 @@ class TestRunner:
 
     parser.add_argument(
         '--use-renderer',
-        choices=('agg', 'skia'),
+        choices=('agg', 'gdi', 'skia'),
         help='Forces the renderer to use.')
 
     parser.add_argument(
@@ -239,6 +239,11 @@ class TestRunner:
     self.per_process_config.options = parser.parse_args()
 
     finder = self.per_process_config.NewFinder()
+
+    # TODO(kmoon): Dry run.
+    if finder.os_name == 'win':
+      self.options.use_renderer = 'gdi'
+
     pdfium_test_path = self.per_process_config.GetPdfiumTestPath(finder)
     if not os.path.exists(pdfium_test_path):
       print(f"FAILURE: Can't find test executable '{pdfium_test_path}'")
@@ -447,11 +452,16 @@ class _PerProcessConfig:
                                      timeout=TEST_TIMEOUT)
     self.features = set(output.decode('utf-8').strip().split(','))
 
-    if self.options.use_renderer == 'agg':
-      self.features.discard('SKIA')
+    unused_renderers = {'GDI', 'SKIA'}
+    if self.options.use_renderer == 'gdi':
+      if 'GDI' not in self.features:
+        return 'pdfium_test does not support the GDI renderer'
+      unused_renderers.discard('GDI')
     elif self.options.use_renderer == 'skia':
       if 'SKIA' not in self.features:
         return 'pdfium_test does not support the Skia renderer'
+      unused_renderers.discard('SKIA')
+    self.features.difference_update(unused_renderers)
 
     return None
 
