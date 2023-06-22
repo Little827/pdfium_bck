@@ -14,7 +14,14 @@ class Suppressor:
   def __init__(self, finder, features, js_disabled, xfa_disabled):
     self.has_v8 = not js_disabled and 'V8' in features
     self.has_xfa = not js_disabled and not xfa_disabled and 'XFA' in features
-    self.has_skia = 'SKIA' in features
+
+    if 'GDI' in features:
+      self.rendering_option = 'gdi'
+    elif 'SKIA' in features:
+      self.rendering_option = 'skia'
+    else:
+      self.rendering_option = 'agg'
+
     self.suppression_set = self._LoadSuppressedSet('SUPPRESSIONS', finder)
     self.image_suppression_set = self._LoadSuppressedSet(
         'SUPPRESSIONS_IMAGE_DIFF', finder)
@@ -24,11 +31,10 @@ class Suppressor:
   def _LoadSuppressedSet(self, suppressions_filename, finder):
     v8_option = "v8" if self.has_v8 else "nov8"
     xfa_option = "xfa" if self.has_xfa else "noxfa"
-    rendering_option = "skia" if self.has_skia else "agg"
     with open(os.path.join(finder.TestingDir(), suppressions_filename)) as f:
       return set(
-          self._FilterSuppressions(common.os_name(), v8_option,
-                                   xfa_option, rendering_option,
+          self._FilterSuppressions(common.os_name(), v8_option, xfa_option,
+                                   self.rendering_option,
                                    self._ExtractSuppressions(f)))
 
   def _ExtractSuppressions(self, f):

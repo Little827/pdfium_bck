@@ -17,6 +17,7 @@ _PNG_OPTIMIZER = 'optipng'
 
 _COMMON_SUFFIX_ORDER = ('_{os}', '')
 _AGG_SUFFIX_ORDER = ('_agg_{os}', '_agg') + _COMMON_SUFFIX_ORDER
+_GDI_SUFFIX_ORDER = ('_gdi_{os}', '_gdi') + _COMMON_SUFFIX_ORDER
 _SKIA_SUFFIX_ORDER = ('_skia_{os}', '_skia') + _COMMON_SUFFIX_ORDER
 
 
@@ -41,7 +42,9 @@ class PNGDiffer():
     self.pdfium_diff_path = finder.ExecutablePath('pdfium_diff')
     self.os_name = finder.os_name
     self.reverse_byte_order = reverse_byte_order
-    if 'SKIA' in features:
+    if 'GDI' in features:
+      self.suffix_order = _GDI_SUFFIX_ORDER
+    elif 'SKIA' in features:
       self.suffix_order = _SKIA_SUFFIX_ORDER
     else:
       self.suffix_order = _AGG_SUFFIX_ORDER
