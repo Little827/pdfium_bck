@@ -15,9 +15,16 @@ FUZZY_MATCHING = 'fuzzy'
 
 _PNG_OPTIMIZER = 'optipng'
 
+# Each suffix order acts like a path along a tree, with the leaves being the
+# most specific, and the root being the least specific.
 _COMMON_SUFFIX_ORDER = ('_{os}', '')
 _AGG_SUFFIX_ORDER = ('_agg_{os}', '_agg') + _COMMON_SUFFIX_ORDER
 _SKIA_SUFFIX_ORDER = ('_skia_{os}', '_skia') + _COMMON_SUFFIX_ORDER
+
+# The behavior of the GDI renderer depends on the default renderer.
+_GDI_SUFFIX_ORDER = ('_gdi_{os}', '_gdi')
+_GDI_AGG_SUFFIX_ORDER = _GDI_SUFFIX_ORDER + _AGG_SUFFIX_ORDER
+_GDI_SKIA_SUFFIX_ORDER = _GDI_SUFFIX_ORDER + _SKIA_SUFFIX_ORDER
 
 
 @dataclass
@@ -37,14 +44,22 @@ class ImageDiff:
 
 class PNGDiffer():
 
-  def __init__(self, finder, features, reverse_byte_order):
+  def __init__(self, finder, features, reverse_byte_order, rendering_option):
     self.pdfium_diff_path = finder.ExecutablePath('pdfium_diff')
     self.os_name = finder.os_name
     self.reverse_byte_order = reverse_byte_order
-    if 'SKIA' in features:
+
+    if rendering_option == 'agg':
+      self.suffix_order = _AGG_SUFFIX_ORDER
+    elif rendering_option == 'gdi':
+      if 'SKIA' in features:
+        self.suffix_order = _GDI_SKIA_SUFFIX_ORDER
+      else:
+        self.suffix_order = _GDI_AGG_SUFFIX_ORDER
+    elif rendering_option == 'skia':
       self.suffix_order = _SKIA_SUFFIX_ORDER
     else:
-      self.suffix_order = _AGG_SUFFIX_ORDER
+      raise ValueError(f'rendering_option={rendering_option}')
 
   def CheckMissingTools(self, regenerate_expected):
     if regenerate_expected and not shutil.which(_PNG_OPTIMIZER):
