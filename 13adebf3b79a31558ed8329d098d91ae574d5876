@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c06a9828_5e53c99c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8751
+      },
+      "writtenOn": "2023-06-22T10:58:57Z",
+      "side": 1,
+      "message": "Is it possible this (or a related change) broke the `use_system_libopenjpeg2[\u003dtrue]` option?\n\nI\u0027m getting the following build failure: https://github.com/pypdfium2-team/pypdfium2/actions/runs/5344475371/jobs/9688894234#step:6:668\nThis still worked a few months ago.\n\nHowever, Ubuntu is also still on openjpeg 2.4, whereas pdfium bundles 2.5.",
+      "revId": "13adebf3b79a31558ed8329d098d91ae574d5876",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
