@@ -223,7 +223,7 @@ class TestRunner:
 
     parser.add_argument(
         '--use-renderer',
-        choices=('agg', 'skia'),
+        choices=('agg', 'gdi', 'skia'),
         help='Forces the renderer to use.')
 
     parser.add_argument(
@@ -239,6 +239,7 @@ class TestRunner:
     self.per_process_config.options = parser.parse_args()
 
     finder = self.per_process_config.NewFinder()
+
     pdfium_test_path = self.per_process_config.GetPdfiumTestPath(finder)
     if not os.path.exists(pdfium_test_path):
       print(f"FAILURE: Can't find test executable '{pdfium_test_path}'")
@@ -428,6 +429,7 @@ class _PerProcessConfig:
     enforce_expected_images: Whether to enforce expected images.
     options: The dictionary of command line options.
     features: The set of features supported by `pdfium_test`.
+    rendering_option: The renderer to use (agg, gdi, or skia).
   """
   test_dir: str
   test_type: str
@@ -435,6 +437,7 @@ class _PerProcessConfig:
   enforce_expected_images: bool = False
   options: dict = None
   features: set = None
+  rendering_option: str = None
 
   def NewFinder(self):
     return common.DirectoryFinder(self.options.build_dir)
@@ -447,11 +450,21 @@ class _PerProcessConfig:
                                      timeout=TEST_TIMEOUT)
     self.features = set(output.decode('utf-8').strip().split(','))
 
+    if 'SKIA' in self.features:
+      self.rendering_option = 'skia'
+    else:
+      self.rendering_option = 'agg'
+
     if self.options.use_renderer == 'agg':
-      self.features.discard('SKIA')
+      self.rendering_option = 'agg'
+    elif self.options.use_renderer == 'gdi':
+      if 'GDI' not in self.features:
+        return 'pdfium_test does not support the GDI renderer'
+      self.rendering_option = 'gdi'
     elif self.options.use_renderer == 'skia':
       if 'SKIA' not in self.features:
         return 'pdfium_test does not support the Skia renderer'
+      self.rendering_option = 'skia'
 
     return None
 
@@ -479,9 +492,10 @@ class _PerProcessState:
 
     self.test_suppressor = suppressor.Suppressor(
         finder, self.features, self.options.disable_javascript,
-        self.options.disable_xfa)
-    self.image_differ = pngdiffer.PNGDiffer(finder, self.features,
-                                            self.options.reverse_byte_order)
+        self.options.disable_xfa, config.rendering_option)
+    self.image_differ = pngdiffer.PNGDiffer(finder,
+                                            self.options.reverse_byte_order,
+                                            config.rendering_option)
 
     self.process_name = multiprocessing.current_process().name
     self.skia_tester = None
