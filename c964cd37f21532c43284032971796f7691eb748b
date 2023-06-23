@@ -36,6 +36,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "33f417a3_00f11bad",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-06-23T19:07:42Z",
+      "side": 1,
+      "message": "Maybe add `Bug: pdfium:1928` here, since this is related to working around the fact that FPDFImageObj_GetImageMetadata() can be slow. It would be helpful to add a bit more detail in this commit message as well.",
+      "parentUuid": "66022d9c_1262280b",
+      "revId": "c964cd37f21532c43284032971796f7691eb748b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "9cdd8158_5d045317",

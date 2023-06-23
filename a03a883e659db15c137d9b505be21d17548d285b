@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71227c54_9e4d7e34",
+        "filename": "core/fpdfapi/page/cpdf_imageobject.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-06-23T19:07:42Z",
+      "side": 1,
+      "message": "I was expecting the `pMaskStream` declaration on line 116 to declare it as `RetainPtr\u003cCPDF_Stream\u003e`. I don\u0027t quite understand how `ToStream()` is converting `RetainPtr\u003cconst CPDF_Stream\u003e` to `RetainPtr\u003cCPDF_Stream\u003e` here.",
+      "range": {
+        "startLine": 128,
+        "startChar": 52,
+        "endLine": 128,
+        "endChar": 60
+      },
+      "revId": "a03a883e659db15c137d9b505be21d17548d285b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
