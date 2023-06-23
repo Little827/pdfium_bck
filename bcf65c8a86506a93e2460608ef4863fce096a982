@@ -210,6 +210,23 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "17ed8f5b_aa720bfc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-06-23T19:16:22Z",
+      "side": 1,
+      "message": "Waiting on the next patch set.",
+      "revId": "bcf65c8a86506a93e2460608ef4863fce096a982",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d665d1d_08e328f3",
