@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7cbe6710_e1cea33e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 9186
+      },
+      "writtenOn": "2023-06-23T01:52:34Z",
+      "side": 1,
+      "message": "okay, thank you for the feedback here",
+      "parentUuid": "a415ad5f_a8b75dec",
+      "revId": "bcf65c8a86506a93e2460608ef4863fce096a982",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ed368929_0d604391",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -37,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4a7f9bc4_439e2b88",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 9186
+      },
+      "writtenOn": "2023-06-23T01:52:34Z",
+      "side": 1,
+      "message": "I think it is doable, there is one small complication with some XFA related method but for the sake of clarity I will try to accommodate your suggestion 😊",
+      "parentUuid": "ed368929_0d604391",
+      "revId": "bcf65c8a86506a93e2460608ef4863fce096a982",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2bedd080_e935b6b9",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -48,6 +84,30 @@
       "writtenOn": "2023-06-16T22:26:47Z",
       "side": 1,
       "message": "\"existing\" ? Or are you saying it\u0027s obsolete?",
+      "range": {
+        "startLine": 23,
+        "startChar": 3,
+        "endLine": 23,
+        "endChar": 9
+      },
+      "revId": "bcf65c8a86506a93e2460608ef4863fce096a982",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b93f5c0f_304962d0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 9186
+      },
+      "writtenOn": "2023-06-23T01:52:34Z",
+      "side": 1,
+      "message": "I meant \"existing\", the current API is not obsolete",
+      "parentUuid": "2bedd080_e935b6b9",
       "range": {
         "startLine": 23,
         "startChar": 3,
@@ -115,6 +175,41 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aeca8e55_da9494a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 9186
+      },
+      "writtenOn": "2023-06-23T01:52:34Z",
+      "side": 1,
+      "message": "thanks for the feedback, one more commit coming up!",
+      "revId": "bcf65c8a86506a93e2460608ef4863fce096a982",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66fe8de4_9fef5957",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 9186
+      },
+      "writtenOn": "2023-06-23T01:52:34Z",
+      "side": 1,
+      "message": "acknowledged - I will include tests in the next commit",
+      "parentUuid": "91b9e8c5_212686a5",
+      "revId": "bcf65c8a86506a93e2460608ef4863fce096a982",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d665d1d_08e328f3",
@@ -128,6 +223,24 @@
       "writtenOn": "2023-06-16T22:26:47Z",
       "side": 1,
       "message": "Can this avoid/minimize the code duplication with CPDF_SecurityHandler::GetPermissions()?",
+      "revId": "bcf65c8a86506a93e2460608ef4863fce096a982",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86d20c90_8a173aa1",
+        "filename": "core/fpdfapi/parser/cpdf_security_handler.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 9186
+      },
+      "writtenOn": "2023-06-23T01:52:34Z",
+      "side": 1,
+      "message": "sure thing mate, let me take another look at it and see what we can come up with",
+      "parentUuid": "4d665d1d_08e328f3",
       "revId": "bcf65c8a86506a93e2460608ef4863fce096a982",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
