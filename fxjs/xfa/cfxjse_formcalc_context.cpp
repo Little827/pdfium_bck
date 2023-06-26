@@ -695,7 +695,7 @@ bool IsIsoTimeFormat(pdfium::span<const char> pData,
     }
   }
   iPos = 0;
-  while (iIndex < pData.size()) {
+  while (iIndex + 1 < pData.size()) {
     if (!isdigit(pData[iIndex]))
       return false;
 
