@@ -4201,7 +4201,7 @@ TEST_F(FPDFEditEmbedderTest, GetRenderedBitmapHandlesSMask) {
   }();
   const char* no_smask_checksum = []() {
     if (CFX_DefaultRenderDevice::SkiaIsDefaultRenderer())
-      return "d568afc908d595224d804448d5d3672f";
+      return "0da49e63e7d6337aca78b19938e3bf65";
     return "67504e83f5d78214ea00efc19082c5c1";
   }();
 
