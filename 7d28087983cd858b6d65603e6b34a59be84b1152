@@ -57,6 +57,24 @@
       "parentUuid": "ebb0ee9e_05734e96",
       "revId": "7d28087983cd858b6d65603e6b34a59be84b1152",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8429e1c7_18f74754",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7361
+      },
+      "writtenOn": "2023-06-26T16:03:41Z",
+      "side": 1,
+      "message": "I added you to the parent CL - I already put together a roll (it required some build fixes for another recent change in Skia).",
+      "parentUuid": "51d858a3_531b1429",
+      "revId": "7d28087983cd858b6d65603e6b34a59be84b1152",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
