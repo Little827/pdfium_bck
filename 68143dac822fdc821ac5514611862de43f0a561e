@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bc88577_0cc1f124",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-06-26T23:48:49Z",
+      "side": 1,
+      "message": "Nit: \"update\" -\u003e \"updates\"\n\nIn case you want to try and fix this before submission happens.",
+      "range": {
+        "startLine": 18,
+        "startChar": 8,
+        "endLine": 18,
+        "endChar": 14
+      },
+      "revId": "68143dac822fdc821ac5514611862de43f0a561e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
