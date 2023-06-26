@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e118e034_7950372c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-06-26T15:07:47Z",
+      "side": 1,
+      "message": "Note (no changes required): As of the next Skia roll.",
+      "range": {
+        "startLine": 7,
+        "startChar": 15,
+        "endLine": 7,
+        "endChar": 22
+      },
+      "revId": "7d28087983cd858b6d65603e6b34a59be84b1152",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebb0ee9e_05734e96",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-06-26T15:07:47Z",
+      "side": 1,
+      "message": "You may want to send these to nigi@, who is responsible for rolls into PDFium this month.",
+      "revId": "7d28087983cd858b6d65603e6b34a59be84b1152",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
