@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0fc6c4d_58b389ef",
+        "filename": "DEPS",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-06-26T22:04:41Z",
+      "side": 1,
+      "message": "This wasn\u0027t sent out for review, but I gave it a +1 anyway.",
+      "revId": "c94c351c96a6cb91c2ced27b138f50bd77c02093",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
