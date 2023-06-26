@@ -174,6 +174,24 @@
       "parentUuid": "21229856_90c6fd6d",
       "revId": "26eee313b05df00e0497bd81fd5c2ae2ae8d3c03",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1dd17d83_576872b8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-06-26T19:08:18Z",
+      "side": 1,
+      "message": "Can you just use `target_cpu \u003d \"x64\"` instead? This works for me 99% of the time.",
+      "parentUuid": "2654df0b_501b8255",
+      "revId": "26eee313b05df00e0497bd81fd5c2ae2ae8d3c03",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
