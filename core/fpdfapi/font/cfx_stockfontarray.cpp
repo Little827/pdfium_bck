@@ -31,8 +31,7 @@ RetainPtr<CPDF_Font> CFX_StockFontArray::GetFont(
     CFX_FontMapper::StandardFont index) const {
   if (index < std::size(m_StockFonts))
     return m_StockFonts[index];
-  NOTREACHED();
-  return nullptr;
+  NOTREACHED_NORETURN();
 }
 
 void CFX_StockFontArray::SetFont(CFX_FontMapper::StandardFont index,
