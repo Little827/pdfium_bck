@@ -48,6 +48,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "84d02304_c65e2cda",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 630,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-06-26T19:27:16Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "0d015659_bb5c621a",
+      "range": {
+        "startLine": 630,
+        "startChar": 31,
+        "endLine": 630,
+        "endChar": 33
+      },
+      "revId": "39dfda344b4f2dcac2607706eba945b427ca75a2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "49936bda_36d06f9f",
