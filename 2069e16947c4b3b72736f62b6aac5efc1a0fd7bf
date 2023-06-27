@@ -16,6 +16,24 @@
       "message": "Is there a reason we\u0027re rolling this now? Did we just not roll it earlier?",
       "revId": "2069e16947c4b3b72736f62b6aac5efc1a0fd7bf",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5071a720_e36a67c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-06-27T17:12:53Z",
+      "side": 1,
+      "message": "Last roll was on May 31 and it\u0027s been almost a month.",
+      "parentUuid": "dcf480b1_f598141f",
+      "revId": "2069e16947c4b3b72736f62b6aac5efc1a0fd7bf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ],
   "submitRequirementResults": [
