@@ -34,6 +34,24 @@
       "parentUuid": "dcf480b1_f598141f",
       "revId": "2069e16947c4b3b72736f62b6aac5efc1a0fd7bf",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e808a33_4f6cf7e9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-06-27T17:39:55Z",
+      "side": 1,
+      "message": "👍 Understood. Ideally, this would have rolled closer to the beginning of June, but we can get caught up in July. (I suspect there won\u0027t be anything to roll.)",
+      "parentUuid": "5071a720_e36a67c6",
+      "revId": "2069e16947c4b3b72736f62b6aac5efc1a0fd7bf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ],
   "submitRequirementResults": [
