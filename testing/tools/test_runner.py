@@ -239,6 +239,11 @@ class TestRunner:
     self.per_process_config.options = parser.parse_args()
 
     finder = self.per_process_config.NewFinder()
+
+    # TODO(kmoon): Testing
+    if finder.os_name == 'win':
+      self.options.use_renderer = 'gdi'
+
     pdfium_test_path = self.per_process_config.GetPdfiumTestPath(finder)
     if not os.path.exists(pdfium_test_path):
       print(f"FAILURE: Can't find test executable '{pdfium_test_path}'")
