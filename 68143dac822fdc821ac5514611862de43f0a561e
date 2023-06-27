@@ -46,6 +46,30 @@
       },
       "revId": "68143dac822fdc821ac5514611862de43f0a561e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3086a6b6_b3c403fe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-06-27T06:13:21Z",
+      "side": 1,
+      "message": "Not a big deal either way. 😊 Thanks for taking care of the roll!",
+      "parentUuid": "564985b5_b08b3a2a",
+      "range": {
+        "startLine": 18,
+        "startChar": 8,
+        "endLine": 18,
+        "endChar": 14
+      },
+      "revId": "68143dac822fdc821ac5514611862de43f0a561e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
