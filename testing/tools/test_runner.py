@@ -239,6 +239,12 @@ class TestRunner:
     self.per_process_config.options = parser.parse_args()
 
     finder = self.per_process_config.NewFinder()
+
+    # TODO(kmoon): Testing
+    if finder.os_name == 'win' and not (self.options.render_oneshot or
+                                        self.options.reverse_byte_order):
+      self.options.use_renderer = 'gdi'
+
     pdfium_test_path = self.per_process_config.GetPdfiumTestPath(finder)
     if not os.path.exists(pdfium_test_path):
       print(f"FAILURE: Can't find test executable '{pdfium_test_path}'")
@@ -492,7 +498,7 @@ class _PerProcessState:
     self.test_suppressor = suppressor.Suppressor(
         finder, self.features, self.options.disable_javascript,
         self.options.disable_xfa, config.rendering_option)
-    self.image_differ = pngdiffer.PNGDiffer(finder,
+    self.image_differ = pngdiffer.PNGDiffer(finder, self.features,
                                             self.options.reverse_byte_order,
                                             config.rendering_option)
 

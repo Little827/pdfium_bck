@@ -19,8 +19,11 @@ _PNG_OPTIMIZER = 'optipng'
 # most specific, and the root being the least specific.
 _COMMON_SUFFIX_ORDER = ('_{os}', '')
 _AGG_SUFFIX_ORDER = ('_agg_{os}', '_agg') + _COMMON_SUFFIX_ORDER
-_GDI_SUFFIX_ORDER = ('_gdi_{os}', '_gdi') + _COMMON_SUFFIX_ORDER
 _SKIA_SUFFIX_ORDER = ('_skia_{os}', '_skia') + _COMMON_SUFFIX_ORDER
+
+_GDI_SUFFIX_ORDER = ('_gdi_{os}', '_gdi')
+_GDI_AGG_SUFFIX_ORDER = _GDI_SUFFIX_ORDER + _AGG_SUFFIX_ORDER
+_GDI_SKIA_SUFFIX_ORDER = _GDI_SUFFIX_ORDER + _SKIA_SUFFIX_ORDER
 
 
 @dataclass
@@ -40,7 +43,7 @@ class ImageDiff:
 
 class PNGDiffer():
 
-  def __init__(self, finder, reverse_byte_order, rendering_option):
+  def __init__(self, finder, features, reverse_byte_order, rendering_option):
     self.pdfium_diff_path = finder.ExecutablePath('pdfium_diff')
     self.os_name = finder.os_name
     self.reverse_byte_order = reverse_byte_order
@@ -48,7 +51,11 @@ class PNGDiffer():
     if rendering_option == 'agg':
       self.suffix_order = _AGG_SUFFIX_ORDER
     elif rendering_option == 'gdi':
-      self.suffix_order = _GDI_SUFFIX_ORDER
+      # GDI falls back to the default renderer (AGG or Skia) in some cases.
+      if 'SKIA' in features:
+        self.suffix_order = _GDI_SKIA_SUFFIX_ORDER
+      else:
+        self.suffix_order = _GDI_AGG_SUFFIX_ORDER
     elif rendering_option == 'skia':
       self.suffix_order = _SKIA_SUFFIX_ORDER
     else:
