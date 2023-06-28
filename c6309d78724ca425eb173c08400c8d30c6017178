@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8baa53a3_ce4c009c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 8871
+      },
+      "writtenOn": "2023-06-28T18:18:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53fcd075_ebacf912",
+      "revId": "c6309d78724ca425eb173c08400c8d30c6017178",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "15fe20d5_cc5b0868",
@@ -48,6 +66,48 @@
       "writtenOn": "2023-06-12T20:18:21Z",
       "side": 1,
       "message": "Can this use a version variable?",
+      "range": {
+        "startLine": 293,
+        "startChar": 89,
+        "endLine": 293,
+        "endChar": 129
+      },
+      "revId": "c6309d78724ca425eb173c08400c8d30c6017178",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12f807ba_d16ef13e",
+        "filename": "DEPS",
+        "patchSetId": 1
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 8871
+      },
+      "writtenOn": "2023-06-28T18:18:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15fe20d5_cc5b0868",
+      "revId": "c6309d78724ca425eb173c08400c8d30c6017178",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d44d8707_03957825",
+        "filename": "DEPS",
+        "patchSetId": 1
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 8871
+      },
+      "writtenOn": "2023-06-28T18:18:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "178468bf_7d139852",
       "range": {
         "startLine": 293,
         "startChar": 89,
