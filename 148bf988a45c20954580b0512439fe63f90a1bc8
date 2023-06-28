@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0594f356_3ccb9c81",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-06-28T20:11:47Z",
+      "side": 1,
+      "message": "Please also update //.gitignore for third_party/fuchsia-gn-sdk.",
+      "revId": "148bf988a45c20954580b0512439fe63f90a1bc8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "32ff1912_347518cf",
         "filename": "DEPS",
         "patchSetId": 4
