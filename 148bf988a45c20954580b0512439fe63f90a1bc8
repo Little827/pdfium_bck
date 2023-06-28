@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd9fa7da_8727abbf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-06-28T19:09:31Z",
+      "side": 1,
+      "message": "PDFium does not have a Fuchsia try bot, so I tried to verify this CL locally but it failed:\n\n```\n$ autoninja -C out/fuchsia\nninja: Entering directory `out/fuchsia\u0027\n[0/1] Regenerating ninja files\nERROR at //build/config/coverage/coverage.gni:7:3: Unable to load \"/usr/local/google/home/thestig/pdfium/pdfium/third_party/fuchsia-sdk/sdk/build/component.gni\".\n  import(\"//third_party/fuchsia-sdk/sdk/build/component.gni\")\n  ^---------------------------------------------------------\nSee //build/config/profiling/profiling.gni:6:1: whence it was imported.\nimport(\"//build/config/coverage/coverage.gni\")\n^--------------------------------------------\nSee //build/config/sanitizers/sanitizers.gni:9:1: whence it was imported.\nimport(\"//build/config/profiling/profiling.gni\")\n^----------------------------------------------\nSee //build/config/sanitizers/BUILD.gn:8:1: whence it was imported.\nimport(\"//build/config/sanitizers/sanitizers.gni\")\n^------------------------------------------------\nSee //build_overrides/BUILDCONFIG.gn:358:3: which caused the file to be included.\n  \"//build/config/sanitizers:default_sanitizer_flags\",\n  ^--------------------------------------------------\nFAILED: build.ninja.stamp \n../../buildtools/linux64/gn --root\u003d../.. -q --regeneration gen .\nninja: error: rebuilding \u0027build.ninja\u0027: subcommand failed\n```\n\nThough //build in PDFium is not always in sync with Chromium, so I\u0027ll look into this more.",
+      "revId": "148bf988a45c20954580b0512439fe63f90a1bc8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
