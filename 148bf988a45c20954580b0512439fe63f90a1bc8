@@ -33,6 +33,24 @@
       "message": "Should this remain as \"fuchsia-sdk\" ?",
       "revId": "148bf988a45c20954580b0512439fe63f90a1bc8",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "604a0202_05a9ed40",
+        "filename": "DEPS",
+        "patchSetId": 4
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-06-28T19:14:16Z",
+      "side": 1,
+      "message": "Or is fuchsia-gn-sdk simply missing build/component.gni?",
+      "parentUuid": "32ff1912_347518cf",
+      "revId": "148bf988a45c20954580b0512439fe63f90a1bc8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
