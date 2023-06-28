@@ -51,6 +51,24 @@
       "parentUuid": "32ff1912_347518cf",
       "revId": "148bf988a45c20954580b0512439fe63f90a1bc8",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e39221a_d90bf220",
+        "filename": "DEPS",
+        "patchSetId": 4
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-06-28T20:10:29Z",
+      "side": 1,
+      "message": "Discussed this offline. PDFium also needs a //build DEPS roll, which I created here: https://pdfium-review.googlesource.com/109150",
+      "parentUuid": "604a0202_05a9ed40",
+      "revId": "148bf988a45c20954580b0512439fe63f90a1bc8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
