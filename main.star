@@ -129,6 +129,12 @@ def get_properties_by_name(name):
     if name.find("skia") != -1:
         properties.update({"skia": True})
 
+    renderers = []
+    if "gdi" in name:
+        renderers.append("gdi")
+    if renderers:
+        properties.update({"renderers": renderers})
+
     return properties
 
 def pdfium_internal_builder(name, bucket):
@@ -317,8 +323,8 @@ luci.notifier(
     name = "pdfium main notifier",
     on_new_status = ["FAILURE"],
     notify_emails = [
+        "andyphan@chromium.org",
         "awscreen@chromium.org",
-        "dhoss@chromium.org",
         "kmoon@chromium.org",
         "nigi@chromium.org",
         "thestig@chromium.org",
@@ -467,6 +473,8 @@ add_entries_for_builder(name = "mac_xfa_skia", category = "skia|mac", short_name
 add_entries_for_builder(name = "mac_xfa_skia_component", category = "skia|mac", short_name = "comp")
 add_entries_for_builder(name = "win", category = "main|win")
 add_entries_for_builder(name = "win_asan", category = "main|win", short_name = "asan")
+add_entries_for_builder(name = "win_gdi", category = "main|win", short_name = "gdi")
+add_entries_for_builder(name = "win_gdi_skia", category = "skia|win", short_name = "gdi")
 add_entries_for_builder(name = "win_no_v8", category = "no v8", short_name = "win")
 add_entries_for_builder(name = "win_skia", category = "skia|win")
 add_entries_for_builder(name = "win_skia_asan", category = "skia|win", short_name = "asan")
