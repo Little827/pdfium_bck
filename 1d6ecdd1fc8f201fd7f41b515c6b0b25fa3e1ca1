@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9b722b0_a3a87333",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-06-29T20:19:36Z",
+      "side": 1,
+      "message": "Move this line to right below all the includes?",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 15
+      },
+      "revId": "1d6ecdd1fc8f201fd7f41b515c6b0b25fa3e1ca1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
