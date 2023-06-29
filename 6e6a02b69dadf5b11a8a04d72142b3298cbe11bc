@@ -38,6 +38,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "4b6f19e4_4f53cf77",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-06-29T22:41:01Z",
+      "side": 1,
+      "message": "I think we should do the same improvement for skia gold, especially when we eventually turn on reverse-byte-order for pixel test in test bots.",
+      "parentUuid": "2857c80e_83a8a633",
+      "revId": "6e6a02b69dadf5b11a8a04d72142b3298cbe11bc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "241a25f7_d47704c0",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
