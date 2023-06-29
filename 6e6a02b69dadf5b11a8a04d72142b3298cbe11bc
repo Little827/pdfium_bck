@@ -1,6 +1,40 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f0fed9c_34f30d4c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-06-29T21:39:43Z",
+      "side": 1,
+      "message": "I would put the \"what\" first (adds support for reverse byte order comparison), and explain the \"why\" second (--diff doesn\u0027t support this).\n\nAlso, should we change this for Skia Gold?",
+      "revId": "6e6a02b69dadf5b11a8a04d72142b3298cbe11bc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "241a25f7_d47704c0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-06-29T21:39:43Z",
+      "side": 1,
+      "message": "Commentary: This wouldn\u0027t be needed if we pursued pdfium:2027.",
+      "revId": "6e6a02b69dadf5b11a8a04d72142b3298cbe11bc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "9d6ed934_60090066",
@@ -14,6 +48,40 @@
       "writtenOn": "2023-06-29T21:25:18Z",
       "side": 1,
       "message": "Add a little helper for debugging.",
+      "revId": "6e6a02b69dadf5b11a8a04d72142b3298cbe11bc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bde023dc_c3b74ec5",
+        "filename": "testing/image_diff/image_diff.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-06-29T21:39:43Z",
+      "side": 1,
+      "message": "Probably should just follow the pattern established here (for consistency).",
+      "revId": "6e6a02b69dadf5b11a8a04d72142b3298cbe11bc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad209d0b_72960087",
+        "filename": "testing/image_diff/image_diff.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-06-29T21:39:43Z",
+      "side": 1,
+      "message": "I don\u0027t think we need to distinguish that this is the reversed version, as reversing can\u0027t fail.",
       "revId": "6e6a02b69dadf5b11a8a04d72142b3298cbe11bc",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
