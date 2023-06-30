@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "021a5e34_22b92470",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-06-30T16:07:52Z",
+      "side": 1,
+      "message": "While we\u0027re on the topic of simplifying things, RenderPageToSkCanvas() in fx_skia_device_embeddertest.cpp is now redundant.",
+      "revId": "597a7e0edc7e59764921243bce071bf0616b1666",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a238c690_9ace966f",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 750,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-06-30T16:07:52Z",
+      "side": 1,
+      "message": "This ordering was intentional, for consistency with the other implementations. If we\u0027re going to clean this up here, I\u0027d suggest cleaning it up everywhere at once.",
+      "revId": "597a7e0edc7e59764921243bce071bf0616b1666",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "919540df_10ac20ca",
+        "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-06-30T16:07:52Z",
+      "side": 1,
+      "message": "Optional: I think of the following assert as being part of this block, so I think it\u0027d make sense to remove the blank line here.",
+      "revId": "597a7e0edc7e59764921243bce071bf0616b1666",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
