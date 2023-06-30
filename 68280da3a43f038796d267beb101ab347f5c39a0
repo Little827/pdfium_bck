@@ -16,6 +16,24 @@
       "message": "Conditional on is_win?",
       "revId": "68280da3a43f038796d267beb101ab347f5c39a0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be908c9c_e25343cf",
+        "filename": "skia/BUILD.gn",
+        "patchSetId": 3
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-06-30T19:15:50Z",
+      "side": 1,
+      "message": "Chromium\u0027s //skia/BUILD.gn doesn\u0027t make this conditional. The Skia sources use #ifdef with `SK_BUILD_FOR_WIN` to make these files effectively empty; I\u0027d rather not do something different from Chromium unless Skia is planning to change this.",
+      "parentUuid": "bdac46ca_e6983acc",
+      "revId": "68280da3a43f038796d267beb101ab347f5c39a0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
