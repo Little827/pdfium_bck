@@ -50,6 +50,24 @@
       "message": "Optional: I think of the following assert as being part of this block, so I think it\u0027d make sense to remove the blank line here.",
       "revId": "597a7e0edc7e59764921243bce071bf0616b1666",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98dc2618_b0804002",
+        "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-06-30T16:08:43Z",
+      "side": 1,
+      "message": "(And restore the blank line that follows.)",
+      "parentUuid": "919540df_10ac20ca",
+      "revId": "597a7e0edc7e59764921243bce071bf0616b1666",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
