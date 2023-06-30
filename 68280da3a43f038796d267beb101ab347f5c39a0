@@ -72,6 +72,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a5d15e4_58d47286",
+        "filename": "samples/helpers/win32/com_factory.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-06-30T21:48:12Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "43304b28_4dd56931",
+      "range": {
+        "startLine": 40,
+        "startChar": 19,
+        "endLine": 40,
+        "endChar": 47
+      },
+      "revId": "68280da3a43f038796d267beb101ab347f5c39a0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "afc1e920_10da4236",
