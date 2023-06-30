@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e6981b5_88be4d9f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-06-30T19:04:40Z",
+      "side": 1,
+      "message": "If you were thinking of replacing it with FPDF_RenderPageSkia(), that does not work out of the box since FPDF_RenderPageSkia() doesn\u0027t take offsets.",
+      "parentUuid": "021a5e34_22b92470",
+      "revId": "597a7e0edc7e59764921243bce071bf0616b1666",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a238c690_9ace966f",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-06-30T16:07:52Z",
       "side": 1,
       "message": "This ordering was intentional, for consistency with the other implementations. If we\u0027re going to clean this up here, I\u0027d suggest cleaning it up everywhere at once.",
+      "revId": "597a7e0edc7e59764921243bce071bf0616b1666",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f7361f7_84c7947f",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 750,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-06-30T19:04:40Z",
+      "side": 1,
+      "message": "https://pdfium-review.googlesource.com/109231",
+      "parentUuid": "a238c690_9ace966f",
       "revId": "597a7e0edc7e59764921243bce071bf0616b1666",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -66,6 +102,24 @@
       "side": 1,
       "message": "(And restore the blank line that follows.)",
       "parentUuid": "919540df_10ac20ca",
+      "revId": "597a7e0edc7e59764921243bce071bf0616b1666",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93bbc444_c704899d",
+        "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-06-30T19:04:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98dc2618_b0804002",
       "revId": "597a7e0edc7e59764921243bce071bf0616b1666",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
