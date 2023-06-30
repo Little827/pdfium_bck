@@ -36,6 +36,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b623247_00e56930",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-06-30T19:42:19Z",
+      "side": 1,
+      "message": "Yes, that was the intent. 😭 I guess we\u0027ll need to change FPDF_RenderPageSkia() again. Good thing it\u0027s experimental. 🧑‍🔬\n\nI\u0027m hoping FPDF_RenderPageSkia() never actually becomes the final API, and we end up with something like FPDF_RenderPageDevice(device, options) instead.",
+      "parentUuid": "0e6981b5_88be4d9f",
+      "revId": "597a7e0edc7e59764921243bce071bf0616b1666",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a238c690_9ace966f",
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "https://pdfium-review.googlesource.com/109231",
       "parentUuid": "a238c690_9ace966f",
+      "revId": "597a7e0edc7e59764921243bce071bf0616b1666",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31753967_c0400e78",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 750,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-06-30T19:42:19Z",
+      "side": 1,
+      "message": "Thanks for doing this!",
+      "parentUuid": "2f7361f7_84c7947f",
       "revId": "597a7e0edc7e59764921243bce071bf0616b1666",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
