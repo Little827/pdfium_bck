@@ -232,17 +232,18 @@ class FPDFViewEmbedderTest : public EmbedderTest {
     int width = static_cast<int>(FPDF_GetPageWidth(page));
     int height = static_cast<int>(FPDF_GetPageHeight(page));
 
-    auto recorder = std::make_unique<SkPictureRecorder>();
-    recorder->beginRecording(width, height);
+    sk_sp<SkPicture> picture;
+    {
+      auto recorder = std::make_unique<SkPictureRecorder>();
+      recorder->beginRecording(width, height);
 
-    FPDF_RenderPageSkia(
-        reinterpret_cast<FPDF_SKIA_CANVAS>(recorder->getRecordingCanvas()),
-        page, width, height);
+      FPDF_RenderPageSkia(
+          reinterpret_cast<FPDF_SKIA_CANVAS>(recorder->getRecordingCanvas()),
+          page, width, height);
+      picture = recorder->finishRecordingAsPicture();
+    }
 
-    sk_sp<SkPicture> picture = recorder->finishRecordingAsPicture();
-    recorder.reset();
     ASSERT_TRUE(picture);
-
     ScopedFPDFBitmap bitmap = SkPictureToPdfiumBitmap(
         std::move(picture), SkISize::Make(width, height));
     CompareBitmap(bitmap.get(), width, height, expected_checksum);
