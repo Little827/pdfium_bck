@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "43304b28_4dd56931",
+        "filename": "samples/helpers/win32/com_factory.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-06-30T21:45:05Z",
+      "side": 1,
+      "message": "After looking around a bit online, I think the only reason to use the `CLSID_` form is if the compiler doesn\u0027t support the `__uuidof()` extension. (`clang-cl` and `cl` both support it.)",
+      "parentUuid": "7e2b99cc_2a891ebd",
+      "range": {
+        "startLine": 40,
+        "startChar": 19,
+        "endLine": 40,
+        "endChar": 47
+      },
+      "revId": "68280da3a43f038796d267beb101ab347f5c39a0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "afc1e920_10da4236",
         "filename": "samples/pdfium_test.cc",
         "patchSetId": 3
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "I\u0027ve been contemplating what to do with these, as I\u0027ve been writing them a lot. Part of the problem is the underlying type is `int`, so it\u0027s easy to mix these up (or have an off-by-one error), but on the whole, I\u0027m OK with dropping the comments in these cases.\n\nI\u0027ll get to it after lunch.",
       "parentUuid": "afc1e920_10da4236",
+      "range": {
+        "startLine": 1244,
+        "startChar": 29,
+        "endLine": 1244,
+        "endChar": 39
+      },
+      "revId": "68280da3a43f038796d267beb101ab347f5c39a0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc162819_8db3f007",
+        "filename": "samples/pdfium_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1244,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-06-30T21:45:05Z",
+      "side": 1,
+      "message": "Done\n\nNote that after this change, we can\u0027t enforce that the parameter name matches the expected parameter name automatically. I\u0027m not sure we were doing this anyway, as it involves a clang-tidy pass.",
+      "parentUuid": "4923a8b2_b5f4f547",
       "range": {
         "startLine": 1244,
         "startChar": 29,

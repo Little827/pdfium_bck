@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0532a63a_d6788a6e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-06-30T21:45:05Z",
+      "side": 1,
+      "message": "Please make sure to take a look at the parent change; it\u0027s mostly a simple refactoring.",
+      "revId": "3ccdfcb80167761cb9243ac46186daed2ec288ea",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
