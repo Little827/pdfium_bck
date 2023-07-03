@@ -137,6 +137,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b62b43a_a5f54864",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 9201
+      },
+      "writtenOn": "2023-07-03T08:48:29Z",
+      "side": 1,
+      "message": "Hi, I created a issue: https://bugs.chromium.org/p/pdfium/issues/detail?id\u003d2061.\n\nAnd I\u0027m not familiar with Gerrit, so I created some changlist by mistake.\nThanks for your patience.",
+      "parentUuid": "375b14ed_e256371e",
+      "revId": "cf6fed005d30b05302edb16c5ff92e7ff9bce6fa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9f35523d_25f682be",
