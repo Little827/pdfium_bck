@@ -568,6 +568,8 @@ executable("pdfium_diff") {
     "//build/win:default_exe_manifest",
   ]
   configs += [ ":pdfium_strict_config" ]
+
+  write_runtime_deps = "${root_out_dir}/${target_name}.runtime_deps"
 }
 
 if (pdf_is_standalone) {

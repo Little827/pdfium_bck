@@ -75,4 +75,6 @@ executable("pdfium_test") {
       deps += [ "//base/test:test_support" ]
     }
   }
+
+  write_runtime_deps = "${root_out_dir}/${target_name}.runtime_deps"
 }
