@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd19ba84_f107e2de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-07-06T17:31:49Z",
+      "side": 1,
+      "message": "If we decide to go down this approach, I will add embedder tests as a follow-up.",
+      "revId": "af9d4a970bac0b23f097b5c07b696d93e2c83cdf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
