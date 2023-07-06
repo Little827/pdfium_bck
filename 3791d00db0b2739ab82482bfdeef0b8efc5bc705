@@ -33,6 +33,24 @@
       "message": "Might not be needed if we use reclient recipe module (the module downloads the configs). I\u0027ll run the led experiment and confirm.",
       "revId": "3791d00db0b2739ab82482bfdeef0b8efc5bc705",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "277b85e1_d6350eba",
+        "filename": "DEPS",
+        "patchSetId": 1
+      },
+      "lineNbr": 698,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-07-06T20:30:03Z",
+      "side": 1,
+      "message": "Ack. Will wait for your experiement results.",
+      "parentUuid": "3cba6777_c55ded82",
+      "revId": "3791d00db0b2739ab82482bfdeef0b8efc5bc705",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
