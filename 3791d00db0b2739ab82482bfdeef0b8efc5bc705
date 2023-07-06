@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "64d127c1_25c549af",
+        "filename": "DEPS",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 9286
+      },
+      "writtenOn": "2023-07-06T20:32:26Z",
+      "side": 1,
+      "message": "As per other comment: It\u0027s OK to leave it. It\u0027ll be useful for developer builds, while we use a separate mechanism for CI/CQ.",
+      "parentUuid": "de801c48_9ab10053",
+      "revId": "3791d00db0b2739ab82482bfdeef0b8efc5bc705",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3cba6777_c55ded82",
@@ -49,6 +67,24 @@
       "side": 1,
       "message": "Ack. Will wait for your experiement results.",
       "parentUuid": "3cba6777_c55ded82",
+      "revId": "3791d00db0b2739ab82482bfdeef0b8efc5bc705",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e79b02d_ff82b76f",
+        "filename": "DEPS",
+        "patchSetId": 1
+      },
+      "lineNbr": 698,
+      "author": {
+        "id": 9286
+      },
+      "writtenOn": "2023-07-06T20:32:26Z",
+      "side": 1,
+      "message": "It\u0027s OK to leave it is as it is. It shouldn\u0027t conflict with CI/CQ and will be useful in the future for developer builds.",
+      "parentUuid": "277b85e1_d6350eba",
       "revId": "3791d00db0b2739ab82482bfdeef0b8efc5bc705",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
