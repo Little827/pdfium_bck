@@ -149,6 +149,8 @@ vars = {
   # the commit queue can handle CLs rolling pdfium_tests
   # and whatever else without interference from each other.
   'pdfium_tests_revision': 'dc2cd9afdd1bad8666072416c340ad1c6a01e388',
+  # Reclient CIPD package version.
+  'reclient_version': 're_client_version:0.109.0.927890d-gomaip',
   # Three lines of non-changing comments so that
   # the commit queue can handle CLs rolling resultdb
   # and whatever else without interference from each other.
@@ -230,6 +232,16 @@ deps = {
     ],
     'dep_type': 'cipd',
     'condition': 'host_os == "mac"',
+  },
+
+  'buildtools/reclient': {
+    'packages': [
+      {
+        'package': 'infra/rbe/client/${{platform}}',
+        'version': Var('reclient_version'),
+      }
+    ],
+    'dep_type': 'cipd',
   },
 
   'buildtools/third_party/libc++/trunk':
