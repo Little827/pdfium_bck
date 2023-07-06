@@ -75,6 +75,24 @@
       "parentUuid": "51d858a3_531b1429",
       "revId": "7d28087983cd858b6d65603e6b34a59be84b1152",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60872d50_4993fefd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-07-06T17:51:45Z",
+      "side": 1,
+      "message": "I\u0027m rolling this month. Still LGTM.",
+      "parentUuid": "8429e1c7_18f74754",
+      "revId": "7d28087983cd858b6d65603e6b34a59be84b1152",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
