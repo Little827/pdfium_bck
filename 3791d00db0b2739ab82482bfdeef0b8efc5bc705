@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de801c48_9ab10053",
+        "filename": "DEPS",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 9286
+      },
+      "writtenOn": "2023-07-06T19:45:38Z",
+      "side": 1,
+      "message": "We\u0027ll be downloading configs from rbe-chromium-trusted (for CI) and rbe-chromium-untrusted (for CQ) so it\u0027ll probably make sense to not have it here but rather being a part of builder configuration (as per my other comment). I\u0027ll run led experiment to confirm if\u0027ll work.",
+      "revId": "3791d00db0b2739ab82482bfdeef0b8efc5bc705",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cba6777_c55ded82",
+        "filename": "DEPS",
+        "patchSetId": 1
+      },
+      "lineNbr": 698,
+      "author": {
+        "id": 9286
+      },
+      "writtenOn": "2023-07-06T19:45:38Z",
+      "side": 1,
+      "message": "Might not be needed if we use reclient recipe module (the module downloads the configs). I\u0027ll run the led experiment and confirm.",
+      "revId": "3791d00db0b2739ab82482bfdeef0b8efc5bc705",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
