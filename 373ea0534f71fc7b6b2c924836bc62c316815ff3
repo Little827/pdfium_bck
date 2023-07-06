@@ -16,6 +16,23 @@
       "message": "Sorry, switching to DEPS owner for this month.",
       "revId": "373ea0534f71fc7b6b2c924836bc62c316815ff3",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74371bbd_2034934a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-07-06T18:00:55Z",
+      "side": 1,
+      "message": "LGTM too. I am just waiting for the dry run result.",
+      "revId": "373ea0534f71fc7b6b2c924836bc62c316815ff3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
