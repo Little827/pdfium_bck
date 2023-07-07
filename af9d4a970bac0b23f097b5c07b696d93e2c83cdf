@@ -16,6 +16,23 @@
       "message": "If we decide to go down this approach, I will add embedder tests as a follow-up.",
       "revId": "af9d4a970bac0b23f097b5c07b696d93e2c83cdf",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e8c702d_3eef2288",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-07-07T00:03:36Z",
+      "side": 1,
+      "message": "As a follow-up, please consider writing a test to show the effect of this CL.",
+      "revId": "af9d4a970bac0b23f097b5c07b696d93e2c83cdf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
