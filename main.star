@@ -303,6 +303,17 @@ luci.project(
             ],
         ),
     ],
+    bindings = [
+        # Allow owners to submit any task in any pool.
+        luci.binding(
+            roles = [
+                "role/swarming.poolOwner",
+                "role/swarming.poolUser",
+                "role/swarming.taskTriggerer",
+            ],
+            groups = "project-pdfium-admins",
+        ),
+    ],
 )
 
 luci.logdog(gs_bucket = "chromium-luci-logdog")
