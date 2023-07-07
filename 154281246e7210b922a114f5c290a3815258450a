@@ -51,6 +51,24 @@
       "parentUuid": "af85faa6_73de6a1a",
       "revId": "154281246e7210b922a114f5c290a3815258450a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a80770a_a3c90cdd",
+        "filename": "main.star",
+        "patchSetId": 1
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-07-07T23:53:35Z",
+      "side": 1,
+      "message": "I was thinking about this, and I think admins should get these privileges anyway. For small projects, I don\u0027t know if it makes much difference. If a -swarm-users group would be useful in the future, it can be in addition to the admin group.\n\nAs for creating new groups, I think you need to file a request with ChOps Security (go/chopssec-crbug).",
+      "parentUuid": "af85faa6_73de6a1a",
+      "revId": "154281246e7210b922a114f5c290a3815258450a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
