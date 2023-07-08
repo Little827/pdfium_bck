@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b968872d_366ac488",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-07-08T00:24:48Z",
+      "side": 1,
+      "message": "Just add another entry in main.star for yourself instead?",
+      "parentUuid": "135d3f96_8997300f",
+      "revId": "154281246e7210b922a114f5c290a3815258450a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "af85faa6_73de6a1a",
         "filename": "main.star",
         "patchSetId": 1
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "I was thinking about this, and I think admins should get these privileges anyway. For small projects, I don\u0027t know if it makes much difference. If a -swarm-users group would be useful in the future, it can be in addition to the admin group.\n\nAs for creating new groups, I think you need to file a request with ChOps Security (go/chopssec-crbug).",
       "parentUuid": "af85faa6_73de6a1a",
+      "revId": "154281246e7210b922a114f5c290a3815258450a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7844e32_928c2d83",
+        "filename": "main.star",
+        "patchSetId": 1
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-07-08T00:24:48Z",
+      "side": 1,
+      "message": "Why don\u0027t we ask ChOps what groups, if any, we need? I think V8 and a few other projects uses swarming too. ChOps should be able to at least tell us how the other projects are set up.",
+      "parentUuid": "5a80770a_a3c90cdd",
       "revId": "154281246e7210b922a114f5c290a3815258450a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
