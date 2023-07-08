@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bf1c6056_a33235f8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-07-08T02:01:05Z",
+      "side": 1,
+      "message": "We\u0027ll need to submit another change to remove myself. If we want to take that route, probably the simplest way forward is to just put my user in here for now.",
+      "parentUuid": "b968872d_366ac488",
+      "revId": "154281246e7210b922a114f5c290a3815258450a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "af85faa6_73de6a1a",
         "filename": "main.star",
         "patchSetId": 1
@@ -103,6 +121,24 @@
       "side": 1,
       "message": "Why don\u0027t we ask ChOps what groups, if any, we need? I think V8 and a few other projects uses swarming too. ChOps should be able to at least tell us how the other projects are set up.",
       "parentUuid": "5a80770a_a3c90cdd",
+      "revId": "154281246e7210b922a114f5c290a3815258450a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31f3baa3_910a458a",
+        "filename": "main.star",
+        "patchSetId": 1
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-07-08T02:01:05Z",
+      "side": 1,
+      "message": "Here\u0027s the configuration I based this off of:\ngo/luci/newroot/getting_started/1_project_setup#initial-commit\n\nSince PDFium predates these instructions, I assume it has a more minimal configuration from a migration.\n\nThere\u0027s no harm in asking, but from my own research on internal Code Search, there\u0027s no consistent pattern across projects.",
+      "parentUuid": "e7844e32_928c2d83",
       "revId": "154281246e7210b922a114f5c290a3815258450a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
