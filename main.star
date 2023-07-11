@@ -303,6 +303,16 @@ luci.project(
             ],
         ),
     ],
+    bindings = [
+        luci.binding(
+            roles = [
+                "role/swarming.poolOwner",
+                "role/swarming.poolUser",
+                "role/swarming.taskTriggerer",
+            ],
+            users = "kmoon@google.com",
+        ),
+    ],
 )
 
 luci.logdog(gs_bucket = "chromium-luci-logdog")
