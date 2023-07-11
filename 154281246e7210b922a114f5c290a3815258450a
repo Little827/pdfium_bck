@@ -90,6 +90,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d740970_ff74b6cc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-07-11T18:49:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b2abdfd_a6ed925d",
+      "revId": "154281246e7210b922a114f5c290a3815258450a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "af85faa6_73de6a1a",
@@ -211,6 +229,24 @@
       "side": 1,
       "message": "By the way, I\u0027d point out that this permission is not that sensitive, as anyone who can trigger try jobs can run arbitrary code on the bots anyway. The main potential issue is the ability to saturate the pool with arbitrary swarming tasks.",
       "parentUuid": "07da00c9_081f8069",
+      "revId": "154281246e7210b922a114f5c290a3815258450a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1609a69e_ad688150",
+        "filename": "main.star",
+        "patchSetId": 1
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-07-11T18:49:05Z",
+      "side": 1,
+      "message": "Obsolete.",
+      "parentUuid": "ddc929dc_ba4c62f3",
       "revId": "154281246e7210b922a114f5c290a3815258450a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
