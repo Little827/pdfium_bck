@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f800075_43fe9b0d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 8961
+      },
+      "writtenOn": "2023-07-11T16:06:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "767b66f4_37d2a6fb",
+      "range": {
+        "startLine": 7,
+        "startChar": 18,
+        "endLine": 7,
+        "endChar": 27
+      },
+      "revId": "21fa006cc78bc32d6f1d6585bfbe14ed15f3287d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0b543069_3a105ca2",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-07-11T15:55:10Z",
       "side": 1,
       "message": "I\u0027d expect we cross-wire some of these unless we\u0027re careful. Do we get an assert in say, debug builds, when freed against wrong partition?",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 24
+      },
+      "revId": "21fa006cc78bc32d6f1d6585bfbe14ed15f3287d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dadde3db_24c8721b",
+        "filename": "core/fxcrt/fx_memory.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 8961
+      },
+      "writtenOn": "2023-07-11T16:06:16Z",
+      "side": 1,
+      "message": "Yes we do :)",
+      "parentUuid": "0b543069_3a105ca2",
       "range": {
         "startLine": 54,
         "startChar": 0,
