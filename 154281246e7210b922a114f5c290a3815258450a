@@ -249,6 +249,24 @@
       "parentUuid": "ddc929dc_ba4c62f3",
       "revId": "154281246e7210b922a114f5c290a3815258450a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07a5fab3_148f8af2",
+        "filename": "main.star",
+        "patchSetId": 1
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-07-11T19:03:47Z",
+      "side": 1,
+      "message": "In case anyone\u0027s wondering: This change took effect, and my error message went from, `does not have permission \"swarming.tasks.createInRealm\"` to, `does not have permission \"swarming.pools.createTask\"` (as expected, as I\u0027m still waiting for luci.flex.try pool permission).",
+      "parentUuid": "1609a69e_ad688150",
+      "revId": "154281246e7210b922a114f5c290a3815258450a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
