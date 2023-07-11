@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01271696_c84fabd9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 9307
+      },
+      "writtenOn": "2023-07-11T00:19:26Z",
+      "side": 1,
+      "message": "Since we\u0027re getting so many CVEs reported for libtiff by AutoVM I thought we should start tracking the ones that have been mitigated or don\u0027t affect us. I\u0027ve confirmed with the AutoVM team and it supports aggregating data between METADATA files and third party README.* files before creating bugs.\n\nThis data will also be used in the SBOM VEX files to communicate that these CVEs should not be considered vulnerabilities.",
+      "revId": "bf4d6bfbf039963514ff6a4f28ebab88cc56ed84",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
