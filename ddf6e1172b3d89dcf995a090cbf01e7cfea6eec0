@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4b00d62_8b4099a1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-07-11T22:17:20Z",
+      "side": 1,
+      "message": "But let\u0027s be consistent. Pick one format and stick with it? Also, `Bug: b/N1, b/N2, ... b/Nn` should work as well.",
+      "revId": "ddf6e1172b3d89dcf995a090cbf01e7cfea6eec0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "c323dd1a_cde1a013",
@@ -14,6 +31,24 @@
       "writtenOn": "2023-07-11T00:30:46Z",
       "side": 1,
       "message": "Not sure what the best way to link in the buganizer bugs is, or if I should. Would make future triage slightly easier probably.",
+      "revId": "ddf6e1172b3d89dcf995a090cbf01e7cfea6eec0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ad10c4b_b9512096",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-07-11T22:17:20Z",
+      "side": 1,
+      "message": "I\u0027ve seen both b:NNN and b/NNN in Chromium, so whatever you prefer.",
+      "parentUuid": "c323dd1a_cde1a013",
       "revId": "ddf6e1172b3d89dcf995a090cbf01e7cfea6eec0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
