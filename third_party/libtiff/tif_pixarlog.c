@@ -882,7 +882,7 @@ static int PixarLogDecode(TIFF *tif, uint8_t *op, tmsize_t occ, uint16_t s)
         return (0);
     }
     /* Check that we will not fill more than what was allocated */
-    if (sp->tbuf_size < 0 || sp->stream.avail_out > (uInt) sp->tbuf_size)
+    if ((tmsize_t)sp->stream.avail_out > sp->tbuf_size)
     {
         TIFFErrorExtR(tif, module, "sp->stream.avail_out > sp->tbuf_size");
         return (0);
