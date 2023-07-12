@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7762d79_12f9eac7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-07-12T00:30:52Z",
+      "side": 1,
+      "message": "Patch set 1 updates to upstream code. See following patch sets for progression on applying our patches. Patch set 2 is the only non-trivial change.",
+      "revId": "b3e8d120263abf2a7d375cb5463c0b00f21e4a7c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
