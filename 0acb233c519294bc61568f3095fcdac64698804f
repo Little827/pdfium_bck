@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86ba8ffb_927dd48f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8961
+      },
+      "writtenOn": "2023-07-12T09:27:21Z",
+      "side": 1,
+      "message": "Btw, can you make me a dry-runner?",
+      "revId": "0acb233c519294bc61568f3095fcdac64698804f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
