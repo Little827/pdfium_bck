@@ -1083,12 +1083,6 @@ static int gtStripContig(TIFFRGBAImage *img, uint32_t *raster, uint32_t w,
     int ret = 1, flip;
     tmsize_t maxstripsize;
 
-    if ((tmsize_t)img->row_offset > TIFF_SSIZE_T_MAX ||
-        (size_t)h > (size_t)TIFF_SSIZE_T_MAX)
-    {
-        return (0);
-    }
-
     TIFFGetFieldDefaulted(tif, TIFFTAG_YCBCRSUBSAMPLING, &subsamplinghor,
                           &subsamplingver);
     if (subsamplingver == 0)
