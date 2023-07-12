@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f20140b8_58b2fe3c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7361
+      },
+      "writtenOn": "2023-07-12T18:04:26Z",
+      "side": 1,
+      "message": "+nigi for OWNERS (and a +2, if you don\u0027t mind)",
+      "revId": "1568d4874f56332c4469da85cb3b2e42ebe50b45",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
