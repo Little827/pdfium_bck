@@ -723,7 +723,6 @@ static int gtTileContig(TIFFRGBAImage *img, uint32_t *raster, uint32_t w,
     uint32_t this_tw, tocol;
     int32_t this_toskew, leftmost_toskew;
     int32_t leftmost_fromskew;
-    int64_t safeskew;
     uint32_t leftmost_tw;
     tmsize_t bufsize;
 
@@ -793,28 +792,9 @@ static int gtTileContig(TIFFRGBAImage *img, uint32_t *raster, uint32_t w,
                 /*
                  * Rightmost tile is clipped on right side.
                  */
-                safeskew = tw;
-                safeskew -= w;
-                safeskew += tocol;
-                if (safeskew > INT_MAX || safeskew < INT_MIN)
-                {
-                    _TIFFfree(buf);
-                    TIFFErrorExt(tif->tif_clientdata, TIFFFileName(tif), "%s",
-                                 "Invalid skew");
-                    return (0);
-                }
-                fromskew = safeskew;
+                fromskew = tw - (w - tocol);
                 this_tw = tw - fromskew;
-                safeskew = toskew;
-                safeskew += fromskew;
-                if (safeskew > INT_MAX || safeskew < INT_MIN)
-                {
-                    _TIFFfree(buf);
-                    TIFFErrorExt(tif->tif_clientdata, TIFFFileName(tif), "%s",
-                                 "Invalid skew");
-                    return (0);
-                }
-                this_toskew = safeskew;
+                this_toskew = toskew + fromskew;
             }
             tmsize_t roffset = (tmsize_t)y * w + tocol;
             (*put)(img, raster + roffset, tocol, y, this_tw, nrow, fromskew,
@@ -1082,12 +1062,6 @@ static int gtStripContig(TIFFRGBAImage *img, uint32_t *raster, uint32_t w,
     int32_t fromskew, toskew;
     int ret = 1, flip;
     tmsize_t maxstripsize;
-
-    if ((tmsize_t)img->row_offset > TIFF_SSIZE_T_MAX ||
-        (size_t)h > (size_t)TIFF_SSIZE_T_MAX)
-    {
-        return (0);
-    }
 
     TIFFGetFieldDefaulted(tif, TIFFTAG_YCBCRSUBSAMPLING, &subsamplinghor,
                           &subsamplingver);
