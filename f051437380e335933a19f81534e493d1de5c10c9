@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "93922c66_86aa4716",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-07-13T18:41:54Z",
+      "side": 1,
+      "message": "++lgtm",
+      "revId": "f051437380e335933a19f81534e493d1de5c10c9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eda05fff_13c268bb",
@@ -102,6 +119,24 @@
       "side": 1,
       "message": "tempfile is good for creating for truly temporary files (where the identity of the file doesn\u0027t matter too much), but this is for atomic overwriting: It\u0027s important that the file be written adjacent to the output file (so that it\u0027s on the same file system), and since this is a helper script for the build, I know for a fact that there isn\u0027t going to be a conflicting \"test_runner_py.json.tmp\" file, so there\u0027s no harm in keeping this simple.\n\nCould perhaps avoid the use of the term \"temporary\" if that makes things clearer (something like \"new_output_path\", say).",
       "parentUuid": "32588918_662c7fb5",
+      "revId": "f051437380e335933a19f81534e493d1de5c10c9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d245f3e_ead1e34f",
+        "filename": "testing/tools/generate_cas_paths.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-07-13T18:41:54Z",
+      "side": 1,
+      "message": "The suggested rename, along with using a .new extension, SGTM.",
+      "parentUuid": "7ce4b75d_047d3118",
       "revId": "f051437380e335933a19f81534e493d1de5c10c9",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
