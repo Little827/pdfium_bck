@@ -1,0 +1,97 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d296875_b2a9c5fb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-07-13T23:28:54Z",
+      "side": 1,
+      "message": "\u003e \"coverted\" is a possible misspelling of \"converted\", \"covered\", or \"coveted\".\n\nPlease fix.",
+      "parentUuid": "dc7932d5_bebfbe2a",
+      "range": {
+        "startLine": 10,
+        "startChar": 14,
+        "endLine": 10,
+        "endChar": 22
+      },
+      "revId": "29304fcec440c4ff9915357d0e35570b167a7847",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cb1b995_15ea033c",
+        "filename": "core/fpdfdoc/cpdf_defaultappearance.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-07-13T23:28:54Z",
+      "side": 1,
+      "message": "More meaningful var names? gray",
+      "range": {
+        "startLine": 89,
+        "startChar": 10,
+        "endLine": 89,
+        "endChar": 13
+      },
+      "revId": "29304fcec440c4ff9915357d0e35570b167a7847",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31329837_3a8279ff",
+        "filename": "core/fpdfdoc/cpdf_defaultappearance.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-07-13T23:28:54Z",
+      "side": 1,
+      "message": "r, g, b",
+      "range": {
+        "startLine": 93,
+        "startChar": 10,
+        "endLine": 93,
+        "endChar": 13
+      },
+      "revId": "29304fcec440c4ff9915357d0e35570b167a7847",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c45ab97_e76d0106",
+        "filename": "core/fpdfdoc/cpdf_defaultappearance.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-07-13T23:28:54Z",
+      "side": 1,
+      "message": "c, m, y, k",
+      "range": {
+        "startLine": 99,
+        "startChar": 10,
+        "endLine": 99,
+        "endChar": 13
+      },
+      "revId": "29304fcec440c4ff9915357d0e35570b167a7847",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
