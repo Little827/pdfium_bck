@@ -3,6 +3,9 @@ URL: https://sourceforge.net/projects/agg/
 Version: 2.3
 Security Critical: yes
 License: MIT
+# The Shipped field denotes whether the dependency is shipped in Chromium, and
+# must be set to no to exclude it from chrome://credits.
+Shipped: yes
 
 Description:
 2D vector graphics library.
