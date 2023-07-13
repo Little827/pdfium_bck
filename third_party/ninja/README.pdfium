@@ -5,6 +5,9 @@ Revision: See the CIPD version in DEPS
 License: Apache License 2.0
 License File: https://github.com/ninja-build/ninja/blob/master/COPYING
 Security Critical: no
+# The Shipped field denotes whether the dependency is shipped in Chromium, and
+# must be set to no to exclude it from chrome://credits.
+Shipped: no
 
 Description:
 Ninja is a small build system with a focus on speed, and is used to build
