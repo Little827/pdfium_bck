@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "17b18530_06362c6f",
+        "filename": "testing/tools/generate_cas_paths.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-07-13T18:34:07Z",
+      "side": 1,
+      "message": "My original version had this, but \"git cl format\" just ends up removing it.",
+      "parentUuid": "eda05fff_13c268bb",
+      "revId": "f051437380e335933a19f81534e493d1de5c10c9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4274465d_ba949a3f",
@@ -35,6 +53,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f43e7952_8cbf8a86",
+        "filename": "testing/tools/generate_cas_paths.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-07-13T18:34:07Z",
+      "side": 1,
+      "message": "Style guide says to only consider the module path for ordering purposes:\nhttps://google.github.io/styleguide/pyguide.html#313-imports-formatting",
+      "parentUuid": "4274465d_ba949a3f",
+      "revId": "f051437380e335933a19f81534e493d1de5c10c9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "32588918_662c7fb5",
@@ -48,6 +84,24 @@
       "writtenOn": "2023-07-13T18:20:44Z",
       "side": 1,
       "message": "Why not use the tempfile module?",
+      "revId": "f051437380e335933a19f81534e493d1de5c10c9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ce4b75d_047d3118",
+        "filename": "testing/tools/generate_cas_paths.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-07-13T18:34:07Z",
+      "side": 1,
+      "message": "tempfile is good for creating for truly temporary files (where the identity of the file doesn\u0027t matter too much), but this is for atomic overwriting: It\u0027s important that the file be written adjacent to the output file (so that it\u0027s on the same file system), and since this is a helper script for the build, I know for a fact that there isn\u0027t going to be a conflicting \"test_runner_py.json.tmp\" file, so there\u0027s no harm in keeping this simple.\n\nCould perhaps avoid the use of the term \"temporary\" if that makes things clearer (something like \"new_output_path\", say).",
+      "parentUuid": "32588918_662c7fb5",
       "revId": "f051437380e335933a19f81534e493d1de5c10c9",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
