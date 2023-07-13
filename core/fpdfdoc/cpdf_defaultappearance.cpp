@@ -84,24 +84,23 @@ absl::optional<CFX_Color> CPDF_DefaultAppearance::GetColor() const {
   if (m_csDA.IsEmpty())
     return absl::nullopt;
 
-  float fc[4];
   CPDF_SimpleParser syntax(m_csDA.AsStringView().raw_span());
   if (FindTagParamFromStart(&syntax, "g", 1)) {
-    fc[0] = StringToFloat(syntax.GetWord());
-    return CFX_Color(CFX_Color::Type::kGray, fc[0]);
+    float fc0 = StringToFloat(syntax.GetWord());
+    return CFX_Color(CFX_Color::Type::kGray, fc0);
   }
   if (FindTagParamFromStart(&syntax, "rg", 3)) {
-    fc[0] = StringToFloat(syntax.GetWord());
-    fc[1] = StringToFloat(syntax.GetWord());
-    fc[2] = StringToFloat(syntax.GetWord());
-    return CFX_Color(CFX_Color::Type::kRGB, fc[0], fc[1], fc[2]);
+    float fc0 = StringToFloat(syntax.GetWord());
+    float fc1 = StringToFloat(syntax.GetWord());
+    float fc2 = StringToFloat(syntax.GetWord());
+    return CFX_Color(CFX_Color::Type::kRGB, fc0, fc1, fc2);
   }
   if (FindTagParamFromStart(&syntax, "k", 4)) {
-    fc[0] = StringToFloat(syntax.GetWord());
-    fc[1] = StringToFloat(syntax.GetWord());
-    fc[2] = StringToFloat(syntax.GetWord());
-    fc[3] = StringToFloat(syntax.GetWord());
-    return CFX_Color(CFX_Color::Type::kCMYK, fc[0], fc[1], fc[2], fc[3]);
+    float fc0 = StringToFloat(syntax.GetWord());
+    float fc1 = StringToFloat(syntax.GetWord());
+    float fc2 = StringToFloat(syntax.GetWord());
+    float fc3 = StringToFloat(syntax.GetWord());
+    return CFX_Color(CFX_Color::Type::kCMYK, fc0, fc1, fc2, fc3);
   }
   return absl::nullopt;
 }
