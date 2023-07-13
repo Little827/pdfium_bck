@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10c8053d_595239ea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-07-13T23:02:40Z",
+      "side": 1,
+      "message": "\u003e \"convered\" is a possible misspelling of \"converted\" or \"covered\".\n\nPlease fix.",
+      "parentUuid": "1b659361_4b04bce8",
+      "range": {
+        "startLine": 9,
+        "startChar": 32,
+        "endLine": 9,
+        "endChar": 40
+      },
+      "revId": "c0a41e6217b06da536b990bca61755b9a60ef17d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
