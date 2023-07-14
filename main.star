@@ -422,6 +422,22 @@ luci.bucket(
     ],
 )
 
+luci.bucket(
+    name = "try.shadow",
+    shadows = "try",
+    constraints = luci.bucket_constraints(
+        pools = ["luci.flex.try"],
+        service_accounts = ["pdfium-try-builder@chops-service-accounts.iam.gserviceaccount.com"],
+    ),
+    bindings = [
+        luci.binding(
+            roles = "role/buildbucket.creator",
+            groups = "project-pdfium-tryjob-access",
+        ),
+    ],
+    dynamic = True,
+)
+
 # Builders
 luci.builder(
     name = "pdfium_analysis",
