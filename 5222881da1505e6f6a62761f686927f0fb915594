@@ -120,6 +120,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8ba336e4_f7f6e8a3",
+        "filename": "third_party/cpu_features/README.pdfium",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-07-14T18:24:43Z",
+      "side": 1,
+      "message": "Thanks for the clarification. Given third_party/README.chromium.template will soon have an explanation for what the field does, I don\u0027t think this CL needs to have a comment in every README file duplicating that info.\n\nREADME.pdfium is just PDFium\u0027s equivalent to README.chromium.",
+      "parentUuid": "3a15b60d_9fef8ced",
+      "revId": "5222881da1505e6f6a62761f686927f0fb915594",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "846be03a_45a4e256",
         "filename": "third_party/libtiff/README.pdfium",
         "patchSetId": 1
