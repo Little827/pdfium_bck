@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c02965ff_4ce00950",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7468
+      },
+      "writtenOn": "2023-07-14T18:16:44Z",
+      "side": 1,
+      "message": "lgtm 😊\n\n(I have no power to stamp here though)",
+      "revId": "89e1832847141aa6f9de5e433552356207d0ce8a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
