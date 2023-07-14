@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ccd084a_20ebc16d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 9311
+      },
+      "writtenOn": "2023-07-14T00:04:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d72d3f58_4811117c",
+      "range": {
+        "startLine": 10,
+        "startChar": 23,
+        "endLine": 10,
+        "endChar": 31
+      },
+      "revId": "5222881da1505e6f6a62761f686927f0fb915594",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e995a89d_e96845d6",
@@ -37,6 +61,24 @@
       "writtenOn": "2023-07-12T17:28:06Z",
       "side": 1,
       "message": "This is just test data and not shipped to end users.",
+      "revId": "5222881da1505e6f6a62761f686927f0fb915594",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ec13554_0726c805",
+        "filename": "third_party/NotoSansCJK/README.pdfium",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 9311
+      },
+      "writtenOn": "2023-07-14T00:04:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e995a89d_e96845d6",
       "revId": "5222881da1505e6f6a62761f686927f0fb915594",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -58,6 +100,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a15b60d_9fef8ced",
+        "filename": "third_party/cpu_features/README.pdfium",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 9311
+      },
+      "writtenOn": "2023-07-14T00:04:00Z",
+      "side": 1,
+      "message": "`Shipped` denotes whether the dependency is shipped in Chromium, and must be set to `no` if we want to exclude the license from `chrome://credits`. The `README.chromium.template` (soon to be, CL in review) and `//docs/adding_to_third_party.md` have descriptions of this field (https://chromium.googlesource.com/chromium/src/+/refs/heads/main/docs/adding_to_third_party.md).\n\nI couldn\u0027t find docs for `README.pdfium` files so I\u0027ve added a \"comment\" above the field in `README.pdfium` files, and set this to `Shipped: no`.",
+      "parentUuid": "9ea5622f_8bfbd2c0",
+      "revId": "5222881da1505e6f6a62761f686927f0fb915594",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "846be03a_45a4e256",
@@ -75,6 +135,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "17911de5_36d58cfc",
+        "filename": "third_party/libtiff/README.pdfium",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 9311
+      },
+      "writtenOn": "2023-07-14T00:04:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "846be03a_45a4e256",
+      "revId": "5222881da1505e6f6a62761f686927f0fb915594",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3a40eb8e_b37e1918",
@@ -88,6 +166,24 @@
       "writtenOn": "2023-07-12T17:28:06Z",
       "side": 1,
       "message": "This is a build tool and not shipped to end users.",
+      "revId": "5222881da1505e6f6a62761f686927f0fb915594",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24db26c3_69d21d47",
+        "filename": "third_party/ninja/README.pdfium",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 9311
+      },
+      "writtenOn": "2023-07-14T00:04:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a40eb8e_b37e1918",
       "revId": "5222881da1505e6f6a62761f686927f0fb915594",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
