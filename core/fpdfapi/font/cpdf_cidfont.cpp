@@ -888,7 +888,8 @@ const uint8_t* CPDF_CIDFont::GetCIDTransform(uint16_t cid) const {
   if (m_Charset != CIDSET_JAPAN1 || m_pFontFile)
     return nullptr;
 
-  const auto* pEnd = kJapan1VerticalCIDs + std::size(kJapan1VerticalCIDs);
+  const auto* pBegin = std::begin(kJapan1VerticalCIDs);
+  const auto* pEnd = std::end(kJapan1VerticalCIDs);
   const auto* pTransform = std::lower_bound(
       kJapan1VerticalCIDs, pEnd, cid,
       [](const CIDTransform& entry, uint16_t cid) { return entry.cid < cid; });
