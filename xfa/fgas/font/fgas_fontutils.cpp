@@ -2450,9 +2450,10 @@ const FGAS_FONTUSB* FGAS_GetUnicodeBitField(wchar_t unicode) {
 WideString FGAS_FontNameToEnglishName(const WideString& wsLocalName) {
   uint32_t dwLocalNameHash =
       FX_HashCode_GetLoweredW(wsLocalName.AsStringView());
-  const FGAS_FontInfo* pEnd = kXFAFontsMap + std::size(kXFAFontsMap);
+  const FGAS_FontInfo* pBegin = std::begin(kXFAFontsMap);
+  const FGAS_FontInfo* pEnd = std::end(kXFAFontsMap);
   const FGAS_FontInfo* pFontInfo =
-      std::lower_bound(kXFAFontsMap, pEnd, dwLocalNameHash,
+      std::lower_bound(pBegin, pEnd, dwLocalNameHash,
                        [](const FGAS_FontInfo& entry, uint32_t hash) {
                          return entry.dwFontNameHash < hash;
                        });
@@ -2466,7 +2467,8 @@ const FGAS_FontInfo* FGAS_FontInfoByFontName(WideStringView wsFontName) {
   wsFontNameTemp.Remove(L' ');
   uint32_t dwCurFontNameHash =
       FX_HashCode_GetLoweredW(wsFontNameTemp.AsStringView());
-  const FGAS_FontInfo* pEnd = kXFAFontsMap + std::size(kXFAFontsMap);
+  const FGAS_FontInfo* pBegin = std::begin(kXFAFontsMap);
+  const FGAS_FontInfo* pEnd = std::end(kXFAFontsMap);
   const FGAS_FontInfo* pFontInfo =
       std::lower_bound(kXFAFontsMap, pEnd, dwCurFontNameHash,
                        [](const FGAS_FontInfo& entry, uint32_t hash) {
