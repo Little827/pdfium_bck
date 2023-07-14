@@ -3,6 +3,9 @@ URL: http://www.simplesystems.org/libtiff/
 Version: 4.5.1
 CPEPrefix: cpe:/a:libtiff:libtiff:4.5.1
 Security Critical: yes
+# The Shipped field denotes whether the dependency is shipped in Chromium, and
+# must be set to no to exclude it from chrome://credits.
+Shipped: yes
 License: BSD
 
 Description:
