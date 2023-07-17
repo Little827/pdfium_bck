@@ -16,6 +16,23 @@
       "message": "If it looks good, can I ask also for merging it (don\u0027t have permissions).",
       "revId": "1a72b04fc8abac02d20114f00b80bcfbe3181cfe",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "445f7d17_ee3349a1",
+        "filename": "generated/cr-buildbucket.cfg",
+        "patchSetId": 2
+      },
+      "lineNbr": 1763,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-07-17T17:04:22Z",
+      "side": 1,
+      "message": "Should we exclude the MSVC builders? They currently don\u0027t build with goma.",
+      "revId": "1a72b04fc8abac02d20114f00b80bcfbe3181cfe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
