@@ -33,6 +33,24 @@
       "message": "Should we exclude the MSVC builders? They currently don\u0027t build with goma.",
       "revId": "1a72b04fc8abac02d20114f00b80bcfbe3181cfe",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "119cb11e_75b659e6",
+        "filename": "generated/cr-buildbucket.cfg",
+        "patchSetId": 2
+      },
+      "lineNbr": 1763,
+      "author": {
+        "id": 9286
+      },
+      "writtenOn": "2023-07-17T17:17:33Z",
+      "side": 1,
+      "message": "It should be handled by msvc condition in https://source.chromium.org/chromium/chromium/tools/build/+/main:recipes/recipes/pdfium.py;l\u003d133;drc\u003d191fff3b1af13613e3f40116250f5a07b8de4dc6\n\n, but I\u0027ll add something similar to https://pdfium.googlesource.com/pdfium/+/refs/heads/infra/config/main.star#127 as a precaution.",
+      "parentUuid": "445f7d17_ee3349a1",
+      "revId": "1a72b04fc8abac02d20114f00b80bcfbe3181cfe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
