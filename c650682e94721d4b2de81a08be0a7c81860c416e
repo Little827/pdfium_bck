@@ -16,6 +16,24 @@
       "message": "Can the parser just own the lexer instead?",
       "revId": "c650682e94721d4b2de81a08be0a7c81860c416e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ceda095b_5728a4e4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-07-17T16:30:25Z",
+      "side": 1,
+      "message": "It could, but that would require converting things to persistent\u003c\u003e. Avoiding these is why I think I made it stack allocated in the first place.",
+      "parentUuid": "7e6ca161_1ad09af6",
+      "revId": "c650682e94721d4b2de81a08be0a7c81860c416e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
