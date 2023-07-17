@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0687ced_52b857aa",
+        "filename": "core/fxge/skia/fx_skia_device_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-07-17T18:43:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d90d466c_bc74bbbc",
+      "range": {
+        "startLine": 68,
+        "startChar": 35,
+        "endLine": 68,
+        "endChar": 47
+      },
+      "revId": "de41970b8275b3d1d542a830451c6896c2f4d936",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "870090fe_f2f4d17e",
@@ -37,6 +61,24 @@
       "writtenOn": "2023-07-17T18:38:01Z",
       "side": 1,
       "message": "Remove?",
+      "revId": "de41970b8275b3d1d542a830451c6896c2f4d936",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db914b6f_c140bda5",
+        "filename": "core/fxge/skia/fx_skia_device_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-07-17T18:43:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "870090fe_f2f4d17e",
       "revId": "de41970b8275b3d1d542a830451c6896c2f4d936",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
