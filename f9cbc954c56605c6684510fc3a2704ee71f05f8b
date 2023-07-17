@@ -16,6 +16,23 @@
       "message": "Thanks for reviewing!",
       "revId": "f9cbc954c56605c6684510fc3a2704ee71f05f8b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c54c77d7_ba535fa7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-07-17T22:43:25Z",
+      "side": 1,
+      "message": "macOS bumped into \"Trace/BPT trap: 5\" when assigning RetainPtr\u003cCFX_Face\u003e value.",
+      "revId": "f9cbc954c56605c6684510fc3a2704ee71f05f8b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
