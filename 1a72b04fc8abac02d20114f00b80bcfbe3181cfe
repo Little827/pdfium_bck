@@ -51,6 +51,24 @@
       "parentUuid": "445f7d17_ee3349a1",
       "revId": "1a72b04fc8abac02d20114f00b80bcfbe3181cfe",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0a454f1_f218c0b6",
+        "filename": "generated/cr-buildbucket.cfg",
+        "patchSetId": 2
+      },
+      "lineNbr": 1763,
+      "author": {
+        "id": 9286
+      },
+      "writtenOn": "2023-07-17T17:47:08Z",
+      "side": 1,
+      "message": "Done. Once all the builders are migrated (not only CI), I\u0027ll move msvc condition to `get_properties_by_name` (where goma property is cleared) to keep the code more concise.",
+      "parentUuid": "119cb11e_75b659e6",
+      "revId": "1a72b04fc8abac02d20114f00b80bcfbe3181cfe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
