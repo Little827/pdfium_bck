@@ -54,7 +54,9 @@ void CPDF_Color::SetValueForPattern(RetainPtr<CPDF_Pattern> pattern,
         CPDF_ColorSpace::GetStockCS(CPDF_ColorSpace::Family::kPattern));
   }
   m_pValue->SetPattern(std::move(pattern));
-  m_pValue->SetComps(values);
+  if (values.size()) {
+    m_pValue->SetComps(values);
+  }
 }
 
 CPDF_Color& CPDF_Color::operator=(const CPDF_Color& that) {
