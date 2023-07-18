@@ -36,6 +36,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4d796f0_70d9210f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-07-18T06:50:48Z",
+      "side": 1,
+      "message": "Filed pdfium:2066 and updated commit message.",
+      "parentUuid": "d895f00c_d37533ee",
+      "revId": "0293945d3ce491023282bbee6058077cb3d968b2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "795db178_5d005924",
@@ -49,6 +67,24 @@
       "writtenOn": "2023-07-18T05:30:04Z",
       "side": 1,
       "message": "Instead of skipping the call, I wonder if it makes more sense to clear `PatternValue::m_Comps` in PatternValue::SetComps() for an empty input. (I\u0027m not sure either.)",
+      "revId": "0293945d3ce491023282bbee6058077cb3d968b2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5797574e_d47ac4de",
+        "filename": "core/fpdfapi/page/cpdf_color.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-07-18T06:50:48Z",
+      "side": 1,
+      "message": "The values from `m_pValues` before SetComps(), they are all 0s (16 of them).",
+      "parentUuid": "795db178_5d005924",
       "revId": "0293945d3ce491023282bbee6058077cb3d968b2",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
