@@ -16,6 +16,7 @@
 
 #include "core/fxcrt/fx_codepage.h"
 #include "core/fxcrt/fx_extension.h"
+#include "core/fxcrt/fx_memcpy_wrappers.h"
 #include "core/fxcrt/fx_safe_types.h"
 #include "core/fxcrt/fx_system.h"
 #include "core/fxcrt/string_pool_template.h"
@@ -262,7 +263,7 @@ bool ByteString::operator==(const char* ptr) const {
     return m_pData->m_nDataLength == 0;
 
   return strlen(ptr) == m_pData->m_nDataLength &&
-         memcmp(ptr, m_pData->m_String, m_pData->m_nDataLength) == 0;
+         FXSYS_memcmp(ptr, m_pData->m_String, m_pData->m_nDataLength) == 0;
 }
 
 bool ByteString::operator==(ByteStringView str) const {
@@ -270,8 +271,8 @@ bool ByteString::operator==(ByteStringView str) const {
     return str.IsEmpty();
 
   return m_pData->m_nDataLength == str.GetLength() &&
-         memcmp(m_pData->m_String, str.unterminated_c_str(), str.GetLength()) ==
-             0;
+         FXSYS_memcmp(m_pData->m_String, str.unterminated_c_str(),
+                      str.GetLength()) == 0;
 }
 
 bool ByteString::operator==(const ByteString& other) const {
@@ -285,8 +286,8 @@ bool ByteString::operator==(const ByteString& other) const {
     return false;
 
   return other.m_pData->m_nDataLength == m_pData->m_nDataLength &&
-         memcmp(other.m_pData->m_String, m_pData->m_String,
-                m_pData->m_nDataLength) == 0;
+         FXSYS_memcmp(other.m_pData->m_String, m_pData->m_String,
+                      m_pData->m_nDataLength) == 0;
 }
 
 bool ByteString::operator<(const char* ptr) const {
@@ -297,7 +298,7 @@ bool ByteString::operator<(const char* ptr) const {
 
   size_t len = GetLength();
   size_t other_len = ptr ? strlen(ptr) : 0;
-  int result = memcmp(c_str(), ptr, std::min(len, other_len));
+  int result = FXSYS_memcmp(c_str(), ptr, std::min(len, other_len));
   return result < 0 || (result == 0 && len < other_len);
 }
 
@@ -311,7 +312,7 @@ bool ByteString::operator<(const ByteString& other) const {
 
   size_t len = GetLength();
   size_t other_len = other.GetLength();
-  int result = memcmp(c_str(), other.c_str(), std::min(len, other_len));
+  int result = FXSYS_memcmp(c_str(), other.c_str(), std::min(len, other_len));
   return result < 0 || (result == 0 && len < other_len);
 }
 
@@ -686,7 +687,8 @@ int ByteString::Compare(ByteStringView str) const {
   size_t this_len = m_pData->m_nDataLength;
   size_t that_len = str.GetLength();
   size_t min_len = std::min(this_len, that_len);
-  int result = memcmp(m_pData->m_String, str.unterminated_c_str(), min_len);
+  int result =
+      FXSYS_memcmp(m_pData->m_String, str.unterminated_c_str(), min_len);
   if (result != 0)
     return result;
   if (this_len == that_len)
