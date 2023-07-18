@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e57d96f0_5c724600",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-07-18T05:30:04Z",
+      "side": 1,
+      "message": "This is actually a different issue that the reference bug.",
+      "revId": "0293945d3ce491023282bbee6058077cb3d968b2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "795db178_5d005924",
+        "filename": "core/fpdfapi/page/cpdf_color.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-07-18T05:30:04Z",
+      "side": 1,
+      "message": "Instead of skipping the call, I wonder if it makes more sense to clear `PatternValue::m_Comps` in PatternValue::SetComps() for an empty input. (I\u0027m not sure either.)",
+      "revId": "0293945d3ce491023282bbee6058077cb3d968b2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
