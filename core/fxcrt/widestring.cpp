@@ -465,7 +465,7 @@ bool WideString::operator==(const wchar_t* ptr) const {
     return m_pData->m_nDataLength == 0;
 
   return wcslen(ptr) == m_pData->m_nDataLength &&
-         wmemcmp(ptr, m_pData->m_String, m_pData->m_nDataLength) == 0;
+         FXSYS_wmemcmp(ptr, m_pData->m_String, m_pData->m_nDataLength) == 0;
 }
 
 bool WideString::operator==(WideStringView str) const {
@@ -473,8 +473,8 @@ bool WideString::operator==(WideStringView str) const {
     return str.IsEmpty();
 
   return m_pData->m_nDataLength == str.GetLength() &&
-         wmemcmp(m_pData->m_String, str.unterminated_c_str(),
-                 str.GetLength()) == 0;
+         FXSYS_wmemcmp(m_pData->m_String, str.unterminated_c_str(),
+                       str.GetLength()) == 0;
 }
 
 bool WideString::operator==(const WideString& other) const {
@@ -488,8 +488,8 @@ bool WideString::operator==(const WideString& other) const {
     return false;
 
   return other.m_pData->m_nDataLength == m_pData->m_nDataLength &&
-         wmemcmp(other.m_pData->m_String, m_pData->m_String,
-                 m_pData->m_nDataLength) == 0;
+         FXSYS_wmemcmp(other.m_pData->m_String, m_pData->m_String,
+                       m_pData->m_nDataLength) == 0;
 }
 
 bool WideString::operator<(const wchar_t* ptr) const {
@@ -504,8 +504,8 @@ bool WideString::operator<(WideStringView str) const {
 
   size_t len = GetLength();
   size_t other_len = str.GetLength();
-  int result =
-      wmemcmp(c_str(), str.unterminated_c_str(), std::min(len, other_len));
+  int result = FXSYS_wmemcmp(c_str(), str.unterminated_c_str(),
+                             std::min(len, other_len));
   return result < 0 || (result == 0 && len < other_len);
 }
 
@@ -1010,7 +1010,7 @@ int WideString::Compare(const WideString& str) const {
   size_t this_len = m_pData->m_nDataLength;
   size_t that_len = str.m_pData->m_nDataLength;
   size_t min_len = std::min(this_len, that_len);
-  int result = wmemcmp(m_pData->m_String, str.m_pData->m_String, min_len);
+  int result = FXSYS_wmemcmp(m_pData->m_String, str.m_pData->m_String, min_len);
   if (result != 0)
     return result;
   if (this_len == that_len)

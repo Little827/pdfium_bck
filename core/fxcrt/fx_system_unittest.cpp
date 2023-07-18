@@ -396,3 +396,28 @@ TEST(fxcrt, FXSYS_atoui) {
   EXPECT_EQ(4294967295, FXSYS_atoui("4294967296"));
   EXPECT_EQ(4294967295, FXSYS_atoui("-4294967345"));
 }
+
+TEST(fxcrt, FXSYS_memset) {
+  // Test passes if it does not trigger UBSAN warnings.
+  EXPECT_EQ(nullptr, FXSYS_memset(nullptr, 0, 0));
+}
+
+TEST(fxcrt, FXSYS_memcpy) {
+  // Test passes if it does not trigger UBSAN warnings.
+  EXPECT_EQ(nullptr, FXSYS_memcpy(nullptr, nullptr, 0));
+}
+
+TEST(fxcrt, FXSYS_memmove) {
+  // Test passes if it does not trigger UBSAN warnings.
+  EXPECT_EQ(nullptr, FXSYS_memmove(nullptr, nullptr, 0));
+}
+
+TEST(fxcrt, FXSYS_memcmp) {
+  // Test passes if it does not trigger UBSAN warnings.
+  EXPECT_EQ(0, FXSYS_memcmp(nullptr, nullptr, 0));
+}
+
+TEST(fxcrt, FXSYS_wmemcmp) {
+  // Test passes if it does not trigger UBSAN warnings.
+  EXPECT_EQ(0, FXSYS_wmemcmp(nullptr, nullptr, 0));
+}
