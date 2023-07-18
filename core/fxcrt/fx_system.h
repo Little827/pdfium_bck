@@ -92,6 +92,27 @@ float FXSYS_sqrt2(float a, float b);
 
 // C++-only section
 
+// Wrappers to avoid the zero-length w/NULL arg gotchas in C spec.
+inline int FXSYS_memcmp(const void* ptr1, const void* ptr2, size_t len) {
+  return len ? memcmp(ptr1, ptr2, len) : 0;
+}
+
+inline int FXSYS_wmemcmp(const wchar_t* ptr1, const wchar_t* ptr2, size_t len) {
+  return len ? wmemcmp(ptr1, ptr2, len) : 0;
+}
+
+inline void* FXSYS_memcpy(void* ptr1, const void* ptr2, size_t len) {
+  return len ? memcpy(ptr1, ptr2, len) : ptr1;
+}
+
+inline void* FXSYS_memmove(void* ptr1, const void* ptr2, size_t len) {
+  return len ? memmove(ptr1, ptr2, len) : ptr1;
+}
+
+inline void* FXSYS_memset(void* ptr1, uint8_t val, size_t len) {
+  return len ? memset(ptr1, val, len) : ptr1;
+}
+
 // Overloaded functions for C++ templates
 inline size_t FXSYS_len(const char* ptr) {
   return strlen(ptr);
@@ -102,11 +123,11 @@ inline size_t FXSYS_len(const wchar_t* ptr) {
 }
 
 inline int FXSYS_cmp(const char* ptr1, const char* ptr2, size_t len) {
-  return memcmp(ptr1, ptr2, len);
+  return FXSYS_memcmp(ptr1, ptr2, len);
 }
 
 inline int FXSYS_cmp(const wchar_t* ptr1, const wchar_t* ptr2, size_t len) {
-  return wmemcmp(ptr1, ptr2, len);
+  return FXSYS_wmemcmp(ptr1, ptr2, len);
 }
 
 inline const char* FXSYS_chr(const char* ptr, char ch, size_t len) {
