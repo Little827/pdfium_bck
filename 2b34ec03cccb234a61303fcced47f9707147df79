@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12fd9dc8_f022f3dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 9286
+      },
+      "writtenOn": "2023-07-18T12:14:09Z",
+      "side": 1,
+      "message": "If it looks good, can I ask also for merging it (don\u0027t have permissions).",
+      "revId": "2b34ec03cccb234a61303fcced47f9707147df79",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
