@@ -25,6 +25,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c04f423a_a167f8b1",
+        "filename": "core/fxcrt/fx_memcpy_wrappers.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-07-19T19:48:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6a2f693_d15d4dba",
+      "range": {
+        "startLine": 16,
+        "startChar": 17,
+        "endLine": 16,
+        "endChar": 27
+      },
+      "revId": "039ae39a3ed81ac00235419f11ce4e50bfa67434",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "59a3d0eb_7a9e6a4a",
@@ -49,6 +73,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb923cf8_a716e3b3",
+        "filename": "core/fxcrt/fx_memcpy_wrappers.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-07-19T19:48:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59a3d0eb_7a9e6a4a",
+      "range": {
+        "startLine": 17,
+        "startChar": 28,
+        "endLine": 17,
+        "endChar": 34
+      },
+      "revId": "039ae39a3ed81ac00235419f11ce4e50bfa67434",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "06a7ba88_a53491f6",
@@ -62,6 +110,24 @@
       "writtenOn": "2023-07-19T17:56:49Z",
       "side": 1,
       "message": "Should this check `ptr1` instead of `len`? I believe that\u0027s what UBSAN is really looking at. e.g. It will complain about `memset(NULL, 0x12, 5)` but not `memset(0xbeefbeef, 0x12, 0)`.",
+      "revId": "039ae39a3ed81ac00235419f11ce4e50bfa67434",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe8c16d4_d542f316",
+        "filename": "core/fxcrt/fx_memcpy_wrappers.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-07-19T19:48:37Z",
+      "side": 1,
+      "message": "Nah, in an ideal world, all zero-length operations do not access pointers and do not warn nor segv. So the comment should be even stronger since these help prevent the programmer from checking the 0xdeadbeef case.",
+      "parentUuid": "06a7ba88_a53491f6",
       "revId": "039ae39a3ed81ac00235419f11ce4e50bfa67434",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
