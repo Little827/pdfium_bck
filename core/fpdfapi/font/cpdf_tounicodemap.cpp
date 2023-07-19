@@ -13,6 +13,7 @@
 #include "core/fpdfapi/font/cpdf_fontglobals.h"
 #include "core/fpdfapi/parser/cpdf_simple_parser.h"
 #include "core/fpdfapi/parser/cpdf_stream.h"
+#include "core/fpdfapi/parser/fpdf_parser_utility.h"
 #include "core/fxcrt/fx_extension.h"
 #include "core/fxcrt/fx_safe_types.h"
 #include "third_party/base/containers/contains.h"
@@ -79,6 +80,22 @@ size_t CPDF_ToUnicodeMap::GetUnicodeCountByCharcodeForTesting(
 
 // static
 absl::optional<uint32_t> CPDF_ToUnicodeMap::StringToCode(ByteStringView str) {
+  // Ignore whitespaces within `str`. See https://crbug.com/pdfium/2065.
+  std::set<char> seen_whitespace_chars;
+  for (char c : str) {
+    if (PDFCharIsWhitespace(c)) {
+      seen_whitespace_chars.insert(c);
+    }
+  }
+  ByteString str_without_whitespace_chars;
+  if (!seen_whitespace_chars.empty()) {
+    str_without_whitespace_chars = str;
+    for (char c : seen_whitespace_chars) {
+      str_without_whitespace_chars.Remove(c);
+    }
+    str = str_without_whitespace_chars.AsStringView();
+  }
+
   size_t len = str.GetLength();
   if (len <= 2 || str[0] != '<' || str[len - 1] != '>')
     return absl::nullopt;
