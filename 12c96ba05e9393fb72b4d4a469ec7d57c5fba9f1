@@ -34,6 +34,24 @@
       "parentUuid": "a676bb4b_34feb2fc",
       "revId": "12c96ba05e9393fb72b4d4a469ec7d57c5fba9f1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1389c261_2e0b98e6",
+        "filename": "main.star",
+        "patchSetId": 1
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 9286
+      },
+      "writtenOn": "2023-07-19T17:57:33Z",
+      "side": 1,
+      "message": "Excluded these 2 because they were not part of the migration and wasn\u0027t 100% sure about them, but yes, it looks like the recipes they\u0027re using don\u0027t depend on Goma at all. Will include them in the next revision.",
+      "parentUuid": "58d8e211_e7581e61",
+      "revId": "12c96ba05e9393fb72b4d4a469ec7d57c5fba9f1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
