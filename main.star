@@ -38,14 +38,9 @@ _WINDOWS_DIMENSIONS = {
     "os": "Windows-10",
 }
 
-# Dicts for goma properties.
+# Dict for goma properties.
 _GOMA_ATS_ENABLED = {
     "enable_ats": True,
-    "rpc_extra_params": "?prod",
-    "server_host": "goma.chromium.org",
-    "use_luci_auth": True,
-}
-_GOMA_ATS_DISABLED = {
     "rpc_extra_params": "?prod",
     "server_host": "goma.chromium.org",
     "use_luci_auth": True,
@@ -53,17 +48,9 @@ _GOMA_ATS_DISABLED = {
 
 # Dicts for OS-specifc properties.
 _ANDROID_PROPERTIES = {
-    "$build/goma": _GOMA_ATS_ENABLED,
     "skip_test": True,
     "target_os": "android",
 }
-_LINUX_PROPERTIES = {
-    "$build/goma": _GOMA_ATS_ENABLED,
-}
-_MACOS_PROPERTIES = {
-    "$build/goma": _GOMA_ATS_DISABLED,
-}
-_WINDOWS_PROPERTIES = _LINUX_PROPERTIES
 
 # Helper functions
 def get_properties_by_name(name):
@@ -78,14 +65,7 @@ def get_properties_by_name(name):
     properties = {}
 
     # Sets OS-specific properties.
-    if name.startswith("linux"):
-        properties.update(_LINUX_PROPERTIES)
-    elif name.startswith("mac"):
-        properties.update(_MACOS_PROPERTIES)
-    elif name.startswith("win"):
-        properties.update(_WINDOWS_PROPERTIES)
-    else:
-        # Android
+    if name.startswith("android"):
         properties.update(_ANDROID_PROPERTIES)
 
     if name.find("no_v8") != -1:
@@ -113,7 +93,6 @@ def get_properties_by_name(name):
 
     if name.find("msvc") != -1:
         properties.update({"msvc": True})
-        properties["$build/goma"] = {}
 
     is_32_bit = name.endswith("32")
     if name.startswith("android"):
