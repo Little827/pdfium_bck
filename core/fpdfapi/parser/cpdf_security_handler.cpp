@@ -35,9 +35,10 @@ void GetPassCode(const ByteString& password, pdfium::span<uint8_t> output) {
   DCHECK_EQ(sizeof(kDefaultPasscode), output.size());
   size_t len = std::min(password.GetLength(), output.size());
   size_t remaining = output.size() - len;
-  memcpy(output.data(), password.raw_str(), len);
-  if (remaining)
+  FXSYS_memcpy(output.data(), password.raw_str(), len);
+  if (remaining) {
     memcpy(&output[len], kDefaultPasscode, remaining);
+  }
 }
 
 void CalcEncryptKey(const CPDF_Dictionary* pEncrypt,
