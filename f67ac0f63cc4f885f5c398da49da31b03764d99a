@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "40b8bc8d_8f762a5d",
+        "filename": "core/fxcrt/fx_system.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-07-19T20:37:19Z",
+      "side": 1,
+      "message": "Yep. But has IWYU fallout.  Will fix in follow-on.",
+      "parentUuid": "85399121_2b23ef72",
+      "revId": "f67ac0f63cc4f885f5c398da49da31b03764d99a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d621616c_52a5a002",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-07-19T20:14:51Z",
       "side": 1,
       "message": "Never 0?",
+      "revId": "f67ac0f63cc4f885f5c398da49da31b03764d99a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f986b8a_43a8e167",
+        "filename": "core/fxcrt/string_data_template.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-07-19T20:37:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d621616c_52a5a002",
       "revId": "f67ac0f63cc4f885f5c398da49da31b03764d99a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -52,6 +88,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0abc0b7b_11c29f0a",
+        "filename": "core/fxcrt/widestring.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-07-19T20:37:19Z",
+      "side": 1,
+      "message": "Done. These should just get re-written in terms of the new functions for simplicity. Maybe later.",
+      "parentUuid": "a239b6b6_dc3a197d",
+      "revId": "f67ac0f63cc4f885f5c398da49da31b03764d99a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93938aca_b157a055",
@@ -65,6 +119,24 @@
       "writtenOn": "2023-07-19T20:14:51Z",
       "side": 1,
       "message": "Never 0, since old_length \u003e\u003d removal_length. Therefore chars_to_copy is at least 1.",
+      "revId": "f67ac0f63cc4f885f5c398da49da31b03764d99a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6de370da_eae54ade",
+        "filename": "core/fxcrt/widestring.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 620,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-07-19T20:37:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93938aca_b157a055",
       "revId": "f67ac0f63cc4f885f5c398da49da31b03764d99a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
