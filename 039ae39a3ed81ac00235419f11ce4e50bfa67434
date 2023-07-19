@@ -1,0 +1,69 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6a2f693_d15d4dba",
+        "filename": "core/fxcrt/fx_memcpy_wrappers.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-07-19T17:56:49Z",
+      "side": 1,
+      "message": "\u003e \"possiblity\" is a possible misspelling of \"possibility\".\n\nPlease fix.",
+      "parentUuid": "2cdd309e_fe0a27a3",
+      "range": {
+        "startLine": 16,
+        "startChar": 17,
+        "endLine": 16,
+        "endChar": 27
+      },
+      "revId": "039ae39a3ed81ac00235419f11ce4e50bfa67434",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59a3d0eb_7a9e6a4a",
+        "filename": "core/fxcrt/fx_memcpy_wrappers.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-07-19T17:56:49Z",
+      "side": 1,
+      "message": "\u003e \"Libray\" is a possible misspelling of \"Library\".\n\nPlease fix.",
+      "parentUuid": "e2dbdb4a_15cdca67",
+      "range": {
+        "startLine": 17,
+        "startChar": 28,
+        "endLine": 17,
+        "endChar": 34
+      },
+      "revId": "039ae39a3ed81ac00235419f11ce4e50bfa67434",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06a7ba88_a53491f6",
+        "filename": "core/fxcrt/fx_memcpy_wrappers.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-07-19T17:56:49Z",
+      "side": 1,
+      "message": "Should this check `ptr1` instead of `len`? I believe that\u0027s what UBSAN is really looking at. e.g. It will complain about `memset(NULL, 0x12, 5)` but not `memset(0xbeefbeef, 0x12, 0)`.",
+      "revId": "039ae39a3ed81ac00235419f11ce4e50bfa67434",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
