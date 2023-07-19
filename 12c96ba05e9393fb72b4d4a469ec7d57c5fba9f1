@@ -16,6 +16,24 @@
       "message": "Should these be removed as well? These two bots don\u0027t actually compile anything. See examples:\n\nhttps://ci.chromium.org/ui/p/pdfium/builders/try/pdfium_analysis/6942/overview\nhttps://ci.chromium.org/ui/p/pdfium/builders/try/pdfium_presubmit/15677/overview",
       "revId": "12c96ba05e9393fb72b4d4a469ec7d57c5fba9f1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58d8e211_e7581e61",
+        "filename": "main.star",
+        "patchSetId": 1
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-07-19T17:33:45Z",
+      "side": 1,
+      "message": "Asking because I saw `_GOMA_ATS_ENABLED` remained in the file and thought that was strange.",
+      "parentUuid": "a676bb4b_34feb2fc",
+      "revId": "12c96ba05e9393fb72b4d4a469ec7d57c5fba9f1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
