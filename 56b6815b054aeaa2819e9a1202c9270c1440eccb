@@ -16,6 +16,24 @@
       "message": "Going forward, is the guidance going to be \"always use FXSYS_memfoo over memfoo\"? e.g. Here, the size is never 0, so memset() should be fine.",
       "revId": "56b6815b054aeaa2819e9a1202c9270c1440eccb",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9556437b_e436177b",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-07-19T17:48:49Z",
+      "side": 1,
+      "message": "Nah, if we know its safe, we should use the unwrapped form.  I\u0027ll add a comment to the new .h file.",
+      "parentUuid": "8ebd7871_af3f2541",
+      "revId": "56b6815b054aeaa2819e9a1202c9270c1440eccb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
