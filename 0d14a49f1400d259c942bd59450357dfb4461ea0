@@ -16,6 +16,24 @@
       "message": "WDYT about returning early if `password` is empty? Looks a bit weird with FXSYS_memcpy() here and memcpy() 2 lines down.",
       "revId": "0d14a49f1400d259c942bd59450357dfb4461ea0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2dfa8465_5b51cd36",
+        "filename": "core/fpdfapi/parser/cpdf_security_handler.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-07-19T21:46:27Z",
+      "side": 1,
+      "message": "Ideally, the second one would just be FXSYS_memcpy() with no need for a (remaining) check, execpt that \u0026output[len] has its own CHECK() which would be hit.",
+      "parentUuid": "a914ce85_c3cbaa7c",
+      "revId": "0d14a49f1400d259c942bd59450357dfb4461ea0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
