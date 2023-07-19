@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e18ed24_60ca5b30",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-07-19T01:53:12Z",
+      "side": 1,
+      "message": "Ready for review. I fixed the dangling pointer issue in patch set 1.",
+      "revId": "a12d914648fa83493bb027bf4ba848cbac6e9ff7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
