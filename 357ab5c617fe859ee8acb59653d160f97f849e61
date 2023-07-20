@@ -16,6 +16,23 @@
       "message": "Please check the new patch set:\n \n+ eliminated duplicate code\n+ added user perms assertions",
       "revId": "357ab5c617fe859ee8acb59653d160f97f849e61",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8501f19_394ceff3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 9186
+      },
+      "writtenOn": "2023-07-20T08:37:04Z",
+      "side": 1,
+      "message": "not sure if I should change the CL description after-the-fact",
+      "revId": "357ab5c617fe859ee8acb59653d160f97f849e61",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
