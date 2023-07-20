@@ -71,6 +71,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0c1008a_f06a3dd7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 9186
+      },
+      "writtenOn": "2023-07-20T08:36:16Z",
+      "side": 1,
+      "message": "I decided to stick with the current implementation to ensure there is no complications with the XFA stuff",
+      "parentUuid": "4a7f9bc4_439e2b88",
+      "revId": "bcf65c8a86506a93e2460608ef4863fce096a982",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2bedd080_e935b6b9",
@@ -131,6 +149,30 @@
       "writtenOn": "2023-06-16T22:26:47Z",
       "side": 1,
       "message": "pdfium:2040",
+      "range": {
+        "startLine": 29,
+        "startChar": 5,
+        "endLine": 29,
+        "endChar": 69
+      },
+      "revId": "bcf65c8a86506a93e2460608ef4863fce096a982",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fff62038_0e51decb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 9186
+      },
+      "writtenOn": "2023-07-20T08:36:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd25bc93_8883bc49",
       "range": {
         "startLine": 29,
         "startChar": 5,
@@ -227,6 +269,42 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e79ce121_f8c695a7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 9186
+      },
+      "writtenOn": "2023-07-20T08:36:16Z",
+      "side": 1,
+      "message": "Patch set has arrived:\n- eliminate duplicate code\n- add assertions for user perms",
+      "parentUuid": "17ed8f5b_aa720bfc",
+      "revId": "bcf65c8a86506a93e2460608ef4863fce096a982",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f003a6e5_a54a925e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 9186
+      },
+      "writtenOn": "2023-07-20T08:36:16Z",
+      "side": 1,
+      "message": "added tests to assert 0xFFFFFFFC for user perms",
+      "parentUuid": "66fe8de4_9fef5957",
+      "revId": "bcf65c8a86506a93e2460608ef4863fce096a982",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d665d1d_08e328f3",
@@ -258,6 +336,24 @@
       "side": 1,
       "message": "sure thing mate, let me take another look at it and see what we can come up with",
       "parentUuid": "4d665d1d_08e328f3",
+      "revId": "bcf65c8a86506a93e2460608ef4863fce096a982",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4ea2213_aafe96a4",
+        "filename": "core/fpdfapi/parser/cpdf_security_handler.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 9186
+      },
+      "writtenOn": "2023-07-20T08:36:16Z",
+      "side": 1,
+      "message": "I have eliminated the duplicate code",
+      "parentUuid": "86d20c90_8a173aa1",
       "revId": "bcf65c8a86506a93e2460608ef4863fce096a982",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
