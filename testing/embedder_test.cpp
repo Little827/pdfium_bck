@@ -416,6 +416,7 @@ bool EmbedderTest::OpenDocumentHelper(const char* password,
     FPDF_LoadXFA(document_ptr);
 
   (void)FPDF_GetDocPermissions(document_ptr);
+  (void)FPDF_GetDocUserPermissions(document_ptr);
   return true;
 }
 

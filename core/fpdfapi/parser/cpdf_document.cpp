@@ -396,9 +396,10 @@ int CPDF_Document::RetrievePageCount() {
   return CountPages(std::move(pPages), &visited_pages).value_or(0);
 }
 
-uint32_t CPDF_Document::GetUserPermissions() const {
+uint32_t CPDF_Document::GetUserPermissions(bool ignore_owner) const {
   if (m_pParser)
-    return m_pParser->GetPermissions();
+    return ignore_owner ? m_pParser->GetUserPermissions()
+                        : m_pParser->GetPermissions();
 
   return m_pExtension ? m_pExtension->GetUserPermissions() : 0;
 }

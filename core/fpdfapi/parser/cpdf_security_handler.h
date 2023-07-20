@@ -35,6 +35,7 @@ class CPDF_SecurityHandler final : public Retainable {
                 const ByteString& user_password);
 
   uint32_t GetPermissions() const;
+  uint32_t GetUserPermissions() const;
   bool IsMetadataEncrypted() const;
 
   CPDF_CryptoHandler* GetCryptoHandler() const {
