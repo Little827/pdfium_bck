@@ -81,6 +81,30 @@
       },
       "revId": "70afaacd2ca874fd307792f9fab834a5f6d2162e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "655d831c_c7783c31",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-07-21T20:30:28Z",
+      "side": 1,
+      "message": "Wrapping to next line is ok too.",
+      "parentUuid": "9c3d30cf_f82041f1",
+      "range": {
+        "startLine": 14,
+        "startChar": 25,
+        "endLine": 14,
+        "endChar": 90
+      },
+      "revId": "70afaacd2ca874fd307792f9fab834a5f6d2162e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
