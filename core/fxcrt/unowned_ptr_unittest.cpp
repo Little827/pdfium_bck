@@ -12,6 +12,10 @@
 #include "testing/gtest/include/gtest/gtest.h"
 #include "third_party/base/containers/contains.h"
 
+#if defined(PDF_USE_PARTITION_ALLOC)
+#include "base/allocator/partition_allocator/partition_address_space.h"
+#endif
+
 namespace fxcrt {
 namespace {
 
@@ -260,27 +264,36 @@ TEST(UnownedPtr, TransparentCompare) {
 }
 
 #if defined(PDF_USE_PARTITION_ALLOC)
-#if BUILDFLAG(ENABLE_BACKUP_REF_PTR_SUPPORT)
 TEST(UnownedPtr, NewOperatorResultIsBRP) {
   auto obj = std::make_unique<Clink>();
+  EXPECT_TRUE(partition_alloc::IsManagedByPartitionAlloc(
+      reinterpret_cast<uintptr_t>(obj.get())));
+#if BUILDFLAG(ENABLE_BACKUP_REF_PTR_SUPPORT)
   EXPECT_TRUE(partition_alloc::IsManagedByPartitionAllocBRPPool(
       reinterpret_cast<uintptr_t>(obj.get())));
+#endif  // BUILDFLAG(ENABLE_BACKUP_REF_PTR_SUPPORT)
 }
 
-// TODO(tsepez): requires full-up PA-E shim.
-TEST(UnownedPtr, DISABLED_MalocResultIsBRP) {
+TEST(UnownedPtr, MalocResultIsBRP) {
   void* obj = malloc(16);
+  EXPECT_TRUE(partition_alloc::IsManagedByPartitionAlloc(
+      reinterpret_cast<uintptr_t>(obj)));
+#if BUILDFLAG(ENABLE_BACKUP_REF_PTR_SUPPORT)
   EXPECT_TRUE(partition_alloc::IsManagedByPartitionAllocBRPPool(
       reinterpret_cast<uintptr_t>(obj)));
+#endif  // BUILDFLAG(ENABLE_BACKUP_REF_PTR_SUPPORT)
   free(obj);
 }
 
 TEST(UnownedPtr, StackObjectIsNotBRP) {
   int x = 3;
+  EXPECT_FALSE(partition_alloc::IsManagedByPartitionAlloc(
+      reinterpret_cast<uintptr_t>(&x)));
+#if BUILDFLAG(ENABLE_BACKUP_REF_PTR_SUPPORT)
   EXPECT_FALSE(partition_alloc::IsManagedByPartitionAllocBRPPool(
       reinterpret_cast<uintptr_t>(&x)));
-}
 #endif  // BUILDFLAG(ENABLE_BACKUP_REF_PTR_SUPPORT)
+}
 #endif  // defined(PDF_USE_PARTITION_ALLOC)
 
 }  // namespace fxcrt
