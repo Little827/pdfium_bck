@@ -221,6 +221,10 @@ FPDF_InitLibraryWithConfig(const FPDF_LIBRARY_CONFIG* config) {
   if (g_bLibraryInitialized)
     return;
 
+  void* obj = malloc(16);
+  CHECK(partition_alloc::IsManagedByPartitionAllocBRPPool(
+      reinterpret_cast<uintptr_t>(obj)));
+
   FX_InitializeMemoryAllocators();
   CFX_GEModule::Create(config ? config->m_pUserFontPaths : nullptr);
   CPDF_PageModule::Create();
