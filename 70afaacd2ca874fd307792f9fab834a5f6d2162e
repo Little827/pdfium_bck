@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03565ec5_25bd6c3a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-07-21T20:21:51Z",
+      "side": 1,
+      "message": "nit: wrap at 72 columns.",
+      "revId": "70afaacd2ca874fd307792f9fab834a5f6d2162e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fddd7f0c_5ea0d6c0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-07-21T20:21:51Z",
+      "side": 1,
+      "message": "Shorten to https://crrev.com/c/4666325",
+      "range": {
+        "startLine": 14,
+        "startChar": 25,
+        "endLine": 14,
+        "endChar": 90
+      },
+      "revId": "70afaacd2ca874fd307792f9fab834a5f6d2162e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
