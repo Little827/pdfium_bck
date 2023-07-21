@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "591fefd4_68dfc72e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7634
+      },
+      "writtenOn": "2023-07-21T20:24:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03565ec5_25bd6c3a",
+      "revId": "70afaacd2ca874fd307792f9fab834a5f6d2162e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fddd7f0c_5ea0d6c0",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-07-21T20:21:51Z",
       "side": 1,
       "message": "Shorten to https://crrev.com/c/4666325",
+      "range": {
+        "startLine": 14,
+        "startChar": 25,
+        "endLine": 14,
+        "endChar": 90
+      },
+      "revId": "70afaacd2ca874fd307792f9fab834a5f6d2162e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c3d30cf_f82041f1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 7634
+      },
+      "writtenOn": "2023-07-21T20:24:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fddd7f0c_5ea0d6c0",
       "range": {
         "startLine": 14,
         "startChar": 25,
