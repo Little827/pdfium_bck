@@ -449,6 +449,7 @@ group("pdfium_unittest_deps") {
 test("pdfium_unittests") {
   testonly = true
   sources = [ "testing/unit_test_main.cpp" ]
+  sources += [ "testing/partition_alloc_shim_test.cpp" ]
   deps = [
     "core/fdrm:unittests",
     "core/fpdfapi/edit:unittests",

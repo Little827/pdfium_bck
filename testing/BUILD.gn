@@ -53,7 +53,6 @@ source_set("test_support") {
   visibility = [ "../*" ]
   if (pdf_use_partition_alloc && !build_with_chromium && !is_win && !is_asan &&
       !is_msan && !is_ubsan) {
-    sources += [ "utils/malloc_shim.cpp" ]
     deps += [ "//base/allocator/partition_allocator:partition_alloc" ]
   }
   if (pdf_enable_v8) {
