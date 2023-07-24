@@ -11,14 +11,10 @@ source_set("unowned_ptr") {
   deps = [ "../../third_party:pdfium_compiler_specific" ]
   configs += [ "../../:pdfium_strict_config" ]
   if (pdf_use_partition_alloc) {
-    if (build_with_chromium) {
-      deps += [ "//base" ]
-    } else {
-      deps += [
-        "//base/allocator/partition_allocator:partition_alloc_buildflags",
-        "//base/allocator/partition_allocator:raw_ptr",
-      ]
-    }
+    deps += [
+      "//base/allocator/partition_allocator:partition_alloc",
+      "//base/allocator/partition_allocator:partition_alloc_buildflags",
+    ]
   }
 }
 
