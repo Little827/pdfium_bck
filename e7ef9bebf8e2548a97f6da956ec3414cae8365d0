@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "969f3ca8_4639a794",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-07-24T23:08:23Z",
+      "side": 1,
+      "message": "LGTM with a question.",
+      "revId": "e7ef9bebf8e2548a97f6da956ec3414cae8365d0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06e08fad_b3b92798",
+        "filename": "AUTHORS",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-07-24T23:08:23Z",
+      "side": 1,
+      "message": "Is this going to be a contribution from an organization or as an individual contribution? \n\nFor these two types of contributions, you need to complete the license agreement at https://pdfium.googlesource.com/pdfium/+/refs/heads/main/CONTRIBUTING.md#cla",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 26
+      },
+      "revId": "e7ef9bebf8e2548a97f6da956ec3414cae8365d0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
