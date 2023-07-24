@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c3f3906_c5ec1d58",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-07-24T20:15:21Z",
+      "side": 1,
+      "message": "Why not change\n\nhttps://source.chromium.org/chromium/chromium/src/+/main:third_party/pdfium/xfa/fxfa/parser/cxfa_delta.cpp;drc\u003d832a694e52c44e206598eff8c7d1797d47117d1b;l\u003d16\n\nwhere this is initialized from Object to Node?",
+      "revId": "21406831b74485a79253859f9fae1281fcdaaaf6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
