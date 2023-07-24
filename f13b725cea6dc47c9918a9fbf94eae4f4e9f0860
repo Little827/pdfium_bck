@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34f3ed33_bb528b5a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-07-24T19:39:00Z",
+      "side": 1,
+      "message": "See https://crbug.com/1467034#c2 for more analysis. Semi-ironically, this crash wouldn\u0027t happen if the fix for the TODO had stuck (as no Realize() operation would be involved).",
+      "revId": "f13b725cea6dc47c9918a9fbf94eae4f4e9f0860",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
