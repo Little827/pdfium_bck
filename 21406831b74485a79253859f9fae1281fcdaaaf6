@@ -69,6 +69,23 @@
       "parentUuid": "a0f2a7c8_3038a40f",
       "revId": "21406831b74485a79253859f9fae1281fcdaaaf6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed464284_62fd51fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-07-24T20:29:50Z",
+      "side": 1,
+      "message": "Anyways, this is OK, but I was hoping we could make it more consistent.",
+      "revId": "21406831b74485a79253859f9fae1281fcdaaaf6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
