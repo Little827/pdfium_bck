@@ -51,11 +51,6 @@ source_set("test_support") {
     "../:pdfium_noshorten_config",
   ]
   visibility = [ "../*" ]
-  if (pdf_use_partition_alloc && !build_with_chromium && !is_win && !is_asan &&
-      !is_msan && !is_ubsan) {
-    sources += [ "utils/malloc_shim.cpp" ]
-    deps += [ "//base/allocator/partition_allocator:partition_alloc" ]
-  }
   if (pdf_enable_v8) {
     sources += [
       "v8_initializer.cpp",
@@ -135,6 +130,9 @@ source_set("unit_test_support") {
     ":test_environments",
     ":test_support",
   ]
+  if (pdf_use_partition_alloc) {
+    public_deps += [ "//base/allocator/partition_allocator:partition_alloc" ]
+  }
   if (pdf_enable_v8) {
     sources += [
       "fxv8_unittest.cpp",
