@@ -453,6 +453,7 @@ test("pdfium_unittests") {
   testonly = true
   sources = [ "testing/unit_test_main.cpp" ]
   deps = [
+    ":pdfium_unittest_deps",
     "core/fdrm:unittests",
     "core/fpdfapi/edit:unittests",
     "core/fpdfapi/font:unittests",
