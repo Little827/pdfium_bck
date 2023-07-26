@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96a406af_a35f37eb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-07-26T18:29:34Z",
+      "side": 1,
+      "message": "Worked locally, we can kick off an autoroll after landing and see ...",
+      "revId": "dcfbeda37cd8e99e9a44a03ae6fd1ebe8f63b0c2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
