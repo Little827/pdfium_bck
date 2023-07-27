@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93522249_fc378d7d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-07-27T21:25:31Z",
+      "side": 1,
+      "message": "Verified using LED shadow builds:\nhttps://ci.chromium.org/ui/p/pdfium/builders/try.shadow/linux/26/overview\nhttps://ci.chromium.org/ui/p/pdfium/builders/try.shadow/mac/3/overview\nhttps://ci.chromium.org/ui/p/pdfium/builders/try.shadow/win/4/overview",
+      "revId": "b26a24f02b462ca43e20fd887aef35c226181415",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
