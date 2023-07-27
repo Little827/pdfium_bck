@@ -63,6 +63,30 @@
       },
       "revId": "e7ef9bebf8e2548a97f6da956ec3414cae8365d0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e1595d8_7131589b",
+        "filename": "AUTHORS",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-07-27T19:17:46Z",
+      "side": 1,
+      "message": "Thanks! That is enough. I confirmed the CLA status.",
+      "parentUuid": "c330190b_97b3ccfb",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 26
+      },
+      "revId": "e7ef9bebf8e2548a97f6da956ec3414cae8365d0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
