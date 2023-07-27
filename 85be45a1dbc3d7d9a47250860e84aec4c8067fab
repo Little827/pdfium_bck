@@ -16,6 +16,24 @@
       "message": "Add a \"Bug:\" entry for tracking purposes?",
       "revId": "85be45a1dbc3d7d9a47250860e84aec4c8067fab",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11b5e3d7_b5b39f24",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 22
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-07-27T22:43:52Z",
+      "side": 1,
+      "message": "Vaguely related to pdfium:2038. Done.",
+      "parentUuid": "b2e6314a_2d901595",
+      "revId": "85be45a1dbc3d7d9a47250860e84aec4c8067fab",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
