@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2e6314a_2d901595",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 22
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-07-27T22:23:18Z",
+      "side": 1,
+      "message": "Add a \"Bug:\" entry for tracking purposes?",
+      "revId": "85be45a1dbc3d7d9a47250860e84aec4c8067fab",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
