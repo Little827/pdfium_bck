@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2e5261f_2f25bd0c",
+        "filename": "BUILD.gn",
+        "patchSetId": 21
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-07-27T20:43:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81dcd954_58203b60",
+      "revId": "bdeceb5508b1cc8cc24f7333feedd1987fc3fa3f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e083508c_379491fe",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-07-27T19:49:28Z",
       "side": 1,
       "message": "\"own shim\"",
+      "range": {
+        "startLine": 7,
+        "startChar": 50,
+        "endLine": 7,
+        "endChar": 53
+      },
+      "revId": "bdeceb5508b1cc8cc24f7333feedd1987fc3fa3f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f1aa962_bdfc3872",
+        "filename": "build_overrides/partition_alloc.gni",
+        "patchSetId": 21
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-07-27T20:43:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e083508c_379491fe",
       "range": {
         "startLine": 7,
         "startChar": 50,
@@ -58,6 +100,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b75eef18_4a2c9e97",
+        "filename": "build_overrides/partition_alloc.gni",
+        "patchSetId": 21
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-07-27T20:43:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a607c17_0f84213d",
+      "revId": "bdeceb5508b1cc8cc24f7333feedd1987fc3fa3f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8e342ca9_54951612",
@@ -71,6 +131,24 @@
       "writtenOn": "2023-07-27T19:49:28Z",
       "side": 1,
       "message": "Is this still needed, considering https://pdfium-review.googlesource.com/110270 recently landed?",
+      "revId": "bdeceb5508b1cc8cc24f7333feedd1987fc3fa3f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bbcc810_61df0a4e",
+        "filename": "core/fxcrt/BUILD.gn",
+        "patchSetId": 21
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-07-27T20:43:08Z",
+      "side": 1,
+      "message": "Reworked.",
+      "parentUuid": "8e342ca9_54951612",
       "revId": "bdeceb5508b1cc8cc24f7333feedd1987fc3fa3f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -92,6 +170,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "31603c6e_57e7f1eb",
+        "filename": "core/fxcrt/unowned_ptr_unittest.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-07-27T20:43:08Z",
+      "side": 1,
+      "message": "Done. Done.",
+      "parentUuid": "819cf49a_823ca45a",
+      "revId": "bdeceb5508b1cc8cc24f7333feedd1987fc3fa3f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "15ae3d67_28464d18",
@@ -109,6 +205,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "356a604d_e7de5cf6",
+        "filename": "core/fxcrt/unowned_ptr_unittest.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-07-27T20:43:08Z",
+      "side": 1,
+      "message": "Probably not. Depends on the order of macro substitution vs. #if-lazy-evaluation. In other words, unless we have PDF_USE_PARTITION_ALLOC, these particular buildflags doen\u0027t exist, so combining it in a \u0026\u0026-clause seemed dicey as it might give errors.",
+      "parentUuid": "15ae3d67_28464d18",
+      "revId": "bdeceb5508b1cc8cc24f7333feedd1987fc3fa3f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c3513b85_aa3589bd",
@@ -122,6 +236,24 @@
       "writtenOn": "2023-07-27T19:49:28Z",
       "side": 1,
       "message": "Combine with previous line?",
+      "revId": "bdeceb5508b1cc8cc24f7333feedd1987fc3fa3f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8a54c74_ef29fde0",
+        "filename": "testing/unit_test_main.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-07-27T20:43:08Z",
+      "side": 1,
+      "message": "See previous.",
+      "parentUuid": "c3513b85_aa3589bd",
       "revId": "bdeceb5508b1cc8cc24f7333feedd1987fc3fa3f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
