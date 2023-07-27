@@ -1,0 +1,129 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81dcd954_58203b60",
+        "filename": "BUILD.gn",
+        "patchSetId": 21
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-07-27T19:49:28Z",
+      "side": 1,
+      "message": "Let\u0027s move this to after the pdf_enable_v8 conditional, so the list is ordered as:\n1) unconditional\n2) platform-specific\n3) feature-specific",
+      "revId": "bdeceb5508b1cc8cc24f7333feedd1987fc3fa3f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e083508c_379491fe",
+        "filename": "build_overrides/partition_alloc.gni",
+        "patchSetId": 21
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-07-27T19:49:28Z",
+      "side": 1,
+      "message": "\"own shim\"",
+      "range": {
+        "startLine": 7,
+        "startChar": 50,
+        "endLine": 7,
+        "endChar": 53
+      },
+      "revId": "bdeceb5508b1cc8cc24f7333feedd1987fc3fa3f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a607c17_0f84213d",
+        "filename": "build_overrides/partition_alloc.gni",
+        "patchSetId": 21
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-07-27T19:49:28Z",
+      "side": 1,
+      "message": "Is there an existing bug this comment can reference?",
+      "revId": "bdeceb5508b1cc8cc24f7333feedd1987fc3fa3f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e342ca9_54951612",
+        "filename": "core/fxcrt/BUILD.gn",
+        "patchSetId": 21
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-07-27T19:49:28Z",
+      "side": 1,
+      "message": "Is this still needed, considering https://pdfium-review.googlesource.com/110270 recently landed?",
+      "revId": "bdeceb5508b1cc8cc24f7333feedd1987fc3fa3f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "819cf49a_823ca45a",
+        "filename": "core/fxcrt/unowned_ptr_unittest.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-07-27T19:49:28Z",
+      "side": 1,
+      "message": "Not sure what this is used for. Same for testing/unit_test_main.cpp.",
+      "revId": "bdeceb5508b1cc8cc24f7333feedd1987fc3fa3f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15ae3d67_28464d18",
+        "filename": "core/fxcrt/unowned_ptr_unittest.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-07-27T19:49:28Z",
+      "side": 1,
+      "message": "Should this line be combined with the previous line?",
+      "revId": "bdeceb5508b1cc8cc24f7333feedd1987fc3fa3f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3513b85_aa3589bd",
+        "filename": "testing/unit_test_main.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-07-27T19:49:28Z",
+      "side": 1,
+      "message": "Combine with previous line?",
+      "revId": "bdeceb5508b1cc8cc24f7333feedd1987fc3fa3f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
