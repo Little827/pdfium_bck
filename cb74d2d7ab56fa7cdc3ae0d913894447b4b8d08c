@@ -1,6 +1,69 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "62fc1ed4_7009787c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-07-28T19:08:40Z",
+      "side": 1,
+      "message": "1174732",
+      "range": {
+        "startLine": 9,
+        "startChar": 37,
+        "endLine": 9,
+        "endChar": 46
+      },
+      "revId": "cb74d2d7ab56fa7cdc3ae0d913894447b4b8d08c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0fb6034_e640735b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-07-28T19:08:40Z",
+      "side": 1,
+      "message": "crrev.com to make this a proper link.",
+      "range": {
+        "startLine": 9,
+        "startChar": 31,
+        "endLine": 9,
+        "endChar": 36
+      },
+      "revId": "cb74d2d7ab56fa7cdc3ae0d913894447b4b8d08c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9376fd1_533c8a9b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-07-28T19:08:40Z",
+      "side": 1,
+      "message": "Include the changelog link?",
+      "revId": "cb74d2d7ab56fa7cdc3ae0d913894447b4b8d08c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "63d1df83_13737821",
@@ -32,6 +95,23 @@
       "side": 1,
       "message": "https://pdfium-review.googlesource.com/c/pdfium/+/110391 updates build - I checked that it now contains the missing enable_arc2 config.\n\nThere also is a manual rename required for a symbol \nunit_test_main.cpp:32:23: error: no member named \u0027AlternateBucketDistribution\u0027 in namespace \u0027allocator_shim\u0027; did you mean \u0027BucketDistribution\u0027?",
       "parentUuid": "63d1df83_13737821",
+      "revId": "cb74d2d7ab56fa7cdc3ae0d913894447b4b8d08c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb8daf0c_80e5f3c5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-07-28T19:08:40Z",
+      "side": 1,
+      "message": "I think PDFium needs to update to compensate for the rename in https://crrev.com/1174560",
       "revId": "cb74d2d7ab56fa7cdc3ae0d913894447b4b8d08c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
