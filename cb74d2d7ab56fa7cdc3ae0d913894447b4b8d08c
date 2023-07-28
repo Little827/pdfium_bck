@@ -16,6 +16,24 @@
       "message": "Looks like we might need a buildtools roll first ...",
       "revId": "cb74d2d7ab56fa7cdc3ae0d913894447b4b8d08c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c7263bb_1d7044eb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-07-28T16:20:35Z",
+      "side": 1,
+      "message": "https://pdfium-review.googlesource.com/c/pdfium/+/110391 updates build - I checked that it now contains the missing enable_arc2 config.\n\nThere also is a manual rename required for a symbol \nunit_test_main.cpp:32:23: error: no member named \u0027AlternateBucketDistribution\u0027 in namespace \u0027allocator_shim\u0027; did you mean \u0027BucketDistribution\u0027?",
+      "parentUuid": "63d1df83_13737821",
+      "revId": "cb74d2d7ab56fa7cdc3ae0d913894447b4b8d08c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
