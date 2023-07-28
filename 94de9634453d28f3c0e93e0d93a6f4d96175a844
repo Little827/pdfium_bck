@@ -16,6 +16,24 @@
       "message": "Hmm, maybe we do need to roll //build some more.",
       "revId": "94de9634453d28f3c0e93e0d93a6f4d96175a844",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c50f94c_6365edbf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-07-28T20:18:20Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/c/chromium/src/+/4505495 is where I expect this config got introduced, and we should have rolled past it on the prior cl onto which this should be rebased.",
+      "parentUuid": "27987018_e2aaf639",
+      "revId": "94de9634453d28f3c0e93e0d93a6f4d96175a844",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
