@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "807074c2_9f8c29af",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-07-28T20:48:44Z",
+      "side": 1,
+      "message": "I think the mac issue is that Avi updated BUILDCONFIG.gn for chrome to set the \u0027arc2 config, but PDFium has a private copy of this.",
+      "revId": "9ee75b83ab8a808e5966daeb47dcc18543cae344",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
