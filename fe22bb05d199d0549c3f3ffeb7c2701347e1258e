@@ -16,6 +16,24 @@
       "message": "Not sure I understand the test failures ... hmm.",
       "revId": "fe22bb05d199d0549c3f3ffeb7c2701347e1258e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39301511_4286fb67",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-07-28T18:53:33Z",
+      "side": 1,
+      "message": "They are unrelated.",
+      "parentUuid": "b1dbb8ab_fa8eba7c",
+      "revId": "fe22bb05d199d0549c3f3ffeb7c2701347e1258e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
