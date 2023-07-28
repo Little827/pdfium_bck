@@ -16,6 +16,24 @@
       "message": "Aha, https://chromium-review.googlesource.com/c/chromium/src/+/4710347 removed a \u0027six\u0027 package from result_sink.py and instead is trying to invoke something the bot\u0027s don\u0027t have:\n\nb64_log \u003d base64.b64encode(test_log.encode()).decode()\nAttributeError: \u0027bytes\u0027 object has no attribute \u0027encode\u0027",
       "revId": "7236914e0d3fb2805c7b683bcd2dd6ebb9bf3d2b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a65670d6_6ff56c06",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7598
+      },
+      "writtenOn": "2023-07-28T19:44:30Z",
+      "side": 1,
+      "message": "`test_runner.py` uses `vpython3`, so it shouldn\u0027t need to be updated. The `bytes` object doesn\u0027t support `encode()` in Python 3, because that makes no sense for raw bytes.\n\nIt looks like this method used to accept `bytes` for the `test_log`, but it only ever was specified to accept a string.",
+      "parentUuid": "835b0a14_e83b901c",
+      "revId": "7236914e0d3fb2805c7b683bcd2dd6ebb9bf3d2b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ],
   "submitRequirementResults": [
