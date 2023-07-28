@@ -1,3 +1,4 @@
+# DO NOT CI.
 use_relative_paths = True
 
 gclient_gn_args_file = 'build/config/gclient_args.gni'
