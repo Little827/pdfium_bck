@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef THIRD_PARTY_BASE_SPAN_H_
-#define THIRD_PARTY_BASE_SPAN_H_
+#ifndef THIRD_PARTY_BASE_CONTAINERS_SPAN_H_
+#define THIRD_PARTY_BASE_CONTAINERS_SPAN_H_
 
 #include <stddef.h>
 
@@ -49,8 +49,8 @@ using IsLegalSpanConversion = std::is_convertible<From*, To*>;
 
 template <typename Container, typename T>
 using ContainerHasConvertibleData =
-    IsLegalSpanConversion<typename std::remove_pointer<decltype(
-                              std::declval<Container>().data())>::type,
+    IsLegalSpanConversion<typename std::remove_pointer<
+                              decltype(std::declval<Container>().data())>::type,
                           T>;
 template <typename Container>
 using ContainerHasIntegralSize =
@@ -303,8 +303,9 @@ class TRIVIAL_ABI GSL_POINTER span {
 #if defined(ADDRESS_SANITIZER) && !defined(UNOWNED_PTR_IS_BASE_RAW_PTR)
     // Empty spans might point to byte N+1 of a N-byte object, legal for
     // C pointers but not UnownedPtrs.
-    if (!size_)
+    if (!size_) {
       data_.ReleaseBadPointer();
+    }
 #endif
   }
 
@@ -395,4 +396,4 @@ constexpr span<T> make_span(const Container& container) {
 
 }  // namespace pdfium
 
-#endif  // THIRD_PARTY_BASE_SPAN_H_
+#endif  // THIRD_PARTY_BASE_CONTAINERS_SPAN_H_
