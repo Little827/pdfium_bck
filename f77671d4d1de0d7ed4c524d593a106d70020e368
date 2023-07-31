@@ -33,6 +33,24 @@
       "message": "Is there a style guide rule about this? JDLR (just don\u0027t look right) to my eyes without the breaks.",
       "revId": "f77671d4d1de0d7ed4c524d593a106d70020e368",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63aef40e_6d7df70e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-07-31T22:02:00Z",
+      "side": 1,
+      "message": "With Chromium\u0027s NOTREACHED_NORETURN(), the break will trigger a compiler warning, which then gets upgraded to an error.\n\nIn the Chromium source tree, run `git grep -C 2 NOTREACHED_NORETURN` and search for \"case \" or \"default:\" to see how it\u0027s written there.",
+      "parentUuid": "030cb611_58e07a5a",
+      "revId": "f77671d4d1de0d7ed4c524d593a106d70020e368",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
