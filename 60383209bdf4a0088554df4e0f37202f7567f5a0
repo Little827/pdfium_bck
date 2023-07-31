@@ -16,6 +16,23 @@
       "message": "Currently seeing messages like this in a Chromium build when building `//testing/tools:test_runner_py` without this change:\n\n```\nWARNING:root:\"../../third_party/pdfium/testing/corpus\" does not exist\nWARNING:root:\"../../third_party/pdfium/build/skia_gold_common\" does not exist\nWARNING:root:\"../../third_party/pdfium/build/util/lib\" does not exist\nWARNING:root:\"../../third_party/pdfium/third_party/test_fonts\" does not exist\nWARNING:root:\"../../third_party/pdfium/tools/resultdb\" does not exist\nWARNING:root:\"../../third_party/pdfium/tools/skia_goldctl\" does not exist\n```\n\n(These files aren\u0027t checked out in a non-standalone checkout.)",
       "revId": "60383209bdf4a0088554df4e0f37202f7567f5a0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1b16113_f987a34d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-07-31T21:55:57Z",
+      "side": 1,
+      "message": "thanks.",
+      "revId": "60383209bdf4a0088554df4e0f37202f7567f5a0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
