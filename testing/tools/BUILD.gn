@@ -2,8 +2,12 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
+import("../../pdfium.gni")
+
 # Generates the list of inputs required by `test_runner.py` tests.
 action("test_runner_py") {
+  assert(pdf_is_standalone, "Only needed by PDFium builders")
+
   testonly = true
 
   write_runtime_deps = "${root_out_dir}/${target_name}.runtime_deps"
