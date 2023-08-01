@@ -16,6 +16,24 @@
       "message": "Looks like this got rolled again this morning in r1177874. Revision matches previous roll.",
       "revId": "f2d38e9b12642816db0e798c6ce39b3f20b2e648",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42a95671_705b8ded",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-08-01T17:48:16Z",
+      "side": 1,
+      "message": "There\u0027s always next time. That GN update only contains a refactoring CL.",
+      "parentUuid": "94ebff0e_5bb026ed",
+      "revId": "f2d38e9b12642816db0e798c6ce39b3f20b2e648",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
