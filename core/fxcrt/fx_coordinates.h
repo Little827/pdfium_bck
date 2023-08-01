@@ -18,17 +18,13 @@
 template <class BaseType>
 class CFX_PTemplate {
  public:
-  CFX_PTemplate() : x(0), y(0) {}
-  CFX_PTemplate(BaseType new_x, BaseType new_y) : x(new_x), y(new_y) {}
-  CFX_PTemplate(const CFX_PTemplate& other) : x(other.x), y(other.y) {}
+  constexpr CFX_PTemplate() = default;
+  constexpr CFX_PTemplate(BaseType new_x, BaseType new_y)
+      : x(new_x), y(new_y) {}
+  CFX_PTemplate(const CFX_PTemplate& other) = default;
 
-  CFX_PTemplate& operator=(const CFX_PTemplate& other) {
-    if (this != &other) {
-      x = other.x;
-      y = other.y;
-    }
-    return *this;
-  }
+  CFX_PTemplate& operator=(const CFX_PTemplate& other) = default;
+
   bool operator==(const CFX_PTemplate& other) const {
     return x == other.x && y == other.y;
   }
@@ -52,8 +48,8 @@ class CFX_PTemplate {
     return CFX_PTemplate(x - other.x, y - other.y);
   }
 
-  BaseType x;
-  BaseType y;
+  BaseType x = 0;
+  BaseType y = 0;
 };
 using CFX_Point16 = CFX_PTemplate<int16_t>;
 using CFX_Point = CFX_PTemplate<int32_t>;
@@ -62,13 +58,10 @@ using CFX_PointF = CFX_PTemplate<float>;
 template <class BaseType>
 class CFX_STemplate {
  public:
-  CFX_STemplate() : width(0), height(0) {}
-
-  CFX_STemplate(BaseType new_width, BaseType new_height)
+  constexpr CFX_STemplate() = default;
+  constexpr CFX_STemplate(BaseType new_width, BaseType new_height)
       : width(new_width), height(new_height) {}
-
-  CFX_STemplate(const CFX_STemplate& other)
-      : width(other.width), height(other.height) {}
+  CFX_STemplate(const CFX_STemplate& other) = default;
 
   template <typename OtherType>
   CFX_STemplate<OtherType> As() const {
@@ -126,8 +119,8 @@ class CFX_STemplate {
     return CFX_STemplate(width / divisor, height / divisor);
   }
 
-  BaseType width;
-  BaseType height;
+  BaseType width = 0;
+  BaseType height = 0;
 };
 using CFX_Size = CFX_STemplate<int32_t>;
 using CFX_SizeF = CFX_STemplate<float>;
@@ -160,8 +153,9 @@ using CFX_VectorF = CFX_VTemplate<float>;
 // LTRB rectangles (y-axis runs downwards).
 // Struct layout is compatible with win32 RECT.
 struct FX_RECT {
-  FX_RECT() = default;
-  FX_RECT(int l, int t, int r, int b) : left(l), top(t), right(r), bottom(b) {}
+  constexpr FX_RECT() = default;
+  constexpr FX_RECT(int l, int t, int r, int b)
+      : left(l), top(t), right(r), bottom(b) {}
 
   int Width() const { return right - left; }
   int Height() const { return bottom - top; }
@@ -295,8 +289,11 @@ class CFX_RectF {
   using PointType = CFX_PointF;
   using SizeType = CFX_SizeF;
 
-  CFX_RectF() = default;
-  CFX_RectF(float dst_left, float dst_top, float dst_width, float dst_height)
+  constexpr CFX_RectF() = default;
+  constexpr CFX_RectF(float dst_left,
+                      float dst_top,
+                      float dst_width,
+                      float dst_height)
       : left(dst_left), top(dst_top), width(dst_width), height(dst_height) {}
   CFX_RectF(float dst_left, float dst_top, const SizeType& dst_size)
       : left(dst_left),
@@ -459,12 +456,17 @@ std::ostream& operator<<(std::ostream& os, const CFX_RectF& rect);
 //
 class CFX_Matrix {
  public:
-  CFX_Matrix() = default;
+  constexpr CFX_Matrix() = default;
 
   explicit CFX_Matrix(const float n[6])
       : a(n[0]), b(n[1]), c(n[2]), d(n[3]), e(n[4]), f(n[5]) {}
 
-  CFX_Matrix(float a1, float b1, float c1, float d1, float e1, float f1)
+  constexpr CFX_Matrix(float a1,
+                       float b1,
+                       float c1,
+                       float d1,
+                       float e1,
+                       float f1)
       : a(a1), b(b1), c(c1), d(d1), e(e1), f(f1) {}
 
   CFX_Matrix(const CFX_Matrix& other) = default;
