@@ -347,7 +347,7 @@ CFX_SizeF CFWL_MonthCalendar::CalcSize() {
 
   CFX_SizeF szYear = CalcTextSize(GetHeadText(m_iYear, m_iMonth), false);
   fMonthMaxH = std::max(fMonthMaxH, szYear.height);
-  m_HeadSize = CFX_SizeF(fMonthMaxW + szYear.width, fMonthMaxH);
+  m_HeadSize = {fMonthMaxW + szYear.width, fMonthMaxH};
   fMonthMaxW =
       m_HeadSize.width + kMonthCalHeaderBtnHMargin * 2 + m_CellSize.width * 2;
   fs.width = std::max(fs.width, fMonthMaxW);

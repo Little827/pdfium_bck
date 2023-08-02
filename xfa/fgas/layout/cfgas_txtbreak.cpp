@@ -818,7 +818,7 @@ size_t CFGAS_TxtBreak::GetDisplayPos(const Run& run,
         fX -= fCharWidth;
 
       if (!bEmptyChar || (bEmptyChar && !bSkipSpace)) {
-        pCharPos->m_Origin = CFX_PointF(fX, fY);
+        pCharPos->m_Origin = {fX, fY};
 
         if (!!(dwStyles & LayoutStyle::kCombText)) {
           int32_t iFormWidth = pFont->GetCharWidth(wForm).value_or(iCharWidth);

@@ -40,18 +40,17 @@ int32_t CXFA_ViewLayoutItem::GetPageIndex() const {
 }
 
 CFX_SizeF CXFA_ViewLayoutItem::GetPageSize() const {
-  CFX_SizeF size;
   CXFA_Medium* pMedium =
       GetFormNode()->GetFirstChildByClass<CXFA_Medium>(XFA_Element::Medium);
   if (!pMedium)
-    return size;
+    return {};
 
-  size = CFX_SizeF(
+  CFX_SizeF size = {
       pMedium->JSObject()->GetMeasureInUnit(XFA_Attribute::Short, XFA_Unit::Pt),
-      pMedium->JSObject()->GetMeasureInUnit(XFA_Attribute::Long, XFA_Unit::Pt));
+      pMedium->JSObject()->GetMeasureInUnit(XFA_Attribute::Long, XFA_Unit::Pt)};
   if (pMedium->JSObject()->GetEnum(XFA_Attribute::Orientation) ==
       XFA_AttributeValue::Landscape) {
-    size = CFX_SizeF(size.height, size.width);
+    size = {size.height, size.width};
   }
   return size;
 }

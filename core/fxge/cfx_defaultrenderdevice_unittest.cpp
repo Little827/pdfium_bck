@@ -18,7 +18,7 @@ TEST(CFX_DefaultRenderDeviceTest, GetClipBox_Default) {
   ASSERT_TRUE(device.Create(/*width=*/16, /*height=*/16, FXDIB_Format::kArgb,
                             /*pBackdropBitmap=*/nullptr));
 
-  EXPECT_EQ(FX_RECT(0, 0, 16, 16), device.GetClipBox());
+  EXPECT_EQ((FX_RECT{0, 0, 16, 16}), device.GetClipBox());
 }
 
 TEST(CFX_DefaultRenderDeviceTest, GetClipBox_PathFill) {
@@ -37,7 +37,7 @@ TEST(CFX_DefaultRenderDeviceTest, GetClipBox_PathFill) {
   path.AppendRect(2, 4, 14, 12);
   EXPECT_TRUE(device.SetClip_PathFill(path, &object_to_device, fill_options));
 
-  EXPECT_EQ(FX_RECT(5, 1, 13, 13), device.GetClipBox());
+  EXPECT_EQ((FX_RECT{5, 1, 13, 13}), device.GetClipBox());
 }
 
 TEST(CFX_DefaultRenderDeviceTest, GetClipBox_PathStroke) {
@@ -56,7 +56,7 @@ TEST(CFX_DefaultRenderDeviceTest, GetClipBox_PathStroke) {
   EXPECT_TRUE(
       device.SetClip_PathStroke(path, &object_to_device, &graphics_state));
 
-  EXPECT_EQ(FX_RECT(4, 0, 14, 14), device.GetClipBox());
+  EXPECT_EQ((FX_RECT{4, 0, 14, 14}), device.GetClipBox());
 }
 
 TEST(CFX_DefaultRenderDeviceTest, GetClipBox_Rect) {
@@ -66,7 +66,7 @@ TEST(CFX_DefaultRenderDeviceTest, GetClipBox_Rect) {
 
   EXPECT_TRUE(device.SetClip_Rect({2, 4, 14, 12}));
 
-  EXPECT_EQ(FX_RECT(2, 4, 14, 12), device.GetClipBox());
+  EXPECT_EQ((FX_RECT{2, 4, 14, 12}), device.GetClipBox());
 }
 
 TEST(CFX_DefaultRenderDeviceTest, GetClipBox_Empty) {

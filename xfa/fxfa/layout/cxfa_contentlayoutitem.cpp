@@ -77,10 +77,10 @@ CFX_RectF CXFA_ContentLayoutItem::GetAbsoluteRect() const {
           pContent->GetFormNode()->GetFirstChildByClass<CXFA_Margin>(
               XFA_Element::Margin);
       if (pMarginNode) {
-        sPos += CFX_PointF(pMarginNode->JSObject()->GetMeasureInUnit(
+        sPos += CFX_PointF{pMarginNode->JSObject()->GetMeasureInUnit(
                                XFA_Attribute::LeftInset, XFA_Unit::Pt),
                            pMarginNode->JSObject()->GetMeasureInUnit(
-                               XFA_Attribute::TopInset, XFA_Unit::Pt));
+                               XFA_Attribute::TopInset, XFA_Unit::Pt)};
       }
       continue;
     }
@@ -88,10 +88,10 @@ CFX_RectF CXFA_ContentLayoutItem::GetAbsoluteRect() const {
     if (pLayoutItem->GetFormNode()->GetElementType() ==
         XFA_Element::ContentArea) {
       sPos +=
-          CFX_PointF(pLayoutItem->GetFormNode()->JSObject()->GetMeasureInUnit(
+          CFX_PointF{pLayoutItem->GetFormNode()->JSObject()->GetMeasureInUnit(
                          XFA_Attribute::X, XFA_Unit::Pt),
                      pLayoutItem->GetFormNode()->JSObject()->GetMeasureInUnit(
-                         XFA_Attribute::Y, XFA_Unit::Pt));
+                         XFA_Attribute::Y, XFA_Unit::Pt)};
       break;
     }
     if (pLayoutItem->GetFormNode()->GetElementType() == XFA_Element::PageArea)

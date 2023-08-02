@@ -243,7 +243,7 @@ CPVT_FloatRect CPVT_Section::Rearrange() {
 
 CFX_SizeF CPVT_Section::GetSectionSize(float fFontSize) {
   CPVT_FloatRect result = SplitLines(/*bTypeset=*/false, fFontSize);
-  return CFX_SizeF(result.Width(), result.Height());
+  return {result.Width(), result.Height()};
 }
 
 CPVT_WordPlace CPVT_Section::GetBeginWordPlace() const {

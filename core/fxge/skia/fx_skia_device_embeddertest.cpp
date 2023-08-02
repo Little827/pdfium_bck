@@ -59,7 +59,7 @@ void EmptyTest(CFX_SkiaDeviceDriver* driver, const State&) {
 
 void CommonTest(CFX_SkiaDeviceDriver* driver, const State& state) {
   TextCharPos charPos[1];
-  charPos[0].m_Origin = CFX_PointF(0, 1);
+  charPos[0].m_Origin = {0, 1};
   charPos[0].m_GlyphIndex = 0;
   charPos[0].m_FontCharWidth = 4;
 

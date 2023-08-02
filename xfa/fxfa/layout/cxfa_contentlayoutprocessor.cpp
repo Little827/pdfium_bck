@@ -245,7 +245,7 @@ void RelocateTableRowCells(CXFA_ContentLayoutItem* pLayoutRow,
     if (nOriginalColSpan == -1)
       bMetWholeRowCell = true;
 
-    pLayoutChild->m_sPos = CFX_PointF(fCurrentColX, 0);
+    pLayoutChild->m_sPos = {fCurrentColX, 0};
     pLayoutChild->m_sSize.width = fColSpanWidth;
     if (!pLayoutChild->GetFormNode()->PresenceRequiresSpace())
       continue;
@@ -593,9 +593,9 @@ CFX_PointF CalculatePositionedContainerPos(CXFA_Node* pNode,
                                          {8, 7, 6, 5, 4, 3, 2, 1, 0},
                                          {2, 5, 8, 1, 4, 7, 0, 3, 6}};
 
-  CFX_PointF pos(
+  CFX_PointF pos = {
       pNode->JSObject()->GetMeasureInUnit(XFA_Attribute::X, XFA_Unit::Pt),
-      pNode->JSObject()->GetMeasureInUnit(XFA_Attribute::Y, XFA_Unit::Pt));
+      pNode->JSObject()->GetMeasureInUnit(XFA_Attribute::Y, XFA_Unit::Pt)};
   int32_t nRotate =
       XFA_MapRotation(pNode->JSObject()->GetInteger(XFA_Attribute::Rotate)) /
       90;
@@ -1950,8 +1950,7 @@ bool CXFA_ContentLayoutProcessor::CalculateRowChildPosition(
             rgCurLineLayoutItems[0][j]->GetFormNode(),
             rgCurLineLayoutItems[0][j]->m_sSize);
       } else {
-        rgCurLineLayoutItems[0][j]->m_sPos =
-            CFX_PointF(fCurPos, *fContentCurRowY);
+        rgCurLineLayoutItems[0][j]->m_sPos = {fCurPos, *fContentCurRowY};
         if (rgCurLineLayoutItems[0][j]->GetFormNode()->PresenceRequiresSpace())
           fCurPos += rgCurLineLayoutItems[0][j]->m_sSize.width;
       }
@@ -1967,8 +1966,7 @@ bool CXFA_ContentLayoutProcessor::CalculateRowChildPosition(
             rgCurLineLayoutItems[1][j]->GetFormNode(),
             rgCurLineLayoutItems[1][j]->m_sSize);
       } else {
-        rgCurLineLayoutItems[1][j]->m_sPos =
-            CFX_PointF(fCurPos, *fContentCurRowY);
+        rgCurLineLayoutItems[1][j]->m_sPos = {fCurPos, *fContentCurRowY};
         if (rgCurLineLayoutItems[1][j]->GetFormNode()->PresenceRequiresSpace())
           fCurPos += rgCurLineLayoutItems[1][j]->m_sSize.width;
       }
@@ -1982,8 +1980,7 @@ bool CXFA_ContentLayoutProcessor::CalculateRowChildPosition(
             rgCurLineLayoutItems[2][j]->GetFormNode(),
             rgCurLineLayoutItems[2][j]->m_sSize);
       } else {
-        rgCurLineLayoutItems[2][j]->m_sPos =
-            CFX_PointF(fCurPos, *fContentCurRowY);
+        rgCurLineLayoutItems[2][j]->m_sPos = {fCurPos, *fContentCurRowY};
         if (rgCurLineLayoutItems[2][j]->GetFormNode()->PresenceRequiresSpace())
           fCurPos += rgCurLineLayoutItems[2][j]->m_sSize.width;
       }
@@ -1997,8 +1994,7 @@ bool CXFA_ContentLayoutProcessor::CalculateRowChildPosition(
       if (rgCurLineLayoutItems[0][j]->GetFormNode()->PresenceRequiresSpace())
         fCurPos -= rgCurLineLayoutItems[0][j]->m_sSize.width;
 
-      rgCurLineLayoutItems[0][j]->m_sPos =
-          CFX_PointF(fCurPos, *fContentCurRowY);
+      rgCurLineLayoutItems[0][j]->m_sPos = {fCurPos, *fContentCurRowY};
       m_pLayoutItem->AppendLastChild(rgCurLineLayoutItems[0][j]);
       m_fLastRowWidth = fCurPos;
     }
@@ -2009,8 +2005,7 @@ bool CXFA_ContentLayoutProcessor::CalculateRowChildPosition(
       if (rgCurLineLayoutItems[1][j]->GetFormNode()->PresenceRequiresSpace())
         fCurPos -= rgCurLineLayoutItems[1][j]->m_sSize.width;
 
-      rgCurLineLayoutItems[1][j]->m_sPos =
-          CFX_PointF(fCurPos, *fContentCurRowY);
+      rgCurLineLayoutItems[1][j]->m_sPos = {fCurPos, *fContentCurRowY};
       m_pLayoutItem->AppendLastChild(rgCurLineLayoutItems[1][j]);
       m_fLastRowWidth = fCurPos;
     }
@@ -2019,8 +2014,7 @@ bool CXFA_ContentLayoutProcessor::CalculateRowChildPosition(
       if (rgCurLineLayoutItems[2][j]->GetFormNode()->PresenceRequiresSpace())
         fCurPos -= rgCurLineLayoutItems[2][j]->m_sSize.width;
 
-      rgCurLineLayoutItems[2][j]->m_sPos =
-          CFX_PointF(fCurPos, *fContentCurRowY);
+      rgCurLineLayoutItems[2][j]->m_sPos = {fCurPos, *fContentCurRowY};
       m_pLayoutItem->AppendLastChild(rgCurLineLayoutItems[2][j]);
       m_fLastRowWidth = fCurPos;
     }
@@ -2067,7 +2061,7 @@ void CXFA_ContentLayoutProcessor::DoLayoutField() {
 
   CXFA_Document* pDocument = GetFormNode()->GetDocument();
   CXFA_FFNotify* pNotify = pDocument->GetNotify();
-  CFX_SizeF size(-1, -1);
+  CFX_SizeF size = {-1, -1};
   pNotify->StartFieldDrawLayout(GetFormNode(), &size.width, &size.height);
 
   int32_t nRotate = XFA_MapRotation(
@@ -2131,7 +2125,7 @@ CXFA_ContentLayoutProcessor::DoLayoutInternal(bool bUseBreakControl,
 }
 
 CFX_SizeF CXFA_ContentLayoutProcessor::GetCurrentComponentSize() {
-  return CFX_SizeF(m_pLayoutItem->m_sSize.width, m_pLayoutItem->m_sSize.height);
+  return {m_pLayoutItem->m_sSize.width, m_pLayoutItem->m_sSize.height};
 }
 
 void CXFA_ContentLayoutProcessor::SetCurrentComponentPos(

@@ -163,7 +163,7 @@ void CXFA_FFPushButton::LoadHighlightCaption() {
 }
 
 void CXFA_FFPushButton::LayoutHighlightCaption() {
-  CFX_SizeF sz(m_CaptionRect.width, m_CaptionRect.height);
+  CFX_SizeF sz = {m_CaptionRect.width, m_CaptionRect.height};
   LayoutCaption();
   if (m_pRolloverTextLayout)
     m_pRolloverTextLayout->Layout(sz);

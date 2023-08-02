@@ -29,5 +29,5 @@ absl::optional<CFX_Point> TextGlyphPos::GetOrigin(
   if (!top.IsValid())
     return absl::nullopt;
 
-  return CFX_Point(left.ValueOrDie(), top.ValueOrDie());
+  return CFX_Point{left.ValueOrDie(), top.ValueOrDie()};
 }

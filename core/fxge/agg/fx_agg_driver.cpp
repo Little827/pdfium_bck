@@ -52,8 +52,8 @@ namespace {
 const float kMaxPos = 32000.0f;
 
 CFX_PointF HardClip(const CFX_PointF& pos) {
-  return CFX_PointF(std::clamp(pos.x, -kMaxPos, kMaxPos),
-                    std::clamp(pos.y, -kMaxPos, kMaxPos));
+  return {std::clamp(pos.x, -kMaxPos, kMaxPos),
+          std::clamp(pos.y, -kMaxPos, kMaxPos)};
 }
 
 void RgbByteOrderCompositeRect(const RetainPtr<CFX_DIBitmap>& pBitmap,
@@ -66,7 +66,7 @@ void RgbByteOrderCompositeRect(const RetainPtr<CFX_DIBitmap>& pBitmap,
   if (src_alpha == 0)
     return;
 
-  FX_RECT rect(left, top, left + width, top + height);
+  FX_RECT rect = {left, top, left + width, top + height};
   rect.Intersect(0, 0, pBitmap->GetWidth(), pBitmap->GetHeight());
   width = rect.Width();
   int src_r = FXARGB_R(argb);
@@ -320,9 +320,10 @@ RetainPtr<CFX_DIBitmap> GetClipMaskFromRegion(const CFX_ClipRgn* r) {
 
 FX_RECT GetClipBoxFromRegion(const RetainPtr<CFX_DIBitmap>& device,
                              const CFX_ClipRgn* region) {
-  if (region)
+  if (region) {
     return region->GetBox();
-  return FX_RECT(0, 0, device->GetWidth(), device->GetHeight());
+  }
+  return {0, 0, device->GetWidth(), device->GetHeight()};
 }
 
 class CFX_Renderer {
@@ -1054,8 +1055,8 @@ void CFX_AggDeviceDriver::RestoreState(bool bKeepSaved) {
 }
 
 void CFX_AggDeviceDriver::SetClipMask(agg::rasterizer_scanline_aa& rasterizer) {
-  FX_RECT path_rect(rasterizer.min_x(), rasterizer.min_y(),
-                    rasterizer.max_x() + 1, rasterizer.max_y() + 1);
+  FX_RECT path_rect = {rasterizer.min_x(), rasterizer.min_y(),
+                       rasterizer.max_x() + 1, rasterizer.max_y() + 1};
   path_rect.Intersect(m_pClipRgn->GetBox());
   auto pThisLayer = pdfium::MakeRetain<CFX_DIBitmap>();
   pThisLayer->Create(path_rect.Width(), path_rect.Height(),
@@ -1271,8 +1272,8 @@ bool CFX_AggDeviceDriver::GetDIBits(const RetainPtr<CFX_DIBitmap>& pBitmap,
   if (m_pBitmap->GetBuffer().empty())
     return true;
 
-  FX_RECT rect(left, top, left + pBitmap->GetWidth(),
-               top + pBitmap->GetHeight());
+  FX_RECT rect = {left, top, left + pBitmap->GetWidth(),
+                  top + pBitmap->GetHeight()};
   RetainPtr<CFX_DIBitmap> pBack;
   if (m_pBackdropBitmap) {
     pBack = m_pBackdropBitmap->ClipTo(rect);
@@ -1336,11 +1337,11 @@ bool CFX_AggDeviceDriver::StretchDIBits(const RetainPtr<CFX_DIBBase>& pSource,
 
   if (dest_width == pSource->GetWidth() &&
       dest_height == pSource->GetHeight()) {
-    FX_RECT rect(0, 0, dest_width, dest_height);
+    FX_RECT rect = {0, 0, dest_width, dest_height};
     return SetDIBits(pSource, argb, rect, dest_left, dest_top, blend_type);
   }
-  FX_RECT dest_rect(dest_left, dest_top, dest_left + dest_width,
-                    dest_top + dest_height);
+  FX_RECT dest_rect = {dest_left, dest_top, dest_left + dest_width,
+                       dest_top + dest_height};
   dest_rect.Normalize();
   FX_RECT dest_clip = dest_rect;
   dest_clip.Intersect(*pClipRect);

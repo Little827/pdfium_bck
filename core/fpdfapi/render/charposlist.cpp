@@ -139,7 +139,7 @@ std::vector<TextCharPos> GetCharPosList(pdfium::span<const uint32_t> char_codes,
     else
       text_char_pos.m_FontCharWidth = 0;
 
-    text_char_pos.m_Origin = CFX_PointF(i > 0 ? char_pos[i - 1] : 0, 0);
+    text_char_pos.m_Origin = {i > 0 ? char_pos[i - 1] : 0, 0};
     text_char_pos.m_bGlyphAdjust = false;
 
     float scaling_factor = 1.0f;
@@ -167,7 +167,7 @@ std::vector<TextCharPos> GetCharPosList(pdfium::span<const uint32_t> char_codes,
 
     uint16_t cid = cid_font->CIDFromCharCode(char_code);
     if (is_vertical_writing) {
-      text_char_pos.m_Origin = CFX_PointF(0, text_char_pos.m_Origin.x);
+      text_char_pos.m_Origin = {0, text_char_pos.m_Origin.x};
 
       CFX_Point16 vertical_origin = cid_font->GetVertOrigin(cid);
       text_char_pos.m_Origin.x -= font_size * vertical_origin.x / 1000;

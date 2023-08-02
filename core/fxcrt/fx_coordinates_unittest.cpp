@@ -21,7 +21,7 @@ constexpr float kMaxIntAsFloat = static_cast<float>(kMaxInt);
 }  // namespace
 
 TEST(CFX_FloatRect, FromFXRect) {
-  FX_RECT downwards(10, 20, 30, 40);
+  FX_RECT downwards = {10, 20, 30, 40};
   CFX_FloatRect rect(downwards);
   EXPECT_FLOAT_EQ(rect.left, 10.0f);
   EXPECT_FLOAT_EQ(rect.bottom, 20.0f);
@@ -37,7 +37,7 @@ TEST(CFX_FloatRect, GetBBox) {
   EXPECT_FLOAT_EQ(0.0f, rect.top);
 
   std::vector<CFX_PointF> data;
-  data.emplace_back(0.0f, 0.0f);
+  data.push_back({0.0f, 0.0f});
   rect = CFX_FloatRect::GetBBox(pdfium::make_span(data).first(0));
   EXPECT_FLOAT_EQ(0.0f, rect.left);
   EXPECT_FLOAT_EQ(0.0f, rect.bottom);
@@ -49,8 +49,8 @@ TEST(CFX_FloatRect, GetBBox) {
   EXPECT_FLOAT_EQ(0.0f, rect.right);
   EXPECT_FLOAT_EQ(0.0f, rect.top);
 
-  data.emplace_back(2.5f, 6.2f);
-  data.emplace_back(1.5f, 6.2f);
+  data.push_back({2.5f, 6.2f});
+  data.push_back({1.5f, 6.2f});
   rect = CFX_FloatRect::GetBBox(pdfium::make_span(data).first(2));
   EXPECT_FLOAT_EQ(0.0f, rect.left);
   EXPECT_FLOAT_EQ(0.0f, rect.bottom);
@@ -63,21 +63,21 @@ TEST(CFX_FloatRect, GetBBox) {
   EXPECT_FLOAT_EQ(2.5f, rect.right);
   EXPECT_FLOAT_EQ(6.2f, rect.top);
 
-  data.emplace_back(2.5f, 6.3f);
+  data.push_back({2.5f, 6.3f});
   rect = CFX_FloatRect::GetBBox(data);
   EXPECT_FLOAT_EQ(0.0f, rect.left);
   EXPECT_FLOAT_EQ(0.0f, rect.bottom);
   EXPECT_FLOAT_EQ(2.5f, rect.right);
   EXPECT_FLOAT_EQ(6.3f, rect.top);
 
-  data.emplace_back(-3.0f, 6.3f);
+  data.push_back({-3.0f, 6.3f});
   rect = CFX_FloatRect::GetBBox(data);
   EXPECT_FLOAT_EQ(-3.0f, rect.left);
   EXPECT_FLOAT_EQ(0.0f, rect.bottom);
   EXPECT_FLOAT_EQ(2.5f, rect.right);
   EXPECT_FLOAT_EQ(6.3f, rect.top);
 
-  data.emplace_back(4.0f, -8.0f);
+  data.push_back({4.0f, -8.0f});
   rect = CFX_FloatRect::GetBBox(data);
   EXPECT_FLOAT_EQ(-3.0f, rect.left);
   EXPECT_FLOAT_EQ(-8.0f, rect.bottom);
@@ -365,8 +365,8 @@ TEST(CFX_Matrix, ReverseIdentity) {
   EXPECT_FLOAT_EQ(0.0, rev.e);
   EXPECT_FLOAT_EQ(0.0, rev.f);
 
-  CFX_PointF expected(2, 3);
-  CFX_PointF result = rev.Transform(CFX_Matrix().Transform(CFX_PointF(2, 3)));
+  CFX_PointF expected = {2.0f, 3.0f};
+  CFX_PointF result = rev.Transform(CFX_Matrix().Transform({2.0f, 3.0f}));
   EXPECT_FLOAT_EQ(expected.x, result.x);
   EXPECT_FLOAT_EQ(expected.y, result.y);
 }
@@ -406,8 +406,8 @@ TEST(CFX_Matrix, GetInverse) {
   EXPECT_FLOAT_EQ(0.55555556f, rev.e);
   EXPECT_FLOAT_EQ(-1.3333334f, rev.f);
 
-  CFX_PointF expected(2, 3);
-  CFX_PointF result = rev.Transform(m.Transform(CFX_PointF(2, 3)));
+  CFX_PointF expected = {2, 3};
+  CFX_PointF result = rev.Transform(m.Transform({2, 3}));
   EXPECT_FLOAT_EQ(expected.x, result.x);
   EXPECT_FLOAT_EQ(expected.y, result.y);
 }
@@ -428,8 +428,8 @@ TEST(CFX_Matrix, GetInverseCR702041) {
   EXPECT_FLOAT_EQ(-1.0045138e+11f, rev.f);
 
   // Should be 2, 3
-  CFX_PointF expected(0, 0);
-  CFX_PointF result = rev.Transform(m.Transform(CFX_PointF(2, 3)));
+  CFX_PointF expected = {0, 0};
+  CFX_PointF result = rev.Transform(m.Transform({2, 3}));
   EXPECT_FLOAT_EQ(expected.x, result.x);
   EXPECT_FLOAT_EQ(expected.y, result.y);
 }
@@ -449,8 +449,8 @@ TEST(CFX_Matrix, GetInverseCR714187) {
   EXPECT_FLOAT_EQ(3702098.2f, rev.f);
 
   // Should be 3 ....
-  CFX_PointF expected(2, 2.75);
-  CFX_PointF result = rev.Transform(m.Transform(CFX_PointF(2, 3)));
+  CFX_PointF expected = {2, 2.75};
+  CFX_PointF result = rev.Transform(m.Transform({2, 3}));
   EXPECT_FLOAT_EQ(expected.x, result.x);
   EXPECT_FLOAT_EQ(expected.y, result.y);
 }
@@ -489,8 +489,8 @@ TEST(CFX_Matrix, ComposeTransformations) {
   EXPECT_FLOAT_EQ(0.0, scale_5_13.f);
 
   // Apply the transforms to points step by step.
-  CFX_PointF origin_transformed(0, 0);
-  CFX_PointF p_10_20_transformed(10, 20);
+  CFX_PointF origin_transformed = {0, 0};
+  CFX_PointF p_10_20_transformed = {10, 20};
 
   origin_transformed = rotate_90.Transform(origin_transformed);
   EXPECT_FLOAT_EQ(0.0f, origin_transformed.x);
@@ -514,8 +514,8 @@ TEST(CFX_Matrix, ComposeTransformations) {
   EXPECT_FLOAT_EQ(273.0f, p_10_20_transformed.y);
 
   // Apply the transforms to points in the reverse order.
-  origin_transformed = CFX_PointF(0, 0);
-  p_10_20_transformed = CFX_PointF(10, 20);
+  origin_transformed = {0, 0};
+  p_10_20_transformed = {10, 20};
 
   origin_transformed = scale_5_13.Transform(origin_transformed);
   EXPECT_FLOAT_EQ(0.0f, origin_transformed.x);
@@ -552,11 +552,11 @@ TEST(CFX_Matrix, ComposeTransformations) {
 
   // Note how the results using the combined matrix are equal to the results
   // when applying the three original matrices step-by-step.
-  origin_transformed = m.Transform(CFX_PointF(0, 0));
+  origin_transformed = m.Transform({0, 0});
   EXPECT_FLOAT_EQ(115.0f, origin_transformed.x);
   EXPECT_FLOAT_EQ(143.0f, origin_transformed.y);
 
-  p_10_20_transformed = m.Transform(CFX_PointF(10, 20));
+  p_10_20_transformed = m.Transform({10, 20});
   EXPECT_FLOAT_EQ(15.0f, p_10_20_transformed.x);
   EXPECT_FLOAT_EQ(273.0f, p_10_20_transformed.y);
 
@@ -575,11 +575,11 @@ TEST(CFX_Matrix, ComposeTransformations) {
   // Note how the results using the combined matrix are equal to the results
   // when applying the three original matrices step-by-step in the reverse
   // order.
-  origin_transformed = m.Transform(CFX_PointF(0, 0));
+  origin_transformed = m.Transform({0, 0});
   EXPECT_FLOAT_EQ(-11.0f, origin_transformed.x);
   EXPECT_FLOAT_EQ(23.0f, origin_transformed.y);
 
-  p_10_20_transformed = m.Transform(CFX_PointF(10, 20));
+  p_10_20_transformed = m.Transform({10, 20});
   EXPECT_FLOAT_EQ(-271.0f, p_10_20_transformed.x);
   EXPECT_FLOAT_EQ(73.0f, p_10_20_transformed.y);
 }
