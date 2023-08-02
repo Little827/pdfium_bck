@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b90973e4_8c802249",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-08-02T19:22:26Z",
+      "side": 1,
+      "message": "In the same way that go/avoidwe suggests avoiding \"we\", please also avoid \"I\". Instead, directly state what this CL does.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 15
+      },
+      "revId": "b2af46a8ac3f9e44d7b9a4106844fb6235912d94",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbceb076_2dc6fd22",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-08-02T19:22:26Z",
+      "side": 1,
+      "message": "Is there \"Bug: NNN\" metadata that can be associated with this CL?",
+      "revId": "b2af46a8ac3f9e44d7b9a4106844fb6235912d94",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eadb8179_85753a1e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-08-02T19:22:26Z",
+      "side": 1,
+      "message": "Please add test cases to pdfium_embeddertests cover the relevant scenarios.",
+      "revId": "b2af46a8ac3f9e44d7b9a4106844fb6235912d94",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
