@@ -776,7 +776,7 @@ size_t CFGAS_RTFBreak::GetDisplayPos(const CFGAS_TextPiece* pPiece,
       fX -= fCharWidth;
 
     if (!bEmptyChar)
-      current_char_pos.m_Origin = CFX_PointF(fX, fY);
+      current_char_pos.m_Origin = {fX, fY};
     if (!bRTLPiece && dwCharType != FX_CHARTYPE::kCombination)
       fX += fCharWidth;
 

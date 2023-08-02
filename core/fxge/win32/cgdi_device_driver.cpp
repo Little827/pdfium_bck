@@ -117,7 +117,7 @@ void SetPathToDC(HDC hDC, const CFX_Path& path, const CFX_Matrix* pMatrix) {
     if (pMatrix)
       pos = pMatrix->Transform(pos);
 
-    CFX_Point screen(FXSYS_roundf(pos.x), FXSYS_roundf(pos.y));
+    CFX_Point screen = {FXSYS_roundf(pos.x), FXSYS_roundf(pos.y)};
     CFX_Path::Point::Type point_type = points[i].m_Type;
     if (point_type == CFX_Path::Point::Type::kMove) {
       MoveToEx(hDC, screen.x, screen.y, nullptr);
@@ -401,7 +401,7 @@ bool CGdiDeviceDriver::GDI_SetDIBits(const RetainPtr<CFX_DIBBase>& source,
 
     ByteString info = GetBitmapInfo(flipped_source);
     ((BITMAPINFOHEADER*)info.c_str())->biHeight *= -1;
-    FX_RECT dst_rect(0, 0, src_rect.Width(), src_rect.Height());
+    FX_RECT dst_rect = {0, 0, src_rect.Width(), src_rect.Height()};
     dst_rect.Intersect(0, 0, flipped_source->GetWidth(),
                        flipped_source->GetHeight());
     int dst_width = dst_rect.Width();
@@ -587,14 +587,16 @@ bool CGdiDeviceDriver::DrawPath(const CFX_Path& path,
 
     FX_RECT bbox = bbox_f.GetInnerRect();
     if (bbox.Width() <= 0) {
-      return DrawCosmeticLine(CFX_PointF(bbox.left, bbox.top),
-                              CFX_PointF(bbox.left, bbox.bottom + 1),
-                              fill_color, BlendMode::kNormal);
+      return DrawCosmeticLine(
+          {static_cast<float>(bbox.left), static_cast<float>(bbox.top)},
+          {static_cast<float>(bbox.left), static_cast<float>(bbox.bottom + 1)},
+          fill_color, BlendMode::kNormal);
     }
     if (bbox.Height() <= 0) {
-      return DrawCosmeticLine(CFX_PointF(bbox.left, bbox.top),
-                              CFX_PointF(bbox.right + 1, bbox.top), fill_color,
-                              BlendMode::kNormal);
+      return DrawCosmeticLine(
+          {static_cast<float>(bbox.left), static_cast<float>(bbox.top)},
+          {static_cast<float>(bbox.right + 1), static_cast<float>(bbox.top)},
+          fill_color, BlendMode::kNormal);
     }
   }
   int fill_alpha = FXARGB_A(fill_color);

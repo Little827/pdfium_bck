@@ -978,7 +978,7 @@ bool CPDF_RenderStatus::ProcessType3Text(CPDF_TextObject* textobj,
 
         refTypeCache.insert(std::move(pCache));
 
-        CFX_Point origin(FXSYS_roundf(matrix.e), FXSYS_roundf(matrix.f));
+        CFX_Point origin = {FXSYS_roundf(matrix.e), FXSYS_roundf(matrix.f)};
         if (glyphs.empty()) {
           FX_SAFE_INT32 left = origin.x;
           left += pBitmap->left();
@@ -1237,8 +1237,8 @@ void CPDF_RenderStatus::CompositeDIBitmap(
       return;
     }
 
-    FX_RECT rect(left, top, left + pDIBitmap->GetWidth(),
-                 top + pDIBitmap->GetHeight());
+    FX_RECT rect = {left, top, left + pDIBitmap->GetWidth(),
+                    top + pDIBitmap->GetHeight()};
     rect.Intersect(m_pDevice->GetClipBox());
     RetainPtr<CFX_DIBitmap> pClone;
     if (m_pDevice->GetBackDrop() && m_pDevice->GetBitmap()) {
@@ -1274,8 +1274,8 @@ void CPDF_RenderStatus::CompositeDIBitmap(
     }
     return;
   }
-  FX_RECT bbox = GetClippedBBox(FX_RECT(left, top, left + pDIBitmap->GetWidth(),
-                                        top + pDIBitmap->GetHeight()));
+  FX_RECT bbox = GetClippedBBox(
+      {left, top, left + pDIBitmap->GetWidth(), top + pDIBitmap->GetHeight()});
   RetainPtr<CFX_DIBitmap> pBackdrop = GetBackdrop(
       m_pCurObj, bbox, blend_mode != BlendMode::kNormal && bIsolated);
   if (!pBackdrop)

@@ -15,7 +15,7 @@
 #include "third_party/base/check_op.h"
 #include "third_party/base/notreached.h"
 
-CFX_ClipRgn::CFX_ClipRgn(int width, int height) : m_Box(0, 0, width, height) {}
+CFX_ClipRgn::CFX_ClipRgn(int width, int height) : m_Box{0, 0, width, height} {}
 
 CFX_ClipRgn::CFX_ClipRgn(const CFX_ClipRgn& src) = default;
 
@@ -59,8 +59,8 @@ void CFX_ClipRgn::IntersectMaskF(int left,
                                  int top,
                                  RetainPtr<CFX_DIBitmap> pMask) {
   DCHECK_EQ(pMask->GetFormat(), FXDIB_Format::k8bppMask);
-  FX_RECT mask_box(left, top, left + pMask->GetWidth(),
-                   top + pMask->GetHeight());
+  FX_RECT mask_box = {left, top, left + pMask->GetWidth(),
+                      top + pMask->GetHeight()};
   if (m_Type == kRectI) {
     IntersectMaskRect(m_Box, mask_box, std::move(pMask));
     return;

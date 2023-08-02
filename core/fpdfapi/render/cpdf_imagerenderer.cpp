@@ -461,9 +461,9 @@ bool CPDF_ImageRenderer::StartDIBBase() {
   FX_RECT clip_box = m_pRenderStatus->GetRenderDevice()->GetClipBox();
   FX_RECT dest_rect = clip_box;
   dest_rect.Intersect(image_rect.value());
-  FX_RECT dest_clip(
+  FX_RECT dest_clip = {
       dest_rect.left - image_rect->left, dest_rect.top - image_rect->top,
-      dest_rect.right - image_rect->left, dest_rect.bottom - image_rect->top);
+      dest_rect.right - image_rect->left, dest_rect.bottom - image_rect->top};
   RetainPtr<CFX_DIBitmap> pStretched = m_pDIBBase->StretchTo(
       dest_width, dest_height, m_ResampleOptions, &dest_clip);
   if (pStretched) {

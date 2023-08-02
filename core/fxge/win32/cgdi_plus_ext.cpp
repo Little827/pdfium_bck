@@ -214,7 +214,7 @@ void OutputImage(Gdiplus::GpGraphics* pGraphics,
   int src_height = src_rect.Height();
   const CGdiplusExt& GdiplusExt = GetGdiplusExt();
   if (source->GetBPP() == 1 && (src_rect.left % 8)) {
-    FX_RECT new_rect(0, 0, src_width, src_height);
+    FX_RECT new_rect = {0, 0, src_width, src_height};
     RetainPtr<CFX_DIBBase> pCloned = source->ClipTo(src_rect);
     if (!pCloned)
       return;
@@ -394,8 +394,8 @@ absl::optional<std::pair<size_t, size_t>> IsSmallTriangle(
     size_t pair1 = kPairs[i][0];
     size_t pair2 = kPairs[i][1];
 
-    CFX_PointF p1(points[pair1].X, points[pair1].Y);
-    CFX_PointF p2(points[pair2].X, points[pair2].Y);
+    CFX_PointF p1 = {points[pair1].X, points[pair1].Y};
+    CFX_PointF p2 = {points[pair2].X, points[pair2].Y};
     if (pMatrix) {
       p1 = pMatrix->Transform(p1);
       p2 = pMatrix->Transform(p2);
@@ -603,7 +603,7 @@ bool CGdiplusExt::StretchDIBits(HDC hDC,
     CallFunc(GdipSetInterpolationMode)(pGraphics,
                                        Gdiplus::InterpolationModeBilinear);
   }
-  FX_RECT src_rect(0, 0, source->GetWidth(), source->GetHeight());
+  FX_RECT src_rect = {0, 0, source->GetWidth(), source->GetHeight()};
   OutputImage(pGraphics, source, src_rect, dest_left, dest_top, dest_width,
               dest_height);
   CallFunc(GdipDeleteGraphics)(pGraphics);

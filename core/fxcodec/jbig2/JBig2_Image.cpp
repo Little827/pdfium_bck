@@ -161,7 +161,7 @@ bool CJBig2_Image::ComposeTo(CJBig2_Image* pDst,
                              int32_t y,
                              JBig2ComposeOp op) {
   return m_pData &&
-         ComposeToInternal(pDst, x, y, op, FX_RECT(0, 0, m_nWidth, m_nHeight));
+         ComposeToInternal(pDst, x, y, op, {0, 0, m_nWidth, m_nHeight});
 }
 
 bool CJBig2_Image::ComposeToWithRect(CJBig2_Image* pDst,

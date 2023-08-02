@@ -311,7 +311,7 @@ float CXFA_TextLayout::GetLayoutHeight() {
     return 0;
 
   if (m_pLoader->lineHeights.empty() && m_pLoader->fWidth > 0) {
-    CFX_SizeF szMax(m_pLoader->fWidth, m_pLoader->fHeight);
+    CFX_SizeF szMax = {m_pLoader->fWidth, m_pLoader->fHeight};
     m_pLoader->bSaveLineHeight = true;
     m_pLoader->fLastPos = 0;
     CFX_SizeF szDef = CalcSize(szMax, szMax);
@@ -464,7 +464,7 @@ CFX_SizeF CXFA_TextLayout::CalcSize(const CFX_SizeF& minSize,
     fLinePos = m_pTextParser->GetFontSize(m_pTextProvider, nullptr);
 
   m_pTabstopContext.reset();
-  return CFX_SizeF(m_fMaxWidth, fLinePos);
+  return {m_fMaxWidth, fLinePos};
 }
 
 float CXFA_TextLayout::Layout(const CFX_SizeF& size) {
@@ -496,7 +496,7 @@ bool CXFA_TextLayout::LayoutInternal(size_t szBlockIndex) {
   m_iLines = 0;
   float fLinePos = 0;
   CXFA_Node* pNode = nullptr;
-  CFX_SizeF szText(m_pLoader->fWidth, m_pLoader->fHeight);
+  CFX_SizeF szText = {m_pLoader->fWidth, m_pLoader->fHeight};
   if (szBlockIndex < m_pLoader->blockHeights.size())
     return true;
   if (szBlockIndex == m_pLoader->blockHeights.size()) {

@@ -239,7 +239,7 @@ CStretchEngine::CStretchEngine(ScanlineComposerIface* pDestBitmap,
   m_SrcClip.right = static_cast<int>(ceil(src_right));
   m_SrcClip.top = static_cast<int>(floor(src_top));
   m_SrcClip.bottom = static_cast<int>(ceil(src_bottom));
-  FX_RECT src_rect(0, 0, m_SrcWidth, m_SrcHeight);
+  FX_RECT src_rect = {0, 0, m_SrcWidth, m_SrcHeight};
   m_SrcClip.Intersect(src_rect);
 
   switch (m_SrcBpp) {

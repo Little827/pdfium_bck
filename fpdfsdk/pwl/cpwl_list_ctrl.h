@@ -158,9 +158,7 @@ class CPWL_ListCtrl {
   WideString GetItemText(int32_t nIndex) const;
   void SetItemSelect(int32_t nIndex, bool bSelected);
   int32_t GetLastSelected() const;
-  CFX_PointF GetBTPoint() const {
-    return CFX_PointF(m_rcPlate.left, m_rcPlate.top);
-  }
+  CFX_PointF GetBTPoint() const { return {m_rcPlate.left, m_rcPlate.top}; }
 
   CFX_FloatRect m_rcPlate;
   CFX_FloatRect m_rcContent;

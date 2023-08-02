@@ -91,12 +91,12 @@ bool CGdiDisplayDriver::SetDIBits(const RetainPtr<CFX_DIBBase>& pSource,
                                      BlendMode::kNormal, nullptr, false)) {
         return false;
       }
-      FX_RECT alpha_src_rect(0, 0, width, height);
+      FX_RECT alpha_src_rect = {0, 0, width, height};
       return SetDIBits(background, 0, alpha_src_rect, left, top,
                        BlendMode::kNormal);
     }
-    FX_RECT clip_rect(left, top, left + src_rect.Width(),
-                      top + src_rect.Height());
+    FX_RECT clip_rect = {left, top, left + src_rect.Width(),
+                         top + src_rect.Height()};
     return StretchDIBits(pSource, color, left - src_rect.left,
                          top - src_rect.top, width, height, &clip_rect,
                          FXDIB_ResampleOptions(), BlendMode::kNormal);
@@ -112,7 +112,7 @@ bool CGdiDisplayDriver::SetDIBits(const RetainPtr<CFX_DIBBase>& pSource,
                                  false)) {
       return false;
     }
-    FX_RECT alpha_src_rect(0, 0, width, height);
+    FX_RECT alpha_src_rect = {0, 0, width, height};
     return SetDIBits(bitmap, 0, alpha_src_rect, left, top, BlendMode::kNormal);
   }
   return GDI_SetDIBits(pSource, src_rect, left, top);
@@ -140,7 +140,7 @@ bool CGdiDisplayDriver::UseFoxitStretchEngine(
   if (!pStretched)
     return true;
 
-  FX_RECT src_rect(0, 0, pStretched->GetWidth(), pStretched->GetHeight());
+  FX_RECT src_rect = {0, 0, pStretched->GetWidth(), pStretched->GetHeight()};
   return SetDIBits(pStretched, color, src_rect, pClipRect->left, pClipRect->top,
                    BlendMode::kNormal);
 }
@@ -187,7 +187,7 @@ bool CGdiDisplayDriver::StretchDIBits(const RetainPtr<CFX_DIBBase>& pSource,
       return false;
     }
 
-    FX_RECT src_rect(0, 0, clip_width, clip_height);
+    FX_RECT src_rect = {0, 0, clip_width, clip_height};
     return SetDIBits(background, 0, src_rect, image_rect.left + clip_rect.left,
                      image_rect.top + clip_rect.top, BlendMode::kNormal);
   }

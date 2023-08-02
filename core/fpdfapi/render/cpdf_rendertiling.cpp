@@ -127,7 +127,7 @@ RetainPtr<CFX_DIBitmap> CPDF_RenderTiling::Draw(
     for (int col = min_col; col <= max_col; col++) {
       for (int row = min_row; row <= max_row; row++) {
         CFX_PointF original = mtPattern2Device.Transform(
-            CFX_PointF(col * pPattern->x_step(), row * pPattern->y_step()));
+            {col * pPattern->x_step(), row * pPattern->y_step()});
         CFX_Matrix matrix = mtObj2Device;
         matrix.Translate(original.x - mtPattern2Device.e,
                          original.y - mtPattern2Device.f);
@@ -207,7 +207,7 @@ RetainPtr<CFX_DIBitmap> CPDF_RenderTiling::Draw(
             FXSYS_roundf(mtPattern2Device.f) + row * height - clip_box.top;
       } else {
         CFX_PointF original = mtPattern2Device.Transform(
-            CFX_PointF(col * pPattern->x_step(), row * pPattern->y_step()));
+            {col * pPattern->x_step(), row * pPattern->y_step()});
 
         FX_SAFE_INT32 safeStartX = FXSYS_roundf(original.x + left_offset);
         FX_SAFE_INT32 safeStartY = FXSYS_roundf(original.y + top_offset);
