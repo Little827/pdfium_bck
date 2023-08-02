@@ -317,13 +317,13 @@ void CFX_FloatRect::ScaleFromCenterPoint(float fScale) {
 }
 
 FX_RECT CFX_FloatRect::ToFxRect() const {
-  return FX_RECT(static_cast<int>(left), static_cast<int>(top),
-                 static_cast<int>(right), static_cast<int>(bottom));
+  return {static_cast<int>(left), static_cast<int>(top),
+          static_cast<int>(right), static_cast<int>(bottom)};
 }
 
 FX_RECT CFX_FloatRect::ToRoundedFxRect() const {
-  return FX_RECT(FXSYS_roundf(left), FXSYS_roundf(top), FXSYS_roundf(right),
-                 FXSYS_roundf(bottom));
+  return {FXSYS_roundf(left), FXSYS_roundf(top), FXSYS_roundf(right),
+          FXSYS_roundf(bottom)};
 }
 
 void CFX_RectF::Union(float x, float y) {
@@ -366,10 +366,9 @@ void CFX_RectF::Intersect(const CFX_RectF& rt) {
 }
 
 FX_RECT CFX_RectF::GetOuterRect() const {
-  return FX_RECT(static_cast<int32_t>(floor(left)),
-                 static_cast<int32_t>(floor(top)),
-                 static_cast<int32_t>(ceil(right())),
-                 static_cast<int32_t>(ceil(bottom())));
+  return {static_cast<int32_t>(floor(left)), static_cast<int32_t>(floor(top)),
+          static_cast<int32_t>(ceil(right())),
+          static_cast<int32_t>(ceil(bottom()))};
 }
 
 #ifndef NDEBUG
@@ -479,8 +478,7 @@ float CFX_Matrix::TransformDistance(float distance) const {
 }
 
 CFX_PointF CFX_Matrix::Transform(const CFX_PointF& point) const {
-  return CFX_PointF(a * point.x + c * point.y + e,
-                    b * point.x + d * point.y + f);
+  return {a * point.x + c * point.y + e, b * point.x + d * point.y + f};
 }
 
 CFX_RectF CFX_Matrix::TransformRect(const CFX_RectF& rect) const {

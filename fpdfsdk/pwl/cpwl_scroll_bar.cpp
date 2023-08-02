@@ -174,15 +174,15 @@ void CPWL_ScrollBar::DrawThisAppearance(CFX_RenderDevice* pDevice,
     pDevice->DrawFillRect(&mtUser2Device, rectWnd, GetBackgroundColor(),
                           GetTransparency());
 
-    pDevice->DrawStrokeLine(
-        &mtUser2Device, CFX_PointF(rectWnd.left + 2.0f, rectWnd.top - 2.0f),
-        CFX_PointF(rectWnd.left + 2.0f, rectWnd.bottom + 2.0f),
-        ArgbEncode(GetTransparency(), 100, 100, 100), 1.0f);
+    pDevice->DrawStrokeLine(&mtUser2Device,
+                            {rectWnd.left + 2.0f, rectWnd.top - 2.0f},
+                            {rectWnd.left + 2.0f, rectWnd.bottom + 2.0f},
+                            ArgbEncode(GetTransparency(), 100, 100, 100), 1.0f);
 
-    pDevice->DrawStrokeLine(
-        &mtUser2Device, CFX_PointF(rectWnd.right - 2.0f, rectWnd.top - 2.0f),
-        CFX_PointF(rectWnd.right - 2.0f, rectWnd.bottom + 2.0f),
-        ArgbEncode(GetTransparency(), 100, 100, 100), 1.0f);
+    pDevice->DrawStrokeLine(&mtUser2Device,
+                            {rectWnd.right - 2.0f, rectWnd.top - 2.0f},
+                            {rectWnd.right - 2.0f, rectWnd.bottom + 2.0f},
+                            ArgbEncode(GetTransparency(), 100, 100, 100), 1.0f);
   }
 }
 

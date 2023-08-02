@@ -262,7 +262,7 @@ bool GetQuadPointsAtIndex(RetainPtr<const CPDF_Array> array,
 }
 
 CFX_PointF CFXPointFFromFSPointF(const FS_POINTF& point) {
-  return CFX_PointF(point.x, point.y);
+  return {point.x, point.y};
 }
 
 CFX_FloatRect CFXFloatRectFromFSRectF(const FS_RECTF& rect) {

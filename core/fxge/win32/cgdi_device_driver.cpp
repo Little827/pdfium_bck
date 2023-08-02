@@ -117,7 +117,7 @@ void SetPathToDC(HDC hDC, const CFX_Path& path, const CFX_Matrix* pMatrix) {
     if (pMatrix)
       pos = pMatrix->Transform(pos);
 
-    CFX_Point screen(FXSYS_roundf(pos.x), FXSYS_roundf(pos.y));
+    CFX_Point screen = {FXSYS_roundf(pos.x), FXSYS_roundf(pos.y)};
     CFX_Path::Point::Type point_type = points[i].m_Type;
     if (point_type == CFX_Path::Point::Type::kMove) {
       MoveToEx(hDC, screen.x, screen.y, nullptr);
@@ -587,14 +587,13 @@ bool CGdiDeviceDriver::DrawPath(const CFX_Path& path,
 
     FX_RECT bbox = bbox_f.GetInnerRect();
     if (bbox.Width() <= 0) {
-      return DrawCosmeticLine(CFX_PointF(bbox.left, bbox.top),
-                              CFX_PointF(bbox.left, bbox.bottom + 1),
-                              fill_color, BlendMode::kNormal);
+      return DrawCosmeticLine({bbox.left, bbox.top},
+                              {bbox.left, bbox.bottom + 1}, fill_color,
+                              BlendMode::kNormal);
     }
     if (bbox.Height() <= 0) {
-      return DrawCosmeticLine(CFX_PointF(bbox.left, bbox.top),
-                              CFX_PointF(bbox.right + 1, bbox.top), fill_color,
-                              BlendMode::kNormal);
+      return DrawCosmeticLine({bbox.left, bbox.top}, {bbox.right + 1, bbox.top},
+                              fill_color, BlendMode::kNormal);
     }
   }
   int fill_alpha = FXARGB_A(fill_color);

@@ -197,9 +197,9 @@ CFX_RectF CFGAS_GEGraphics::GetClipRect() const {
 }
 
 void CFGAS_GEGraphics::SetClipRect(const CFX_RectF& rect) {
-  m_renderDevice->SetClip_Rect(
-      FX_RECT(FXSYS_roundf(rect.left), FXSYS_roundf(rect.top),
-              FXSYS_roundf(rect.right()), FXSYS_roundf(rect.bottom())));
+  m_renderDevice->SetClip_Rect({FXSYS_roundf(rect.left), FXSYS_roundf(rect.top),
+                                FXSYS_roundf(rect.right()),
+                                FXSYS_roundf(rect.bottom())});
 }
 
 CFX_RenderDevice* CFGAS_GEGraphics::GetRenderDevice() {
