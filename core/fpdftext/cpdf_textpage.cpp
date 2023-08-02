@@ -216,8 +216,8 @@ bool EndVerticalLine(const CFX_FloatRect& this_rect,
 }
 
 CFX_Matrix GetPageMatrix(const CPDF_Page* pPage) {
-  const FX_RECT rect(0, 0, static_cast<int>(pPage->GetPageWidth()),
-                     static_cast<int>(pPage->GetPageHeight()));
+  const FX_RECT rect = {0, 0, static_cast<int>(pPage->GetPageWidth()),
+                        static_cast<int>(pPage->GetPageHeight())};
   return pPage->GetDisplayMatrix(rect, 0);
 }
 
@@ -1429,9 +1429,8 @@ absl::optional<CPDF_TextPage::CharInfo> CPDF_TextPage::GenerateCharInfo(
   if (!fFontSize)
     fFontSize = kDefaultFontSize;
 
-  info.m_Origin =
-      CFX_PointF(pPrevCharInfo->m_Origin.x + preWidth * (fFontSize) / 1000,
-                 pPrevCharInfo->m_Origin.y);
+  info.m_Origin = {pPrevCharInfo->m_Origin.x + preWidth * (fFontSize) / 1000,
+                   pPrevCharInfo->m_Origin.y};
   info.m_CharBox = CFX_FloatRect(info.m_Origin.x, info.m_Origin.y,
                                  info.m_Origin.x, info.m_Origin.y);
   return info;

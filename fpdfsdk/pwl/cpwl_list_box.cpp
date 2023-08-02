@@ -55,7 +55,7 @@ void CPWL_ListBox::DrawThisAppearance(CFX_RenderDevice* pDevice,
     if (rcItem.bottom > rcPlate.top || rcItem.top < rcPlate.bottom)
       continue;
 
-    CFX_PointF ptOffset(rcItem.left, (rcItem.top + rcItem.bottom) * 0.5f);
+    CFX_PointF ptOffset = {rcItem.left, (rcItem.top + rcItem.bottom) * 0.5f};
     if (CPWL_EditImpl* pEdit = m_pListCtrl->GetItemEdit(i)) {
       CFX_FloatRect rcContent = pEdit->GetContentRect();
       rcItem.Intersect(rcContent.Width() > rcClient.Width() ? rcList
@@ -191,7 +191,7 @@ void CPWL_ListBox::SetScrollPosition(float pos) {
 }
 
 void CPWL_ListBox::ScrollWindowVertically(float pos) {
-  m_pListCtrl->SetScrollPos(CFX_PointF(0, pos));
+  m_pListCtrl->SetScrollPos({0, pos});
 }
 
 bool CPWL_ListBox::RepositionChildWnd() {

@@ -63,7 +63,7 @@ void CFWL_ComboList::ChangeSelected(int32_t iSel) {
 }
 
 CFX_PointF CFWL_ComboList::ClientToOuter(const CFX_PointF& point) {
-  return point + CFX_PointF(m_WidgetRect.left, m_WidgetRect.top);
+  return point + CFX_PointF{m_WidgetRect.left, m_WidgetRect.top};
 }
 
 void CFWL_ComboList::OnProcessMessage(CFWL_Message* pMessage) {

@@ -109,7 +109,7 @@ FontName currentdict end definefont pop
 %%EndResource
 )";
   result = CFX_PSRenderer::GenerateType42FontDictionaryForTesting(
-      "1descendant", FX_RECT(1, 2, 3, 4), /*num_glyphs=*/3,
+      "1descendant", {1, 2, 3, 4}, /*num_glyphs=*/3,
       /*glyphs_per_descendant_font=*/3);
   EXPECT_STREQ(kExpected1DescendantFontResult, result.c_str());
 
@@ -166,7 +166,7 @@ FontName currentdict end definefont pop
 %%EndResource
 )";
   result = CFX_PSRenderer::GenerateType42FontDictionaryForTesting(
-      "2descendant", FX_RECT(12, -5, 34, 199), /*num_glyphs=*/5,
+      "2descendant", {12, -5, 34, 199}, /*num_glyphs=*/5,
       /*glyphs_per_descendant_font=*/3);
   EXPECT_STREQ(kExpected2DescendantFontResult, result.c_str());
 }

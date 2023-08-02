@@ -46,8 +46,8 @@ bool CGdiPrinterDriver::SetDIBits(const RetainPtr<CFX_DIBBase>& pSource,
                                   int top,
                                   BlendMode blend_type) {
   if (pSource->IsMaskFormat()) {
-    FX_RECT clip_rect(left, top, left + src_rect.Width(),
-                      top + src_rect.Height());
+    FX_RECT clip_rect = {left, top, left + src_rect.Width(),
+                         top + src_rect.Height()};
     return StretchDIBits(pSource, color, left - src_rect.left,
                          top - src_rect.top, pSource->GetWidth(),
                          pSource->GetHeight(), &clip_rect,

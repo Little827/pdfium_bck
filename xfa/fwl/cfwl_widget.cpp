@@ -153,7 +153,7 @@ CFX_PointF CFWL_Widget::TransformTo(CFWL_Widget* pWidget,
     szOffset.width = -szOffset.width;
     szOffset.height = -szOffset.height;
   }
-  return point + CFX_PointF(szOffset.width, szOffset.height);
+  return point + CFX_PointF{szOffset.width, szOffset.height};
 }
 
 CFX_Matrix CFWL_Widget::GetMatrix() const {
@@ -239,7 +239,7 @@ CFX_SizeF CFWL_Widget::CalcTextSize(const WideString& wsText, bool bMultiLine) {
   float fWidth = bMultiLine ? kCalcMultiLineDefWidth : kCalcWidth;
   CFX_RectF rect(0, 0, fWidth, kCalcHeight);
   GetThemeProvider()->CalcTextRect(calPart, &rect);
-  return CFX_SizeF(rect.width, rect.height);
+  return {rect.width, rect.height};
 }
 
 void CFWL_Widget::CalcTextRect(const WideString& wsText,
@@ -303,12 +303,12 @@ CFX_SizeF CFWL_Widget::GetOffsetFromParent(CFWL_Widget* pParent) {
   if (pParent == this)
     return CFX_SizeF();
 
-  CFX_SizeF szRet(m_WidgetRect.left, m_WidgetRect.top);
+  CFX_SizeF szRet = {m_WidgetRect.left, m_WidgetRect.top};
   CFWL_WidgetMgr* pWidgetMgr = GetFWLApp()->GetWidgetMgr();
   CFWL_Widget* pDstWidget = GetParent();
   while (pDstWidget && pDstWidget != pParent) {
     CFX_RectF rtDst = pDstWidget->GetWidgetRect();
-    szRet += CFX_SizeF(rtDst.left, rtDst.top);
+    szRet += CFX_SizeF{rtDst.left, rtDst.top};
     pDstWidget = pWidgetMgr->GetParentWidget(pDstWidget);
   }
   return szRet;

@@ -137,7 +137,7 @@ void DrawAxialShading(const RetainPtr<CFX_DIBitmap>& pBitmap,
         reinterpret_cast<uint32_t*>(pBitmap->GetWritableScanline(row).data());
     for (int column = 0; column < width; column++) {
       CFX_PointF pos = matrix.Transform(
-          CFX_PointF(static_cast<float>(column), static_cast<float>(row)));
+          {static_cast<float>(column), static_cast<float>(row)});
       float scale =
           (((pos.x - start_x) * x_span) + ((pos.y - start_y) * y_span)) /
           axis_len_square;
@@ -210,7 +210,7 @@ void DrawRadialShading(const RetainPtr<CFX_DIBitmap>& pBitmap,
         reinterpret_cast<uint32_t*>(pBitmap->GetWritableScanline(row).data());
     for (int column = 0; column < width; column++) {
       CFX_PointF pos = matrix.Transform(
-          CFX_PointF(static_cast<float>(column), static_cast<float>(row)));
+          {static_cast<float>(column), static_cast<float>(row)});
       float pos_dx = pos.x - start_x;
       float pos_dy = pos.y - start_y;
       float b = -2 * (pos_dx * dx + pos_dy * dy + start_r * dr);
@@ -291,7 +291,7 @@ void DrawFuncShading(const RetainPtr<CFX_DIBitmap>& pBitmap,
         reinterpret_cast<uint32_t*>(pBitmap->GetWritableScanline(row).data());
     for (int column = 0; column < width; column++) {
       CFX_PointF pos = matrix.Transform(
-          CFX_PointF(static_cast<float>(column), static_cast<float>(row)));
+          {static_cast<float>(column), static_cast<float>(row)});
       if (pos.x < xmin || pos.x > xmax || pos.y < ymin || pos.y > ymax)
         continue;
 
@@ -800,9 +800,8 @@ void DrawCoonPatchMeshes(
   patch.bNoPathSmooth = bNoPathSmooth;
 
   for (int i = 0; i < 13; i++) {
-    patch.path.AppendPoint(CFX_PointF(), i == 0
-                                             ? CFX_Path::Point::Type::kMove
-                                             : CFX_Path::Point::Type::kBezier);
+    patch.path.AppendPoint({}, i == 0 ? CFX_Path::Point::Type::kMove
+                                      : CFX_Path::Point::Type::kBezier);
   }
 
   CFX_PointF coords[16];

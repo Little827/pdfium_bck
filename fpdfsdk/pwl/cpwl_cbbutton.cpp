@@ -41,11 +41,11 @@ void CPWL_CBButton::DrawThisAppearance(CFX_RenderDevice* pDevice,
   }
 
   CFX_PointF ptCenter = GetCenterPoint();
-  CFX_PointF pt1(ptCenter.x - kComboBoxTriangleHalfLength,
-                 ptCenter.y + kComboBoxTriangleQuarterLength);
-  CFX_PointF pt2(ptCenter.x + kComboBoxTriangleHalfLength,
-                 ptCenter.y + kComboBoxTriangleQuarterLength);
-  CFX_PointF pt3(ptCenter.x, ptCenter.y - kComboBoxTriangleQuarterLength);
+  CFX_PointF pt1 = {ptCenter.x - kComboBoxTriangleHalfLength,
+                    ptCenter.y + kComboBoxTriangleQuarterLength};
+  CFX_PointF pt2 = {ptCenter.x + kComboBoxTriangleHalfLength,
+                    ptCenter.y + kComboBoxTriangleQuarterLength};
+  CFX_PointF pt3 = {ptCenter.x, ptCenter.y - kComboBoxTriangleQuarterLength};
 
   CFX_Path path;
   path.AppendPoint(pt1, CFX_Path::Point::Type::kMove);
