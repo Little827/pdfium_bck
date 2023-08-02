@@ -186,22 +186,22 @@ ByteString GetAP_Check(const CFX_FloatRect& crBBox) {
   const float fWidth = crBBox.Width();
   const float fHeight = crBBox.Height();
 
-  CFX_PointF pts[8][3] = {{CFX_PointF(0.28f, 0.52f), CFX_PointF(0.27f, 0.48f),
-                           CFX_PointF(0.29f, 0.40f)},
-                          {CFX_PointF(0.30f, 0.33f), CFX_PointF(0.31f, 0.29f),
-                           CFX_PointF(0.31f, 0.28f)},
-                          {CFX_PointF(0.39f, 0.28f), CFX_PointF(0.49f, 0.29f),
-                           CFX_PointF(0.77f, 0.67f)},
-                          {CFX_PointF(0.76f, 0.68f), CFX_PointF(0.78f, 0.69f),
-                           CFX_PointF(0.76f, 0.75f)},
-                          {CFX_PointF(0.76f, 0.75f), CFX_PointF(0.73f, 0.80f),
-                           CFX_PointF(0.68f, 0.75f)},
-                          {CFX_PointF(0.68f, 0.74f), CFX_PointF(0.68f, 0.74f),
-                           CFX_PointF(0.44f, 0.47f)},
-                          {CFX_PointF(0.43f, 0.47f), CFX_PointF(0.40f, 0.47f),
-                           CFX_PointF(0.41f, 0.58f)},
-                          {CFX_PointF(0.40f, 0.60f), CFX_PointF(0.28f, 0.66f),
-                           CFX_PointF(0.30f, 0.56f)}};
+  CFX_PointF pts[8][3] = {{CFX_PointF{0.28f, 0.52f}, CFX_PointF{0.27f, 0.48f},
+                           CFX_PointF{0.29f, 0.40f}},
+                          {CFX_PointF{0.30f, 0.33f}, CFX_PointF{0.31f, 0.29f},
+                           CFX_PointF{0.31f, 0.28f}},
+                          {CFX_PointF{0.39f, 0.28f}, CFX_PointF{0.49f, 0.29f},
+                           CFX_PointF{0.77f, 0.67f}},
+                          {CFX_PointF{0.76f, 0.68f}, CFX_PointF{0.78f, 0.69f},
+                           CFX_PointF{0.76f, 0.75f}},
+                          {CFX_PointF{0.76f, 0.75f}, CFX_PointF{0.73f, 0.80f},
+                           CFX_PointF{0.68f, 0.75f}},
+                          {CFX_PointF{0.68f, 0.74f}, CFX_PointF{0.68f, 0.74f},
+                           CFX_PointF{0.44f, 0.47f}},
+                          {CFX_PointF{0.43f, 0.47f}, CFX_PointF{0.40f, 0.47f},
+                           CFX_PointF{0.41f, 0.58f}},
+                          {CFX_PointF{0.40f, 0.60f}, CFX_PointF{0.28f, 0.66f},
+                           CFX_PointF{0.30f, 0.56f}}};
 
   for (size_t i = 0; i < std::size(pts); ++i) {
     for (size_t j = 0; j < std::size(pts[0]); ++j) {
@@ -238,10 +238,10 @@ ByteString GetAP_Circle(const CFX_FloatRect& crBBox) {
   float fWidth = crBBox.Width();
   float fHeight = crBBox.Height();
 
-  CFX_PointF pt1(crBBox.left, crBBox.bottom + fHeight / 2);
-  CFX_PointF pt2(crBBox.left + fWidth / 2, crBBox.top);
-  CFX_PointF pt3(crBBox.right, crBBox.bottom + fHeight / 2);
-  CFX_PointF pt4(crBBox.left + fWidth / 2, crBBox.bottom);
+  CFX_PointF pt1 = {crBBox.left, crBBox.bottom + fHeight / 2};
+  CFX_PointF pt2 = {crBBox.left + fWidth / 2, crBBox.top};
+  CFX_PointF pt3 = {crBBox.right, crBBox.bottom + fHeight / 2};
+  CFX_PointF pt4 = {crBBox.left + fWidth / 2, crBBox.bottom};
 
   WriteMove(csAP, pt1);
 
@@ -314,14 +314,14 @@ ByteString GetAP_Star(const CFX_FloatRect& crBBox) {
   fxcrt::ostringstream csAP;
 
   float fRadius = (crBBox.top - crBBox.bottom) / (1 + cosf(FXSYS_PI / 5.0f));
-  CFX_PointF ptCenter = CFX_PointF((crBBox.left + crBBox.right) / 2.0f,
-                                   (crBBox.top + crBBox.bottom) / 2.0f);
+  CFX_PointF ptCenter = {(crBBox.left + crBBox.right) / 2.0f,
+                         (crBBox.top + crBBox.bottom) / 2.0f};
 
   CFX_PointF points[5];
   float fAngle = FXSYS_PI / 10.0f;
   for (auto& point : points) {
     point =
-        ptCenter + CFX_PointF(fRadius * cosf(fAngle), fRadius * sinf(fAngle));
+        ptCenter + CFX_PointF{fRadius * cosf(fAngle), fRadius * sinf(fAngle)};
     fAngle += FXSYS_PI * 2 / 5.0f;
   }
 
@@ -342,9 +342,9 @@ ByteString GetAP_HalfCircle(const CFX_FloatRect& crBBox, float fRotate) {
   float fWidth = crBBox.Width();
   float fHeight = crBBox.Height();
 
-  CFX_PointF pt1(-fWidth / 2, 0);
-  CFX_PointF pt2(0, fHeight / 2);
-  CFX_PointF pt3(fWidth / 2, 0);
+  CFX_PointF pt1 = {-fWidth / 2, 0};
+  CFX_PointF pt2 = {0, fHeight / 2};
+  CFX_PointF pt3 = {fWidth / 2, 0};
 
   CFX_Matrix rotate_matrix(cos(fRotate), sin(fRotate), -sin(fRotate),
                            cos(fRotate), crBBox.left + fWidth / 2,
@@ -634,13 +634,11 @@ ByteString GetEditAppStream(CPWL_EditImpl* pEdit,
 
         CPVT_Word word;
         if (pIterator->GetWord(word)) {
-          ptNew = CFX_PointF(word.ptWord.x + ptOffset.x,
-                             word.ptWord.y + ptOffset.y);
+          ptNew = {word.ptWord.x + ptOffset.x, word.ptWord.y + ptOffset.y};
         } else {
           CPVT_Line line;
           pIterator->GetLine(line);
-          ptNew = CFX_PointF(line.ptLine.x + ptOffset.x,
-                             line.ptLine.y + ptOffset.y);
+          ptNew = {line.ptLine.x + ptOffset.x, line.ptLine.y + ptOffset.y};
         }
 
         if (ptNew.x != ptOld.x || ptNew.y != ptOld.y) {
@@ -669,9 +667,7 @@ ByteString GetEditAppStream(CPWL_EditImpl* pEdit,
     } else {
       CPVT_Word word;
       if (pIterator->GetWord(word)) {
-        ptNew =
-            CFX_PointF(word.ptWord.x + ptOffset.x, word.ptWord.y + ptOffset.y);
-
+        ptNew = {word.ptWord.x + ptOffset.x, word.ptWord.y + ptOffset.y};
         if (ptNew.x != ptOld.x || ptNew.y != ptOld.y) {
           WritePoint(sEditStream, {ptNew.x - ptOld.x, ptNew.y - ptOld.y})
               << " " << kMoveTextPositionOperator << "\n";
@@ -912,8 +908,7 @@ ByteString GetPushButtonAppStream(const CFX_FloatRect& rcBBox,
   if (!rcLabel.IsEmpty()) {
     pEdit->SetPlateRect(rcLabel);
     pEdit->Paint();
-    ByteString sEdit =
-        GetEditAppStream(pEdit.get(), CFX_PointF(0.0f, 0.0f), true, 0);
+    ByteString sEdit = GetEditAppStream(pEdit.get(), {0.0f, 0.0f}, true, 0);
     if (sEdit.GetLength() > 0) {
       AutoClosedCommand bt(&sTemp, kTextBeginOperator, kTextEndOperator);
       sTemp << GetFillColorAppStream(crText) << sEdit;
@@ -1057,8 +1052,8 @@ ByteString GetDropButtonAppStream(const CFX_FloatRect& rcBBox) {
         CPWL_Dash(3, 0, 0));
   }
 
-  CFX_PointF ptCenter = CFX_PointF((rcBBox.left + rcBBox.right) / 2,
-                                   (rcBBox.top + rcBBox.bottom) / 2);
+  CFX_PointF ptCenter = {(rcBBox.left + rcBBox.right) / 2,
+                         (rcBBox.top + rcBBox.bottom) / 2};
   if (FXSYS_IsFloatBigger(rcBBox.right - rcBBox.left, 6) &&
       FXSYS_IsFloatBigger(rcBBox.top - rcBBox.bottom, 6)) {
     AutoClosedQCommand q(&sAppStream);
@@ -1629,13 +1624,13 @@ void CPDFSDK_AppStream::SetAsListBox() {
 
       AutoClosedCommand bt(&sList, kTextBeginOperator, kTextEndOperator);
       sList << GetFillColorAppStream(CFX_Color(CFX_Color::Type::kGray, 1))
-            << GetEditAppStream(pEdit.get(), CFX_PointF(0.0f, fy), true, 0);
+            << GetEditAppStream(pEdit.get(), {0.0f, fy}, true, 0);
     } else {
       CFX_Color crText = widget_->GetTextPWLColor();
 
       AutoClosedCommand bt(&sList, kTextBeginOperator, kTextEndOperator);
       sList << GetFillColorAppStream(crText)
-            << GetEditAppStream(pEdit.get(), CFX_PointF(0.0f, fy), true, 0);
+            << GetEditAppStream(pEdit.get(), {0.0f, fy}, true, 0);
     }
 
     fy -= fItemHeight;

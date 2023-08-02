@@ -143,36 +143,36 @@ void CFWL_WidgetTP::DrawArrow(CFGAS_GEGraphics* pGraphics,
   CFGAS_GEPath path;
   switch (eDict) {
     case FWLTHEME_DIRECTION::kDown:
-      path.MoveTo(CFX_PointF(fLeft, fTop + 1));
-      path.LineTo(CFX_PointF(fLeft + 4, fTop + 5));
-      path.LineTo(CFX_PointF(fLeft + 8, fTop + 1));
-      path.LineTo(CFX_PointF(fLeft + 7, fTop));
-      path.LineTo(CFX_PointF(fLeft + 4, fTop + 3));
-      path.LineTo(CFX_PointF(fLeft + 1, fTop));
+      path.MoveTo({fLeft, fTop + 1});
+      path.LineTo({fLeft + 4, fTop + 5});
+      path.LineTo({fLeft + 8, fTop + 1});
+      path.LineTo({fLeft + 7, fTop});
+      path.LineTo({fLeft + 4, fTop + 3});
+      path.LineTo({fLeft + 1, fTop});
       break;
     case FWLTHEME_DIRECTION::kUp:
-      path.MoveTo(CFX_PointF(fLeft, fTop + 4));
-      path.LineTo(CFX_PointF(fLeft + 4, fTop));
-      path.LineTo(CFX_PointF(fLeft + 8, fTop + 4));
-      path.LineTo(CFX_PointF(fLeft + 7, fTop + 5));
-      path.LineTo(CFX_PointF(fLeft + 4, fTop + 2));
-      path.LineTo(CFX_PointF(fLeft + 1, fTop + 5));
+      path.MoveTo({fLeft, fTop + 4});
+      path.LineTo({fLeft + 4, fTop});
+      path.LineTo({fLeft + 8, fTop + 4});
+      path.LineTo({fLeft + 7, fTop + 5});
+      path.LineTo({fLeft + 4, fTop + 2});
+      path.LineTo({fLeft + 1, fTop + 5});
       break;
     case FWLTHEME_DIRECTION::kRight:
-      path.MoveTo(CFX_PointF(fLeft + 1, fTop));
-      path.LineTo(CFX_PointF(fLeft + 5, fTop + 4));
-      path.LineTo(CFX_PointF(fLeft + 1, fTop + 8));
-      path.LineTo(CFX_PointF(fLeft, fTop + 7));
-      path.LineTo(CFX_PointF(fLeft + 3, fTop + 4));
-      path.LineTo(CFX_PointF(fLeft, fTop + 1));
+      path.MoveTo({fLeft + 1, fTop});
+      path.LineTo({fLeft + 5, fTop + 4});
+      path.LineTo({fLeft + 1, fTop + 8});
+      path.LineTo({fLeft, fTop + 7});
+      path.LineTo({fLeft + 3, fTop + 4});
+      path.LineTo({fLeft, fTop + 1});
       break;
     case FWLTHEME_DIRECTION::kLeft:
-      path.MoveTo(CFX_PointF(fLeft, fTop + 4));
-      path.LineTo(CFX_PointF(fLeft + 4, fTop));
-      path.LineTo(CFX_PointF(fLeft + 5, fTop + 1));
-      path.LineTo(CFX_PointF(fLeft + 2, fTop + 4));
-      path.LineTo(CFX_PointF(fLeft + 5, fTop + 7));
-      path.LineTo(CFX_PointF(fLeft + 4, fTop + 8));
+      path.MoveTo({fLeft, fTop + 4});
+      path.LineTo({fLeft + 4, fTop});
+      path.LineTo({fLeft + 5, fTop + 1});
+      path.LineTo({fLeft + 2, fTop + 4});
+      path.LineTo({fLeft + 5, fTop + 7});
+      path.LineTo({fLeft + 4, fTop + 8});
       break;
   }
   pGraphics->SetFillColor(CFGAS_GEColor(argSign));

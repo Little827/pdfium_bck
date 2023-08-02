@@ -642,7 +642,7 @@ RetainPtr<CFX_DIBitmap> CFX_DIBBase::ClipTo(const FX_RECT& rect) const {
 
 RetainPtr<CFX_DIBitmap> CFX_DIBBase::ClipToInternal(
     const FX_RECT* pClip) const {
-  FX_RECT rect(0, 0, m_Width, m_Height);
+  FX_RECT rect = {0, 0, m_Width, m_Height};
   if (pClip) {
     rect.Intersect(*pClip);
     if (rect.IsEmpty())
@@ -784,9 +784,9 @@ bool CFX_DIBBase::GetOverlapRect(int& dest_left,
   if (!safe_src_height.IsValid())
     return false;
 
-  FX_RECT src_rect(src_left, src_top, safe_src_width.ValueOrDie(),
-                   safe_src_height.ValueOrDie());
-  FX_RECT src_bound(0, 0, src_width, src_height);
+  FX_RECT src_rect = {src_left, src_top, safe_src_width.ValueOrDie(),
+                      safe_src_height.ValueOrDie()};
+  FX_RECT src_bound = {0, 0, src_width, src_height};
   src_rect.Intersect(src_bound);
 
   FX_SAFE_INT32 safe_x_offset = dest_left;
@@ -819,10 +819,10 @@ bool CFX_DIBBase::GetOverlapRect(int& dest_left,
   if (!safe_dest_bottom.IsValid())
     return false;
 
-  FX_RECT dest_rect(safe_dest_left.ValueOrDie(), safe_dest_top.ValueOrDie(),
-                    safe_dest_right.ValueOrDie(),
-                    safe_dest_bottom.ValueOrDie());
-  FX_RECT dest_bound(0, 0, m_Width, m_Height);
+  FX_RECT dest_rect = {safe_dest_left.ValueOrDie(), safe_dest_top.ValueOrDie(),
+                       safe_dest_right.ValueOrDie(),
+                       safe_dest_bottom.ValueOrDie()};
+  FX_RECT dest_bound = {0, 0, m_Width, m_Height};
   dest_rect.Intersect(dest_bound);
 
   if (pClipRgn)
@@ -968,7 +968,7 @@ RetainPtr<CFX_DIBitmap> CFX_DIBBase::ConvertTo(FXDIB_Format dest_format) const {
 }
 
 RetainPtr<CFX_DIBitmap> CFX_DIBBase::SwapXY(bool bXFlip, bool bYFlip) const {
-  FX_RECT dest_clip(0, 0, m_Height, m_Width);
+  FX_RECT dest_clip = {0, 0, m_Height, m_Width};
   if (dest_clip.IsEmpty())
     return nullptr;
 
@@ -1064,7 +1064,7 @@ RetainPtr<CFX_DIBitmap> CFX_DIBBase::StretchTo(
     const FXDIB_ResampleOptions& options,
     const FX_RECT* pClip) const {
   RetainPtr<const CFX_DIBBase> holder(this);
-  FX_RECT clip_rect(0, 0, abs(dest_width), abs(dest_height));
+  FX_RECT clip_rect = {0, 0, abs(dest_width), abs(dest_height)};
   if (pClip)
     clip_rect.Intersect(*pClip);
 

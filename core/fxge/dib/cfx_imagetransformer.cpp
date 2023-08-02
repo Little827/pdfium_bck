@@ -56,7 +56,8 @@ class CFX_BilinearMatrix {
         f(FXSYS_roundf(src.f * kBase)) {}
 
   void Transform(int x, int y, int* x1, int* y1, int* res_x, int* res_y) const {
-    CFX_PointF val = TransformInternal(CFX_PointF(x, y));
+    CFX_PointF val =
+        TransformInternal({static_cast<float>(x), static_cast<float>(y)});
     *x1 = pdfium::base::saturated_cast<int>(val.x / kBase);
     *y1 = pdfium::base::saturated_cast<int>(val.y / kBase);
     *res_x = static_cast<int>(val.x) % kBase;
@@ -69,8 +70,8 @@ class CFX_BilinearMatrix {
 
  private:
   CFX_PointF TransformInternal(CFX_PointF pt) const {
-    return CFX_PointF(a * pt.x + c * pt.y + e + kBase / 2,
-                      b * pt.x + d * pt.y + f + kBase / 2);
+    return {a * pt.x + c * pt.y + e + kBase / 2,
+            b * pt.x + d * pt.y + f + kBase / 2};
   }
 
   const int a;

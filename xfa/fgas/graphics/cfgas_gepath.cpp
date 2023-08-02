@@ -44,8 +44,8 @@ void CFGAS_GEPath::ArcTo(const CFX_PointF& pos,
                          float start_angle,
                          float sweep_angle) {
   CFX_SizeF new_size = size / 2.0f;
-  ArcToInternal(CFX_PointF(pos.x + new_size.width, pos.y + new_size.height),
-                new_size, start_angle, sweep_angle);
+  ArcToInternal({pos.x + new_size.width, pos.y + new_size.height}, new_size,
+                start_angle, sweep_angle);
 }
 
 void CFGAS_GEPath::ArcToInternal(const CFX_PointF& pos,
@@ -57,7 +57,7 @@ void CFGAS_GEPath::ArcToInternal(const CFX_PointF& pos,
   float tx = ((1.0f - x0) * 4) / (3 * 1.0f);
   float ty = y0 - ((tx * x0) / y0);
 
-  CFX_PointF points[] = {CFX_PointF(x0 + tx, -ty), CFX_PointF(x0 + tx, ty)};
+  CFX_PointF points[] = {{x0 + tx, -ty}, {x0 + tx, ty}};
   float sn = sin(start_angle + sweep_angle / 2);
   float cs = cos(start_angle + sweep_angle / 2);
 
@@ -109,9 +109,9 @@ void CFGAS_GEPath::AddArc(const CFX_PointF& original_pos,
     sweep_angle = -FXSYS_PI * 2;
 
   CFX_SizeF size = original_size / 2;
-  CFX_PointF pos(original_pos.x + size.width, original_pos.y + size.height);
-  path_.AppendPoint(pos + CFX_PointF(size.width * cos(start_angle),
-                                     size.height * sin(start_angle)),
+  CFX_PointF pos = {original_pos.x + size.width, original_pos.y + size.height};
+  path_.AppendPoint(pos + CFX_PointF{size.width * cos(start_angle),
+                                     size.height * sin(start_angle)},
                     CFX_Path::Point::Type::kMove);
 
   float total_sweep = 0;

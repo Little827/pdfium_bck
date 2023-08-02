@@ -96,9 +96,9 @@ int32_t CXFA_LayoutProcessor::DoLayout() {
 
     CXFA_ContentLayoutItem* pLayoutItem =
         m_pContentLayoutProcessor->ExtractLayoutItem();
-    if (pLayoutItem)
-      pLayoutItem->m_sPos = CFX_PointF(fPosX, fPosY);
-
+    if (pLayoutItem) {
+      pLayoutItem->m_sPos = {fPosX, fPosY};
+    }
     m_pViewLayoutProcessor->SubmitContentItem(pLayoutItem, eStatus);
   } while (eStatus != CXFA_ContentLayoutProcessor::Result::kDone);
 

@@ -715,7 +715,8 @@ FPDF_RenderPageBitmapWithMatrix(FPDF_BITMAP bitmap,
     clipping_rect = CFXFloatRectFromFSRectF(*clipping);
   FX_RECT clip_rect = clipping_rect.ToFxRect();
 
-  const FX_RECT rect(0, 0, pPage->GetPageWidth(), pPage->GetPageHeight());
+  const FX_RECT rect = {0, 0, static_cast<int>(pPage->GetPageWidth()),
+                        static_cast<int>(pPage->GetPageHeight())};
   CFX_Matrix transform_matrix = pPage->GetDisplayMatrix(rect, 0);
   if (matrix)
     transform_matrix *= CFXMatrixFromFSMatrix(*matrix);
@@ -792,9 +793,10 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDF_DeviceToPage(FPDF_PAGE page,
     return false;
 
   IPDF_Page* pPage = IPDFPageFromFPDFPage(page);
-  const FX_RECT rect(start_x, start_y, start_x + size_x, start_y + size_y);
-  absl::optional<CFX_PointF> pos =
-      pPage->DeviceToPage(rect, rotate, CFX_PointF(device_x, device_y));
+  const FX_RECT rect = {start_x, start_y, start_x + size_x, start_y + size_y};
+  absl::optional<CFX_PointF> pos = pPage->DeviceToPage(
+      rect, rotate,
+      {static_cast<float>(device_x), static_cast<float>(device_y)});
   if (!pos.has_value())
     return false;
 
@@ -817,8 +819,9 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDF_PageToDevice(FPDF_PAGE page,
     return false;
 
   IPDF_Page* pPage = IPDFPageFromFPDFPage(page);
-  const FX_RECT rect(start_x, start_y, start_x + size_x, start_y + size_y);
-  CFX_PointF page_point(static_cast<float>(page_x), static_cast<float>(page_y));
+  const FX_RECT rect = {start_x, start_y, start_x + size_x, start_y + size_y};
+  CFX_PointF page_point = {static_cast<float>(page_x),
+                           static_cast<float>(page_y)};
   absl::optional<CFX_PointF> pos =
       pPage->PageToDevice(rect, rotate, page_point);
   if (!pos.has_value())
@@ -906,7 +909,7 @@ FPDF_EXPORT void FPDF_CALLCONV FPDFBitmap_FillRect(FPDF_BITMAP bitmap,
   device.Attach(pBitmap);
   if (!pBitmap->IsAlphaFormat())
     color |= 0xFF000000;
-  device.FillRect(FX_RECT(left, top, left + width, top + height),
+  device.FillRect({left, top, left + width, top + height},
                   static_cast<uint32_t>(color));
 }
 

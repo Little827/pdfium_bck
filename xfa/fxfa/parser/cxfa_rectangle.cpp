@@ -191,7 +191,7 @@ void CXFA_Rectangle::GetFillPath(const std::vector<CXFA_Stroke*>& strokes,
         break;
     }
     if (i == 0)
-      fillPath->MoveTo(CFX_PointF(cp1.x, cp1.y + fRadius1));
+      fillPath->MoveTo({cp1.x, cp1.y + fRadius1});
 
     if (bRound) {
       if (fRadius1 < 0)
@@ -214,10 +214,9 @@ void CXFA_Rectangle::GetFillPath(const std::vector<CXFA_Stroke*>& strokes,
         cp = cp1;
       }
       fillPath->LineTo(cp);
-      fillPath->LineTo(
-          CFX_PointF(cp1.x + fRadius1 * sx, cp1.y + fRadius1 * sy));
+      fillPath->LineTo({cp1.x + fRadius1 * sx, cp1.y + fRadius1 * sy});
     }
-    fillPath->LineTo(CFX_PointF(cp2.x + fRadius2 * nx, cp2.y + fRadius2 * ny));
+    fillPath->LineTo({cp2.x + fRadius2 * nx, cp2.y + fRadius2 * ny});
   }
 }
 
@@ -383,24 +382,24 @@ void CXFA_Rectangle::StrokeRect(CFGAS_GEGraphics* pGraphic,
   float fBottom = rt.bottom();
   float fRight = rt.right();
   CFGAS_GEPath pathLT;
-  pathLT.MoveTo(CFX_PointF(rt.left, fBottom));
-  pathLT.LineTo(CFX_PointF(rt.left, rt.top));
-  pathLT.LineTo(CFX_PointF(fRight, rt.top));
-  pathLT.LineTo(CFX_PointF(fRight - fLineWidth, rt.top + fLineWidth));
-  pathLT.LineTo(CFX_PointF(rt.left + fLineWidth, rt.top + fLineWidth));
-  pathLT.LineTo(CFX_PointF(rt.left + fLineWidth, fBottom - fLineWidth));
-  pathLT.LineTo(CFX_PointF(rt.left, fBottom));
+  pathLT.MoveTo({rt.left, fBottom});
+  pathLT.LineTo({rt.left, rt.top});
+  pathLT.LineTo({fRight, rt.top});
+  pathLT.LineTo({fRight - fLineWidth, rt.top + fLineWidth});
+  pathLT.LineTo({rt.left + fLineWidth, rt.top + fLineWidth});
+  pathLT.LineTo({rt.left + fLineWidth, fBottom - fLineWidth});
+  pathLT.LineTo({rt.left, fBottom});
   pGraphic->SetFillColor(CFGAS_GEColor(argbTopLeft));
   pGraphic->FillPath(pathLT, CFX_FillRenderOptions::FillType::kWinding, matrix);
 
   CFGAS_GEPath pathRB;
-  pathRB.MoveTo(CFX_PointF(fRight, rt.top));
-  pathRB.LineTo(CFX_PointF(fRight, fBottom));
-  pathRB.LineTo(CFX_PointF(rt.left, fBottom));
-  pathRB.LineTo(CFX_PointF(rt.left + fLineWidth, fBottom - fLineWidth));
-  pathRB.LineTo(CFX_PointF(fRight - fLineWidth, fBottom - fLineWidth));
-  pathRB.LineTo(CFX_PointF(fRight - fLineWidth, rt.top + fLineWidth));
-  pathRB.LineTo(CFX_PointF(fRight, rt.top));
+  pathRB.MoveTo({fRight, rt.top});
+  pathRB.LineTo({fRight, fBottom});
+  pathRB.LineTo({rt.left, fBottom});
+  pathRB.LineTo({rt.left + fLineWidth, fBottom - fLineWidth});
+  pathRB.LineTo({fRight - fLineWidth, fBottom - fLineWidth});
+  pathRB.LineTo({fRight - fLineWidth, rt.top + fLineWidth});
+  pathRB.LineTo({fRight, rt.top});
   pGraphic->SetFillColor(CFGAS_GEColor(argbBottomRight));
   pGraphic->FillPath(pathRB, CFX_FillRenderOptions::FillType::kWinding, matrix);
 }
@@ -617,8 +616,8 @@ void CXFA_Rectangle::GetPath(const std::vector<CXFA_Stroke*>& strokes,
     path.MoveTo(cpStart);
   }
   if (nIndex & 1) {
-    path.LineTo(CFX_PointF(cp2.x + fRadius2 * nx + offsetEX,
-                           cp2.y + fRadius2 * ny + offsetEY));
+    path.LineTo(
+        {cp2.x + fRadius2 * nx + offsetEX, cp2.y + fRadius2 * ny + offsetEY});
     return;
   }
   if (bRound) {
@@ -644,7 +643,7 @@ void CXFA_Rectangle::GetPath(const std::vector<CXFA_Stroke*>& strokes,
       cp = cp1;
     }
     path.LineTo(cp);
-    path.LineTo(CFX_PointF(cp1.x + fRadius1 * sx + offsetX,
-                           cp1.y + fRadius1 * sy + offsetY));
+    path.LineTo(
+        {cp1.x + fRadius1 * sx + offsetX, cp1.y + fRadius1 * sy + offsetY});
   }
 }

@@ -190,8 +190,8 @@ void CPWL_Edit::DrawThisAppearance(CFX_RenderDevice* pDevice,
 
     const float width = (rcClient.right - rcClient.left) / nCharArray;
     CFX_Path path;
-    CFX_PointF bottom(0, rcClient.bottom);
-    CFX_PointF top(0, rcClient.top);
+    CFX_PointF bottom = {0, rcClient.bottom};
+    CFX_PointF top = {0, rcClient.top};
     for (int32_t i = 0; i < nCharArray - 1; ++i) {
       bottom.x = rcClient.left + width * (i + 1);
       top.x = bottom.x;
@@ -478,7 +478,7 @@ void CPWL_Edit::OnDestroy() {
 
 bool CPWL_Edit::IsWndHorV() const {
   CFX_Matrix mt = GetWindowMatrix();
-  return mt.Transform(CFX_PointF(1, 1)).y == mt.Transform(CFX_PointF(0, 1)).y;
+  return mt.Transform({1.0f, 1.0f}).y == mt.Transform({0.0f, 1.0f}).y;
 }
 
 void CPWL_Edit::SetCursor() {
@@ -517,7 +517,7 @@ void CPWL_Edit::SetScrollPosition(float pos) {
 }
 
 void CPWL_Edit::ScrollWindowVertically(float pos) {
-  m_pEditImpl->SetScrollPos(CFX_PointF(m_pEditImpl->GetScrollPos().x, pos));
+  m_pEditImpl->SetScrollPos({m_pEditImpl->GetScrollPos().x, pos});
 }
 
 void CPWL_Edit::CreateChildWnd(const CreateParams& cp) {

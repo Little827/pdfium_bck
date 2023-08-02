@@ -219,7 +219,7 @@ bool ProgressiveDecoder::PngReadHeader(int width,
         m_SrcComponents = 0;
         break;
     }
-    m_clipBox = FX_RECT(0, 0, width, height);
+    m_clipBox = {0, 0, width, height};
     return false;
   }
   FXDIB_Format format = m_pDeviceBitmap->GetFormat();
@@ -701,7 +701,7 @@ bool ProgressiveDecoder::BmpDetectImageTypeInBuffer(
   }
 
   m_SrcBPC = 8;
-  m_clipBox = FX_RECT(0, 0, m_SrcWidth, m_SrcHeight);
+  m_clipBox = {0, 0, m_SrcWidth, m_SrcHeight};
   m_pBmpContext = std::move(pBmpContext);
   if (m_SrcPaletteNumber) {
     m_SrcPalette.resize(m_SrcPaletteNumber);
@@ -781,7 +781,7 @@ bool ProgressiveDecoder::GifDetectImageTypeInBuffer() {
   }
   if (readResult == GifDecoder::Status::kSuccess) {
     m_SrcBPC = 8;
-    m_clipBox = FX_RECT(0, 0, m_SrcWidth, m_SrcHeight);
+    m_clipBox = {0, 0, m_SrcWidth, m_SrcHeight};
     return true;
   }
   m_pGifContext = nullptr;
@@ -954,7 +954,7 @@ bool ProgressiveDecoder::JpegDetectImageTypeInBuffer(
   }
   if (!readResult) {
     m_SrcBPC = 8;
-    m_clipBox = FX_RECT(0, 0, m_SrcWidth, m_SrcHeight);
+    m_clipBox = {0, 0, m_SrcWidth, m_SrcHeight};
     return true;
   }
   m_pJpegContext.reset();
@@ -1244,7 +1244,7 @@ bool ProgressiveDecoder::TiffDetectImageTypeFromFile(
                                         &m_SrcHeight, &m_SrcComponents,
                                         &dummy_bpc, pAttribute);
   m_SrcComponents = 4;
-  m_clipBox = FX_RECT(0, 0, m_SrcWidth, m_SrcHeight);
+  m_clipBox = {0, 0, m_SrcWidth, m_SrcHeight};
   if (!ret) {
     m_pTiffContext.reset();
     m_status = FXCODEC_STATUS::kError;
@@ -2098,12 +2098,10 @@ FXCODEC_STATUS ProgressiveDecoder::StartDecode(
   if (size_x <= 0 || size_x > 65535 || size_y <= 0 || size_y > 65535)
     return FXCODEC_STATUS::kError;
 
-  FX_RECT device_rc =
-      FX_RECT(start_x, start_y, start_x + size_x, start_y + size_y);
+  FX_RECT device_rc = {start_x, start_y, start_x + size_x, start_y + size_y};
   int32_t out_range_x = device_rc.right - pDIBitmap->GetWidth();
   int32_t out_range_y = device_rc.bottom - pDIBitmap->GetHeight();
-  device_rc.Intersect(
-      FX_RECT(0, 0, pDIBitmap->GetWidth(), pDIBitmap->GetHeight()));
+  device_rc.Intersect({0, 0, pDIBitmap->GetWidth(), pDIBitmap->GetHeight()});
   if (device_rc.IsEmpty())
     return FXCODEC_STATUS::kError;
 

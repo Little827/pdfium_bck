@@ -405,7 +405,7 @@ std::vector<float> CPDF_StreamContentParser::GetNumbers(size_t count) const {
 }
 
 CFX_PointF CPDF_StreamContentParser::GetPoint(uint32_t index) const {
-  return CFX_PointF(GetNumber(index + 1), GetNumber(index));
+  return {GetNumber(index + 1), GetNumber(index)};
 }
 
 CFX_Matrix CPDF_StreamContentParser::GetMatrix() const {
@@ -1263,11 +1263,10 @@ void CPDF_StreamContentParser::AddTextObject(const ByteString* pStrs,
       pCTM[3] = m_pCurStates->m_CTM.d;
     }
     pText->SetSegments(pStrs, kernings, nSegs);
-    pText->SetPosition(
-        m_mtContentToUser.Transform(m_pCurStates->m_CTM.Transform(
-            m_pCurStates->m_TextMatrix.Transform(CFX_PointF(
-                m_pCurStates->m_TextPos.x,
-                m_pCurStates->m_TextPos.y + m_pCurStates->m_TextRise)))));
+    pText->SetPosition(m_mtContentToUser.Transform(
+        m_pCurStates->m_CTM.Transform(m_pCurStates->m_TextMatrix.Transform(
+            {m_pCurStates->m_TextPos.x,
+             m_pCurStates->m_TextPos.y + m_pCurStates->m_TextRise}))));
 
     m_pCurStates->m_TextPos +=
         pText->CalcPositionData(m_pCurStates->m_TextHorzScale);

@@ -145,12 +145,12 @@ void CFWL_MonthCalendarTP::DrawLButton(const CFWL_ThemeBackground& pParams,
   }
 
   path.Clear();
-  path.MoveTo(CFX_PointF(rtLBtn.left + rtLBtn.Width() / 3 * 2,
-                         rtLBtn.top + rtLBtn.height / 4));
-  path.LineTo(CFX_PointF(rtLBtn.left + rtLBtn.Width() / 3,
-                         rtLBtn.top + rtLBtn.height / 2));
-  path.LineTo(CFX_PointF(rtLBtn.left + rtLBtn.Width() / 3 * 2,
-                         rtLBtn.bottom() - rtLBtn.height / 4));
+  path.MoveTo(
+      {rtLBtn.left + rtLBtn.Width() / 3 * 2, rtLBtn.top + rtLBtn.height / 4});
+  path.LineTo(
+      {rtLBtn.left + rtLBtn.Width() / 3, rtLBtn.top + rtLBtn.height / 2});
+  path.LineTo({rtLBtn.left + rtLBtn.Width() / 3 * 2,
+               rtLBtn.bottom() - rtLBtn.height / 4});
 
   pParams.GetGraphics()->SetStrokeColor(
       CFGAS_GEColor(ArgbEncode(0xff, 50, 104, 205)));
@@ -180,12 +180,12 @@ void CFWL_MonthCalendarTP::DrawRButton(const CFWL_ThemeBackground& pParams,
   }
 
   path.Clear();
-  path.MoveTo(CFX_PointF(rtRBtn.left + rtRBtn.Width() / 3,
-                         rtRBtn.top + rtRBtn.height / 4));
-  path.LineTo(CFX_PointF(rtRBtn.left + rtRBtn.Width() / 3 * 2,
-                         rtRBtn.top + rtRBtn.height / 2));
-  path.LineTo(CFX_PointF(rtRBtn.left + rtRBtn.Width() / 3,
-                         rtRBtn.bottom() - rtRBtn.height / 4));
+  path.MoveTo(
+      {rtRBtn.left + rtRBtn.Width() / 3, rtRBtn.top + rtRBtn.height / 4});
+  path.LineTo(
+      {rtRBtn.left + rtRBtn.Width() / 3 * 2, rtRBtn.top + rtRBtn.height / 2});
+  path.LineTo(
+      {rtRBtn.left + rtRBtn.Width() / 3, rtRBtn.bottom() - rtRBtn.height / 4});
 
   pParams.GetGraphics()->SetStrokeColor(
       CFGAS_GEColor(ArgbEncode(0xff, 50, 104, 205)));
@@ -196,8 +196,8 @@ void CFWL_MonthCalendarTP::DrawHSeparator(const CFWL_ThemeBackground& pParams,
                                           const CFX_Matrix& matrix) {
   CFGAS_GEPath path;
   CFX_RectF rtHSep = pParams.m_PartRect;
-  path.MoveTo(CFX_PointF(rtHSep.left, rtHSep.top + rtHSep.height / 2));
-  path.LineTo(CFX_PointF(rtHSep.right(), rtHSep.top + rtHSep.height / 2));
+  path.MoveTo({rtHSep.left, rtHSep.top + rtHSep.height / 2});
+  path.LineTo({rtHSep.right(), rtHSep.top + rtHSep.height / 2});
 
   CFGAS_GEGraphics::StateRestorer restorer(pParams.GetGraphics());
   pParams.GetGraphics()->SetStrokeColor(CFGAS_GEColor(kSeparatorColor));

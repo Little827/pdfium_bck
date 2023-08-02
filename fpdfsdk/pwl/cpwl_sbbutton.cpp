@@ -61,7 +61,7 @@ void CPWL_SBButton::DrawThisAppearance(CFX_RenderDevice* pDevice,
       const float* pOffsetsY =
           m_eSBButtonType == Type::kMinButton ? kOffsetsMinY : kOffsetsY;
       for (size_t i = 0; i < std::size(kOffsetsX); ++i)
-        pts.push_back(CFX_PointF(fX + kOffsetsX[i], fY + pOffsetsY[i]));
+        pts.push_back({fX + kOffsetsX[i], fY + pOffsetsY[i]});
       pDevice->DrawFillArea(mtUser2Device, pts,
                             ArgbEncode(nTransparency, 255, 255, 255));
     }
@@ -69,8 +69,8 @@ void CPWL_SBButton::DrawThisAppearance(CFX_RenderDevice* pDevice,
   }
 
   // draw shadow effect
-  CFX_PointF ptTop = CFX_PointF(rectWnd.left, rectWnd.top - 1.0f);
-  CFX_PointF ptBottom = CFX_PointF(rectWnd.left, rectWnd.bottom + 1.0f);
+  CFX_PointF ptTop = {rectWnd.left, rectWnd.top - 1.0f};
+  CFX_PointF ptBottom = {rectWnd.left, rectWnd.bottom + 1.0f};
 
   ptTop.x += 1.5f;
   ptBottom.x += 1.5f;
@@ -99,10 +99,10 @@ void CPWL_SBButton::DrawThisAppearance(CFX_RenderDevice* pDevice,
   FX_COLORREF crStroke = ArgbEncode(nTransparency, 120, 120, 120);
   float nFrictionWidth = 5.0f;
   float nFrictionHeight = 5.5f;
-  CFX_PointF ptLeft = CFX_PointF(ptCenter.x - nFrictionWidth / 2.0f,
-                                 ptCenter.y - nFrictionHeight / 2.0f + 0.5f);
-  CFX_PointF ptRight = CFX_PointF(ptCenter.x + nFrictionWidth / 2.0f,
-                                  ptCenter.y - nFrictionHeight / 2.0f + 0.5f);
+  CFX_PointF ptLeft = {ptCenter.x - nFrictionWidth / 2.0f,
+                       ptCenter.y - nFrictionHeight / 2.0f + 0.5f};
+  CFX_PointF ptRight = {ptCenter.x + nFrictionWidth / 2.0f,
+                        ptCenter.y - nFrictionHeight / 2.0f + 0.5f};
 
   for (size_t i = 0; i < 3; ++i) {
     pDevice->DrawStrokeLine(&mtUser2Device, ptLeft, ptRight, crStroke, 1.0f);

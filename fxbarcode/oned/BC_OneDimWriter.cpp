@@ -129,7 +129,7 @@ void CBC_OneDimWriter::CalcTextInfo(const ByteString& text,
   float penY = (float)abs(cFont->GetDescent()) * (float)fontSize / 1000.0f;
   float left = leftPositon;
   float top = 0.0;
-  charPos[0].m_Origin = CFX_PointF(penX + left, penY + top);
+  charPos[0].m_Origin = {penX + left, penY + top};
   charPos[0].m_GlyphIndex = encoding->GlyphFromCharCode(charcodes[0]);
   charPos[0].m_FontCharWidth = cFont->GetGlyphWidth(charPos[0].m_GlyphIndex);
 #if BUILDFLAG(IS_APPLE)
@@ -137,7 +137,7 @@ void CBC_OneDimWriter::CalcTextInfo(const ByteString& text,
 #endif
   penX += (float)(charPos[0].m_FontCharWidth) * (float)fontSize / 1000.0f;
   for (size_t i = 1; i < length; i++) {
-    charPos[i].m_Origin = CFX_PointF(penX + left, penY + top);
+    charPos[i].m_Origin = {penX + left, penY + top};
     charPos[i].m_GlyphIndex = encoding->GlyphFromCharCode(charcodes[i]);
     charPos[i].m_FontCharWidth = cFont->GetGlyphWidth(charPos[i].m_GlyphIndex);
 #if BUILDFLAG(IS_APPLE)

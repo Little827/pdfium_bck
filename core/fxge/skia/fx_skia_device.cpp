@@ -1420,9 +1420,9 @@ bool CFX_SkiaDeviceDriver::StretchDIBits(const RetainPtr<CFX_DIBBase>& pSource,
   FXDIB_ResampleOptions sampling_options;
   sampling_options.bNoSmoothing = true;
 
-  return StartDIBitsSkia(
-      pSource, FX_RECT(0, 0, pSource->GetWidth(), pSource->GetHeight()), 0xFF,
-      argb, m, sampling_options, blend_type);
+  return StartDIBitsSkia(pSource,
+                         {0, 0, pSource->GetWidth(), pSource->GetHeight()},
+                         0xFF, argb, m, sampling_options, blend_type);
 }
 
 bool CFX_SkiaDeviceDriver::StartDIBits(
@@ -1433,9 +1433,9 @@ bool CFX_SkiaDeviceDriver::StartDIBits(
     const FXDIB_ResampleOptions& options,
     std::unique_ptr<CFX_ImageRenderer>* handle,
     BlendMode blend_type) {
-  return StartDIBitsSkia(
-      pSource, FX_RECT(0, 0, pSource->GetWidth(), pSource->GetHeight()),
-      bitmap_alpha, argb, matrix, options, blend_type);
+  return StartDIBitsSkia(pSource,
+                         {0, 0, pSource->GetWidth(), pSource->GetHeight()},
+                         bitmap_alpha, argb, matrix, options, blend_type);
 }
 
 bool CFX_SkiaDeviceDriver::ContinueDIBits(CFX_ImageRenderer* handle,

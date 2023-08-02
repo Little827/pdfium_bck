@@ -81,9 +81,8 @@ void CFWL_CheckBoxTP::DrawSignCross(CFGAS_GEGraphics* pGraphics,
   CFGAS_GEPath path;
   const float fRight = rtSign.right();
   const float fBottom = rtSign.bottom();
-  path.AddLine(rtSign.TopLeft(), CFX_PointF(fRight, fBottom));
-  path.AddLine(CFX_PointF(rtSign.left, fBottom),
-               CFX_PointF(fRight, rtSign.top));
+  path.AddLine(rtSign.TopLeft(), {fRight, fBottom});
+  path.AddLine({rtSign.left, fBottom}, {fRight, rtSign.top});
 
   CFGAS_GEGraphics::StateRestorer restorer(pGraphics);
   pGraphics->SetStrokeColor(CFGAS_GEColor(argbFill));
@@ -99,11 +98,11 @@ void CFWL_CheckBoxTP::DrawSignDiamond(CFGAS_GEGraphics* pGraphics,
   const float fWidth = rtSign.width;
   const float fHeight = rtSign.height;
   const float fBottom = rtSign.bottom();
-  path.MoveTo(CFX_PointF(rtSign.left + fWidth / 2, rtSign.top));
-  path.LineTo(CFX_PointF(rtSign.left, rtSign.top + fHeight / 2));
-  path.LineTo(CFX_PointF(rtSign.left + fWidth / 2, fBottom));
-  path.LineTo(CFX_PointF(rtSign.right(), rtSign.top + fHeight / 2));
-  path.LineTo(CFX_PointF(rtSign.left + fWidth / 2, rtSign.top));
+  path.MoveTo({rtSign.left + fWidth / 2, rtSign.top});
+  path.LineTo({rtSign.left, rtSign.top + fHeight / 2});
+  path.LineTo({rtSign.left + fWidth / 2, fBottom});
+  path.LineTo({rtSign.right(), rtSign.top + fHeight / 2});
+  path.LineTo({rtSign.left + fWidth / 2, rtSign.top});
 
   CFGAS_GEGraphics::StateRestorer restorer(pGraphics);
   pGraphics->SetFillColor(CFGAS_GEColor(argbFill));
@@ -129,14 +128,14 @@ void CFWL_CheckBoxTP::DrawSignStar(CFGAS_GEGraphics* pGraphics,
   CFGAS_GEPath path;
   float fBottom = rtSign.bottom();
   float fRadius = (rtSign.top - fBottom) / (1 + cosf(FXSYS_PI / 5.0f));
-  CFX_PointF ptCenter((rtSign.left + rtSign.right()) / 2.0f,
-                      (rtSign.top + fBottom) / 2.0f);
+  CFX_PointF ptCenter = {(rtSign.left + rtSign.right()) / 2.0f,
+                         (rtSign.top + fBottom) / 2.0f};
 
   CFX_PointF points[5];
   float fAngle = FXSYS_PI / 10.0f;
   for (auto& point : points) {
     point =
-        ptCenter + CFX_PointF(fRadius * cosf(fAngle), fRadius * sinf(fAngle));
+        ptCenter + CFX_PointF{fRadius * cosf(fAngle), fRadius * sinf(fAngle)};
     fAngle += FXSYS_PI * 2 / 5.0f;
   }
 
@@ -161,23 +160,23 @@ void CFWL_CheckBoxTP::EnsureCheckPathInitialized(float fCheckLen) {
   float fWidth = kSignPath;
   float fHeight = -kSignPath;
   float fBottom = kSignPath;
-  CFX_PointF pt1(fWidth / 15.0f, fBottom + fHeight * 2 / 5.0f);
-  CFX_PointF pt2(fWidth / 4.5f, fBottom + fHeight / 16.0f);
-  CFX_PointF pt3(fWidth / 3.0f, fBottom);
-  CFX_PointF pt4(fWidth * 14 / 15.0f, fBottom + fHeight * 15 / 16.0f);
-  CFX_PointF pt5(fWidth / 3.6f, fBottom + fHeight / 3.5f);
-  CFX_PointF pt12(fWidth / 7.0f, fBottom + fHeight * 2 / 7.0f);
-  CFX_PointF pt21(fWidth / 5.0f, fBottom + fHeight / 5.0f);
-  CFX_PointF pt23(fWidth / 4.4f, fBottom + fHeight * 0 / 16.0f);
-  CFX_PointF pt32(fWidth / 4.0f, fBottom);
-  CFX_PointF pt34(fWidth * (1 / 7.0f + 7 / 15.0f),
-                  fBottom + fHeight * 4 / 5.0f);
-  CFX_PointF pt43(fWidth * (1 / 7.0f + 7 / 15.0f),
-                  fBottom + fHeight * 4 / 5.0f);
-  CFX_PointF pt45(fWidth * 7 / 15.0f, fBottom + fHeight * 8 / 7.0f);
-  CFX_PointF pt54(fWidth / 3.4f, fBottom + fHeight / 3.5f);
-  CFX_PointF pt51(fWidth / 3.6f, fBottom + fHeight / 4.0f);
-  CFX_PointF pt15(fWidth / 3.5f, fBottom + fHeight * 3.5f / 5.0f);
+  CFX_PointF pt1 = {fWidth / 15.0f, fBottom + fHeight * 2 / 5.0f};
+  CFX_PointF pt2 = {fWidth / 4.5f, fBottom + fHeight / 16.0f};
+  CFX_PointF pt3 = {fWidth / 3.0f, fBottom};
+  CFX_PointF pt4 = {fWidth * 14 / 15.0f, fBottom + fHeight * 15 / 16.0f};
+  CFX_PointF pt5 = {fWidth / 3.6f, fBottom + fHeight / 3.5f};
+  CFX_PointF pt12 = {fWidth / 7.0f, fBottom + fHeight * 2 / 7.0f};
+  CFX_PointF pt21 = {fWidth / 5.0f, fBottom + fHeight / 5.0f};
+  CFX_PointF pt23 = {fWidth / 4.4f, fBottom + fHeight * 0 / 16.0f};
+  CFX_PointF pt32 = {fWidth / 4.0f, fBottom};
+  CFX_PointF pt34 = {fWidth * (1 / 7.0f + 7 / 15.0f),
+                     fBottom + fHeight * 4 / 5.0f};
+  CFX_PointF pt43 = {fWidth * (1 / 7.0f + 7 / 15.0f),
+                     fBottom + fHeight * 4 / 5.0f};
+  CFX_PointF pt45 = {fWidth * 7 / 15.0f, fBottom + fHeight * 8 / 7.0f};
+  CFX_PointF pt54 = {fWidth / 3.4f, fBottom + fHeight / 3.5f};
+  CFX_PointF pt51 = {fWidth / 3.6f, fBottom + fHeight / 4.0f};
+  CFX_PointF pt15 = {fWidth / 3.5f, fBottom + fHeight * 3.5f / 5.0f};
   m_pCheckPath->MoveTo(pt1);
 
   CFX_PointF p1 = ScaleBezierPoint(pt12 - pt1);

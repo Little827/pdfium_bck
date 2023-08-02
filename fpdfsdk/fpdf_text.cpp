@@ -298,9 +298,8 @@ FPDFText_GetCharIndexAtPos(FPDF_TEXTPAGE text_page,
     return -3;
 
   return textpage->GetIndexAtPos(
-      CFX_PointF(static_cast<float>(x), static_cast<float>(y)),
-      CFX_SizeF(static_cast<float>(xTolerance),
-                static_cast<float>(yTolerance)));
+      {static_cast<float>(x), static_cast<float>(y)},
+      {static_cast<float>(xTolerance), static_cast<float>(yTolerance)});
 }
 
 FPDF_EXPORT int FPDF_CALLCONV FPDFText_GetText(FPDF_TEXTPAGE page,

@@ -133,9 +133,8 @@ bool CPVT_VariableText::Iterator::GetWord(CPVT_Word& word) const {
   word.Word = pInfo->Word;
   word.nCharset = pInfo->nCharset;
   word.fWidth = m_pVT->GetWordWidth(*pInfo);
-  word.ptWord =
-      m_pVT->InToOut(CFX_PointF(pInfo->fWordX + pSection->GetRect().left,
-                                pInfo->fWordY + pSection->GetRect().top));
+  word.ptWord = m_pVT->InToOut({pInfo->fWordX + pSection->GetRect().left,
+                                pInfo->fWordY + pSection->GetRect().top});
   word.fAscent = m_pVT->GetWordAscent(*pInfo);
   word.fDescent = m_pVT->GetWordDescent(*pInfo);
   word.nFontIndex = pInfo->nFontIndex;
@@ -155,9 +154,9 @@ bool CPVT_VariableText::Iterator::GetLine(CPVT_Line& line) const {
   if (!pLine)
     return false;
 
-  line.ptLine = m_pVT->InToOut(
-      CFX_PointF(pLine->m_LineInfo.fLineX + pSection->GetRect().left,
-                 pLine->m_LineInfo.fLineY + pSection->GetRect().top));
+  line.ptLine =
+      m_pVT->InToOut({pLine->m_LineInfo.fLineX + pSection->GetRect().left,
+                      pLine->m_LineInfo.fLineY + pSection->GetRect().top});
   line.fLineWidth = pLine->m_LineInfo.fLineWidth;
   line.fLineAscent = pLine->m_LineInfo.fLineAscent;
   line.fLineDescent = pLine->m_LineInfo.fLineDescent;
@@ -428,8 +427,8 @@ CPVT_WordPlace CPVT_VariableText::SearchWordPlace(
       nMid = (nLeft + nRight) / 2;
       continue;
     }
-    place = pSection->SearchWordPlace(CFX_PointF(
-        pt.x - pSection->GetRect().left, pt.y - pSection->GetRect().top));
+    place = pSection->SearchWordPlace(
+        {pt.x - pSection->GetRect().left, pt.y - pSection->GetRect().top});
     place.nSecIndex = nMid;
     return place;
   }
@@ -870,24 +869,23 @@ void CPVT_VariableText::SetProvider(Provider* pProvider) {
 }
 
 CFX_PointF CPVT_VariableText::GetBTPoint() const {
-  return CFX_PointF(m_rcPlate.left, m_rcPlate.top);
+  return {m_rcPlate.left, m_rcPlate.top};
 }
 
 CFX_PointF CPVT_VariableText::GetETPoint() const {
-  return CFX_PointF(m_rcPlate.right, m_rcPlate.bottom);
+  return {m_rcPlate.right, m_rcPlate.bottom};
 }
 
 CFX_PointF CPVT_VariableText::InToOut(const CFX_PointF& point) const {
-  return CFX_PointF(point.x + GetBTPoint().x, GetBTPoint().y - point.y);
+  return {point.x + GetBTPoint().x, GetBTPoint().y - point.y};
 }
 
 CFX_PointF CPVT_VariableText::OutToIn(const CFX_PointF& point) const {
-  return CFX_PointF(point.x - GetBTPoint().x, GetBTPoint().y - point.y);
+  return {point.x - GetBTPoint().x, GetBTPoint().y - point.y};
 }
 
 CFX_FloatRect CPVT_VariableText::InToOut(const CPVT_FloatRect& rect) const {
-  CFX_PointF ptLeftTop = InToOut(CFX_PointF(rect.left, rect.top));
-  CFX_PointF ptRightBottom = InToOut(CFX_PointF(rect.right, rect.bottom));
-  return CFX_FloatRect(ptLeftTop.x, ptRightBottom.y, ptRightBottom.x,
-                       ptLeftTop.y);
+  CFX_PointF ptLeftTop = InToOut({rect.left, rect.top});
+  CFX_PointF ptRightBottom = InToOut({rect.right, rect.bottom});
+  return {ptLeftTop.x, ptRightBottom.y, ptRightBottom.x, ptLeftTop.y};
 }
