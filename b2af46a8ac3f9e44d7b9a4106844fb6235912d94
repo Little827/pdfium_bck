@@ -56,6 +56,23 @@
       "message": "Please add test cases to pdfium_embeddertests cover the relevant scenarios.",
       "revId": "b2af46a8ac3f9e44d7b9a4106844fb6235912d94",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b541f97_874e246f",
+        "filename": "fpdfsdk/fpdf_structtree.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-08-02T19:24:12Z",
+      "side": 1,
+      "message": "Why not just unconditionally call GetDirect()?",
+      "revId": "b2af46a8ac3f9e44d7b9a4106844fb6235912d94",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
