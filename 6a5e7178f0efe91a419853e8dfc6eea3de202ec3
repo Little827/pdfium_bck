@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e870426f_d140d06e",
+        "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 715,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-08-02T20:58:03Z",
+      "side": 1,
+      "message": "Does `3` work? If not, how about `3.0f`?",
+      "range": {
+        "startLine": 715,
+        "startChar": 26,
+        "endLine": 715,
+        "endChar": 28
+      },
+      "revId": "6a5e7178f0efe91a419853e8dfc6eea3de202ec3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
