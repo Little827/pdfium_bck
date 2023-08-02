@@ -796,8 +796,7 @@ FPDF_ImportNPagesToOne(FPDF_DOCUMENT src_doc,
   }
 
   CPDF_NPageToOneExporter exporter(pDestDoc, pSrcDoc);
-  if (!exporter.ExportNPagesToOne(page_indices,
-                                  CFX_SizeF(output_width, output_height),
+  if (!exporter.ExportNPagesToOne(page_indices, {output_width, output_height},
                                   num_pages_on_x_axis, num_pages_on_y_axis)) {
     return nullptr;
   }

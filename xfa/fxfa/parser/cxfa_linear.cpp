@@ -65,20 +65,20 @@ void CXFA_Linear::Draw(CFGAS_GEGraphics* pGS,
   CFX_PointF ptEnd;
   switch (GetType()) {
     case XFA_AttributeValue::ToRight:
-      ptStart = CFX_PointF(rtFill.left, rtFill.top);
-      ptEnd = CFX_PointF(rtFill.right(), rtFill.top);
+      ptStart = {rtFill.left, rtFill.top};
+      ptEnd = {rtFill.right(), rtFill.top};
       break;
     case XFA_AttributeValue::ToBottom:
-      ptStart = CFX_PointF(rtFill.left, rtFill.top);
-      ptEnd = CFX_PointF(rtFill.left, rtFill.bottom());
+      ptStart = {rtFill.left, rtFill.top};
+      ptEnd = {rtFill.left, rtFill.bottom()};
       break;
     case XFA_AttributeValue::ToLeft:
-      ptStart = CFX_PointF(rtFill.right(), rtFill.top);
-      ptEnd = CFX_PointF(rtFill.left, rtFill.top);
+      ptStart = {rtFill.right(), rtFill.top};
+      ptEnd = {rtFill.left, rtFill.top};
       break;
     case XFA_AttributeValue::ToTop:
-      ptStart = CFX_PointF(rtFill.left, rtFill.bottom());
-      ptEnd = CFX_PointF(rtFill.left, rtFill.top);
+      ptStart = {rtFill.left, rtFill.bottom()};
+      ptEnd = {rtFill.left, rtFill.top};
       break;
     default:
       break;

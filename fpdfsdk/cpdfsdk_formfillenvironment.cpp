@@ -97,10 +97,8 @@ void CPDFSDK_FormFillEnvironment::InvalidateRect(CPDFSDK_Widget* widget,
 
   CFX_Matrix device2page =
       widget->GetPageView()->GetCurrentMatrix().GetInverse();
-  CFX_PointF left_top = device2page.Transform(CFX_PointF(rect.left, rect.top));
-  CFX_PointF right_bottom =
-      device2page.Transform(CFX_PointF(rect.right, rect.bottom));
-
+  CFX_PointF left_top = device2page.Transform({rect.left, rect.top});
+  CFX_PointF right_bottom = device2page.Transform({rect.right, rect.bottom});
   CFX_FloatRect rcPDF(left_top.x, right_bottom.y, right_bottom.x, left_top.y);
   rcPDF.Normalize();
   Invalidate(pPage, rcPDF.GetOuterRect());
@@ -115,8 +113,8 @@ void CPDFSDK_FormFillEnvironment::OutputSelectedRect(
   auto* pPage = FPDFPageFromIPDFPage(pFormField->GetSDKWidget()->GetPage());
   DCHECK(pPage);
 
-  CFX_PointF ptA = pFormField->PWLtoFFL(CFX_PointF(rect.left, rect.bottom));
-  CFX_PointF ptB = pFormField->PWLtoFFL(CFX_PointF(rect.right, rect.top));
+  CFX_PointF ptA = pFormField->PWLtoFFL({rect.left, rect.bottom});
+  CFX_PointF ptB = pFormField->PWLtoFFL({rect.right, rect.top});
   m_pInfo->FFI_OutputSelectedRect(m_pInfo, pPage, ptA.x, ptB.y, ptB.x, ptA.y);
 }
 

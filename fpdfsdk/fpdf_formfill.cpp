@@ -196,7 +196,7 @@ void FFLCommon(FPDF_FORMHANDLE hHandle,
   CPDF_Document* pPDFDoc = pPage->GetDocument();
   CPDFSDK_PageView* pPageView = FormHandleToPageView(hHandle, fpdf_page);
 
-  const FX_RECT rect(start_x, start_y, start_x + size_x, start_y + size_y);
+  const FX_RECT rect = {start_x, start_y, start_x + size_x, start_y + size_y};
   CFX_Matrix matrix = pPage->GetDisplayMatrix(rect, rotate);
 
   auto pDevice = std::make_unique<CFX_DefaultRenderDevice>();
@@ -257,8 +257,7 @@ FPDFPage_HasFormFieldAtPoint(FPDF_FORMHANDLE hHandle,
 
     const CPDF_InteractiveForm* pPDFForm = pForm->GetInteractiveForm();
     const CPDF_FormControl* pFormCtrl = pPDFForm->GetControlAtPoint(
-        pPage,
-        CFX_PointF(static_cast<float>(page_x), static_cast<float>(page_y)),
+        pPage, {static_cast<float>(page_x), static_cast<float>(page_y)},
         nullptr);
     if (!pFormCtrl)
       return -1;
@@ -270,7 +269,7 @@ FPDFPage_HasFormFieldAtPoint(FPDF_FORMHANDLE hHandle,
   const CPDFXFA_Page* pXFAPage = ToXFAPage(IPDFPageFromFPDFPage(page));
   if (pXFAPage) {
     return pXFAPage->HasFormFieldAtPoint(
-        CFX_PointF(static_cast<float>(page_x), static_cast<float>(page_y)));
+        {static_cast<float>(page_x), static_cast<float>(page_y)});
   }
 #endif  // PDF_ENABLE_XFA
 
@@ -293,7 +292,7 @@ FPDFPage_FormFieldZOrderAtPoint(FPDF_FORMHANDLE hHandle,
   CPDF_InteractiveForm* pPDFForm = pForm->GetInteractiveForm();
   int z_order = -1;
   pPDFForm->GetControlAtPoint(
-      pPage, CFX_PointF(static_cast<float>(page_x), static_cast<float>(page_y)),
+      pPage, {static_cast<float>(page_x), static_cast<float>(page_y)},
       &z_order);
   return z_order;
 }
@@ -372,7 +371,7 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FORM_OnMouseMove(FPDF_FORMHANDLE hHandle,
   return pPageView &&
          pPageView->OnMouseMove(
              Mask<FWL_EVENTFLAG>::FromUnderlyingUnchecked(modifier),
-             CFX_PointF(page_x, page_y));
+             {static_cast<float>(page_x), static_cast<float>(page_y)});
 }
 
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
@@ -401,7 +400,7 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FORM_OnFocus(FPDF_FORMHANDLE hHandle,
   return pPageView &&
          pPageView->OnFocus(
              Mask<FWL_EVENTFLAG>::FromUnderlyingUnchecked(modifier),
-             CFX_PointF(page_x, page_y));
+             {static_cast<float>(page_x), static_cast<float>(page_y)});
 }
 
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FORM_OnLButtonDown(FPDF_FORMHANDLE hHandle,
@@ -417,7 +416,7 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FORM_OnLButtonDown(FPDF_FORMHANDLE hHandle,
   return pPageView &&
          pPageView->OnLButtonDown(
              Mask<FWL_EVENTFLAG>::FromUnderlyingUnchecked(modifier),
-             CFX_PointF(page_x, page_y));
+             {static_cast<float>(page_x), static_cast<float>(page_y)});
 }
 
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FORM_OnLButtonUp(FPDF_FORMHANDLE hHandle,
@@ -433,7 +432,7 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FORM_OnLButtonUp(FPDF_FORMHANDLE hHandle,
   return pPageView &&
          pPageView->OnLButtonUp(
              Mask<FWL_EVENTFLAG>::FromUnderlyingUnchecked(modifier),
-             CFX_PointF(page_x, page_y));
+             {static_cast<float>(page_x), static_cast<float>(page_y)});
 }
 
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
@@ -450,7 +449,7 @@ FORM_OnLButtonDoubleClick(FPDF_FORMHANDLE hHandle,
   return pPageView &&
          pPageView->OnLButtonDblClk(
              Mask<FWL_EVENTFLAG>::FromUnderlyingUnchecked(modifier),
-             CFX_PointF(page_x, page_y));
+             {static_cast<float>(page_x), static_cast<float>(page_y)});
 }
 
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FORM_OnRButtonDown(FPDF_FORMHANDLE hHandle,
@@ -466,7 +465,7 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FORM_OnRButtonDown(FPDF_FORMHANDLE hHandle,
   return pPageView &&
          pPageView->OnRButtonDown(
              Mask<FWL_EVENTFLAG>::FromUnderlyingUnchecked(modifier),
-             CFX_PointF(page_x, page_y));
+             {static_cast<float>(page_x), static_cast<float>(page_y)});
 }
 
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FORM_OnRButtonUp(FPDF_FORMHANDLE hHandle,
@@ -482,7 +481,7 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FORM_OnRButtonUp(FPDF_FORMHANDLE hHandle,
   return pPageView &&
          pPageView->OnRButtonUp(
              Mask<FWL_EVENTFLAG>::FromUnderlyingUnchecked(modifier),
-             CFX_PointF(page_x, page_y));
+             {static_cast<float>(page_x), static_cast<float>(page_y)});
 }
 
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FORM_OnKeyDown(FPDF_FORMHANDLE hHandle,

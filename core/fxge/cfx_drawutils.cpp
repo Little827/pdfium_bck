@@ -18,16 +18,15 @@ void CFX_DrawUtils::DrawFocusRect(CFX_RenderDevice* render_device,
                                   const CFX_FloatRect& view_bounding_box) {
   DCHECK(render_device);
   CFX_Path path;
-  path.AppendPoint(CFX_PointF(view_bounding_box.left, view_bounding_box.top),
+  path.AppendPoint({view_bounding_box.left, view_bounding_box.top},
                    CFX_Path::Point::Type::kMove);
-  path.AppendPoint(CFX_PointF(view_bounding_box.left, view_bounding_box.bottom),
+  path.AppendPoint({view_bounding_box.left, view_bounding_box.bottom},
                    CFX_Path::Point::Type::kLine);
-  path.AppendPoint(
-      CFX_PointF(view_bounding_box.right, view_bounding_box.bottom),
-      CFX_Path::Point::Type::kLine);
-  path.AppendPoint(CFX_PointF(view_bounding_box.right, view_bounding_box.top),
+  path.AppendPoint({view_bounding_box.right, view_bounding_box.bottom},
                    CFX_Path::Point::Type::kLine);
-  path.AppendPoint(CFX_PointF(view_bounding_box.left, view_bounding_box.top),
+  path.AppendPoint({view_bounding_box.right, view_bounding_box.top},
+                   CFX_Path::Point::Type::kLine);
+  path.AppendPoint({view_bounding_box.left, view_bounding_box.top},
                    CFX_Path::Point::Type::kLine);
 
   CFX_GraphStateData graph_state_data;

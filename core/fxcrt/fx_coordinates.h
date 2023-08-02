@@ -16,19 +16,7 @@
 #include "third_party/base/containers/span.h"
 
 template <class BaseType>
-class CFX_PTemplate {
- public:
-  CFX_PTemplate() : x(0), y(0) {}
-  CFX_PTemplate(BaseType new_x, BaseType new_y) : x(new_x), y(new_y) {}
-  CFX_PTemplate(const CFX_PTemplate& other) : x(other.x), y(other.y) {}
-
-  CFX_PTemplate& operator=(const CFX_PTemplate& other) {
-    if (this != &other) {
-      x = other.x;
-      y = other.y;
-    }
-    return *this;
-  }
+struct CFX_PTemplate {
   bool operator==(const CFX_PTemplate& other) const {
     return x == other.x && y == other.y;
   }
@@ -46,46 +34,29 @@ class CFX_PTemplate {
     return *this;
   }
   CFX_PTemplate operator+(const CFX_PTemplate& other) const {
-    return CFX_PTemplate(x + other.x, y + other.y);
+    return {x + other.x, y + other.y};
   }
   CFX_PTemplate operator-(const CFX_PTemplate& other) const {
-    return CFX_PTemplate(x - other.x, y - other.y);
+    return {x - other.x, y - other.y};
   }
 
-  BaseType x;
-  BaseType y;
+  BaseType x = 0;
+  BaseType y = 0;
 };
 using CFX_Point16 = CFX_PTemplate<int16_t>;
 using CFX_Point = CFX_PTemplate<int32_t>;
 using CFX_PointF = CFX_PTemplate<float>;
 
 template <class BaseType>
-class CFX_STemplate {
- public:
-  CFX_STemplate() : width(0), height(0) {}
-
-  CFX_STemplate(BaseType new_width, BaseType new_height)
-      : width(new_width), height(new_height) {}
-
-  CFX_STemplate(const CFX_STemplate& other)
-      : width(other.width), height(other.height) {}
-
+struct CFX_STemplate {
   template <typename OtherType>
   CFX_STemplate<OtherType> As() const {
     return CFX_STemplate<OtherType>(static_cast<OtherType>(width),
                                     static_cast<OtherType>(height));
   }
-
   void clear() {
     width = 0;
     height = 0;
-  }
-  CFX_STemplate& operator=(const CFX_STemplate& other) {
-    if (this != &other) {
-      width = other.width;
-      height = other.height;
-    }
-    return *this;
   }
   bool operator==(const CFX_STemplate& other) const {
     return width == other.width && height == other.height;
@@ -114,20 +85,20 @@ class CFX_STemplate {
     return *this;
   }
   CFX_STemplate operator+(const CFX_STemplate& other) const {
-    return CFX_STemplate(width + other.width, height + other.height);
+    return {width + other.width, height + other.height};
   }
   CFX_STemplate operator-(const CFX_STemplate& other) const {
-    return CFX_STemplate(width - other.width, height - other.height);
+    return {width - other.width, height - other.height};
   }
   CFX_STemplate operator*(BaseType factor) const {
-    return CFX_STemplate(width * factor, height * factor);
+    return {width * factor, height * factor};
   }
   CFX_STemplate operator/(BaseType divisor) const {
-    return CFX_STemplate(width / divisor, height / divisor);
+    return {width / divisor, height / divisor};
   }
 
-  BaseType width;
-  BaseType height;
+  BaseType width = 0;
+  BaseType height = 0;
 };
 using CFX_Size = CFX_STemplate<int32_t>;
 using CFX_SizeF = CFX_STemplate<float>;
@@ -140,7 +111,7 @@ class CFX_VTemplate final : public CFX_PTemplate<BaseType> {
 
   CFX_VTemplate() : CFX_PTemplate<BaseType>() {}
   CFX_VTemplate(BaseType new_x, BaseType new_y)
-      : CFX_PTemplate<BaseType>(new_x, new_y) {}
+      : CFX_PTemplate<BaseType>{new_x, new_y} {}
 
   CFX_VTemplate(const CFX_VTemplate& other) : CFX_PTemplate<BaseType>(other) {}
 
@@ -160,9 +131,6 @@ using CFX_VectorF = CFX_VTemplate<float>;
 // LTRB rectangles (y-axis runs downwards).
 // Struct layout is compatible with win32 RECT.
 struct FX_RECT {
-  FX_RECT() = default;
-  FX_RECT(int l, int t, int r, int b) : left(l), top(t), right(r), bottom(b) {}
-
   int Width() const { return right - left; }
   int Height() const { return bottom - top; }
   bool IsEmpty() const { return right <= left || bottom <= top; }
@@ -171,7 +139,7 @@ struct FX_RECT {
 
   void Normalize();
   void Intersect(const FX_RECT& src);
-  void Intersect(int l, int t, int r, int b) { Intersect(FX_RECT(l, t, r, b)); }
+  void Intersect(int l, int t, int r, int b) { Intersect(FX_RECT{l, t, r, b}); }
   FX_RECT SwappedClipBox(int width, int height, bool bFlipX, bool bFlipY) const;
 
   void Offset(int dx, int dy) {
@@ -295,8 +263,11 @@ class CFX_RectF {
   using PointType = CFX_PointF;
   using SizeType = CFX_SizeF;
 
-  CFX_RectF() = default;
-  CFX_RectF(float dst_left, float dst_top, float dst_width, float dst_height)
+  constexpr CFX_RectF() = default;
+  constexpr CFX_RectF(float dst_left,
+                      float dst_top,
+                      float dst_width,
+                      float dst_height)
       : left(dst_left), top(dst_top), width(dst_width), height(dst_height) {}
   CFX_RectF(float dst_left, float dst_top, const SizeType& dst_size)
       : left(dst_left),
@@ -399,15 +370,13 @@ class CFX_RectF {
   float Top() const { return top; }
   float Width() const { return width; }
   float Height() const { return height; }
-  SizeType Size() const { return SizeType(width, height); }
-  PointType TopLeft() const { return PointType(left, top); }
-  PointType TopRight() const { return PointType(left + width, top); }
-  PointType BottomLeft() const { return PointType(left, top + height); }
-  PointType BottomRight() const {
-    return PointType(left + width, top + height);
-  }
+  SizeType Size() const { return {width, height}; }
+  PointType TopLeft() const { return {left, top}; }
+  PointType TopRight() const { return {left + width, top}; }
+  PointType BottomLeft() const { return {left, top + height}; }
+  PointType BottomRight() const { return {left + width, top + height}; }
   PointType Center() const {
-    return PointType(left + width / 2, top + height / 2);
+    return PointType{left + width / 2, top + height / 2};
   }
   void Union(float x, float y);
   void Union(const PointType& p) { Union(p.x, p.y); }
@@ -459,12 +428,17 @@ std::ostream& operator<<(std::ostream& os, const CFX_RectF& rect);
 //
 class CFX_Matrix {
  public:
-  CFX_Matrix() = default;
+  constexpr CFX_Matrix() = default;
 
   explicit CFX_Matrix(const float n[6])
       : a(n[0]), b(n[1]), c(n[2]), d(n[3]), e(n[4]), f(n[5]) {}
 
-  CFX_Matrix(float a1, float b1, float c1, float d1, float e1, float f1)
+  constexpr CFX_Matrix(float a1,
+                       float b1,
+                       float c1,
+                       float d1,
+                       float e1,
+                       float f1)
       : a(a1), b(b1), c(c1), d(d1), e(e1), f(f1) {}
 
   CFX_Matrix(const CFX_Matrix& other) = default;

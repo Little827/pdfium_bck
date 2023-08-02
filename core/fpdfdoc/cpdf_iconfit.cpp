@@ -68,11 +68,11 @@ bool CPDF_IconFit::GetFittingBounds() const {
 
 CFX_PointF CPDF_IconFit::GetIconPosition() const {
   if (!m_pDict)
-    return CFX_PointF();
+    return {};
 
   RetainPtr<const CPDF_Array> pA = m_pDict->GetArrayFor("A");
   if (!pA)
-    return CFX_PointF();
+    return {};
 
   size_t dwCount = pA->size();
   return {dwCount > 0 ? pA->GetFloatAt(0) : 0.0f,

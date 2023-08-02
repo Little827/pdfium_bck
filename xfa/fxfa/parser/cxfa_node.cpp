@@ -881,7 +881,7 @@ class CXFA_ImageLayoutData final : public CXFA_WidgetLayoutData {
     return !!m_pDIBitmap;
   }
 
-  CFX_Size GetDpi() const { return CFX_Size(m_iImageXDpi, m_iImageYDpi); }
+  CFX_Size GetDpi() const { return {m_iImageXDpi, m_iImageYDpi}; }
   RetainPtr<CFX_DIBitmap> GetBitmap() { return m_pDIBitmap; }
   void SetBitmap(RetainPtr<CFX_DIBitmap> pBitmap) {
     m_pDIBitmap = std::move(pBitmap);
@@ -970,7 +970,7 @@ class CXFA_ImageEditData final : public CXFA_FieldLayoutData {
     return !!m_pDIBitmap;
   }
 
-  CFX_Size GetDpi() const { return CFX_Size(m_iImageXDpi, m_iImageYDpi); }
+  CFX_Size GetDpi() const { return {m_iImageXDpi, m_iImageYDpi}; }
   RetainPtr<CFX_DIBitmap> GetBitmap() { return m_pDIBitmap; }
   void SetBitmap(RetainPtr<CFX_DIBitmap> pBitmap) {
     m_pDIBitmap = std::move(pBitmap);
@@ -3370,7 +3370,7 @@ bool CXFA_Node::CalculateTextEditAutoSize(CXFA_FFDoc* doc, CFX_SizeF* pSize) {
 bool CXFA_Node::CalculateCheckButtonAutoSize(CXFA_FFDoc* doc,
                                              CFX_SizeF* pSize) {
   float fCheckSize = GetCheckButtonSize();
-  *pSize = CFX_SizeF(fCheckSize, fCheckSize);
+  *pSize = {fCheckSize, fCheckSize};
   return CalculateFieldAutoSize(doc, pSize);
 }
 
@@ -3548,7 +3548,7 @@ void CXFA_Node::StartWidgetLayout(CXFA_FFDoc* doc,
 }
 
 CFX_SizeF CXFA_Node::CalculateAccWidthAndHeight(CXFA_FFDoc* doc, float fWidth) {
-  CFX_SizeF sz(fWidth, m_pLayoutData->GetWidgetHeight());
+  CFX_SizeF sz = {fWidth, m_pLayoutData->GetWidgetHeight()};
   switch (GetFFWidgetType()) {
     case XFA_FFWidgetType::kBarcode:
     case XFA_FFWidgetType::kChoiceList:

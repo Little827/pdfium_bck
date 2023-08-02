@@ -241,13 +241,13 @@ class FPDFFormFillTextFormEmbedderTest
   static CFX_PointF CharLimitFormAtX(float x) {
     DCHECK(x >= kFormBeginX);
     DCHECK(x <= kFormEndX);
-    return CFX_PointF(x, kCharLimitFormY);
+    return {x, kCharLimitFormY};
   }
 
   static CFX_PointF RegularFormAtX(float x) {
     DCHECK(x >= kFormBeginX);
     DCHECK(x <= kFormEndX);
-    return CFX_PointF(x, kRegularFormY);
+    return {x, kRegularFormY};
   }
 
  private:
@@ -313,7 +313,7 @@ class FPDFFormFillComboBoxFormEmbedderTest
   }
 
   const CFX_PointF& EditableFormDropDown() const {
-    static const CFX_PointF point(kFormDropDownX, kEditableFormY);
+    static const CFX_PointF point = {kFormDropDownX, kEditableFormY};
     return point;
   }
 
@@ -328,20 +328,20 @@ class FPDFFormFillComboBoxFormEmbedderTest
   }
 
   const CFX_PointF& NonEditableFormDropDown() const {
-    static const CFX_PointF point(kFormDropDownX, kNonEditableFormY);
+    static const CFX_PointF point = {kFormDropDownX, kNonEditableFormY};
     return point;
   }
 
   static CFX_PointF EditableFormAtX(float x) {
     DCHECK(x >= kFormBeginX);
     DCHECK(x <= kFormEndX);
-    return CFX_PointF(x, kEditableFormY);
+    return {x, kEditableFormY};
   }
 
   static CFX_PointF NonEditableFormAtX(float x) {
     DCHECK(x >= kFormBeginX);
     DCHECK(x <= kFormEndX);
-    return CFX_PointF(x, kNonEditableFormY);
+    return {x, kNonEditableFormY};
   }
 
  private:
@@ -503,70 +503,74 @@ class FPDFFormFillListBoxFormEmbedderTest
   }
 
   const CFX_PointF& SingleSelectFirstVisibleOption() const {
-    static const CFX_PointF point(kFormBeginX, kSingleFormYFirstVisibleOption);
+    static const CFX_PointF point = {kFormBeginX,
+                                     kSingleFormYFirstVisibleOption};
     return point;
   }
 
   const CFX_PointF& SingleSelectSecondVisibleOption() const {
-    static const CFX_PointF point(kFormBeginX, kSingleFormYSecondVisibleOption);
+    static const CFX_PointF point = {kFormBeginX,
+                                     kSingleFormYSecondVisibleOption};
     return point;
   }
 
   const CFX_PointF& MultiSelectFirstVisibleOption() const {
-    static const CFX_PointF point(kFormBeginX, kMultiFormYFirstVisibleOption);
+    static const CFX_PointF point = {kFormBeginX,
+                                     kMultiFormYFirstVisibleOption};
     return point;
   }
 
   const CFX_PointF& MultiSelectSecondVisibleOption() const {
-    static const CFX_PointF point(kFormBeginX, kMultiFormYSecondVisibleOption);
+    static const CFX_PointF point = {kFormBeginX,
+                                     kMultiFormYSecondVisibleOption};
     return point;
   }
 
   const CFX_PointF& MultiSelectMultipleIndicesFirstVisibleOption() const {
-    static const CFX_PointF point(kFormBeginX,
-                                  kMultiFormMultipleIndicesYFirstVisibleOption);
+    static const CFX_PointF point = {
+        kFormBeginX, kMultiFormMultipleIndicesYFirstVisibleOption};
     return point;
   }
 
   const CFX_PointF& MultiSelectMultipleIndicesSecondVisibleOption() const {
-    static const CFX_PointF point(
-        kFormBeginX, kMultiFormMultipleIndicesYSecondVisibleOption);
+    static const CFX_PointF point = {
+        kFormBeginX, kMultiFormMultipleIndicesYSecondVisibleOption};
     return point;
   }
 
   const CFX_PointF& MultiSelectMultipleValuesFirstVisibleOption() const {
-    static const CFX_PointF point(kFormBeginX,
-                                  kMultiFormMultipleValuesYFirstVisibleOption);
+    static const CFX_PointF point = {
+        kFormBeginX, kMultiFormMultipleValuesYFirstVisibleOption};
     return point;
   }
 
   const CFX_PointF& MultiSelectMultipleValuesSecondVisibleOption() const {
-    static const CFX_PointF point(kFormBeginX,
-                                  kMultiFormMultipleValuesYSecondVisibleOption);
+    static const CFX_PointF point = {
+        kFormBeginX, kMultiFormMultipleValuesYSecondVisibleOption};
     return point;
   }
 
   const CFX_PointF& MultiSelectMultipleMismatchFirstVisibleOption() const {
-    static const CFX_PointF point(
-        kFormBeginX, kMultiFormMultipleMismatchYFirstVisibleOption);
+    static const CFX_PointF point = {
+        kFormBeginX, kMultiFormMultipleMismatchYFirstVisibleOption};
     return point;
   }
 
   const CFX_PointF& MultiSelectMultipleMismatchSecondVisibleOption() const {
-    static const CFX_PointF point(
-        kFormBeginX, kMultiFormMultipleMismatchYSecondVisibleOption);
+    static const CFX_PointF point = {
+        kFormBeginX, kMultiFormMultipleMismatchYSecondVisibleOption};
     return point;
   }
 
   const CFX_PointF& SingleSelectLastSelectedFirstVisibleOption() const {
-    static const CFX_PointF point(kFormBeginX,
-                                  kSingleFormLastSelectedYFirstVisibleOption);
+    static const CFX_PointF point = {
+        kFormBeginX, kSingleFormLastSelectedYFirstVisibleOption};
     return point;
   }
 
   const CFX_PointF& SingleSelectLastSelectedSecondVisibleOption() const {
-    static const CFX_PointF point(kFormBeginX,
-                                  kSingleFormLastSelectedYSecondVisibleOption);
+    static const CFX_PointF point = {
+        kFormBeginX, kSingleFormLastSelectedYSecondVisibleOption};
     return point;
   }
 
@@ -724,7 +728,7 @@ TEST_F(FPDFFormFillEmbedderTest, GetFocusedAnnotation) {
   EXPECT_FALSE(FORM_GetFocusedAnnot(form_handle(), &page_index, nullptr));
   EXPECT_FALSE(FORM_GetFocusedAnnot(form_handle(), nullptr, &annot));
 
-  const CFX_PointF right_bottom_annot_point(410.0f, 210.0f);
+  const CFX_PointF right_bottom_annot_point = {410.0f, 210.0f};
   constexpr int kExpectedAnnotIndex = 3;
 
   for (size_t i = 0; i < pages.size(); ++i) {
@@ -2765,7 +2769,7 @@ TEST_F(FPDFFormFillTextFormEmbedderTestVersion2,
 }
 
 TEST_F(FPDFFormFillTextFormEmbedderTest, FocusChanges) {
-  static const CFX_PointF kNonFormPoint(1, 1);
+  static const CFX_PointF kNonFormPoint = {1, 1};
   CheckFocusedFieldText(L"");
   ClickOnFormFieldAtPoint(CharLimitFormEnd());
   CheckFocusedFieldText(L"Elephant");
@@ -2798,7 +2802,7 @@ TEST_F(FPDFFormFillTextFormEmbedderTest, FocusChanges) {
 }
 
 TEST_F(FPDFFormFillComboBoxFormEmbedderTest, FocusChanges) {
-  static const CFX_PointF kNonFormPoint(1, 1);
+  static const CFX_PointF kNonFormPoint = {1, 1};
   CheckFocusedFieldText(L"");
   ClickOnFormFieldAtPoint(NonEditableFormBegin());
   CheckFocusedFieldText(L"Banana");
@@ -3323,7 +3327,7 @@ class FPDFXFAFormBug1055869EmbedderTest
 
 TEST_F(FPDFXFAFormBug1055869EmbedderTest, Paste) {
   ScopedFPDFWideString text_to_insert = GetFPDFWideString(L"XYZ");
-  DoubleClickOnFormFieldAtPoint(CFX_PointF(100, 100));
+  DoubleClickOnFormFieldAtPoint({100, 100});
   FORM_ReplaceSelection(form_handle(), page(), text_to_insert.get());
 }
 
@@ -3339,7 +3343,7 @@ class FPDFXFAFormBug1058653EmbedderTest
 
 TEST_F(FPDFXFAFormBug1058653EmbedderTest, Paste) {
   ScopedFPDFWideString text_to_insert = GetFPDFWideString(L"");
-  DoubleClickOnFormFieldAtPoint(CFX_PointF(22, 22));
+  DoubleClickOnFormFieldAtPoint({22, 22});
   FORM_ReplaceSelection(form_handle(), page(), text_to_insert.get());
 }
 

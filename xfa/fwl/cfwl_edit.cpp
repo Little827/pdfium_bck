@@ -319,8 +319,7 @@ void CFWL_Edit::DrawContent(CFGAS_GEGraphics* pGraphics,
     float fLeft = m_EngineRect.left + 1;
     for (int32_t i = 1; i < iLimit; i++) {
       fLeft += fStep;
-      path.AddLine(CFX_PointF(fLeft, m_ClientRect.top),
-                   CFX_PointF(fLeft, m_ClientRect.bottom()));
+      path.AddLine({fLeft, m_ClientRect.top}, {fLeft, m_ClientRect.bottom()});
     }
     CFWL_ThemeBackground param(CFWL_ThemePart::Part::kCombTextLine, this,
                                pGraphics);
@@ -684,8 +683,8 @@ void CFWL_Edit::LayoutScrollBar() {
 }
 
 CFX_PointF CFWL_Edit::DeviceToEngine(const CFX_PointF& pt) {
-  return pt + CFX_PointF(m_fScrollOffsetX - m_EngineRect.left,
-                         m_fScrollOffsetY - m_EngineRect.top - m_fVAlignOffset);
+  return pt + CFX_PointF{m_fScrollOffsetX - m_EngineRect.left,
+                         m_fScrollOffsetY - m_EngineRect.top - m_fVAlignOffset};
 }
 
 void CFWL_Edit::InitVerticalScrollBar() {

@@ -344,8 +344,8 @@ bool CheckSimpleLinePath(pdfium::span<const CFX_Path::Point> points,
       if (matrix)
         point = matrix->Transform(point);
 
-      point = CFX_PointF(static_cast<int>(point.x) + 0.5f,
-                         static_cast<int>(point.y) + 0.5f);
+      point = {static_cast<int>(point.x) + 0.5f,
+               static_cast<int>(point.y) + 0.5f};
     }
     new_path->AppendPoint(point, points[i].m_Type);
   }
@@ -786,7 +786,7 @@ bool CFX_RenderDevice::DrawFillStrokePath(
                                                  fill_options, blend_type)) {
     return false;
   }
-  FX_RECT src_rect(0, 0, rect.Width(), rect.Height());
+  FX_RECT src_rect = {0, 0, rect.Width(), rect.Height()};
   return m_pDeviceDriver->SetDIBits(bitmap, 0, src_rect, rect.left, rect.top,
                                     BlendMode::kNormal);
 }
@@ -810,7 +810,7 @@ bool CFX_RenderDevice::FillRectWithBlend(const FX_RECT& rect,
   if (!bitmap->CompositeRect(0, 0, rect.Width(), rect.Height(), fill_color))
     return false;
 
-  FX_RECT src_rect(0, 0, rect.Width(), rect.Height());
+  FX_RECT src_rect = {0, 0, rect.Width(), rect.Height()};
   m_pDeviceDriver->SetDIBits(bitmap, 0, src_rect, rect.left, rect.top,
                              BlendMode::kNormal);
   return true;
@@ -887,15 +887,15 @@ bool CFX_RenderDevice::SetDIBitsWithBlend(const RetainPtr<CFX_DIBBase>& pBitmap,
                                           int top,
                                           BlendMode blend_mode) {
   DCHECK(!pBitmap->IsMaskFormat());
-  FX_RECT dest_rect(left, top, left + pBitmap->GetWidth(),
-                    top + pBitmap->GetHeight());
+  FX_RECT dest_rect = {left, top, left + pBitmap->GetWidth(),
+                       top + pBitmap->GetHeight()};
   dest_rect.Intersect(m_ClipBox);
   if (dest_rect.IsEmpty())
     return true;
 
-  FX_RECT src_rect(dest_rect.left - left, dest_rect.top - top,
-                   dest_rect.left - left + dest_rect.Width(),
-                   dest_rect.top - top + dest_rect.Height());
+  FX_RECT src_rect = {dest_rect.left - left, dest_rect.top - top,
+                      dest_rect.left - left + dest_rect.Width(),
+                      dest_rect.top - top + dest_rect.Height()};
   if ((blend_mode == BlendMode::kNormal || (m_RenderCaps & FXRC_BLEND_MODE)) &&
       (!pBitmap->IsAlphaFormat() || (m_RenderCaps & FXRC_ALPHA_IMAGE))) {
     return m_pDeviceDriver->SetDIBits(pBitmap, 0, src_rect, dest_rect.left,
@@ -919,7 +919,7 @@ bool CFX_RenderDevice::SetDIBitsWithBlend(const RetainPtr<CFX_DIBBase>& pBitmap,
                                    blend_mode, nullptr, false)) {
     return false;
   }
-  FX_RECT rect(0, 0, bg_pixel_width, bg_pixel_height);
+  FX_RECT rect = {0, 0, bg_pixel_width, bg_pixel_height};
   return m_pDeviceDriver->SetDIBits(background, 0, rect, dest_rect.left,
                                     dest_rect.top, BlendMode::kNormal);
 }
@@ -932,7 +932,7 @@ bool CFX_RenderDevice::StretchDIBitsWithFlagsAndBlend(
     int dest_height,
     const FXDIB_ResampleOptions& options,
     BlendMode blend_mode) {
-  FX_RECT dest_rect(left, top, left + dest_width, top + dest_height);
+  FX_RECT dest_rect = {left, top, left + dest_width, top + dest_height};
   FX_RECT clip_box = m_ClipBox;
   clip_box.Intersect(dest_rect);
   return clip_box.IsEmpty() || m_pDeviceDriver->StretchDIBits(
@@ -944,7 +944,7 @@ bool CFX_RenderDevice::SetBitMask(const RetainPtr<CFX_DIBBase>& pBitmap,
                                   int left,
                                   int top,
                                   uint32_t argb) {
-  FX_RECT src_rect(0, 0, pBitmap->GetWidth(), pBitmap->GetHeight());
+  FX_RECT src_rect = {0, 0, pBitmap->GetWidth(), pBitmap->GetHeight()};
   return m_pDeviceDriver->SetDIBits(pBitmap, argb, src_rect, left, top,
                                     BlendMode::kNormal);
 }
@@ -967,7 +967,7 @@ bool CFX_RenderDevice::StretchBitMaskWithFlags(
     int dest_height,
     uint32_t argb,
     const FXDIB_ResampleOptions& options) {
-  FX_RECT dest_rect(left, top, left + dest_width, top + dest_height);
+  FX_RECT dest_rect = {left, top, left + dest_width, top + dest_height};
   FX_RECT clip_box = m_ClipBox;
   clip_box.Intersect(dest_rect);
   return m_pDeviceDriver->StretchDIBits(pBitmap, argb, left, top, dest_width,
@@ -1301,8 +1301,8 @@ void CFX_RenderDevice::DrawShadow(const CFX_Matrix& mtUser2Device,
   constexpr float kLineWidth = 1.5f;
 
   float fStepGray = (nEndGray - nStartGray) / rect.Height();
-  CFX_PointF start(rect.left, 0);
-  CFX_PointF end(rect.right, 0);
+  CFX_PointF start = {rect.left, 0};
+  CFX_PointF end = {rect.right, 0};
 
   for (float fy = rect.bottom + kBorder; fy <= rect.top - kBorder;
        fy += kSegmentWidth) {
@@ -1357,15 +1357,15 @@ void CFX_RenderDevice::DrawBorder(const CFX_Matrix* pUser2Device,
       gsd.m_LineWidth = fWidth;
 
       CFX_Path path;
-      path.AppendPoint(CFX_PointF(fLeft + fHalfWidth, fBottom + fHalfWidth),
+      path.AppendPoint({fLeft + fHalfWidth, fBottom + fHalfWidth},
                        CFX_Path::Point::Type::kMove);
-      path.AppendPoint(CFX_PointF(fLeft + fHalfWidth, fTop - fHalfWidth),
+      path.AppendPoint({fLeft + fHalfWidth, fTop - fHalfWidth},
                        CFX_Path::Point::Type::kLine);
-      path.AppendPoint(CFX_PointF(fRight - fHalfWidth, fTop - fHalfWidth),
+      path.AppendPoint({fRight - fHalfWidth, fTop - fHalfWidth},
                        CFX_Path::Point::Type::kLine);
-      path.AppendPoint(CFX_PointF(fRight - fHalfWidth, fBottom + fHalfWidth),
+      path.AppendPoint({fRight - fHalfWidth, fBottom + fHalfWidth},
                        CFX_Path::Point::Type::kLine);
-      path.AppendPoint(CFX_PointF(fLeft + fHalfWidth, fBottom + fHalfWidth),
+      path.AppendPoint({fLeft + fHalfWidth, fBottom + fHalfWidth},
                        CFX_Path::Point::Type::kLine);
       DrawPath(path, pUser2Device, &gsd, 0, color.ToFXColor(nTransparency),
                CFX_FillRenderOptions::WindingOptions());
@@ -1377,49 +1377,39 @@ void CFX_RenderDevice::DrawBorder(const CFX_Matrix* pUser2Device,
       gsd.m_LineWidth = fHalfWidth;
 
       CFX_Path path_left_top;
-      path_left_top.AppendPoint(
-          CFX_PointF(fLeft + fHalfWidth, fBottom + fHalfWidth),
-          CFX_Path::Point::Type::kMove);
-      path_left_top.AppendPoint(
-          CFX_PointF(fLeft + fHalfWidth, fTop - fHalfWidth),
-          CFX_Path::Point::Type::kLine);
-      path_left_top.AppendPoint(
-          CFX_PointF(fRight - fHalfWidth, fTop - fHalfWidth),
-          CFX_Path::Point::Type::kLine);
-      path_left_top.AppendPoint(CFX_PointF(fRight - fWidth, fTop - fWidth),
+      path_left_top.AppendPoint({fLeft + fHalfWidth, fBottom + fHalfWidth},
+                                CFX_Path::Point::Type::kMove);
+      path_left_top.AppendPoint({fLeft + fHalfWidth, fTop - fHalfWidth},
                                 CFX_Path::Point::Type::kLine);
-      path_left_top.AppendPoint(CFX_PointF(fLeft + fWidth, fTop - fWidth),
+      path_left_top.AppendPoint({fRight - fHalfWidth, fTop - fHalfWidth},
                                 CFX_Path::Point::Type::kLine);
-      path_left_top.AppendPoint(CFX_PointF(fLeft + fWidth, fBottom + fWidth),
+      path_left_top.AppendPoint({fRight - fWidth, fTop - fWidth},
                                 CFX_Path::Point::Type::kLine);
-      path_left_top.AppendPoint(
-          CFX_PointF(fLeft + fHalfWidth, fBottom + fHalfWidth),
-          CFX_Path::Point::Type::kLine);
+      path_left_top.AppendPoint({fLeft + fWidth, fTop - fWidth},
+                                CFX_Path::Point::Type::kLine);
+      path_left_top.AppendPoint({fLeft + fWidth, fBottom + fWidth},
+                                CFX_Path::Point::Type::kLine);
+      path_left_top.AppendPoint({fLeft + fHalfWidth, fBottom + fHalfWidth},
+                                CFX_Path::Point::Type::kLine);
       DrawPath(path_left_top, pUser2Device, &gsd,
                crLeftTop.ToFXColor(nTransparency), 0,
                CFX_FillRenderOptions::EvenOddOptions());
 
       CFX_Path path_right_bottom;
-      path_right_bottom.AppendPoint(
-          CFX_PointF(fRight - fHalfWidth, fTop - fHalfWidth),
-          CFX_Path::Point::Type::kMove);
-      path_right_bottom.AppendPoint(
-          CFX_PointF(fRight - fHalfWidth, fBottom + fHalfWidth),
-          CFX_Path::Point::Type::kLine);
-      path_right_bottom.AppendPoint(
-          CFX_PointF(fLeft + fHalfWidth, fBottom + fHalfWidth),
-          CFX_Path::Point::Type::kLine);
-      path_right_bottom.AppendPoint(
-          CFX_PointF(fLeft + fWidth, fBottom + fWidth),
-          CFX_Path::Point::Type::kLine);
-      path_right_bottom.AppendPoint(
-          CFX_PointF(fRight - fWidth, fBottom + fWidth),
-          CFX_Path::Point::Type::kLine);
-      path_right_bottom.AppendPoint(CFX_PointF(fRight - fWidth, fTop - fWidth),
+      path_right_bottom.AppendPoint({fRight - fHalfWidth, fTop - fHalfWidth},
+                                    CFX_Path::Point::Type::kMove);
+      path_right_bottom.AppendPoint({fRight - fHalfWidth, fBottom + fHalfWidth},
                                     CFX_Path::Point::Type::kLine);
-      path_right_bottom.AppendPoint(
-          CFX_PointF(fRight - fHalfWidth, fTop - fHalfWidth),
-          CFX_Path::Point::Type::kLine);
+      path_right_bottom.AppendPoint({fLeft + fHalfWidth, fBottom + fHalfWidth},
+                                    CFX_Path::Point::Type::kLine);
+      path_right_bottom.AppendPoint({fLeft + fWidth, fBottom + fWidth},
+                                    CFX_Path::Point::Type::kLine);
+      path_right_bottom.AppendPoint({fRight - fWidth, fBottom + fWidth},
+                                    CFX_Path::Point::Type::kLine);
+      path_right_bottom.AppendPoint({fRight - fWidth, fTop - fWidth},
+                                    CFX_Path::Point::Type::kLine);
+      path_right_bottom.AppendPoint({fRight - fHalfWidth, fTop - fHalfWidth},
+                                    CFX_Path::Point::Type::kLine);
       DrawPath(path_right_bottom, pUser2Device, &gsd,
                crRightBottom.ToFXColor(nTransparency), 0,
                CFX_FillRenderOptions::EvenOddOptions());
@@ -1437,9 +1427,9 @@ void CFX_RenderDevice::DrawBorder(const CFX_Matrix* pUser2Device,
       gsd.m_LineWidth = fWidth;
 
       CFX_Path path;
-      path.AppendPoint(CFX_PointF(fLeft, fBottom + fHalfWidth),
+      path.AppendPoint({fLeft, fBottom + fHalfWidth},
                        CFX_Path::Point::Type::kMove);
-      path.AppendPoint(CFX_PointF(fRight, fBottom + fHalfWidth),
+      path.AppendPoint({fRight, fBottom + fHalfWidth},
                        CFX_Path::Point::Type::kLine);
       DrawPath(path, pUser2Device, &gsd, 0, color.ToFXColor(nTransparency),
                CFX_FillRenderOptions::EvenOddOptions());
