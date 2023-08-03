@@ -54,11 +54,11 @@ vars = {
   # Three lines of non-changing comments so that
   # the commit queue can handle CLs rolling build
   # and whatever else without interference from each other.
-  'build_revision': '336e34d44c88d1160d150bd6c8d93e203a424b42',
+  'build_revision': '5885d3c24833ad72845a52a1b913a2b8bc651b56',
   # Three lines of non-changing comments so that
   # the commit queue can handle CLs rolling buildtools
   # and whatever else without interference from each other.
-  'buildtools_revision': '16be42a9ff1f7e4a3e53b93b3adc181fa7ff9161',
+  'buildtools_revision': '79ab87fa54614258c4c95891e873223371194525',
   # Three lines of non-changing comments so that
   # the commit queue can handle CLs rolling catapult
   # and whatever else without interference from each other.
@@ -249,23 +249,6 @@ deps = {
     ],
     'dep_type': 'cipd',
   },
-
-  # TODO(chromium:1458042): Remove these paths, when chromium builds files
-  # have moved to third_party/lib*/src paths.
-  'buildtools/third_party/libc++/trunk':
-    Var('chromium_git') +
-        '/external/github.com/llvm/llvm-project/libcxx.git@' +
-        Var('libcxx_revision'),
-
-  'buildtools/third_party/libc++abi/trunk':
-    Var('chromium_git') +
-        '/external/github.com/llvm/llvm-project/libcxxabi.git@' +
-        Var('libcxxabi_revision'),
-
-  'buildtools/third_party/libunwind/trunk':
-    Var('chromium_git') +
-        '/external/github.com/llvm/llvm-project/libunwind.git@' +
-        Var('libunwind_revision'),
 
   'buildtools/win': {
     'packages': [
