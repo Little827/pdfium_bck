@@ -46,7 +46,7 @@ bool CFX_GifContext::GetRecordPosition(uint32_t cur_pos,
                                        int32_t trans_index,
                                        bool interlace) {
   return delegate_->GifInputRecordPositionBuf(
-      cur_pos, FX_RECT(left, top, left + width, top + height), pal_num, pal,
+      cur_pos, {left, top, left + width, top + height}, pal_num, pal,
       trans_index, interlace);
 }
 

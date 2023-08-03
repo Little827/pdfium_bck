@@ -120,13 +120,11 @@ ByteString GenerateEditAP(IPVT_FontMap* pFontMap,
         }
         CPVT_Word word;
         if (pIterator->GetWord(word)) {
-          ptNew = CFX_PointF(word.ptWord.x + ptOffset.x,
-                             word.ptWord.y + ptOffset.y);
+          ptNew = {word.ptWord.x + ptOffset.x, word.ptWord.y + ptOffset.y};
         } else {
           CPVT_Line line;
           pIterator->GetLine(line);
-          ptNew = CFX_PointF(line.ptLine.x + ptOffset.x,
-                             line.ptLine.y + ptOffset.y);
+          ptNew = {line.ptLine.x + ptOffset.x, line.ptLine.y + ptOffset.y};
         }
         if (ptNew != ptOld) {
           sLineStream << ptNew.x - ptOld.x << " " << ptNew.y - ptOld.y
@@ -151,8 +149,7 @@ ByteString GenerateEditAP(IPVT_FontMap* pFontMap,
     } else {
       CPVT_Word word;
       if (pIterator->GetWord(word)) {
-        ptNew =
-            CFX_PointF(word.ptWord.x + ptOffset.x, word.ptWord.y + ptOffset.y);
+        ptNew = {word.ptWord.x + ptOffset.x, word.ptWord.y + ptOffset.y};
         if (ptNew != ptOld) {
           sEditStream << ptNew.x - ptOld.x << " " << ptNew.y - ptOld.y
                       << " Td\n";
@@ -379,7 +376,7 @@ ByteString GetPopupContentsString(CPDF_Document* pDoc,
   vt.SetText(swValue);
   vt.RearrangeAll();
 
-  CFX_PointF ptOffset(3.0f, -3.0f);
+  CFX_PointF ptOffset = {3.0f, -3.0f};
   ByteString sContent =
       GenerateEditAP(&map, vt.GetIterator(), ptOffset, false, 0);
 
@@ -1137,8 +1134,7 @@ void CPDF_GenerateAP::GenerateFormAP(CPDF_Document* pDoc,
       CFX_FloatRect rcContent = vt.GetContentRect();
       CFX_PointF ptOffset;
       if (!bMultiLine) {
-        ptOffset =
-            CFX_PointF(0.0f, (rcContent.Height() - rcBody.Height()) / 2.0f);
+        ptOffset = {0.0f, (rcContent.Height() - rcBody.Height()) / 2.0f};
       }
       ByteString sBody = GenerateEditAP(&map, vt.GetIterator(), ptOffset,
                                         !bCharArray, subWord);
@@ -1179,8 +1175,8 @@ void CPDF_GenerateAP::GenerateFormAP(CPDF_Document* pDoc,
       vt.SetText(swValue);
       vt.RearrangeAll();
       CFX_FloatRect rcContent = vt.GetContentRect();
-      CFX_PointF ptOffset =
-          CFX_PointF(0.0f, (rcContent.Height() - rcEdit.Height()) / 2.0f);
+      CFX_PointF ptOffset = {0.0f,
+                             (rcContent.Height() - rcEdit.Height()) / 2.0f};
       ByteString sEdit =
           GenerateEditAP(&map, vt.GetIterator(), ptOffset, true, 0);
       if (sEdit.GetLength() > 0) {
@@ -1210,8 +1206,8 @@ void CPDF_GenerateAP::GenerateFormAP(CPDF_Document* pDoc,
         if (sButtonBorder.GetLength() > 0)
           sAppStream << "q\n" << sButtonBorder << "Q\n";
 
-        CFX_PointF ptCenter = CFX_PointF((rcButton.left + rcButton.right) / 2,
-                                         (rcButton.top + rcButton.bottom) / 2);
+        CFX_PointF ptCenter = {(rcButton.left + rcButton.right) / 2,
+                               (rcButton.top + rcButton.bottom) / 2};
         if (FXSYS_IsFloatBigger(rcButton.Width(), 6) &&
             FXSYS_IsFloatBigger(rcButton.Height(), 6)) {
           sAppStream << "q\n"
@@ -1283,14 +1279,14 @@ void CPDF_GenerateAP::GenerateFormAP(CPDF_Document* pDoc,
               sBody << "BT\n"
                     << GenerateColorAP(CFX_Color(CFX_Color::Type::kGray, 1),
                                        PaintOperation::kFill)
-                    << GenerateEditAP(&map, vt.GetIterator(),
-                                      CFX_PointF(0.0f, fy), true, 0)
+                    << GenerateEditAP(&map, vt.GetIterator(), {0.0f, fy}, true,
+                                      0)
                     << "ET\n";
             } else {
               sBody << "BT\n"
                     << GenerateColorAP(crText, PaintOperation::kFill)
-                    << GenerateEditAP(&map, vt.GetIterator(),
-                                      CFX_PointF(0.0f, fy), true, 0)
+                    << GenerateEditAP(&map, vt.GetIterator(), {0.0f, fy}, true,
+                                      0)
                     << "ET\n";
             }
             fy -= fItemHeight;

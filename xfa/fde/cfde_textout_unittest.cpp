@@ -57,7 +57,7 @@ class CFDETextOutTest : public testing::Test {
                                   FX_CodePage::kDefANSI);
   }
 
-  virtual CFX_Size GetBitmapSize() { return CFX_Size(200, 100); }
+  virtual CFX_Size GetBitmapSize() { return {200, 100}; }
 
   virtual const char* GetEmptyBitmapChecksum() {
     static const char kEmptyBitmapChecksum[] =
@@ -115,7 +115,7 @@ class CFDETextOutLargeBitmapTest : public CFDETextOutTest {
                                   FX_CodePage::kFailure);
   }
 
-  CFX_Size GetBitmapSize() override { return CFX_Size(2100, 20); }
+  CFX_Size GetBitmapSize() override { return {2100, 20}; }
 
   const char* GetEmptyBitmapChecksum() override {
     static const char kEmptyLargeBitmapChecksum[] =

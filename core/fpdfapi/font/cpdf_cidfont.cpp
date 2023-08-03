@@ -281,7 +281,7 @@ CPDF_CIDFont::CPDF_CIDFont(CPDF_Document* pDocument,
                            RetainPtr<CPDF_Dictionary> pFontDict)
     : CPDF_Font(pDocument, std::move(pFontDict)) {
   for (size_t i = 0; i < std::size(m_CharBBox); ++i)
-    m_CharBBox[i] = FX_RECT(-1, -1, -1, -1);
+    m_CharBBox[i] = {-1, -1, -1, -1};
 }
 
 CPDF_CIDFont::~CPDF_CIDFont() = default;
@@ -540,11 +540,10 @@ FX_RECT CPDF_CIDFont::GetCharBBox(uint32_t charcode) {
           const int pixel_size_x = face->size->metrics.x_ppem;
           const int pixel_size_y = face->size->metrics.y_ppem;
           if (pixel_size_x == 0 || pixel_size_y == 0) {
-            rect = FX_RECT(xMin, yMax, xMax, yMin);
+            rect = {xMin, yMax, xMax, yMin};
           } else {
-            rect =
-                FX_RECT(xMin * 1000 / pixel_size_x, yMax * 1000 / pixel_size_y,
-                        xMax * 1000 / pixel_size_x, yMin * 1000 / pixel_size_y);
+            rect = {xMin * 1000 / pixel_size_x, yMax * 1000 / pixel_size_y,
+                    xMax * 1000 / pixel_size_x, yMin * 1000 / pixel_size_y};
           }
           rect.top = std::min(rect.top,
                               static_cast<int>(FXFT_Get_Face_Ascender(face)));
@@ -556,14 +555,14 @@ FX_RECT CPDF_CIDFont::GetCharBBox(uint32_t charcode) {
     } else {
       int err = FT_Load_Glyph(face, glyph_index, FT_LOAD_NO_SCALE);
       if (err == 0) {
-        rect = FX_RECT(TT2PDF(FXFT_Get_Glyph_HoriBearingX(face), face),
-                       TT2PDF(FXFT_Get_Glyph_HoriBearingY(face), face),
-                       TT2PDF(FXFT_Get_Glyph_HoriBearingX(face) +
-                                  FXFT_Get_Glyph_Width(face),
-                              face),
-                       TT2PDF(FXFT_Get_Glyph_HoriBearingY(face) -
-                                  FXFT_Get_Glyph_Height(face),
-                              face));
+        rect = {TT2PDF(FXFT_Get_Glyph_HoriBearingX(face), face),
+                TT2PDF(FXFT_Get_Glyph_HoriBearingY(face), face),
+                TT2PDF(FXFT_Get_Glyph_HoriBearingX(face) +
+                           FXFT_Get_Glyph_Width(face),
+                       face),
+                TT2PDF(FXFT_Get_Glyph_HoriBearingY(face) -
+                           FXFT_Get_Glyph_Height(face),
+                       face)};
         if (rect.top <= kMaxRectTop)
           rect.top += rect.top / 64;
         else

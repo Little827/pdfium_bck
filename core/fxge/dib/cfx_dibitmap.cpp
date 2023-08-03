@@ -853,7 +853,7 @@ bool CFX_DIBitmap::CompositeRect(int left,
   if (src_alpha == 0)
     return true;
 
-  FX_RECT rect(left, top, left + width, top + height);
+  FX_RECT rect = {left, top, left + width, top + height};
   rect.Intersect(0, 0, m_Width, m_Height);
   if (rect.IsEmpty())
     return true;

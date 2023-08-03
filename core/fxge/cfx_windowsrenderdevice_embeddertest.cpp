@@ -47,11 +47,11 @@ class CFX_WindowsRenderDeviceTest : public EmbedderTest {
 };
 
 TEST_F(CFX_WindowsRenderDeviceTest, SimpleClipTriangle) {
-  CFX_Path path_data;
-  CFX_PointF p1(0.0f, 0.0f);
-  CFX_PointF p2(0.0f, 100.0f);
-  CFX_PointF p3(100.0f, 100.0f);
+  CFX_PointF p1 = {0.0f, 0.0f};
+  CFX_PointF p2 = {0.0f, 100.0f};
+  CFX_PointF p3 = {100.0f, 100.0f};
 
+  CFX_Path path_data;
   path_data.AppendLine(p1, p2);
   path_data.AppendLine(p2, p3);
   path_data.AppendLine(p3, p1);
@@ -84,10 +84,10 @@ TEST_F(CFX_WindowsRenderDeviceTest, GargantuanClipRect) {
 }
 
 TEST_F(CFX_WindowsRenderDeviceTest, GargantuanClipRectWithBaseClip) {
-  CFX_Path path_data;
-  const FX_RECT kBaseClip(0, 0, 5100, 6600);
-
+  const FX_RECT kBaseClip = {0, 0, 5100, 6600};
   m_driver->SetBaseClip(kBaseClip);
+
+  CFX_Path path_data;
   path_data.AppendRect(-257698020.0f, -257697252.0f, 257698044.0f,
                        257698812.0f);
   path_data.ClosePath();

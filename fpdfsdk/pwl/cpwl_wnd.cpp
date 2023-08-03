@@ -455,8 +455,8 @@ CFX_FloatRect CPWL_Wnd::GetClientRect() const {
 
 CFX_PointF CPWL_Wnd::GetCenterPoint() const {
   CFX_FloatRect rcClient = GetClientRect();
-  return CFX_PointF((rcClient.left + rcClient.right) * 0.5f,
-                    (rcClient.top + rcClient.bottom) * 0.5f);
+  return {(rcClient.left + rcClient.right) * 0.5f,
+          (rcClient.top + rcClient.bottom) * 0.5f};
 }
 
 bool CPWL_Wnd::HasFlag(uint32_t dwFlags) const {

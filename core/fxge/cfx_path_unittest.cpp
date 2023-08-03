@@ -352,25 +352,25 @@ TEST(CFX_Path, Append) {
   CFX_Path path;
   path.AppendPoint({5, 6}, CFX_Path::Point::Type::kMove);
   ASSERT_EQ(1u, path.GetPoints().size());
-  EXPECT_EQ(CFX_PointF(5, 6), path.GetPoint(0));
+  EXPECT_EQ((CFX_PointF{5, 6}), path.GetPoint(0));
 
   CFX_Path empty_path;
   path.Append(empty_path, nullptr);
   ASSERT_EQ(1u, path.GetPoints().size());
-  EXPECT_EQ(CFX_PointF(5, 6), path.GetPoint(0));
+  EXPECT_EQ((CFX_PointF{5, 6}), path.GetPoint(0));
 
   path.Append(path, nullptr);
   ASSERT_EQ(2u, path.GetPoints().size());
-  EXPECT_EQ(CFX_PointF(5, 6), path.GetPoint(0));
-  EXPECT_EQ(CFX_PointF(5, 6), path.GetPoint(1));
+  EXPECT_EQ((CFX_PointF{5, 6}), path.GetPoint(0));
+  EXPECT_EQ((CFX_PointF{5, 6}), path.GetPoint(1));
 
   const CFX_Matrix kScaleMatrix(1, 0, 0, 2, 60, 70);
   path.Append(path, &kScaleMatrix);
   ASSERT_EQ(4u, path.GetPoints().size());
-  EXPECT_EQ(CFX_PointF(5, 6), path.GetPoint(0));
-  EXPECT_EQ(CFX_PointF(5, 6), path.GetPoint(1));
-  EXPECT_EQ(CFX_PointF(65, 82), path.GetPoint(2));
-  EXPECT_EQ(CFX_PointF(65, 82), path.GetPoint(3));
+  EXPECT_EQ((CFX_PointF{5, 6}), path.GetPoint(0));
+  EXPECT_EQ((CFX_PointF{5, 6}), path.GetPoint(1));
+  EXPECT_EQ((CFX_PointF{65, 82}), path.GetPoint(2));
+  EXPECT_EQ((CFX_PointF{65, 82}), path.GetPoint(3));
 }
 
 TEST(CFX_Path, GetBoundingBoxForStrokePath) {

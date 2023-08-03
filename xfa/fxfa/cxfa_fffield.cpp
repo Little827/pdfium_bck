@@ -373,7 +373,7 @@ bool CXFA_FFField::OnMouseEnter() {
 
   CFWL_MessageMouse msg(GetNormalWidget(),
                         CFWL_MessageMouse::MouseCommand::kEnter,
-                        Mask<XFA_FWL_KeyFlag>(), CFX_PointF());
+                        Mask<XFA_FWL_KeyFlag>(), {});
   SendMessageToFWLWidget(&msg);
   return true;
 }
@@ -384,7 +384,7 @@ bool CXFA_FFField::OnMouseExit() {
 
   CFWL_MessageMouse msg(GetNormalWidget(),
                         CFWL_MessageMouse::MouseCommand::kLeave,
-                        Mask<XFA_FWL_KeyFlag>(), CFX_PointF());
+                        Mask<XFA_FWL_KeyFlag>(), {});
   SendMessageToFWLWidget(&msg);
   return true;
 }

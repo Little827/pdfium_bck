@@ -109,50 +109,46 @@ CPWL_ListCtrl::~CPWL_ListCtrl() {
 
 CFX_PointF CPWL_ListCtrl::InToOut(const CFX_PointF& point) const {
   CFX_FloatRect rcPlate = m_rcPlate;
-  return CFX_PointF(point.x - (m_ptScrollPos.x - rcPlate.left),
-                    point.y - (m_ptScrollPos.y - rcPlate.top));
+  return {point.x - (m_ptScrollPos.x - rcPlate.left),
+          point.y - (m_ptScrollPos.y - rcPlate.top)};
 }
 
 CFX_PointF CPWL_ListCtrl::OutToIn(const CFX_PointF& point) const {
   CFX_FloatRect rcPlate = m_rcPlate;
-  return CFX_PointF(point.x + (m_ptScrollPos.x - rcPlate.left),
-                    point.y + (m_ptScrollPos.y - rcPlate.top));
+  return {point.x + (m_ptScrollPos.x - rcPlate.left),
+          point.y + (m_ptScrollPos.y - rcPlate.top)};
 }
 
 CFX_FloatRect CPWL_ListCtrl::InToOut(const CFX_FloatRect& rect) const {
-  CFX_PointF ptLeftBottom = InToOut(CFX_PointF(rect.left, rect.bottom));
-  CFX_PointF ptRightTop = InToOut(CFX_PointF(rect.right, rect.top));
-  return CFX_FloatRect(ptLeftBottom.x, ptLeftBottom.y, ptRightTop.x,
-                       ptRightTop.y);
+  CFX_PointF ptLeftBottom = InToOut({rect.left, rect.bottom});
+  CFX_PointF ptRightTop = InToOut({rect.right, rect.top});
+  return {ptLeftBottom.x, ptLeftBottom.y, ptRightTop.x, ptRightTop.y};
 }
 
 CFX_FloatRect CPWL_ListCtrl::OutToIn(const CFX_FloatRect& rect) const {
-  CFX_PointF ptLeftBottom = OutToIn(CFX_PointF(rect.left, rect.bottom));
-  CFX_PointF ptRightTop = OutToIn(CFX_PointF(rect.right, rect.top));
-  return CFX_FloatRect(ptLeftBottom.x, ptLeftBottom.y, ptRightTop.x,
-                       ptRightTop.y);
+  CFX_PointF ptLeftBottom = OutToIn({rect.left, rect.bottom});
+  CFX_PointF ptRightTop = OutToIn({rect.right, rect.top});
+  return {ptLeftBottom.x, ptLeftBottom.y, ptRightTop.x, ptRightTop.y};
 }
 
 CFX_PointF CPWL_ListCtrl::InnerToOuter(const CFX_PointF& point) const {
-  return CFX_PointF(point.x + GetBTPoint().x, GetBTPoint().y - point.y);
+  return {point.x + GetBTPoint().x, GetBTPoint().y - point.y};
 }
 
 CFX_PointF CPWL_ListCtrl::OuterToInner(const CFX_PointF& point) const {
-  return CFX_PointF(point.x - GetBTPoint().x, GetBTPoint().y - point.y);
+  return {point.x - GetBTPoint().x, GetBTPoint().y - point.y};
 }
 
 CFX_FloatRect CPWL_ListCtrl::InnerToOuter(const CFX_FloatRect& rect) const {
-  CFX_PointF ptLeftTop = InnerToOuter(CFX_PointF(rect.left, rect.top));
-  CFX_PointF ptRightBottom = InnerToOuter(CFX_PointF(rect.right, rect.bottom));
-  return CFX_FloatRect(ptLeftTop.x, ptRightBottom.y, ptRightBottom.x,
-                       ptLeftTop.y);
+  CFX_PointF ptLeftTop = InnerToOuter({rect.left, rect.top});
+  CFX_PointF ptRightBottom = InnerToOuter({rect.right, rect.bottom});
+  return {ptLeftTop.x, ptRightBottom.y, ptRightBottom.x, ptLeftTop.y};
 }
 
 CFX_FloatRect CPWL_ListCtrl::OuterToInner(const CFX_FloatRect& rect) const {
-  CFX_PointF ptLeftTop = OuterToInner(CFX_PointF(rect.left, rect.top));
-  CFX_PointF ptRightBottom = OuterToInner(CFX_PointF(rect.right, rect.bottom));
-  return CFX_FloatRect(ptLeftTop.x, ptRightBottom.y, ptRightBottom.x,
-                       ptLeftTop.y);
+  CFX_PointF ptLeftTop = OuterToInner({rect.left, rect.top});
+  CFX_PointF ptRightBottom = OuterToInner({rect.right, rect.bottom});
+  return {ptLeftTop.x, ptRightBottom.y, ptRightBottom.x, ptLeftTop.y};
 }
 
 void CPWL_ListCtrl::OnMouseDown(const CFX_PointF& point,
@@ -285,7 +281,7 @@ bool CPWL_ListCtrl::OnChar(uint16_t nChar, bool bShift, bool bCtrl) {
 void CPWL_ListCtrl::SetPlateRect(const CFX_FloatRect& rect) {
   m_rcPlate = rect;
   m_ptScrollPos.x = rect.left;
-  SetScrollPos(CFX_PointF(rect.left, rect.top));
+  SetScrollPos({rect.left, rect.top});
   ReArrange(0);
   InvalidateItem(-1);
 }

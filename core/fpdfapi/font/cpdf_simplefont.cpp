@@ -39,8 +39,9 @@ CPDF_SimpleFont::CPDF_SimpleFont(CPDF_Document* pDocument,
     : CPDF_Font(pDocument, std::move(pFontDict)) {
   memset(m_CharWidth, 0xff, sizeof(m_CharWidth));
   memset(m_GlyphIndex, 0xff, sizeof(m_GlyphIndex));
-  for (size_t i = 0; i < std::size(m_CharBBox); ++i)
-    m_CharBBox[i] = FX_RECT(-1, -1, -1, -1);
+  for (size_t i = 0; i < std::size(m_CharBBox); ++i) {
+    item = {-1, -1, -1, -1};
+  }
 }
 
 CPDF_SimpleFont::~CPDF_SimpleFont() = default;
@@ -86,10 +87,10 @@ void CPDF_SimpleFont::LoadCharMetrics(int charcode) {
 
   FT_Pos iHoriBearingX = FXFT_Get_Glyph_HoriBearingX(face);
   FT_Pos iHoriBearingY = FXFT_Get_Glyph_HoriBearingY(face);
-  m_CharBBox[charcode] =
-      FX_RECT(TT2PDF(iHoriBearingX, face), TT2PDF(iHoriBearingY, face),
-              TT2PDF(iHoriBearingX + FXFT_Get_Glyph_Width(face), face),
-              TT2PDF(iHoriBearingY - FXFT_Get_Glyph_Height(face), face));
+  m_CharBBox[charcode] = {
+      TT2PDF(iHoriBearingX, face), TT2PDF(iHoriBearingY, face),
+      TT2PDF(iHoriBearingX + FXFT_Get_Glyph_Width(face), face),
+      TT2PDF(iHoriBearingY - FXFT_Get_Glyph_Height(face), face)};
 
   if (m_bUseFontWidth) {
     int TT_Width = TT2PDF(FXFT_Get_Glyph_HoriAdvance(face), face);

@@ -66,12 +66,10 @@ TEST_F(CPDF_PageContentGeneratorTest, ProcessRect) {
   EXPECT_EQ("q 1 0 0 1 0 0 cm 10 5 3 25 re B* Q\n", ByteString(buf));
 
   pPathObj = std::make_unique<CPDF_PathObject>();
-  pPathObj->path().AppendPoint(CFX_PointF(0, 0), CFX_Path::Point::Type::kMove);
-  pPathObj->path().AppendPoint(CFX_PointF(5.2f, 0),
-                               CFX_Path::Point::Type::kLine);
-  pPathObj->path().AppendPoint(CFX_PointF(5.2f, 3.78f),
-                               CFX_Path::Point::Type::kLine);
-  pPathObj->path().AppendPointAndClose(CFX_PointF(0, 3.78f),
+  pPathObj->path().AppendPoint({0, 0}, CFX_Path::Point::Type::kMove);
+  pPathObj->path().AppendPoint({5.2f, 0}, CFX_Path::Point::Type::kLine);
+  pPathObj->path().AppendPoint({5.2f, 3.78f}, CFX_Path::Point::Type::kLine);
+  pPathObj->path().AppendPointAndClose({0, 3.78f},
                                        CFX_Path::Point::Type::kLine);
   buf.str("");
   TestProcessPath(&generator, &buf, pPathObj.get());
@@ -117,17 +115,17 @@ TEST_F(CPDF_PageContentGeneratorTest, BUG_937) {
     pPathObj->Transform(CFX_Matrix(1, 0, 0, 1, 432, 500000000000000.000002));
 
     pPathObj->set_filltype(CFX_FillRenderOptions::FillType::kWinding);
-    pPathObj->path().AppendPoint(CFX_PointF(0.000000000000000000001f, 4.67f),
+    pPathObj->path().AppendPoint({0.000000000000000000001f, 4.67f},
                                  CFX_Path::Point::Type::kMove);
     pPathObj->path().AppendPoint(
-        CFX_PointF(0.000000000000000000001, 100000000000000.000002),
+        {0.000000000000000000001, 100000000000000.000002},
         CFX_Path::Point::Type::kLine);
-    pPathObj->path().AppendPoint(CFX_PointF(0.0000000000001f, 3.15f),
+    pPathObj->path().AppendPoint({0.0000000000001f, 3.15f},
                                  CFX_Path::Point::Type::kBezier);
-    pPathObj->path().AppendPoint(CFX_PointF(3.57f, 2.98f),
+    pPathObj->path().AppendPoint({3.57f, 2.98f},
                                  CFX_Path::Point::Type::kBezier);
     pPathObj->path().AppendPointAndClose(
-        CFX_PointF(53.4f, 5000000000000000000.00000000000000004),
+        {53.4f, 5000000000000000000.00000000000000004},
         CFX_Path::Point::Type::kBezier);
     auto dummy_page_dict = pdfium::MakeRetain<CPDF_Dictionary>();
     auto pTestPage = pdfium::MakeRetain<CPDF_Page>(nullptr, dummy_page_dict);
@@ -147,25 +145,18 @@ TEST_F(CPDF_PageContentGeneratorTest, BUG_937) {
 TEST_F(CPDF_PageContentGeneratorTest, ProcessPath) {
   auto pPathObj = std::make_unique<CPDF_PathObject>();
   pPathObj->set_filltype(CFX_FillRenderOptions::FillType::kWinding);
-  pPathObj->path().AppendPoint(CFX_PointF(3.102f, 4.67f),
-                               CFX_Path::Point::Type::kMove);
-  pPathObj->path().AppendPoint(CFX_PointF(5.45f, 0.29f),
-                               CFX_Path::Point::Type::kLine);
-  pPathObj->path().AppendPoint(CFX_PointF(4.24f, 3.15f),
+  pPathObj->path().AppendPoint({3.102f, 4.67f}, CFX_Path::Point::Type::kMove);
+  pPathObj->path().AppendPoint({5.45f, 0.29f}, CFX_Path::Point::Type::kLine);
+  pPathObj->path().AppendPoint({4.24f, 3.15f}, CFX_Path::Point::Type::kBezier);
+  pPathObj->path().AppendPoint({4.65f, 2.98f}, CFX_Path::Point::Type::kBezier);
+  pPathObj->path().AppendPoint({3.456f, 0.24f}, CFX_Path::Point::Type::kBezier);
+  pPathObj->path().AppendPoint({10.6f, 11.15f}, CFX_Path::Point::Type::kLine);
+  pPathObj->path().AppendPoint({11.0f, 12.5f}, CFX_Path::Point::Type::kLine);
+  pPathObj->path().AppendPoint({11.46f, 12.67f},
                                CFX_Path::Point::Type::kBezier);
-  pPathObj->path().AppendPoint(CFX_PointF(4.65f, 2.98f),
+  pPathObj->path().AppendPoint({11.84f, 12.96f},
                                CFX_Path::Point::Type::kBezier);
-  pPathObj->path().AppendPoint(CFX_PointF(3.456f, 0.24f),
-                               CFX_Path::Point::Type::kBezier);
-  pPathObj->path().AppendPoint(CFX_PointF(10.6f, 11.15f),
-                               CFX_Path::Point::Type::kLine);
-  pPathObj->path().AppendPoint(CFX_PointF(11, 12.5f),
-                               CFX_Path::Point::Type::kLine);
-  pPathObj->path().AppendPoint(CFX_PointF(11.46f, 12.67f),
-                               CFX_Path::Point::Type::kBezier);
-  pPathObj->path().AppendPoint(CFX_PointF(11.84f, 12.96f),
-                               CFX_Path::Point::Type::kBezier);
-  pPathObj->path().AppendPointAndClose(CFX_PointF(12, 13.64f),
+  pPathObj->path().AppendPointAndClose({12.0f, 13.64f},
                                        CFX_Path::Point::Type::kBezier);
 
   auto dummy_page_dict = pdfium::MakeRetain<CPDF_Dictionary>();
@@ -185,10 +176,9 @@ TEST_F(CPDF_PageContentGeneratorTest, ProcessGraphics) {
   auto pPathObj = std::make_unique<CPDF_PathObject>();
   pPathObj->set_stroke(true);
   pPathObj->set_filltype(CFX_FillRenderOptions::FillType::kWinding);
-  pPathObj->path().AppendPoint(CFX_PointF(1, 2), CFX_Path::Point::Type::kMove);
-  pPathObj->path().AppendPoint(CFX_PointF(3, 4), CFX_Path::Point::Type::kLine);
-  pPathObj->path().AppendPointAndClose(CFX_PointF(5, 6),
-                                       CFX_Path::Point::Type::kLine);
+  pPathObj->path().AppendPoint({1, 2}, CFX_Path::Point::Type::kMove);
+  pPathObj->path().AppendPoint({3, 4}, CFX_Path::Point::Type::kLine);
+  pPathObj->path().AppendPointAndClose({5, 6}, CFX_Path::Point::Type::kLine);
 
   static const std::vector<float> rgb = {0.5f, 0.7f, 0.35f};
   RetainPtr<CPDF_ColorSpace> pCS =
@@ -339,10 +329,10 @@ TEST_F(CPDF_PageContentGeneratorTest, ProcessText) {
 
     // Add a clipping path.
     auto pPath = std::make_unique<CPDF_Path>();
-    pPath->AppendPoint(CFX_PointF(0, 0), CFX_Path::Point::Type::kMove);
-    pPath->AppendPoint(CFX_PointF(5, 0), CFX_Path::Point::Type::kLine);
-    pPath->AppendPoint(CFX_PointF(5, 4), CFX_Path::Point::Type::kLine);
-    pPath->AppendPointAndClose(CFX_PointF(0, 4), CFX_Path::Point::Type::kLine);
+    pPath->AppendPoint({0, 0}, CFX_Path::Point::Type::kMove);
+    pPath->AppendPoint({5, 0}, CFX_Path::Point::Type::kLine);
+    pPath->AppendPoint({5, 4}, CFX_Path::Point::Type::kLine);
+    pPath->AppendPointAndClose({0, 4}, CFX_Path::Point::Type::kLine);
     pTextObj->m_ClipPath.Emplace();
     pTextObj->m_ClipPath.AppendPath(*pPath,
                                     CFX_FillRenderOptions::FillType::kEvenOdd);

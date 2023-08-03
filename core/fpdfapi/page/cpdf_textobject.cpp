@@ -46,7 +46,7 @@ CPDF_TextObject::Item CPDF_TextObject::GetItemInfo(size_t index) const {
 
   Item info;
   info.m_CharCode = m_CharCodes[index];
-  info.m_Origin = CFX_PointF(index > 0 ? m_CharPos[index - 1] : 0, 0);
+  info.m_Origin = {index > 0 ? m_CharPos[index - 1] : 0, 0};
   if (info.m_CharCode == CPDF_Font::kInvalidCharCode)
     return info;
 
@@ -56,7 +56,7 @@ CPDF_TextObject::Item CPDF_TextObject::GetItemInfo(size_t index) const {
     return info;
 
   uint16_t cid = pCIDFont->CIDFromCharCode(info.m_CharCode);
-  info.m_Origin = CFX_PointF(0, info.m_Origin.x);
+  info.m_Origin = {0, info.m_Origin.x};
 
   CFX_Point16 vertical_origin = pCIDFont->GetVertOrigin(cid);
   float fontsize = GetFontSize();
@@ -189,7 +189,7 @@ void CPDF_TextObject::SetTextMatrix(const CFX_Matrix& matrix) {
   pTextMatrix[1] = matrix.c;
   pTextMatrix[2] = matrix.b;
   pTextMatrix[3] = matrix.d;
-  m_Pos = CFX_PointF(matrix.e, matrix.f);
+  m_Pos = {matrix.e, matrix.f};
   CalcPositionDataInternal(GetFont());
 }
 

@@ -38,18 +38,15 @@ void CFWL_PushButtonTP::DrawBackground(const CFWL_ThemeBackground& pParams) {
       float fBottom = rect.bottom();
 
       CFGAS_GEPath strokePath;
-      strokePath.MoveTo(
-          CFX_PointF(rect.left + kPushbuttonSizeCorner, rect.top));
-      strokePath.LineTo(CFX_PointF(fRight - kPushbuttonSizeCorner, rect.top));
-      strokePath.LineTo(CFX_PointF(fRight, rect.top + kPushbuttonSizeCorner));
-      strokePath.LineTo(CFX_PointF(fRight, fBottom - kPushbuttonSizeCorner));
-      strokePath.LineTo(CFX_PointF(fRight - kPushbuttonSizeCorner, fBottom));
-      strokePath.LineTo(CFX_PointF(rect.left + kPushbuttonSizeCorner, fBottom));
-      strokePath.LineTo(CFX_PointF(rect.left, fBottom - kPushbuttonSizeCorner));
-      strokePath.LineTo(
-          CFX_PointF(rect.left, rect.top + kPushbuttonSizeCorner));
-      strokePath.LineTo(
-          CFX_PointF(rect.left + kPushbuttonSizeCorner, rect.top));
+      strokePath.MoveTo({rect.left + kPushbuttonSizeCorner, rect.top});
+      strokePath.LineTo({fRight - kPushbuttonSizeCorner, rect.top});
+      strokePath.LineTo({fRight, rect.top + kPushbuttonSizeCorner});
+      strokePath.LineTo({fRight, fBottom - kPushbuttonSizeCorner});
+      strokePath.LineTo({fRight - kPushbuttonSizeCorner, fBottom});
+      strokePath.LineTo({rect.left + kPushbuttonSizeCorner, fBottom});
+      strokePath.LineTo({rect.left, fBottom - kPushbuttonSizeCorner});
+      strokePath.LineTo({rect.left, rect.top + kPushbuttonSizeCorner});
+      strokePath.LineTo({rect.left + kPushbuttonSizeCorner, rect.top});
 
       CFGAS_GEPath fillPath;
       fillPath.AddSubpath(strokePath);

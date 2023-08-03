@@ -101,7 +101,7 @@ class CPDF_Page final : public IPDF_Page, public CPDF_PageObjectHolder {
   RetainPtr<const CPDF_Object> GetPageAttr(const ByteString& name) const;
   CFX_FloatRect GetBox(const ByteString& name) const;
 
-  CFX_SizeF m_PageSize;
+  CFX_SizeF m_PageSize = {100, 100};
   CFX_Matrix m_PageMatrix;
   UnownedPtr<CPDF_Document> const m_pPDFDocument;
   std::unique_ptr<CPDF_PageImageCache> m_pPageImageCache;

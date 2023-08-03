@@ -46,10 +46,10 @@ struct OUTLINE_PARAMS {
 };
 
 FX_RECT FXRectFromFTPos(FT_Pos left, FT_Pos top, FT_Pos right, FT_Pos bottom) {
-  return FX_RECT(pdfium::base::checked_cast<int32_t>(left),
-                 pdfium::base::checked_cast<int32_t>(top),
-                 pdfium::base::checked_cast<int32_t>(right),
-                 pdfium::base::checked_cast<int32_t>(bottom));
+  return {pdfium::base::checked_cast<int32_t>(left),
+          pdfium::base::checked_cast<int32_t>(top),
+          pdfium::base::checked_cast<int32_t>(right),
+          pdfium::base::checked_cast<int32_t>(bottom)};
 }
 
 FX_RECT ScaledFXRectFromFTPos(FT_Pos left,
@@ -112,7 +112,7 @@ int Outline_MoveTo(const FT_Vector* to, void* user) {
 
   param->m_pPath->ClosePath();
   param->m_pPath->AppendPoint(
-      CFX_PointF(to->x / param->m_CoordUnit, to->y / param->m_CoordUnit),
+      {to->x / param->m_CoordUnit, to->y / param->m_CoordUnit},
       CFX_Path::Point::Type::kMove);
 
   param->m_CurX = to->x;
@@ -124,7 +124,7 @@ int Outline_LineTo(const FT_Vector* to, void* user) {
   OUTLINE_PARAMS* param = static_cast<OUTLINE_PARAMS*>(user);
 
   param->m_pPath->AppendPoint(
-      CFX_PointF(to->x / param->m_CoordUnit, to->y / param->m_CoordUnit),
+      {to->x / param->m_CoordUnit, to->y / param->m_CoordUnit},
       CFX_Path::Point::Type::kLine);
 
   param->m_CurX = to->x;
@@ -136,19 +136,19 @@ int Outline_ConicTo(const FT_Vector* control, const FT_Vector* to, void* user) {
   OUTLINE_PARAMS* param = static_cast<OUTLINE_PARAMS*>(user);
 
   param->m_pPath->AppendPoint(
-      CFX_PointF((param->m_CurX + (control->x - param->m_CurX) * 2 / 3) /
-                     param->m_CoordUnit,
-                 (param->m_CurY + (control->y - param->m_CurY) * 2 / 3) /
-                     param->m_CoordUnit),
+      {(param->m_CurX + (control->x - param->m_CurX) * 2 / 3) /
+           param->m_CoordUnit,
+       (param->m_CurY + (control->y - param->m_CurY) * 2 / 3) /
+           param->m_CoordUnit},
       CFX_Path::Point::Type::kBezier);
 
   param->m_pPath->AppendPoint(
-      CFX_PointF((control->x + (to->x - control->x) / 3) / param->m_CoordUnit,
-                 (control->y + (to->y - control->y) / 3) / param->m_CoordUnit),
+      {(control->x + (to->x - control->x) / 3) / param->m_CoordUnit,
+       (control->y + (to->y - control->y) / 3) / param->m_CoordUnit},
       CFX_Path::Point::Type::kBezier);
 
   param->m_pPath->AppendPoint(
-      CFX_PointF(to->x / param->m_CoordUnit, to->y / param->m_CoordUnit),
+      {to->x / param->m_CoordUnit, to->y / param->m_CoordUnit},
       CFX_Path::Point::Type::kBezier);
 
   param->m_CurX = to->x;
@@ -162,16 +162,16 @@ int Outline_CubicTo(const FT_Vector* control1,
                     void* user) {
   OUTLINE_PARAMS* param = static_cast<OUTLINE_PARAMS*>(user);
 
-  param->m_pPath->AppendPoint(CFX_PointF(control1->x / param->m_CoordUnit,
-                                         control1->y / param->m_CoordUnit),
-                              CFX_Path::Point::Type::kBezier);
-
-  param->m_pPath->AppendPoint(CFX_PointF(control2->x / param->m_CoordUnit,
-                                         control2->y / param->m_CoordUnit),
-                              CFX_Path::Point::Type::kBezier);
+  param->m_pPath->AppendPoint(
+      {control1->x / param->m_CoordUnit, control1->y / param->m_CoordUnit},
+      CFX_Path::Point::Type::kBezier);
 
   param->m_pPath->AppendPoint(
-      CFX_PointF(to->x / param->m_CoordUnit, to->y / param->m_CoordUnit),
+      {control2->x / param->m_CoordUnit, control2->y / param->m_CoordUnit},
+      CFX_Path::Point::Type::kBezier);
+
+  param->m_pPath->AppendPoint(
+      {to->x / param->m_CoordUnit, to->y / param->m_CoordUnit},
       CFX_Path::Point::Type::kBezier);
 
   param->m_CurX = to->x;
