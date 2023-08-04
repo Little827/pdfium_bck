@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "d3152835_ff80046d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 9406
+      },
+      "writtenOn": "2023-08-04T22:11:42Z",
+      "side": 1,
+      "message": "This is just something I noticed - I set up a fuzz test on a project which uses PDFium.",
+      "parentUuid": "fe8a2a0f_3a970d83",
+      "revId": "f4ec4e4384ce41ac39d0434cf94e993b41d27fc9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "c03d9a40_2a64d9a2",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -48,6 +66,30 @@
       "writtenOn": "2023-08-04T22:03:03Z",
       "side": 1,
       "message": "We can do this more simply through a set of very clever templates that exist in chromium/pdfium. So we can include above\n\n#include \"third_party/base/numerics/safe_conversions.h\"\n\ninstead of check_op.h, remove the checks, and write\n\n`return pdfium::base::checked_cast\u003cint32_t\u003e(m_FloatValue);`",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 46
+      },
+      "revId": "f4ec4e4384ce41ac39d0434cf94e993b41d27fc9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05e5b7a7_c1846b0e",
+        "filename": "core/fxcrt/fx_number.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 9406
+      },
+      "writtenOn": "2023-08-04T22:11:42Z",
+      "side": 1,
+      "message": "Nifty! Done.",
+      "parentUuid": "ae3203ff_d2421194",
       "range": {
         "startLine": 96,
         "startChar": 0,
