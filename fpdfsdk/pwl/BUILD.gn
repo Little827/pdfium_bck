@@ -38,6 +38,7 @@ source_set("pwl") {
   configs += [
     "../../:pdfium_strict_config",
     "../../:pdfium_noshorten_config",
+    "../../:pdfium_nounsafe_buffer_usage_config",
   ]
   deps = [
     "../../:pdfium_public_headers",
