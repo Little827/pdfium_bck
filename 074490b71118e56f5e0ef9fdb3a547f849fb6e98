@@ -22,6 +22,30 @@
       },
       "revId": "074490b71118e56f5e0ef9fdb3a547f849fb6e98",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd0b9c97_5a82af26",
+        "filename": "core/fxcrt/fx_coordinates.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-08-04T15:51:21Z",
+      "side": 0,
+      "message": "NM, this appears to be the only copy-ctor so tagged.",
+      "parentUuid": "41a80edd_d1f4c949",
+      "range": {
+        "startLine": 316,
+        "startChar": 0,
+        "endLine": 316,
+        "endChar": 37
+      },
+      "revId": "074490b71118e56f5e0ef9fdb3a547f849fb6e98",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
