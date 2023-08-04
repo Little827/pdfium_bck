@@ -151,10 +151,15 @@ FX_ARGB AlphaAndColorRefToArgb(int a, FX_COLORREF colorref);
   ((uint8_t)(argb >> 16) | ((uint8_t)(argb >> 8)) << 8 | \
    ((uint8_t)(argb)) << 16 | ((uint8_t)(argb >> 24) << 24))
 
-inline void ReverseCopy3Bytes(uint8_t* dest, const uint8_t* src) {
+[[clang::unsafe_buffer_usage]] inline void ReverseCopy3Bytes(
+    uint8_t* dest,
+    const uint8_t* src) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunsafe-buffer-usage"
   dest[2] = src[0];
   dest[1] = src[1];
   dest[0] = src[2];
+#pragma clang diagnostic pop
 }
 
 #endif  // CORE_FXGE_DIB_FX_DIB_H_
