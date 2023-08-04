@@ -24,6 +24,9 @@
 #include "third_party/base/check.h"
 #include "third_party/base/containers/span.h"
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunsafe-buffer-usage"
+
 namespace fxcrt {
 
 class ByteString;
@@ -330,5 +333,7 @@ struct hash<WideString> {
 }  // namespace std
 
 extern template struct std::hash<WideString>;
+
+#pragma clang diagnostic pop
 
 #endif  // CORE_FXCRT_WIDESTRING_H_

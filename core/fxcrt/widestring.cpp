@@ -22,6 +22,9 @@
 #include "third_party/base/check_op.h"
 #include "third_party/base/numerics/safe_math.h"
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunsafe-buffer-usage"
+
 template class fxcrt::StringDataTemplate<wchar_t>;
 template class fxcrt::StringViewTemplate<wchar_t>;
 template class fxcrt::StringPoolTemplate<WideString>;
@@ -1148,3 +1151,5 @@ uint32_t FX_HashCode_GetLoweredW(WideStringView str) {
     dwHashCode = 1313 * dwHashCode + FXSYS_towlower(c);
   return dwHashCode;
 }
+
+#pragma clang diagnostic pop

@@ -16,6 +16,9 @@
 #include "third_party/base/check.h"
 #include "third_party/base/check_op.h"
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunsafe-buffer-usage"
+
 namespace fxcrt {
 
 // static
@@ -102,3 +105,5 @@ template class StringDataTemplate<char>;
 template class StringDataTemplate<wchar_t>;
 
 }  // namespace fxcrt
+
+#pragma clang diagnostic pop
