@@ -17,12 +17,16 @@
 #include "core/fxcrt/unowned_ptr.h"
 #include "core/fxge/dib/fx_dib.h"
 #include "fxjs/gc/heap.h"
+#include "xfa/fxfa/fxfa.h"
+#include "xfa/fxfa/parser/cxfa_document.h"
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunsafe-buffer-usage"
 #include "v8/include/cppgc/garbage-collected.h"
 #include "v8/include/cppgc/member.h"
 #include "v8/include/cppgc/prefinalizer.h"
 #include "v8/include/cppgc/visitor.h"
-#include "xfa/fxfa/fxfa.h"
-#include "xfa/fxfa/parser/cxfa_document.h"
+#pragma clang diagnostic pop
 
 class CFGAS_GEFont;
 class CFGAS_PDFFontMgr;

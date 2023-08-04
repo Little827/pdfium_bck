@@ -13,7 +13,11 @@
 
 #include "core/fxcrt/fx_string.h"
 #include "core/fxcrt/unowned_ptr.h"
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunsafe-buffer-usage"
 #include "v8/include/v8-forward.h"
+#pragma clang diagnostic pop
 
 class CFX_V8 {
  public:

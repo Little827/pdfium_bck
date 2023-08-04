@@ -6,9 +6,13 @@
 #define FXJS_GC_GCED_TREE_NODE_H_
 
 #include "core/fxcrt/tree_node.h"
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunsafe-buffer-usage"
 #include "v8/include/cppgc/garbage-collected.h"
 #include "v8/include/cppgc/member.h"
 #include "v8/include/cppgc/visitor.h"
+#pragma clang diagnostic pop
 
 namespace fxjs {
 

@@ -15,8 +15,6 @@
 #include "core/fxcrt/retain_ptr.h"
 #include "core/fxge/cfx_graphstatedata.h"
 #include "fxjs/gc/heap.h"
-#include "v8/include/cppgc/garbage-collected.h"
-#include "v8/include/cppgc/visitor.h"
 #include "xfa/fwl/cfwl_app.h"
 #include "xfa/fwl/cfwl_messagemouse.h"
 #include "xfa/fwl/cfwl_widget.h"
@@ -25,6 +23,12 @@
 #include "xfa/fxfa/cxfa_ffapp.h"
 #include "xfa/fxfa/fxfa.h"
 #include "xfa/fxfa/layout/cxfa_contentlayoutitem.h"
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunsafe-buffer-usage"
+#include "v8/include/cppgc/garbage-collected.h"
+#include "v8/include/cppgc/visitor.h"
+#pragma clang diagnostic pop
 
 class CFGAS_GEGraphics;
 class CFX_DIBitmap;

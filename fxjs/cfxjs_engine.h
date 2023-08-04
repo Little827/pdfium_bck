@@ -23,10 +23,14 @@
 #include "core/fxcrt/widestring.h"
 #include "fxjs/cfx_v8.h"
 #include "fxjs/ijs_runtime.h"
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunsafe-buffer-usage"
 #include "v8/include/v8-forward.h"
 #include "v8/include/v8-function-callback.h"
 #include "v8/include/v8-persistent-handle.h"
 #include "v8/include/v8-template.h"
+#pragma clang diagnostic pop
 
 class CFXJS_ObjDefinition;
 class CJS_Object;

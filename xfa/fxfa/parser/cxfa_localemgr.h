@@ -13,10 +13,14 @@
 #include "core/fxcrt/widestring.h"
 #include "fxjs/gc/heap.h"
 #include "third_party/abseil-cpp/absl/types/optional.h"
-#include "v8/include/cppgc/garbage-collected.h"
-#include "v8/include/cppgc/member.h"
 #include "xfa/fgas/crt/locale_mgr_iface.h"
 #include "xfa/fxfa/parser/gced_locale_iface.h"
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunsafe-buffer-usage"
+#include "v8/include/cppgc/garbage-collected.h"
+#include "v8/include/cppgc/member.h"
+#pragma clang diagnostic pop
 
 class CXFA_Node;
 class CXFA_NodeLocale;

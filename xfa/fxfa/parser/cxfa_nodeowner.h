@@ -10,9 +10,13 @@
 #include <vector>
 
 #include "fxjs/gc/heap.h"
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunsafe-buffer-usage"
 #include "v8/include/cppgc/garbage-collected.h"
 #include "v8/include/cppgc/member.h"
 #include "v8/include/cppgc/visitor.h"
+#pragma clang diagnostic pop
 
 class CXFA_List;
 

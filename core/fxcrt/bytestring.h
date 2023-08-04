@@ -25,6 +25,9 @@
 #include "third_party/base/check.h"
 #include "third_party/base/containers/span.h"
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunsafe-buffer-usage"
+
 namespace fxcrt {
 
 // A mutable string with shared buffers using copy-on-write semantics that
@@ -314,5 +317,7 @@ struct hash<ByteString> {
 }  // namespace std
 
 extern template struct std::hash<ByteString>;
+
+#pragma clang diagnostic pop
 
 #endif  // CORE_FXCRT_BYTESTRING_H_

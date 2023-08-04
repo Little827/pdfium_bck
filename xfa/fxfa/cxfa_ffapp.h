@@ -10,9 +10,13 @@
 #include "core/fxcrt/unowned_ptr.h"
 #include "core/fxcrt/widestring.h"
 #include "fxjs/gc/heap.h"
+#include "xfa/fwl/cfwl_app.h"
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunsafe-buffer-usage"
 #include "v8/include/cppgc/garbage-collected.h"
 #include "v8/include/cppgc/member.h"
-#include "xfa/fwl/cfwl_app.h"
+#pragma clang diagnostic pop
 
 class CFWL_WidgetMgr;
 class CXFA_FFDoc;

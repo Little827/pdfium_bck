@@ -20,9 +20,13 @@
 #include "fpdfsdk/cpdfsdk_formfillenvironment.h"
 #include "fpdfsdk/fpdfxfa/cpdfxfa_page.h"
 #include "fxjs/gc/heap.h"
-#include "v8/include/cppgc/persistent.h"
 #include "xfa/fxfa/cxfa_ffapp.h"
 #include "xfa/fxfa/cxfa_ffdoc.h"
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunsafe-buffer-usage"
+#include "v8/include/cppgc/persistent.h"
+#pragma clang diagnostic pop
 
 class CFX_XMLDocument;
 class CJS_Runtime;

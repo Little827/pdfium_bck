@@ -11,7 +11,11 @@
 
 #include "core/fxcrt/fx_string.h"
 #include "core/fxcrt/unowned_ptr_exclusion.h"
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunsafe-buffer-usage"
 #include "v8/include/v8-forward.h"
+#pragma clang diagnostic pop
 
 namespace pdfium {
 namespace fxjse {

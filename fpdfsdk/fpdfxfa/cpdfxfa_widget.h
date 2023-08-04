@@ -9,8 +9,12 @@
 
 #include "core/fxcrt/fx_coordinates.h"
 #include "fpdfsdk/cpdfsdk_annot.h"
-#include "v8/include/cppgc/persistent.h"
 #include "xfa/fxfa/cxfa_ffwidget.h"
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunsafe-buffer-usage"
+#include "v8/include/cppgc/persistent.h"
+#pragma clang diagnostic pop
 
 class CPDFSDK_PageView;
 class CXFA_FFDocView;

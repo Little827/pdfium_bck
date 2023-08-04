@@ -19,14 +19,18 @@
 #include "fxjs/gc/heap.h"
 #include "third_party/abseil-cpp/absl/types/optional.h"
 #include "third_party/base/containers/span.h"
-#include "v8/include/cppgc/garbage-collected.h"
-#include "v8/include/cppgc/member.h"
-#include "v8/include/cppgc/persistent.h"
-#include "v8/include/cppgc/visitor.h"
 #include "xfa/fxfa/fxfa.h"
 #include "xfa/fxfa/fxfa_basic.h"
 #include "xfa/fxfa/parser/cxfa_localemgr.h"
 #include "xfa/fxfa/parser/cxfa_nodeowner.h"
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunsafe-buffer-usage"
+#include "v8/include/cppgc/garbage-collected.h"
+#include "v8/include/cppgc/member.h"
+#include "v8/include/cppgc/persistent.h"
+#include "v8/include/cppgc/visitor.h"
+#pragma clang diagnostic pop
 
 class CFXJSE_Engine;
 class CJS_Runtime;

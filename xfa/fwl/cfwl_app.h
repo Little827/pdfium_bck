@@ -9,10 +9,14 @@
 
 #include "core/fxcrt/cfx_timer.h"
 #include "fxjs/gc/heap.h"
+#include "xfa/fwl/cfwl_widgetmgr.h"
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunsafe-buffer-usage"
 #include "v8/include/cppgc/garbage-collected.h"
 #include "v8/include/cppgc/member.h"
 #include "v8/include/cppgc/visitor.h"
-#include "xfa/fwl/cfwl_widgetmgr.h"
+#pragma clang diagnostic pop
 
 class CFWL_NoteDriver;
 class IFWL_ThemeProvider;

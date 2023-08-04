@@ -7,7 +7,10 @@
 
 #include <memory>
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunsafe-buffer-usage"
 #include "v8/include/cppgc/allocation.h"
+#pragma clang diagnostic pop
 
 namespace cppgc {
 class Heap;
