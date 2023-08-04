@@ -17,6 +17,9 @@
 #include "third_party/base/check.h"
 #include "third_party/base/compiler_specific.h"
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunsafe-buffer-usage"
+
 namespace pdfium {
 
 constexpr size_t dynamic_extent = static_cast<size_t>(-1);
@@ -394,5 +397,7 @@ constexpr span<T> make_span(const Container& container) {
 }
 
 }  // namespace pdfium
+
+#pragma clang diagnostic pop
 
 #endif  // THIRD_PARTY_BASE_CONTAINERS_SPAN_H_

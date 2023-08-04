@@ -25,6 +25,9 @@
 #include "third_party/base/containers/span.h"
 #include "third_party/base/numerics/safe_math.h"
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunsafe-buffer-usage"
+
 template class fxcrt::StringDataTemplate<char>;
 template class fxcrt::StringViewTemplate<char>;
 template class fxcrt::StringPoolTemplate<ByteString>;
@@ -814,3 +817,5 @@ uint32_t FX_HashCode_GetLoweredAsIfW(ByteStringView str) {
     dwHashCode = 1313 * dwHashCode + FXSYS_towlower(c);
   return dwHashCode;
 }
+
+#pragma clang diagnostic pop
