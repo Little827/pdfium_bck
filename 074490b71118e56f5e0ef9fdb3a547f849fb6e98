@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41a80edd_d1f4c949",
+        "filename": "core/fxcrt/fx_coordinates.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-08-04T15:47:14Z",
+      "side": 0,
+      "message": "NOTE: looks like this is no longer required for copy-ctors that used to be flagged as lacking explicit.  Probably can cleanup a few places in the PDFium source tree.",
+      "range": {
+        "startLine": 316,
+        "startChar": 0,
+        "endLine": 316,
+        "endChar": 37
+      },
+      "revId": "074490b71118e56f5e0ef9fdb3a547f849fb6e98",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
