@@ -13,6 +13,7 @@
 #include "core/fxcrt/fx_extension.h"
 #include "core/fxcrt/fx_safe_types.h"
 #include "core/fxcrt/fx_string.h"
+#include "third_party/base/check_op.h"
 
 FX_Number::FX_Number()
     : m_bIsInteger(true), m_bIsSigned(false), m_UnsignedValue(0) {}
@@ -88,7 +89,15 @@ FX_Number::FX_Number(ByteStringView strc)
 }
 
 int32_t FX_Number::GetSigned() const {
-  return m_bIsInteger ? m_SignedValue : static_cast<int32_t>(m_FloatValue);
+  if (m_bIsInteger) {
+    return m_SignedValue;
+  }
+
+  CHECK_LT(static_cast<int64_t>(m_FloatValue),
+           std::numeric_limits<int32_t>::max());
+  CHECK_GT(static_cast<int64_t>(m_FloatValue),
+           std::numeric_limits<int32_t>::min());
+  return static_cast<int32_t>(m_FloatValue);
 }
 
 float FX_Number::GetFloat() const {
