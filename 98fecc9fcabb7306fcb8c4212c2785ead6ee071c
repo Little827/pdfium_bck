@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c779264_1fe9fe8b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7634
+      },
+      "writtenOn": "2023-08-04T14:41:41Z",
+      "side": 1,
+      "message": "no permission to test with dry run",
+      "revId": "98fecc9fcabb7306fcb8c4212c2785ead6ee071c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
