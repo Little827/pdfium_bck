@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe8a2a0f_3a970d83",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-08-04T22:03:03Z",
+      "side": 1,
+      "message": "Is there a bug we can link to here? Or is this just something you happened to notice?",
+      "revId": "f4ec4e4384ce41ac39d0434cf94e993b41d27fc9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c03d9a40_2a64d9a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-08-04T22:03:03Z",
+      "side": 1,
+      "message": "Thanks immensely for the contribution. I\u0027ve got a quick implementation technique to suggest, and extra thanks for the test.",
+      "revId": "f4ec4e4384ce41ac39d0434cf94e993b41d27fc9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae3203ff_d2421194",
+        "filename": "core/fxcrt/fx_number.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-08-04T22:03:03Z",
+      "side": 1,
+      "message": "We can do this more simply through a set of very clever templates that exist in chromium/pdfium. So we can include above\n\n#include \"third_party/base/numerics/safe_conversions.h\"\n\ninstead of check_op.h, remove the checks, and write\n\n`return pdfium::base::checked_cast\u003cint32_t\u003e(m_FloatValue);`",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 46
+      },
+      "revId": "f4ec4e4384ce41ac39d0434cf94e993b41d27fc9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
