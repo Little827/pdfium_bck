@@ -16,6 +16,24 @@
       "message": "Make these constexpr as well?",
       "revId": "6ae79dcc5ab4fb47129f0421e7c8c1edc1e3a605",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "537a98c4_a41ddfa8",
+        "filename": "core/fxcrt/fx_coordinates.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-08-04T19:12:01Z",
+      "side": 1,
+      "message": "Doesn\u0027t seem very useful to make at compile time a constexpr Point from another Point instead of just using the original one, and avoid duplicating the bytes in the binary. So this would catch that. Is there another use case?",
+      "parentUuid": "6d265510_2691ebeb",
+      "revId": "6ae79dcc5ab4fb47129f0421e7c8c1edc1e3a605",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
