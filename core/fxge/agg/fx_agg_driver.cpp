@@ -28,20 +28,21 @@
 #include "third_party/base/containers/span.h"
 #include "third_party/base/notreached.h"
 
-// Ignore fallthrough warnings in agg23 headers.
+// Ignore fallthrough warnings in agg24 headers.
 #if defined(__clang__)
 #pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wglobal-constructors"
 #pragma GCC diagnostic ignored "-Wimplicit-fallthrough"
 #endif
-#include "third_party/agg23/agg_clip_liang_barsky.h"
-#include "third_party/agg23/agg_conv_dash.h"
-#include "third_party/agg23/agg_conv_stroke.h"
-#include "third_party/agg23/agg_curves.h"
-#include "third_party/agg23/agg_path_storage.h"
-#include "third_party/agg23/agg_pixfmt_gray.h"
-#include "third_party/agg23/agg_rasterizer_scanline_aa.h"
-#include "third_party/agg23/agg_renderer_scanline.h"
-#include "third_party/agg23/agg_scanline_u.h"
+#include "third_party/agg24/agg_clip_liang_barsky.h"
+#include "third_party/agg24/agg_conv_dash.h"
+#include "third_party/agg24/agg_conv_stroke.h"
+#include "third_party/agg24/agg_curves.h"
+#include "third_party/agg24/agg_path_storage.h"
+#include "third_party/agg24/agg_pixfmt_gray.h"
+#include "third_party/agg24/agg_rasterizer_scanline_aa.h"
+#include "third_party/agg24/agg_renderer_scanline.h"
+#include "third_party/agg24/agg_scanline_u.h"
 #if defined(__clang__)
 #pragma GCC diagnostic pop
 #endif
@@ -239,7 +240,46 @@ void RgbByteOrderTransferBitmap(const RetainPtr<CFX_DIBitmap>& pBitmap,
   }
 }
 
-void RasterizeStroke(agg::rasterizer_scanline_aa* rasterizer,
+template <class VertexSource>
+void AddPathTransformed(agg::rasterizer_scanline_aa<>* rasterizer,
+                        VertexSource& vs,
+                        const CFX_Matrix* pMatrix) {
+  constexpr unsigned kDefaultPathId = 0;
+
+  unsigned cmd;
+  vs.rewind(kDefaultPathId);
+  if (rasterizer->outline().sorted()) {
+    rasterizer->reset();
+  }
+
+  double x = 0;
+  double y = 0;
+  while (!agg::is_stop(cmd = vs.vertex(&x, &y))) {
+    if (pMatrix) {
+      CFX_PointF ret = pMatrix->Transform(CFX_PointF(x, y));
+      x = ret.x;
+      y = ret.y;
+    }
+    rasterizer->add_vertex(x, y, cmd);
+  }
+}
+
+void AddCurvePath(agg::path_storage& path_storage, agg::curve4& curve) {
+  constexpr unsigned kDefaultPathId = 0;
+
+  double x;
+  double y;
+  unsigned cmd;
+  curve.rewind(kDefaultPathId);
+  while (!agg::is_stop(cmd = curve.vertex(&x, &y))) {
+    if (agg::is_move_to(cmd) && path_storage.vertices().total_vertices()) {
+      cmd = agg::path_cmd_line_to;
+    }
+    path_storage.vertices().add_vertex(x, y, cmd);
+  }
+}
+
+void RasterizeStroke(agg::rasterizer_scanline_aa<>* rasterizer,
                      agg::path_storage* path_data,
                      const CFX_Matrix* pObject2Device,
                      const CFX_GraphStateData* pGraphState,
@@ -296,7 +336,7 @@ void RasterizeStroke(agg::rasterizer_scanline_aa* rasterizer,
     stroke.line_cap(cap);
     stroke.miter_limit(pGraphState->m_MiterLimit);
     stroke.width(width);
-    rasterizer->add_path_transformed(stroke, pObject2Device);
+    AddPathTransformed(rasterizer, stroke, pObject2Device);
     return;
   }
   agg::conv_stroke<agg::path_storage> stroke(*path_data);
@@ -304,7 +344,7 @@ void RasterizeStroke(agg::rasterizer_scanline_aa* rasterizer,
   stroke.line_cap(cap);
   stroke.miter_limit(pGraphState->m_MiterLimit);
   stroke.width(width);
-  rasterizer->add_path_transformed(stroke, pObject2Device);
+  AddPathTransformed(rasterizer, stroke, pObject2Device);
 }
 
 agg::filling_rule_e GetAlternateOrWindingFillType(
@@ -335,7 +375,7 @@ class CFX_Renderer {
                bool bRgbByteOrder);
 
   // Needed for agg caller
-  void prepare(unsigned) {}
+  void prepare() {}
 
   template <class Scanline>
   void render(const Scanline& sl);
@@ -886,7 +926,7 @@ class RendererScanLineAaOffset {
       : m_ren(&ren), m_left(left), m_top(top) {}
   void color(const color_type& c) { m_color = c; }
   const color_type& color() const { return m_color; }
-  void prepare(unsigned) {}
+  void prepare() {}
   template <class Scanline>
   void render(const Scanline& sl) {
     int y = sl.y();
@@ -952,7 +992,7 @@ agg::path_storage BuildAggPath(const CFX_Path& path,
         agg::curve4 curve(pos0.x, pos0.y, pos.x, pos.y, pos2.x, pos2.y, pos3.x,
                           pos3.y);
         i += 2;
-        agg_path.add_path(curve);
+        AddCurvePath(agg_path, curve);
       }
     }
     if (points[i].m_CloseFigure)
@@ -1053,9 +1093,10 @@ void CFX_AggDeviceDriver::RestoreState(bool bKeepSaved) {
   }
 }
 
-void CFX_AggDeviceDriver::SetClipMask(agg::rasterizer_scanline_aa& rasterizer) {
-  FX_RECT path_rect(rasterizer.min_x(), rasterizer.min_y(),
-                    rasterizer.max_x() + 1, rasterizer.max_y() + 1);
+void CFX_AggDeviceDriver::SetClipMask(
+    agg::rasterizer_scanline_aa<>* rasterizer) {
+  FX_RECT path_rect(rasterizer->min_x(), rasterizer->min_y(),
+                    rasterizer->max_x() + 1, rasterizer->max_y() + 1);
   path_rect.Intersect(m_pClipRgn->GetBox());
   auto pThisLayer = pdfium::MakeRetain<CFX_DIBitmap>();
   pThisLayer->Create(path_rect.Width(), path_rect.Height(),
@@ -1069,8 +1110,8 @@ void CFX_AggDeviceDriver::SetClipMask(agg::rasterizer_scanline_aa& rasterizer) {
       base_buf, path_rect.left, path_rect.top);
   final_render.color(agg::gray8(255));
   agg::scanline_u8 scanline;
-  agg::render_scanlines(rasterizer, scanline, final_render,
-                        m_FillOptions.aliased_path);
+  agg::render_scanlines_with_smoothing(*rasterizer, scanline, final_render,
+                                       !m_FillOptions.aliased_path);
   m_pClipRgn->IntersectMaskF(path_rect.left, path_rect.top,
                              std::move(pThisLayer));
 }
@@ -1104,7 +1145,7 @@ bool CFX_AggDeviceDriver::SetClip_PathFill(
                       static_cast<float>(GetDeviceCaps(FXDC_PIXEL_HEIGHT)));
   rasterizer.add_path(path_data);
   rasterizer.filling_rule(GetAlternateOrWindingFillType(fill_options));
-  SetClipMask(rasterizer);
+  SetClipMask(&rasterizer);
   return true;
 }
 
@@ -1124,7 +1165,7 @@ bool CFX_AggDeviceDriver::SetClip_PathStroke(
   RasterizeStroke(&rasterizer, &path_data, pObject2Device, pGraphState, 1.0f,
                   false);
   rasterizer.filling_rule(agg::fill_non_zero);
-  SetClipMask(rasterizer);
+  SetClipMask(&rasterizer);
   return true;
 }
 
@@ -1141,7 +1182,7 @@ bool CFX_AggDeviceDriver::MultiplyAlpha(const RetainPtr<CFX_DIBBase>& mask) {
 }
 
 void CFX_AggDeviceDriver::RenderRasterizer(
-    agg::rasterizer_scanline_aa& rasterizer,
+    agg::rasterizer_scanline_aa<>* rasterizer,
     uint32_t color,
     bool bFullCover,
     bool bGroupKnockout) {
@@ -1149,8 +1190,8 @@ void CFX_AggDeviceDriver::RenderRasterizer(
   CFX_Renderer render(m_pBitmap, pt, m_pClipRgn.get(), color, bFullCover,
                       m_bRgbByteOrder);
   agg::scanline_u8 scanline;
-  agg::render_scanlines(rasterizer, scanline, render,
-                        m_FillOptions.aliased_path);
+  agg::render_scanlines_with_smoothing(*rasterizer, scanline, render,
+                                       !m_FillOptions.aliased_path);
 }
 
 bool CFX_AggDeviceDriver::DrawPath(const CFX_Path& path,
@@ -1176,7 +1217,7 @@ bool CFX_AggDeviceDriver::DrawPath(const CFX_Path& path,
                         static_cast<float>(GetDeviceCaps(FXDC_PIXEL_HEIGHT)));
     rasterizer.add_path(path_data);
     rasterizer.filling_rule(GetAlternateOrWindingFillType(fill_options));
-    RenderRasterizer(rasterizer, fill_color, fill_options.full_cover,
+    RenderRasterizer(&rasterizer, fill_color, fill_options.full_cover,
                      /*bGroupKnockout=*/false);
   }
   int stroke_alpha = FXARGB_A(stroke_color);
@@ -1191,7 +1232,7 @@ bool CFX_AggDeviceDriver::DrawPath(const CFX_Path& path,
                         static_cast<float>(GetDeviceCaps(FXDC_PIXEL_HEIGHT)));
     RasterizeStroke(&rasterizer, &path_data, nullptr, pGraphState, 1,
                     fill_options.stroke_text_mode);
-    RenderRasterizer(rasterizer, stroke_color, fill_options.full_cover,
+    RenderRasterizer(&rasterizer, stroke_color, fill_options.full_cover,
                      m_bGroupKnockout);
     return true;
   }
@@ -1214,7 +1255,7 @@ bool CFX_AggDeviceDriver::DrawPath(const CFX_Path& path,
                       static_cast<float>(GetDeviceCaps(FXDC_PIXEL_HEIGHT)));
   RasterizeStroke(&rasterizer, &path_data, &matrix2, pGraphState, matrix1.a,
                   fill_options.stroke_text_mode);
-  RenderRasterizer(rasterizer, stroke_color, fill_options.full_cover,
+  RenderRasterizer(&rasterizer, stroke_color, fill_options.full_cover,
                    m_bGroupKnockout);
   return true;
 }

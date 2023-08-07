@@ -1,0 +1,707 @@
+diff --git a/third_party/agg24/agg_array.h b/third_party/agg24/agg_array.h
+index b48010b06..94f06cceb 100644
+--- a/third_party/agg24/agg_array.h
++++ b/third_party/agg24/agg_array.h
+@@ -19,6 +19,8 @@
+ #include <cstring>
+ #include "agg_basics.h"
+ 
++namespace pdfium
++{
+ namespace agg
+ {
+ 
+@@ -1115,5 +1117,6 @@ namespace agg
+     //-------------------------------------------------------unsigned_greater
+     inline bool unsigned_greater(unsigned a, unsigned b) { return a > b; }
+ }
++}  // namespace pdfium
+ 
+ #endif
+diff --git a/third_party/agg24/agg_basics.h b/third_party/agg24/agg_basics.h
+index 62364d12d..d939bc876 100644
+--- a/third_party/agg24/agg_basics.h
++++ b/third_party/agg24/agg_basics.h
+@@ -23,6 +23,8 @@
+ #ifdef AGG_CUSTOM_ALLOCATOR
+ #include "agg_allocator.h"
+ #else
++namespace pdfium
++{
+ namespace agg
+ {
+     // The policy of all AGG containers and memory allocation strategy 
+@@ -53,6 +55,7 @@ namespace agg
+         static void deallocate(T* ptr) { delete ptr;   }
+     };
+ }
++}  // namespace pdfium
+ #endif
+ 
+ 
+@@ -113,6 +116,8 @@ namespace agg
+ #define AGG_INLINE inline
+ #endif
+ 
++namespace pdfium
++{
+ namespace agg
+ {
+     //-------------------------------------------------------------------------
+@@ -568,6 +573,7 @@ namespace agg
+ 	return std::fabs(v1 - v2) < epsilon;
+     }
+ }
++}  // namespace pdfium
+ 
+ 
+ #endif
+diff --git a/third_party/agg24/agg_bezier_arc.h b/third_party/agg24/agg_bezier_arc.h
+index cfd9308ea..b06af03c2 100644
+--- a/third_party/agg24/agg_bezier_arc.h
++++ b/third_party/agg24/agg_bezier_arc.h
+@@ -23,6 +23,8 @@
+ 
+ #include "agg_conv_transform.h"
+ 
++namespace pdfium
++{
+ namespace agg
+ {
+ 
+@@ -154,6 +156,7 @@ namespace agg
+ 
+ 
+ }
++}  // namespace pdfium
+ 
+ 
+ #endif
+diff --git a/third_party/agg24/agg_clip_liang_barsky.h b/third_party/agg24/agg_clip_liang_barsky.h
+index 4b5fedbab..1dd6eebba 100644
+--- a/third_party/agg24/agg_clip_liang_barsky.h
++++ b/third_party/agg24/agg_clip_liang_barsky.h
+@@ -21,6 +21,8 @@
+ 
+ #include "agg_basics.h"
+ 
++namespace pdfium
++{
+ namespace agg
+ {
+ 
+@@ -328,6 +330,7 @@ namespace agg
+ 
+ 
+ }
++}  // namespace pdfium
+ 
+ 
+ #endif
+diff --git a/third_party/agg24/agg_color_gray.h b/third_party/agg24/agg_color_gray.h
+index f66588c11..57bae28e9 100644
+--- a/third_party/agg24/agg_color_gray.h
++++ b/third_party/agg24/agg_color_gray.h
+@@ -31,6 +31,8 @@
+ #include "agg_basics.h"
+ #include "agg_color_rgba.h"
+ 
++namespace pdfium
++{
+ namespace agg
+ {
+ 
+@@ -1040,6 +1042,7 @@ namespace agg
+         static self_type no_color() { return self_type(0,0); }
+     };
+ }
++}  // namespace pdfium
+ 
+ 
+ 
+diff --git a/third_party/agg24/agg_color_rgba.h b/third_party/agg24/agg_color_rgba.h
+index 0f5ab8a2d..b5d84d703 100644
+--- a/third_party/agg24/agg_color_rgba.h
++++ b/third_party/agg24/agg_color_rgba.h
+@@ -28,6 +28,8 @@
+ #include "agg_basics.h"
+ #include "agg_gamma_lut.h"
+ 
++namespace pdfium
++{
+ namespace agg
+ {
+     // Supported component orders for RGB and RGBA pixel formats
+@@ -1347,6 +1349,7 @@ namespace agg
+         }
+     };
+ }
++}  // namespace pdfium
+ 
+ 
+ 
+diff --git a/third_party/agg24/agg_conv_adaptor_vcgen.h b/third_party/agg24/agg_conv_adaptor_vcgen.h
+index a79f2208c..da7980757 100644
+--- a/third_party/agg24/agg_conv_adaptor_vcgen.h
++++ b/third_party/agg24/agg_conv_adaptor_vcgen.h
+@@ -18,6 +18,8 @@
+ 
+ #include "agg_basics.h"
+ 
++namespace pdfium
++{
+ namespace agg
+ {
+     //------------------------------------------------------------null_markers
+@@ -153,5 +155,6 @@ namespace agg
+     }
+ 
+ }
++}  // namespace pdfium
+ 
+ #endif
+diff --git a/third_party/agg24/agg_conv_dash.h b/third_party/agg24/agg_conv_dash.h
+index 23c13ad0a..2afe8d741 100644
+--- a/third_party/agg24/agg_conv_dash.h
++++ b/third_party/agg24/agg_conv_dash.h
+@@ -23,6 +23,8 @@
+ #include "agg_vcgen_dash.h"
+ #include "agg_conv_adaptor_vcgen.h"
+ 
++namespace pdfium
++{
+ namespace agg
+ {
+ 
+@@ -64,5 +66,6 @@ namespace agg
+ 
+ 
+ }
++}  // namespace pdfium
+ 
+ #endif
+diff --git a/third_party/agg24/agg_conv_stroke.h b/third_party/agg24/agg_conv_stroke.h
+index e19a6b61f..8fcf38706 100644
+--- a/third_party/agg24/agg_conv_stroke.h
++++ b/third_party/agg24/agg_conv_stroke.h
+@@ -23,6 +23,8 @@
+ #include "agg_vcgen_stroke.h"
+ #include "agg_conv_adaptor_vcgen.h"
+ 
++namespace pdfium
++{
+ namespace agg
+ {
+ 
+@@ -69,5 +71,6 @@ namespace agg
+     };
+ 
+ }
++}  // namespace pdfium
+ 
+ #endif
+diff --git a/third_party/agg24/agg_conv_transform.h b/third_party/agg24/agg_conv_transform.h
+index 0c88a245b..31144e37e 100644
+--- a/third_party/agg24/agg_conv_transform.h
++++ b/third_party/agg24/agg_conv_transform.h
+@@ -22,6 +22,8 @@
+ #include "agg_basics.h"
+ #include "agg_trans_affine.h"
+ 
++namespace pdfium
++{
+ namespace agg
+ {
+ 
+@@ -64,5 +66,6 @@ namespace agg
+ 
+ 
+ }
++}  // namespace pdfium
+ 
+ #endif
+diff --git a/third_party/agg24/agg_curves.cpp b/third_party/agg24/agg_curves.cpp
+index a08fcb90f..3acf1a56f 100644
+--- a/third_party/agg24/agg_curves.cpp
++++ b/third_party/agg24/agg_curves.cpp
+@@ -17,6 +17,8 @@
+ #include "agg_curves.h"
+ #include "agg_math.h"
+ 
++namespace pdfium
++{
+ namespace agg
+ {
+ 
+@@ -610,4 +612,5 @@ namespace agg
+     }
+ 
+ }
++}  // namespace pdfium
+ 
+diff --git a/third_party/agg24/agg_curves.h b/third_party/agg24/agg_curves.h
+index 63a481333..ee69b2962 100644
+--- a/third_party/agg24/agg_curves.h
++++ b/third_party/agg24/agg_curves.h
+@@ -19,6 +19,8 @@
+ 
+ #include "agg_array.h"
+ 
++namespace pdfium
++{
+ namespace agg
+ {
+ 
+@@ -691,5 +693,6 @@ namespace agg
+ 
+ 
+ }
++}  // namespace pdfium
+ 
+ #endif
+diff --git a/third_party/agg24/agg_gamma_functions.h b/third_party/agg24/agg_gamma_functions.h
+index a29081de5..82fb4ca3e 100644
+--- a/third_party/agg24/agg_gamma_functions.h
++++ b/third_party/agg24/agg_gamma_functions.h
+@@ -18,6 +18,8 @@
+ 
+ #include "agg_basics.h"
+ 
++namespace pdfium
++{
+ namespace agg
+ {
+     //===============================================================gamma_none
+@@ -124,6 +126,7 @@ namespace agg
+         return (x <= 0.0031308) ? (x * 12.92) : (1.055 * pow(x, 1 / 2.4) - 0.055);
+     }
+ }
++}  // namespace pdfium
+ 
+ #endif
+ 
+diff --git a/third_party/agg24/agg_gamma_lut.h b/third_party/agg24/agg_gamma_lut.h
+index 52e6140f6..d2cb7a48f 100644
+--- a/third_party/agg24/agg_gamma_lut.h
++++ b/third_party/agg24/agg_gamma_lut.h
+@@ -20,6 +20,8 @@
+ #include "agg_basics.h"
+ #include "agg_gamma_functions.h"
+ 
++namespace pdfium
++{
+ namespace agg
+ {
+     template<class LoResT=int8u, 
+@@ -303,5 +305,6 @@ namespace agg
+         }
+     };
+ }
++}  // namespace pdfium
+ 
+ #endif
+diff --git a/third_party/agg24/agg_math.h b/third_party/agg24/agg_math.h
+index b3051bc44..237b2ab68 100644
+--- a/third_party/agg24/agg_math.h
++++ b/third_party/agg24/agg_math.h
+@@ -22,6 +22,8 @@
+ #include <cmath>
+ #include "agg_basics.h"
+ 
++namespace pdfium
++{
+ namespace agg
+ {
+ 
+@@ -432,6 +434,7 @@ namespace agg
+     }
+ 
+ }
++}  // namespace pdfium
+ 
+ 
+ #endif
+diff --git a/third_party/agg24/agg_math_stroke.h b/third_party/agg24/agg_math_stroke.h
+index b13971135..01184e31c 100644
+--- a/third_party/agg24/agg_math_stroke.h
++++ b/third_party/agg24/agg_math_stroke.h
+@@ -23,6 +23,8 @@
+ #include "agg_math.h"
+ #include "agg_vertex_sequence.h"
+ 
++namespace pdfium
++{
+ namespace agg
+ {
+     //-------------------------------------------------------------line_cap_e
+@@ -520,5 +522,6 @@ namespace agg
+ 
+ 
+ }
++}  // namespace pdfium
+ 
+ #endif
+diff --git a/third_party/agg24/agg_path_storage.h b/third_party/agg24/agg_path_storage.h
+index 3a62f7115..49703e8e9 100644
+--- a/third_party/agg24/agg_path_storage.h
++++ b/third_party/agg24/agg_path_storage.h
+@@ -21,6 +21,8 @@
+ #include "agg_array.h"
+ #include "agg_bezier_arc.h"
+ 
++namespace pdfium
++{
+ namespace agg
+ {
+ 
+@@ -1564,6 +1566,7 @@ namespace agg
+     //typedef path_base<vertex_stl_storage<pod_bvector<vertex_d> > > path_storage;
+ 
+ }
++}  // namespace pdfium
+ 
+ 
+ 
+diff --git a/third_party/agg24/agg_pixfmt_base.h b/third_party/agg24/agg_pixfmt_base.h
+index 57ae19cfe..8ebc3d565 100644
+--- a/third_party/agg24/agg_pixfmt_base.h
++++ b/third_party/agg24/agg_pixfmt_base.h
+@@ -20,6 +20,8 @@
+ #include "agg_color_gray.h"
+ #include "agg_color_rgba.h"
+ 
++namespace pdfium
++{
+ namespace agg
+ {
+     struct pixfmt_gray_tag
+@@ -93,5 +95,6 @@ namespace agg
+         }
+     };
+ }
++}  // namespace pdfium
+ 
+ #endif
+diff --git a/third_party/agg24/agg_pixfmt_gray.h b/third_party/agg24/agg_pixfmt_gray.h
+index 3f990878d..441a1eb52 100644
+--- a/third_party/agg24/agg_pixfmt_gray.h
++++ b/third_party/agg24/agg_pixfmt_gray.h
+@@ -28,6 +28,8 @@
+ #include "agg_pixfmt_base.h"
+ #include "agg_rendering_buffer.h"
+ 
++namespace pdfium
++{
+ namespace agg
+ {
+  
+@@ -733,6 +735,7 @@ namespace agg
+     typedef pixfmt_alpha_blend_gray<blender_gray16_pre, rendering_buffer> pixfmt_gray16_pre;
+     typedef pixfmt_alpha_blend_gray<blender_gray32_pre, rendering_buffer> pixfmt_gray32_pre;
+ }
++}  // namespace pdfium
+ 
+ #endif
+ 
+diff --git a/third_party/agg24/agg_rasterizer_cells_aa.h b/third_party/agg24/agg_rasterizer_cells_aa.h
+index 4dd905f63..4f8d60239 100644
+--- a/third_party/agg24/agg_rasterizer_cells_aa.h
++++ b/third_party/agg24/agg_rasterizer_cells_aa.h
+@@ -36,6 +36,8 @@
+ #include "agg_array.h"
+ 
+ 
++namespace pdfium
++{
+ namespace agg
+ {
+ 
+@@ -738,5 +740,6 @@ namespace agg
+ 
+ 
+ }
++}  // namespace pdfium
+ 
+ #endif
+diff --git a/third_party/agg24/agg_rasterizer_scanline_aa.h b/third_party/agg24/agg_rasterizer_scanline_aa.h
+index 228065338..163acdf1f 100644
+--- a/third_party/agg24/agg_rasterizer_scanline_aa.h
++++ b/third_party/agg24/agg_rasterizer_scanline_aa.h
+@@ -36,6 +36,8 @@
+ 
+ #include "third_party/base/numerics/checked_math.h"
+ 
++namespace pdfium
++{
+ namespace agg
+ {
+     //==================================================rasterizer_scanline_aa
+@@ -511,6 +513,7 @@ namespace agg
+ 
+ 
+ }
++}  // namespace pdfium
+ 
+ 
+ 
+diff --git a/third_party/agg24/agg_rasterizer_scanline_aa_nogamma.h b/third_party/agg24/agg_rasterizer_scanline_aa_nogamma.h
+index ece8fdc95..bca2edc23 100644
+--- a/third_party/agg24/agg_rasterizer_scanline_aa_nogamma.h
++++ b/third_party/agg24/agg_rasterizer_scanline_aa_nogamma.h
+@@ -34,6 +34,8 @@
+ #include "agg_rasterizer_sl_clip.h"
+ 
+ 
++namespace pdfium
++{
+ namespace agg
+ {
+ 
+@@ -476,6 +478,7 @@ namespace agg
+ 
+ 
+ }
++}  // namespace pdfium
+ 
+ 
+ 
+diff --git a/third_party/agg24/agg_rasterizer_sl_clip.h b/third_party/agg24/agg_rasterizer_sl_clip.h
+index 3a7f3a103..ab85fc4d5 100644
+--- a/third_party/agg24/agg_rasterizer_sl_clip.h
++++ b/third_party/agg24/agg_rasterizer_sl_clip.h
+@@ -17,6 +17,8 @@
+ 
+ #include "agg_clip_liang_barsky.h"
+ 
++namespace pdfium
++{
+ namespace agg
+ {
+     //--------------------------------------------------------poly_max_coord_e
+@@ -347,5 +349,6 @@ namespace agg
+ 
+ 
+ }
++}  // namespace pdfium
+ 
+ #endif
+diff --git a/third_party/agg24/agg_renderer_base.h b/third_party/agg24/agg_renderer_base.h
+index 527c62f78..f6befcdfc 100644
+--- a/third_party/agg24/agg_renderer_base.h
++++ b/third_party/agg24/agg_renderer_base.h
+@@ -23,6 +23,8 @@
+ #include "agg_basics.h"
+ #include "agg_rendering_buffer.h"
+ 
++namespace pdfium
++{
+ namespace agg
+ {
+ 
+@@ -727,5 +729,6 @@ namespace agg
+ 
+ 
+ }
++}  // namespace pdfium
+ 
+ #endif
+diff --git a/third_party/agg24/agg_renderer_scanline.h b/third_party/agg24/agg_renderer_scanline.h
+index c698f7b36..77d9ace0a 100644
+--- a/third_party/agg24/agg_renderer_scanline.h
++++ b/third_party/agg24/agg_renderer_scanline.h
+@@ -22,6 +22,8 @@
+ #include "agg_basics.h"
+ #include "agg_renderer_base.h"
+ 
++namespace pdfium
++{
+ namespace agg
+ {
+ 
+@@ -869,5 +871,6 @@ namespace agg
+ 
+ 
+ }
++}  // namespace pdfium
+ 
+ #endif
+diff --git a/third_party/agg24/agg_rendering_buffer.h b/third_party/agg24/agg_rendering_buffer.h
+index 175bcd89c..636e51467 100644
+--- a/third_party/agg24/agg_rendering_buffer.h
++++ b/third_party/agg24/agg_rendering_buffer.h
+@@ -23,6 +23,8 @@
+ #include <cstring>
+ #include "agg_array.h"
+ 
++namespace pdfium
++{
+ namespace agg
+ {
+ 
+@@ -296,6 +298,7 @@ namespace agg
+ #endif
+ 
+ }
++}  // namespace pdfium
+ 
+ 
+ #endif
+diff --git a/third_party/agg24/agg_scanline_u.h b/third_party/agg24/agg_scanline_u.h
+index 0ca9c6884..29320c24e 100644
+--- a/third_party/agg24/agg_scanline_u.h
++++ b/third_party/agg24/agg_scanline_u.h
+@@ -27,6 +27,8 @@
+ #include <cstring>
+ #include "agg_array.h"
+ 
++namespace pdfium
++{
+ namespace agg
+ {
+     //=============================================================scanline_u8
+@@ -495,6 +497,7 @@ namespace agg
+ 
+ 
+ }
++}  // namespace pdfium
+ 
+ #endif
+ 
+diff --git a/third_party/agg24/agg_shorten_path.h b/third_party/agg24/agg_shorten_path.h
+index dd9929ff9..492e1a7fb 100644
+--- a/third_party/agg24/agg_shorten_path.h
++++ b/third_party/agg24/agg_shorten_path.h
+@@ -19,6 +19,8 @@
+ #include "agg_basics.h"
+ #include "agg_vertex_sequence.h"
+ 
++namespace pdfium
++{
+ namespace agg
+ {
+ 
+@@ -62,5 +64,6 @@ namespace agg
+ 
+ 
+ }
++}  // namespace pdfium
+ 
+ #endif
+diff --git a/third_party/agg24/agg_trans_affine.h b/third_party/agg24/agg_trans_affine.h
+index b3cc1b071..e61dbde49 100644
+--- a/third_party/agg24/agg_trans_affine.h
++++ b/third_party/agg24/agg_trans_affine.h
+@@ -22,6 +22,8 @@
+ #include <cmath>
+ #include "agg_basics.h"
+ 
++namespace pdfium
++{
+ namespace agg
+ {
+     const double affine_epsilon = 1e-14; 
+@@ -512,6 +514,7 @@ namespace agg
+     };
+ 
+ }
++}  // namespace pdfium
+ 
+ 
+ #endif
+diff --git a/third_party/agg24/agg_vcgen_dash.cpp b/third_party/agg24/agg_vcgen_dash.cpp
+index 17cba78e3..6be970c60 100644
+--- a/third_party/agg24/agg_vcgen_dash.cpp
++++ b/third_party/agg24/agg_vcgen_dash.cpp
+@@ -21,6 +21,8 @@
+ #include "agg_vcgen_dash.h"
+ #include "agg_shorten_path.h"
+ 
++namespace pdfium
++{
+ namespace agg
+ {
+ 
+@@ -232,4 +234,5 @@ namespace agg
+ 
+ 
+ }
++}  // namespace pdfium
+ 
+diff --git a/third_party/agg24/agg_vcgen_dash.h b/third_party/agg24/agg_vcgen_dash.h
+index c87dce4c8..e180821a6 100644
+--- a/third_party/agg24/agg_vcgen_dash.h
++++ b/third_party/agg24/agg_vcgen_dash.h
+@@ -22,6 +22,8 @@
+ #include "agg_basics.h"
+ #include "agg_vertex_sequence.h"
+ 
++namespace pdfium
++{
+ namespace agg
+ {
+ 
+@@ -89,5 +91,6 @@ namespace agg
+ 
+ 
+ }
++}  // namespace pdfium
+ 
+ #endif
+diff --git a/third_party/agg24/agg_vcgen_stroke.cpp b/third_party/agg24/agg_vcgen_stroke.cpp
+index 046ac8ccb..43cef5f2c 100644
+--- a/third_party/agg24/agg_vcgen_stroke.cpp
++++ b/third_party/agg24/agg_vcgen_stroke.cpp
+@@ -19,6 +19,8 @@
+ #include "agg_vcgen_stroke.h"
+ #include "agg_shorten_path.h"
+ 
++namespace pdfium
++{
+ namespace agg
+ {
+ 
+@@ -210,3 +212,4 @@ namespace agg
+     }
+ 
+ }
++}  // namespace pdfium
+diff --git a/third_party/agg24/agg_vcgen_stroke.h b/third_party/agg24/agg_vcgen_stroke.h
+index 778223fe4..5271fa2a1 100644
+--- a/third_party/agg24/agg_vcgen_stroke.h
++++ b/third_party/agg24/agg_vcgen_stroke.h
+@@ -19,6 +19,8 @@
+ #include "agg_math_stroke.h"
+ 
+ 
++namespace pdfium
++{
+ namespace agg
+ {
+ 
+@@ -98,5 +100,6 @@ namespace agg
+ 
+ 
+ }
++}  // namespace pdfium
+ 
+ #endif
+diff --git a/third_party/agg24/agg_vertex_sequence.h b/third_party/agg24/agg_vertex_sequence.h
+index 2ad0701b3..024e7305a 100644
+--- a/third_party/agg24/agg_vertex_sequence.h
++++ b/third_party/agg24/agg_vertex_sequence.h
+@@ -23,6 +23,8 @@
+ #include "agg_array.h"
+ #include "agg_math.h"
+ 
++namespace pdfium
++{
+ namespace agg
+ {
+ 
+@@ -168,5 +170,6 @@ namespace agg
+ 
+ 
+ }
++}  // namespace pdfium
+ 
+ #endif

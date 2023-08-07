@@ -1,0 +1,68 @@
+diff --git a/third_party/agg24/agg_rasterizer_scanline_aa.h b/third_party/agg24/agg_rasterizer_scanline_aa.h
+index e190fdc1b..228065338 100644
+--- a/third_party/agg24/agg_rasterizer_scanline_aa.h
++++ b/third_party/agg24/agg_rasterizer_scanline_aa.h
+@@ -34,6 +34,7 @@
+ #include "agg_rasterizer_scanline_aa_nogamma.h"
+ #include "agg_gamma_functions.h"
+ 
++#include "third_party/base/numerics/checked_math.h"
+ 
+ namespace agg
+ {
+@@ -221,6 +222,11 @@ namespace agg
+                     int x    = cur_cell->x;
+                     int area = cur_cell->area;
+                     unsigned alpha;
++                    bool seen_area_overflow = false;
++                    bool seen_cover_overflow = false;
++                    if(!safe_add(&cover, cur_cell->cover)) {
++                        break;
++                    }
+ 
+                     cover += cur_cell->cover;
+ 
+@@ -229,8 +235,23 @@ namespace agg
+                     {
+                         cur_cell = *++cells;
+                         if(cur_cell->x != x) break;
+-                        area  += cur_cell->area;
+-                        cover += cur_cell->cover;
++                        if(seen_area_overflow) {
++                            continue;
++                        }
++                        if(!safe_add(&area, cur_cell->area)) {
++                            seen_area_overflow = true;
++                            continue;
++                        }
++                        if(!safe_add(&cover, cur_cell->cover)) {
++                            seen_cover_overflow = true;
++                            break;
++                        }
++                    }
++                    if(seen_area_overflow) {
++                        continue;
++                    }
++                    if(seen_cover_overflow) {
++                        break;
+                     }
+ 
+                     if(area)
+@@ -273,6 +294,17 @@ namespace agg
+         const rasterizer_scanline_aa<Clip>& 
+         operator = (const rasterizer_scanline_aa<Clip>&);
+ 
++        static bool safe_add(int* op1, int op2)
++        {
++                pdfium::base::CheckedNumeric<int> safeOp1 = *op1;
++                safeOp1 += op2;
++                if(!safeOp1.IsValid()) {
++                    return false;
++                }
++                *op1 = safeOp1.ValueOrDie();
++                return true;
++        }
++
+     private:
+         rasterizer_cells_aa<cell_aa> m_outline;
+         clip_type      m_clipper;

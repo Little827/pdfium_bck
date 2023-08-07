@@ -1,0 +1,226 @@
+diff --git a/pdfium.gni b/pdfium.gni
+index ffa740a9c..6692dd77d 100644
+--- a/pdfium.gni
++++ b/pdfium.gni
+@@ -39,7 +39,7 @@ declare_args() {
+   # Build PDFium using C++20 if set to true. Otherwise builds with C++17.
+   # There is no "pdf_use_cxx20_override" variable because this is only used in
+   # standalone PDFium, and not when PDFium is embedded in our projects.
+-  pdf_use_cxx20 = (is_win && is_component_build) || is_fuchsia
++  pdf_use_cxx20 = true
+ 
+   # Build PDFium against PartitionAlloc. When false, PDFium must build without
+   # requiring any PartitionAlloc headers or code to be present. When true,
+diff --git a/third_party/agg24/agg_basics.h b/third_party/agg24/agg_basics.h
+index d939bc876..b8770b5d8 100644
+--- a/third_party/agg24/agg_basics.h
++++ b/third_party/agg24/agg_basics.h
+@@ -452,7 +452,7 @@ namespace agg
+     inline bool is_close(unsigned c)
+     {
+         return (c & ~(path_flags_cw | path_flags_ccw)) ==
+-               (path_cmd_end_poly | path_flags_close); 
++               (unsigned{path_cmd_end_poly} | path_flags_close); 
+     }
+ 
+     //------------------------------------------------------------is_next_poly
+diff --git a/third_party/agg24/agg_color_gray.h b/third_party/agg24/agg_color_gray.h
+index 57bae28e9..4780f24cb 100644
+--- a/third_party/agg24/agg_color_gray.h
++++ b/third_party/agg24/agg_color_gray.h
+@@ -438,7 +438,7 @@ namespace agg
+         static value_type luminance(const rgba& c)
+         {
+             // Calculate grayscale value as per ITU-R BT.709.
+-            return value_type(uround((0.2126 * c.r + 0.7152 * c.g + 0.0722 * c.b) * base_mask));
++            return value_type(uround((0.2126 * c.r + 0.7152 * c.g + 0.0722 * c.b) * unsigned{base_mask}));
+         }
+ 
+         static value_type luminance(const rgba16& c)
+@@ -546,13 +546,13 @@ namespace agg
+         //--------------------------------------------------------------------
+         static AGG_INLINE double to_double(value_type a)
+         {
+-            return double(a) / base_mask;
++            return double(a) / unsigned{base_mask};
+         }
+ 
+         //--------------------------------------------------------------------
+         static AGG_INLINE value_type from_double(double a)
+         {
+-            return value_type(uround(a * base_mask));
++            return value_type(uround(a * unsigned{base_mask}));
+         }
+ 
+         //--------------------------------------------------------------------
+@@ -707,7 +707,7 @@ namespace agg
+         self_type gradient(self_type c, double k) const
+         {
+             self_type ret;
+-            calc_type ik = uround(k * base_scale);
++            calc_type ik = uround(k * unsigned{base_scale});
+             ret.v = lerp(v, c.v, ik);
+             ret.a = lerp(a, c.a, ik);
+             return ret;
+@@ -957,7 +957,7 @@ namespace agg
+         //--------------------------------------------------------------------
+         static AGG_INLINE value_type mult_cover(value_type a, cover_type b) 
+         {
+-            return value_type(a * b / cover_mask);
++            return value_type(a * b / unsigned{cover_mask});
+         }
+ 
+         //--------------------------------------------------------------------
+diff --git a/third_party/agg24/agg_color_rgba.h b/third_party/agg24/agg_color_rgba.h
+index b5d84d703..eb4217501 100644
+--- a/third_party/agg24/agg_color_rgba.h
++++ b/third_party/agg24/agg_color_rgba.h
+@@ -745,13 +745,13 @@ namespace agg
+         //--------------------------------------------------------------------
+         static AGG_INLINE double to_double(value_type a)
+         {
+-            return double(a) / base_mask;
++            return double(a) / unsigned{base_mask};
+         }
+ 
+         //--------------------------------------------------------------------
+         static AGG_INLINE value_type from_double(double a)
+         {
+-            return value_type(uround(a * base_mask));
++            return value_type(uround(a * unsigned{base_mask}));
+         }
+ 
+         //--------------------------------------------------------------------
+@@ -946,7 +946,7 @@ namespace agg
+         AGG_INLINE self_type gradient(const self_type& c, double k) const
+         {
+             self_type ret;
+-            calc_type ik = uround(k * base_mask);
++            calc_type ik = uround(k * unsigned{base_mask});
+             ret.r = lerp(r, c.r, ik);
+             ret.g = lerp(g, c.g, ik);
+             ret.b = lerp(b, c.b, ik);
+@@ -1185,7 +1185,7 @@ namespace agg
+         //--------------------------------------------------------------------
+         static AGG_INLINE value_type mult_cover(value_type a, cover_type b) 
+         {
+-            return value_type(a * b / cover_mask);
++            return value_type(a * b / unsigned{cover_mask});
+         }
+ 
+         //--------------------------------------------------------------------
+diff --git a/third_party/agg24/agg_path_storage.h b/third_party/agg24/agg_path_storage.h
+index 49703e8e9..873c8d1e3 100644
+--- a/third_party/agg24/agg_path_storage.h
++++ b/third_party/agg24/agg_path_storage.h
+@@ -399,7 +399,7 @@ namespace agg
+             if(m_closed && !m_stop)
+             {
+                 m_stop = true;
+-                return path_cmd_end_poly | path_flags_close;
++                return unsigned{path_cmd_end_poly} | path_flags_close;
+             }
+             return path_cmd_stop;
+         }
+@@ -464,7 +464,7 @@ namespace agg
+             if(m_closed && !m_stop)
+             {
+                 m_stop = true;
+-                return path_cmd_end_poly | path_flags_close;
++                return unsigned{path_cmd_end_poly} | path_flags_close;
+             }
+             return path_cmd_stop;
+         }
+@@ -526,7 +526,7 @@ namespace agg
+             if(m_closed && !m_stop)
+             {
+                 m_stop = true;
+-                return path_cmd_end_poly | path_flags_close;
++                return unsigned{path_cmd_end_poly} | path_flags_close;
+             }
+             return path_cmd_stop;
+         }
+diff --git a/third_party/agg24/agg_pixfmt_base.h b/third_party/agg24/agg_pixfmt_base.h
+index 8ebc3d565..463a7050a 100644
+--- a/third_party/agg24/agg_pixfmt_base.h
++++ b/third_party/agg24/agg_pixfmt_base.h
+@@ -56,7 +56,7 @@ namespace agg
+ 
+                 if (cover < cover_full)
+                 {
+-                    double x = double(cover) / cover_full;
++                    double x = double(cover) / double{cover_full};
+                     c.r *= x;
+                     c.g *= x;
+                     c.b *= x;
+diff --git a/third_party/agg24/agg_rasterizer_sl_clip.h b/third_party/agg24/agg_rasterizer_sl_clip.h
+index 38635f496..c0ea9157e 100644
+--- a/third_party/agg24/agg_rasterizer_sl_clip.h
++++ b/third_party/agg24/agg_rasterizer_sl_clip.h
+@@ -37,7 +37,7 @@ namespace agg
+         }
+         static int xi(int v) { return v; }
+         static int yi(int v) { return v; }
+-        static int upscale(double v) { return iround(v * poly_subpixel_scale); }
++        static int upscale(double v) { return iround(v * double{poly_subpixel_scale}); }
+         static int downscale(int v)  { return v; }
+     };
+ 
+@@ -53,7 +53,7 @@ namespace agg
+         static int yi(int v) { return v; }
+         static int upscale(double v) 
+         { 
+-            return saturation<poly_max_coord>::iround(v * poly_subpixel_scale); 
++            return saturation<poly_max_coord>::iround(v * double{poly_subpixel_scale}); 
+         }
+         static int downscale(int v) { return v; }
+     };
+@@ -68,7 +68,7 @@ namespace agg
+         }
+         static int xi(int v) { return v * 3; }
+         static int yi(int v) { return v; }
+-        static int upscale(double v) { return iround(v * poly_subpixel_scale); }
++        static int upscale(double v) { return iround(v * double{poly_subpixel_scale}); }
+         static int downscale(int v)  { return v; }
+     };
+ 
+@@ -80,8 +80,8 @@ namespace agg
+         {
+             return a * b / c;
+         }
+-        static int xi(double v) { return iround(v * poly_subpixel_scale); }
+-        static int yi(double v) { return iround(v * poly_subpixel_scale); }
++        static int xi(double v) { return iround(v * double{poly_subpixel_scale}); }
++        static int yi(double v) { return iround(v * double{poly_subpixel_scale}); }
+         static double upscale(double v) { return v; }
+         static double downscale(int v)  { return v / double(poly_subpixel_scale); }
+     };
+@@ -94,8 +94,8 @@ namespace agg
+         {
+             return a * b / c;
+         }
+-        static int xi(double v) { return iround(v * poly_subpixel_scale * 3); }
+-        static int yi(double v) { return iround(v * poly_subpixel_scale); }
++        static int xi(double v) { return iround(v * double{poly_subpixel_scale} * 3); }
++        static int yi(double v) { return iround(v * double{poly_subpixel_scale}); }
+         static double upscale(double v) { return v; }
+         static double downscale(int v)  { return v / double(poly_subpixel_scale); }
+     };
+diff --git a/third_party/agg24/agg_vcgen_stroke.cpp b/third_party/agg24/agg_vcgen_stroke.cpp
+index 43cef5f2c..c9216b6a8 100644
+--- a/third_party/agg24/agg_vcgen_stroke.cpp
++++ b/third_party/agg24/agg_vcgen_stroke.cpp
+@@ -197,11 +197,11 @@ namespace agg
+ 
+             case end_poly1:
+                 m_status = m_prev_status;
+-                return path_cmd_end_poly | path_flags_close | path_flags_ccw;
++                return unsigned{path_cmd_end_poly} | path_flags_close | path_flags_ccw;
+ 
+             case end_poly2:
+                 m_status = m_prev_status;
+-                return path_cmd_end_poly | path_flags_close | path_flags_cw;
++                return unsigned{path_cmd_end_poly} | path_flags_close | path_flags_cw;
+ 
+             case stop:
+                 cmd = path_cmd_stop;

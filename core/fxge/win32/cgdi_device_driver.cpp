@@ -22,7 +22,7 @@
 #include "core/fxge/dib/cfx_dibitmap.h"
 #include "core/fxge/render_defines.h"
 #include "core/fxge/win32/cwin32_platform.h"
-#include "third_party/agg23/agg_clip_liang_barsky.h"
+#include "third_party/agg24/agg_clip_liang_barsky.h"
 #include "third_party/base/check.h"
 #include "third_party/base/check_op.h"
 #include "third_party/base/notreached.h"
@@ -324,8 +324,8 @@ unsigned LineClip(float w,
     return clip_liang_barsky(x1, y1, x2, y2, rect, x, y);
   }
 #endif
-  pdfium::agg::rect_base<float> rect(0.0f, 0.0f, w, h);
-  return pdfium::agg::clip_liang_barsky<float>(x1, y1, x2, y2, rect, x, y);
+  agg::rect_base<float> rect(0.0f, 0.0f, w, h);
+  return agg::clip_liang_barsky<float>(x1, y1, x2, y2, rect, x, y);
 }
 
 }  // namespace
