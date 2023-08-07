@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58606fd3_25cd1257",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-08-07T17:55:12Z",
+      "side": 1,
+      "message": "BTW, the comment in fx_number.h is out of date.",
+      "revId": "4ed9d8b38632627d87a7f96409ec48625078ece6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
