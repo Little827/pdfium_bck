@@ -14,6 +14,7 @@
 #include "core/fxcrt/retain_ptr.h"
 #include "core/fxge/cfx_fillrenderoptions.h"
 #include "core/fxge/renderdevicedriver_iface.h"
+#include "third_party/agg24/agg_rasterizer_scanline_aa.h"
 
 #if BUILDFLAG(IS_APPLE)
 #include "core/fxcrt/unowned_ptr_exclusion.h"
@@ -25,10 +26,6 @@ class CFX_Matrix;
 class CFX_Path;
 
 namespace pdfium {
-
-namespace agg {
-class rasterizer_scanline_aa;
-}  // namespace agg
 
 class CFX_AggDeviceDriver final : public RenderDeviceDriverIface {
  public:
@@ -102,12 +99,12 @@ class CFX_AggDeviceDriver final : public RenderDeviceDriverIface {
   bool MultiplyAlpha(const RetainPtr<CFX_DIBBase>& mask) override;
 
  private:
-  void RenderRasterizer(pdfium::agg::rasterizer_scanline_aa& rasterizer,
+  void RenderRasterizer(agg::rasterizer_scanline_aa<>* rasterizer,
                         uint32_t color,
                         bool bFullCover,
                         bool bGroupKnockout);
 
-  void SetClipMask(pdfium::agg::rasterizer_scanline_aa& rasterizer);
+  void SetClipMask(agg::rasterizer_scanline_aa<>* rasterizer);
 
   RetainPtr<CFX_DIBitmap> const m_pBitmap;
   std::unique_ptr<CFX_ClipRgn> m_pClipRgn;
