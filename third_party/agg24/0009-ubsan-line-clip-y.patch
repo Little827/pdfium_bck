@@ -1,0 +1,46 @@
+diff --git a/third_party/agg24/agg_rasterizer_sl_clip.h b/third_party/agg24/agg_rasterizer_sl_clip.h
+index ab85fc4d5..38635f496 100644
+--- a/third_party/agg24/agg_rasterizer_sl_clip.h
++++ b/third_party/agg24/agg_rasterizer_sl_clip.h
+@@ -173,25 +173,37 @@ namespace agg
+ 
+                 if(f1 & 8) // y1 < clip.y1
+                 {
+-                    tx1 = x1 + Conv::mul_div(m_clip_box.y1-y1, x2-x1, y2-y1);
++                    tx1 = x1 + Conv::mul_div(
++                        static_cast<double>(m_clip_box.y1)-y1,
++                        static_cast<double>(x2)-x1,
++                        static_cast<double>(y2)-y1);
+                     ty1 = m_clip_box.y1;
+                 }
+ 
+                 if(f1 & 2) // y1 > clip.y2
+                 {
+-                    tx1 = x1 + Conv::mul_div(m_clip_box.y2-y1, x2-x1, y2-y1);
++                    tx1 = x1 + Conv::mul_div(
++                        static_cast<double>(m_clip_box.y2)-y1,
++                        static_cast<double>(x2)-x1,
++                        static_cast<double>(y2)-y1);
+                     ty1 = m_clip_box.y2;
+                 }
+ 
+                 if(f2 & 8) // y2 < clip.y1
+                 {
+-                    tx2 = x1 + Conv::mul_div(m_clip_box.y1-y1, x2-x1, y2-y1);
++                    tx2 = x1 + Conv::mul_div(
++                        static_cast<double>(m_clip_box.y1)-y1,
++                        static_cast<double>(x2)-x1,
++                        static_cast<double>(y2)-y1);
+                     ty2 = m_clip_box.y1;
+                 }
+ 
+                 if(f2 & 2) // y2 > clip.y2
+                 {
+-                    tx2 = x1 + Conv::mul_div(m_clip_box.y2-y1, x2-x1, y2-y1);
++                    tx2 = x1 + Conv::mul_div(
++                        static_cast<double>(m_clip_box.y2)-y1,
++                        static_cast<double>(x2)-x1,
++                        static_cast<double>(y2)-y1);
+                     ty2 = m_clip_box.y2;
+                 }
+                 ras.line(Conv::xi(tx1), Conv::yi(ty1), 

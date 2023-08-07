@@ -22,7 +22,7 @@
 #include "core/fxge/dib/cfx_dibitmap.h"
 #include "core/fxge/render_defines.h"
 #include "core/fxge/win32/cwin32_platform.h"
-#include "third_party/agg23/agg_clip_liang_barsky.h"
+#include "third_party/agg24/agg_clip_liang_barsky.h"
 #include "third_party/base/check.h"
 #include "third_party/base/check_op.h"
 #include "third_party/base/notreached.h"
