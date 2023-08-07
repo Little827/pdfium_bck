@@ -16,6 +16,23 @@
       "message": "PTAL, thanks!",
       "revId": "2fecdea68168303aabe51950525bc3893325316e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75d3b928_2f6b6152",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 9396
+      },
+      "writtenOn": "2023-08-07T11:24:35Z",
+      "side": 1,
+      "message": "Can you submit it to the commit queue? Thanks",
+      "revId": "2fecdea68168303aabe51950525bc3893325316e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
