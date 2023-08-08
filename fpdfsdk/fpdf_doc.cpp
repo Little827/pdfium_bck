@@ -11,6 +11,9 @@
 #include <utility>
 
 #include "constants/form_fields.h"
+#include "core/base/check.h"
+#include "core/base/containers/contains.h"
+#include "core/base/numerics/safe_conversions.h"
 #include "core/fpdfapi/page/cpdf_annotcontext.h"
 #include "core/fpdfapi/page/cpdf_page.h"
 #include "core/fpdfapi/parser/cpdf_array.h"
@@ -27,9 +30,6 @@
 #include "core/fpdfdoc/cpdf_pagelabel.h"
 #include "fpdfsdk/cpdfsdk_helpers.h"
 #include "public/fpdf_formfill.h"
-#include "third_party/base/check.h"
-#include "third_party/base/containers/contains.h"
-#include "third_party/base/numerics/safe_conversions.h"
 
 namespace {
 

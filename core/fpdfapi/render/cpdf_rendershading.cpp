@@ -14,6 +14,9 @@
 #include <utility>
 #include <vector>
 
+#include "core/base/check.h"
+#include "core/base/check_op.h"
+#include "core/base/containers/span.h"
 #include "core/fpdfapi/page/cpdf_colorspace.h"
 #include "core/fpdfapi/page/cpdf_dib.h"
 #include "core/fpdfapi/page/cpdf_function.h"
@@ -33,9 +36,6 @@
 #include "core/fxge/cfx_path.h"
 #include "core/fxge/dib/cfx_dibitmap.h"
 #include "core/fxge/dib/fx_dib.h"
-#include "third_party/base/check.h"
-#include "third_party/base/check_op.h"
-#include "third_party/base/containers/span.h"
 
 namespace {
 

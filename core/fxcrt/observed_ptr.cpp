@@ -4,8 +4,8 @@
 
 #include "core/fxcrt/observed_ptr.h"
 
-#include "third_party/base/check.h"
-#include "third_party/base/containers/contains.h"
+#include "core/base/check.h"
+#include "core/base/containers/contains.h"
 
 namespace fxcrt {
 

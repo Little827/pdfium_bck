@@ -8,7 +8,7 @@
 
 #include <utility>
 
-#include "third_party/base/check.h"
+#include "core/base/check.h"
 #include "xfa/fwl/cfwl_datetimepicker.h"
 #include "xfa/fwl/cfwl_edit.h"
 #include "xfa/fwl/cfwl_eventtextwillchange.h"

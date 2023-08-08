@@ -10,6 +10,8 @@
 
 #include <sstream>
 
+#include "core/base/check.h"
+#include "core/base/notreached.h"
 #include "core/fxcrt/data_vector.h"
 #include "core/fxcrt/fx_system.h"
 #include "core/fxcrt/retain_ptr.h"
@@ -17,8 +19,6 @@
 #include "core/fxge/cfx_path.h"
 #include "core/fxge/dib/cfx_imagerenderer.h"
 #include "core/fxge/win32/cpsoutput.h"
-#include "third_party/base/check.h"
-#include "third_party/base/notreached.h"
 
 namespace {
 

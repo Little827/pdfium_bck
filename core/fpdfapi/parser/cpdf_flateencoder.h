@@ -9,10 +9,10 @@
 
 #include <stdint.h>
 
+#include "core/base/containers/span.h"
 #include "core/fxcrt/data_vector.h"
 #include "core/fxcrt/retain_ptr.h"
 #include "third_party/abseil-cpp/absl/types/variant.h"
-#include "third_party/base/containers/span.h"
 
 class CPDF_Dictionary;
 class CPDF_Encryptor;

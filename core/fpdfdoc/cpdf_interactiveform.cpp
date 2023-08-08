@@ -13,6 +13,9 @@
 #include "constants/form_fields.h"
 #include "constants/form_flags.h"
 #include "constants/stream_dict_common.h"
+#include "core/base/check.h"
+#include "core/base/containers/contains.h"
+#include "core/base/numerics/safe_conversions.h"
 #include "core/fpdfapi/font/cpdf_font.h"
 #include "core/fpdfapi/font/cpdf_fontencoding.h"
 #include "core/fpdfapi/page/cpdf_docpagedata.h"
@@ -32,9 +35,6 @@
 #include "core/fxcrt/stl_util.h"
 #include "core/fxge/fx_font.h"
 #include "third_party/abseil-cpp/absl/types/optional.h"
-#include "third_party/base/check.h"
-#include "third_party/base/containers/contains.h"
-#include "third_party/base/numerics/safe_conversions.h"
 
 namespace {
 

@@ -9,9 +9,9 @@
 
 #include <memory>
 
+#include "core/base/containers/span.h"
 #include "core/fpdfapi/parser/cpdf_indirect_object_holder.h"
 #include "core/fxcrt/retain_ptr.h"
-#include "third_party/base/containers/span.h"
 
 class CPDF_Dictionary;
 class IFX_SeekableReadStream;

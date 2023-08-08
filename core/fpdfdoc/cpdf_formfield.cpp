@@ -12,6 +12,8 @@
 
 #include "constants/form_fields.h"
 #include "constants/form_flags.h"
+#include "core/base/check.h"
+#include "core/base/containers/contains.h"
 #include "core/fpdfapi/font/cpdf_font.h"
 #include "core/fpdfapi/page/cpdf_docpagedata.h"
 #include "core/fpdfapi/parser/cfdf_document.h"
@@ -28,8 +30,6 @@
 #include "core/fpdfdoc/cpdf_generateap.h"
 #include "core/fpdfdoc/cpdf_interactiveform.h"
 #include "core/fxcrt/stl_util.h"
-#include "third_party/base/check.h"
-#include "third_party/base/containers/contains.h"
 
 namespace {
 

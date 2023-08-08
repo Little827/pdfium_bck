@@ -7,10 +7,10 @@
 #ifndef CORE_FPDFAPI_PAGE_CPDF_TEXTSTATE_H_
 #define CORE_FPDFAPI_PAGE_CPDF_TEXTSTATE_H_
 
+#include "core/base/containers/span.h"
 #include "core/fxcrt/retain_ptr.h"
 #include "core/fxcrt/shared_copy_on_write.h"
 #include "core/fxcrt/unowned_ptr.h"
-#include "third_party/base/containers/span.h"
 
 class CPDF_Document;
 class CPDF_Font;

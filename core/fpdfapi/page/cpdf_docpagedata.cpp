@@ -14,6 +14,8 @@
 
 #include "build/build_config.h"
 #include "constants/font_encodings.h"
+#include "core/base/check.h"
+#include "core/base/containers/contains.h"
 #include "core/fpdfapi/font/cpdf_type1font.h"
 #include "core/fpdfapi/page/cpdf_form.h"
 #include "core/fpdfapi/page/cpdf_iccprofile.h"
@@ -39,8 +41,6 @@
 #include "core/fxge/cfx_substfont.h"
 #include "core/fxge/cfx_unicodeencoding.h"
 #include "core/fxge/fx_font.h"
-#include "third_party/base/check.h"
-#include "third_party/base/containers/contains.h"
 
 namespace {
 

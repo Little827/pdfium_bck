@@ -8,6 +8,9 @@
 
 #include <limits>
 
+#include "core/base/check.h"
+#include "core/base/containers/span.h"
+#include "core/base/numerics/safe_conversions.h"
 #include "core/fpdfapi/parser/cpdf_array.h"
 #include "core/fpdfapi/parser/cpdf_data_avail.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
@@ -20,9 +23,6 @@
 #include "core/fpdfapi/parser/cpdf_syntax_parser.h"
 #include "core/fxcrt/cfx_bitstream.h"
 #include "core/fxcrt/fx_safe_types.h"
-#include "third_party/base/check.h"
-#include "third_party/base/containers/span.h"
-#include "third_party/base/numerics/safe_conversions.h"
 
 namespace {
 

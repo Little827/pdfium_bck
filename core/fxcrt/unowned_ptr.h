@@ -64,8 +64,8 @@ using UnownedPtr = raw_ptr<T>;
 #include <type_traits>
 #include <utility>
 
+#include "core/base/compiler_specific.h"
 #include "core/fxcrt/unowned_ptr_exclusion.h"
-#include "third_party/base/compiler_specific.h"
 
 #if defined(ADDRESS_SANITIZER)
 #include <cstdint>

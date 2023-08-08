@@ -14,6 +14,9 @@
 #include <utility>
 
 #include "build/build_config.h"
+#include "core/base/check.h"
+#include "core/base/containers/span.h"
+#include "core/base/numerics/safe_conversions.h"
 #include "core/fxcrt/data_vector.h"
 #include "core/fxcrt/fx_codepage.h"
 #include "core/fxcrt/fx_stream.h"
@@ -27,9 +30,6 @@
 #include "core/fxge/cfx_substfont.h"
 #include "core/fxge/fx_font.h"
 #include "core/fxge/scoped_font_transform.h"
-#include "third_party/base/check.h"
-#include "third_party/base/containers/span.h"
-#include "third_party/base/numerics/safe_conversions.h"
 
 #define EM_ADJUST(em, a) (em == 0 ? (a) : (a)*1000 / em)
 

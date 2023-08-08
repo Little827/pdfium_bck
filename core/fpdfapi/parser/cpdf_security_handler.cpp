@@ -12,6 +12,9 @@
 #include <algorithm>
 #include <utility>
 
+#include "core/base/check.h"
+#include "core/base/check_op.h"
+#include "core/base/notreached.h"
 #include "core/fdrm/fx_crypt.h"
 #include "core/fpdfapi/parser/cpdf_array.h"
 #include "core/fpdfapi/parser/cpdf_crypto_handler.h"
@@ -21,9 +24,6 @@
 #include "core/fxcrt/data_vector.h"
 #include "core/fxcrt/fx_memcpy_wrappers.h"
 #include "core/fxcrt/fx_random.h"
-#include "third_party/base/check.h"
-#include "third_party/base/check_op.h"
-#include "third_party/base/notreached.h"
 
 namespace {
 

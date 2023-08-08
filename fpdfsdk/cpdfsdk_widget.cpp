@@ -10,6 +10,8 @@
 #include "constants/annotation_common.h"
 #include "constants/appearance.h"
 #include "constants/form_flags.h"
+#include "core/base/check.h"
+#include "core/base/notreached.h"
 #include "core/fpdfapi/parser/cpdf_array.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/parser/cpdf_document.h"
@@ -32,8 +34,6 @@
 #include "fpdfsdk/cpdfsdk_pageview.h"
 #include "fpdfsdk/formfiller/cffl_fieldaction.h"
 #include "fpdfsdk/pwl/cpwl_edit.h"
-#include "third_party/base/check.h"
-#include "third_party/base/notreached.h"
 
 #ifdef PDF_ENABLE_XFA
 #include "fpdfsdk/fpdfxfa/cpdfxfa_context.h"

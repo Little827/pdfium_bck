@@ -22,7 +22,7 @@ void FXMEM_DefaultFree(void* pointer);
 #ifdef __cplusplus
 }  // extern "C"
 
-#include "third_party/base/compiler_specific.h"
+#include "core/base/compiler_specific.h"
 
 void FX_InitializeMemoryAllocators();
 NOINLINE void FX_OutOfMemoryTerminate(size_t size);

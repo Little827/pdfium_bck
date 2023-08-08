@@ -7,11 +7,11 @@
 #include <cstdint>
 #include <vector>
 
+#include "core/base/containers/span.h"
 #include "core/fpdfapi/page/cpdf_streamparser.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/parser/cpdf_object.h"
 #include "core/fpdfdoc/cpdf_nametree.h"
-#include "third_party/base/containers/span.h"
 
 struct Params {
   bool delete_backwards;

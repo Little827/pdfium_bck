@@ -8,6 +8,7 @@
 
 #include <utility>
 
+#include "core/base/check.h"
 #include "core/fpdfapi/parser/cpdf_array.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/parser/cpdf_name.h"
@@ -16,7 +17,6 @@
 #include "core/fpdfapi/parser/cpdf_reference.h"
 #include "core/fpdfapi/parser/cpdf_stream.h"
 #include "core/fpdfdoc/cpdf_structtree.h"
-#include "third_party/base/check.h"
 
 CPDF_StructElement::Kid::Kid() = default;
 

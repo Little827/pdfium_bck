@@ -12,12 +12,12 @@
 #include <limits>
 #include <utility>
 
+#include "core/base/check.h"
+#include "core/base/check_op.h"
+#include "core/base/notreached.h"
 #include "core/fpdfapi/parser/cpdf_simple_parser.h"
 #include "core/fxcrt/fx_safe_types.h"
 #include "core/fxcrt/fx_string.h"
-#include "third_party/base/check.h"
-#include "third_party/base/check_op.h"
-#include "third_party/base/notreached.h"
 
 namespace {
 

@@ -9,9 +9,9 @@
 
 #include <vector>
 
+#include "core/base/containers/span.h"
 #include "core/fxcrt/bytestring.h"
 #include "core/fxcrt/fx_coordinates.h"
-#include "third_party/base/containers/span.h"
 
 /* Font pitch and family flags */
 #define FXFONT_FF_FIXEDPITCH (1 << 0)

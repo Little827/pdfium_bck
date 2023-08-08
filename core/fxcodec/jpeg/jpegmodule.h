@@ -12,8 +12,8 @@
 #include <memory>
 
 #include "build/build_config.h"
+#include "core/base/containers/span.h"
 #include "third_party/abseil-cpp/absl/types/optional.h"
-#include "third_party/base/containers/span.h"
 
 #if BUILDFLAG(IS_WIN)
 #include "core/fxcrt/retain_ptr.h"

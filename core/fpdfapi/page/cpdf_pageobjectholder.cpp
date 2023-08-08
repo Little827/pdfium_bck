@@ -10,6 +10,8 @@
 #include <utility>
 
 #include "constants/transparency.h"
+#include "core/base/check.h"
+#include "core/base/check_op.h"
 #include "core/fpdfapi/page/cpdf_allstates.h"
 #include "core/fpdfapi/page/cpdf_contentparser.h"
 #include "core/fpdfapi/page/cpdf_pageobject.h"
@@ -17,8 +19,6 @@
 #include "core/fpdfapi/parser/cpdf_document.h"
 #include "core/fxcrt/fx_extension.h"
 #include "core/fxcrt/stl_util.h"
-#include "third_party/base/check.h"
-#include "third_party/base/check_op.h"
 
 bool GraphicsData::operator<(const GraphicsData& other) const {
   if (!FXSYS_SafeEQ(fillAlpha, other.fillAlpha))

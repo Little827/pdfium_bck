@@ -12,9 +12,9 @@
 #include <memory>
 #include <utility>
 
+#include "core/base/memory/ptr_util.h"
+#include "core/base/numerics/safe_math.h"
 #include "core/fxcrt/fx_safe_types.h"
-#include "third_party/base/memory/ptr_util.h"
-#include "third_party/base/numerics/safe_math.h"
 
 namespace fxcodec {
 

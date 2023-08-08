@@ -9,14 +9,14 @@
 #include <set>
 #include <utility>
 
+#include "core/base/check_op.h"
+#include "core/base/containers/contains.h"
 #include "core/fxcrt/fx_extension.h"
 #include "core/fxcrt/stl_util.h"
 #include "core/fxcrt/xml/cfx_xmlparser.h"
 #include "fxjs/gc/container_trace.h"
 #include "fxjs/xfa/cfxjse_engine.h"
 #include "fxjs/xfa/cjx_object.h"
-#include "third_party/base/check_op.h"
-#include "third_party/base/containers/contains.h"
 #include "xfa/fxfa/cxfa_ffapp.h"
 #include "xfa/fxfa/cxfa_ffbarcode.h"
 #include "xfa/fxfa/cxfa_ffcheckbutton.h"

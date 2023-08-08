@@ -17,6 +17,10 @@
 
 #include "build/build_config.h"
 #include "constants/transparency.h"
+#include "core/base/check.h"
+#include "core/base/containers/contains.h"
+#include "core/base/containers/span.h"
+#include "core/base/notreached.h"
 #include "core/fpdfapi/font/cpdf_font.h"
 #include "core/fpdfapi/font/cpdf_type3char.h"
 #include "core/fpdfapi/font/cpdf_type3font.h"
@@ -67,10 +71,6 @@
 #include "core/fxge/renderdevicedriver_iface.h"
 #include "core/fxge/text_char_pos.h"
 #include "core/fxge/text_glyph_pos.h"
-#include "third_party/base/check.h"
-#include "third_party/base/containers/contains.h"
-#include "third_party/base/containers/span.h"
-#include "third_party/base/notreached.h"
 
 namespace {
 

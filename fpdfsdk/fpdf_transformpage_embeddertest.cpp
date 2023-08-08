@@ -10,7 +10,7 @@
 #include "testing/embedder_test_constants.h"
 
 #if BUILDFLAG(IS_LINUX) || BUILDFLAG(IS_CHROMEOS) || BUILDFLAG(IS_FUCHSIA)
-#include "third_party/base/test/scoped_locale.h"
+#include "core/base/test/scoped_locale.h"
 #endif
 
 using pdfium::RectanglesChecksum;

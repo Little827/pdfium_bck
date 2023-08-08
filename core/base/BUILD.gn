@@ -1,0 +1,87 @@
+# Copyright 2023 The PDFium Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+config("base_config") {
+  configs = [
+    "../../:pdfium_common_config",
+    "../../:pdfium_public_config",
+  ]
+}
+
+source_set("compiler_specific") {
+  configs -= [ "//build/config/compiler:chromium_code" ]
+  configs += [
+    "//build/config/compiler:no_chromium_code",
+    ":base_config",
+  ]
+  sources = [ "compiler_specific.h" ]
+}
+
+source_set("base") {
+  configs -= [ "//build/config/compiler:chromium_code" ]
+  configs += [
+    "//build/config/compiler:no_chromium_code",
+    ":base_config",
+  ]
+  sources = [
+    "base_export.h",
+    "bits.h",
+    "check.h",
+    "check_op.h",
+    "component_export.h",
+    "containers/adapters.h",
+    "containers/contains.h",
+    "containers/span.h",
+    "debug/alias.cc",
+    "debug/alias.h",
+    "immediate_crash.h",
+    "memory/aligned_memory.cc",
+    "memory/aligned_memory.h",
+    "memory/ptr_util.h",
+    "no_destructor.h",
+    "notreached.h",
+    "numerics/checked_math.h",
+    "numerics/checked_math_impl.h",
+    "numerics/clamped_math.h",
+    "numerics/clamped_math_impl.h",
+    "numerics/safe_conversions.h",
+    "numerics/safe_conversions_arm_impl.h",
+    "numerics/safe_conversions_impl.h",
+    "numerics/safe_math.h",
+    "numerics/safe_math_arm_impl.h",
+    "numerics/safe_math_clang_gcc_impl.h",
+    "numerics/safe_math_shared_impl.h",
+    "sys_byteorder.h",
+    "template_util.h",
+  ]
+  public_deps = [
+    ":compiler_specific",
+    "../fxcrt:unowned_ptr",
+    "//third_party/abseil-cpp:absl",
+  ]
+  if (is_win) {
+    sources += [
+      "win/scoped_select_object.h",
+      "win/win_util.cc",
+      "win/win_util.h",
+    ]
+  }
+}
+
+source_set("test_support") {
+  testonly = true
+  sources = []
+  configs += [
+    "../../:pdfium_strict_config",
+    "../../:pdfium_noshorten_config",
+  ]
+  deps = []
+  if (is_posix || is_fuchsia) {
+    sources += [
+      "test/scoped_locale.cc",
+      "test/scoped_locale.h",
+    ]
+    deps += [ "//testing/gtest" ]
+  }
+}

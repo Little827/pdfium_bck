@@ -7,6 +7,7 @@
 #include <memory>
 #include <utility>
 
+#include "core/base/check.h"
 #include "core/fpdfapi/page/test_with_page_module.h"
 #include "core/fpdfapi/parser/cpdf_array.h"
 #include "core/fpdfapi/parser/cpdf_boolean.h"
@@ -19,7 +20,6 @@
 #include "core/fpdfapi/parser/cpdf_string.h"
 #include "core/fpdfapi/parser/cpdf_test_document.h"
 #include "testing/gtest/include/gtest/gtest.h"
-#include "third_party/base/check.h"
 
 namespace {
 

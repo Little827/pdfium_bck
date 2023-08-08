@@ -13,6 +13,8 @@
 #include <utility>
 
 #include "constants/form_fields.h"
+#include "core/base/check.h"
+#include "core/base/check_op.h"
 #include "core/fdrm/fx_crypt.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/parser/cpdf_number.h"
@@ -23,8 +25,6 @@
 #include "core/fpdfapi/parser/cpdf_stream.h"
 #include "core/fpdfapi/parser/cpdf_stream_acc.h"
 #include "core/fpdfapi/parser/cpdf_string.h"
-#include "third_party/base/check.h"
-#include "third_party/base/check_op.h"
 
 namespace {
 

@@ -12,12 +12,12 @@
 
 #include <memory>
 
+#include "core/base/containers/span.h"
 #include "core/fdrm/fx_crypt.h"
 #include "core/fxcrt/binary_buffer.h"
 #include "core/fxcrt/bytestring.h"
 #include "core/fxcrt/fx_memory_wrappers.h"
 #include "core/fxcrt/retain_ptr.h"
-#include "third_party/base/containers/span.h"
 
 class CPDF_Dictionary;
 class CPDF_Object;

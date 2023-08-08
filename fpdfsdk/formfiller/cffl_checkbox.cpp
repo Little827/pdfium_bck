@@ -9,12 +9,12 @@
 #include <utility>
 
 #include "constants/ascii.h"
+#include "core/base/check.h"
 #include "core/fpdfdoc/cpdf_formcontrol.h"
 #include "fpdfsdk/cpdfsdk_widget.h"
 #include "fpdfsdk/formfiller/cffl_formfield.h"
 #include "fpdfsdk/pwl/cpwl_special_button.h"
 #include "public/fpdf_fwlevent.h"
-#include "third_party/base/check.h"
 
 CFFL_CheckBox::CFFL_CheckBox(CFFL_InteractiveFormFiller* pFormFiller,
                              CPDFSDK_Widget* pWidget)

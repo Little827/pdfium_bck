@@ -11,6 +11,8 @@
 #include <vector>
 
 #include "build/build_config.h"
+#include "core/base/check_op.h"
+#include "core/base/numerics/safe_conversions.h"
 #include "core/fpdfapi/font/cpdf_font.h"
 #include "core/fpdfapi/page/cpdf_page.h"
 #include "core/fpdfapi/page/cpdf_textobject.h"
@@ -20,8 +22,6 @@
 #include "core/fpdftext/cpdf_textpagefind.h"
 #include "core/fxcrt/stl_util.h"
 #include "fpdfsdk/cpdfsdk_helpers.h"
-#include "third_party/base/check_op.h"
-#include "third_party/base/numerics/safe_conversions.h"
 
 namespace {
 

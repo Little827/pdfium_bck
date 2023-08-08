@@ -9,6 +9,8 @@
 #include <utility>
 
 #include "constants/page_object.h"
+#include "core/base/check.h"
+#include "core/base/check_op.h"
 #include "core/fpdfapi/font/cpdf_type3char.h"
 #include "core/fpdfapi/page/cpdf_allstates.h"
 #include "core/fpdfapi/page/cpdf_page.h"
@@ -24,8 +26,6 @@
 #include "core/fxcrt/span_util.h"
 #include "core/fxcrt/stl_util.h"
 #include "core/fxge/cfx_fillrenderoptions.h"
-#include "third_party/base/check.h"
-#include "third_party/base/check_op.h"
 
 CPDF_ContentParser::CPDF_ContentParser(CPDF_Page* pPage)
     : m_CurrentStage(Stage::kGetContent), m_pPageObjectHolder(pPage) {

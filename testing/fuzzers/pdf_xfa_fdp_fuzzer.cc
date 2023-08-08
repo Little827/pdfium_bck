@@ -7,10 +7,10 @@
 #include <string>
 #include <vector>
 
+#include "core/base/containers/adapters.h"
 #include "public/fpdf_formfill.h"
 #include "testing/fuzzers/pdf_fuzzer_templates.h"
 #include "testing/fuzzers/pdfium_fuzzer_helper.h"
-#include "third_party/base/containers/adapters.h"
 
 class PDFiumXFAFuzzer : public PDFiumFuzzerHelper {
  public:

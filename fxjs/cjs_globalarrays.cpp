@@ -8,7 +8,7 @@
 
 #include <iterator>
 
-#include "third_party/base/numerics/safe_conversions.h"
+#include "core/base/numerics/safe_conversions.h"
 #include "v8/include/v8-container.h"
 #include "v8/include/v8-isolate.h"
 

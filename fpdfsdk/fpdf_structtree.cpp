@@ -6,6 +6,7 @@
 
 #include <memory>
 
+#include "core/base/numerics/safe_conversions.h"
 #include "core/fpdfapi/page/cpdf_page.h"
 #include "core/fpdfapi/parser/cpdf_array.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
@@ -14,7 +15,6 @@
 #include "core/fxcrt/fx_safe_types.h"
 #include "core/fxcrt/stl_util.h"
 #include "fpdfsdk/cpdfsdk_helpers.h"
-#include "third_party/base/numerics/safe_conversions.h"
 
 namespace {
 

@@ -11,6 +11,10 @@
 #include <vector>
 
 #include "build/build_config.h"
+#include "core/base/check_op.h"
+#include "core/base/containers/span.h"
+#include "core/base/memory/ptr_util.h"
+#include "core/base/numerics/safe_conversions.h"
 #include "core/fpdfapi/page/cpdf_docpagedata.h"
 #include "core/fpdfapi/page/cpdf_occontext.h"
 #include "core/fpdfapi/page/cpdf_page.h"
@@ -48,14 +52,10 @@
 #include "fpdfsdk/cpdfsdk_renderpage.h"
 #include "fxjs/ijs_runtime.h"
 #include "public/fpdf_formfill.h"
-#include "third_party/base/check_op.h"
-#include "third_party/base/containers/span.h"
-#include "third_party/base/memory/ptr_util.h"
-#include "third_party/base/numerics/safe_conversions.h"
 
 #ifdef PDF_ENABLE_V8
+#include "core/base/no_destructor.h"
 #include "fxjs/cfx_v8_array_buffer_allocator.h"
-#include "third_party/base/no_destructor.h"
 #endif
 
 #ifdef PDF_ENABLE_XFA

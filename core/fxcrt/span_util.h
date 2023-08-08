@@ -5,9 +5,9 @@
 #ifndef CORE_FXCRT_SPAN_UTIL_H_
 #define CORE_FXCRT_SPAN_UTIL_H_
 
+#include "core/base/check_op.h"
+#include "core/base/containers/span.h"
 #include "core/fxcrt/fx_memcpy_wrappers.h"
-#include "third_party/base/check_op.h"
-#include "third_party/base/containers/span.h"
 
 namespace fxcrt {
 

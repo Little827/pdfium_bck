@@ -13,12 +13,12 @@
 #include <limits>
 #include <vector>
 
+#include "core/base/check.h"
 #include "core/fxcrt/fx_extension.h"
 #include "fxjs/cjs_document.h"
 #include "fxjs/cjs_object.h"
 #include "fxjs/fx_date_helpers.h"
 #include "fxjs/fxv8.h"
-#include "third_party/base/check.h"
 #include "v8/include/v8-context.h"
 #include "v8/include/v8-function.h"
 #include "v8/include/v8-isolate.h"

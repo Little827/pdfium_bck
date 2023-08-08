@@ -22,8 +22,8 @@
 
 #include "fxbarcode/pdf417/BC_PDF417BarcodeRow.h"
 
+#include "core/base/check_op.h"
 #include "core/fxcrt/span_util.h"
-#include "third_party/base/check_op.h"
 
 CBC_BarcodeRow::CBC_BarcodeRow(size_t width) : row_(width) {}
 

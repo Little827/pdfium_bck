@@ -12,8 +12,8 @@
 
 #include <memory>
 
+#include "core/base/numerics/safe_conversions.h"
 #include "core/fxcrt/fx_stream.h"
-#include "third_party/base/numerics/safe_conversions.h"
 
 #ifndef O_BINARY
 #define O_BINARY 0

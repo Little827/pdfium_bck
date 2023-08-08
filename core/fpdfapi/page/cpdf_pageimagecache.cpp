@@ -13,6 +13,7 @@
 #include <utility>
 #include <vector>
 
+#include "core/base/check.h"
 #include "core/fpdfapi/page/cpdf_dib.h"
 #include "core/fpdfapi/page/cpdf_image.h"
 #include "core/fpdfapi/page/cpdf_page.h"
@@ -23,12 +24,11 @@
 #include "core/fxcrt/stl_util.h"
 #include "core/fxge/dib/cfx_dibbase.h"
 #include "core/fxge/dib/cfx_dibitmap.h"
-#include "third_party/base/check.h"
 
 #if defined(_SKIA_SUPPORT_)
+#include "core/base/notreached.h"
 #include "core/fxcrt/data_vector.h"
 #include "core/fxge/cfx_defaultrenderdevice.h"
-#include "third_party/base/notreached.h"
 #include "third_party/skia/include/core/SkImage.h"   // nogncheck
 #include "third_party/skia/include/core/SkRefCnt.h"  // nogncheck
 #endif

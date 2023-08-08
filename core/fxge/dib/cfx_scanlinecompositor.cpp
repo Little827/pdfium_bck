@@ -10,9 +10,9 @@
 
 #include <algorithm>
 
+#include "core/base/check.h"
+#include "core/base/check_op.h"
 #include "core/fxge/dib/fx_dib.h"
-#include "third_party/base/check.h"
-#include "third_party/base/check_op.h"
 
 #define FXDIB_ALPHA_UNION(dest, src) ((dest) + (src) - (dest) * (src) / 255)
 #define FXARGB_RGBORDERCOPY(dest, src)                  \

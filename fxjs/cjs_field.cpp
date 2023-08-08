@@ -13,6 +13,8 @@
 #include "constants/access_permissions.h"
 #include "constants/annotation_flags.h"
 #include "constants/form_flags.h"
+#include "core/base/check.h"
+#include "core/base/notreached.h"
 #include "core/fpdfapi/parser/cpdf_stream.h"
 #include "core/fpdfdoc/cpdf_formcontrol.h"
 #include "core/fpdfdoc/cpdf_formfield.h"
@@ -28,8 +30,6 @@
 #include "fxjs/fxv8.h"
 #include "fxjs/js_resources.h"
 #include "third_party/abseil-cpp/absl/types/optional.h"
-#include "third_party/base/check.h"
-#include "third_party/base/notreached.h"
 #include "v8/include/v8-container.h"
 
 namespace {

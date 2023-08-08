@@ -10,14 +10,14 @@
 
 #include <vector>
 
+#include "core/base/check.h"
+#include "core/base/memory/ptr_util.h"
 #include "core/fpdftext/cpdf_textpage.h"
 #include "core/fxcrt/fx_extension.h"
 #include "core/fxcrt/fx_string.h"
 #include "core/fxcrt/fx_system.h"
 #include "core/fxcrt/fx_unicode.h"
 #include "core/fxcrt/stl_util.h"
-#include "third_party/base/check.h"
-#include "third_party/base/memory/ptr_util.h"
 
 namespace {
 

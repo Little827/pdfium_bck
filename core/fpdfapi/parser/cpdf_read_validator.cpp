@@ -7,9 +7,9 @@
 #include <algorithm>
 #include <utility>
 
+#include "core/base/notreached.h"
 #include "core/fpdfapi/parser/cpdf_stream.h"
 #include "core/fxcrt/fx_safe_types.h"
-#include "third_party/base/notreached.h"
 
 namespace {
 

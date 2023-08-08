@@ -13,11 +13,11 @@
 #include <utility>
 
 #include "build/build_config.h"
+#include "core/base/check.h"
+#include "core/base/check_op.h"
 #include "core/fxcrt/data_vector.h"
 #include "core/fxcrt/fx_extension.h"
 #include "core/fxcrt/fx_safe_types.h"
-#include "third_party/base/check.h"
-#include "third_party/base/check_op.h"
 
 namespace {
 

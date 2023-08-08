@@ -12,6 +12,7 @@
 #include <tuple>
 #include <utility>
 
+#include "core/base/containers/span.h"
 #include "core/fxcodec/fx_codec.h"
 #include "core/fxcodec/fx_codec_def.h"
 #include "core/fxcrt/cfx_read_only_span_stream.h"
@@ -22,7 +23,6 @@
 #include "core/fxge/dib/fx_dib.h"
 #include "testing/gmock/include/gmock/gmock.h"
 #include "testing/gtest/include/gtest/gtest.h"
-#include "third_party/base/containers/span.h"
 
 #ifdef PDF_ENABLE_XFA_BMP
 #include "core/fxcodec/bmp/bmp_decoder.h"

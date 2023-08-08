@@ -16,6 +16,7 @@
 #include "constants/annotation_common.h"
 #include "constants/annotation_flags.h"
 #include "constants/page_object.h"
+#include "core/base/notreached.h"
 #include "core/fpdfapi/edit/cpdf_contentstream_write_utils.h"
 #include "core/fpdfapi/page/cpdf_page.h"
 #include "core/fpdfapi/page/cpdf_pageobject.h"
@@ -31,7 +32,6 @@
 #include "core/fpdfdoc/cpdf_annot.h"
 #include "core/fxcrt/fx_string_wrappers.h"
 #include "fpdfsdk/cpdfsdk_helpers.h"
-#include "third_party/base/notreached.h"
 
 enum FPDF_TYPE { MAX, MIN };
 enum FPDF_VALUE { TOP, LEFT, RIGHT, BOTTOM };

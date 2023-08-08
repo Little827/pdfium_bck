@@ -8,8 +8,8 @@
 
 #include <utility>
 
+#include "core/base/check.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
-#include "third_party/base/check.h"
 
 CPDF_Pattern::CPDF_Pattern(CPDF_Document* pDoc,
                            RetainPtr<CPDF_Object> pObj,

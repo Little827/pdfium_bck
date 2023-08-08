@@ -11,13 +11,13 @@
 #include <type_traits>
 #include <utility>
 
+#include "core/base/check.h"
 #include "core/fpdfapi/font/cpdf_type3char.h"
 #include "core/fpdfapi/parser/cpdf_array.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/parser/cpdf_stream.h"
 #include "core/fxcrt/autorestorer.h"
 #include "core/fxcrt/fx_system.h"
-#include "third_party/base/check.h"
 
 namespace {
 

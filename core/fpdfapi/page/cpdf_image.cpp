@@ -13,6 +13,8 @@
 #include <utility>
 
 #include "constants/stream_dict_common.h"
+#include "core/base/check.h"
+#include "core/base/numerics/safe_conversions.h"
 #include "core/fpdfapi/page/cpdf_dib.h"
 #include "core/fpdfapi/page/cpdf_page.h"
 #include "core/fpdfapi/page/cpdf_pageimagecache.h"
@@ -33,8 +35,6 @@
 #include "core/fxcrt/span_util.h"
 #include "core/fxge/dib/cfx_dibitmap.h"
 #include "core/fxge/dib/fx_dib.h"
-#include "third_party/base/check.h"
-#include "third_party/base/numerics/safe_conversions.h"
 
 // static
 bool CPDF_Image::IsValidJpegComponent(int32_t comps) {

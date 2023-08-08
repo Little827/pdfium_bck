@@ -12,6 +12,7 @@
 #include <memory>
 #include <utility>
 
+#include "core/base/check.h"
 #include "core/fpdfapi/page/cpdf_dib.h"
 #include "core/fpdfapi/page/cpdf_docpagedata.h"
 #include "core/fpdfapi/page/cpdf_image.h"
@@ -39,7 +40,6 @@
 #include "core/fxge/dib/cfx_dibitmap.h"
 #include "core/fxge/dib/cfx_imagestretcher.h"
 #include "core/fxge/dib/cfx_imagetransformer.h"
-#include "third_party/base/check.h"
 
 namespace {
 

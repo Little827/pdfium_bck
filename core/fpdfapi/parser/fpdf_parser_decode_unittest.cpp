@@ -9,6 +9,7 @@
 
 #include <iterator>
 
+#include "core/base/containers/span.h"
 #include "core/fpdfapi/parser/cpdf_array.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/parser/cpdf_indirect_object_holder.h"
@@ -21,7 +22,6 @@
 #include "core/fxcrt/widestring.h"
 #include "testing/gtest/include/gtest/gtest.h"
 #include "testing/test_support.h"
-#include "third_party/base/containers/span.h"
 
 namespace {
 

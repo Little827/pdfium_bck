@@ -14,6 +14,8 @@
 #include <utility>
 #include <vector>
 
+#include "core/base/check.h"
+#include "core/base/memory/ptr_util.h"
 #include "core/fxcodec/jbig2/JBig2_ArithDecoder.h"
 #include "core/fxcodec/jbig2/JBig2_BitStream.h"
 #include "core/fxcodec/jbig2/JBig2_GrdProc.h"
@@ -25,8 +27,6 @@
 #include "core/fxcrt/fx_memory_wrappers.h"
 #include "core/fxcrt/fx_safe_types.h"
 #include "core/fxcrt/pauseindicator_iface.h"
-#include "third_party/base/check.h"
-#include "third_party/base/memory/ptr_util.h"
 
 namespace {
 

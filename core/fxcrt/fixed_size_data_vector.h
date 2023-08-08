@@ -10,8 +10,8 @@
 #include <memory>
 #include <utility>
 
+#include "core/base/containers/span.h"
 #include "core/fxcrt/fx_memory_wrappers.h"
-#include "third_party/base/containers/span.h"
 
 namespace fxcrt {
 

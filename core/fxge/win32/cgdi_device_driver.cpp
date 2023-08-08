@@ -12,6 +12,10 @@
 #include <algorithm>
 #include <vector>
 
+#include "core/base/check.h"
+#include "core/base/check_op.h"
+#include "core/base/notreached.h"
+#include "core/base/numerics/safe_conversions.h"
 #include "core/fxcrt/fx_string.h"
 #include "core/fxge/agg/fx_agg_driver.h"
 #include "core/fxge/cfx_defaultrenderdevice.h"
@@ -23,10 +27,6 @@
 #include "core/fxge/render_defines.h"
 #include "core/fxge/win32/cwin32_platform.h"
 #include "third_party/agg23/agg_clip_liang_barsky.h"
-#include "third_party/base/check.h"
-#include "third_party/base/check_op.h"
-#include "third_party/base/notreached.h"
-#include "third_party/base/numerics/safe_conversions.h"
 
 namespace {
 

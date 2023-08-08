@@ -6,8 +6,8 @@
 
 #include "fpdfsdk/cpdfsdk_customaccess.h"
 
+#include "core/base/numerics/safe_conversions.h"
 #include "core/fxcrt/fx_safe_types.h"
-#include "third_party/base/numerics/safe_conversions.h"
 
 CPDFSDK_CustomAccess::CPDFSDK_CustomAccess(FPDF_FILEACCESS* pFileAccess)
     : m_FileAccess(*pFileAccess) {}

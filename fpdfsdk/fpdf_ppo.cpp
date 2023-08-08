@@ -15,6 +15,8 @@
 #include <vector>
 
 #include "constants/page_object.h"
+#include "core/base/check.h"
+#include "core/base/containers/span.h"
 #include "core/fpdfapi/page/cpdf_form.h"
 #include "core/fpdfapi/page/cpdf_formobject.h"
 #include "core/fpdfapi/page/cpdf_page.h"
@@ -37,8 +39,6 @@
 #include "core/fxcrt/unowned_ptr.h"
 #include "fpdfsdk/cpdfsdk_helpers.h"
 #include "public/cpp/fpdf_scopers.h"
-#include "third_party/base/check.h"
-#include "third_party/base/containers/span.h"
 
 struct XObjectContext {
   UnownedPtr<CPDF_Document> dest_doc;

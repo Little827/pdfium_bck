@@ -6,8 +6,8 @@
 
 #include <string.h>
 
-#include "third_party/base/check_op.h"
-#include "third_party/base/numerics/checked_math.h"
+#include "core/base/check_op.h"
+#include "core/base/numerics/checked_math.h"
 
 TestLoader::TestLoader(pdfium::span<const char> span) : m_Span(span) {}
 

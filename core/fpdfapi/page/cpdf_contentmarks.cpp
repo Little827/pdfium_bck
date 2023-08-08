@@ -9,8 +9,8 @@
 #include <algorithm>
 #include <utility>
 
+#include "core/base/check_op.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
-#include "third_party/base/check_op.h"
 
 CPDF_ContentMarks::CPDF_ContentMarks() = default;
 

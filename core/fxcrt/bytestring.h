@@ -17,13 +17,13 @@
 #include <iterator>
 #include <utility>
 
+#include "core/base/check.h"
+#include "core/base/containers/span.h"
 #include "core/fxcrt/fx_string_wrappers.h"
 #include "core/fxcrt/retain_ptr.h"
 #include "core/fxcrt/string_data_template.h"
 #include "core/fxcrt/string_view_template.h"
 #include "third_party/abseil-cpp/absl/types/optional.h"
-#include "third_party/base/check.h"
-#include "third_party/base/containers/span.h"
 
 namespace fxcrt {
 

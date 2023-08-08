@@ -8,6 +8,8 @@
 
 #include <utility>
 
+#include "core/base/check.h"
+#include "core/base/memory/ptr_util.h"
 #include "core/fxcodec/cfx_codec_memory.h"
 #include "core/fxcodec/fx_codec.h"
 #include "core/fxcodec/jpeg/jpeg_common.h"
@@ -16,8 +18,6 @@
 #include "core/fxge/dib/cfx_dibbase.h"
 #include "core/fxge/dib/fx_dib.h"
 #include "third_party/abseil-cpp/absl/types/optional.h"
-#include "third_party/base/check.h"
-#include "third_party/base/memory/ptr_util.h"
 
 class CJpegContext final : public ProgressiveDecoderIface::Context {
  public:

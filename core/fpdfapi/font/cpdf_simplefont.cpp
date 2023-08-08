@@ -11,13 +11,13 @@
 #include <utility>
 
 #include "constants/font_encodings.h"
+#include "core/base/numerics/safe_math.h"
 #include "core/fpdfapi/parser/cpdf_array.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/parser/cpdf_name.h"
 #include "core/fxcrt/fx_codepage.h"
 #include "core/fxge/freetype/fx_freetype.h"
 #include "core/fxge/fx_font.h"
-#include "third_party/base/numerics/safe_math.h"
 
 namespace {
 

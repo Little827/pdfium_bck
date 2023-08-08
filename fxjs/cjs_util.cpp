@@ -14,6 +14,7 @@
 #include <vector>
 
 #include "build/build_config.h"
+#include "core/base/check_op.h"
 #include "core/fxcrt/fx_extension.h"
 #include "fxjs/cjs_event_context.h"
 #include "fxjs/cjs_object.h"
@@ -23,7 +24,6 @@
 #include "fxjs/fxv8.h"
 #include "fxjs/js_define.h"
 #include "fxjs/js_resources.h"
-#include "third_party/base/check_op.h"
 #include "v8/include/v8-date.h"
 
 #if BUILDFLAG(IS_ANDROID)

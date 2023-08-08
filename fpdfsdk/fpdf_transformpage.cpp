@@ -10,6 +10,8 @@
 #include <sstream>
 
 #include "constants/page_object.h"
+#include "core/base/containers/span.h"
+#include "core/base/numerics/safe_conversions.h"
 #include "core/fpdfapi/edit/cpdf_contentstream_write_utils.h"
 #include "core/fpdfapi/page/cpdf_clippath.h"
 #include "core/fpdfapi/page/cpdf_page.h"
@@ -26,8 +28,6 @@
 #include "core/fxge/cfx_fillrenderoptions.h"
 #include "core/fxge/cfx_path.h"
 #include "fpdfsdk/cpdfsdk_helpers.h"
-#include "third_party/base/containers/span.h"
-#include "third_party/base/numerics/safe_conversions.h"
 
 namespace {
 

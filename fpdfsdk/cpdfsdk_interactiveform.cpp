@@ -15,6 +15,7 @@
 #include <vector>
 
 #include "constants/annotation_flags.h"
+#include "core/base/check.h"
 #include "core/fpdfapi/page/cpdf_page.h"
 #include "core/fpdfapi/parser/cfdf_document.h"
 #include "core/fpdfapi/parser/cpdf_array.h"
@@ -37,7 +38,6 @@
 #include "fpdfsdk/formfiller/cffl_formfield.h"
 #include "fxjs/ijs_event_context.h"
 #include "fxjs/ijs_runtime.h"
-#include "third_party/base/check.h"
 
 namespace {
 

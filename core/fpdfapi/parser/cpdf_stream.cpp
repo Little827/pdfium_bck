@@ -12,6 +12,8 @@
 #include <utility>
 
 #include "constants/stream_dict_common.h"
+#include "core/base/containers/contains.h"
+#include "core/base/numerics/safe_conversions.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/parser/cpdf_encryptor.h"
 #include "core/fpdfapi/parser/cpdf_flateencoder.h"
@@ -23,8 +25,6 @@
 #include "core/fxcrt/data_vector.h"
 #include "core/fxcrt/fx_stream.h"
 #include "core/fxcrt/span_util.h"
-#include "third_party/base/containers/contains.h"
-#include "third_party/base/numerics/safe_conversions.h"
 
 namespace {
 

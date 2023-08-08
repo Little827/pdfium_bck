@@ -6,11 +6,11 @@
 
 #include "core/fpdfapi/page/cpdf_occontext.h"
 
+#include "core/base/check.h"
 #include "core/fpdfapi/page/cpdf_pageobject.h"
 #include "core/fpdfapi/parser/cpdf_array.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/parser/cpdf_document.h"
-#include "third_party/base/check.h"
 
 namespace {
 

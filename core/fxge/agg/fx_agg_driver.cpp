@@ -13,6 +13,10 @@
 #include <utility>
 
 #include "build/build_config.h"
+#include "core/base/check.h"
+#include "core/base/check_op.h"
+#include "core/base/containers/span.h"
+#include "core/base/notreached.h"
 #include "core/fxcrt/fx_2d_size.h"
 #include "core/fxcrt/fx_safe_types.h"
 #include "core/fxcrt/unowned_ptr_exclusion.h"
@@ -23,10 +27,6 @@
 #include "core/fxge/dib/cfx_dibitmap.h"
 #include "core/fxge/dib/cfx_imagerenderer.h"
 #include "core/fxge/dib/cfx_imagestretcher.h"
-#include "third_party/base/check.h"
-#include "third_party/base/check_op.h"
-#include "third_party/base/containers/span.h"
-#include "third_party/base/notreached.h"
 
 // Ignore fallthrough warnings in agg23 headers.
 #if defined(__clang__)

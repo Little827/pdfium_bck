@@ -11,9 +11,9 @@
 #include <set>
 #include <vector>
 
+#include "core/base/containers/span.h"
 #include "core/fxcrt/retain_ptr.h"
 #include "third_party/abseil-cpp/absl/types/optional.h"
-#include "third_party/base/containers/span.h"
 
 class CPDF_ExpIntFunc;
 class CPDF_Object;

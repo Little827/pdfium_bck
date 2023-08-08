@@ -9,9 +9,9 @@
 
 #include <memory>
 
+#include "core/base/containers/span.h"
 #include "core/fxcrt/fx_memory_wrappers.h"
 #include "core/fxge/dib/fx_dib.h"
-#include "third_party/base/containers/span.h"
 
 class CFX_ScanlineCompositor {
  public:

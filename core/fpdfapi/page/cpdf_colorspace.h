@@ -15,6 +15,7 @@
 #include <utility>
 #include <vector>
 
+#include "core/base/containers/span.h"
 #include "core/fpdfapi/page/cpdf_pattern.h"
 #include "core/fpdfapi/parser/cpdf_array.h"
 #include "core/fpdfapi/parser/cpdf_object.h"
@@ -22,7 +23,6 @@
 #include "core/fxcrt/observed_ptr.h"
 #include "core/fxcrt/retain_ptr.h"
 #include "core/fxcrt/unowned_ptr.h"
-#include "third_party/base/containers/span.h"
 
 class CPDF_Document;
 class CPDF_IndexedCS;

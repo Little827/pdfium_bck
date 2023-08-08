@@ -6,6 +6,7 @@
 
 #include "fxjs/cjs_event_context.h"
 
+#include "core/base/check.h"
 #include "core/fpdfdoc/cpdf_formfield.h"
 #include "core/fxcrt/autorestorer.h"
 #include "fpdfsdk/cpdfsdk_formfillenvironment.h"
@@ -13,7 +14,6 @@
 #include "fxjs/cjs_runtime.h"
 #include "fxjs/js_define.h"
 #include "fxjs/js_resources.h"
-#include "third_party/base/check.h"
 #include "v8/include/v8-context.h"
 #include "v8/include/v8-isolate.h"
 

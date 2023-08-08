@@ -9,6 +9,7 @@
 #include <memory>
 #include <vector>
 
+#include "core/base/containers/span.h"
 #include "core/fxcrt/data_vector.h"
 #include "core/fxcrt/fx_system.h"
 #include "core/fxge/agg/fx_agg_driver.h"
@@ -23,7 +24,6 @@
 #include "core/fxge/dib/cfx_dibitmap.h"
 #include "core/fxge/freetype/fx_freetype.h"
 #include "core/fxge/text_char_pos.h"
-#include "third_party/base/containers/span.h"
 
 namespace {
 

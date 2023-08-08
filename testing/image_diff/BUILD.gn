@@ -15,7 +15,7 @@ source_set("image_diff") {
     "../../:pdfium_noshorten_config",
   ]
   deps = [
-    "../../third_party:pdfium_base",
+    "../../core/base",
     "../../third_party:png",
     "../../third_party:zlib",
   ]

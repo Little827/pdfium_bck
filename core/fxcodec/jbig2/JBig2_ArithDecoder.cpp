@@ -8,8 +8,8 @@
 
 #include <iterator>
 
+#include "core/base/check_op.h"
 #include "core/fxcodec/jbig2/JBig2_BitStream.h"
-#include "third_party/base/check_op.h"
 
 namespace {
 

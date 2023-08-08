@@ -12,14 +12,14 @@
 #include <memory>
 #include <utility>
 
+#include "core/base/check.h"
+#include "core/base/compiler_specific.h"
+#include "core/base/notreached.h"
+#include "core/base/numerics/safe_conversions.h"
 #include "core/fxcrt/fx_system.h"
 #include "core/fxge/dib/cfx_dibitmap.h"
 #include "core/fxge/dib/cfx_imagestretcher.h"
 #include "core/fxge/dib/fx_dib.h"
-#include "third_party/base/check.h"
-#include "third_party/base/compiler_specific.h"
-#include "third_party/base/notreached.h"
-#include "third_party/base/numerics/safe_conversions.h"
 
 namespace {
 

@@ -4,6 +4,7 @@
 
 #include "core/fxge/win32/cfx_psrenderer.h"
 
+#include "core/base/containers/span.h"
 #include "core/fxcrt/bytestring.h"
 #include "core/fxcrt/data_vector.h"
 #include "core/fxcrt/fx_coordinates.h"
@@ -14,7 +15,6 @@
 #include "core/fxge/win32/cfx_psfonttracker.h"
 #include "testing/gtest/include/gtest/gtest.h"
 #include "third_party/abseil-cpp/absl/types/optional.h"
-#include "third_party/base/containers/span.h"
 
 namespace {
 

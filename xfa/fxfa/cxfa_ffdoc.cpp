@@ -10,6 +10,7 @@
 #include <memory>
 #include <utility>
 
+#include "core/base/check.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/parser/cpdf_document.h"
 #include "core/fpdfapi/parser/cpdf_stream.h"
@@ -23,7 +24,6 @@
 #include "core/fxcrt/xml/cfx_xmlparser.h"
 #include "core/fxge/dib/cfx_dibitmap.h"
 #include "fxjs/xfa/cjx_object.h"
-#include "third_party/base/check.h"
 #include "v8/include/cppgc/allocation.h"
 #include "v8/include/cppgc/heap.h"
 #include "xfa/fgas/font/cfgas_gefont.h"

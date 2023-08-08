@@ -6,11 +6,11 @@
 
 #include "core/fpdfapi/page/cpdf_pagemodule.h"
 
+#include "core/base/check.h"
 #include "core/fpdfapi/font/cpdf_fontglobals.h"
 #include "core/fpdfapi/page/cpdf_colorspace.h"
 #include "core/fpdfapi/page/cpdf_devicecs.h"
 #include "core/fpdfapi/page/cpdf_patterncs.h"
-#include "third_party/base/check.h"
 
 namespace {
 

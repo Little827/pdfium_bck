@@ -10,8 +10,8 @@
 #include <memory>
 #include <utility>
 
+#include "core/base/numerics/safe_conversions.h"
 #include "core/fxcrt/stl_util.h"
-#include "third_party/base/numerics/safe_conversions.h"
 #include "v8/include/cppgc/visitor.h"
 #include "xfa/fde/cfde_textout.h"
 #include "xfa/fgas/graphics/cfgas_gegraphics.h"

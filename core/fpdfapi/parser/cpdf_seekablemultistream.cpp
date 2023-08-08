@@ -9,12 +9,12 @@
 #include <algorithm>
 #include <utility>
 
+#include "core/base/notreached.h"
 #include "core/fpdfapi/parser/cpdf_stream.h"
 #include "core/fpdfapi/parser/cpdf_stream_acc.h"
 #include "core/fxcrt/fx_safe_types.h"
 #include "core/fxcrt/span_util.h"
 #include "core/fxcrt/stl_util.h"
-#include "third_party/base/notreached.h"
 
 CPDF_SeekableMultiStream::CPDF_SeekableMultiStream(
     std::vector<RetainPtr<const CPDF_Stream>> streams) {

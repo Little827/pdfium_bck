@@ -15,6 +15,8 @@
 
 #include "build/build_config.h"
 #include "constants/stream_dict_common.h"
+#include "core/base/check.h"
+#include "core/base/containers/contains.h"
 #include "core/fpdfapi/parser/cpdf_array.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/parser/fpdf_parser_utility.h"
@@ -25,8 +27,6 @@
 #include "core/fxcrt/fx_safe_types.h"
 #include "core/fxcrt/span_util.h"
 #include "core/fxcrt/utf16.h"
-#include "third_party/base/check.h"
-#include "third_party/base/containers/contains.h"
 
 namespace {
 

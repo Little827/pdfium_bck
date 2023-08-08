@@ -13,6 +13,8 @@
 #include <stack>
 #include <utility>
 
+#include "core/base/check.h"
+#include "core/base/notreached.h"
 #include "core/fxcrt/autorestorer.h"
 #include "core/fxcrt/cfx_seekablestreamproxy.h"
 #include "core/fxcrt/data_vector.h"
@@ -25,8 +27,6 @@
 #include "core/fxcrt/xml/cfx_xmlinstruction.h"
 #include "core/fxcrt/xml/cfx_xmlnode.h"
 #include "core/fxcrt/xml/cfx_xmltext.h"
-#include "third_party/base/check.h"
-#include "third_party/base/notreached.h"
 
 namespace {
 

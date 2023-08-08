@@ -6,9 +6,9 @@
 
 #include "core/fxcrt/cfx_read_only_span_stream.h"
 
+#include "core/base/numerics/safe_conversions.h"
 #include "core/fxcrt/fx_safe_types.h"
 #include "core/fxcrt/span_util.h"
-#include "third_party/base/numerics/safe_conversions.h"
 
 CFX_ReadOnlySpanStream::CFX_ReadOnlySpanStream(pdfium::span<const uint8_t> span)
     : span_(span) {}

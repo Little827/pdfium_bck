@@ -16,13 +16,13 @@
 #include <tuple>
 #include <utility>
 
+#include "core/base/check_op.h"
+#include "core/base/containers/span.h"
+#include "core/base/numerics/checked_math.h"
 #include "public/cpp/fpdf_scopers.h"
 #include "public/fpdf_dataavail.h"
 #include "public/fpdf_ext.h"
 #include "public/fpdf_text.h"
-#include "third_party/base/check_op.h"
-#include "third_party/base/containers/span.h"
-#include "third_party/base/numerics/checked_math.h"
 
 namespace {
 

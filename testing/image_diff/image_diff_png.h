@@ -9,7 +9,7 @@
 
 #include <vector>
 
-#include "third_party/base/containers/span.h"
+#include "core/base/containers/span.h"
 
 namespace image_diff_png {
 

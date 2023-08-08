@@ -8,9 +8,9 @@
 #include <set>
 #include <utility>
 
+#include "core/base/check.h"
 #include "core/fxcrt/fx_memory.h"
 #include "core/fxcrt/unowned_ptr.h"
-#include "third_party/base/check.h"
 
 namespace fxcrt {
 

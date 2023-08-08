@@ -8,7 +8,7 @@ import("../../testing/test.gni")
 
 source_set("unowned_ptr") {
   sources = [ "unowned_ptr.h" ]
-  deps = [ "../../third_party:pdfium_compiler_specific" ]
+  deps = [ "../base:compiler_specific" ]
   configs += [ "../../:pdfium_strict_config" ]
   if (pdf_use_partition_alloc) {
     public_deps = [
@@ -133,11 +133,11 @@ source_set("fxcrt") {
     "../../third_party:fx_tiff",
     "../../xfa/*",
   ]
-  deps = [ "../../third_party:pdfium_base" ]
+  deps = []
   public_deps = [
     ":unowned_ptr",
     "../../:freetype_common",
-    "../../third_party:pdfium_base",
+    "../base",
     "//third_party/icu:icuuc",
   ]
   if (pdf_use_partition_alloc) {

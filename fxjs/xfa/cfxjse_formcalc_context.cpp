@@ -17,6 +17,8 @@
 #include <utility>
 #include <vector>
 
+#include "core/base/check_op.h"
+#include "core/base/numerics/safe_conversions.h"
 #include "core/fxcrt/cfx_datetime.h"
 #include "core/fxcrt/code_point_view.h"
 #include "core/fxcrt/data_vector.h"
@@ -31,8 +33,6 @@
 #include "fxjs/xfa/cfxjse_value.h"
 #include "fxjs/xfa/cjx_object.h"
 #include "third_party/abseil-cpp/absl/types/optional.h"
-#include "third_party/base/check_op.h"
-#include "third_party/base/numerics/safe_conversions.h"
 #include "v8/include/v8-container.h"
 #include "v8/include/v8-function-callback.h"
 #include "v8/include/v8-object.h"

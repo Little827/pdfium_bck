@@ -7,14 +7,14 @@
 #include "core/fpdfapi/parser/cpdf_flateencoder.h"
 
 #include "constants/stream_dict_common.h"
+#include "core/base/check.h"
+#include "core/base/numerics/safe_conversions.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/parser/cpdf_name.h"
 #include "core/fpdfapi/parser/cpdf_number.h"
 #include "core/fpdfapi/parser/cpdf_stream.h"
 #include "core/fpdfapi/parser/cpdf_stream_acc.h"
 #include "core/fpdfapi/parser/fpdf_parser_decode.h"
-#include "third_party/base/check.h"
-#include "third_party/base/numerics/safe_conversions.h"
 
 CPDF_FlateEncoder::CPDF_FlateEncoder(RetainPtr<const CPDF_Stream> pStream,
                                      bool bFlateEncode)

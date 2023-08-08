@@ -11,9 +11,9 @@
 #include <algorithm>
 #include <iterator>
 
+#include "core/base/check_op.h"
+#include "core/base/numerics/safe_math.h"
 #include "core/fxcrt/fx_system.h"
-#include "third_party/base/check_op.h"
-#include "third_party/base/numerics/safe_math.h"
 
 namespace {
 

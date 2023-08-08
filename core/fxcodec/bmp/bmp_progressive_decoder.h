@@ -7,8 +7,8 @@
 #ifndef CORE_FXCODEC_BMP_BMP_PROGRESSIVE_DECODER_H_
 #define CORE_FXCODEC_BMP_BMP_PROGRESSIVE_DECODER_H_
 
+#include "core/base/no_destructor.h"
 #include "core/fxcodec/progressive_decoder_iface.h"
-#include "third_party/base/no_destructor.h"
 
 #ifndef PDF_ENABLE_XFA_BMP
 #error "BMP must be enabled"

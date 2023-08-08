@@ -11,8 +11,8 @@
 
 #include <memory>
 
+#include "core/base/no_destructor.h"
 #include "core/fxcodec/progressive_decoder_iface.h"
-#include "third_party/base/no_destructor.h"
 
 namespace fxcodec {
 

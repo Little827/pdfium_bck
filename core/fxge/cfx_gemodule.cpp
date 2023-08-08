@@ -6,10 +6,10 @@
 
 #include "core/fxge/cfx_gemodule.h"
 
+#include "core/base/check.h"
 #include "core/fxge/cfx_folderfontinfo.h"
 #include "core/fxge/cfx_fontcache.h"
 #include "core/fxge/cfx_fontmgr.h"
-#include "third_party/base/check.h"
 
 namespace {
 

@@ -8,12 +8,12 @@
 
 #include <utility>
 
+#include "core/base/check.h"
 #include "core/fxcodec/bmp/cfx_bmpcontext.h"
 #include "core/fxcodec/cfx_codec_memory.h"
 #include "core/fxcodec/fx_codec.h"
 #include "core/fxcodec/fx_codec_def.h"
 #include "core/fxge/dib/fx_dib.h"
-#include "third_party/base/check.h"
 
 namespace fxcodec {
 

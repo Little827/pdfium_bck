@@ -12,8 +12,8 @@
 #include <memory>
 #include <vector>
 
+#include "core/base/containers/span.h"
 #include "core/fxcrt/retain_ptr.h"
-#include "third_party/base/containers/span.h"
 
 class CPDF_ColorSpace;
 class CPDF_Pattern;

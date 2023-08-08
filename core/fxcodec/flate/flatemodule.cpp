@@ -15,6 +15,10 @@
 #include <utility>
 #include <vector>
 
+#include "core/base/check.h"
+#include "core/base/containers/span.h"
+#include "core/base/notreached.h"
+#include "core/base/numerics/safe_conversions.h"
 #include "core/fxcodec/scanlinedecoder.h"
 #include "core/fxcrt/data_vector.h"
 #include "core/fxcrt/fixed_zeroed_data_vector.h"
@@ -23,10 +27,6 @@
 #include "core/fxcrt/fx_safe_types.h"
 #include "core/fxcrt/span_util.h"
 #include "core/fxge/calculate_pitch.h"
-#include "third_party/base/check.h"
-#include "third_party/base/containers/span.h"
-#include "third_party/base/notreached.h"
-#include "third_party/base/numerics/safe_conversions.h"
 
 #if defined(USE_SYSTEM_ZLIB)
 #include <zlib.h>

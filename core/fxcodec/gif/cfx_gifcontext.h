@@ -10,12 +10,12 @@
 #include <memory>
 #include <vector>
 
+#include "core/base/containers/span.h"
 #include "core/fxcodec/gif/cfx_gif.h"
 #include "core/fxcodec/gif/gif_decoder.h"
 #include "core/fxcodec/gif/lzw_decompressor.h"
 #include "core/fxcrt/retain_ptr.h"
 #include "core/fxcrt/unowned_ptr.h"
-#include "third_party/base/containers/span.h"
 
 class CFX_CodecMemory;
 

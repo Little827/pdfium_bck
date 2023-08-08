@@ -476,8 +476,8 @@ include_rules = [
   # Note: public is not here because core cannot depend on public.
   '+build/build_config.h',
   '+constants',
+  '+core/base',
   '+testing',
-  '+third_party/base',
 
   # Abseil features must be allowlisted explicitly for now. See Chromium's
   # //styleguide/c++/c++11.html. Allowed features' headers will be listed

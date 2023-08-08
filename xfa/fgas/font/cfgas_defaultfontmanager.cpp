@@ -6,9 +6,9 @@
 
 #include "xfa/fgas/font/cfgas_defaultfontmanager.h"
 
+#include "core/base/numerics/safe_conversions.h"
 #include "core/fxcrt/fx_codepage.h"
 #include "core/fxge/fx_font.h"
-#include "third_party/base/numerics/safe_conversions.h"
 #include "xfa/fgas/font/cfgas_fontmgr.h"
 #include "xfa/fgas/font/cfgas_gefont.h"
 #include "xfa/fgas/font/cfgas_gemodule.h"

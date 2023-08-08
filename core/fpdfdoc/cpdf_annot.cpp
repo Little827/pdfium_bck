@@ -11,6 +11,7 @@
 
 #include "constants/annotation_common.h"
 #include "constants/annotation_flags.h"
+#include "core/base/check.h"
 #include "core/fpdfapi/page/cpdf_form.h"
 #include "core/fpdfapi/page/cpdf_page.h"
 #include "core/fpdfapi/page/cpdf_pageimagecache.h"
@@ -27,7 +28,6 @@
 #include "core/fxge/cfx_graphstatedata.h"
 #include "core/fxge/cfx_path.h"
 #include "core/fxge/cfx_renderdevice.h"
-#include "third_party/base/check.h"
 
 namespace {
 

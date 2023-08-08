@@ -13,6 +13,9 @@
 #include <utility>
 
 #include "build/build_config.h"
+#include "core/base/check.h"
+#include "core/base/check_op.h"
+#include "core/base/containers/span.h"
 #include "core/fxcrt/fx_safe_types.h"
 #include "core/fxge/cfx_color.h"
 #include "core/fxge/cfx_defaultrenderdevice.h"
@@ -31,9 +34,6 @@
 #include "core/fxge/renderdevicedriver_iface.h"
 #include "core/fxge/text_char_pos.h"
 #include "core/fxge/text_glyph_pos.h"
-#include "third_party/base/check.h"
-#include "third_party/base/check_op.h"
-#include "third_party/base/containers/span.h"
 
 #if defined(_SKIA_SUPPORT_)
 #include "third_party/skia/include/core/SkTypes.h"  // nogncheck

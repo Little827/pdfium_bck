@@ -10,6 +10,8 @@
 #include <utility>
 #include <vector>
 
+#include "core/base/check.h"
+#include "core/base/containers/contains.h"
 #include "core/fxcrt/fx_extension.h"
 #include "fxjs/cfx_globaldata.h"
 #include "fxjs/cfx_keyvalue.h"
@@ -18,8 +20,6 @@
 #include "fxjs/fxv8.h"
 #include "fxjs/js_define.h"
 #include "fxjs/js_resources.h"
-#include "third_party/base/check.h"
-#include "third_party/base/containers/contains.h"
 #include "v8/include/v8-isolate.h"
 
 namespace {

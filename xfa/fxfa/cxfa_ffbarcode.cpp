@@ -8,8 +8,8 @@
 
 #include <utility>
 
+#include "core/base/check.h"
 #include "core/fxcrt/fx_extension.h"
-#include "third_party/base/check.h"
 #include "xfa/fwl/cfwl_app.h"
 #include "xfa/fwl/cfwl_barcode.h"
 #include "xfa/fwl/cfwl_notedriver.h"

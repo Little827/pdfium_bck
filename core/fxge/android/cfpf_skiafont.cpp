@@ -8,13 +8,13 @@
 
 #include <algorithm>
 
+#include "core/base/numerics/safe_conversions.h"
 #include "core/fxcrt/fx_codepage.h"
 #include "core/fxcrt/fx_coordinates.h"
 #include "core/fxcrt/fx_system.h"
 #include "core/fxge/android/cfpf_skiafontmgr.h"
 #include "core/fxge/android/cfpf_skiapathfont.h"
 #include "core/fxge/freetype/fx_freetype.h"
-#include "third_party/base/numerics/safe_conversions.h"
 
 #define FPF_EM_ADJUST(em, a) (em == 0 ? (a) : (a)*1000 / em)
 

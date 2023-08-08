@@ -10,6 +10,8 @@
 #include <utility>
 #include <vector>
 
+#include "core/base/check.h"
+#include "core/base/containers/contains.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/parser/cpdf_document.h"
 #include "core/fpdfapi/render/cpdf_renderoptions.h"
@@ -23,8 +25,6 @@
 #include "fpdfsdk/cpdfsdk_formfillenvironment.h"
 #include "fpdfsdk/cpdfsdk_helpers.h"
 #include "fpdfsdk/cpdfsdk_interactiveform.h"
-#include "third_party/base/check.h"
-#include "third_party/base/containers/contains.h"
 
 #ifdef PDF_ENABLE_XFA
 #include "fpdfsdk/fpdfxfa/cpdfxfa_page.h"

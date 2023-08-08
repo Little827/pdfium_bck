@@ -9,6 +9,9 @@
 #include <algorithm>
 #include <utility>
 
+#include "core/base/check.h"
+#include "core/base/containers/adapters.h"
+#include "core/base/notreached.h"
 #include "core/fxcrt/css/cfx_csscolorvalue.h"
 #include "core/fxcrt/css/cfx_csscomputedstyle.h"
 #include "core/fxcrt/css/cfx_csscustomproperty.h"
@@ -19,9 +22,6 @@
 #include "core/fxcrt/css/cfx_cssstylesheet.h"
 #include "core/fxcrt/css/cfx_csssyntaxparser.h"
 #include "core/fxcrt/css/cfx_cssvaluelist.h"
-#include "third_party/base/check.h"
-#include "third_party/base/containers/adapters.h"
-#include "third_party/base/notreached.h"
 
 CFX_CSSStyleSelector::CFX_CSSStyleSelector() = default;
 

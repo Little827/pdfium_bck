@@ -15,6 +15,7 @@
 #include <utility>
 #include <vector>
 
+#include "core/base/containers/span.h"
 #include "core/fpdfapi/page/cpdf_occontext.h"
 #include "core/fpdfapi/parser/cpdf_document.h"
 #include "core/fpdfdoc/cpdf_aaction.h"
@@ -28,7 +29,6 @@
 #include "fpdfsdk/pwl/cpwl_wnd.h"
 #include "fpdfsdk/pwl/ipwl_fillernotify.h"
 #include "public/fpdf_formfill.h"
-#include "third_party/base/containers/span.h"
 
 class CPDF_Action;
 class CPDF_FormField;

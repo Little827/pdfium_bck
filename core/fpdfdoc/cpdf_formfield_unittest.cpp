@@ -8,6 +8,7 @@
 
 #include "constants/form_fields.h"
 #include "constants/form_flags.h"
+#include "core/base/containers/contains.h"
 #include "core/fpdfapi/page/cpdf_pagemodule.h"
 #include "core/fpdfapi/parser/cpdf_array.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
@@ -21,7 +22,6 @@
 #include "core/fpdfdoc/cpdf_interactiveform.h"
 #include "core/fxcrt/fx_memory.h"
 #include "testing/gtest/include/gtest/gtest.h"
-#include "third_party/base/containers/contains.h"
 
 namespace {
 

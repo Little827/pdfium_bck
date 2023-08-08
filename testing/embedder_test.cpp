@@ -10,6 +10,12 @@
 #include <utility>
 #include <vector>
 
+#include "core/base/check.h"
+#include "core/base/check_op.h"
+#include "core/base/containers/contains.h"
+#include "core/base/notreached.h"
+#include "core/base/numerics/checked_math.h"
+#include "core/base/numerics/safe_conversions.h"
 #include "core/fdrm/fx_crypt.h"
 #include "public/cpp/fpdf_scopers.h"
 #include "public/fpdf_dataavail.h"
@@ -23,12 +29,6 @@
 #include "testing/utils/file_util.h"
 #include "testing/utils/hash.h"
 #include "testing/utils/path_service.h"
-#include "third_party/base/check.h"
-#include "third_party/base/check_op.h"
-#include "third_party/base/containers/contains.h"
-#include "third_party/base/notreached.h"
-#include "third_party/base/numerics/checked_math.h"
-#include "third_party/base/numerics/safe_conversions.h"
 
 namespace {
 

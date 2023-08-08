@@ -8,6 +8,8 @@
 
 #include <utility>
 
+#include "core/base/check.h"
+#include "core/base/containers/contains.h"
 #include "core/fpdfapi/parser/cpdf_array.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/parser/cpdf_linearized_header.h"
@@ -24,8 +26,6 @@
 #include "core/fxcrt/scoped_set_insertion.h"
 #include "core/fxcrt/stl_util.h"
 #include "third_party/abseil-cpp/absl/types/optional.h"
-#include "third_party/base/check.h"
-#include "third_party/base/containers/contains.h"
 
 namespace {
 

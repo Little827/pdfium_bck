@@ -10,12 +10,12 @@
 #include <sstream>
 #include <utility>
 
+#include "core/base/containers/span.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/parser/cpdf_syntax_parser.h"
 #include "core/fpdfapi/parser/fpdf_parser_utility.h"
 #include "core/fxcrt/cfx_read_only_span_stream.h"
 #include "core/fxcrt/fx_string_wrappers.h"
-#include "third_party/base/containers/span.h"
 
 CFDF_Document::CFDF_Document() = default;
 

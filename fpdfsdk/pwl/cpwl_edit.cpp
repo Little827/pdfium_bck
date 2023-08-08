@@ -12,6 +12,7 @@
 #include <utility>
 
 #include "constants/ascii.h"
+#include "core/base/check.h"
 #include "core/fpdfapi/font/cpdf_font.h"
 #include "core/fpdfdoc/cpvt_word.h"
 #include "core/fpdfdoc/ipvt_fontmap.h"
@@ -27,7 +28,6 @@
 #include "fpdfsdk/pwl/cpwl_wnd.h"
 #include "fpdfsdk/pwl/ipwl_fillernotify.h"
 #include "public/fpdf_fwlevent.h"
-#include "third_party/base/check.h"
 
 CPWL_Edit::CPWL_Edit(
     const CreateParams& cp,

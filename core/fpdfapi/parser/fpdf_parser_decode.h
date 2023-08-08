@@ -13,12 +13,12 @@
 #include <utility>
 #include <vector>
 
+#include "core/base/containers/span.h"
 #include "core/fxcrt/data_vector.h"
 #include "core/fxcrt/fx_memory_wrappers.h"
 #include "core/fxcrt/fx_string.h"
 #include "core/fxcrt/retain_ptr.h"
 #include "third_party/abseil-cpp/absl/types/optional.h"
-#include "third_party/base/containers/span.h"
 
 class CPDF_Array;
 class CPDF_Dictionary;

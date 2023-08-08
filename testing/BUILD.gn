@@ -178,9 +178,9 @@ source_set("embedder_test_support") {
   ]
   deps = [
     "../:pdfium_public_headers",
+    "../core/base",
     "../core/fdrm",
     "../core/fxge",
-    "../third_party:pdfium_base",
     "//testing/gmock",
     "//testing/gtest",
   ]

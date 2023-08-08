@@ -9,6 +9,9 @@
 #include <limits>
 #include <memory>
 
+#include "core/base/check.h"
+#include "core/base/notreached.h"
+#include "core/base/numerics/safe_conversions.h"
 #include "core/fxcodec/cfx_codec_memory.h"
 #include "core/fxcodec/fx_codec.h"
 #include "core/fxcodec/fx_codec_def.h"
@@ -18,9 +21,6 @@
 #include "core/fxcrt/retain_ptr.h"
 #include "core/fxge/dib/cfx_dibitmap.h"
 #include "core/fxge/dib/fx_dib.h"
-#include "third_party/base/check.h"
-#include "third_party/base/notreached.h"
-#include "third_party/base/numerics/safe_conversions.h"
 
 extern "C" {
 #include "third_party/libtiff/tiffiop.h"

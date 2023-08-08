@@ -6,10 +6,10 @@
 
 #include "core/fxcrt/css/cfx_cssvaluelistparser.h"
 
+#include "core/base/check.h"
+#include "core/base/check_op.h"
 #include "core/fxcrt/fx_extension.h"
 #include "core/fxcrt/fx_system.h"
-#include "third_party/base/check.h"
-#include "third_party/base/check_op.h"
 
 CFX_CSSValueListParser::CFX_CSSValueListParser(const wchar_t* psz,
                                                size_t nLen,

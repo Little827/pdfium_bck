@@ -6,9 +6,9 @@
 #define CORE_FXCRT_CODE_POINT_VIEW_H_
 
 #include "build/build_config.h"
+#include "core/base/check_op.h"
 #include "core/fxcrt/string_view_template.h"
 #include "core/fxcrt/utf16.h"
-#include "third_party/base/check_op.h"
 
 namespace pdfium {
 

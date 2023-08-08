@@ -8,8 +8,8 @@
 
 #include <utility>
 
+#include "core/base/check.h"
 #include "core/fpdfapi/page/cpdf_patterncs.h"
-#include "third_party/base/check.h"
 
 CPDF_Color::CPDF_Color() = default;
 

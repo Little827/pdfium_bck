@@ -9,11 +9,11 @@
 #include <iterator>
 #include <limits>
 
+#include "core/base/check.h"
 #include "core/fxcodec/jbig2/JBig2_BitStream.h"
 #include "core/fxcodec/jbig2/JBig2_Context.h"
 #include "core/fxcrt/fx_safe_types.h"
 #include "core/fxcrt/unowned_ptr_exclusion.h"
-#include "third_party/base/check.h"
 
 namespace {
 

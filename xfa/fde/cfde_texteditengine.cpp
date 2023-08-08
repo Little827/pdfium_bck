@@ -9,12 +9,12 @@
 #include <algorithm>
 #include <utility>
 
+#include "core/base/check.h"
+#include "core/base/check_op.h"
+#include "core/base/numerics/safe_conversions.h"
 #include "core/fxcrt/fx_extension.h"
 #include "core/fxcrt/span_util.h"
 #include "core/fxge/text_char_pos.h"
-#include "third_party/base/check.h"
-#include "third_party/base/check_op.h"
-#include "third_party/base/numerics/safe_conversions.h"
 #include "xfa/fde/cfde_textout.h"
 #include "xfa/fde/cfde_wordbreak_data.h"
 #include "xfa/fgas/font/cfgas_gefont.h"

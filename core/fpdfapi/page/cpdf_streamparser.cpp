@@ -13,6 +13,7 @@
 #include <utility>
 
 #include "constants/stream_dict_common.h"
+#include "core/base/check.h"
 #include "core/fpdfapi/page/cpdf_docpagedata.h"
 #include "core/fpdfapi/parser/cpdf_array.h"
 #include "core/fpdfapi/parser/cpdf_boolean.h"
@@ -32,7 +33,6 @@
 #include "core/fxcrt/fx_safe_types.h"
 #include "core/fxcrt/span_util.h"
 #include "core/fxge/calculate_pitch.h"
-#include "third_party/base/check.h"
 
 namespace {
 

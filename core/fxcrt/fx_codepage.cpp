@@ -11,7 +11,7 @@
 #include <utility>
 
 #include "build/build_config.h"
-#include "third_party/base/numerics/safe_math.h"
+#include "core/base/numerics/safe_math.h"
 
 #if BUILDFLAG(IS_WIN)
 #include <windows.h>

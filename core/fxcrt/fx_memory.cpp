@@ -12,7 +12,7 @@
 #include <limits>
 
 #include "build/build_config.h"
-#include "third_party/base/debug/alias.h"
+#include "core/base/debug/alias.h"
 
 #if BUILDFLAG(IS_WIN)
 #include <windows.h>

@@ -7,6 +7,8 @@
 #include <set>
 #include <vector>
 
+#include "core/base/check_op.h"
+#include "core/base/containers/span.h"
 #include "core/fpdfapi/page/cpdf_colorspace.h"
 #include "core/fpdfapi/page/cpdf_docpagedata.h"
 #include "core/fpdfapi/parser/cpdf_array.h"
@@ -19,8 +21,6 @@
 #include "core/fxcrt/fx_2d_size.h"
 #include "core/fxcrt/fx_safe_types.h"
 #include "core/fxcrt/retain_ptr.h"
-#include "third_party/base/check_op.h"
-#include "third_party/base/containers/span.h"
 
 CPDF_IndexedCS::CPDF_IndexedCS() : CPDF_BasedCS(Family::kIndexed) {}
 

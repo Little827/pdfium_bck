@@ -10,12 +10,12 @@
 #include <utility>
 
 #include "build/build_config.h"
+#include "core/base/check.h"
 #include "core/fpdfapi/font/cpdf_font.h"
 #include "core/fxge/cfx_font.h"
 #include "core/fxge/cfx_substfont.h"
 #include "core/fxge/cfx_unicodeencodingex.h"
 #include "core/fxge/fx_font.h"
-#include "third_party/base/check.h"
 #include "xfa/fgas/font/cfgas_fontmgr.h"
 #include "xfa/fgas/font/cfgas_gemodule.h"
 #include "xfa/fgas/font/fgas_fontutils.h"

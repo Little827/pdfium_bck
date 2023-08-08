@@ -6,10 +6,10 @@
 
 #include <cstring>
 
+#include "core/base/numerics/safe_conversions.h"
 #include "public/fpdfview.h"
 #include "testing/utils/file_util.h"
 #include "testing/utils/path_service.h"
-#include "third_party/base/numerics/safe_conversions.h"
 #include "v8/include/libplatform/libplatform.h"
 #include "v8/include/v8-initialization.h"
 #include "v8/include/v8-snapshot.h"

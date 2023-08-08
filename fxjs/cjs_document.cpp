@@ -11,6 +11,7 @@
 #include <utility>
 
 #include "constants/access_permissions.h"
+#include "core/base/check.h"
 #include "core/fpdfapi/page/cpdf_pageimagecache.h"
 #include "core/fpdfapi/page/cpdf_pageobject.h"
 #include "core/fpdfapi/page/cpdf_textobject.h"
@@ -31,7 +32,6 @@
 #include "fxjs/cjs_field.h"
 #include "fxjs/cjs_icon.h"
 #include "fxjs/js_resources.h"
-#include "third_party/base/check.h"
 #include "v8/include/v8-container.h"
 
 const JSPropertySpec CJS_Document::PropertySpecs[] = {

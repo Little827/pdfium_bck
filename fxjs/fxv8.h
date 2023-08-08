@@ -11,8 +11,8 @@
 
 #include <vector>
 
+#include "core/base/containers/span.h"
 #include "core/fxcrt/fx_string.h"
-#include "third_party/base/containers/span.h"
 #include "v8/include/v8-forward.h"
 
 // The fxv8 functions soften up the interface to the V8 API. In particular,

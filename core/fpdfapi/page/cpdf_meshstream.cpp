@@ -8,6 +8,8 @@
 
 #include <utility>
 
+#include "core/base/check.h"
+#include "core/base/containers/span.h"
 #include "core/fpdfapi/page/cpdf_colorspace.h"
 #include "core/fpdfapi/page/cpdf_function.h"
 #include "core/fpdfapi/parser/cpdf_array.h"
@@ -15,8 +17,6 @@
 #include "core/fpdfapi/parser/cpdf_stream.h"
 #include "core/fpdfapi/parser/cpdf_stream_acc.h"
 #include "core/fxcrt/cfx_bitstream.h"
-#include "third_party/base/check.h"
-#include "third_party/base/containers/span.h"
 
 namespace {
 

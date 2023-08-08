@@ -22,11 +22,11 @@
 
 #include <utility>
 
+#include "core/base/numerics/safe_conversions.h"
 #include "fxbarcode/common/BC_CommonByteMatrix.h"
 #include "fxbarcode/qrcode/BC_QRCoder.h"
 #include "fxbarcode/qrcode/BC_QRCoderErrorCorrectionLevel.h"
 #include "fxbarcode/qrcode/BC_QRCoderMode.h"
-#include "third_party/base/numerics/safe_conversions.h"
 
 CBC_QRCoder::CBC_QRCoder() = default;
 

@@ -10,6 +10,7 @@
 
 #include <memory>
 
+#include "core/base/numerics/safe_conversions.h"
 #include "core/fxcrt/fx_codepage.h"
 #include "core/fxcrt/stl_util.h"
 #include "core/fxcrt/unowned_ptr.h"
@@ -19,7 +20,6 @@
 #include "core/fxge/cfx_gemodule.h"
 #include "core/fxge/fx_font.h"
 #include "core/fxge/systemfontinfo_iface.h"
-#include "third_party/base/numerics/safe_conversions.h"
 
 #ifdef PDF_ENABLE_XFA
 #include "xfa/fgas/font/cfgas_fontmgr.h"

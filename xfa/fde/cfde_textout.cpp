@@ -10,6 +10,9 @@
 #include <utility>
 
 #include "build/build_config.h"
+#include "core/base/check.h"
+#include "core/base/check_op.h"
+#include "core/base/numerics/safe_conversions.h"
 #include "core/fxcrt/fx_coordinates.h"
 #include "core/fxcrt/fx_extension.h"
 #include "core/fxcrt/fx_system.h"
@@ -21,9 +24,6 @@
 #include "core/fxge/cfx_textrenderoptions.h"
 #include "core/fxge/fx_font.h"
 #include "core/fxge/text_char_pos.h"
-#include "third_party/base/check.h"
-#include "third_party/base/check_op.h"
-#include "third_party/base/numerics/safe_conversions.h"
 #include "xfa/fgas/font/cfgas_gefont.h"
 #include "xfa/fgas/layout/cfgas_txtbreak.h"
 

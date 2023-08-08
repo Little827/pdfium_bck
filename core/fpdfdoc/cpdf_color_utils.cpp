@@ -6,10 +6,10 @@
 
 #include "core/fpdfdoc/cpdf_color_utils.h"
 
+#include "core/base/notreached.h"
 #include "core/fpdfapi/parser/cpdf_array.h"
 #include "core/fpdfdoc/cpdf_defaultappearance.h"
 #include "core/fxcrt/bytestring.h"
-#include "third_party/base/notreached.h"
 
 namespace fpdfdoc {
 

@@ -9,9 +9,9 @@
 
 #include <memory>
 
+#include "core/base/containers/span.h"
 #include "core/fxcodec/fx_codec_def.h"
 #include "core/fxcrt/unowned_ptr_exclusion.h"
-#include "third_party/base/containers/span.h"
 
 class CJBig2_Context;
 class JBig2_DocumentContext;

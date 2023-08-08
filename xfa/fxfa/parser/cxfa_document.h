@@ -14,11 +14,11 @@
 #include <memory>
 #include <vector>
 
+#include "core/base/containers/span.h"
 #include "core/fxcrt/unowned_ptr.h"
 #include "core/fxcrt/widestring.h"
 #include "fxjs/gc/heap.h"
 #include "third_party/abseil-cpp/absl/types/optional.h"
-#include "third_party/base/containers/span.h"
 #include "v8/include/cppgc/garbage-collected.h"
 #include "v8/include/cppgc/member.h"
 #include "v8/include/cppgc/persistent.h"

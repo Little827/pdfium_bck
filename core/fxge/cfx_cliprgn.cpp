@@ -10,10 +10,10 @@
 
 #include <utility>
 
+#include "core/base/check_op.h"
+#include "core/base/notreached.h"
 #include "core/fxcrt/span_util.h"
 #include "core/fxge/dib/cfx_dibitmap.h"
-#include "third_party/base/check_op.h"
-#include "third_party/base/notreached.h"
 
 CFX_ClipRgn::CFX_ClipRgn(int width, int height) : m_Box(0, 0, width, height) {}
 

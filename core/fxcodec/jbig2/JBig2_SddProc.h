@@ -12,10 +12,10 @@
 #include <memory>
 #include <vector>
 
+#include "core/base/containers/span.h"
 #include "core/fxcodec/jbig2/JBig2_ArithDecoder.h"
 #include "core/fxcrt/unowned_ptr.h"
 #include "core/fxcrt/unowned_ptr_exclusion.h"
-#include "third_party/base/containers/span.h"
 
 class CJBig2_BitStream;
 class CJBig2_HuffmanTable;

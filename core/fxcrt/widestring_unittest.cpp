@@ -9,10 +9,10 @@
 #include <vector>
 
 #include "build/build_config.h"
+#include "core/base/containers/contains.h"
+#include "core/base/containers/span.h"
 #include "core/fxcrt/fx_string.h"
 #include "testing/gtest/include/gtest/gtest.h"
-#include "third_party/base/containers/contains.h"
-#include "third_party/base/containers/span.h"
 
 namespace fxcrt {
 

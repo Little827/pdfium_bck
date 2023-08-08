@@ -14,6 +14,7 @@
 #include <utility>
 
 #include "build/build_config.h"
+#include "core/base/numerics/safe_math.h"
 #include "core/fxcrt/fx_codepage.h"
 #include "core/fxge/cfx_defaultrenderdevice.h"
 #include "core/fxge/cfx_font.h"
@@ -25,7 +26,6 @@
 #include "core/fxge/dib/cfx_dibitmap.h"
 #include "core/fxge/freetype/fx_freetype.h"
 #include "core/fxge/scoped_font_transform.h"
-#include "third_party/base/numerics/safe_math.h"
 
 #if defined(_SKIA_SUPPORT_)
 #include "third_party/skia/include/core/SkStream.h"  // nogncheck

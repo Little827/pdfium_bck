@@ -16,6 +16,11 @@
 #include <utility>
 #include <vector>
 
+#include "core/base/check.h"
+#include "core/base/check_op.h"
+#include "core/base/containers/contains.h"
+#include "core/base/containers/span.h"
+#include "core/base/notreached.h"
 #include "core/fxcrt/autorestorer.h"
 #include "core/fxcrt/cfx_read_only_string_stream.h"
 #include "core/fxcrt/cfx_read_only_vector_stream.h"
@@ -33,11 +38,6 @@
 #include "fxjs/xfa/cfxjse_engine.h"
 #include "fxjs/xfa/cfxjse_value.h"
 #include "fxjs/xfa/cjx_node.h"
-#include "third_party/base/check.h"
-#include "third_party/base/check_op.h"
-#include "third_party/base/containers/contains.h"
-#include "third_party/base/containers/span.h"
-#include "third_party/base/notreached.h"
 #include "xfa/fde/cfde_textout.h"
 #include "xfa/fgas/crt/cfgas_decimal.h"
 #include "xfa/fgas/crt/locale_iface.h"

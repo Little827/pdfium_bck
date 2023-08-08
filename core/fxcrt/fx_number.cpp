@@ -10,10 +10,10 @@
 
 #include <limits>
 
+#include "core/base/numerics/safe_conversions.h"
 #include "core/fxcrt/fx_extension.h"
 #include "core/fxcrt/fx_safe_types.h"
 #include "core/fxcrt/fx_string.h"
-#include "third_party/base/numerics/safe_conversions.h"
 
 FX_Number::FX_Number()
     : m_bIsInteger(true), m_bIsSigned(false), m_UnsignedValue(0) {}

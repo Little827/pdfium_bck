@@ -46,9 +46,9 @@
 // All other code is very different from the original.
 //
 //----------------------------------------------------------------------------
-#include <limits.h>
 #include "agg_rasterizer_scanline_aa.h"
-#include "third_party/base/numerics/safe_math.h"
+#include <limits.h>
+#include "core/base/numerics/safe_math.h"
 namespace pdfium
 {
 namespace agg

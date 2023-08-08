@@ -13,6 +13,8 @@
 
 #include "build/build_config.h"
 #include "constants/font_encodings.h"
+#include "core/base/check.h"
+#include "core/base/numerics/safe_conversions.h"
 #include "core/fpdfapi/font/cpdf_cidfont.h"
 #include "core/fpdfapi/font/cpdf_fontencoding.h"
 #include "core/fpdfapi/font/cpdf_fontglobals.h"
@@ -33,8 +35,6 @@
 #include "core/fxge/cfx_substfont.h"
 #include "core/fxge/freetype/fx_freetype.h"
 #include "core/fxge/fx_font.h"
-#include "third_party/base/check.h"
-#include "third_party/base/numerics/safe_conversions.h"
 
 namespace {
 

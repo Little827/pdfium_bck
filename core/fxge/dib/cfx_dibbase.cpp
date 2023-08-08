@@ -13,6 +13,10 @@
 #include <utility>
 #include <vector>
 
+#include "core/base/check.h"
+#include "core/base/check_op.h"
+#include "core/base/containers/span.h"
+#include "core/base/notreached.h"
 #include "core/fxcrt/data_vector.h"
 #include "core/fxcrt/fx_2d_size.h"
 #include "core/fxcrt/fx_coordinates.h"
@@ -24,10 +28,6 @@
 #include "core/fxge/dib/cfx_dibitmap.h"
 #include "core/fxge/dib/cfx_imagestretcher.h"
 #include "core/fxge/dib/cfx_imagetransformer.h"
-#include "third_party/base/check.h"
-#include "third_party/base/check_op.h"
-#include "third_party/base/containers/span.h"
-#include "third_party/base/notreached.h"
 
 namespace {
 

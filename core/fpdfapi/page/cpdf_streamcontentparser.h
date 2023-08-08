@@ -12,6 +12,7 @@
 #include <stack>
 #include <vector>
 
+#include "core/base/containers/span.h"
 #include "core/fpdfapi/page/cpdf_contentmarks.h"
 #include "core/fpdfapi/page/cpdf_form.h"
 #include "core/fxcrt/bytestring.h"
@@ -21,7 +22,6 @@
 #include "core/fxcrt/unowned_ptr.h"
 #include "core/fxge/cfx_fillrenderoptions.h"
 #include "core/fxge/cfx_path.h"
-#include "third_party/base/containers/span.h"
 
 class CPDF_AllStates;
 class CPDF_ColorSpace;

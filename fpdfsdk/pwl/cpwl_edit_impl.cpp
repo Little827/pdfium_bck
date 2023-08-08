@@ -10,6 +10,8 @@
 #include <memory>
 #include <utility>
 
+#include "core/base/check.h"
+#include "core/base/check_op.h"
 #include "core/fpdfapi/font/cpdf_font.h"
 #include "core/fpdfapi/render/cpdf_renderoptions.h"
 #include "core/fpdfapi/render/cpdf_textrenderer.h"
@@ -24,8 +26,6 @@
 #include "fpdfsdk/pwl/cpwl_edit.h"
 #include "fpdfsdk/pwl/cpwl_scroll_bar.h"
 #include "fpdfsdk/pwl/ipwl_fillernotify.h"
-#include "third_party/base/check.h"
-#include "third_party/base/check_op.h"
 
 namespace {
 

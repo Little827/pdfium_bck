@@ -7,8 +7,8 @@
 #include <stdio.h>
 #include <string.h>
 
+#include "core/base/numerics/safe_conversions.h"
 #include "testing/utils/path_service.h"
-#include "third_party/base/numerics/safe_conversions.h"
 
 std::unique_ptr<char, pdfium::FreeDeleter> GetFileContents(const char* filename,
                                                            size_t* retlen) {

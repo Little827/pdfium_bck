@@ -8,9 +8,9 @@
 
 #include <utility>
 
+#include "core/base/numerics/safe_conversions.h"
 #include "core/fdrm/fx_crypt.h"
 #include "core/fxcrt/stl_util.h"
-#include "third_party/base/numerics/safe_conversions.h"
 
 namespace {
 

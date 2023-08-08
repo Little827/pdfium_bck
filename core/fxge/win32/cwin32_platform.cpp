@@ -10,14 +10,14 @@
 #include <memory>
 #include <utility>
 
+#include "core/base/check.h"
+#include "core/base/containers/span.h"
+#include "core/base/numerics/safe_conversions.h"
+#include "core/base/win/scoped_select_object.h"
+#include "core/base/win/win_util.h"
 #include "core/fxcrt/fx_codepage.h"
 #include "core/fxge/cfx_folderfontinfo.h"
 #include "core/fxge/cfx_gemodule.h"
-#include "third_party/base/check.h"
-#include "third_party/base/containers/span.h"
-#include "third_party/base/numerics/safe_conversions.h"
-#include "third_party/base/win/scoped_select_object.h"
-#include "third_party/base/win/win_util.h"
 
 namespace {
 

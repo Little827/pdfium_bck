@@ -16,8 +16,8 @@
 
 #include <string>
 
-#include "third_party/base/check_op.h"
-#include "third_party/base/notreached.h"
+#include "core/base/check_op.h"
+#include "core/base/notreached.h"
 
 #ifdef USE_SYSTEM_ZLIB
 #include <zlib.h>

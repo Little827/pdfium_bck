@@ -9,10 +9,10 @@
 #include <algorithm>
 #include <vector>
 
+#include "core/base/notreached.h"
+#include "core/base/numerics/safe_conversions.h"
 #include "fxjs/fxv8.h"
 #include "fxjs/xfa/cfxjse_engine.h"
-#include "third_party/base/notreached.h"
-#include "third_party/base/numerics/safe_conversions.h"
 #include "v8/include/v8-primitive.h"
 #include "xfa/fxfa/cxfa_eventparam.h"
 #include "xfa/fxfa/cxfa_ffnotify.h"

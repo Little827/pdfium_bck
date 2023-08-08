@@ -21,6 +21,7 @@
 #define _SKIA_SUPPORT_
 #endif
 
+#include "core/base/check_op.h"
 #include "public/cpp/fpdf_scopers.h"
 #include "public/fpdf_annot.h"
 #include "public/fpdf_attachment.h"
@@ -44,7 +45,6 @@
 #include "testing/utils/hash.h"
 #include "testing/utils/path_service.h"
 #include "third_party/abseil-cpp/absl/types/optional.h"
-#include "third_party/base/check_op.h"
 
 #ifdef _WIN32
 #include <crtdbg.h>
@@ -52,8 +52,8 @@
 #include <io.h>
 #include <wingdi.h>
 
+#include "core/base/win/scoped_select_object.h"
 #include "samples/helpers/win32/com_factory.h"
-#include "third_party/base/win/scoped_select_object.h"
 #else
 #include <unistd.h>
 #endif  // _WIN32

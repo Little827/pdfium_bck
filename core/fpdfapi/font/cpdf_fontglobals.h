@@ -12,11 +12,11 @@
 #include <map>
 #include <memory>
 
+#include "core/base/containers/span.h"
 #include "core/fpdfapi/cmaps/fpdf_cmaps.h"
 #include "core/fpdfapi/font/cpdf_cidfont.h"
 #include "core/fxcrt/retain_ptr.h"
 #include "core/fxge/cfx_fontmapper.h"
-#include "third_party/base/containers/span.h"
 
 class CFX_StockFontArray;
 class CPDF_Font;

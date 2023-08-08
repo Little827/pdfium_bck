@@ -14,16 +14,16 @@
 #include <utility>
 
 #include "build/build_config.h"
+#include "core/base/check.h"
+#include "core/base/check_op.h"
+#include "core/base/containers/span.h"
+#include "core/base/numerics/safe_conversions.h"
 #include "core/fxcodec/scanlinedecoder.h"
 #include "core/fxcrt/binary_buffer.h"
 #include "core/fxcrt/data_vector.h"
 #include "core/fxcrt/fx_2d_size.h"
 #include "core/fxcrt/fx_memory.h"
 #include "core/fxge/calculate_pitch.h"
-#include "third_party/base/check.h"
-#include "third_party/base/check_op.h"
-#include "third_party/base/containers/span.h"
-#include "third_party/base/numerics/safe_conversions.h"
 
 #if BUILDFLAG(IS_WIN)
 #include "core/fxcrt/span_util.h"

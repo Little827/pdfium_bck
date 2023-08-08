@@ -6,13 +6,13 @@
 
 #include <utility>
 
+#include "core/base/check.h"
+#include "core/base/containers/contains.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/parser/cpdf_indirect_object_holder.h"
 #include "core/fpdfapi/parser/cpdf_object_walker.h"
 #include "core/fpdfapi/parser/cpdf_read_validator.h"
 #include "core/fpdfapi/parser/cpdf_reference.h"
-#include "third_party/base/check.h"
-#include "third_party/base/containers/contains.h"
 
 CPDF_ObjectAvail::CPDF_ObjectAvail(RetainPtr<CPDF_ReadValidator> validator,
                                    CPDF_IndirectObjectHolder* holder,

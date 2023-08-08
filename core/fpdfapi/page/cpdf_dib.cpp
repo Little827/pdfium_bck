@@ -13,6 +13,8 @@
 #include <utility>
 #include <vector>
 
+#include "core/base/check.h"
+#include "core/base/check_op.h"
 #include "core/fpdfapi/page/cpdf_colorspace.h"
 #include "core/fpdfapi/page/cpdf_docpagedata.h"
 #include "core/fpdfapi/page/cpdf_image.h"
@@ -37,8 +39,6 @@
 #include "core/fxcrt/span_util.h"
 #include "core/fxge/calculate_pitch.h"
 #include "core/fxge/dib/cfx_dibitmap.h"
-#include "third_party/base/check.h"
-#include "third_party/base/check_op.h"
 
 namespace {
 

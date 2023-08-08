@@ -11,8 +11,8 @@
 
 #include <memory>
 
+#include "core/base/check.h"
 #include "core/fxcrt/cfx_timer.h"
-#include "third_party/base/check.h"
 #include "xfa/fwl/cfwl_eventscroll.h"
 #include "xfa/fwl/cfwl_themepart.h"
 #include "xfa/fwl/cfwl_widget.h"

@@ -10,13 +10,13 @@
 
 #include <utility>
 
+#include "core/base/check.h"
 #include "core/fpdfapi/page/cpdf_allstates.h"
 #include "core/fpdfapi/page/cpdf_form.h"
 #include "core/fpdfapi/page/cpdf_pageobject.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/parser/cpdf_object.h"
 #include "core/fpdfapi/parser/cpdf_stream.h"
-#include "third_party/base/check.h"
 
 CPDF_TilingPattern::CPDF_TilingPattern(CPDF_Document* pDoc,
                                        RetainPtr<CPDF_Object> pPatternObj,

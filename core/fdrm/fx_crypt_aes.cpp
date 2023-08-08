@@ -8,9 +8,9 @@
 
 #include <string.h>
 
+#include "core/base/check.h"
+#include "core/base/check_op.h"
 #include "core/fxcrt/fx_system.h"
-#include "third_party/base/check.h"
-#include "third_party/base/check_op.h"
 
 #define mulby2(x) (((x & 0x7F) << 1) ^ (x & 0x80 ? 0x1B : 0))
 #define PUT_32BIT_MSB_FIRST(cp, value) \

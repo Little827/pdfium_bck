@@ -11,6 +11,7 @@
 #include "constants/access_permissions.h"
 #include "constants/ascii.h"
 #include "constants/form_flags.h"
+#include "core/base/check.h"
 #include "core/fpdfapi/page/cpdf_page.h"
 #include "core/fxcrt/autorestorer.h"
 #include "core/fxge/cfx_drawutils.h"
@@ -25,7 +26,6 @@
 #include "fpdfsdk/formfiller/cffl_radiobutton.h"
 #include "fpdfsdk/formfiller/cffl_textfield.h"
 #include "public/fpdf_fwlevent.h"
-#include "third_party/base/check.h"
 
 CFFL_InteractiveFormFiller::CFFL_InteractiveFormFiller(
     CallbackIface* pCallbackIface)

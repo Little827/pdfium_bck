@@ -11,9 +11,9 @@
 
 #include <memory>
 
+#include "core/base/containers/span.h"
 #include "core/fxcrt/observed_ptr.h"
 #include "core/fxcrt/retain_ptr.h"
-#include "third_party/base/containers/span.h"
 
 class CPDF_Stream;
 

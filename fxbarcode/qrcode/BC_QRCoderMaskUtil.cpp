@@ -22,11 +22,11 @@
 
 #include "fxbarcode/qrcode/BC_QRCoderMaskUtil.h"
 
+#include "core/base/check.h"
+#include "core/base/notreached.h"
 #include "fxbarcode/common/BC_CommonByteMatrix.h"
 #include "fxbarcode/qrcode/BC_QRCoder.h"
 #include "fxbarcode/qrcode/BC_QRCoderErrorCorrectionLevel.h"
-#include "third_party/base/check.h"
-#include "third_party/base/notreached.h"
 
 namespace {
 

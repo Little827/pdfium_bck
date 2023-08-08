@@ -4,14 +4,14 @@
 
 #include "core/fpdfapi/parser/cpdf_cross_ref_avail.h"
 
+#include "core/base/check.h"
+#include "core/base/containers/contains.h"
+#include "core/base/numerics/safe_conversions.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/parser/cpdf_read_validator.h"
 #include "core/fpdfapi/parser/cpdf_reference.h"
 #include "core/fpdfapi/parser/cpdf_syntax_parser.h"
 #include "core/fpdfapi/parser/fpdf_parser_utility.h"
-#include "third_party/base/check.h"
-#include "third_party/base/containers/contains.h"
-#include "third_party/base/numerics/safe_conversions.h"
 
 namespace {
 

@@ -6,7 +6,7 @@
 
 #include <sstream>
 
-#include "third_party/base/notreached.h"
+#include "core/base/notreached.h"
 
 CPDF_StringArchiveStream::CPDF_StringArchiveStream(fxcrt::ostringstream* stream)
     : stream_(stream) {}

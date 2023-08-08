@@ -4,9 +4,9 @@
 
 #include <stdint.h>
 
+#include "core/base/containers/span.h"
 #include "core/fpdfapi/font/cpdf_cmap.h"
 #include "core/fxcrt/retain_ptr.h"
-#include "third_party/base/containers/span.h"
 
 extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
   if (size > 256 * 1024)

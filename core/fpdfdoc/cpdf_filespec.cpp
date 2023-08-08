@@ -11,6 +11,8 @@
 
 #include "build/build_config.h"
 #include "constants/stream_dict_common.h"
+#include "core/base/check.h"
+#include "core/base/notreached.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/parser/cpdf_name.h"
 #include "core/fpdfapi/parser/cpdf_object.h"
@@ -18,8 +20,6 @@
 #include "core/fpdfapi/parser/cpdf_string.h"
 #include "core/fpdfapi/parser/fpdf_parser_decode.h"
 #include "core/fxcrt/fx_system.h"
-#include "third_party/base/check.h"
-#include "third_party/base/notreached.h"
 
 namespace {
 

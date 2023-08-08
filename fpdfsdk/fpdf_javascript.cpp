@@ -7,12 +7,12 @@
 #include <memory>
 #include <utility>
 
+#include "core/base/numerics/safe_conversions.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/parser/cpdf_document.h"
 #include "core/fpdfdoc/cpdf_action.h"
 #include "core/fpdfdoc/cpdf_nametree.h"
 #include "fpdfsdk/cpdfsdk_helpers.h"
-#include "third_party/base/numerics/safe_conversions.h"
 
 struct CPDF_JavaScript {
   WideString name;

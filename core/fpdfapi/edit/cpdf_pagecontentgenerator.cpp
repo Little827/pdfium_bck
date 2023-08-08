@@ -14,6 +14,11 @@
 #include <utility>
 
 #include "constants/page_object.h"
+#include "core/base/check.h"
+#include "core/base/containers/contains.h"
+#include "core/base/containers/span.h"
+#include "core/base/notreached.h"
+#include "core/base/numerics/safe_conversions.h"
 #include "core/fpdfapi/edit/cpdf_contentstream_write_utils.h"
 #include "core/fpdfapi/edit/cpdf_pagecontentmanager.h"
 #include "core/fpdfapi/edit/cpdf_stringarchivestream.h"
@@ -39,11 +44,6 @@
 #include "core/fpdfapi/parser/fpdf_parser_decode.h"
 #include "core/fpdfapi/parser/fpdf_parser_utility.h"
 #include "core/fpdfapi/parser/object_tree_traversal_util.h"
-#include "third_party/base/check.h"
-#include "third_party/base/containers/contains.h"
-#include "third_party/base/containers/span.h"
-#include "third_party/base/notreached.h"
-#include "third_party/base/numerics/safe_conversions.h"
 
 namespace {
 

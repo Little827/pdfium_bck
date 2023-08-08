@@ -11,6 +11,9 @@
 #include <algorithm>
 #include <utility>
 
+#include "core/base/check.h"
+#include "core/base/check_op.h"
+#include "core/base/numerics/safe_math.h"
 #include "core/fpdfapi/parser/cpdf_array.h"
 #include "core/fpdfapi/parser/cpdf_boolean.h"
 #include "core/fpdfapi/parser/cpdf_crypto_handler.h"
@@ -28,9 +31,6 @@
 #include "core/fxcrt/fixed_uninit_data_vector.h"
 #include "core/fxcrt/fx_extension.h"
 #include "core/fxcrt/fx_safe_types.h"
-#include "third_party/base/check.h"
-#include "third_party/base/check_op.h"
-#include "third_party/base/numerics/safe_math.h"
 
 namespace {
 

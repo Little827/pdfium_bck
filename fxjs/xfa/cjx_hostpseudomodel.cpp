@@ -8,10 +8,10 @@
 
 #include <vector>
 
+#include "core/base/check.h"
 #include "fxjs/fxv8.h"
 #include "fxjs/js_resources.h"
 #include "fxjs/xfa/cfxjse_engine.h"
-#include "third_party/base/check.h"
 #include "v8/include/v8-object.h"
 #include "xfa/fxfa/cxfa_ffdoc.h"
 #include "xfa/fxfa/cxfa_ffnotify.h"

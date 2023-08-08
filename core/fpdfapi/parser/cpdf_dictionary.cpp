@@ -9,6 +9,8 @@
 #include <set>
 #include <utility>
 
+#include "core/base/check.h"
+#include "core/base/containers/contains.h"
 #include "core/fpdfapi/parser/cpdf_array.h"
 #include "core/fpdfapi/parser/cpdf_boolean.h"
 #include "core/fpdfapi/parser/cpdf_crypto_handler.h"
@@ -19,8 +21,6 @@
 #include "core/fpdfapi/parser/cpdf_string.h"
 #include "core/fpdfapi/parser/fpdf_parser_utility.h"
 #include "core/fxcrt/fx_stream.h"
-#include "third_party/base/check.h"
-#include "third_party/base/containers/contains.h"
 
 CPDF_Dictionary::CPDF_Dictionary()
     : CPDF_Dictionary(WeakPtr<ByteStringPool>()) {}

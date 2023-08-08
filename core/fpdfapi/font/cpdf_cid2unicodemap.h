@@ -7,8 +7,8 @@
 #ifndef CORE_FPDFAPI_FONT_CPDF_CID2UNICODEMAP_H_
 #define CORE_FPDFAPI_FONT_CPDF_CID2UNICODEMAP_H_
 
+#include "core/base/containers/span.h"
 #include "core/fpdfapi/font/cpdf_cidfont.h"
-#include "third_party/base/containers/span.h"
 
 class CPDF_CID2UnicodeMap {
  public:

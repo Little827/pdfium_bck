@@ -10,15 +10,15 @@
 #include <utility>
 
 #include "constants/page_object.h"
+#include "core/base/check.h"
+#include "core/base/check_op.h"
+#include "core/base/containers/contains.h"
 #include "core/fpdfapi/page/cpdf_contentparser.h"
 #include "core/fpdfapi/page/cpdf_pageimagecache.h"
 #include "core/fpdfapi/page/cpdf_pageobject.h"
 #include "core/fpdfapi/parser/cpdf_array.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/parser/cpdf_object.h"
-#include "third_party/base/check.h"
-#include "third_party/base/check_op.h"
-#include "third_party/base/containers/contains.h"
 
 CPDF_Page::CPDF_Page(CPDF_Document* pDocument,
                      RetainPtr<CPDF_Dictionary> pPageDict)

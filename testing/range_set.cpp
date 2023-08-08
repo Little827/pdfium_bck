@@ -6,8 +6,8 @@
 
 #include <algorithm>
 
+#include "core/base/check.h"
 #include "core/fxcrt/fx_system.h"
-#include "third_party/base/check.h"
 
 RangeSet::RangeSet() = default;
 

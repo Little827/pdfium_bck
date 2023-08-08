@@ -14,16 +14,16 @@
 #include <string>
 #include <utility>
 
+#include "core/base/check.h"
+#include "core/base/check_op.h"
+#include "core/base/containers/span.h"
+#include "core/base/numerics/safe_math.h"
 #include "core/fxcrt/fx_codepage.h"
 #include "core/fxcrt/fx_extension.h"
 #include "core/fxcrt/fx_memcpy_wrappers.h"
 #include "core/fxcrt/fx_safe_types.h"
 #include "core/fxcrt/fx_system.h"
 #include "core/fxcrt/string_pool_template.h"
-#include "third_party/base/check.h"
-#include "third_party/base/check_op.h"
-#include "third_party/base/containers/span.h"
-#include "third_party/base/numerics/safe_math.h"
 
 template class fxcrt::StringDataTemplate<char>;
 template class fxcrt::StringViewTemplate<char>;

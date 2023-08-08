@@ -7,9 +7,9 @@
 #ifndef CORE_FXCRT_CFX_READ_ONLY_SPAN_STREAM_H_
 #define CORE_FXCRT_CFX_READ_ONLY_SPAN_STREAM_H_
 
+#include "core/base/containers/span.h"
 #include "core/fxcrt/fx_stream.h"
 #include "core/fxcrt/retain_ptr.h"
-#include "third_party/base/containers/span.h"
 
 class CFX_ReadOnlySpanStream final : public IFX_SeekableReadStream {
  public:

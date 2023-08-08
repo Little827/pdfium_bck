@@ -10,6 +10,7 @@
 
 #include <iterator>
 
+#include "core/base/check.h"
 #include "core/fpdfapi/cmaps/fpdf_cmaps.h"
 #include "core/fpdfapi/parser/cpdf_array.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
@@ -17,7 +18,6 @@
 #include "core/fxcrt/fx_extension.h"
 #include "core/fxcrt/fx_safe_types.h"
 #include "core/fxge/freetype/fx_freetype.h"
-#include "third_party/base/check.h"
 
 namespace {
 

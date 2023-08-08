@@ -7,9 +7,9 @@
 
 #include <memory>
 
+#include "core/base/containers/span.h"
 #include "core/fxcrt/fx_memory_wrappers.h"
 #include "core/fxcrt/retain_ptr.h"
-#include "third_party/base/containers/span.h"
 
 class CFX_CodecMemory final : public Retainable {
  public:

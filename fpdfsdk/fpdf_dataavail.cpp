@@ -9,6 +9,7 @@
 #include <memory>
 #include <utility>
 
+#include "core/base/numerics/safe_conversions.h"
 #include "core/fpdfapi/page/cpdf_docpagedata.h"
 #include "core/fpdfapi/parser/cpdf_data_avail.h"
 #include "core/fpdfapi/parser/cpdf_document.h"
@@ -20,7 +21,6 @@
 #include "core/fxcrt/unowned_ptr_exclusion.h"
 #include "fpdfsdk/cpdfsdk_helpers.h"
 #include "public/fpdf_formfill.h"
-#include "third_party/base/numerics/safe_conversions.h"
 
 #ifdef PDF_ENABLE_XFA
 #include "fpdfsdk/fpdfxfa/cpdfxfa_context.h"

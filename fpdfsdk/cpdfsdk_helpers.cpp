@@ -11,6 +11,8 @@
 #include "build/build_config.h"
 #include "constants/form_fields.h"
 #include "constants/stream_dict_common.h"
+#include "core/base/check.h"
+#include "core/base/numerics/safe_conversions.h"
 #include "core/fpdfapi/page/cpdf_page.h"
 #include "core/fpdfapi/parser/cpdf_array.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
@@ -23,8 +25,6 @@
 #include "core/fxcrt/span_util.h"
 #include "core/fxcrt/unowned_ptr.h"
 #include "fpdfsdk/cpdfsdk_formfillenvironment.h"
-#include "third_party/base/check.h"
-#include "third_party/base/numerics/safe_conversions.h"
 
 namespace {
 

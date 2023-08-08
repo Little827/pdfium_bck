@@ -6,8 +6,8 @@
 
 #include "fpdfsdk/cpdfsdk_filewriteadapter.h"
 
-#include "third_party/base/check.h"
-#include "third_party/base/numerics/safe_conversions.h"
+#include "core/base/check.h"
+#include "core/base/numerics/safe_conversions.h"
 
 CPDFSDK_FileWriteAdapter::CPDFSDK_FileWriteAdapter(FPDF_FILEWRITE* file_write)
     : file_write_(file_write) {

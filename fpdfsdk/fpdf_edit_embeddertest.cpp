@@ -9,6 +9,7 @@
 #include <vector>
 
 #include "build/build_config.h"
+#include "core/base/check.h"
 #include "core/fpdfapi/font/cpdf_font.h"
 #include "core/fpdfapi/page/cpdf_page.h"
 #include "core/fpdfapi/page/cpdf_pageobject.h"
@@ -34,7 +35,6 @@
 #include "testing/utils/file_util.h"
 #include "testing/utils/hash.h"
 #include "testing/utils/path_service.h"
-#include "third_party/base/check.h"
 
 using pdfium::HelloWorldChecksum;
 using testing::HasSubstr;

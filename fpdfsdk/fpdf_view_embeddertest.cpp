@@ -11,6 +11,7 @@
 #include <vector>
 
 #include "build/build_config.h"
+#include "core/base/check.h"
 #include "core/fpdfapi/parser/cpdf_document.h"
 #include "core/fxge/cfx_defaultrenderdevice.h"
 #include "fpdfsdk/cpdfsdk_helpers.h"
@@ -25,7 +26,6 @@
 #include "testing/utils/file_util.h"
 #include "testing/utils/hash.h"
 #include "testing/utils/path_service.h"
-#include "third_party/base/check.h"
 
 #if defined(_SKIA_SUPPORT_)
 #include "third_party/skia/include/core/SkCanvas.h"           // nogncheck

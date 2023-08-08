@@ -6,10 +6,10 @@
 
 #include <utility>
 
+#include "core/base/containers/contains.h"
+#include "core/base/notreached.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/parser/cpdf_parser.h"
-#include "third_party/base/containers/contains.h"
-#include "third_party/base/notreached.h"
 
 // static
 std::unique_ptr<CPDF_CrossRefTable> CPDF_CrossRefTable::MergeUp(

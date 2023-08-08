@@ -10,6 +10,10 @@
 #include <memory>
 #include <utility>
 
+#include "core/base/check.h"
+#include "core/base/containers/contains.h"
+#include "core/base/notreached.h"
+#include "core/base/numerics/safe_conversions.h"
 #include "core/fpdfapi/parser/cpdf_array.h"
 #include "core/fpdfapi/parser/cpdf_cross_ref_avail.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
@@ -28,10 +32,6 @@
 #include "core/fxcrt/fx_extension.h"
 #include "core/fxcrt/fx_safe_types.h"
 #include "core/fxcrt/stl_util.h"
-#include "third_party/base/check.h"
-#include "third_party/base/containers/contains.h"
-#include "third_party/base/notreached.h"
-#include "third_party/base/numerics/safe_conversions.h"
 
 namespace {
 

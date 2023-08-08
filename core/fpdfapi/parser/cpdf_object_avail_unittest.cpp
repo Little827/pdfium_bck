@@ -7,6 +7,8 @@
 #include <map>
 #include <utility>
 
+#include "core/base/check.h"
+#include "core/base/notreached.h"
 #include "core/fpdfapi/parser/cpdf_array.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/parser/cpdf_indirect_object_holder.h"
@@ -16,8 +18,6 @@
 #include "core/fxcrt/fx_stream.h"
 #include "testing/gtest/include/gtest/gtest.h"
 #include "testing/invalid_seekable_read_stream.h"
-#include "third_party/base/check.h"
-#include "third_party/base/notreached.h"
 
 namespace {
 

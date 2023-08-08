@@ -8,13 +8,13 @@
 
 #include <algorithm>
 
+#include "core/base/notreached.h"
 #include "core/fpdfapi/parser/cpdf_array.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/parser/cpdf_indirect_object_holder.h"
 #include "core/fpdfapi/parser/cpdf_parser.h"
 #include "core/fpdfapi/parser/cpdf_reference.h"
 #include "core/fxcrt/fx_string.h"
-#include "third_party/base/notreached.h"
 
 CPDF_Object::~CPDF_Object() = default;
 

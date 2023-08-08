@@ -10,6 +10,7 @@
 #include <utility>
 
 #include "constants/form_fields.h"
+#include "core/base/check.h"
 #include "core/fpdfapi/font/cpdf_font.h"
 #include "core/fpdfapi/page/cpdf_docpagedata.h"
 #include "core/fpdfapi/parser/cpdf_array.h"
@@ -19,7 +20,6 @@
 #include "core/fpdfapi/parser/fpdf_parser_decode.h"
 #include "core/fpdfapi/parser/fpdf_parser_utility.h"
 #include "core/fpdfdoc/cpdf_interactiveform.h"
-#include "third_party/base/check.h"
 
 namespace {
 

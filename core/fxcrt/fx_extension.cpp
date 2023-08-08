@@ -9,9 +9,9 @@
 #include <algorithm>
 #include <limits>
 
+#include "core/base/check.h"
 #include "core/fxcrt/fx_system.h"
 #include "core/fxcrt/utf16.h"
-#include "third_party/base/check.h"
 
 namespace {
 

@@ -10,6 +10,7 @@
 #include <iterator>
 #include <utility>
 
+#include "core/base/containers/adapters.h"
 #include "core/fxcrt/fx_codepage.h"
 #include "core/fxcrt/fx_extension.h"
 #include "core/fxcrt/fx_folder.h"
@@ -18,7 +19,6 @@
 #include "core/fxge/android/cfpf_skiapathfont.h"
 #include "core/fxge/freetype/fx_freetype.h"
 #include "core/fxge/fx_font.h"
-#include "third_party/base/containers/adapters.h"
 
 namespace {
 

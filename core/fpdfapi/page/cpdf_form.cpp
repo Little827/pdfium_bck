@@ -9,6 +9,7 @@
 #include <algorithm>
 #include <memory>
 
+#include "core/base/check_op.h"
 #include "core/fpdfapi/page/cpdf_contentparser.h"
 #include "core/fpdfapi/page/cpdf_imageobject.h"
 #include "core/fpdfapi/page/cpdf_pageobject.h"
@@ -16,7 +17,6 @@
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/parser/cpdf_stream.h"
 #include "core/fxge/dib/cfx_dibitmap.h"
-#include "third_party/base/check_op.h"
 
 CPDF_Form::RecursionState::RecursionState() = default;
 

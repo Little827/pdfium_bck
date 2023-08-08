@@ -7,10 +7,10 @@
 #ifndef FXBARCODE_PDF417_BC_PDF417HIGHLEVELENCODER_H_
 #define FXBARCODE_PDF417_BC_PDF417HIGHLEVELENCODER_H_
 
+#include "core/base/containers/span.h"
 #include "core/fxcrt/widestring.h"
 #include "fxbarcode/pdf417/BC_PDF417.h"
 #include "third_party/abseil-cpp/absl/types/optional.h"
-#include "third_party/base/containers/span.h"
 
 class CBC_PDF417HighLevelEncoder {
  public:

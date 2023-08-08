@@ -11,6 +11,11 @@
 #include <utility>
 #include <vector>
 
+#include "core/base/check.h"
+#include "core/base/containers/contains.h"
+#include "core/base/containers/span.h"
+#include "core/base/no_destructor.h"
+#include "core/base/notreached.h"
 #include "core/fpdfapi/font/cpdf_font.h"
 #include "core/fpdfapi/font/cpdf_type3font.h"
 #include "core/fpdfapi/page/cpdf_allstates.h"
@@ -41,11 +46,6 @@
 #include "core/fxcrt/stl_util.h"
 #include "core/fxge/cfx_graphstate.h"
 #include "core/fxge/cfx_graphstatedata.h"
-#include "third_party/base/check.h"
-#include "third_party/base/containers/contains.h"
-#include "third_party/base/containers/span.h"
-#include "third_party/base/no_destructor.h"
-#include "third_party/base/notreached.h"
 
 namespace {
 

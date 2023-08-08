@@ -9,12 +9,12 @@
 #include <algorithm>
 #include <utility>
 
+#include "core/base/numerics/safe_conversions.h"
 #include "core/fpdfdoc/cpvt_word.h"
 #include "core/fxcrt/fx_extension.h"
 #include "core/fxcrt/stl_util.h"
 #include "fpdfsdk/pwl/cpwl_edit_impl.h"
 #include "fpdfsdk/pwl/cpwl_list_box.h"
-#include "third_party/base/numerics/safe_conversions.h"
 
 CPWL_ListCtrl::NotifyIface::~NotifyIface() = default;
 

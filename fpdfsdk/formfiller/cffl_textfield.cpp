@@ -10,12 +10,12 @@
 
 #include "constants/ascii.h"
 #include "constants/form_flags.h"
+#include "core/base/check.h"
 #include "core/fpdfdoc/cpdf_bafontmap.h"
 #include "fpdfsdk/cpdfsdk_widget.h"
 #include "fpdfsdk/formfiller/cffl_perwindowdata.h"
 #include "fpdfsdk/pwl/cpwl_edit.h"
 #include "public/fpdf_fwlevent.h"
-#include "third_party/base/check.h"
 
 namespace {
 

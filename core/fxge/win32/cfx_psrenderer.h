@@ -14,6 +14,7 @@
 #include <sstream>
 #include <vector>
 
+#include "core/base/containers/span.h"
 #include "core/fxcrt/bytestring.h"
 #include "core/fxcrt/data_vector.h"
 #include "core/fxcrt/fx_coordinates.h"
@@ -24,7 +25,6 @@
 #include "core/fxcrt/unowned_ptr.h"
 #include "core/fxge/cfx_graphstatedata.h"
 #include "third_party/abseil-cpp/absl/types/optional.h"
-#include "third_party/base/containers/span.h"
 
 class CFX_DIBBase;
 class CFX_Font;

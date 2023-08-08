@@ -12,6 +12,8 @@
 
 #include "build/build_config.h"
 #include "constants/annotation_common.h"
+#include "core/base/containers/contains.h"
+#include "core/base/containers/span.h"
 #include "core/fpdfapi/page/cpdf_annotcontext.h"
 #include "core/fpdfapi/parser/cpdf_array.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
@@ -28,8 +30,6 @@
 #include "testing/gmock/include/gmock/gmock-matchers.h"
 #include "testing/gtest/include/gtest/gtest.h"
 #include "testing/utils/hash.h"
-#include "third_party/base/containers/contains.h"
-#include "third_party/base/containers/span.h"
 
 using pdfium::AnnotationStampWithApChecksum;
 

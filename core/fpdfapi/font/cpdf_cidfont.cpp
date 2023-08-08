@@ -12,6 +12,9 @@
 #include <vector>
 
 #include "build/build_config.h"
+#include "core/base/check.h"
+#include "core/base/check_op.h"
+#include "core/base/containers/span.h"
 #include "core/fpdfapi/cmaps/fpdf_cmaps.h"
 #include "core/fpdfapi/font/cfx_cttgsubtable.h"
 #include "core/fpdfapi/font/cpdf_cid2unicodemap.h"
@@ -30,9 +33,6 @@
 #include "core/fxcrt/fx_unicode.h"
 #include "core/fxcrt/stl_util.h"
 #include "core/fxge/fx_font.h"
-#include "third_party/base/check.h"
-#include "third_party/base/check_op.h"
-#include "third_party/base/containers/span.h"
 
 namespace {
 

@@ -5,8 +5,8 @@
 // Deliberately not including opj_malloc.h, which has poisoned malloc and
 // friends.
 
+#include "core/base/memory/aligned_memory.h"
 #include "core/fxcrt/fx_memory.h"
-#include "third_party/base/memory/aligned_memory.h"
 
 extern "C" {
 

@@ -6,9 +6,9 @@
 
 #include "core/fxcrt/css/cfx_csscomputedstyle.h"
 
+#include "core/base/containers/adapters.h"
 #include "core/fxcrt/css/cfx_cssstringvalue.h"
 #include "core/fxcrt/css/cfx_cssvaluelist.h"
-#include "third_party/base/containers/adapters.h"
 
 CFX_CSSComputedStyle::CFX_CSSComputedStyle() = default;
 

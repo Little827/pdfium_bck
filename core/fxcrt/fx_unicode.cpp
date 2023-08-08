@@ -10,7 +10,7 @@
 
 #include <iterator>
 
-#include "third_party/base/check.h"
+#include "core/base/check.h"
 
 namespace {
 

@@ -4,9 +4,9 @@
 
 #include <stdint.h>
 
+#include "core/base/containers/span.h"
 #include "core/fpdfapi/page/cpdf_streamparser.h"
 #include "core/fpdfapi/parser/cpdf_object.h"
-#include "third_party/base/containers/span.h"
 
 extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
   CPDF_StreamParser parser(pdfium::make_span(data, size));

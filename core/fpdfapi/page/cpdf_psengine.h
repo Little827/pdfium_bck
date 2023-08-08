@@ -13,8 +13,8 @@
 #include <memory>
 #include <vector>
 
+#include "core/base/containers/span.h"
 #include "core/fxcrt/bytestring.h"
-#include "third_party/base/containers/span.h"
 
 class CPDF_PSEngine;
 class CPDF_PSProc;

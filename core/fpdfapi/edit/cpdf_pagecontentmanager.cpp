@@ -13,6 +13,10 @@
 #include <utility>
 #include <vector>
 
+#include "core/base/check.h"
+#include "core/base/containers/adapters.h"
+#include "core/base/containers/contains.h"
+#include "core/base/numerics/safe_conversions.h"
 #include "core/fpdfapi/page/cpdf_pageobject.h"
 #include "core/fpdfapi/page/cpdf_pageobjectholder.h"
 #include "core/fpdfapi/parser/cpdf_array.h"
@@ -22,10 +26,6 @@
 #include "core/fpdfapi/parser/cpdf_stream.h"
 #include "core/fpdfapi/parser/object_tree_traversal_util.h"
 #include "third_party/abseil-cpp/absl/types/variant.h"
-#include "third_party/base/check.h"
-#include "third_party/base/containers/adapters.h"
-#include "third_party/base/containers/contains.h"
-#include "third_party/base/numerics/safe_conversions.h"
 
 CPDF_PageContentManager::CPDF_PageContentManager(
     CPDF_PageObjectHolder* page_obj_holder,

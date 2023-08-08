@@ -8,6 +8,8 @@
 
 #include <algorithm>
 
+#include "core/base/check.h"
+#include "core/base/numerics/safe_math.h"
 #include "core/fxcrt/fx_safe_types.h"
 #include "core/fxge/cfx_fillrenderoptions.h"
 #include "core/fxge/cfx_graphstatedata.h"
@@ -15,8 +17,6 @@
 #include "core/fxge/cfx_renderdevice.h"
 #include "fxbarcode/BC_Writer.h"
 #include "fxbarcode/common/BC_CommonBitMatrix.h"
-#include "third_party/base/check.h"
-#include "third_party/base/numerics/safe_math.h"
 
 CBC_TwoDimWriter::CBC_TwoDimWriter(bool bFixedSize)
     : m_bFixedSize(bFixedSize) {}

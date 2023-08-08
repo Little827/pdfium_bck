@@ -8,6 +8,7 @@
 
 #include <utility>
 
+#include "core/base/containers/contains.h"
 #include "core/fxcrt/autorestorer.h"
 #include "core/fxcrt/fx_extension.h"
 #include "core/fxcrt/stl_util.h"
@@ -22,7 +23,6 @@
 #include "fxjs/xfa/cfxjse_resolveprocessor.h"
 #include "fxjs/xfa/cfxjse_value.h"
 #include "fxjs/xfa/cjx_object.h"
-#include "third_party/base/containers/contains.h"
 #include "v8/include/v8-function-callback.h"
 #include "v8/include/v8-function.h"
 #include "v8/include/v8-object.h"

@@ -10,6 +10,10 @@
 #include <vector>
 
 #include "constants/annotation_common.h"
+#include "core/base/check.h"
+#include "core/base/containers/contains.h"
+#include "core/base/memory/ptr_util.h"
+#include "core/base/numerics/safe_conversions.h"
 #include "core/fpdfapi/edit/cpdf_pagecontentgenerator.h"
 #include "core/fpdfapi/page/cpdf_annotcontext.h"
 #include "core/fpdfapi/page/cpdf_form.h"
@@ -37,10 +41,6 @@
 #include "fpdfsdk/cpdfsdk_formfillenvironment.h"
 #include "fpdfsdk/cpdfsdk_helpers.h"
 #include "fpdfsdk/cpdfsdk_interactiveform.h"
-#include "third_party/base/check.h"
-#include "third_party/base/containers/contains.h"
-#include "third_party/base/memory/ptr_util.h"
-#include "third_party/base/numerics/safe_conversions.h"
 
 namespace {
 

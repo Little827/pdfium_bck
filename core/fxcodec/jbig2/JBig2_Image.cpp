@@ -12,10 +12,10 @@
 #include <algorithm>
 #include <memory>
 
+#include "core/base/check.h"
 #include "core/fxcrt/fx_coordinates.h"
 #include "core/fxcrt/fx_memory.h"
 #include "core/fxcrt/fx_safe_types.h"
-#include "third_party/base/check.h"
 
 #define JBIG2_GETDWORD(buf)                  \
   ((static_cast<uint32_t>((buf)[0]) << 24) | \

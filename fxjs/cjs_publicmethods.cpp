@@ -18,6 +18,8 @@
 #include <vector>
 
 #include "build/build_config.h"
+#include "core/base/check.h"
+#include "core/base/numerics/safe_conversions.h"
 #include "core/fpdfapi/parser/cpdf_stream.h"
 #include "core/fpdfdoc/cpdf_formcontrol.h"
 #include "core/fpdfdoc/cpdf_interactiveform.h"
@@ -36,8 +38,6 @@
 #include "fxjs/js_define.h"
 #include "fxjs/js_resources.h"
 #include "third_party/abseil-cpp/absl/types/optional.h"
-#include "third_party/base/check.h"
-#include "third_party/base/numerics/safe_conversions.h"
 #include "v8/include/v8-container.h"
 
 // static

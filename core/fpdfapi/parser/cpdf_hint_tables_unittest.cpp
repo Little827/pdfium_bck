@@ -8,6 +8,7 @@
 #include <string>
 #include <utility>
 
+#include "core/base/check.h"
 #include "core/fpdfapi/page/test_with_page_module.h"
 #include "core/fpdfapi/parser/cpdf_data_avail.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
@@ -22,7 +23,6 @@
 #include "testing/gmock/include/gmock/gmock.h"
 #include "testing/gtest/include/gtest/gtest.h"
 #include "testing/utils/path_service.h"
-#include "third_party/base/check.h"
 
 namespace {
 

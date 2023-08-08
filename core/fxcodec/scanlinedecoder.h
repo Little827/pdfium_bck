@@ -9,7 +9,7 @@
 
 #include <stdint.h>
 
-#include "third_party/base/containers/span.h"
+#include "core/base/containers/span.h"
 
 class PauseIndicatorIface;
 

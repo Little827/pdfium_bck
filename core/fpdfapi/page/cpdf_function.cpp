@@ -10,6 +10,7 @@
 #include <utility>
 #include <vector>
 
+#include "core/base/containers/contains.h"
 #include "core/fpdfapi/page/cpdf_expintfunc.h"
 #include "core/fpdfapi/page/cpdf_psfunc.h"
 #include "core/fpdfapi/page/cpdf_sampledfunc.h"
@@ -21,7 +22,6 @@
 #include "core/fxcrt/fx_safe_types.h"
 #include "core/fxcrt/scoped_set_insertion.h"
 #include "core/fxcrt/stl_util.h"
-#include "third_party/base/containers/contains.h"
 
 namespace {
 

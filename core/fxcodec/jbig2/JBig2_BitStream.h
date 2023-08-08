@@ -7,8 +7,8 @@
 #ifndef CORE_FXCODEC_JBIG2_JBIG2_BITSTREAM_H_
 #define CORE_FXCODEC_JBIG2_JBIG2_BITSTREAM_H_
 
+#include "core/base/containers/span.h"
 #include "core/fxcrt/retain_ptr.h"
-#include "third_party/base/containers/span.h"
 
 class CJBig2_BitStream {
  public:

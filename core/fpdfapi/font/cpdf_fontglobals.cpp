@@ -8,6 +8,8 @@
 
 #include <utility>
 
+#include "core/base/check.h"
+#include "core/base/containers/contains.h"
 #include "core/fpdfapi/cmaps/CNS1/cmaps_cns1.h"
 #include "core/fpdfapi/cmaps/GB1/cmaps_gb1.h"
 #include "core/fpdfapi/cmaps/Japan1/cmaps_japan1.h"
@@ -16,8 +18,6 @@
 #include "core/fpdfapi/font/cpdf_cid2unicodemap.h"
 #include "core/fpdfapi/font/cpdf_cmap.h"
 #include "core/fpdfapi/parser/cpdf_document.h"
-#include "third_party/base/check.h"
-#include "third_party/base/containers/contains.h"
 
 namespace {
 

@@ -6,8 +6,8 @@
 
 #include <utility>
 
-#include "third_party/base/check.h"
-#include "third_party/base/numerics/safe_conversions.h"
+#include "core/base/check.h"
+#include "core/base/numerics/safe_conversions.h"
 
 // static
 RetainPtr<CFX_Face> CFX_Face::New(FT_Library library,

@@ -9,9 +9,9 @@
 
 #include <stddef.h>
 
+#include "core/base/containers/span.h"
 #include "core/fxcrt/binary_buffer.h"
 #include "core/fxcrt/fx_string.h"
-#include "third_party/base/containers/span.h"
 
 namespace fxcrt {
 

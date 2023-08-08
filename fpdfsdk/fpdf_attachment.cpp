@@ -10,6 +10,7 @@
 #include <utility>
 
 #include "constants/stream_dict_common.h"
+#include "core/base/numerics/safe_conversions.h"
 #include "core/fdrm/fx_crypt.h"
 #include "core/fpdfapi/parser/cpdf_array.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
@@ -27,7 +28,6 @@
 #include "core/fxcrt/fx_extension.h"
 #include "core/fxcrt/fx_memory_wrappers.h"
 #include "fpdfsdk/cpdfsdk_helpers.h"
-#include "third_party/base/numerics/safe_conversions.h"
 
 namespace {
 

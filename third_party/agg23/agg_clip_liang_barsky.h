@@ -20,7 +20,7 @@
 #ifndef AGG_CLIP_LIANG_BARSKY_INCLUDED
 #define AGG_CLIP_LIANG_BARSKY_INCLUDED
 #include "agg_basics.h"
-#include "third_party/base/numerics/safe_math.h"
+#include "core/base/numerics/safe_math.h"
 namespace pdfium
 {
 namespace agg
