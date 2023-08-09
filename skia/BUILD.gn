@@ -18,7 +18,7 @@ if (current_cpu == "mipsel" || current_cpu == "mips64el") {
 }
 
 skia_use_ganesh_backend = !is_ios
-skia_support_pdf = false
+skia_support_pdf = !is_ios
 
 # External-facing config for dependent code.
 config("skia_config") {
@@ -192,7 +192,16 @@ component("skia") {
     #pdfium
     "//third_party/skia/src/ports/SkDiscardableMemory_none.cpp",
     "//third_party/skia/src/ports/SkMemory_malloc.cpp",
+
+    # SkPDF deps
+    "//third_party/skia/src/codec/SkEncodedInfo.cpp",
+    "//third_party/skia/src/codec/SkJpegCodec.cpp",
+    "//third_party/skia/src/codec/SkJpegDecoderMgr.cpp",
+    "//third_party/skia/src/codec/SkJpegSourceMgr.cpp",
+    "//third_party/skia/src/codec/SkJpegUtility.cpp",
+    "//third_party/skia/src/codec/SkParseEncodedOrigin.cpp",
   ]
+  sources += skia_encode_jpeg_srcs
 
   # This and skia_opts are really the same conceptual target so share headers.
   allow_circular_includes_from = [ ":skia_opts" ]
@@ -369,8 +378,15 @@ component("skia") {
   }
 
   if (skia_support_pdf) {
-    deps += [ "//third_party/sfntly" ]
+    deps += [
+      "//third_party:freetype_harfbuzz",
+      "//third_party/zlib",
+    ]
+
+    #public += skia_pdf_public
     sources += skia_pdf_sources
+    sources += skia_pdf_jpeginfo_lib
+    deps += [ "//third_party/libjpeg_turbo:libjpeg" ]
   } else {
     sources += [ "//third_party/skia/src/pdf/SkDocument_PDF_None.cpp" ]
   }

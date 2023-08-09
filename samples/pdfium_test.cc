@@ -76,6 +76,7 @@
 #include "third_party/skia/include/core/SkRefCnt.h"           // nogncheck
 #include "third_party/skia/include/core/SkStream.h"           // nogncheck
 #include "third_party/skia/include/core/SkSurface.h"          // nogncheck
+#include "third_party/skia/include/docs/SkPDFDocument.h"      // nogncheck
 
 #ifdef _WIN32
 #include "third_party/skia/include/docs/SkXPSDocument.h"  // nogncheck
@@ -141,6 +142,7 @@ enum class OutputFormat {
 #endif
 #ifdef PDF_ENABLE_SKIA
   kSkp,
+  kPdf,
 #ifdef _WIN32
   kXps,
 #endif  // _WIN32
@@ -592,6 +594,12 @@ bool ParseCommandLine(const std::vector<std::string>& args,
         return false;
       }
       options->output_format = OutputFormat::kSkp;
+    } else if (cur_arg == "--pdf") {
+      if (options->output_format != OutputFormat::kNone) {
+        fprintf(stderr, "Duplicate or conflicting --pdf argument\n");
+        return false;
+      }
+      options->output_format = OutputFormat::kPdf;
 #ifdef _WIN32
     } else if (cur_arg == "--xps") {
       if (options->output_format != OutputFormat::kNone) {
@@ -1446,6 +1454,23 @@ bool PdfProcessor::ProcessPage(const int page_index) {
           page, /*width=*/width, /*height=*/height, /*flags=*/flags);
       break;
 
+    case OutputFormat::kPdf: {
+      std::unique_ptr<SkWStream> stream =
+          WriteToSkWStream(name(), page_index, "pdf");
+      if (!stream) {
+        break;
+      }
+
+      SkPDF::Metadata metadata;
+      sk_sp<SkDocument> document = SkPDF::MakeDocument(stream.get(), metadata);
+      if (!document) {
+        break;
+      }
+
+      renderer = std::make_unique<SkDocumentPageRenderer>(
+          std::move(stream), std::move(document), page, width, height, flags);
+      break;
+    }
 #ifdef _WIN32
     case OutputFormat::kXps: {
       IXpsOMObjectFactory* xps_factory = com_factory().GetXpsOMObjectFactory();
