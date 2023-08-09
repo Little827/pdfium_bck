@@ -168,14 +168,14 @@ wchar_t GetArabicFromAlefTable(wchar_t alef) {
 
 }  // namespace
 
-namespace pdfium {
-namespace arabic {
+namespace pdfium::arabic
 
-wchar_t GetFormChar(wchar_t wch, wchar_t prev, wchar_t next) {
-  CFGAS_Char c(wch);
-  CFGAS_Char p(prev);
-  CFGAS_Char n(next);
-  return GetFormChar(&c, &p, &n);
+    wchar_t
+    GetFormChar(wchar_t wch, wchar_t prev, wchar_t next) {
+CFGAS_Char c(wch);
+CFGAS_Char p(prev);
+CFGAS_Char n(next);
+return GetFormChar(&c, &p, &n);
 }
 
 wchar_t GetFormChar(const CFGAS_Char* cur,
@@ -220,5 +220,4 @@ absl::optional<wchar_t> GetArabicFromShaddaTable(wchar_t shadda) {
   return kShaddaTable[shadda - kFirstShaddaTableEntry];
 }
 
-}  // namespace arabic
-}  // namespace pdfium
+}  // namespace pdfium::arabic
