@@ -198,6 +198,17 @@ if (pdf_bundle_freetype) {
   }
 }
 
+# FreeType and HarfBuzz libraries are dependent on each other. This component
+# should depend on the appropriate source sets or export the system packages
+# for both FreeType and HarfBuzz, but currently does not.
+component("freetype_harfbuzz") {
+  public_configs = []
+  public_deps = [
+    "../:freetype_common",
+    "//third_party/harfbuzz-ng:harfbuzz_source",
+  ]
+}
+
 if (is_linux || is_chromeos) {
   config("system_fontconfig") {
     libs = [ "fontconfig" ]
