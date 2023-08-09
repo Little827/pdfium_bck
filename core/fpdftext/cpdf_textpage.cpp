@@ -888,6 +888,10 @@ void CPDF_TextPage::ProcessMarkedContent(const TransformedTextObject& obj) {
 
   RetainPtr<CPDF_Font> pFont = pTextObj->GetFont();
   CFX_Matrix matrix = pTextObj->GetTextMatrix() * obj.m_formMatrix;
+  CFX_FloatRect rect = pTextObj->GetRect();
+
+  //TODO: need to know ltr/rtl/ttb/btt text direction for splitting rect
+  rect.right = rect.left + (rect.Width() / actText.GetLength());
 
   for (size_t k = 0; k < actText.GetLength(); ++k) {
     wchar_t wChar = actText[k];
@@ -903,7 +907,8 @@ void CPDF_TextPage::ProcessMarkedContent(const TransformedTextObject& obj) {
     charinfo.m_CharCode = pFont->CharCodeFromUnicode(wChar);
     charinfo.m_CharType = CPDF_TextPage::CharType::kPiece;
     charinfo.m_pTextObj = pTextObj;
-    charinfo.m_CharBox = pTextObj->GetRect();
+    charinfo.m_CharBox = CFX_FloatRect(rect);
+    charinfo.m_CharBox.Translate(k * rect.Width(), 0);
     charinfo.m_Matrix = matrix;
     m_TempTextBuf.AppendChar(wChar);
     m_TempCharList.push_back(charinfo);
