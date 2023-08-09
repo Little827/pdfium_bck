@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b807c862_b3f4dc9a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5845
+      },
+      "writtenOn": "2023-08-09T20:22:14Z",
+      "side": 1,
+      "message": "A potential solution to selecting /ActualText text. This works nicely for most ligatures and other complex text, allowing the user to select part of the text (though admittedly it can sometimes be difficult to tell which code points will be selected if the ligature is large and doesn\u0027t distribute evenly).\n\nThis does not change the Chromium side issue of not selecting all of the `kPiece`s at a given location. Haven\u0027t really figured that one out yet.\n\nI\u0027m sure a test should be added, but I\u0027m not entirely sure how to do that here. This is more of a diff suggestion than a real change request, so feel free to use this as the basis for a real change with tests.",
+      "revId": "2a327982cf2c227ac0d326b20d7d706c6c9359e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
