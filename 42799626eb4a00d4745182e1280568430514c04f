@@ -16,6 +16,47 @@
       "message": "Most of the CL is converting push_back() to emplace_back(), but this is going the other way?",
       "revId": "42799626eb4a00d4745182e1280568430514c04f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0bdeeaad_5337ee3b",
+        "filename": "fpdfsdk/pwl/cpwl_edit_impl.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-08-10T17:53:38Z",
+      "side": 1,
+      "message": "Oddly, this one complained in the other direction, because I think the explicit call to LineRect() in emplace_back was running the LineRect constructor to make a temporary, and then emplace_back was invoking a copy constructor from the temporary, so it said use push back. I suspect that if I were to scan the code again after making this change, it would say use emplace_back. I think the right thing is emplace_back with two args to construct in place.",
+      "parentUuid": "c5536348_7498dbd6",
+      "revId": "42799626eb4a00d4745182e1280568430514c04f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "736127cc_45309977",
+        "filename": "fpdfsdk/pwl/cpwl_edit_impl.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-08-10T17:53:38Z",
+      "side": 1,
+      "message": "Here, we already have a rect, so push vs emplace seems moot as its a copy constructor, and IIRC we prefer push unless we are actually running some other contructor in-place. But either way, the explicit invocation of the ctor creates a needless temporary.",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 52
+      },
+      "revId": "42799626eb4a00d4745182e1280568430514c04f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
