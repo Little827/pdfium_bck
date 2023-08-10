@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ad071cf_0b239fec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-08-10T00:31:06Z",
+      "side": 1,
+      "message": "Ran into this while trying to run this script on my Windows machine with the depot_tools version of Python.",
+      "revId": "2dd191718209cffd4dd4a995e4efec6ba21ae529",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
