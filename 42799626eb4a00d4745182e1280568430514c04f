@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5536348_7498dbd6",
+        "filename": "fpdfsdk/pwl/cpwl_edit_impl.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-08-10T01:23:34Z",
+      "side": 1,
+      "message": "Most of the CL is converting push_back() to emplace_back(), but this is going the other way?",
+      "revId": "42799626eb4a00d4745182e1280568430514c04f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
