@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "dda18a0a_f024210a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5845
+      },
+      "writtenOn": "2023-08-10T16:47:54Z",
+      "side": 1,
+      "message": "Yeah, this is difficult to parse (I just had difficulty re-reading this myself). I\u0027ve expanded this whole message to make it clearer what is changing and the intent.",
+      "parentUuid": "a18188c6_da8775eb",
+      "range": {
+        "startLine": 9,
+        "startChar": 23,
+        "endLine": 9,
+        "endChar": 27
+      },
+      "revId": "2a327982cf2c227ac0d326b20d7d706c6c9359e6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "b807c862_b3f4dc9a",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
