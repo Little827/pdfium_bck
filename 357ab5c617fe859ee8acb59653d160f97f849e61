@@ -50,6 +50,23 @@
       "message": "Lei,\n\nI submitted the next patch set but I\u0027m not sure if you would like me to fix the CL description or if it is acceptable as-is this time.\n\nThanks,\nJustin Pierce",
       "revId": "357ab5c617fe859ee8acb59653d160f97f849e61",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83d04ba5_5fb1166d",
+        "filename": "testing/fuzzers/pdfium_fuzzer_helper.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-08-11T23:58:27Z",
+      "side": 1,
+      "message": "FWIW, I don\u0027t even understand why this call exists. I will remove it. I would suggest not changing this file in this CL. Same for testing/embedder_test.cpp.",
+      "revId": "357ab5c617fe859ee8acb59653d160f97f849e61",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }

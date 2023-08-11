@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "79409aad_79fa9cd5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-08-11T23:58:27Z",
+      "side": 1,
+      "message": "run `git cl description` locally, or use the web interface. There\u0027s an edit button in the bottom-right corner of the CL description box.",
+      "parentUuid": "3e40831b_fcf326b1",
+      "revId": "bcf65c8a86506a93e2460608ef4863fce096a982",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ed368929_0d604391",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
