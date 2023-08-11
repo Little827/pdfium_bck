@@ -16,6 +16,24 @@
       "message": "For Mac, remove the enable_arc2 line in build_overrides/BUILDCONFIG.gn, or maybe it needs to be set to enable_arc.",
       "revId": "c2c0d3ecea189e912132a2d2d084aba287d6a4a6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8d59cd5_e8449aa4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-08-11T23:32:23Z",
+      "side": 1,
+      "message": "(Should be marked as unresolved)",
+      "parentUuid": "d38be4c8_8e227dac",
+      "revId": "c2c0d3ecea189e912132a2d2d084aba287d6a4a6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
