@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "742f623e_15c0f145",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-08-12T00:00:36Z",
+      "side": 1,
+      "message": "Oftentimes describing an API as \"legacy\" implies it is obsolete, but I don\u0027t think it is. So maybe this should say \"existing\" instead?",
+      "range": {
+        "startLine": 23,
+        "startChar": 3,
+        "endLine": 23,
+        "endChar": 9
+      },
+      "revId": "357ab5c617fe859ee8acb59653d160f97f849e61",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c2994ab_3d46f491",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-08-12T00:00:36Z",
+      "side": 1,
+      "message": "Just: `pdfium:2040`",
+      "range": {
+        "startLine": 29,
+        "startChar": 5,
+        "endLine": 29,
+        "endChar": 69
+      },
+      "revId": "357ab5c617fe859ee8acb59653d160f97f849e61",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "d4ef74a9_975af232",
