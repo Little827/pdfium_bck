@@ -131,6 +131,24 @@
       "message": "FWIW, I don\u0027t even understand why this call exists. I will remove it. I would suggest not changing this file in this CL. Same for testing/embedder_test.cpp.",
       "revId": "357ab5c617fe859ee8acb59653d160f97f849e61",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d32ecd54_7cc6edf2",
+        "filename": "testing/fuzzers/pdfium_fuzzer_helper.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-08-12T00:31:01Z",
+      "side": 1,
+      "message": "Removing in https://pdfium-review.googlesource.com/111230",
+      "parentUuid": "83d04ba5_5fb1166d",
+      "revId": "357ab5c617fe859ee8acb59653d160f97f849e61",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
