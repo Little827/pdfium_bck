@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1eb13df0_6c0c7e59",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-08-15T16:27:51Z",
+      "side": 1,
+      "message": "For context, it may be helpful to mention this is the same as https://crrev.com/1183620",
+      "revId": "7abe3395efb90136121b10be184d61492df5b8eb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd98120d_63274604",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-08-15T16:27:51Z",
+      "side": 1,
+      "message": "FTR, this currently does not auto-link, but it goes to https://issuetracker.google.com/issues/40045066",
+      "range": {
+        "startLine": 9,
+        "startChar": 5,
+        "endLine": 9,
+        "endChar": 15
+      },
+      "revId": "7abe3395efb90136121b10be184d61492df5b8eb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
