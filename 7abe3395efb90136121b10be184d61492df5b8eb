@@ -81,6 +81,30 @@
       },
       "revId": "7abe3395efb90136121b10be184d61492df5b8eb",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bac526e_d7690c72",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-08-15T17:06:29Z",
+      "side": 1,
+      "message": "Ack. Maybe I need to talk to the Gerrit admins.",
+      "parentUuid": "93ebf11f_10fff411",
+      "range": {
+        "startLine": 9,
+        "startChar": 5,
+        "endLine": 9,
+        "endChar": 15
+      },
+      "revId": "7abe3395efb90136121b10be184d61492df5b8eb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
