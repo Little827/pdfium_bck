@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72466639_f4f362af",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-08-15T16:36:12Z",
+      "side": 1,
+      "message": "No space, `pdfium:2040` verbatim. When it\u0027s in the right format, it auto-links to https://bugs.chromium.org/p/pdfium/issues/detail?id\u003d2040 in the Gerrit web interface.",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 17
+      },
+      "revId": "76f627b0468a0b8c17525cbceae68bde6be2d821",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c3a90c5_fe32e52c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-08-15T16:36:12Z",
+      "side": 1,
+      "message": "core/fpdfapi/parser/cpdf_security_handler_embeddertest.cpp has some more FPDF_GetDocPermissions() calls. Want to test out the new API there as well?",
+      "revId": "76f627b0468a0b8c17525cbceae68bde6be2d821",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e18a69e_08601e8e",
+        "filename": "core/fpdfapi/parser/cpdf_security_handler.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-08-15T16:36:12Z",
+      "side": 1,
+      "message": "Do you think it would be more intuitive if this parameter got flipped and became \"use_user_permission\" or something like that?",
+      "range": {
+        "startLine": 219,
+        "startChar": 51,
+        "endLine": 219,
+        "endChar": 63
+      },
+      "revId": "76f627b0468a0b8c17525cbceae68bde6be2d821",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fca562d6_544b746f",
+        "filename": "fpdfsdk/cpdfsdk_formfillenvironment.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 805,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-08-15T16:36:12Z",
+      "side": 1,
+      "message": "To provide more context at callsites to readers, instead of simply writing `false` and leaving the reader to guess what it means, write `/*ignore_owner\u003d*/false`.",
+      "range": {
+        "startLine": 805,
+        "startChar": 43,
+        "endLine": 805,
+        "endChar": 48
+      },
+      "revId": "76f627b0468a0b8c17525cbceae68bde6be2d821",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
