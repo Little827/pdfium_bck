@@ -16,6 +16,24 @@
       "message": "I don\u0027t have +2 (or even Dry Run) permissions. Can you send this to CQ?",
       "revId": "90f8c21af21d0dc1ee3193cd4ea897b880c4f5f3",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c5e5146_2968d074",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-08-15T18:52:46Z",
+      "side": 1,
+      "message": "Sure. I granted CQ+1 rights.",
+      "parentUuid": "a7bcb2cc_d281ef36",
+      "revId": "90f8c21af21d0dc1ee3193cd4ea897b880c4f5f3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
