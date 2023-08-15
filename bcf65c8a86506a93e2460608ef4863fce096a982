@@ -72,6 +72,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bacb20e_58deb299",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 9186
+      },
+      "writtenOn": "2023-08-15T04:04:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79409aad_79fa9cd5",
+      "revId": "bcf65c8a86506a93e2460608ef4863fce096a982",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ed368929_0d604391",
@@ -157,6 +175,24 @@
       "side": 1,
       "message": "FYI, I landed the CLs I referenced, so this CL needs to be rebased.",
       "parentUuid": "b844f00b_a5f466d8",
+      "revId": "bcf65c8a86506a93e2460608ef4863fce096a982",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5ba9fd9_67a13405",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 9186
+      },
+      "writtenOn": "2023-08-15T04:04:35Z",
+      "side": 1,
+      "message": "rebased onto master and now has a consistent callstack as suggested ✔",
+      "parentUuid": "01f8d641_28c874cf",
       "revId": "bcf65c8a86506a93e2460608ef4863fce096a982",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
