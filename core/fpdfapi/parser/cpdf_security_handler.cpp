@@ -215,7 +215,11 @@ bool CPDF_SecurityHandler::CheckSecurity(const ByteString& password) {
 }
 
 uint32_t CPDF_SecurityHandler::GetPermissions() const {
-  uint32_t dwPermission = m_bOwnerUnlocked ? 0xFFFFFFFF : m_Permissions;
+  return m_bOwnerUnlocked ? 0xFFFFFFFF : GetUserPermissions();
+}
+
+uint32_t CPDF_SecurityHandler::GetUserPermissions() const {
+  uint32_t dwPermission = m_Permissions;
   if (m_pEncryptDict &&
       m_pEncryptDict->GetByteStringFor("Filter") == "Standard") {
     // See PDF Reference 1.7, page 123, table 3.20.
