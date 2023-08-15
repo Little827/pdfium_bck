@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7bcb2cc_d281ef36",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7361
+      },
+      "writtenOn": "2023-08-15T18:48:17Z",
+      "side": 1,
+      "message": "I don\u0027t have +2 (or even Dry Run) permissions. Can you send this to CQ?",
+      "revId": "90f8c21af21d0dc1ee3193cd4ea897b880c4f5f3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
