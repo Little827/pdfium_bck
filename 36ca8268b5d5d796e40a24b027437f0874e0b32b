@@ -63,6 +63,30 @@
       },
       "revId": "36ca8268b5d5d796e40a24b027437f0874e0b32b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca3687a2_a67bc885",
+        "filename": "generated/project.cfg",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5760
+      },
+      "writtenOn": "2023-08-17T17:48:42Z",
+      "side": 1,
+      "message": "Yes, it\u0027s auto-updated and not particularly newsworthy.",
+      "parentUuid": "f5d1665a_73def519",
+      "range": {
+        "startLine": 10,
+        "startChar": 1,
+        "endLine": 10,
+        "endChar": 20
+      },
+      "revId": "36ca8268b5d5d796e40a24b027437f0874e0b32b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
