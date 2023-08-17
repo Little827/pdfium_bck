@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d2f61c7_d35300dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-08-17T17:10:19Z",
+      "side": 1,
+      "message": "This probably won\u0027t cause problems, since the Linux pool is fairly large, but there\u0027s currently a potential for deadlock if the pool fills up with recipe runners, leaving no bots available for swarming test tasks.\n\nI need to fix the fallback behavior of the recipe (one more CL) before forward progress is guaranteed.",
+      "revId": "36ca8268b5d5d796e40a24b027437f0874e0b32b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
