@@ -87,6 +87,30 @@
       },
       "revId": "36ca8268b5d5d796e40a24b027437f0874e0b32b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bef9ede3_f7d933c0",
+        "filename": "generated/project.cfg",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-08-17T18:16:09Z",
+      "side": 1,
+      "message": "Hmm, it\u0027s interesting that I have 1.39.14 locally and it didn\u0027t auto-updated the version number from 10 to 14.",
+      "parentUuid": "ca3687a2_a67bc885",
+      "range": {
+        "startLine": 10,
+        "startChar": 1,
+        "endLine": 10,
+        "endChar": 20
+      },
+      "revId": "36ca8268b5d5d796e40a24b027437f0874e0b32b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
