@@ -1228,6 +1228,8 @@ bool CFX_AggDeviceDriver::FillRectWithBlend(const FX_RECT& rect,
   if (m_pBitmap->GetBuffer().empty())
     return true;
 
+  fill_color = fill_color & 0xFFFF;
+
   FX_RECT clip_rect;
   GetClipBox(&clip_rect);
   FX_RECT draw_rect = clip_rect;
