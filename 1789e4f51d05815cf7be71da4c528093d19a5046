@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc2497de_e322c0f5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-08-18T23:14:28Z",
+      "side": 1,
+      "message": "This should be landed after crrev.com/c/4795282.",
+      "revId": "1789e4f51d05815cf7be71da4c528093d19a5046",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
