@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c6131fc_a49bded5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8751
+      },
+      "writtenOn": "2023-08-19T11:35:50Z",
+      "side": 1,
+      "message": "Why is this API needed? Can\u0027t the caller just use `FPDFText_GetUnicode()` and then check if it\u0027s a hyphen char or not?",
+      "revId": "39292f3808ea2e5e656969e00c3ce01abab2b2f1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
