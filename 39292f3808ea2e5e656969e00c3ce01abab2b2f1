@@ -52,6 +52,24 @@
       "parentUuid": "f6a4c4d1_de374239",
       "revId": "39292f3808ea2e5e656969e00c3ce01abab2b2f1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3b7abb9_e98c9cb3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-08-21T23:03:15Z",
+      "side": 1,
+      "message": "It comes from CPDF_TextPage, but the code there is:\n1) Not easy to explain.\n2) Not something I wrote in the first place.\n\nYou can take apart bug_781804.pdf and look into what\u0027s going on. To save you some time, the font for the text has a /ToUnicode mapping, where the 2nd entry maps to 0x2D, AKA 45.\n\nThe better question may be, why doesn\u0027t FPDFText_GetUnicode() return 45, but that goes back to point (2) above.",
+      "parentUuid": "0f46d523_342ac3ba",
+      "revId": "39292f3808ea2e5e656969e00c3ce01abab2b2f1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
