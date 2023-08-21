@@ -34,6 +34,24 @@
       "parentUuid": "0c6131fc_a49bded5",
       "revId": "39292f3808ea2e5e656969e00c3ce01abab2b2f1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f46d523_342ac3ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8751
+      },
+      "writtenOn": "2023-08-21T22:36:12Z",
+      "side": 1,
+      "message": "Oh, I see. But I still don\u0027t understand what is going on here. If it is unicode 2 and not 45, then why should it be recognized as hyphen? Where does that information come from? Are hyphens handled specially in PDF?",
+      "parentUuid": "f6a4c4d1_de374239",
+      "revId": "39292f3808ea2e5e656969e00c3ce01abab2b2f1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
