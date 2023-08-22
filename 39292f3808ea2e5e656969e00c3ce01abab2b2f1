@@ -88,6 +88,24 @@
       "parentUuid": "e3b7abb9_e98c9cb3",
       "revId": "39292f3808ea2e5e656969e00c3ce01abab2b2f1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9c27289_9f4a9bd2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-08-22T21:06:05Z",
+      "side": 1,
+      "message": "FPDFText_GetUnicode() has had its existing behavior for a long time. Though it has its issues, suddenly changing the behavior will likely break embedders. Obviously, I\u0027d prefer not to do that.",
+      "parentUuid": "33424771_0a933bc6",
+      "revId": "39292f3808ea2e5e656969e00c3ce01abab2b2f1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
