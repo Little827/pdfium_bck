@@ -16,6 +16,69 @@
       "message": "A follow-up will be adding a simplified test PDF to PdfToEmfConverterBrowserTest in chromium.",
       "revId": "3da30caf6fe583e3add9dc744df2c66a14399a6e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75fcd85d_0ff87860",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7713
+      },
+      "writtenOn": "2023-08-22T21:08:11Z",
+      "side": 1,
+      "message": "Verified in a local Chromium build that this resolves the crash I was seeing for https://crbug.com/1474758, and the output looks good to my eye. 👍",
+      "revId": "3da30caf6fe583e3add9dc744df2c66a14399a6e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd1e06c1_d090be70",
+        "filename": "core/fpdfapi/page/cpdf_pageimagecache.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 7713
+      },
+      "writtenOn": "2023-08-22T21:08:11Z",
+      "side": 1,
+      "message": "Should this planned action to resolve the TODO be altered now?",
+      "range": {
+        "startLine": 70,
+        "startChar": 16,
+        "endLine": 71,
+        "endChar": 70
+      },
+      "revId": "3da30caf6fe583e3add9dc744df2c66a14399a6e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f9011a6_3d7779be",
+        "filename": "core/fpdfapi/page/cpdf_pageimagecache.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 7713
+      },
+      "writtenOn": "2023-08-22T21:08:11Z",
+      "side": 1,
+      "message": "Will this need similar treatment, for some other test cases?",
+      "range": {
+        "startLine": 85,
+        "startChar": 4,
+        "endLine": 85,
+        "endChar": 17
+      },
+      "revId": "3da30caf6fe583e3add9dc744df2c66a14399a6e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
