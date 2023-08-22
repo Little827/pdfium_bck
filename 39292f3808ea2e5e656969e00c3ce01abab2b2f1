@@ -70,6 +70,24 @@
       "parentUuid": "0f46d523_342ac3ba",
       "revId": "39292f3808ea2e5e656969e00c3ce01abab2b2f1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33424771_0a933bc6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8751
+      },
+      "writtenOn": "2023-08-22T14:25:19Z",
+      "side": 1,
+      "message": "Shouldn\u0027t the behavior of `FPDFText_GetUnicode()` be understood first, before adding a new API? IIUC this might be a bug?\nUnfortunately I have little to no knowledge about PDF internals, so I won\u0027t delve into this. However, what you wrote sounds a bit like `GetUnicode()` returns index rather than value here, i.e. it might not handle `/ToUnicode` correctly?",
+      "parentUuid": "e3b7abb9_e98c9cb3",
+      "revId": "39292f3808ea2e5e656969e00c3ce01abab2b2f1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
