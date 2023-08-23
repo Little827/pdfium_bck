@@ -36,6 +36,23 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "61d7e7a8_d808109a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8751
+      },
+      "writtenOn": "2023-08-23T20:22:13Z",
+      "side": 1,
+      "message": "BTW, I think to build for android running `build/install-build-deps.sh --android` may still be necessary.",
+      "revId": "79fc87a62ed9edfe6cc73425a76a31a11b8c9292",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a183d9ee_3f6d0312",
