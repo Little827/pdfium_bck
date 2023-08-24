@@ -53,12 +53,13 @@ bool CPDF_ScaledRenderBuffer::Initialize(CPDF_RenderContext* pContext,
 
     if (pitch_size.value().size <= kImageSizeLimitBytes &&
         m_pBitmapDevice->Create(width, height, dibFormat, nullptr)) {
+      // m_pBitmapDevice->FillRect(FX_RECT(0, 0, width, height), 0xffffffff);
       break;
     }
     m_Matrix.Scale(0.5f, 0.5f);
   }
-  pContext->GetBackground(m_pBitmapDevice->GetBitmap(), pObj, pOptions,
-                          m_Matrix);
+  pContext->GetBackground(m_pBitmapDevice.get(), m_pBitmapDevice->GetBitmap(),
+                          pObj, pOptions, m_Matrix);
   return true;
 }
 

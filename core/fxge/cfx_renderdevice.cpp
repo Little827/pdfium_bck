@@ -999,9 +999,13 @@ bool CFX_RenderDevice::SetBitsWithMask(const RetainPtr<CFX_DIBBase>& pBitmap,
                                        int top,
                                        int bitmap_alpha,
                                        BlendMode blend_type) {
-  return m_pDeviceDriver->SetBitsWithMask(pBitmap, pMask, left, top,
-                                          bitmap_alpha, blend_type);
+  if (m_pDeviceDriver->SetBitsWithMask(pBitmap, pMask, left, top, bitmap_alpha,
+                                       blend_type)) {
+    return false;
+  }
+  return m_pDeviceDriver->SyncRenderingResultToOriginalBitmap();
 }
+
 #endif
 
 bool CFX_RenderDevice::DrawNormalText(pdfium::span<const TextCharPos> pCharPos,

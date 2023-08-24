@@ -116,6 +116,7 @@ class RenderDeviceDriverIface {
                                int bitmap_alpha,
                                BlendMode blend_type);
   virtual void SetGroupKnockout(bool group_knockout);
+  virtual bool SyncRenderingResultToOriginalBitmap();
 #endif
 
   // Multiplies the device by a constant alpha, returning `true` on success.

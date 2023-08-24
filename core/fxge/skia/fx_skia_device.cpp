@@ -1541,6 +1541,27 @@ void CFX_SkiaDeviceDriver::SetGroupKnockout(bool group_knockout) {
   m_bGroupKnockout = group_knockout;
 }
 
+bool CFX_SkiaDeviceDriver::SyncRenderingResultToOriginalBitmap() {
+  // No transfer destination.
+  if (!m_pOriginalBitmap) {
+    return true;
+  }
+
+  auto copy = pdfium::MakeRetain<CFX_DIBitmap>();
+  if (!copy->Copy(m_pBitmap) || !copy->ConvertFormat(FXDIB_Format::kRgb)) {
+    return false;
+  }
+  int width = m_pOriginalBitmap->GetWidth();
+  int height = m_pOriginalBitmap->GetHeight();
+  DCHECK_EQ(width, copy->GetWidth());
+  DCHECK_EQ(height, copy->GetHeight());
+  DCHECK_EQ(FXDIB_Format::kRgb, m_pOriginalBitmap->GetFormat());
+  m_pOriginalBitmap->TransferBitmap(/*dest_left=*/0, /*dest_top=*/0, width,
+                                    height, copy, /*src_left=*/0,
+                                    /*src_top=*/0);
+  return true;
+}
+
 void CFX_SkiaDeviceDriver::Clear(uint32_t color) {
   m_pCanvas->clear(color);
 }
