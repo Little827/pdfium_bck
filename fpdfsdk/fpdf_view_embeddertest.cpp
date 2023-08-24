@@ -1926,6 +1926,19 @@ TEST_F(FPDFViewEmbedderTest, ImageMask) {
 
   UnloadPage(page);
 }
+
+// Regression test for https://crbug.com/1474758 - should not crash.
+TEST_F(FPDFViewEmbedderTest, StretchedImage) {
+  ASSERT_TRUE(OpenDocument("bug_1549.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  FPDF_SetPrintMode(FPDF_PRINTMODE_EMF);
+  std::vector<uint8_t> emf_normal = RenderPageWithFlagsToEmf(page, 0);
+
+  EXPECT_EQ(1636u, emf_normal.size());
+  UnloadPage(page);
+}
 #endif  // BUILDFLAG(IS_WIN)
 
 TEST_F(FPDFViewEmbedderTest, GetTrailerEnds) {
