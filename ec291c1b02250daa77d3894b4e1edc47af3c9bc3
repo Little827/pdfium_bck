@@ -16,6 +16,24 @@
       "message": "Drive-by advice: Using `GetBuffer()` can introduce certain bugs, especially for JPEG2000 images (for example, see pdfium:2047 and pdfium:2050). It\u0027s better to switch code to use `GetScanline()` instead, if feasible.",
       "revId": "ec291c1b02250daa77d3894b4e1edc47af3c9bc3",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23f71325_41db8e48",
+        "filename": "core/fpdfapi/page/cpdf_pageimagecache.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-08-24T20:44:40Z",
+      "side": 1,
+      "message": "Thanks for the info. I added this context to the bug so that we don\u0027t lose this information.",
+      "parentUuid": "da942b4c_ad4d5f3e",
+      "revId": "ec291c1b02250daa77d3894b4e1edc47af3c9bc3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
