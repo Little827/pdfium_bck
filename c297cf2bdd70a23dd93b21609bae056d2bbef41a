@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cca08fa_aba77eb2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-08-25T20:49:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a978b72_43ec69f7",
+      "range": {
+        "startLine": 19,
+        "startChar": 26,
+        "endLine": 19,
+        "endChar": 39
+      },
+      "revId": "c297cf2bdd70a23dd93b21609bae056d2bbef41a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "709d4f7a_305dcd30",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-08-25T18:01:03Z",
       "side": 1,
       "message": "typo",
+      "range": {
+        "startLine": 31,
+        "startChar": 23,
+        "endLine": 31,
+        "endChar": 29
+      },
+      "revId": "c297cf2bdd70a23dd93b21609bae056d2bbef41a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57a79527_27a7d8de",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-08-25T20:49:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "709d4f7a_305dcd30",
       "range": {
         "startLine": 31,
         "startChar": 23,
@@ -70,6 +118,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "74c14d15_ff3d7428",
+        "filename": "core/fpdfapi/render/cpdf_rendercontext.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-08-25T20:49:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ffada753_f987de2a",
+      "range": {
+        "startLine": 35,
+        "startChar": 57,
+        "endLine": 35,
+        "endChar": 72
+      },
+      "revId": "c297cf2bdd70a23dd93b21609bae056d2bbef41a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "43eec20c_e880769c",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-08-25T18:01:03Z",
       "side": 1,
       "message": "No need to initialize here if the if/else branches below both sets the value as well.",
+      "range": {
+        "startLine": 40,
+        "startChar": 26,
+        "endLine": 40,
+        "endChar": 36
+      },
+      "revId": "c297cf2bdd70a23dd93b21609bae056d2bbef41a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d1a316c_0a2b8c4f",
+        "filename": "core/fpdfapi/render/cpdf_rendercontext.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-08-25T20:49:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43eec20c_e880769c",
       "range": {
         "startLine": 40,
         "startChar": 26,
@@ -110,6 +206,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc8dacaf_82571671",
+        "filename": "core/fpdfapi/render/cpdf_rendercontext.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-08-25T20:49:10Z",
+      "side": 1,
+      "message": "No. I removed it in the new patchset.",
+      "parentUuid": "3aacbf02_4e757d0f",
+      "revId": "c297cf2bdd70a23dd93b21609bae056d2bbef41a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cfb7a76d_75c391b4",
@@ -133,6 +247,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7848abe_f6096a0f",
+        "filename": "core/fxge/cfx_renderdevice.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1007,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-08-25T20:49:10Z",
+      "side": 1,
+      "message": "Renamed the method to SyncInternalBitmaps() for both layes.",
+      "parentUuid": "cfb7a76d_75c391b4",
+      "range": {
+        "startLine": 1007,
+        "startChar": 26,
+        "endLine": 1007,
+        "endChar": 61
+      },
+      "revId": "c297cf2bdd70a23dd93b21609bae056d2bbef41a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6b1fdc81_b92afb5e",
@@ -146,6 +284,30 @@
       "writtenOn": "2023-08-25T18:01:03Z",
       "side": 1,
       "message": "Consistenly use backticks, like line 225.",
+      "range": {
+        "startLine": 228,
+        "startChar": 61,
+        "endLine": 228,
+        "endChar": 62
+      },
+      "revId": "c297cf2bdd70a23dd93b21609bae056d2bbef41a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3710233c_41eab748",
+        "filename": "core/fxge/cfx_renderdevice.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-08-25T20:49:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b1fdc81_b92afb5e",
       "range": {
         "startLine": 228,
         "startChar": 61,
@@ -181,6 +343,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6c568043_4cb85159",
+        "filename": "core/fxge/cfx_renderdevice.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-08-25T20:49:10Z",
+      "side": 1,
+      "message": "Sorry, I described the situation incorrectly. The actual scenario is: \n\nYou have one bitmap buffer `XXX`, which is the one that should receive the final rendering result.\nWith this buffer, you created CFX_RenderDevice A. Then within A\u0027s device driver, there is an internal buffer `XXX_copy1`. \nThen you create a new CFX_RenderDevice B with the bitmap from A.GetBitmap(). Now B has an output buffer `XXX_copy1` and its new copy `XXX_copy_2` as the internal buffer. `XXX_copy2` is where all the rendering process is happening in.\n\nWithout destroying B or manual syncing, A.GetBitmap() will return the `B.m_OriginalBitmap`, which is `XXX_copy1` that has not got the rendering result from `XXX_copy2` yet. That\u0027s why when printing from the data in A.GetBitmap(), we got the empty result.",
+      "parentUuid": "30e7419e_45e64a9d",
+      "range": {
+        "startLine": 231,
+        "startChar": 60,
+        "endLine": 232,
+        "endChar": 43
+      },
+      "revId": "c297cf2bdd70a23dd93b21609bae056d2bbef41a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ee29821d_bf360d20",
         "filename": "core/fxge/cfx_renderdevice.h",
         "patchSetId": 4
@@ -192,6 +378,24 @@
       "writtenOn": "2023-08-25T18:01:03Z",
       "side": 1,
       "message": "What\u0027s the point of having the return value, if the only caller does not check it?",
+      "revId": "c297cf2bdd70a23dd93b21609bae056d2bbef41a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc300477_477a209d",
+        "filename": "core/fxge/cfx_renderdevice.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-08-25T20:49:10Z",
+      "side": 1,
+      "message": "The new patchset made the caller CPDF_ScaledRenderBuffer::OutputToDevice() do an early return if syncing fails.",
+      "parentUuid": "ee29821d_bf360d20",
       "revId": "c297cf2bdd70a23dd93b21609bae056d2bbef41a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -209,6 +413,24 @@
       "writtenOn": "2023-08-25T18:01:03Z",
       "side": 1,
       "message": "Why make a copy? Why not call TransferBitmap() directly?",
+      "revId": "c297cf2bdd70a23dd93b21609bae056d2bbef41a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb58cfea_63d54e13",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1552,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-08-25T20:49:10Z",
+      "side": 1,
+      "message": "TransferBitmap() changes the format of `m_pBitmap` into something Skia does not support. That\u0027s why TransferBitmap() is only called in the dtor where no more rendering process is needed.\n\nWhere Syn***() is called is not at the end of the device driver\u0027s life cycle. Therefore I wanted to keep `m_pBitmap` intact and make a copy.",
+      "parentUuid": "a3304187_256d372a",
       "revId": "c297cf2bdd70a23dd93b21609bae056d2bbef41a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
