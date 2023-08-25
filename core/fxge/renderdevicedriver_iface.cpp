@@ -83,4 +83,8 @@ bool RenderDeviceDriverIface::SetBitsWithMask(
 }
 
 void RenderDeviceDriverIface::SetGroupKnockout(bool group_knockout) {}
+
+bool RenderDeviceDriverIface::SyncRenderingResultToOriginalBitmap() {
+  return true;
+}
 #endif

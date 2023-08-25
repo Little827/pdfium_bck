@@ -221,6 +221,16 @@ class CFX_RenderDevice {
                        int top,
                        int bitmap_alpha,
                        BlendMode blend_type);
+
+  // Syncs the existing rendering progress from `m_pDeviceDriver`'s internal
+  // buffer to `m_pBitmap`.
+  //
+  // Note: `m_pBitmap` doesn't get the rendering result from 'm_pDeviceDriver''s
+  // internal buffer until `m_pDeviceDriver` is destroyed. If the rendering
+  // result is needed before `m_pDeviceDriver` gets destroyed (e.g during
+  // printing process), this function must be called before outputting the
+  // rendering result through `GetBitmap()`.
+  bool SyncInternalBitmaps();
 #endif
 
  protected:

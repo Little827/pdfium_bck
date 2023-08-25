@@ -116,6 +116,10 @@ class RenderDeviceDriverIface {
                                int bitmap_alpha,
                                BlendMode blend_type);
   virtual void SetGroupKnockout(bool group_knockout);
+
+  // Syncs the existing rendering result from the internal buffer to the output
+  // bitmap if such internal buffer exists.
+  virtual bool SyncRenderingResultToOriginalBitmap();
 #endif
 
   // Multiplies the device by a constant alpha, returning `true` on success.
