@@ -6,7 +6,7 @@
 
 #include "core/fxcrt/fx_memory.h"
 
-#include "base/allocator/partition_allocator/partition_alloc.h"
+#include "base/allocator/partition_allocator/src/partition_alloc/partition_alloc.h"
 #include "core/fxcrt/fx_safe_types.h"
 #include "third_party/base/no_destructor.h"
 
