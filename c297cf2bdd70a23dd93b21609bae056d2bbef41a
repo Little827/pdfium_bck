@@ -493,6 +493,24 @@
       "parentUuid": "f5dcade1_a3a2e982",
       "revId": "c297cf2bdd70a23dd93b21609bae056d2bbef41a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4f61fd5_7f11450b",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1552,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-08-25T23:57:06Z",
+      "side": 1,
+      "message": "Though I have to take back part of what I said earlier. `const RetainPtr\u003cCFX_DIBBase\u003e\u0026` is actually a const reference to a smart pointer that points to a non-const `CFX_DIBBase`. As such one actually modify the `CFX_DIBBase` For the `RetainPtr` to really really really be const, it needs to be some form of `RetainPtr\u003cconst CFX_DIBBase\u003e`.",
+      "parentUuid": "a546de1c_7786fc01",
+      "revId": "c297cf2bdd70a23dd93b21609bae056d2bbef41a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
