@@ -221,6 +221,14 @@ class CFX_RenderDevice {
                        int top,
                        int bitmap_alpha,
                        BlendMode blend_type);
+
+  // For the case when `m_pDeviceDriver` is `CFX_SkiaDeviceDriver` only:
+  // Syncs the existing rendering progress from `m_pDeviceDriver->m_pBitmap`
+  // (the device driver's internal buffer) to `m_pBitmap`.
+  //
+  // Note: A syncing process automatically happens when `m_pDeviceDriver` is
+  // destroyed. This method forces syncing without destroying `m_pDeviceDriver`.
+  bool SyncInternalBitmaps();
 #endif
 
  protected:
