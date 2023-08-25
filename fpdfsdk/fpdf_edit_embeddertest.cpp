@@ -2842,6 +2842,34 @@ TEST_F(FPDFEditEmbedderTest, NoEmbeddedFontData) {
   UnloadPage(page);
 }
 
+TEST_F(FPDFEditEmbedderTest, FontLivesForDocumentLifetime) {
+  ASSERT_TRUE(OpenDocument("hello_world.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+
+  FPDF_PAGEOBJECT text_object = FPDFPage_GetObject(page, 0);
+  ASSERT_TRUE(text_object);
+
+  FPDF_FONT font = FPDFTextObj_GetFont(text_object);
+  ASSERT_TRUE(font);
+
+  // Let's verify that we can get the font data before we close the page.
+  size_t buflen = 0;
+  FPDFFont_GetFontData(font, nullptr, 0, &buflen);
+  ASSERT_EQ(469968ul, buflen);
+
+  // Now check that we can get the font data *after* we close the page.
+  // This should work as fonts should have a lifetime that matches the
+  // document, not the page.
+  UnloadPage(page);
+
+  buflen = 0;
+  FPDFFont_GetFontData(font, nullptr, 0, &buflen);
+  ASSERT_EQ(469968ul, buflen);
+
+  FPDFFont_Close(font);
+}
+
 TEST_F(FPDFEditEmbedderTest, GlyphPaths) {
   // bad glyphpath
   EXPECT_EQ(-1, FPDFGlyphPath_CountGlyphSegments(nullptr));

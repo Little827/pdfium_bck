@@ -1193,9 +1193,9 @@ FPDFText_LoadStandardFont(FPDF_DOCUMENT document, FPDF_BYTESTRING font);
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
 FPDFTextObj_GetFontSize(FPDF_PAGEOBJECT text, float* size);
 
-// Close a loaded PDF font.
+// Close a PDF font.
 //
-// font   - Handle to the loaded font.
+// font   - Handle to the font.
 FPDF_EXPORT void FPDF_CALLCONV FPDFFont_Close(FPDF_FONT font);
 
 // Create a new text object using a loaded font.
@@ -1274,7 +1274,10 @@ FPDFTextObj_GetRenderedBitmap(FPDF_DOCUMENT document,
 //
 // text - the handle to the text object.
 //
-// Returns a handle to the font object held by |text| which retains ownership.
+// Returns a handle to the font object used by |text|.
+//
+// The caller takes ownership of the font object and must call FPDFFont_Close
+// to close the font.
 FPDF_EXPORT FPDF_FONT FPDF_CALLCONV FPDFTextObj_GetFont(FPDF_PAGEOBJECT text);
 
 // Experimental API.

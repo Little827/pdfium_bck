@@ -709,8 +709,8 @@ FPDF_EXPORT FPDF_FONT FPDF_CALLCONV FPDFTextObj_GetFont(FPDF_PAGEOBJECT text) {
   if (!pTextObj)
     return nullptr;
 
-  // Unretained reference in public API. NOLINTNEXTLINE
-  return FPDFFontFromCPDFFont(pTextObj->GetFont());
+  // Caller takes ownership and must call FPDFFont_Close to avoid a memory leak.
+  return FPDFFontFromCPDFFont(pTextObj->GetFont().Leak());
 }
 
 FPDF_EXPORT unsigned long FPDF_CALLCONV
