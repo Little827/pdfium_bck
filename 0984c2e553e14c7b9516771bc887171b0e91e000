@@ -16,6 +16,24 @@
       "message": "Given the implementation is just a pass-through to RenderDeviceDriverIface::SyncInternalBitmaps(), it probably does not make sense to describe the implementation details and reveal what\u0027s behind the abstraction.",
       "revId": "0984c2e553e14c7b9516771bc887171b0e91e000",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72f001d3_db30ac24",
+        "filename": "core/fxge/cfx_renderdevice.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-08-25T23:29:44Z",
+      "side": 1,
+      "message": "Ack. Removed the description here in the new patchset.",
+      "parentUuid": "c7031210_340b303d",
+      "revId": "0984c2e553e14c7b9516771bc887171b0e91e000",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
