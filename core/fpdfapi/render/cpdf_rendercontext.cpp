@@ -32,15 +32,22 @@ CPDF_RenderContext::CPDF_RenderContext(
 
 CPDF_RenderContext::~CPDF_RenderContext() = default;
 
-void CPDF_RenderContext::GetBackground(RetainPtr<CFX_DIBitmap> pBuffer,
+void CPDF_RenderContext::GetBackground(CFX_RenderDevice* existing_device,
+                                       RetainPtr<CFX_DIBitmap> pBuffer,
                                        const CPDF_PageObject* pObj,
                                        const CPDF_RenderOptions* pOptions,
                                        const CFX_Matrix& mtFinal) {
-  CFX_DefaultRenderDevice device;
-  device.Attach(std::move(pBuffer));
-  device.FillRect(FX_RECT(0, 0, device.GetWidth(), device.GetHeight()),
-                  0xffffffff);
-  Render(&device, pObj, pOptions, &mtFinal);
+  CFX_RenderDevice* device = nullptr;
+  if (existing_device) {
+    device = existing_device;
+  } else {
+    CFX_DefaultRenderDevice new_device;
+    new_device.Attach(std::move(pBuffer));
+    device = &new_device;
+  }
+  device->FillRect(FX_RECT(0, 0, device->GetWidth(), device->GetHeight()),
+                   0xffffffff);
+  Render(device, pObj, pOptions, &mtFinal);
 }
 
 void CPDF_RenderContext::AppendLayer(CPDF_PageObjectHolder* pObjectHolder,
