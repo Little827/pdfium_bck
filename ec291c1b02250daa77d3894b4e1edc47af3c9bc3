@@ -52,6 +52,24 @@
       "parentUuid": "23f71325_41db8e48",
       "revId": "ec291c1b02250daa77d3894b4e1edc47af3c9bc3",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24f619f8_2203d2ec",
+        "filename": "core/fpdfapi/page/cpdf_pageimagecache.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-08-25T01:13:34Z",
+      "side": 1,
+      "message": "Which bug did you add a comment to? I wanted to make a note that the bug might be the other way around (GetBuffer works in more situations). Regardless, it\u0027s a bug not to support GetScanline, as some images only provide GetScanline.",
+      "parentUuid": "e5028e4a_329ecb61",
+      "revId": "ec291c1b02250daa77d3894b4e1edc47af3c9bc3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
