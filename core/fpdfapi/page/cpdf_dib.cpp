@@ -39,6 +39,7 @@
 #include "core/fxge/dib/cfx_dibitmap.h"
 #include "third_party/base/check.h"
 #include "third_party/base/check_op.h"
+#include "third_party/base/notreached.h"
 
 namespace {
 
@@ -1132,8 +1133,7 @@ bool CPDF_DIB::TranslateScanline24bppDefaultDecode(
 }
 
 pdfium::span<const uint8_t> CPDF_DIB::GetBuffer() const {
-  return m_pCachedBitmap ? m_pCachedBitmap->GetBuffer()
-                         : pdfium::span<const uint8_t>();
+  NOTREACHED_NORETURN();
 }
 
 pdfium::span<const uint8_t> CPDF_DIB::GetScanline(int line) const {
