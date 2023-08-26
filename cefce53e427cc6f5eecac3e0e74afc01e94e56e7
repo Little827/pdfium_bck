@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "afd73ec4_cda33787",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-08-26T01:59:18Z",
+      "side": 1,
+      "message": "There\u0027s more follow-up work, but this is the part that can merged to M117 if needed.",
+      "revId": "cefce53e427cc6f5eecac3e0e74afc01e94e56e7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
