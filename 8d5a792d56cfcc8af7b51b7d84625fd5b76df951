@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ccf0ff14_60c2ff13",
+        "filename": "core/fxge/win32/cgdi_device_driver.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-08-29T17:45:41Z",
+      "side": 1,
+      "message": "Nit: This shouldn\u0027t be needed, because `CFX_DIBBase::FlipImage()` always returns either a `CFX_DIBitmap` (which always has a buffer) or `nullptr`.\n\nhttps://source.chromium.org/chromium/chromium/src/+/main:third_party/pdfium/core/fxge/dib/cfx_dibbase.cpp;l\u003d894;drc\u003d8d5a792d56cfcc8af7b51b7d84625fd5b76df951",
+      "revId": "8d5a792d56cfcc8af7b51b7d84625fd5b76df951",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9140c95_89b193b5",
+        "filename": "core/fxge/win32/cgdi_device_driver.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-08-29T17:45:41Z",
+      "side": 1,
+      "message": "Nit: This is not needed because `CFX_DIBBase::StretchTo()` returns a `CFX_DIBitmap` or `nullptr`.",
+      "revId": "8d5a792d56cfcc8af7b51b7d84625fd5b76df951",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
