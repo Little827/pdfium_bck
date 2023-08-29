@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "a8f06e5e_26834071",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 9296
+      },
+      "writtenOn": "2023-08-29T08:58:27Z",
+      "side": 1,
+      "message": "I didn\u0027t know about this rule. I don\u0027t think I care. I updated the description.\n\nNote that other third_party are already using the \u003c\u003e:\nI don\u0027t know. See we are using:\n```\n#include \u003cdawn/...\u003e\n```\nhttps://source.chromium.org/search?q\u003d%22include%20%3Cdawn%22%20-file:out\u0026sq\u003d\u0026ss\u003dchromium\n\n```\n#include \u003cv8-inspector/...\n```\nhttps://source.chromium.org/search?q\u003d%22include%20%3Cv8%22%20-file:out\u0026sq\u003d\u0026ss\u003dchromium\n\n\n... but I guess they ignored this rule. Thanks for adding the note:",
+      "parentUuid": "8400e057_2e913721",
+      "range": {
+        "startLine": 21,
+        "startChar": 12,
+        "endLine": 21,
+        "endChar": 33
+      },
+      "revId": "62e9996ee8ba24e83c98f7783b90cf0987def444",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "bf403f14_377957dc",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
