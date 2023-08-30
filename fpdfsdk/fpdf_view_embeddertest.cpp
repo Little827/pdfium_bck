@@ -485,6 +485,7 @@ TEST_F(FPDFViewEmbedderTest, Document) {
   EXPECT_EQ(14, version);
 
   EXPECT_EQ(0xFFFFFFFF, FPDF_GetDocPermissions(document()));
+  EXPECT_EQ(0xFFFFFFFC, FPDF_GetDocUserPermissions(document()));
   EXPECT_EQ(-1, FPDF_GetSecurityHandlerRevision(document()));
   CloseDocument();
 
@@ -498,6 +499,7 @@ TEST_F(FPDFViewEmbedderTest, Document) {
   EXPECT_EQ(14, version);
 
   EXPECT_EQ(0xFFFFFFFF, FPDF_GetDocPermissions(document()));
+  EXPECT_EQ(0xFFFFFFFC, FPDF_GetDocUserPermissions(document()));
   EXPECT_EQ(-1, FPDF_GetSecurityHandlerRevision(document()));
   // CloseDocument() called by TearDown().
 }
