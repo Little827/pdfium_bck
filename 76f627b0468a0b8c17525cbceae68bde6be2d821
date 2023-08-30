@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f72e166f_a568639f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 9186
+      },
+      "writtenOn": "2023-08-30T02:38:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72466639_f4f362af",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 17
+      },
+      "revId": "76f627b0468a0b8c17525cbceae68bde6be2d821",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c3a90c5_fe32e52c",
@@ -41,6 +65,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b7dc844_56724b33",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 9186
+      },
+      "writtenOn": "2023-08-30T02:38:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c3a90c5_fe32e52c",
+      "revId": "76f627b0468a0b8c17525cbceae68bde6be2d821",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e18a69e_08601e8e",
@@ -54,6 +96,30 @@
       "writtenOn": "2023-08-15T16:36:12Z",
       "side": 1,
       "message": "Do you think it would be more intuitive if this parameter got flipped and became \"use_user_permission\" or something like that?",
+      "range": {
+        "startLine": 219,
+        "startChar": 51,
+        "endLine": 219,
+        "endChar": 63
+      },
+      "revId": "76f627b0468a0b8c17525cbceae68bde6be2d821",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2615b7d3_c9f41910",
+        "filename": "core/fpdfapi/parser/cpdf_security_handler.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 9186
+      },
+      "writtenOn": "2023-08-30T02:38:16Z",
+      "side": 1,
+      "message": "this is a good point, I\u0027ll see it how it looks with the parameter reversed",
+      "parentUuid": "4e18a69e_08601e8e",
       "range": {
         "startLine": 219,
         "startChar": 51,
