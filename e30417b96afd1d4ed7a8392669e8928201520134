@@ -33,6 +33,42 @@
       "message": "Another issue on mac is:\nERROR at //base/allocator/partition_allocator/BUILD.gn:615:18: Item not found\n    configs -\u003d [ \"//build/config/compiler:enable_arc\" ]\n                 ^-----------------------------------\nYou were trying to remove \"//build/config/compiler:enable_arc\"",
       "revId": "e30417b96afd1d4ed7a8392669e8928201520134",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93931505_4dcfffa2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-08-30T16:24:03Z",
+      "side": 1,
+      "message": "Will need to find an equivalent syntax for C++17 and land that in PA first.",
+      "parentUuid": "06577287_ea13a821",
+      "revId": "e30417b96afd1d4ed7a8392669e8928201520134",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0bf7cb2_1c6fe865",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-08-30T16:24:03Z",
+      "side": 1,
+      "message": "build/ roll should resolve this.",
+      "parentUuid": "18c0de18_c904f587",
+      "revId": "e30417b96afd1d4ed7a8392669e8928201520134",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
