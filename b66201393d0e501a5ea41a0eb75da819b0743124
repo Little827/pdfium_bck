@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ed16f67_c6d2ba8c",
+        "filename": "testing/resources/bug_1477093.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-08-30T21:30:21Z",
+      "side": 1,
+      "message": "Optional: \nIf it\u0027s not directly related to this bug, change them into integers so that it\u0027s easier to read.\nThe same to line 29.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 20
+      },
+      "revId": "b66201393d0e501a5ea41a0eb75da819b0743124",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba9caec8_d2eb4d12",
+        "filename": "testing/resources/bug_1477093.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-08-30T21:30:21Z",
+      "side": 1,
+      "message": "Sort dictionaries by alphabetical order. (Except for the \"Type\" \"Subtype\" dicts.)\nDo that same for object 7.",
+      "range": {
+        "startLine": 47,
+        "startChar": 2,
+        "endLine": 54,
+        "endChar": 25
+      },
+      "revId": "b66201393d0e501a5ea41a0eb75da819b0743124",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
