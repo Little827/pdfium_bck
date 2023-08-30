@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06577287_ea13a821",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-08-30T16:06:09Z",
+      "side": 1,
+      "message": "One issue is C++20 vs C++17 (as used in G3).\n\n../../base/allocator/partition_allocator/partition_root.h:162:9: error: using declaration naming a scoped enumerator is a C++20 extension [-Werror,-Wc++20-extensions]\n  162 |   using AllowToggle::kAllowed;\n      |         ^~~~~~~~~~~~~\n.",
+      "revId": "e30417b96afd1d4ed7a8392669e8928201520134",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
