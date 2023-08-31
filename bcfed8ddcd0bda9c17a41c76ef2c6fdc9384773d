@@ -73,6 +73,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "1ce4f454_204027c2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-08-31T16:03:09Z",
+      "side": 1,
+      "message": "Looks like there are several dependencies that will need to be updated in-order. Most of the people who can approve such rolls are out the rest of this week, so this probably won\u0027t happen until Tuesday, say.",
+      "parentUuid": "9ee39211_7bb10322",
+      "revId": "bcfed8ddcd0bda9c17a41c76ef2c6fdc9384773d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "ed8275d5_fb95bf73",
         "filename": "core/fxcrt/fx_memory_pa.cpp",
         "patchSetId": 1
