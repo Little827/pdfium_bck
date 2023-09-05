@@ -16,6 +16,24 @@
       "message": "This doesn\u0027t build for me locally.",
       "revId": "7436d1a068cd11b5bb6b65297988bd1c0942d1e5",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "994859bf_ca8493f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-09-05T20:48:05Z",
+      "side": 1,
+      "message": "```\n$ autoninja -C out/fuchsia -k0\nninja: Entering directory `out/fuchsia\u0027\n[0/1] Regenerating ninja files\nERROR at //build/config/fuchsia/gn_configs.gni:44:21: Could not read file.\n  _meta \u003d read_file(fuchsia_sdk_manifest_file, \"json\")\n                    ^------------------------\nI resolved this to \"/path/to/pdfium/pdfium/third_party/fuchsia_sdk/sdk/meta/manifest.json\".\nSee //third_party/fuchsia-sdk/sdk/build/cmc.gni:5:1: whence it was imported.\nimport(\"//build/config/fuchsia/gn_configs.gni\")\n^---------------------------------------------\nSee //third_party/fuchsia-sdk/sdk/build/component.gni:5:1: whence it was imported.\nimport(\"cmc.gni\")\n^---------------\nSee //build/config/coverage/coverage.gni:7:3: whence it was imported.\n  import(\"//third_party/fuchsia-sdk/sdk/build/component.gni\")\n  ^---------------------------------------------------------\nSee //build/config/coverage/BUILD.gn:6:1: whence it was imported.\nimport(\"//build/config/coverage/coverage.gni\")\n^--------------------------------------------\nSee //build_overrides/BUILDCONFIG.gn:357:3: which caused the file to be included.\n  \"//build/config/coverage:default_coverage\",\n  ^-----------------------------------------\nFAILED: build.ninja.stamp\n```",
+      "parentUuid": "7bb87897_815283aa",
+      "revId": "7436d1a068cd11b5bb6b65297988bd1c0942d1e5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
