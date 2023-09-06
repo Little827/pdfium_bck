@@ -3,6 +3,8 @@
 // found in the LICENSE file.
 
 #include <iterator>
+#include <memory>
+#include <string>
 
 #include "core/fpdfapi/page/cpdf_form.h"
 #include "core/fpdfapi/page/cpdf_formobject.h"
@@ -23,6 +25,8 @@
 #include "testing/embedder_test.h"
 #include "testing/embedder_test_constants.h"
 #include "testing/gtest/include/gtest/gtest.h"
+#include "testing/utils/file_util.h"
+#include "testing/utils/path_service.h"
 
 namespace {
 
@@ -66,19 +70,17 @@ const char* Bug750568PageHash(int page_index) {
 TEST_F(FPDFPPOEmbedderTest, NoViewerPreferences) {
   ASSERT_TRUE(OpenDocument("hello_world.pdf"));
 
-  FPDF_DOCUMENT output_doc = FPDF_CreateNewDocument();
+  ScopedFPDFDocument output_doc(FPDF_CreateNewDocument());
   EXPECT_TRUE(output_doc);
-  EXPECT_FALSE(FPDF_CopyViewerPreferences(output_doc, document()));
-  FPDF_CloseDocument(output_doc);
+  EXPECT_FALSE(FPDF_CopyViewerPreferences(output_doc.get(), document()));
 }
 
 TEST_F(FPDFPPOEmbedderTest, ViewerPreferences) {
   ASSERT_TRUE(OpenDocument("viewer_ref.pdf"));
 
-  FPDF_DOCUMENT output_doc = FPDF_CreateNewDocument();
+  ScopedFPDFDocument output_doc(FPDF_CreateNewDocument());
   EXPECT_TRUE(output_doc);
-  EXPECT_TRUE(FPDF_CopyViewerPreferences(output_doc, document()));
-  FPDF_CloseDocument(output_doc);
+  EXPECT_TRUE(FPDF_CopyViewerPreferences(output_doc.get(), document()));
 }
 
 TEST_F(FPDFPPOEmbedderTest, ImportPagesByIndex) {
@@ -105,12 +107,11 @@ TEST_F(FPDFPPOEmbedderTest, ImportPages) {
   FPDF_PAGE page = LoadPage(0);
   EXPECT_TRUE(page);
 
-  FPDF_DOCUMENT output_doc = FPDF_CreateNewDocument();
+  ScopedFPDFDocument output_doc(FPDF_CreateNewDocument());
   ASSERT_TRUE(output_doc);
-  EXPECT_TRUE(FPDF_CopyViewerPreferences(output_doc, document()));
-  EXPECT_TRUE(FPDF_ImportPages(output_doc, document(), "1", 0));
-  EXPECT_EQ(1, FPDF_GetPageCount(output_doc));
-  FPDF_CloseDocument(output_doc);
+  EXPECT_TRUE(FPDF_CopyViewerPreferences(output_doc.get(), document()));
+  EXPECT_TRUE(FPDF_ImportPages(output_doc.get(), document(), "1", 0));
+  EXPECT_EQ(1, FPDF_GetPageCount(output_doc.get()));
 
   UnloadPage(page);
 }
@@ -381,31 +382,29 @@ TEST_F(FPDFPPOEmbedderTest, BUG_1229106) {
 TEST_F(FPDFPPOEmbedderTest, BadRepeatViewerPref) {
   ASSERT_TRUE(OpenDocument("repeat_viewer_ref.pdf"));
 
-  FPDF_DOCUMENT output_doc = FPDF_CreateNewDocument();
+  ScopedFPDFDocument output_doc(FPDF_CreateNewDocument());
   EXPECT_TRUE(output_doc);
-  EXPECT_TRUE(FPDF_CopyViewerPreferences(output_doc, document()));
+  EXPECT_TRUE(FPDF_CopyViewerPreferences(output_doc.get(), document()));
 
   FPDF_FILEWRITE writer;
   writer.version = 1;
   writer.WriteBlock = FakeBlockWriter;
 
-  EXPECT_TRUE(FPDF_SaveAsCopy(output_doc, &writer, 0));
-  FPDF_CloseDocument(output_doc);
+  EXPECT_TRUE(FPDF_SaveAsCopy(output_doc.get(), &writer, 0));
 }
 
 TEST_F(FPDFPPOEmbedderTest, BadCircularViewerPref) {
   ASSERT_TRUE(OpenDocument("circular_viewer_ref.pdf"));
 
-  FPDF_DOCUMENT output_doc = FPDF_CreateNewDocument();
+  ScopedFPDFDocument output_doc(FPDF_CreateNewDocument());
   EXPECT_TRUE(output_doc);
-  EXPECT_TRUE(FPDF_CopyViewerPreferences(output_doc, document()));
+  EXPECT_TRUE(FPDF_CopyViewerPreferences(output_doc.get(), document()));
 
   FPDF_FILEWRITE writer;
   writer.version = 1;
   writer.WriteBlock = FakeBlockWriter;
 
-  EXPECT_TRUE(FPDF_SaveAsCopy(output_doc, &writer, 0));
-  FPDF_CloseDocument(output_doc);
+  EXPECT_TRUE(FPDF_SaveAsCopy(output_doc.get(), &writer, 0));
 }
 
 TEST_F(FPDFPPOEmbedderTest, CopyViewerPrefTypes) {
@@ -523,19 +522,18 @@ TEST_F(FPDFPPOEmbedderTest, BadRanges) {
   FPDF_PAGE page = LoadPage(0);
   EXPECT_TRUE(page);
 
-  FPDF_DOCUMENT output_doc = FPDF_CreateNewDocument();
+  ScopedFPDFDocument output_doc(FPDF_CreateNewDocument());
   EXPECT_TRUE(output_doc);
-  EXPECT_FALSE(FPDF_ImportPages(output_doc, document(), "clams", 0));
-  EXPECT_FALSE(FPDF_ImportPages(output_doc, document(), "0", 0));
-  EXPECT_FALSE(FPDF_ImportPages(output_doc, document(), "42", 0));
-  EXPECT_FALSE(FPDF_ImportPages(output_doc, document(), "1,2", 0));
-  EXPECT_FALSE(FPDF_ImportPages(output_doc, document(), "1-2", 0));
-  EXPECT_FALSE(FPDF_ImportPages(output_doc, document(), ",1", 0));
-  EXPECT_FALSE(FPDF_ImportPages(output_doc, document(), "1,", 0));
-  EXPECT_FALSE(FPDF_ImportPages(output_doc, document(), "1-", 0));
-  EXPECT_FALSE(FPDF_ImportPages(output_doc, document(), "-1", 0));
-  EXPECT_FALSE(FPDF_ImportPages(output_doc, document(), "-,0,,,1-", 0));
-  FPDF_CloseDocument(output_doc);
+  EXPECT_FALSE(FPDF_ImportPages(output_doc.get(), document(), "clams", 0));
+  EXPECT_FALSE(FPDF_ImportPages(output_doc.get(), document(), "0", 0));
+  EXPECT_FALSE(FPDF_ImportPages(output_doc.get(), document(), "42", 0));
+  EXPECT_FALSE(FPDF_ImportPages(output_doc.get(), document(), "1,2", 0));
+  EXPECT_FALSE(FPDF_ImportPages(output_doc.get(), document(), "1-2", 0));
+  EXPECT_FALSE(FPDF_ImportPages(output_doc.get(), document(), ",1", 0));
+  EXPECT_FALSE(FPDF_ImportPages(output_doc.get(), document(), "1,", 0));
+  EXPECT_FALSE(FPDF_ImportPages(output_doc.get(), document(), "1-", 0));
+  EXPECT_FALSE(FPDF_ImportPages(output_doc.get(), document(), "-1", 0));
+  EXPECT_FALSE(FPDF_ImportPages(output_doc.get(), document(), "-,0,,,1-", 0));
 
   UnloadPage(page);
 }
@@ -546,18 +544,17 @@ TEST_F(FPDFPPOEmbedderTest, GoodRanges) {
   FPDF_PAGE page = LoadPage(0);
   EXPECT_TRUE(page);
 
-  FPDF_DOCUMENT output_doc = FPDF_CreateNewDocument();
+  ScopedFPDFDocument output_doc(FPDF_CreateNewDocument());
   EXPECT_TRUE(output_doc);
-  EXPECT_TRUE(FPDF_CopyViewerPreferences(output_doc, document()));
-  EXPECT_TRUE(FPDF_ImportPages(output_doc, document(), "1,1,1,1", 0));
-  EXPECT_EQ(4, FPDF_GetPageCount(output_doc));
-  EXPECT_TRUE(FPDF_ImportPages(output_doc, document(), "1-1", 0));
-  EXPECT_EQ(5, FPDF_GetPageCount(output_doc));
-  EXPECT_TRUE(FPDF_ImportPages(output_doc, document(), "5-5", 0));
-  EXPECT_EQ(6, FPDF_GetPageCount(output_doc));
-  EXPECT_TRUE(FPDF_ImportPages(output_doc, document(), "2-4", 0));
-  EXPECT_EQ(9, FPDF_GetPageCount(output_doc));
-  FPDF_CloseDocument(output_doc);
+  EXPECT_TRUE(FPDF_CopyViewerPreferences(output_doc.get(), document()));
+  EXPECT_TRUE(FPDF_ImportPages(output_doc.get(), document(), "1,1,1,1", 0));
+  EXPECT_EQ(4, FPDF_GetPageCount(output_doc.get()));
+  EXPECT_TRUE(FPDF_ImportPages(output_doc.get(), document(), "1-1", 0));
+  EXPECT_EQ(5, FPDF_GetPageCount(output_doc.get()));
+  EXPECT_TRUE(FPDF_ImportPages(output_doc.get(), document(), "5-5", 0));
+  EXPECT_EQ(6, FPDF_GetPageCount(output_doc.get()));
+  EXPECT_TRUE(FPDF_ImportPages(output_doc.get(), document(), "2-4", 0));
+  EXPECT_EQ(9, FPDF_GetPageCount(output_doc.get()));
 
   UnloadPage(page);
 }
@@ -568,13 +565,12 @@ TEST_F(FPDFPPOEmbedderTest, BUG_664284) {
   FPDF_PAGE page = LoadPage(0);
   ASSERT_NE(nullptr, page);
 
-  FPDF_DOCUMENT output_doc = FPDF_CreateNewDocument();
+  ScopedFPDFDocument output_doc(FPDF_CreateNewDocument());
   EXPECT_TRUE(output_doc);
 
   static constexpr int kIndices[] = {0};
-  EXPECT_TRUE(FPDF_ImportPagesByIndex(output_doc, document(), kIndices,
+  EXPECT_TRUE(FPDF_ImportPagesByIndex(output_doc.get(), document(), kIndices,
                                       std::size(kIndices), 0));
-  FPDF_CloseDocument(output_doc);
 
   UnloadPage(page);
 }
@@ -592,22 +588,20 @@ TEST_F(FPDFPPOEmbedderTest, BUG_750568) {
     UnloadPage(page);
   }
 
-  FPDF_DOCUMENT output_doc = FPDF_CreateNewDocument();
+  ScopedFPDFDocument output_doc(FPDF_CreateNewDocument());
   ASSERT_TRUE(output_doc);
 
   static constexpr int kIndices[] = {0, 1, 2, 3};
-  EXPECT_TRUE(FPDF_ImportPagesByIndex(output_doc, document(), kIndices,
+  EXPECT_TRUE(FPDF_ImportPagesByIndex(output_doc.get(), document(), kIndices,
                                       std::size(kIndices), 0));
-  ASSERT_EQ(4, FPDF_GetPageCount(output_doc));
+  ASSERT_EQ(4, FPDF_GetPageCount(output_doc.get()));
   for (size_t i = 0; i < 4; ++i) {
-    FPDF_PAGE page = FPDF_LoadPage(output_doc, i);
+    ScopedFPDFPage page(FPDF_LoadPage(output_doc.get(), i));
     ASSERT_TRUE(page);
 
-    ScopedFPDFBitmap bitmap = RenderPage(page);
+    ScopedFPDFBitmap bitmap = RenderPage(page.get());
     CompareBitmap(bitmap.get(), 200, 200, Bug750568PageHash(i));
-    FPDF_ClosePage(page);
   }
-  FPDF_CloseDocument(output_doc);
 }
 
 TEST_F(FPDFPPOEmbedderTest, ImportWithZeroLengthStream) {
@@ -631,4 +625,27 @@ TEST_F(FPDFPPOEmbedderTest, ImportWithZeroLengthStream) {
   ASSERT_TRUE(new_page);
   ScopedFPDFBitmap new_bitmap = RenderPage(new_page.get());
   CompareBitmap(new_bitmap.get(), 200, 200, pdfium::HelloWorldChecksum());
+}
+
+TEST_F(FPDFPPOEmbedderTest, ImportIntoDestDocWithoutInfo) {
+  ASSERT_TRUE(OpenDocument("hello_world.pdf"));
+  EXPECT_EQ(1, FPDF_GetPageCount(document()));
+
+  std::string file_path;
+  ASSERT_TRUE(PathService::GetTestFilePath("rectangles.pdf", &file_path));
+  size_t file_length = 0;
+  std::unique_ptr<char, pdfium::FreeDeleter> file_contents =
+      GetFileContents(file_path.c_str(), &file_length);
+  DCHECK(file_contents);
+  ScopedFPDFDocument src_doc(
+      FPDF_LoadMemDocument(file_contents.get(), file_length, nullptr));
+  ASSERT_TRUE(src_doc);
+
+  static constexpr int kIndices[] = {0};
+  EXPECT_TRUE(FPDF_ImportPagesByIndex(document(), src_doc.get(), kIndices,
+                                      std::size(kIndices), 0));
+  EXPECT_EQ(2, FPDF_GetPageCount(document()));
+
+  EXPECT_TRUE(FPDF_ImportPages(document(), src_doc.get(), "1", 0));
+  EXPECT_EQ(3, FPDF_GetPageCount(document()));
 }
