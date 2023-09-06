@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "428ef61c_2e0af4e4",
+        "filename": "skia/BUILD.gn",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-09-06T19:42:06Z",
+      "side": 0,
+      "message": "Since this is not a trivial DEPS roll, mention this change in the CL description? If this same change happened in Chromium\u0027s skia/BUILD.gn, please reference that. Reviewers can check the corresponding Chromium CL and easily check that this CL is doing the same thing.",
+      "revId": "955ab33196b4b356102c3f091465bac4b8b0a7be",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
