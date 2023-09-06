@@ -354,9 +354,6 @@ bool CPDF_FormField::SetValue(const WideString& value,
       SetCheckValue(value, bDefault, notify);
       return true;
     }
-    case kFile:
-    case kRichText:
-    case kText:
     case kComboBox: {
       WideString csValue = value;
       if (notify == NotificationOption::kNotify &&
@@ -493,9 +490,7 @@ bool CPDF_FormField::ClearSelection(NotificationOption notify) {
 }
 
 bool CPDF_FormField::IsItemSelected(int index) const {
-  if (GetType() != kComboBox && GetType() != kListBox) {
-    return false;
-  }
+  DCHECK(GetType() == kComboBox || GetType() == kListBox);
   if (index < 0 || index >= CountOptions()) {
     return false;
   }
@@ -505,9 +500,7 @@ bool CPDF_FormField::IsItemSelected(int index) const {
 }
 
 bool CPDF_FormField::SetItemSelection(int index, NotificationOption notify) {
-  if (GetType() != kComboBox && GetType() != kListBox) {
-    return false;
-  }
+  DCHECK(GetType() == kComboBox || GetType() == kListBox);
   if (index < 0 || index >= CountOptions()) {
     return false;
   }
