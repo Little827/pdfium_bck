@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34191a16_33173110",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-09-06T21:19:41Z",
+      "side": 1,
+      "message": "Thanks for creating this CL.\n\n1) I just added a test for the issue in https://pdfium-review.googlesource.com/111615 - please rebase this CL and update the test so it passes.\n2) Assuming your local development environment has depot_tools, please run \"git cl format\" locally so the code gets auto-formatted.",
+      "revId": "d026876d3310a86270316f276cc671793c697543",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
