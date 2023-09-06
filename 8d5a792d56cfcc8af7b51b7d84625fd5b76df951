@@ -36,6 +36,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "59e7d1de_3fc154c5",
+        "filename": "core/fxge/win32/cgdi_device_driver.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-09-06T16:14:59Z",
+      "side": 1,
+      "message": "Thanks for the improvements!",
+      "parentUuid": "7b63cbac_2a92bbc2",
+      "revId": "8d5a792d56cfcc8af7b51b7d84625fd5b76df951",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e9140c95_89b193b5",
