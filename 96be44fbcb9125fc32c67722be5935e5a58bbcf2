@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34b9e3b8_936bfd16",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-09-06T21:00:00Z",
+      "side": 1,
+      "message": "Thanks for fixing, but I think the issue is really in the caller, CPDF_FormField::SetValue(). It doesn\u0027t make sense for file/rich text/text fields to have options.\n\nI\u0027ll redo this but keep the helpful tests and make sure they still pass.",
+      "revId": "96be44fbcb9125fc32c67722be5935e5a58bbcf2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
