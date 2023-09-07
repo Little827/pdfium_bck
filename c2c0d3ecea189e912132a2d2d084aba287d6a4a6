@@ -34,6 +34,24 @@
       "parentUuid": "d38be4c8_8e227dac",
       "revId": "c2c0d3ecea189e912132a2d2d084aba287d6a4a6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11e1bb4c_1d05f39d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7634
+      },
+      "writtenOn": "2023-09-07T21:01:17Z",
+      "side": 1,
+      "message": "Sorry this dropped off my radar. I think your comment was addressed in:\nhttps://pdfium-review.googlesource.com/c/pdfium/+/111610",
+      "parentUuid": "d8d59cd5_e8449aa4",
+      "revId": "c2c0d3ecea189e912132a2d2d084aba287d6a4a6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
