@@ -1132,8 +1132,8 @@ bool CPDF_DIB::TranslateScanline24bppDefaultDecode(
 }
 
 pdfium::span<const uint8_t> CPDF_DIB::GetBuffer() const {
-  return m_pCachedBitmap ? m_pCachedBitmap->GetBuffer()
-                         : pdfium::span<const uint8_t>();
+  return m_pCachedBitmap && !m_bColorKey ? m_pCachedBitmap->GetBuffer()
+                                         : pdfium::span<const uint8_t>();
 }
 
 pdfium::span<const uint8_t> CPDF_DIB::GetScanline(int line) const {
