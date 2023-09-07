@@ -34,6 +34,23 @@
       "parentUuid": "7bb87897_815283aa",
       "revId": "7436d1a068cd11b5bb6b65297988bd1c0942d1e5",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26d9247b_7ab31e56",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-09-07T00:25:52Z",
+      "side": 1,
+      "message": "Obsolete now that https://pdfium-review.googlesource.com/111613 landed?",
+      "revId": "7436d1a068cd11b5bb6b65297988bd1c0942d1e5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
