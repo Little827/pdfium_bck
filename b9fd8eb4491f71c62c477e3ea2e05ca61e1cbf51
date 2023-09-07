@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "912ff507_18b8339e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 9326
+      },
+      "writtenOn": "2023-09-07T03:29:45Z",
+      "side": 1,
+      "message": "Thank you!",
+      "revId": "b9fd8eb4491f71c62c477e3ea2e05ca61e1cbf51",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
