@@ -45,10 +45,12 @@ class CPDF_DIB final : public CFX_DIBBase {
   CONSTRUCT_VIA_MAKE_RETAIN;
 
   // CFX_DIBBase:
-  pdfium::span<const uint8_t> GetBuffer() const override;
   pdfium::span<const uint8_t> GetScanline(int line) const override;
   bool SkipToScanline(int line, PauseIndicatorIface* pPause) const override;
   size_t GetEstimatedImageMemoryBurden() const override;
+#if BUILDFLAG(IS_WIN)
+  RetainPtr<const CFX_DIBitmap> RealizeIfNeeded() const override;
+#endif
 
   RetainPtr<CPDF_ColorSpace> GetColorSpace() const { return m_pColorSpace; }
   uint32_t GetMatteColor() const { return m_MatteColor; }
