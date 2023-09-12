@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "374f22af_1a446194",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 9186
+      },
+      "writtenOn": "2023-09-12T05:10:58Z",
+      "side": 1,
+      "message": "bug should be fixed\n\nalso asked question about running tests locally",
+      "revId": "9c1fa76a2c3c74a5c3c3e3cc48af7198b67d899f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}

@@ -51,6 +51,24 @@
       "message": "thanks for checking om this",
       "revId": "26333ad953b228e8a9d176ed8d28c3a783748218",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06a8f42e_71281b1b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 9186
+      },
+      "writtenOn": "2023-09-12T05:10:58Z",
+      "side": 1,
+      "message": "tracked down the issue in the newest CL ✔\n\nalthough I have some difficulty running the tests locally - do the test executables require some kind of test adapter or something?",
+      "parentUuid": "7b46ae62_1156f8e1",
+      "revId": "26333ad953b228e8a9d176ed8d28c3a783748218",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }

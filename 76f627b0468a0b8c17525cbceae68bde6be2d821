@@ -130,6 +130,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0be17919_b0e3c800",
+        "filename": "core/fpdfapi/parser/cpdf_security_handler.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 9186
+      },
+      "writtenOn": "2023-09-12T05:10:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2615b7d3_c9f41910",
+      "range": {
+        "startLine": 219,
+        "startChar": 51,
+        "endLine": 219,
+        "endChar": 63
+      },
+      "revId": "76f627b0468a0b8c17525cbceae68bde6be2d821",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fca562d6_544b746f",
@@ -143,6 +167,30 @@
       "writtenOn": "2023-08-15T16:36:12Z",
       "side": 1,
       "message": "To provide more context at callsites to readers, instead of simply writing `false` and leaving the reader to guess what it means, write `/*ignore_owner\u003d*/false`.",
+      "range": {
+        "startLine": 805,
+        "startChar": 43,
+        "endLine": 805,
+        "endChar": 48
+      },
+      "revId": "76f627b0468a0b8c17525cbceae68bde6be2d821",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "581646af_15b1f3c1",
+        "filename": "fpdfsdk/cpdfsdk_formfillenvironment.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 805,
+      "author": {
+        "id": 9186
+      },
+      "writtenOn": "2023-09-12T05:10:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fca562d6_544b746f",
       "range": {
         "startLine": 805,
         "startChar": 43,
