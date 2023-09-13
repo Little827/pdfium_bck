@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6f7e78b_9512738f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-09-13T19:13:58Z",
+      "side": 1,
+      "message": "It looks like the reference to pdfium:2035 also was dropped.",
+      "parentUuid": "e1f2fd73_f130f7c0",
+      "revId": "df019d94684d018be776cb08119154951709657b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "0c7f2547_be1ad656",
