@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1f2fd73_f130f7c0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-09-13T14:38:26Z",
+      "side": 1,
+      "message": "Please re-format this line into:\n\n```\nSubject line\n\nDescription\n```\n\nUse the web interface or run `git cl description`.",
+      "revId": "df019d94684d018be776cb08119154951709657b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c7f2547_be1ad656",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-09-13T14:38:26Z",
+      "side": 1,
+      "message": "Thanks for this CL. Not sure why kmoon@ did not review it, but this was not on my radar, so I just noticed it now.\n\nThis needs to be rebased to the main branch. Right now it\u0027s on the chromium/5749 branch.",
+      "revId": "df019d94684d018be776cb08119154951709657b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96aae057_7fde295b",
+        "filename": "fpdfsdk/fpdfxfa/cpdfxfa_context.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-09-13T14:38:26Z",
+      "side": 1,
+      "message": "If `m_XFAPageList[page_index]` is being deleted, then is it even necessary to call `Reset()` above?",
+      "revId": "df019d94684d018be776cb08119154951709657b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbd7e175_5cbf4bec",
+        "filename": "fpdfsdk/fpdfxfa/cpdfxfa_context.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-09-13T14:38:26Z",
+      "side": 1,
+      "message": "Use `fxcrt::CollectionSize\u003cint\u003e(m_XFAPageList)` instead.",
+      "range": {
+        "startLine": 270,
+        "startChar": 34,
+        "endLine": 270,
+        "endChar": 37
+      },
+      "revId": "df019d94684d018be776cb08119154951709657b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9a75896_b97cf8c2",
+        "filename": "fpdfsdk/fpdfxfa/cpdfxfa_context.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-09-13T14:38:26Z",
+      "side": 1,
+      "message": "Please run `git cl format` locally to auto-format the code. Code that there should be a space after `if`.",
+      "revId": "df019d94684d018be776cb08119154951709657b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
