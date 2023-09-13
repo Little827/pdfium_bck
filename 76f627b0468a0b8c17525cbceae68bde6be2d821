@@ -154,6 +154,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "31a6f37a_ee6c1106",
+        "filename": "core/fpdfapi/parser/cpdf_security_handler.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-09-13T17:22:13Z",
+      "side": 1,
+      "message": "Not done? I\u0027m not sure what\u0027s happening here:\n\nA) It was done locally but didn\u0027t get uploaded to Gerrit?\nB) Nah, decided not to.",
+      "parentUuid": "0be17919_b0e3c800",
+      "range": {
+        "startLine": 219,
+        "startChar": 51,
+        "endLine": 219,
+        "endChar": 63
+      },
+      "revId": "76f627b0468a0b8c17525cbceae68bde6be2d821",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fca562d6_544b746f",
@@ -191,6 +215,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "fca562d6_544b746f",
+      "range": {
+        "startLine": 805,
+        "startChar": 43,
+        "endLine": 805,
+        "endChar": 48
+      },
+      "revId": "76f627b0468a0b8c17525cbceae68bde6be2d821",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8eb10e8_40243b90",
+        "filename": "fpdfsdk/cpdfsdk_formfillenvironment.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 805,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-09-13T17:22:13Z",
+      "side": 1,
+      "message": "Ditto. What does \"done\" mean here?",
+      "parentUuid": "581646af_15b1f3c1",
       "range": {
         "startLine": 805,
         "startChar": 43,
