@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6315e699_f327c4d7",
+        "filename": "core/fxge/dib/cfx_dibbase.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-09-13T22:43:08Z",
+      "side": 1,
+      "message": "nit: maybe GetValidLuts() since it isn\u0027t giving the whole array.",
+      "range": {
+        "startLine": 50,
+        "startChar": 31,
+        "endLine": 50,
+        "endChar": 38
+      },
+      "revId": "b052b3d4897b0592bb8ac7cc36507f4e6eb5cc83",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a87d793_4197e8d0",
+        "filename": "core/fxge/dib/cfx_dibbase.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-09-13T22:43:08Z",
+      "side": 1,
+      "message": "nit: could call\n  auto lut_span \u003d GetLuts();\n  std::sort(lut_span.begin(), lut_span.end() ...",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 51
+      },
+      "revId": "b052b3d4897b0592bb8ac7cc36507f4e6eb5cc83",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
