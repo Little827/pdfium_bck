@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "711ae3c0_63ac466b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-09-14T17:04:58Z",
+      "side": 1,
+      "message": "Please wrap at 72 columns.",
+      "revId": "cbffca09d00281972f3ad19e099728c00762e686",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34dad6ea_f76a0c88",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-09-14T17:04:58Z",
+      "side": 1,
+      "message": "Add back `Bug: pdfium:2035`, which was in https://pdfium-review.googlesource.com/c/pdfium/+/108550/2//COMMIT_MSG#9",
+      "revId": "cbffca09d00281972f3ad19e099728c00762e686",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "497a4e2a_ba1a2d01",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-09-14T17:04:58Z",
+      "side": 1,
+      "message": "Since this is the first time you are contributing to PDFium. Please add yourself to the AUTHORS file.",
+      "revId": "cbffca09d00281972f3ad19e099728c00762e686",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72cedece_9a9b6f65",
+        "filename": "fpdfsdk/fpdfxfa/cpdfxfa_context.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-09-14T17:04:58Z",
+      "side": 1,
+      "message": "I think lines 266-267 are not necessary. Line 269 would destroy the the element at `m_XFAPageList[page_index]` anyway, and the RetainPtr element would effectively Reset() itself.",
+      "revId": "cbffca09d00281972f3ad19e099728c00762e686",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
