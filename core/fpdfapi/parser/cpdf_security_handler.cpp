@@ -197,7 +197,7 @@ bool CPDF_SecurityHandler::OnInit(const CPDF_Dictionary* pEncryptDict,
     m_FileId = pIdArray->GetByteStringAt(0);
   else
     m_FileId.clear();
-  if (!LoadDictForOnInit(pEncryptDict)) {
+  if (!LoadDict(pEncryptDict)) {
     return false;
   }
   if (m_Cipher == CPDF_CryptoHandler::Cipher::kNone)
@@ -283,25 +283,7 @@ static bool LoadCryptInfo(const CPDF_Dictionary* pEncryptDict,
   return true;
 }
 
-bool CPDF_SecurityHandler::LoadDictForOnInit(
-    const CPDF_Dictionary* pEncryptDict) {
-  m_pEncryptDict.Reset(pEncryptDict);
-  m_Version = pEncryptDict->GetIntegerFor("V");
-  m_Revision = pEncryptDict->GetIntegerFor("R");
-  m_Permissions = pEncryptDict->GetIntegerFor("P", -1);
-  if (m_Version < 4)
-    return LoadCryptInfo(pEncryptDict, ByteString(), &m_Cipher, &m_KeyLen);
-
-  ByteString stmf_name = pEncryptDict->GetByteStringFor("StmF");
-  ByteString strf_name = pEncryptDict->GetByteStringFor("StrF");
-  if (stmf_name != strf_name)
-    return false;
-
-  return LoadCryptInfo(pEncryptDict, strf_name, &m_Cipher, &m_KeyLen);
-}
-
-bool CPDF_SecurityHandler::LoadDictForOnCreate(
-    const CPDF_Dictionary* pEncryptDict) {
+bool CPDF_SecurityHandler::LoadDict(const CPDF_Dictionary* pEncryptDict) {
   m_pEncryptDict.Reset(pEncryptDict);
   m_Version = pEncryptDict->GetIntegerFor("V");
   m_Revision = pEncryptDict->GetIntegerFor("R");
@@ -548,7 +530,7 @@ void CPDF_SecurityHandler::OnCreate(CPDF_Dictionary* pEncryptDict,
                                     const ByteString& user_password) {
   DCHECK(pEncryptDict);
 
-  if (!LoadDictForOnCreate(pEncryptDict)) {
+  if (!LoadDict(pEncryptDict)) {
     return;
   }
 

@@ -54,8 +54,7 @@ class CPDF_SecurityHandler final : public Retainable {
   CPDF_SecurityHandler();
   ~CPDF_SecurityHandler() override;
 
-  bool LoadDictForOnInit(const CPDF_Dictionary* pEncryptDict);
-  bool LoadDictForOnCreate(const CPDF_Dictionary* pEncryptDict);
+  bool LoadDict(const CPDF_Dictionary* pEncryptDict);
 
   ByteString GetUserPassword(const ByteString& owner_password) const;
   bool CheckPassword(const ByteString& user_password, bool bOwner);
