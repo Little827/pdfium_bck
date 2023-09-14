@@ -1132,11 +1132,6 @@ bool CPDF_DIB::TranslateScanline24bppDefaultDecode(
   return true;
 }
 
-pdfium::span<const uint8_t> CPDF_DIB::GetBuffer() const {
-  return m_pCachedBitmap ? m_pCachedBitmap->GetBuffer()
-                         : pdfium::span<const uint8_t>();
-}
-
 pdfium::span<const uint8_t> CPDF_DIB::GetScanline(int line) const {
   if (m_bpc == 0)
     return pdfium::span<const uint8_t>();
@@ -1281,6 +1276,12 @@ bool CPDF_DIB::SkipToScanline(int line, PauseIndicatorIface* pPause) const {
 size_t CPDF_DIB::GetEstimatedImageMemoryBurden() const {
   return m_pCachedBitmap ? m_pCachedBitmap->GetEstimatedImageMemoryBurden() : 0;
 }
+
+#if BUILDFLAG(IS_WIN)
+RetainPtr<const CFX_DIBitmap> CPDF_DIB::RealizeIfNeeded() const {
+  return m_pCachedBitmap ? m_pCachedBitmap->RealizeIfNeeded() : Realize();
+}
+#endif
 
 bool CPDF_DIB::TransMask() const {
   return m_bLoadMask && m_GroupFamily == CPDF_ColorSpace::Family::kDeviceCMYK &&
