@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "96e12ff4_2bc60514",
+        "filename": "core/fxge/dib/cfx_dibbase.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-09-14T01:42:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6315e699_f327c4d7",
+      "range": {
+        "startLine": 50,
+        "startChar": 31,
+        "endLine": 50,
+        "endChar": 38
+      },
+      "revId": "b052b3d4897b0592bb8ac7cc36507f4e6eb5cc83",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a87d793_4197e8d0",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-09-13T22:43:08Z",
       "side": 1,
       "message": "nit: could call\n  auto lut_span \u003d GetLuts();\n  std::sort(lut_span.begin(), lut_span.end() ...",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 51
+      },
+      "revId": "b052b3d4897b0592bb8ac7cc36507f4e6eb5cc83",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41a556b1_c4c4c250",
+        "filename": "core/fxge/dib/cfx_dibbase.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-09-14T01:42:54Z",
+      "side": 1,
+      "message": "Done, but I couldn\u0027t reuse GetLuts(), as that returns a span of constant values.",
+      "parentUuid": "2a87d793_4197e8d0",
       "range": {
         "startLine": 87,
         "startChar": 0,
