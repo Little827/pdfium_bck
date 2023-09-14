@@ -197,8 +197,9 @@ bool CPDF_SecurityHandler::OnInit(const CPDF_Dictionary* pEncryptDict,
     m_FileId = pIdArray->GetByteStringAt(0);
   else
     m_FileId.clear();
-  if (!LoadDict(pEncryptDict))
+  if (!LoadDictForOnInit(pEncryptDict)) {
     return false;
+  }
   if (m_Cipher == CPDF_CryptoHandler::Cipher::kNone)
     return true;
   if (!CheckSecurity(password))
@@ -282,7 +283,8 @@ static bool LoadCryptInfo(const CPDF_Dictionary* pEncryptDict,
   return true;
 }
 
-bool CPDF_SecurityHandler::LoadDict(const CPDF_Dictionary* pEncryptDict) {
+bool CPDF_SecurityHandler::LoadDictForOnInit(
+    const CPDF_Dictionary* pEncryptDict) {
   m_pEncryptDict.Reset(pEncryptDict);
   m_Version = pEncryptDict->GetIntegerFor("V");
   m_Revision = pEncryptDict->GetIntegerFor("R");
@@ -298,9 +300,8 @@ bool CPDF_SecurityHandler::LoadDict(const CPDF_Dictionary* pEncryptDict) {
   return LoadCryptInfo(pEncryptDict, strf_name, &m_Cipher, &m_KeyLen);
 }
 
-bool CPDF_SecurityHandler::LoadDict(const CPDF_Dictionary* pEncryptDict,
-                                    CPDF_CryptoHandler::Cipher* cipher,
-                                    size_t* key_len) {
+bool CPDF_SecurityHandler::LoadDictForOnCreate(
+    const CPDF_Dictionary* pEncryptDict) {
   m_pEncryptDict.Reset(pEncryptDict);
   m_Version = pEncryptDict->GetIntegerFor("V");
   m_Revision = pEncryptDict->GetIntegerFor("R");
@@ -314,11 +315,14 @@ bool CPDF_SecurityHandler::LoadDict(const CPDF_Dictionary* pEncryptDict,
     if (stmf_name != strf_name)
       return false;
   }
-  if (!LoadCryptInfo(pEncryptDict, strf_name, cipher, key_len))
+  CPDF_CryptoHandler::Cipher cipher = CPDF_CryptoHandler::Cipher::kNone;
+  size_t key_len = 0;
+  if (!LoadCryptInfo(pEncryptDict, strf_name, &cipher, &key_len)) {
     return false;
+  }
 
-  m_Cipher = *cipher;
-  m_KeyLen = *key_len;
+  m_Cipher = cipher;
+  m_KeyLen = key_len;
   return true;
 }
 
@@ -544,9 +548,7 @@ void CPDF_SecurityHandler::OnCreate(CPDF_Dictionary* pEncryptDict,
                                     const ByteString& user_password) {
   DCHECK(pEncryptDict);
 
-  CPDF_CryptoHandler::Cipher cipher = CPDF_CryptoHandler::Cipher::kNone;
-  size_t key_len = 0;
-  if (!LoadDict(pEncryptDict, &cipher, &key_len)) {
+  if (!LoadDictForOnCreate(pEncryptDict)) {
     return;
   }
 
@@ -567,12 +569,12 @@ void CPDF_SecurityHandler::OnCreate(CPDF_Dictionary* pEncryptDict,
   if (pIdArray)
     file_id = pIdArray->GetByteStringAt(0);
 
-  CalcEncryptKey(m_pEncryptDict.Get(), user_password, m_EncryptKey, key_len,
+  CalcEncryptKey(m_pEncryptDict.Get(), user_password, m_EncryptKey, m_KeyLen,
                  false, file_id);
   if (m_Revision < 3) {
     uint8_t tempbuf[32];
     memcpy(tempbuf, kDefaultPasscode, sizeof(kDefaultPasscode));
-    CRYPT_ArcFourCryptBlock(tempbuf, {m_EncryptKey, key_len});
+    CRYPT_ArcFourCryptBlock(tempbuf, {m_EncryptKey, m_KeyLen});
     pEncryptDict->SetNewFor<CPDF_String>("U", ByteString(tempbuf, 32), false);
   } else {
     CRYPT_md5_context md5 = CRYPT_MD5Start();
@@ -583,12 +585,13 @@ void CPDF_SecurityHandler::OnCreate(CPDF_Dictionary* pEncryptDict,
     uint8_t digest[32];
     CRYPT_MD5Finish(&md5, digest);
     pdfium::span<uint8_t> partial_digest_span(digest, 16);
-    CRYPT_ArcFourCryptBlock(partial_digest_span, {m_EncryptKey, key_len});
+    CRYPT_ArcFourCryptBlock(partial_digest_span, {m_EncryptKey, m_KeyLen});
     uint8_t tempkey[32];
     for (uint8_t i = 1; i <= 19; i++) {
-      for (size_t j = 0; j < key_len; j++)
+      for (size_t j = 0; j < m_KeyLen; j++) {
         tempkey[j] = m_EncryptKey[j] ^ i;
-      CRYPT_ArcFourCryptBlock(partial_digest_span, {tempkey, key_len});
+      }
+      CRYPT_ArcFourCryptBlock(partial_digest_span, {tempkey, m_KeyLen});
     }
     CRYPT_MD5Generate({digest, 16}, digest + 16);
     pEncryptDict->SetNewFor<CPDF_String>("U", ByteString(digest, 32), false);

@@ -23,9 +23,11 @@ class CPDF_SecurityHandler final : public Retainable {
  public:
   CONSTRUCT_VIA_MAKE_RETAIN;
 
+  // Do not use `this` if OnInit() returns false.
   bool OnInit(const CPDF_Dictionary* pEncryptDict,
               RetainPtr<const CPDF_Array> pIdArray,
               const ByteString& password);
+
   void OnCreate(CPDF_Dictionary* pEncryptDict,
                 const CPDF_Array* pIdArray,
                 const ByteString& user_password);
@@ -52,10 +54,8 @@ class CPDF_SecurityHandler final : public Retainable {
   CPDF_SecurityHandler();
   ~CPDF_SecurityHandler() override;
 
-  bool LoadDict(const CPDF_Dictionary* pEncryptDict);
-  bool LoadDict(const CPDF_Dictionary* pEncryptDict,
-                CPDF_CryptoHandler::Cipher* cipher,
-                size_t* key_len);
+  bool LoadDictForOnInit(const CPDF_Dictionary* pEncryptDict);
+  bool LoadDictForOnCreate(const CPDF_Dictionary* pEncryptDict);
 
   ByteString GetUserPassword(const ByteString& owner_password) const;
   bool CheckPassword(const ByteString& user_password, bool bOwner);
