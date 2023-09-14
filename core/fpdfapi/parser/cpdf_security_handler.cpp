@@ -539,11 +539,9 @@ ByteString CPDF_SecurityHandler::GetEncodedPassword(
   }
 }
 
-void CPDF_SecurityHandler::OnCreateInternal(CPDF_Dictionary* pEncryptDict,
-                                            const CPDF_Array* pIdArray,
-                                            const ByteString& user_password,
-                                            const ByteString& owner_password,
-                                            bool bDefault) {
+void CPDF_SecurityHandler::OnCreate(CPDF_Dictionary* pEncryptDict,
+                                    const CPDF_Array* pIdArray,
+                                    const ByteString& user_password) {
   DCHECK(pEncryptDict);
 
   CPDF_CryptoHandler::Cipher cipher = CPDF_CryptoHandler::Cipher::kNone;
@@ -551,9 +549,6 @@ void CPDF_SecurityHandler::OnCreateInternal(CPDF_Dictionary* pEncryptDict,
   if (!LoadDict(pEncryptDict, &cipher, &key_len)) {
     return;
   }
-  ByteString owner_password_copy = owner_password;
-  if (bDefault && owner_password.IsEmpty())
-    owner_password_copy = user_password;
 
   if (m_Revision >= 5) {
     uint32_t random[4];
@@ -564,33 +559,8 @@ void CPDF_SecurityHandler::OnCreateInternal(CPDF_Dictionary* pEncryptDict,
                        sizeof(random));
     CRYPT_SHA256Finish(&sha, m_EncryptKey);
     AES256_SetPassword(pEncryptDict, user_password, false);
-    if (bDefault)
-      AES256_SetPassword(pEncryptDict, owner_password_copy, true);
     AES256_SetPerms(pEncryptDict);
     return;
-  }
-  if (bDefault) {
-    uint8_t passcode[32];
-    GetPassCode(owner_password_copy, passcode);
-    uint8_t digest[16];
-    CRYPT_MD5Generate(passcode, digest);
-    if (m_Revision >= 3) {
-      for (uint32_t i = 0; i < 50; i++)
-        CRYPT_MD5Generate(digest, digest);
-    }
-    uint8_t enckey[32];
-    memcpy(enckey, digest, key_len);
-    GetPassCode(user_password, passcode);
-    CRYPT_ArcFourCryptBlock(passcode, {enckey, key_len});
-    uint8_t tempkey[32];
-    if (m_Revision >= 3) {
-      for (uint8_t i = 1; i <= 19; i++) {
-        for (size_t j = 0; j < key_len; j++)
-          tempkey[j] = enckey[j] ^ i;
-        CRYPT_ArcFourCryptBlock(passcode, {tempkey, key_len});
-      }
-    }
-    pEncryptDict->SetNewFor<CPDF_String>("O", ByteString(passcode, 32), false);
   }
 
   ByteString file_id;
@@ -623,20 +593,7 @@ void CPDF_SecurityHandler::OnCreateInternal(CPDF_Dictionary* pEncryptDict,
     CRYPT_MD5Generate({digest, 16}, digest + 16);
     pEncryptDict->SetNewFor<CPDF_String>("U", ByteString(digest, 32), false);
   }
-}
 
-void CPDF_SecurityHandler::OnCreate(CPDF_Dictionary* pEncryptDict,
-                                    const CPDF_Array* pIdArray,
-                                    const ByteString& user_password,
-                                    const ByteString& owner_password) {
-  OnCreateInternal(pEncryptDict, pIdArray, user_password, owner_password, true);
-  InitCryptoHandler();
-}
-
-void CPDF_SecurityHandler::OnCreate(CPDF_Dictionary* pEncryptDict,
-                                    const CPDF_Array* pIdArray,
-                                    const ByteString& user_password) {
-  OnCreateInternal(pEncryptDict, pIdArray, user_password, ByteString(), false);
   InitCryptoHandler();
 }
 
