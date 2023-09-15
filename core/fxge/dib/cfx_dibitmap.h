@@ -110,7 +110,8 @@ class CFX_DIBitmap final : public CFX_DIBBase {
                      int height,
                      uint32_t color);
 
-  bool ConvertColorScale(uint32_t forecolor, uint32_t backcolor);
+  // When `foreground_is_black` is true, background is white. Or vice-versa.
+  void ConvertToGrayscale(bool foreground_is_black);
 
   // |width| and |height| must be greater than 0.
   // |format| must have a valid bits per pixel count.
@@ -151,7 +152,6 @@ class CFX_DIBitmap final : public CFX_DIBBase {
 
   bool SetChannelFromBitmap(Channel destChannel,
                             const RetainPtr<CFX_DIBBase>& pSrcBitmap);
-  void ConvertBGRColorScale(uint32_t forecolor, uint32_t backcolor);
   bool TransferWithUnequalFormats(FXDIB_Format dest_format,
                                   int dest_left,
                                   int dest_top,

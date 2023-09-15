@@ -186,7 +186,7 @@ RetainPtr<CFX_DIBitmap> CPDF_RenderTiling::Draw(
     return nullptr;
 
   if (options.ColorModeIs(CPDF_RenderOptions::kGray))
-    pPatternBitmap->ConvertColorScale(0, 0xffffff);
+    pPatternBitmap->ConvertToGrayscale(/*foreground_is_black=*/true);
 
   FX_ARGB fill_argb = pRenderStatus->GetFillArgb(pPageObj);
   int clip_width = clip_box.right - clip_box.left;

@@ -597,62 +597,39 @@ void CFX_DIBitmap::SetPixel(int x, int y, uint32_t color) {
 }
 #endif  // defined(_SKIA_SUPPORT_)
 
-void CFX_DIBitmap::ConvertBGRColorScale(uint32_t forecolor,
-                                        uint32_t backcolor) {
-  int fr = FXSYS_GetRValue(forecolor);
-  int fg = FXSYS_GetGValue(forecolor);
-  int fb = FXSYS_GetBValue(forecolor);
-  int br = FXSYS_GetRValue(backcolor);
-  int bg = FXSYS_GetGValue(backcolor);
-  int bb = FXSYS_GetBValue(backcolor);
+void CFX_DIBitmap::ConvertToGrayscale(bool foreground_is_black) {
+  if (!m_pBuffer || IsMaskFormat()) {
+    return;
+  }
+
   if (GetBppFromFormat(m_Format) <= 8) {
-    if (forecolor == 0 && backcolor == 0xffffff && !HasPalette())
+    if (foreground_is_black && !HasPalette()) {
       return;
+    }
 
     BuildPalette();
-    int size = 1 << GetBppFromFormat(m_Format);
+    const int background = foreground_is_black ? 0xff : 0;
+    const int multiplier = foreground_is_black ? -1 : 1;
+    const int size = 1 << GetBppFromFormat(m_Format);
     for (int i = 0; i < size; ++i) {
       int gray = FXRGB2GRAY(FXARGB_R(m_palette[i]), FXARGB_G(m_palette[i]),
                             FXARGB_B(m_palette[i]));
-      m_palette[i] =
-          ArgbEncode(0xff, br + (fr - br) * gray / 255,
-                     bg + (fg - bg) * gray / 255, bb + (fb - bb) * gray / 255);
+      gray = background + multiplier * gray;
+      m_palette[i] = ArgbEncode(0xff, gray, gray, gray);
     }
     return;
   }
-  if (forecolor == 0 && backcolor == 0xffffff) {
-    for (int row = 0; row < m_Height; ++row) {
-      uint8_t* scanline = m_pBuffer.Get() + row * m_Pitch;
-      int gap = GetBppFromFormat(m_Format) / 8 - 2;
-      for (int col = 0; col < m_Width; ++col) {
-        int gray = FXRGB2GRAY(scanline[2], scanline[1], scanline[0]);
-        *scanline++ = gray;
-        *scanline++ = gray;
-        *scanline = gray;
-        scanline += gap;
-      }
-    }
-    return;
-  }
+  const int gap = GetBppFromFormat(m_Format) / 8 - 2;
   for (int row = 0; row < m_Height; ++row) {
     uint8_t* scanline = m_pBuffer.Get() + row * m_Pitch;
-    int gap = GetBppFromFormat(m_Format) / 8 - 2;
     for (int col = 0; col < m_Width; ++col) {
       int gray = FXRGB2GRAY(scanline[2], scanline[1], scanline[0]);
-      *scanline++ = bb + (fb - bb) * gray / 255;
-      *scanline++ = bg + (fg - bg) * gray / 255;
-      *scanline = br + (fr - br) * gray / 255;
+      *scanline++ = gray;
+      *scanline++ = gray;
+      *scanline = gray;
       scanline += gap;
     }
   }
-}
-
-bool CFX_DIBitmap::ConvertColorScale(uint32_t forecolor, uint32_t backcolor) {
-  if (!m_pBuffer || IsMaskFormat())
-    return false;
-
-  ConvertBGRColorScale(forecolor, backcolor);
-  return true;
 }
 
 // static

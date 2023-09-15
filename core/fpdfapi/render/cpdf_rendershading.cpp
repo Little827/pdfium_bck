@@ -982,7 +982,7 @@ void CPDF_RenderShading::Draw(CFX_RenderDevice* pDevice,
     pBitmap->SetRedFromBitmap(pBitmap);
 
   if (options.ColorModeIs(CPDF_RenderOptions::kGray))
-    pBitmap->ConvertColorScale(0, 0xffffff);
+    pBitmap->ConvertToGrayscale(/*foreground_is_black=*/true);
 
   buffer.OutputToDevice();
 }
