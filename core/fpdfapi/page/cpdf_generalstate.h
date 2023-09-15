@@ -7,6 +7,8 @@
 #ifndef CORE_FPDFAPI_PAGE_CPDF_GENERALSTATE_H_
 #define CORE_FPDFAPI_PAGE_CPDF_GENERALSTATE_H_
 
+#include <vector>
+
 #include "constants/transparency.h"
 #include "core/fxcrt/bytestring.h"
 #include "core/fxcrt/fx_coordinates.h"
@@ -79,6 +81,10 @@ class CPDF_GeneralState {
   void SetMatrix(const CFX_Matrix& matrix);
   CFX_Matrix* GetMutableMatrix();
 
+  void SetGraphicsResourceNames(std::vector<ByteString> names);
+  void AppendGraphicsResourceName(ByteString name);
+  const std::vector<ByteString>* GetGraphicsResourceNames() const;
+
  private:
   class StateData final : public Retainable {
    public:
@@ -107,6 +113,8 @@ class CPDF_GeneralState {
     RetainPtr<const CPDF_Object> m_pHT;
     float m_Flatness = 1.0f;
     float m_Smoothness = 0.0f;
+    // The resource names of the graphics states that apply to this object.
+    std::vector<ByteString> m_GraphicsResourceNames;
 
    private:
     StateData();

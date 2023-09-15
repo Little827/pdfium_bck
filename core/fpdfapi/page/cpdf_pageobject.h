@@ -96,10 +96,7 @@ class CPDF_PageObject : public CPDF_GraphicStates {
     m_ResourceName = resource_name;
   }
 
-  const std::vector<ByteString>& GetGraphicsResourceNames() const {
-    return m_GraphicsResourceNames;
-  }
-  void SetGraphicsResourceNames(std::vector<ByteString> resource_names);
+  const std::vector<ByteString>* GetGraphicsResourceNames() const;
 
  protected:
   void CopyData(const CPDF_PageObject* pSrcObject);
@@ -112,9 +109,6 @@ class CPDF_PageObject : public CPDF_GraphicStates {
   int32_t m_ContentStream;
   // The resource name for this object.
   ByteString m_ResourceName;
-  // Like `m_ResourceName` but for graphics. Though unlike the resource name,
-  // multiple graphics states can apply at once.
-  std::vector<ByteString> m_GraphicsResourceNames;
 };
 
 #endif  // CORE_FPDFAPI_PAGE_CPDF_PAGEOBJECT_H_

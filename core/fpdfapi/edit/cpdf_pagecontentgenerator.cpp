@@ -81,7 +81,13 @@ void RecordPageObjectResourceUsage(const CPDF_PageObject* page_object,
         break;
     }
   }
-  for (const auto& name : page_object->GetGraphicsResourceNames()) {
+  const std::vector<ByteString>* names =
+      page_object->GetGraphicsResourceNames();
+  if (!names) {
+    return;
+  }
+
+  for (const auto& name : *names) {
     CHECK(!name.IsEmpty());
     seen_resources["ExtGState"].insert(name);
   }
@@ -609,7 +615,7 @@ void CPDF_PageContentGenerator::ProcessGraphics(fxcrt::ostringstream* buf,
     }
     m_pDocument->AddIndirectObject(gsDict);
     name = RealizeResource(std::move(gsDict), "ExtGState");
-    pPageObj->SetGraphicsResourceNames({name});
+    pPageObj->m_GeneralState.SetGraphicsResourceNames({name});
     m_pObjHolder->GraphicsMapInsert(graphD, name);
   }
   *buf << "/" << PDF_NameEncode(name) << " gs ";
