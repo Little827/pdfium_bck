@@ -22,6 +22,30 @@
       },
       "revId": "f6881052a7d49817b48ff04e4d4c2ef3866252b0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f817372a_51557361",
+        "filename": "core/fxcodec/flate/flatemodule.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-09-15T21:17:19Z",
+      "side": 1,
+      "message": "Avoid unsigned integer overflow back to 0 on line 388.",
+      "parentUuid": "249dd891_1f6100cd",
+      "range": {
+        "startLine": 384,
+        "startChar": 35,
+        "endLine": 384,
+        "endChar": 71
+      },
+      "revId": "f6881052a7d49817b48ff04e4d4c2ef3866252b0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
