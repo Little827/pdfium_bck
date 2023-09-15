@@ -39,6 +39,30 @@
       },
       "revId": "73f7040d520c25e74f94377d817e835c4af46c94",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23f92c0f_f799d7d5",
+        "filename": "core/fpdfapi/parser/cpdf_security_handler.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-09-15T22:33:25Z",
+      "side": 1,
+      "message": "Sounds good. (In the original code `user_password` sometimes is treated as the owner password as well.)",
+      "parentUuid": "491bdeea_dc609cd3",
+      "range": {
+        "startLine": 544,
+        "startChar": 54,
+        "endLine": 544,
+        "endChar": 67
+      },
+      "revId": "73f7040d520c25e74f94377d817e835c4af46c94",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
