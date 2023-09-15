@@ -46,6 +46,30 @@
       },
       "revId": "f6881052a7d49817b48ff04e4d4c2ef3866252b0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44423cb7_eec54014",
+        "filename": "core/fxcodec/flate/flatemodule.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-09-15T21:23:31Z",
+      "side": 1,
+      "message": "Since `row_size + 1` is used in several places, and the overflow is defined behavior, how about I create another variable for that and check if it\u0027s 0. That\u0027ll make it clearer that the code is trying to prevent divide by 0.",
+      "parentUuid": "f817372a_51557361",
+      "range": {
+        "startLine": 384,
+        "startChar": 35,
+        "endLine": 384,
+        "endChar": 71
+      },
+      "revId": "f6881052a7d49817b48ff04e4d4c2ef3866252b0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
