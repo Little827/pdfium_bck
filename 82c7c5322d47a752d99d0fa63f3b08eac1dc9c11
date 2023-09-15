@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9183db84_0070b3c2",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 949,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-09-15T21:19:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3718765b_ca4dd4f7",
+      "revId": "82c7c5322d47a752d99d0fa63f3b08eac1dc9c11",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ca073d36_5cf9c430",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-09-15T20:40:09Z",
       "side": 1,
       "message": "Move this up 1 line to increase its scope. Knowing that line 989 will need it in the (hopefully near) future when the bug gets fixed.",
+      "revId": "82c7c5322d47a752d99d0fa63f3b08eac1dc9c11",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27dcc284_b84c98de",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 952,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-09-15T21:19:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca073d36_5cf9c430",
       "revId": "82c7c5322d47a752d99d0fa63f3b08eac1dc9c11",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
