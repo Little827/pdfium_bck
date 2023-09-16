@@ -93,6 +93,30 @@
       },
       "revId": "13388b281a31b7e3fd3a4cbfb5d5e6796fd510fd",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52fa4550_2c63e271",
+        "filename": "testing/resources/pixel/bug_1478366.in",
+        "patchSetId": 16
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-09-16T00:51:24Z",
+      "side": 1,
+      "message": "I left /Width and /Height on top and added the comment. The remaining keys have been sorted.",
+      "parentUuid": "46df7db5_7e3aabfb",
+      "range": {
+        "startLine": 38,
+        "startChar": 2,
+        "endLine": 43,
+        "endChar": 17
+      },
+      "revId": "13388b281a31b7e3fd3a4cbfb5d5e6796fd510fd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
