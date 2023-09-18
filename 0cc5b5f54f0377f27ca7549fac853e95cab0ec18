@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a792ec38_2342ad7a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 9186
+      },
+      "writtenOn": "2023-09-18T04:15:36Z",
+      "side": 1,
+      "message": "thestig@chromium.org\n\ntests finally seem to be passing 😊\n\n\u003e PS C:\\space\\pdfium-root\\pdfium\u003e .\\out\\x64\\Debug\\pdfium_embeddertests.exe --gtest_filter\u003dCPDFSecurityHandlerEmbedderTest.*\n\n\u003e [  PASSED  ] 30 tests.",
+      "revId": "0cc5b5f54f0377f27ca7549fac853e95cab0ec18",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
