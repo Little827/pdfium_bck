@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3b26d352_70fb0533",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8751
+      },
+      "writtenOn": "2023-09-19T20:30:43Z",
+      "side": 1,
+      "message": "Could someone explain to me what the point of this API is (apart from the mere information itself), as long as there is no way to actually get the mask image?\n\nAnd if an API to get the mask is added in the future, wouldn\u0027t it likely be handled as an FPDF_PAGEOBJECT, so callers could just use the existing FPDFImageObj_GetImagePixelSize() API on the mask also?",
+      "revId": "a03a883e659db15c137d9b505be21d17548d285b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "71227c54_9e4d7e34",
         "filename": "core/fpdfapi/page/cpdf_imageobject.cpp",
         "patchSetId": 5
