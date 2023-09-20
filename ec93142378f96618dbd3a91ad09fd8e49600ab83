@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0dbf4691_b61da07a",
+        "filename": "AUTHORS",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-09-20T22:55:58Z",
+      "side": 1,
+      "message": "1) Has this organization actually signed the Google Corporate CLA?\n2) In this git commit, the email used in the author field does not match the wildcard here.\n3) Please keep the list sorted.",
+      "revId": "ec93142378f96618dbd3a91ad09fd8e49600ab83",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
