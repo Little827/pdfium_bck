@@ -54,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4c308bfe_313fbb39",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-09-20T20:12:04Z",
+      "side": 1,
+      "message": "So after uploading patch set 2, it would be helpful to use the Gerrit web interface to reply and mark this as done, and send out the message. That action makes it clear that it is not the reviewer\u0027s turn to look again. Otherwise, the reviewers don\u0027t get any notifications and have to do a polling action periodically to see if something has changed.",
+      "parentUuid": "497a4e2a_ba1a2d01",
+      "revId": "cbffca09d00281972f3ad19e099728c00762e686",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "72cedece_9a9b6f65",
         "filename": "fpdfsdk/fpdfxfa/cpdfxfa_context.cpp",
         "patchSetId": 1
