@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddae7f28_aec72e65",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 7507
+      },
+      "writtenOn": "2023-09-20T20:28:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "711ae3c0_63ac466b",
+      "revId": "cbffca09d00281972f3ad19e099728c00762e686",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "34dad6ea_f76a0c88",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-09-14T17:04:58Z",
       "side": 1,
       "message": "Add back `Bug: pdfium:2035`, which was in https://pdfium-review.googlesource.com/c/pdfium/+/108550/2//COMMIT_MSG#9",
+      "revId": "cbffca09d00281972f3ad19e099728c00762e686",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1a0c6dc_b193ceeb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 7507
+      },
+      "writtenOn": "2023-09-20T20:28:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34dad6ea_f76a0c88",
       "revId": "cbffca09d00281972f3ad19e099728c00762e686",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -70,6 +106,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d6e6670_7f7c92cf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7507
+      },
+      "writtenOn": "2023-09-20T20:28:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "497a4e2a_ba1a2d01",
+      "revId": "cbffca09d00281972f3ad19e099728c00762e686",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "72cedece_9a9b6f65",
@@ -83,6 +137,24 @@
       "writtenOn": "2023-09-14T17:04:58Z",
       "side": 1,
       "message": "I think lines 266-267 are not necessary. Line 269 would destroy the the element at `m_XFAPageList[page_index]` anyway, and the RetainPtr element would effectively Reset() itself.",
+      "revId": "cbffca09d00281972f3ad19e099728c00762e686",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a24bf9b_21900acd",
+        "filename": "fpdfsdk/fpdfxfa/cpdfxfa_context.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 7507
+      },
+      "writtenOn": "2023-09-20T20:28:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72cedece_9a9b6f65",
       "revId": "cbffca09d00281972f3ad19e099728c00762e686",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
