@@ -22,6 +22,30 @@
       },
       "revId": "6374136b7e4eca2aa449a93992901a9c769810df",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72a6f484_458aa91f",
+        "filename": "core/fpdfapi/page/cpdf_textstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-09-21T17:22:44Z",
+      "side": 1,
+      "message": "Follow-on from this is \"Can you explain why some of these have to check mref and other don\u0027t?\"",
+      "parentUuid": "31d9b557_14a3d056",
+      "range": {
+        "startLine": 37,
+        "startChar": 6,
+        "endLine": 37,
+        "endChar": 27
+      },
+      "revId": "6374136b7e4eca2aa449a93992901a9c769810df",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
