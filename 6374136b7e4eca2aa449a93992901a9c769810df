@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31d9b557_14a3d056",
+        "filename": "core/fpdfapi/page/cpdf_textstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-09-21T17:12:27Z",
+      "side": 1,
+      "message": "I think we need to check `m_Ref` here too.",
+      "range": {
+        "startLine": 37,
+        "startChar": 6,
+        "endLine": 37,
+        "endChar": 27
+      },
+      "revId": "6374136b7e4eca2aa449a93992901a9c769810df",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
