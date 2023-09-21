@@ -46,6 +46,30 @@
       },
       "revId": "6374136b7e4eca2aa449a93992901a9c769810df",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13e6c874_aa51cae3",
+        "filename": "core/fpdfapi/page/cpdf_textstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-09-21T21:25:38Z",
+      "side": 1,
+      "message": "Fixed.\n\nAs for why, it\u0027s been this way since the initial PDFium check-in.",
+      "parentUuid": "72a6f484_458aa91f",
+      "range": {
+        "startLine": 37,
+        "startChar": 6,
+        "endLine": 37,
+        "endChar": 27
+      },
+      "revId": "6374136b7e4eca2aa449a93992901a9c769810df",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
