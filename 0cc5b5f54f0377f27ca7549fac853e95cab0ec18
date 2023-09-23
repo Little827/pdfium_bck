@@ -54,6 +54,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe9a401b_6a7ad130",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 9186
+      },
+      "writtenOn": "2023-09-23T09:12:10Z",
+      "side": 1,
+      "message": "Thanks, the big issue I\u0027m having is my development environment. for example, embedder tests still has some unrelated failing tests on my mixed unix/windows machine, which I suspect may be related to my `autocrlf` git settings, as these tests seem to assert character counts (i.e. `FPDFSaveEmbedderTest.SaveSimpleDoc`)\n\nI\u0027ll address the remaining open comments and try to tackle [bug 1893](https://bugs.chromium.org/p/pdfium/issues/detail?id\u003d1893#c3)\n\nThanks for your patience and assistance",
+      "parentUuid": "e5e6171a_55ac9521",
+      "revId": "0cc5b5f54f0377f27ca7549fac853e95cab0ec18",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d7b153c_58e2249f",
@@ -71,6 +89,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3337dfaa_a3988c37",
+        "filename": "core/fpdfapi/parser/cpdf_document.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 9186
+      },
+      "writtenOn": "2023-09-23T09:12:10Z",
+      "side": 1,
+      "message": "settled on \"return full permissions if unlocked by owner\"",
+      "parentUuid": "2d7b153c_58e2249f",
+      "revId": "0cc5b5f54f0377f27ca7549fac853e95cab0ec18",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d8fea5cf_1f1c74bd",
@@ -84,6 +120,30 @@
       "writtenOn": "2023-09-20T17:30:06Z",
       "side": 1,
       "message": "Typo here and on line 118.",
+      "range": {
+        "startLine": 111,
+        "startChar": 25,
+        "endLine": 111,
+        "endChar": 34
+      },
+      "revId": "0cc5b5f54f0377f27ca7549fac853e95cab0ec18",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26fbe2f4_1237de6e",
+        "filename": "core/fpdfapi/parser/cpdf_security_handler_embeddertest.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 9186
+      },
+      "writtenOn": "2023-09-23T09:12:10Z",
+      "side": 1,
+      "message": "fixed",
+      "parentUuid": "d8fea5cf_1f1c74bd",
       "range": {
         "startLine": 111,
         "startChar": 25,
