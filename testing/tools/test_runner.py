@@ -28,7 +28,7 @@ from lib.results import result_sink, result_types
 # Arbitrary timestamp, expressed in seconds since the epoch, used to make sure
 # that tests that depend on the current time are stable. Happens to be the
 # timestamp of the first commit to repo, 2014/5/9 17:48:50.
-TEST_SEED_TIME = "1399672130"
+TEST_SEED_TIME = '1399672130'
 
 # List of test types that should run text tests instead of pixel tests.
 TEXT_TESTS = ['javascript']
@@ -55,7 +55,7 @@ class TestRunner:
 
   def IsSkiaGoldEnabled(self):
     return (self.options.run_skia_gold and
-            not self.per_process_config.test_type in TEXT_TESTS)
+            self.per_process_config.test_type not in TEXT_TESTS)
 
   def IsExecutionSuppressed(self, input_path):
     return self.per_process_state.test_suppressor.IsExecutionSuppressed(
@@ -448,23 +448,30 @@ class _PerProcessConfig:
                                      timeout=TEST_TIMEOUT)
     self.features = set(output.decode('utf-8').strip().split(','))
 
-    if 'SKIA' in self.features:
-      self.rendering_option = 'skia'
-    else:
-      self.rendering_option = 'agg'
+    self.rendering_option = self.GetDefaultRenderer()
 
     if self.options.use_renderer == 'agg':
       self.rendering_option = 'agg'
     elif self.options.use_renderer == 'gdi':
       if 'GDI' not in self.features:
-        return 'pdfium_test does not support the GDI renderer'
+        return 'pdfium_test missing GDI renderer support'
       self.rendering_option = 'gdi'
     elif self.options.use_renderer == 'skia':
       if 'SKIA' not in self.features:
-        return 'pdfium_test does not support the Skia renderer'
+        return 'pdfium_test missing Skia renderer support'
       self.rendering_option = 'skia'
 
     return None
+
+  def GetDefaultRenderer(self):
+    if 'SKIA' in self.features:
+      return 'skia'
+    return 'agg'
+
+  def GetSupportedRenderingOptions(self):
+    if self.rendering_option == 'gdi':
+      return set(['gdi', self.GetDefaultRenderer()])
+    return set([self.rendering_option])
 
 
 class _PerProcessState:
@@ -491,9 +498,9 @@ class _PerProcessState:
     self.test_suppressor = suppressor.Suppressor(
         finder, self.features, self.options.disable_javascript,
         self.options.disable_xfa, config.rendering_option)
-    self.image_differ = pngdiffer.PNGDiffer(finder,
-                                            self.options.reverse_byte_order,
-                                            config.rendering_option)
+    self.image_differ = pngdiffer.PNGDiffer(
+        finder, self.options.reverse_byte_order,
+        config.GetSupportedRenderingOptions())
 
     self.process_name = multiprocessing.current_process().name
     self.skia_tester = None
@@ -690,7 +697,7 @@ class _TestCaseRunner:
     ])
 
   def _VerifyEmptyText(self, txt_path):
-    with open(txt_path, "rb") as txt_file:
+    with open(txt_path, 'rb') as txt_file:
       txt_data = txt_file.read()
 
     if txt_data:

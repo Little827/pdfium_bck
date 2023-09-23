@@ -15,12 +15,21 @@ FUZZY_MATCHING = 'fuzzy'
 
 _PNG_OPTIMIZER = 'optipng'
 
-# Each suffix order acts like a path along a tree, with the leaves being the
-# most specific, and the root being the least specific.
-_COMMON_SUFFIX_ORDER = ('_{os}', '')
-_AGG_SUFFIX_ORDER = ('_agg_{os}', '_agg') + _COMMON_SUFFIX_ORDER
-_GDI_SUFFIX_ORDER = ('_gdi_{os}', '_gdi') + _COMMON_SUFFIX_ORDER
-_SKIA_SUFFIX_ORDER = ('_skia_{os}', '_skia') + _COMMON_SUFFIX_ORDER
+#_COMMON_SUFFIX_ORDER = ('_{os}', '')
+#_SUFFIX_ORDER_MAP = {
+#    'agg': ('_agg_{os}', '_agg'),
+#    'gdi': ('_gdi_{os}', '_gdi'),
+#    'skia': ('_skia_{os}', '_skia'),
+#}
+
+# Listed in the order of precedence.
+_KNOWN_RENDERING_OPTIONS = ('gdi', 'skia', 'agg')
+
+
+def _GenerateSuffixes(rendering_option):
+  if rendering_option:
+    return [f'_{rendering_option}_{{os}}', f'_{rendering_option}']
+  return ['_{os}', '']
 
 
 @dataclass
@@ -40,19 +49,24 @@ class ImageDiff:
 
 class PNGDiffer():
 
-  def __init__(self, finder, reverse_byte_order, rendering_option):
+  def __init__(self, finder, reverse_byte_order, rendering_options):
     self.pdfium_diff_path = finder.ExecutablePath('pdfium_diff')
     self.os_name = finder.os_name
     self.reverse_byte_order = reverse_byte_order
 
-    if rendering_option == 'agg':
-      self.suffix_order = _AGG_SUFFIX_ORDER
-    elif rendering_option == 'gdi':
-      self.suffix_order = _GDI_SUFFIX_ORDER
-    elif rendering_option == 'skia':
-      self.suffix_order = _SKIA_SUFFIX_ORDER
-    else:
-      raise ValueError(f'rendering_option={rendering_option}')
+    if not rendering_options or rendering_options.difference(
+        _KNOWN_RENDERING_OPTIONS):
+      raise ValueError(f'rendering_options={rendering_options}')
+
+    # Build the suffix order with an order of precedence.
+    #
+    # Each suffix order acts like a path along a tree, with the leaves being the
+    # most specific, and the root being the least specific.
+    self.suffix_order = []
+    for option in _KNOWN_RENDERING_OPTIONS:
+      if option in rendering_options:
+        self.suffix_order.extend(_GenerateSuffixes(option))
+    self.suffix_order.extend(_GenerateSuffixes(''))
 
   def CheckMissingTools(self, regenerate_expected):
     if regenerate_expected and not shutil.which(_PNG_OPTIMIZER):
