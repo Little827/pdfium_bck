@@ -16,6 +16,24 @@
       "message": "Can this be formatted as follows instead?\n\n```\n  // When `get_owner_perms` is true, returns full permissions if unlocked by\n  // owner.\n  uint32_t GetUserPermissions(bool get_owner_perms) const;\n```\n\nSimilar to line 110 and 116. The `/*foo\u003d*/val` style is used at callsites.",
       "revId": "d89ad19b875eac4a4a05229bf4dcbc35974ca498",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13f60683_ed031289",
+        "filename": "core/fpdfapi/parser/cpdf_document.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 9186
+      },
+      "writtenOn": "2023-09-24T09:54:59Z",
+      "side": 1,
+      "message": "yea that looks a bit more sane",
+      "parentUuid": "63d64f15_64b705a7",
+      "revId": "d89ad19b875eac4a4a05229bf4dcbc35974ca498",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
