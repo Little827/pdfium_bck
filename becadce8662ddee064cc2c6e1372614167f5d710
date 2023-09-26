@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cf30849_e38f922b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-09-26T00:42:45Z",
+      "side": 1,
+      "message": "I prefer \u0027gdi_skia\u0027 since gdi + agg is another possible combo.",
+      "parentUuid": "b34a5863_b73d23af",
+      "range": {
+        "startLine": 22,
+        "startChar": 20,
+        "endLine": 22,
+        "endChar": 29
+      },
+      "revId": "becadce8662ddee064cc2c6e1372614167f5d710",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "8e38a298_91555302",
