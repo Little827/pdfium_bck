@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f8bad59_a40fb57c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8751
+      },
+      "writtenOn": "2023-09-27T21:25:00Z",
+      "side": 1,
+      "message": "What\u0027s the difference between `FPDFDoc` and just `FPDF`, when do we use which? Per instinct I\u0027d have gone `FPDFDoc` here since it works on an existing document, and reserve `FPDF` for library-level tasks (e.g. `FPDF_InitLibrary()`)...",
+      "revId": "82413e71c71d52cd4f6a9a27c8901c64d0fafffd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
