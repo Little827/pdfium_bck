@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59b37636_46946631",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8751
+      },
+      "writtenOn": "2023-09-27T20:48:32Z",
+      "side": 1,
+      "message": "Thanks for this addition!\nnit: I don\u0027t like the API\u0027s name `FPDFPage_Move()` since it doesn\u0027t match pdfium conventions. To my understanding, `FPDFPage_*()` functions operate on an individual page handle, but MovePages is actually a document-level operation (FPDF_DOCUMENT, not FPDF_PAGE), so it should rather be called `FPDFDoc_MovePages()` IMHO.\nSince this is a very new API, I think it would still be OK to change.",
+      "revId": "b3dea94ae05150ad8fc4699aa0097e9b7ae11a95",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
