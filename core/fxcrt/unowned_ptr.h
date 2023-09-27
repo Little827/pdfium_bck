@@ -174,7 +174,6 @@ class TRIVIAL_ABI GSL_POINTER UnownedPtr {
 
   ~UnownedPtr() {
     ProbeForLowSeverityLifetimeIssue();
-    m_pObj = nullptr;
   }
 
   bool operator==(std::nullptr_t ptr) const { return m_pObj == nullptr; }
