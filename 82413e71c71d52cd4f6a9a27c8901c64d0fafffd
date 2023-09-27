@@ -34,6 +34,24 @@
       "parentUuid": "9f8bad59_a40fb57c",
       "revId": "82413e71c71d52cd4f6a9a27c8901c64d0fafffd",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85cec92d_a016a023",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-09-27T21:43:07Z",
+      "side": 1,
+      "message": "Plus this would be relatively consistent with other document-level APIs liek FPDF_GetPageCount() and FPDF_ImportPages().",
+      "parentUuid": "f555568a_bc912f42",
+      "revId": "82413e71c71d52cd4f6a9a27c8901c64d0fafffd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
