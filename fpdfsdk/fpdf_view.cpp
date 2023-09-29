@@ -576,6 +576,12 @@ FPDF_EXPORT void FPDF_CALLCONV FPDF_RenderPage(HDC dc,
                                   size_y, rotate, flags,
                                   /*color_scheme=*/nullptr,
                                   /*need_to_restore=*/true, /*pause=*/nullptr);
+
+#if defined(_SKIA_SUPPORT_)
+    if (CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()) {
+      pBitmap->UnPreMultiply();
+    }
+#endif
     return;
   }
 
@@ -583,7 +589,10 @@ FPDF_EXPORT void FPDF_CALLCONV FPDF_RenderPage(HDC dc,
   // Create will probably work fine even if it fails here: we will just attach
   // a zero-sized bitmap to `device`.
   pBitmap->Create(size_x, size_y, FXDIB_Format::kArgb);
-  pBitmap->Clear(0x00ffffff);
+  if (!CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()) {
+    pBitmap->Clear(0x00ffffff);
+  }
+
   auto device = std::make_unique<CFX_DefaultRenderDevice>();
   device->Attach(pBitmap);
   context->m_pDevice = std::move(device);
@@ -596,6 +605,12 @@ FPDF_EXPORT void FPDF_CALLCONV FPDF_RenderPage(HDC dc,
                                 size_y, rotate, flags, /*color_scheme=*/nullptr,
                                 /*need_to_restore=*/true,
                                 /*pause=*/nullptr);
+
+#if defined(_SKIA_SUPPORT_)
+  if (CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()) {
+    pBitmap->UnPreMultiply();
+  }
+#endif
 
   if (!bHasMask) {
     CPDF_WindowsRenderDevice win_dc(dc, render_data->GetPSFontTracker());
