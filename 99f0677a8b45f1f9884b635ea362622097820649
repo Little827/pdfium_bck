@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "191e0801_e8f3b62d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 9296
+      },
+      "writtenOn": "2023-10-03T11:07:11Z",
+      "side": 1,
+      "message": "Hi Thomas,\nCould you please take a look?\n\n+CC @bartekn@chromium.org FYI, there was a breaking change associated with the change adding support for zero initialization. I know some dependencies like Dawn are defining some default values to avoid causing breaking change. See:\nhttps://source.chromium.org/chromium/chromium/src/+/main:third_party/dawn/scripts/dawn_overrides_with_defaults.gni?q\u003ddawn%20with_default\u0026ss\u003dchromium%2Fchromium%2Fsrc",
+      "revId": "99f0677a8b45f1f9884b635ea362622097820649",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
