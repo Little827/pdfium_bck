@@ -33,6 +33,23 @@
       "message": "PDFium\u0027s custom is to not include this verbose section, one can get it from git based on the range on the previous line.",
       "revId": "99f0677a8b45f1f9884b635ea362622097820649",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8719b074_59d6dc2d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-10-03T16:42:51Z",
+      "side": 1,
+      "message": "LG otherwise",
+      "revId": "99f0677a8b45f1f9884b635ea362622097820649",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
