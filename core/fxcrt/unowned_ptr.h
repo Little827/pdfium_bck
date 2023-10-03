@@ -6,7 +6,11 @@
 #define CORE_FXCRT_UNOWNED_PTR_H_
 
 // UnownedPtr is a smart pointer class that behaves very much like a
-// standard C-style pointer. The advantages of using it over native T*
+// standard C-style pointer. Nowadays, it is mostly a wrapper over base's
+// raw_ptr<T> when using partition alloc, but also can map onto ordinary
+// T* when not using partition alloc.
+//
+// In either situation, the advantages of using it over native T*
 // pointers are:
 //
 // 1. It documents the nature of the pointer with no need to add a comment
@@ -15,23 +19,20 @@
 // 2. An attempt to delete an unowned ptr will fail to compile rather
 //    than silently succeeding, since it is a class and not a raw pointer.
 //
-// 3. When built using the memory tool ASAN, the class provides a destructor
-//    which checks that the object being pointed to is still alive.
+// 3. It is initialized to nullptr by default.
 //
-// 4. When built against PartitionAlloc's BRP feature, it provides the same
+// When built using partition alloc, the followind additional properties
+// are present:
+//
+// 4. When built using the memory tool ASAN, the class provides a destructor
+//    which checks that the object being pointed to is still alive.  Hence,
+//    when using UnownedPtr, no dangling pointers are ever permitted,
+//    even if they are not de-referenced after becoming dangling.
+//
+// 5. When built against PartitionAlloc's BRP feature, it provides the same
 //    UaF protections as base::raw_ptr<T>
 //
-// 5. It is initialized to nullptr by default.
-//
-// Hence, when using UnownedPtr, no dangling pointers are ever permitted,
-// even if they are not de-referenced after becoming dangling. The style of
-// programming required is that the lifetime an object containing an
-// UnownedPtr must be strictly less than the object to which it points.
-//
-// The same checks are also performed at assignment time to prove that the
-// old value was not a dangling pointer, either.
-//
-// The array indexing operation [] is not supported on an unowned ptr,
+// The array indexing operator[]() is not supported on an unowned ptr,
 // because an unowned ptr expresses a one to one relationship with some
 // other heap object. Use pdfium::span<> for the cases where indexing
 // into an unowned array is desired, which performs the same checks.
@@ -57,7 +58,7 @@
 template <typename T>
 using UnownedPtr = raw_ptr<T>;
 
-#else  // UNOWNED_PTR_IS_BASE_RAW_PTR
+#else  // defined(PDF_USE_PARTITION_ALLOC)
 
 #include <cstddef>
 #include <functional>
@@ -66,11 +67,6 @@ using UnownedPtr = raw_ptr<T>;
 
 #include "core/fxcrt/unowned_ptr_exclusion.h"
 #include "third_party/base/compiler_specific.h"
-
-#if defined(ADDRESS_SANITIZER)
-#include <cstdint>
-#define UNOWNED_PTR_DANGLING_CHECKS
-#endif
 
 namespace pdfium {
 
@@ -113,18 +109,18 @@ class TRIVIAL_ABI GSL_POINTER UnownedPtr {
             typename = typename std::enable_if<
                 std::is_convertible<U*, T*>::value>::type>
   UnownedPtr(UnownedPtr<U>&& that) noexcept {
-    Reset(that.ExtractAsDangling());
+    m_pObj = that.ExtractAsDangling();
   }
 
   // Assign an UnownedPtr from nullptr.
   UnownedPtr& operator=(std::nullptr_t) noexcept {
-    Reset();
+    m_pObj = nullptr;
     return *this;
   }
 
   // Assign an UnownedPtr from a raw ptr.
   UnownedPtr& operator=(T* that) noexcept {
-    Reset(that);
+    m_pObj = that;
     return *this;
   }
 
@@ -132,7 +128,7 @@ class TRIVIAL_ABI GSL_POINTER UnownedPtr {
   // Required in addition to copy conversion assignment below.
   UnownedPtr& operator=(const UnownedPtr& that) noexcept {
     if (*this != that)
-      Reset(static_cast<T*>(that));
+      m_pObj = static_cast<T*>(that);
     return *this;
   }
 
@@ -140,7 +136,7 @@ class TRIVIAL_ABI GSL_POINTER UnownedPtr {
   // Required in addition to move conversion assignment below.
   UnownedPtr& operator=(UnownedPtr&& that) noexcept {
     if (*this != that)
-      Reset(that.ExtractAsDangling());
+      m_pObj = that.ExtractAsDangling();
     return *this;
   }
 
@@ -150,7 +146,7 @@ class TRIVIAL_ABI GSL_POINTER UnownedPtr {
                 std::is_convertible<U*, T*>::value>::type>
   UnownedPtr& operator=(const UnownedPtr<U>& that) noexcept {
     if (*this != that)
-      Reset(that);
+      m_pObj = that;
     return *this;
   }
 
@@ -160,12 +156,11 @@ class TRIVIAL_ABI GSL_POINTER UnownedPtr {
                 std::is_convertible<U*, T*>::value>::type>
   UnownedPtr& operator=(UnownedPtr<U>&& that) noexcept {
     if (*this != that)
-      Reset(that.ExtractAsDangling());
+      m_pObj = that.ExtractAsDangling();
     return *this;
   }
 
   ~UnownedPtr() {
-    ProbeForLowSeverityLifetimeIssue();
     m_pObj = nullptr;
   }
 
@@ -181,7 +176,6 @@ class TRIVIAL_ABI GSL_POINTER UnownedPtr {
   T* get() const noexcept { return m_pObj; }
 
   T* ExtractAsDangling() {
-    ProbeForLowSeverityLifetimeIssue();
     T* pTemp = nullptr;
     std::swap(pTemp, m_pObj);
     return pTemp;
@@ -193,24 +187,6 @@ class TRIVIAL_ABI GSL_POINTER UnownedPtr {
 
  private:
   friend class pdfium::span<T>;
-
-  void Reset(T* obj = nullptr) {
-    ProbeForLowSeverityLifetimeIssue();
-    m_pObj = obj;
-  }
-
-  inline void ProbeForLowSeverityLifetimeIssue() {
-#if defined(ADDRESS_SANITIZER)
-    if (m_pObj)
-      reinterpret_cast<const volatile uint8_t*>(m_pObj)[0];
-#endif
-  }
-
-  inline void ReleaseBadPointer() {
-#if defined(ADDRESS_SANITIZER)
-    m_pObj = nullptr;
-#endif
-  }
 
   UNOWNED_PTR_EXCLUSION T* m_pObj = nullptr;
 };

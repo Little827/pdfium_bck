@@ -203,7 +203,7 @@ class TRIVIAL_ABI GSL_POINTER span {
   // size()|. Note that |data()| may not return nullptr for some empty
   // containers, which can lead to container overflow errors when probing
   // unowned ptrs.
-#if defined(ADDRESS_SANITIZER) && defined(UNOWNED_PTR_IS_BASE_RAW_PTR)
+#if defined(UNOWNED_PTR_DANGLING_CHECKS)
   template <typename Container,
             typename = internal::EnableIfSpanCompatibleContainer<Container, T>>
   constexpr span(Container& container)
@@ -228,13 +228,12 @@ class TRIVIAL_ABI GSL_POINTER span {
   constexpr span(const span<U>& other) : span(other.data(), other.size()) {}
   span& operator=(const span& other) noexcept {
     if (this != &other) {
-      ReleaseEmptySpan();
       data_ = other.data_;
       size_ = other.size_;
     }
     return *this;
   }
-  ~span() noexcept { ReleaseEmptySpan(); }
+  ~span() noexcept = default;
 
   // [span.sub], span subviews
   const span first(size_t count) const {
@@ -299,16 +298,7 @@ class TRIVIAL_ABI GSL_POINTER span {
   }
 
  private:
-  void ReleaseEmptySpan() noexcept {
-#if defined(ADDRESS_SANITIZER) && !defined(UNOWNED_PTR_IS_BASE_RAW_PTR)
-    // Empty spans might point to byte N+1 of a N-byte object, legal for
-    // C pointers but not UnownedPtrs.
-    if (!size_)
-      data_.ReleaseBadPointer();
-#endif
-  }
-
-#if defined(UNOWNED_PTR_IS_BASE_RAW_PTR)
+#if defined(PDF_USE_PARTITION_ALLOC)
   raw_ptr<T, AllowPtrArithmetic> data_ = nullptr;
 #else
   UnownedPtr<T> data_;
