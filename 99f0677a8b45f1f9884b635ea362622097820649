@@ -16,6 +16,23 @@
       "message": "Hi Thomas,\nCould you please take a look?\n\n+CC @bartekn@chromium.org FYI, there was a breaking change associated with the change adding support for zero initialization. I know some dependencies like Dawn are defining some default values to avoid causing breaking change. See:\nhttps://source.chromium.org/chromium/chromium/src/+/main:third_party/dawn/scripts/dawn_overrides_with_defaults.gni?q\u003ddawn%20with_default\u0026ss\u003dchromium%2Fchromium%2Fsrc",
       "revId": "99f0677a8b45f1f9884b635ea362622097820649",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2c9ef01_dff704e7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-10-03T16:41:31Z",
+      "side": 1,
+      "message": "PDFium\u0027s custom is to not include this verbose section, one can get it from git based on the range on the previous line.",
+      "revId": "99f0677a8b45f1f9884b635ea362622097820649",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
