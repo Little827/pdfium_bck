@@ -16,6 +16,69 @@
       "message": "So anyways, a build that can pass under these harsh constraints ...",
       "revId": "c862b20c283463c952f0e00e86ea895fec60a462",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "551dfa24_0c565e2c",
+        "filename": "core/fxcrt/unowned_ptr.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-10-04T22:26:30Z",
+      "side": 1,
+      "message": "Consistently write \"ASAN\"",
+      "range": {
+        "startLine": 51,
+        "startChar": 29,
+        "endLine": 51,
+        "endChar": 33
+      },
+      "revId": "c862b20c283463c952f0e00e86ea895fec60a462",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfb35c7f_d25fd0d7",
+        "filename": "core/fxcrt/unowned_ptr.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-10-04T22:26:30Z",
+      "side": 1,
+      "message": "Pre-existing: This comment is out of date. Same for line 228.",
+      "range": {
+        "startLine": 66,
+        "startChar": 7,
+        "endLine": 66,
+        "endChar": 37
+      },
+      "revId": "c862b20c283463c952f0e00e86ea895fec60a462",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d906b6e_5c99136e",
+        "filename": "core/fxcrt/unowned_ptr.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-10-04T22:26:30Z",
+      "side": 1,
+      "message": "Not useful anymore?",
+      "revId": "c862b20c283463c952f0e00e86ea895fec60a462",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
