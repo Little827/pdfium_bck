@@ -50,7 +50,7 @@ vars = {
   # Three lines of non-changing comments so that
   # the commit queue can handle CLs rolling android_toolchain
   # and whatever else without interference from each other.
-  'android_toolchain_version': 'R_8suM8m0oHbZ1awdxGXvKEFpAOETscbfZxkkMthyk8C',
+  'android_toolchain_version': '3vHltFqfgIw8wZ38ggGM9c7Eyw_AHZnwCgFIVtc9gngC',
   # Three lines of non-changing comments so that
   # the commit queue can handle CLs rolling build
   # and whatever else without interference from each other.
