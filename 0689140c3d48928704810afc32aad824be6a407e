@@ -33,6 +33,23 @@
       "message": "https://pdfium-review.googlesource.com/c/112310 is floating around. Does it matter which order the CLs land in?",
       "revId": "0689140c3d48928704810afc32aad824be6a407e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31c21400_3cbc254d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-10-04T21:49:14Z",
+      "side": 1,
+      "message": "Yeah, let the rename go first.",
+      "revId": "0689140c3d48928704810afc32aad824be6a407e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
