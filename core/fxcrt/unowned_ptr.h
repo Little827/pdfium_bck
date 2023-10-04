@@ -40,19 +40,25 @@
 
 #if defined(PDF_USE_PARTITION_ALLOC)
 #include "base/allocator/partition_allocator/src/partition_alloc/partition_alloc_buildflags.h"
+#include "base/allocator/partition_allocator/src/partition_alloc/pointers/raw_ptr.h"
 
-// Can only use base::raw_ptr<> impls that force nullptr initialization.
-#if BUILDFLAG(ENABLE_BACKUP_REF_PTR_SUPPORT) || BUILDFLAG(USE_ASAN_UNOWNED_PTR)
-#define UNOWNED_PTR_IS_BASE_RAW_PTR
+#if !defined(USE_PARTITION_ALLOC)
+#error "PDF_USE_PARTITION_ALLOC requires USE_PARTITION_ALLOC"
+#endif
+
+#if defined(ADDRESS_SANITIZER) && \
+    !(BUILDFLAG(USE_ASAN_UNOWNED_PTR) || BUILDFLAG(USE_ASAN_BACKUP_REF_PTR))
+#error "PartitionAlloc based asan builds must use an ASAN mode"
 #endif
 
 #if BUILDFLAG(ENABLE_DANGLING_RAW_PTR_CHECKS) || BUILDFLAG(USE_ASAN_UNOWNED_PTR)
 #define UNOWNED_PTR_DANGLING_CHECKS
 #endif
-#endif  // PDF_USE_PARTITION_ALLOC
 
-#if defined(UNOWNED_PTR_IS_BASE_RAW_PTR)
-#include "base/allocator/partition_allocator/src/partition_alloc/pointers/raw_ptr.h"
+static_assert(raw_ptr<int>::kZeroOnConstruct, "Unsafe build arguments");
+static_assert(raw_ptr<int>::kZeroOnMove, "Unsafe build arguments");
+
+#define UNOWNED_PTR_IS_BASE_RAW_PTR
 
 template <typename T>
 using UnownedPtr = raw_ptr<T>;
