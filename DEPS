@@ -16,6 +16,10 @@ vars = {
   # work.
   'checkout_configuration': 'default',
 
+  # Pull in Android native toolchain dependencies for Chrome OS too, so we can
+  # build ARC++ support libraries.
+  'checkout_android_native_support': False,
+
   'checkout_instrumented_libraries': 'checkout_linux and checkout_configuration != "small" and checkout_configuration != "minimal"',
 
   'checkout_skia': 'checkout_configuration != "minimal"',
@@ -50,7 +54,7 @@ vars = {
   # Three lines of non-changing comments so that
   # the commit queue can handle CLs rolling android_toolchain
   # and whatever else without interference from each other.
-  'android_toolchain_version': 'R_8suM8m0oHbZ1awdxGXvKEFpAOETscbfZxkkMthyk8C',
+  'android_toolchain_version': '3vHltFqfgIw8wZ38ggGM9c7Eyw_AHZnwCgFIVtc9gngC',
   # Three lines of non-changing comments so that
   # the commit queue can handle CLs rolling build
   # and whatever else without interference from each other.
