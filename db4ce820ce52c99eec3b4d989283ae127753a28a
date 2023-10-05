@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51ff5c64_ae9f55df",
+        "filename": "testing/fake_file_access.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-10-05T20:49:22Z",
+      "side": 1,
+      "message": "nit: Blank lines after.",
+      "revId": "db4ce820ce52c99eec3b4d989283ae127753a28a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "070c4021_092eec24",
+        "filename": "testing/fake_file_access.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-10-05T20:49:22Z",
+      "side": 1,
+      "message": "nit: Sort the list.",
+      "revId": "db4ce820ce52c99eec3b4d989283ae127753a28a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
