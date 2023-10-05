@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f2129ba_cf3f404a",
+        "filename": "DEPS",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-10-05T19:32:19Z",
+      "side": 1,
+      "message": "What bug is this referring to?",
+      "revId": "12bae096f42105409c29c812e7ee96dab95b331e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a554f976_d8a1ff6a",
+        "filename": "DEPS",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-10-05T19:32:19Z",
+      "side": 1,
+      "message": "This comment doesn\u0027t make any sense. Since line 27 is not copied from Chromium //DEPS as-is, this should be updated.",
+      "revId": "12bae096f42105409c29c812e7ee96dab95b331e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
