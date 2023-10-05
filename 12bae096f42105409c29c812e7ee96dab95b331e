@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6a0bcaf1_7ce083ce",
+        "filename": "DEPS",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-10-05T19:33:49Z",
+      "side": 1,
+      "message": "crbug.com/875037",
+      "parentUuid": "2f2129ba_cf3f404a",
+      "revId": "12bae096f42105409c29c812e7ee96dab95b331e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a554f976_d8a1ff6a",
         "filename": "DEPS",
         "patchSetId": 4
