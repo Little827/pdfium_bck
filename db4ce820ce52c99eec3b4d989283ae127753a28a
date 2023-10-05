@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a21dd64b_3bfee076",
+        "filename": "testing/fake_file_access.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-10-05T21:07:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51ff5c64_ae9f55df",
+      "revId": "db4ce820ce52c99eec3b4d989283ae127753a28a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "070c4021_092eec24",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-10-05T20:49:22Z",
       "side": 1,
       "message": "nit: Sort the list.",
+      "revId": "db4ce820ce52c99eec3b4d989283ae127753a28a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b993e5e8_8c7744f9",
+        "filename": "testing/fake_file_access.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-10-05T21:07:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "070c4021_092eec24",
       "revId": "db4ce820ce52c99eec3b4d989283ae127753a28a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
