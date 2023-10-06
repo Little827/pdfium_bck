@@ -16,6 +16,29 @@
       "message": "Hello Thomas!\nCould you please take a look?",
       "revId": "a8b2d8eec373037a08f8856190fc571fc6edbb19",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd38b3af_f8a43467",
+        "filename": "core/fxcodec/BUILD.gn",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 9296
+      },
+      "writtenOn": "2023-10-06T08:16:41Z",
+      "side": 1,
+      "message": "We have the public_deps:\n`faxmodule.h` \u003d\u003e span \u003d\u003e unowned_ptr \u003d\u003e partition_alloc\n\n```\nIn file included from ../../testing/fuzzers/pdf_codec_fax_fuzzer.cc:8:\nIn file included from ../../core/fxcodec/fax/faxmodule.h:15:\nIn file included from ../../third_party/base/containers/span.h:16:\n../../core/fxcrt/unowned_ptr.h:42:10:\n```\n\nNote that we don\u0027t really have any target about \"span\". We probably should?\nAnyway, it looks like \"third_party/base\" are not tracked by GN at all, so I decided to ignore it and make it depend on unowned_ptr instead.",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 30
+      },
+      "revId": "a8b2d8eec373037a08f8856190fc571fc6edbb19",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
