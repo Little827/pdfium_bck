@@ -200,20 +200,11 @@ class TRIVIAL_ABI GSL_POINTER span {
   constexpr span(std::array<T, N>& array) noexcept : span(array.data(), N) {}
 
   // Conversion from a container that provides |T* data()| and |integral_type
-  // size()|. Note that |data()| may not return nullptr for some empty
-  // containers, which can lead to container overflow errors when probing
-  // unowned ptrs.
-#if defined(ADDRESS_SANITIZER) && defined(UNOWNED_PTR_IS_BASE_RAW_PTR)
-  template <typename Container,
-            typename = internal::EnableIfSpanCompatibleContainer<Container, T>>
-  constexpr span(Container& container)
-      : span(container.size() ? container.data() : nullptr, container.size()) {}
-#else
+  // size()|.
   template <typename Container,
             typename = internal::EnableIfSpanCompatibleContainer<Container, T>>
   constexpr span(Container& container)
       : span(container.data(), container.size()) {}
-#endif
 
   template <
       typename Container,
