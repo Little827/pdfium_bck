@@ -547,7 +547,6 @@ source_set("pdfium_base") {
     "base/component_export.h",
     "base/containers/adapters.h",
     "base/containers/contains.h",
-    "base/containers/span.h",
     "base/debug/alias.cc",
     "base/debug/alias.h",
     "base/immediate_crash.h",
@@ -572,7 +571,6 @@ source_set("pdfium_base") {
   ]
   public_deps = [
     ":pdfium_compiler_specific",
-    "../core/fxcrt:unowned_ptr",
     "//third_party/abseil-cpp:absl",
   ]
   if (is_win) {

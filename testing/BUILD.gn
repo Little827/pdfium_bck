@@ -37,6 +37,7 @@ source_set("test_support") {
   data = [ "resources/" ]
   public_deps = [
     ":path_service",
+    "../core/fxcrt:unowned_ptr_and_span",
     "//third_party/test_fonts",
   ]
   deps = [

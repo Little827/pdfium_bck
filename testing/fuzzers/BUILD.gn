@@ -170,6 +170,7 @@ source_set("fuzzer_helper") {
   configs += [ ":fuzzer_config" ]
   deps = [
     "../../:pdfium_public_headers",
+    "../../core/fxcrt:unowned_ptr_and_span",
     "../../fpdfsdk",
     "../../third_party:pdfium_base",
   ]

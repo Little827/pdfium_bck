@@ -6,9 +6,15 @@ import("//build_overrides/build.gni")
 import("../../pdfium.gni")
 import("../../testing/test.gni")
 
-source_set("unowned_ptr") {
-  sources = [ "unowned_ptr.h" ]
-  deps = [ "../../third_party:pdfium_compiler_specific" ]
+source_set("unowned_ptr_and_span") {
+  sources = [
+    "../../third_party/base/containers/span.h",  # Hooks back into unowned_ptr
+    "unowned_ptr.h",
+  ]
+  deps = [
+    "../../third_party:pdfium_base",
+    "../../third_party:pdfium_compiler_specific",
+  ]
   configs += [ "../../:pdfium_strict_config" ]
   if (pdf_use_partition_alloc) {
     public_deps = [
@@ -135,7 +141,7 @@ source_set("fxcrt") {
   ]
   deps = [ "../../third_party:pdfium_base" ]
   public_deps = [
-    ":unowned_ptr",
+    ":unowned_ptr_and_span",
     "../../:freetype_common",
     "../../third_party:pdfium_base",
     "//third_party/icu:icuuc",
