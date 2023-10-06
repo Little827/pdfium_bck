@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57d8e54d_7f665ae2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-10-06T19:22:01Z",
+      "side": 1,
+      "message": "Ok, latest patch set removes the overly-strong bot-taming asserts, needs final +1.",
+      "revId": "df1bf6a32552030160adeb2087bb83b60ac20ac1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
