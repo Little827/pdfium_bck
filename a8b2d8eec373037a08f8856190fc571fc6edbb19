@@ -39,6 +39,30 @@
       },
       "revId": "a8b2d8eec373037a08f8856190fc571fc6edbb19",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf0084c9_38f0cc2e",
+        "filename": "core/fxcodec/BUILD.gn",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-10-06T16:35:21Z",
+      "side": 1,
+      "message": "pdfium::span -- despite being copied from chromium and residing in third_party/base -- is heavily modified to provide the spatial safety of base::span and temporal safety of UnownedPtr (aka raw_ptr). \n\nHence it is tightly coupled to unowned_ptr.h.   Probably spah.h and unowned_ptr.h should be combined together into one target despite the long distance between the directory paths.\n\nI\u0027d expect some specific sub-dirs of third_party/base to be tracked by GN. Let me double-check.  But we can go with this for now.",
+      "parentUuid": "fd38b3af_f8a43467",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 30
+      },
+      "revId": "a8b2d8eec373037a08f8856190fc571fc6edbb19",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
