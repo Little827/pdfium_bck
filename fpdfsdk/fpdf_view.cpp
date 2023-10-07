@@ -223,7 +223,7 @@ FPDF_InitLibraryWithConfig(const FPDF_LIBRARY_CONFIG* config) {
 
   FX_InitializeMemoryAllocators();
   CFX_GEModule::Create(config ? config->m_pUserFontPaths : nullptr);
-  CPDF_PageModule::Create();
+  InitializePageModule();
 
 #ifdef PDF_ENABLE_XFA
   CPDFXFA_ModuleInit();
@@ -248,7 +248,7 @@ FPDF_EXPORT void FPDF_CALLCONV FPDF_DestroyLibrary() {
   CPDFXFA_ModuleDestroy();
 #endif  // PDF_ENABLE_XFA
 
-  CPDF_PageModule::Destroy();
+  DestroyPageModule();
   CFX_GEModule::Destroy();
   IJS_Runtime::Destroy();
 

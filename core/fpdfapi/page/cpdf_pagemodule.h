@@ -7,16 +7,7 @@
 #ifndef CORE_FPDFAPI_PAGE_CPDF_PAGEMODULE_H_
 #define CORE_FPDFAPI_PAGE_CPDF_PAGEMODULE_H_
 
-class CPDF_PageModule {
- public:
-  // Per-process singleton managed by callers.
-  static void Create();
-  static void Destroy();
-  static CPDF_PageModule* GetInstance();
-
- private:
-  CPDF_PageModule();
-  ~CPDF_PageModule();
-};
+void InitializePageModule();
+void DestroyPageModule();
 
 #endif  // CORE_FPDFAPI_PAGE_CPDF_PAGEMODULE_H_
