@@ -8,14 +8,17 @@
 
 #include "core/fpdfapi/font/cpdf_fontglobals.h"
 #include "core/fpdfapi/page/cpdf_colorspace.h"
+#include "core/fpdfapi/page/cpdf_streamcontentparser.h"
 
 void InitializePageModule() {
   CPDF_ColorSpace::Initialize();
   CPDF_FontGlobals::Create();
   CPDF_FontGlobals::GetInstance()->LoadEmbeddedMaps();
+  CPDF_StreamContentParser::Initialize();
 }
 
 void DestroyPageModule() {
+  CPDF_StreamContentParser::Destroy();
   CPDF_FontGlobals::Destroy();
   CPDF_ColorSpace::Destroy();
 }
