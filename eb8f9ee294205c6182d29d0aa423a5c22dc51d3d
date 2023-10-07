@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48ef2ba3_5a10ba19",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-10-07T00:59:36Z",
+      "side": 1,
+      "message": "Going to stop here in this CL chain for now in case you have objections. The end goal is to remove pdfium::base::NoDestructor altogether. Should be ok for PA, since PA has its own copy of NoDestructor.",
+      "revId": "eb8f9ee294205c6182d29d0aa423a5c22dc51d3d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
