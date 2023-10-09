@@ -16,6 +16,24 @@
       "message": "Maybe these should be InitializeGlobals/DestroyGlobals?",
       "revId": "1cd692cb368928c451b16ad85b1e77591919bda0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d97c35a7_85cda8ce",
+        "filename": "core/fpdfapi/page/cpdf_colorspace.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-10-09T16:07:29Z",
+      "side": 1,
+      "message": "Agree. Maybe rename the next time we touch this file.",
+      "parentUuid": "e153f298_8c8f26e0",
+      "revId": "1cd692cb368928c451b16ad85b1e77591919bda0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
