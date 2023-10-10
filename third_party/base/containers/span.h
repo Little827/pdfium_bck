@@ -238,19 +238,18 @@ class TRIVIAL_ABI GSL_POINTER span {
   // [span.sub], span subviews
   const span first(size_t count) const {
     CHECK(count <= size_);
-    return span(static_cast<T*>(data_), count);
+    return span(data(), count);
   }
 
   const span last(size_t count) const {
     CHECK(count <= size_);
-    return span(static_cast<T*>(data_) + (size_ - count), count);
+    return span(data() + (size_ - count), count);
   }
 
   const span subspan(size_t pos, size_t count = dynamic_extent) const {
     CHECK(pos <= size_);
     CHECK(count == dynamic_extent || count <= size_ - pos);
-    return span(static_cast<T*>(data_) + pos,
-                count == dynamic_extent ? size_ - pos : count);
+    return span(data() + pos, count == dynamic_extent ? size_ - pos : count);
   }
 
   // [span.obs], span observers
@@ -261,7 +260,7 @@ class TRIVIAL_ABI GSL_POINTER span {
   // [span.elem], span element access
   T& operator[](size_t index) const noexcept {
     CHECK(index < size_);
-    return static_cast<T*>(data_)[index];
+    return data()[index];
   }
 
   constexpr T& front() const noexcept {
@@ -277,7 +276,7 @@ class TRIVIAL_ABI GSL_POINTER span {
   constexpr T* data() const noexcept { return static_cast<T*>(data_); }
 
   // [span.iter], span iterator support
-  constexpr iterator begin() const noexcept { return static_cast<T*>(data_); }
+  constexpr iterator begin() const noexcept { return data(); }
   constexpr iterator end() const noexcept { return begin() + size_; }
 
   constexpr const_iterator cbegin() const noexcept { return begin(); }
@@ -299,7 +298,7 @@ class TRIVIAL_ABI GSL_POINTER span {
 
  private:
 #if defined(UNOWNED_PTR_IS_BASE_RAW_PTR)
-  raw_ptr<T, AllowPtrArithmetic> data_ = nullptr;
+  raw_ptr<T> data_ = nullptr;
 #else
   UnownedPtr<T> data_;
 #endif
