@@ -16,6 +16,24 @@
       "message": "https://gn.googlesource.com/gn/+/main/docs/style_guide.md#ordering-within-a-target suggesting putting this above `deps`. Leave it back where it was?",
       "revId": "165381712d678d9a5ccbe7de27c618b83b220d6f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10f87801_c3d27b9f",
+        "filename": "core/fxcodec/BUILD.gn",
+        "patchSetId": 8
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-10-11T23:33:48Z",
+      "side": 1,
+      "message": "Sure, I\u0027d not seen that before, and my inclination was to do it the other way around.  There\u0027s probably a bunch of places to make adhere to this if you get bored someday ...",
+      "parentUuid": "b6fd323c_3593e2a3",
+      "revId": "165381712d678d9a5ccbe7de27c618b83b220d6f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
