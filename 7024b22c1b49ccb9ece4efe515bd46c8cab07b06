@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee6d1fa1_f740605e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-10-11T16:49:30Z",
+      "side": 1,
+      "message": "So anyways, the reason the bots failed is that although there isn\u0027t any ptr arithmetic, the flag also enables the \"allow one byte past end of object\" case, which is needed when there is an array but is dubious when there is but a single object. No work needed here.",
+      "revId": "7024b22c1b49ccb9ece4efe515bd46c8cab07b06",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
