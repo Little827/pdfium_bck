@@ -572,7 +572,6 @@ source_set("pdfium_base") {
   ]
   public_deps = [
     ":pdfium_compiler_specific",
-    "../core/fxcrt:unowned_ptr",
     "//third_party/abseil-cpp:absl",
   ]
   if (is_win) {

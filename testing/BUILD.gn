@@ -37,12 +37,12 @@ source_set("test_support") {
   data = [ "resources/" ]
   public_deps = [
     ":path_service",
+    "../core/fxcrt",
     "//third_party/test_fonts",
   ]
   deps = [
     "../:pdfium_public_headers",
     "../core/fdrm",
-    "../core/fxcrt",
     "../core/fxge",
     "image_diff",
   ]
