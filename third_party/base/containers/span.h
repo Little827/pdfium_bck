@@ -13,7 +13,6 @@
 #include <type_traits>
 #include <utility>
 
-#include "core/fxcrt/unowned_ptr.h"
 #include "third_party/base/check.h"
 #include "third_party/base/compiler_specific.h"
 
@@ -187,7 +186,7 @@ class TRIVIAL_ABI GSL_POINTER span {
   using const_reverse_iterator = std::reverse_iterator<const_iterator>;
 
   // [span.cons], span constructors, copy, assignment, and destructor
-  constexpr span() noexcept : data_(nullptr), size_(0) {}
+  constexpr span() noexcept = default;
   constexpr span(T* data, size_t size) noexcept : data_(data), size_(size) {
     DCHECK(data_ || size_ == 0);
   }
@@ -202,7 +201,7 @@ class TRIVIAL_ABI GSL_POINTER span {
   // Conversion from a container that provides |T* data()| and |integral_type
   // size()|. Note that |data()| may not return nullptr for some empty
   // containers, which can lead to container overflow errors when probing
-  // unowned ptrs.
+  // raw ptrs.
 #if defined(ADDRESS_SANITIZER) && defined(UNOWNED_PTR_IS_BASE_RAW_PTR)
   template <typename Container,
             typename = internal::EnableIfSpanCompatibleContainer<Container, T>>
@@ -301,9 +300,9 @@ class TRIVIAL_ABI GSL_POINTER span {
 #if defined(UNOWNED_PTR_IS_BASE_RAW_PTR)
   raw_ptr<T, AllowPtrArithmetic> data_ = nullptr;
 #else
-  UnownedPtr<T> data_;
+  T* data_ = nullptr;
 #endif
-  size_t size_;
+  size_t size_ = 0;
 };
 
 // [span.comparison], span comparison operators
