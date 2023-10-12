@@ -22,6 +22,30 @@
       },
       "revId": "6bab01c609d6dc155f6b3492c7c35942f31e9a95",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14ddbc8b_30d0e3eb",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 680,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-10-12T21:38:42Z",
+      "side": 1,
+      "message": "NM, it can\u0027t do it either, probably ambiguity about including the final \\0.",
+      "parentUuid": "f99d21e8_5e001099",
+      "range": {
+        "startLine": 680,
+        "startChar": 51,
+        "endLine": 680,
+        "endChar": 54
+      },
+      "revId": "6bab01c609d6dc155f6b3492c7c35942f31e9a95",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
