@@ -22,6 +22,29 @@
       },
       "revId": "bc27bc94291001b5bbc21d7ce0736cb52ea63a1c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35dac2ef_cdc84d9f",
+        "filename": "core/fpdfapi/font/cpdf_fontencoding.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1765,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-10-12T23:39:07Z",
+      "side": 1,
+      "message": "Yep, the compiler knows how big these are, would be a shame to lose that info!",
+      "range": {
+        "startLine": 1765,
+        "startChar": 12,
+        "endLine": 1765,
+        "endChar": 35
+      },
+      "revId": "bc27bc94291001b5bbc21d7ce0736cb52ea63a1c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
