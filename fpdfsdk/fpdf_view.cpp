@@ -1309,8 +1309,7 @@ FPDF_GetTrailerEnds(FPDF_DOCUMENT document,
   const unsigned long trailer_ends_len =
       fxcrt::CollectionSize<unsigned long>(trailer_ends);
   if (buffer && length >= trailer_ends_len) {
-    for (size_t i = 0; i < trailer_ends_len; ++i)
-      buffer[i] = trailer_ends[i];
+    memcpy(buffer, trailer_ends.data(), trailer_ends_len);
   }
 
   return trailer_ends_len;
