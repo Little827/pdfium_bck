@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba81153f_a986c99a",
+        "filename": "core/fpdfapi/font/cpdf_fontencoding.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1670,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-10-12T23:37:48Z",
+      "side": 1,
+      "message": "nit: maybe invert and early return.",
+      "range": {
+        "startLine": 1670,
+        "startChar": 2,
+        "endLine": 1670,
+        "endChar": 21
+      },
+      "revId": "bc27bc94291001b5bbc21d7ce0736cb52ea63a1c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
