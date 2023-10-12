@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a30f235_faeed7a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-10-12T16:59:22Z",
+      "side": 1,
+      "message": "Great. This is straightforward as fxcrt::SmallBuffer doesn\u0027t provide extra bounds checking so whatever absl does is no worse, and absl\u0027s value_type() initialization is equivalent to the memset in our case.\n\nOne suggestion, otherwise LG.",
+      "revId": "9fac7d9268e74e60f003da0481950470f1609bc4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3da4355_808b5be5",
+        "filename": "core/fpdfapi/page/cpdf_sampledfunc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-10-12T16:59:22Z",
+      "side": 1,
+      "message": "Can we pass FxAllocAllocator as a third template parameter?",
+      "range": {
+        "startLine": 106,
+        "startChar": 2,
+        "endLine": 107,
+        "endChar": 35
+      },
+      "revId": "9fac7d9268e74e60f003da0481950470f1609bc4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
