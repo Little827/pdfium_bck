@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f99d21e8_5e001099",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 680,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-10-12T21:35:49Z",
+      "side": 1,
+      "message": "Hmmm. Maybe we can make WideString deduce this length? This is advantage of std::string_view, which can.",
+      "range": {
+        "startLine": 680,
+        "startChar": 51,
+        "endLine": 680,
+        "endChar": 54
+      },
+      "revId": "6bab01c609d6dc155f6b3492c7c35942f31e9a95",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
