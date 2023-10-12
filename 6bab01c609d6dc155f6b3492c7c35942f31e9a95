@@ -46,6 +46,30 @@
       },
       "revId": "6bab01c609d6dc155f6b3492c7c35942f31e9a95",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd297786_3a9aea9b",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 680,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-10-12T21:44:14Z",
+      "side": 1,
+      "message": "One other thought. If we want to be really sneaky, maybe we use aggreggate initialization and omit the [3] and let the compiler figure it out.  Though this means duplicating a bit, e.g.\n\n```\n  const wchar_t encode_buffer[] \u003d {\u0027%\u0027, kStrCode[iIndex], kStrCode[ch - iIndex * 16]};\n   wsResultBuf \u003c\u003c WideStringView(encode_buffer, sizeof(encode_buffer));\n ```",
+      "parentUuid": "14ddbc8b_30d0e3eb",
+      "range": {
+        "startLine": 680,
+        "startChar": 51,
+        "endLine": 680,
+        "endChar": 54
+      },
+      "revId": "6bab01c609d6dc155f6b3492c7c35942f31e9a95",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
