@@ -12,6 +12,7 @@
 
 #include "core/fpdfapi/font/cpdf_font.h"
 #include "core/fpdfapi/page/cpdf_docpagedata.h"
+#include "core/fxcrt/span_util.h"
 
 CPDF_TextState::CPDF_TextState() = default;
 
@@ -98,11 +99,8 @@ CPDF_TextState::TextData::TextData(const TextData& that)
       m_CharSpace(that.m_CharSpace),
       m_WordSpace(that.m_WordSpace),
       m_TextMode(that.m_TextMode) {
-  for (int i = 0; i < 4; ++i)
-    m_Matrix[i] = that.m_Matrix[i];
-
-  for (int i = 0; i < 4; ++i)
-    m_CTM[i] = that.m_CTM[i];
+  fxcrt::spancpy(pdfium::make_span(m_Matrix), pdfium::make_span(that.m_Matrix));
+  fxcrt::spancpy(pdfium::make_span(m_CTM), pdfium::make_span(that.m_CTM));
 
   if (m_pDocument && m_pFont) {
     auto* pPageData = CPDF_DocPageData::FromDocument(m_pDocument);

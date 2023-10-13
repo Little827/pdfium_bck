@@ -293,10 +293,7 @@ void ConvertBuffer_Plt2PltRgb8(pdfium::span<uint8_t> dest_buf,
   const size_t plt_size = pSrcBitmap->GetRequiredPaletteSize();
   pdfium::span<const uint32_t> src_span = pSrcBitmap->GetPaletteSpan();
   CHECK_LE(plt_size, src_span.size());
-
-  const uint32_t* src_plt = src_span.data();
-  for (size_t i = 0; i < plt_size; ++i)
-    dst_plt[i] = src_plt[i];
+  fxcrt::spancpy(dst_plt, src_span.first(plt_size));
 }
 
 void ConvertBuffer_Rgb2PltRgb8(pdfium::span<uint8_t> dest_buf,
@@ -857,8 +854,7 @@ void CFX_DIBBase::SetPalette(pdfium::span<const uint32_t> src_palette) {
   if (m_palette.empty())
     m_palette.resize(pal_size);
   pal_size = std::min(pal_size, kPaletteSize);
-  for (size_t i = 0; i < pal_size; ++i)
-    m_palette[i] = src_palette[i];
+  fxcrt::spancpy(pdfium::make_span(m_palette), src_palette.first(pal_size));
 }
 
 RetainPtr<CFX_DIBitmap> CFX_DIBBase::CloneAlphaMask() const {

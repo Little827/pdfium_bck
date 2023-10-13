@@ -13,6 +13,7 @@
 #include <utility>
 
 #include "core/fxcrt/fx_system.h"
+#include "core/fxcrt/span_util.h"
 #include "core/fxge/dib/cfx_dibitmap.h"
 #include "core/fxge/dib/cfx_imagestretcher.h"
 #include "core/fxge/dib/fx_dib.h"
@@ -282,8 +283,7 @@ void CFX_ImageTransformer::CalcMono(const CalcData& calc_data) {
   if (m_Storer.GetBitmap()->HasPalette()) {
     pdfium::span<const uint32_t> palette =
         m_Storer.GetBitmap()->GetPaletteSpan();
-    for (size_t i = 0; i < std::size(argb); i++)
-      argb[i] = palette[i];
+    fxcrt::spancpy(pdfium::make_span(argb), palette.first(std::size(argb)));
   } else {
     for (size_t i = 0; i < std::size(argb); i++) {
       uint32_t v = static_cast<uint32_t>(i);
