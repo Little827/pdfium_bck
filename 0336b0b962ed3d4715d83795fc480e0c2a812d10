@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b7c2fa5_7c71a10c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-10-13T22:11:24Z",
+      "side": 1,
+      "message": "I was thinking about `std::array\u003cuint32_t, 5\u003e`, since it makes it more obvious that the data\u0027s size is 5. But out of bounds access is undefined behavior for std::array, and it would only crash if the c++ lib is hardened.",
+      "revId": "0336b0b962ed3d4715d83795fc480e0c2a812d10",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
