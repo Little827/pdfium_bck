@@ -12,6 +12,7 @@
 #include <memory>
 
 #include "core/fxcrt/unowned_ptr.h"
+#include "third_party/base/containers/span.h"
 
 class CJBig2_ArithDecoder;
 class CJBig2_Image;
@@ -38,12 +39,13 @@ class CJBig2_GRRDProc {
   std::unique_ptr<CJBig2_Image> DecodeTemplate0Unopt(
       CJBig2_ArithDecoder* pArithDecoder,
       JBig2ArithCtx* grContext);
-  uint32_t DecodeTemplate0UnoptCalculateContext(const CJBig2_Image& GRREG,
-                                                const uint32_t* lines,
-                                                uint32_t w,
-                                                uint32_t h) const;
+  uint32_t DecodeTemplate0UnoptCalculateContext(
+      const CJBig2_Image& GRREG,
+      pdfium::span<const uint32_t> lines,
+      uint32_t w,
+      uint32_t h) const;
   void DecodeTemplate0UnoptSetPixel(CJBig2_Image* GRREG,
-                                    uint32_t* lines,
+                                    pdfium::span<uint32_t> lines,
                                     uint32_t w,
                                     uint32_t h,
                                     int bVal);

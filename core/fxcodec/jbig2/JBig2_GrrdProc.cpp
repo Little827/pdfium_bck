@@ -106,7 +106,7 @@ std::unique_ptr<CJBig2_Image> CJBig2_GRRDProc::DecodeTemplate0Unopt(
 
 uint32_t CJBig2_GRRDProc::DecodeTemplate0UnoptCalculateContext(
     const CJBig2_Image& GRREG,
-    const uint32_t* lines,
+    pdfium::span<const uint32_t> lines,
     uint32_t w,
     uint32_t h) const {
   uint32_t CONTEXT = lines[4];
@@ -122,7 +122,7 @@ uint32_t CJBig2_GRRDProc::DecodeTemplate0UnoptCalculateContext(
 }
 
 void CJBig2_GRRDProc::DecodeTemplate0UnoptSetPixel(CJBig2_Image* GRREG,
-                                                   uint32_t* lines,
+                                                   pdfium::span<uint32_t> lines,
                                                    uint32_t w,
                                                    uint32_t h,
                                                    int bVal) {
