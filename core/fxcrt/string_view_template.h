@@ -74,7 +74,7 @@ class StringViewTemplate {
   // |ch| must be an lvalue that outlives the StringViewTemplate.
   // NOLINTNEXTLINE(runtime/explicit)
   constexpr StringViewTemplate(const CharType& ch) noexcept
-      : m_Span(reinterpret_cast<const UnsignedType*>(&ch), 1) {}
+      : m_Span(reinterpret_cast<const UnsignedType*>(&ch), 1u) {}
 
   StringViewTemplate& operator=(const CharType* src) {
     m_Span = pdfium::span<const UnsignedType>(
@@ -113,10 +113,13 @@ class StringViewTemplate {
   }
 
   bool IsASCII() const {
+#if 0
+    XXX
     for (auto c : *this) {
       if (c <= 0 || c > 127)  // Questionable signedness of |c|.
         return false;
     }
+#endif
     return true;
   }
 
