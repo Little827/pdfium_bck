@@ -51,6 +51,24 @@
       "message": "Also, these may be called from a tight inner loop. Generally one span check per line is OK, but I\u0027ve avoided one span check per pixel. Or some such. Any idea about perf?",
       "revId": "0336b0b962ed3d4715d83795fc480e0c2a812d10",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "515e5e37_acbf309d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-10-16T18:11:06Z",
+      "side": 1,
+      "message": "Standalone PDFium uses the same build params as Chromium, so by default, `use_custom_libcxx` is true on supported platforms.",
+      "parentUuid": "1f9c0bf2_f1b7fd3d",
+      "revId": "0336b0b962ed3d4715d83795fc480e0c2a812d10",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
