@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2cffa52_393e4465",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 9581
+      },
+      "writtenOn": "2023-10-17T23:51:14Z",
+      "side": 1,
+      "message": "This is based on the pdf-eng@ discussion. Thanks for your reply and feel free to re-assign to someone else/",
+      "revId": "dfef09d8f3db1d32c35f05c5294631dfc6f6fc5c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
