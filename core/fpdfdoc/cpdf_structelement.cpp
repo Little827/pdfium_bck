@@ -58,15 +58,13 @@ WideString CPDF_StructElement::GetTitle() const {
 
 absl::optional<WideString> CPDF_StructElement::GetID() const {
   RetainPtr<const CPDF_Object> obj = m_pDict->GetObjectFor("ID");
-  if (!obj || !obj->IsString())
-    return absl::nullopt;
+  if (!obj || !obj->IsString()) return absl::nullopt;
   return obj->GetUnicodeText();
 }
 
 absl::optional<WideString> CPDF_StructElement::GetLang() const {
   RetainPtr<const CPDF_Object> obj = m_pDict->GetObjectFor("Lang");
-  if (!obj || !obj->IsString())
-    return absl::nullopt;
+  if (!obj || !obj->IsString()) return absl::nullopt;
   return obj->GetUnicodeText();
 }
 
@@ -78,13 +76,18 @@ RetainPtr<const CPDF_Object> CPDF_StructElement::GetK() const {
   return m_pDict->GetObjectFor("K");
 }
 
-size_t CPDF_StructElement::CountKids() const {
-  return m_Kids.size();
-}
+size_t CPDF_StructElement::CountKids() const { return m_Kids.size(); }
 
 CPDF_StructElement* CPDF_StructElement::GetKidIfElement(size_t index) const {
   return m_Kids[index].m_Type == Kid::kElement ? m_Kids[index].m_pElement.Get()
                                                : nullptr;
+}
+
+int CPDF_StructElement::GetKidContentId(size_t index) const {
+  return m_Kids[index].m_Type == Kid::kStreamContent ||
+                 m_Kids[index].m_Type == Kid::kPageContent
+             ? m_Kids[index].m_ContentId
+             : -1;
 }
 
 bool CPDF_StructElement::UpdateKidIfElement(const CPDF_Dictionary* pDict,
@@ -104,8 +107,7 @@ void CPDF_StructElement::LoadKids() {
   const CPDF_Reference* pRef = ToReference(pObj.Get());
   const uint32_t page_obj_num = pRef ? pRef->GetRefObjNum() : 0;
   RetainPtr<const CPDF_Object> pKids = m_pDict->GetDirectObjectFor("K");
-  if (!pKids)
-    return;
+  if (!pKids) return;
 
   DCHECK(m_Kids.empty());
   if (const CPDF_Array* pArray = pKids->AsArray()) {
@@ -123,8 +125,7 @@ void CPDF_StructElement::LoadKids() {
 void CPDF_StructElement::LoadKid(uint32_t page_obj_num,
                                  RetainPtr<const CPDF_Object> pKidObj,
                                  Kid& kid) {
-  if (!pKidObj)
-    return;
+  if (!pKidObj) return;
 
   if (pKidObj->IsNumber()) {
     if (m_pTree->GetPageObjNum() != page_obj_num) {
@@ -138,8 +139,7 @@ void CPDF_StructElement::LoadKid(uint32_t page_obj_num,
   }
 
   const CPDF_Dictionary* pKidDict = pKidObj->AsDictionary();
-  if (!pKidDict)
-    return;
+  if (!pKidDict) return;
 
   if (RetainPtr<const CPDF_Reference> pRef =
           ToReference(pKidDict->GetObjectFor("Pg"))) {
