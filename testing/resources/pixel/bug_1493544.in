@@ -1,0 +1,79 @@
+{{header}}
+{{object 1 0}} <<
+  /Type /Catalog
+  /Pages 2 0 R
+>>
+endobj
+{{object 2 0}} <<
+  /Type /Pages
+  /Kids [3 0 R]
+  /Count 1
+>>
+endobj
+{{object 3 0}} <<
+  /Type /Page
+  /Parent 2 0 R
+  /Contents [4 0 R]
+  /MediaBox [0 0 200 100]
+  /Resources <<
+    /Font <<
+      /F1 5 0 R
+    >>
+  >>
+>>
+endobj
+{{object 4 0}} <<
+  {{streamlen}}
+>>
+stream
+q
+BT
+/F1 10.000 Tf
+1 0 0 1 70 50 Tm
+(Hello World) Tj
+ET
+Q
+endstream
+endobj
+{{object 5 0}} <<
+  /Type /Font
+  /Subtype /Type1
+  /BaseFont /Custom-Metrics-2
+  /Encoding /WinAnsiEncoding
+  /FirstChar 32
+  /FontDescriptor 6 0 R
+  /LastChar 255
+  /Widths [250 294 413 600 583 690 718 225 314 314 513 500 264 233 264 535 583
+           583 583 583 583 583 583 583 583 583 264 264 500 500 500 510 777 608
+           651 628 650 570 554 643 650 290 381 629 503 860 646 639 603 643 657
+           581 489 650 555 873 600 522 578 314 500 314 500 500 500 542 544 512
+           541 535 320 553 545 266 269 543 265 824 548 535 541 544 347 474 352
+           539 451 721 494 445 428 500 500 500 667 600 600 600 255 583 438 793
+           583 583 500 1016 600 206 929 600 600 600 600 255 255 438 438 667 500
+           707 500 772 600 206 840 600 600 522 250 294 583 583 604 583 600 583
+           500 740 942 341 500 549 499 500 500 500 600 600 500 541 583 182 500
+           600 942 341 600 600 600 772 608 608 608 608 608 608 612 628 570 570
+           570 570 290 290 290 290 600 646 639 639 639 639 639 549 638 650 650
+           650 650 600 600 625 333 542 333 542 333 542 891 512 535 535 535 535
+           500 266 266 500 600 548 535 535 535 535 535 500 535 539 539 539 539
+           600 600 445]
+>>
+endobj
+
+{{object 6 0}} <<
+  /Type /FontDescriptor
+  /Ascent 902
+  /CapHeight 667
+  /Descent -250
+  /Flags 262176
+  /FontBBox [-160 -250 988 902]
+  /FontName /FranklinGotITCTTDemi
+  /ItalicAngle 0
+  /StemV 145
+  /XHeight 493
+>>
+endobj
+{{xref}}
+{{trailer}}
+{{startxref}}
+%%EOF
