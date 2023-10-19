@@ -640,6 +640,9 @@ bug_1442723.in win * * *
 # TODO(pdfium:1457): Remove after associated bug is fixed
 bug_1457.in * * * *
 
+# TODO(chromium:1493544): Remove after associated bug is fixed
+bug_1493544.in mac * * skia
+
 # TODO(pdfium:1519): Remove after associated bug is fixed
 bug_1519.in * * * *
 
