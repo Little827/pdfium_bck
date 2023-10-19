@@ -11,7 +11,7 @@ namespace pdfium {
 
 const char* AnnotationStampWithApChecksum() {
   if (CFX_DefaultRenderDevice::SkiaIsDefaultRenderer())
-    return "c7ff65a3ad1b01c3a0e94d635f10670e";
+    return "f0867738d59a682b8d57baa88b35afc3";
 #if BUILDFLAG(IS_APPLE)
   return "0521eaa52fe2aa43aafd3e4495f63f0b";
 #else
@@ -29,7 +29,7 @@ const char* Bug890322Checksum() {
 
 const char* HelloWorldChecksum() {
   if (CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()) {
-    return "d1decde2de1c07b5274cc8cb44f92427";
+    return "b110924c4af6e87232249ea2a564f0e4";
   }
 #if BUILDFLAG(IS_APPLE)
   return "6eef7237f7591f07616e238422086737";
@@ -40,7 +40,7 @@ const char* HelloWorldChecksum() {
 
 const char* HelloWorldRemovedChecksum() {
   if (CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()) {
-    return "6e0307348e7c1b92f2f061f92f62fd45";
+    return "99cefacd84710f3fb2e3d129ba68ae8a";
   }
 #if BUILDFLAG(IS_APPLE)
   return "6e1cae48a2e35c521dee4ca502f48af6";
@@ -63,7 +63,7 @@ const char* RectanglesChecksum() {
 
 const char* TextFormChecksum() {
   if (CFX_DefaultRenderDevice::SkiaIsDefaultRenderer())
-    return "b259776fd156003e2a594d1c7ce2d8d7";
+    return "32913f21b1012b74eef37737a03a92b7";
 #if BUILDFLAG(IS_APPLE)
   return "fa2bf756942a950101fc147fc4ef3f82";
 #else
