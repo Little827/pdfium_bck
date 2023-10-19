@@ -1456,7 +1456,7 @@ TEST_F(FPDFViewEmbedderTest, RenderBug664284WithNoNativeText) {
 
   const char* original_checksum = []() {
     if (CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()) {
-      return "29cb8045c21cfa2c920fdf43de70efd8";
+      return "b7ac2ca2b934f4e213ab4ba36c5f8ffd";
     }
 #if BUILDFLAG(IS_APPLE)
     return "0e339d606aafb63077f49e238dc27cb0";
@@ -1653,7 +1653,7 @@ TEST_F(FPDFViewEmbedderTest, RenderHelloWorldWithFlags) {
 
   const char* lcd_text_checksum = []() {
     if (CFX_DefaultRenderDevice::SkiaIsDefaultRenderer())
-      return "d1decde2de1c07b5274cc8cb44f92427";
+      return "b110924c4af6e87232249ea2a564f0e4";
 #if BUILDFLAG(IS_APPLE)
     return "6eef7237f7591f07616e238422086737";
 #else
@@ -1662,7 +1662,7 @@ TEST_F(FPDFViewEmbedderTest, RenderHelloWorldWithFlags) {
   }();
   const char* no_smoothtext_checksum = []() {
     if (CFX_DefaultRenderDevice::SkiaIsDefaultRenderer()) {
-      return "cd5bbe9407c3fcc85d365172a9a55abd";
+      return "8c99ca392ecff724da0d04b17453a45a";
     }
 #if BUILDFLAG(IS_APPLE)
     return "6eef7237f7591f07616e238422086737";
