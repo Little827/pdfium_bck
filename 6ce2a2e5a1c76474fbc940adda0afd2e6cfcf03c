@@ -100,6 +100,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6c74996_1796f53d",
+        "filename": "testing/resources/pixel/bug_736703_expected_skia_mac.pdf.0.png",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-10-20T05:24:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a2afc75_69410037",
+      "revId": "6ce2a2e5a1c76474fbc940adda0afd2e6cfcf03c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e7b135c6_347b7611",
@@ -131,6 +149,24 @@
       "side": 1,
       "message": "Ya, will do.",
       "parentUuid": "e7b135c6_347b7611",
+      "revId": "6ce2a2e5a1c76474fbc940adda0afd2e6cfcf03c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06c33e6f_67aae2e9",
+        "filename": "testing/resources/pixel/bug_846_expected_skia_mac.pdf.0.png",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-10-20T05:24:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5690fe50_34c33567",
       "revId": "6ce2a2e5a1c76474fbc940adda0afd2e6cfcf03c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
