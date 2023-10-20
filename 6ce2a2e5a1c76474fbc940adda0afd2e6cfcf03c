@@ -67,6 +67,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bf955fcc_a6c3fbda",
+        "filename": "testing/resources/pixel/bug_736703_expected_skia_mac.pdf.0.png",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-10-20T02:04:41Z",
+      "side": 1,
+      "message": "This is also a bad rendering.",
+      "revId": "6ce2a2e5a1c76474fbc940adda0afd2e6cfcf03c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e7b135c6_347b7611",
         "filename": "testing/resources/pixel/bug_846_expected_skia_mac.pdf.0.png",
         "patchSetId": 9
