@@ -16,6 +16,223 @@
       "message": "Thanks, added tests, PTAL",
       "revId": "4680f87a19e3feb3eb5ba8c363779f2a43b1e300",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d633dbe1_1197254b",
+        "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-10-20T18:08:57Z",
+      "side": 1,
+      "message": "Shorten this to \"GetChildMarkedContentID\", as \u0027_\u0027 is reserved by gtest. https://google.github.io/googletest/faq.html",
+      "range": {
+        "startLine": 392,
+        "startChar": 35,
+        "endLine": 392,
+        "endChar": 77
+      },
+      "revId": "4680f87a19e3feb3eb5ba8c363779f2a43b1e300",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ffce4f3_865a402a",
+        "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-10-20T18:08:57Z",
+      "side": 1,
+      "message": "Not needed? i.e The loop below will check this anyway. Maybe se FPDF_GetPageCount() to check the expected page count?",
+      "revId": "4680f87a19e3feb3eb5ba8c363779f2a43b1e300",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "295b4d29_bd4dd401",
+        "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-10-20T18:08:57Z",
+      "side": 1,
+      "message": "Maybe rename this to \"struct_doc\", as \"document\" is oftentimes used to refer to the FPDF_DOCUMENT?",
+      "range": {
+        "startLine": 405,
+        "startChar": 23,
+        "endLine": 405,
+        "endChar": 31
+      },
+      "revId": "4680f87a19e3feb3eb5ba8c363779f2a43b1e300",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2732ddc3_e624e16d",
+        "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-10-20T18:08:57Z",
+      "side": 1,
+      "message": "End the sentence with a period.",
+      "revId": "4680f87a19e3feb3eb5ba8c363779f2a43b1e300",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "895cc374_59b84ce6",
+        "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-10-20T18:08:57Z",
+      "side": 1,
+      "message": "FPDF_StructElement_GetMarkedContentIdAtIndex() - make it more obvious this is a function.",
+      "range": {
+        "startLine": 419,
+        "startChar": 10,
+        "endLine": 419,
+        "endChar": 54
+      },
+      "revId": "4680f87a19e3feb3eb5ba8c363779f2a43b1e300",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87227635_356e6def",
+        "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-10-20T18:08:57Z",
+      "side": 1,
+      "message": "Typo; append period.",
+      "revId": "4680f87a19e3feb3eb5ba8c363779f2a43b1e300",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9821e9d_0b4905aa",
+        "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-10-20T18:08:57Z",
+      "side": 1,
+      "message": "Typo",
+      "range": {
+        "startLine": 433,
+        "startChar": 7,
+        "endLine": 433,
+        "endChar": 14
+      },
+      "revId": "4680f87a19e3feb3eb5ba8c363779f2a43b1e300",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a739e288_91df0afc",
+        "filename": "testing/resources/tagged_mcr_multipage.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-10-20T18:08:57Z",
+      "side": 1,
+      "message": "Put the /Type (and /SubType) key first, so readers can easily see what the object\u0027s type is, like in object 3 0.",
+      "revId": "4680f87a19e3feb3eb5ba8c363779f2a43b1e300",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e169c328_34fcf9dd",
+        "filename": "testing/resources/tagged_mcr_multipage.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-10-20T18:08:57Z",
+      "side": 1,
+      "message": "Since the list isn\u0027t very long, just make it a single line, like line 46?",
+      "range": {
+        "startLine": 33,
+        "startChar": 2,
+        "endLine": 38,
+        "endChar": 3
+      },
+      "revId": "4680f87a19e3feb3eb5ba8c363779f2a43b1e300",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79aba25b_4f1082ae",
+        "filename": "testing/resources/tagged_mcr_multipage.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-10-20T18:08:57Z",
+      "side": 1,
+      "message": "Move all the /CropBox and /MediaBox keys into object 2, since they are the same for all pages.",
+      "revId": "4680f87a19e3feb3eb5ba8c363779f2a43b1e300",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3cce0e4_08ca6a47",
+        "filename": "testing/resources/tagged_mcr_multipage.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-10-20T18:08:57Z",
+      "side": 1,
+      "message": "Extra blank line here.",
+      "revId": "4680f87a19e3feb3eb5ba8c363779f2a43b1e300",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
