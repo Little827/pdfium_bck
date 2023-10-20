@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32535aca_c446f6fd",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 752,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-10-20T22:46:39Z",
+      "side": 1,
+      "message": "super-nit: prefer `\u003d` here so long as were touching this line.",
+      "range": {
+        "startLine": 752,
+        "startChar": 38,
+        "endLine": 752,
+        "endChar": 39
+      },
+      "revId": "a64393e08dbaf92ea0b52b80460245c4d6b12cc1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
