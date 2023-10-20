@@ -16,6 +16,46 @@
       "message": "Please let me know if there\u0027s anything I can do to make reviewing this easier.",
       "revId": "6ce2a2e5a1c76474fbc940adda0afd2e6cfcf03c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e2608ba_45645e14",
+        "filename": "skia/BUILD.gn",
+        "patchSetId": 9
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-10-20T00:03:09Z",
+      "side": 1,
+      "message": "I noticed that in chromium the conditon is: \nif (is_win || (is_apple \u0026\u0026 use_blink))\n\nAre we planning on also adding windows platform into this condition later?",
+      "range": {
+        "startLine": 350,
+        "startChar": 2,
+        "endLine": 350,
+        "endChar": 28
+      },
+      "revId": "6ce2a2e5a1c76474fbc940adda0afd2e6cfcf03c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7b135c6_347b7611",
+        "filename": "testing/resources/pixel/bug_846_expected_skia_mac.pdf.0.png",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-10-20T00:03:09Z",
+      "side": 1,
+      "message": "This completely changed the rendering. Should we add it into the suppression list?",
+      "revId": "6ce2a2e5a1c76474fbc940adda0afd2e6cfcf03c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
