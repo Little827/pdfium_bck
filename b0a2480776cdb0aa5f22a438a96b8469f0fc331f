@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1985e3f_fbca0954",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-10-20T23:38:14Z",
+      "side": 1,
+      "message": "There aren\u0027t too many, but it just happens that there are 8 bits here, so it felt nice to pack them into 1 byte.",
+      "parentUuid": "a6022a1b_3b1f0e37",
+      "revId": "b0a2480776cdb0aa5f22a438a96b8469f0fc331f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "09a76c43_d502f336",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-10-20T22:42:06Z",
       "side": 1,
       "message": "nit: inline initialize this member as well, and write `\u003d default` here?",
+      "range": {
+        "startLine": 34,
+        "startChar": 7,
+        "endLine": 34,
+        "endChar": 51
+      },
+      "revId": "b0a2480776cdb0aa5f22a438a96b8469f0fc331f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0706519a_879a0d86",
+        "filename": "core/fxge/cfx_fillrenderoptions.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-10-20T23:38:14Z",
+      "side": 1,
+      "message": "If the member is not initialized where it is defined, then one sees that and would likely assume it\u0027s ctor initialized. Since there\u0027s multiple ctors that can set it to different values, I\u0027d like to consistently initialize in the ctors.",
+      "parentUuid": "09a76c43_d502f336",
       "range": {
         "startLine": 34,
         "startChar": 7,
