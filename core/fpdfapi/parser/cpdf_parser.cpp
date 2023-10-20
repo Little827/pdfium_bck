@@ -769,15 +769,14 @@ bool CPDF_Parser::LoadCrossRefV5(FX_FILESIZE* pos, bool bMainXRef) {
   *pos = prev;
 
   RetainPtr<CPDF_Dictionary> pNewTrailer = ToDictionary(pDict->Clone());
+  auto new_cross_ref_table = std::make_unique<CPDF_CrossRefTable>(
+      std::move(pNewTrailer), pStream->GetObjNum());
   if (bMainXRef) {
-    m_CrossRefTable = std::make_unique<CPDF_CrossRefTable>(
-        std::move(pNewTrailer), pStream->GetObjNum());
+    m_CrossRefTable = std::move(new_cross_ref_table);
     m_CrossRefTable->SetObjectMapSize(size);
   } else {
     m_CrossRefTable = CPDF_CrossRefTable::MergeUp(
-        std::make_unique<CPDF_CrossRefTable>(std::move(pNewTrailer),
-                                             pStream->GetObjNum()),
-        std::move(m_CrossRefTable));
+        std::move(new_cross_ref_table), std::move(m_CrossRefTable));
   }
 
   std::vector<CrossRefV5IndexEntry> indices =
