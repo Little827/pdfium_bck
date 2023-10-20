@@ -873,9 +873,6 @@ void CPDF_Parser::ProcessCrossRefV5Entry(
     return;
   }
 
-  if (existing_type != ObjectType::kFree)
-    return;
-
   if (type == ObjectType::kFree) {
     m_CrossRefTable->SetFree(obj_num);
     return;
