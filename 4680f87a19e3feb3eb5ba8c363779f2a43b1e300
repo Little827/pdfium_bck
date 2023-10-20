@@ -41,6 +41,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2f9e02c_a5b64e5f",
+        "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 9581
+      },
+      "writtenOn": "2023-10-20T18:44:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d633dbe1_1197254b",
+      "range": {
+        "startLine": 392,
+        "startChar": 35,
+        "endLine": 392,
+        "endChar": 77
+      },
+      "revId": "4680f87a19e3feb3eb5ba8c363779f2a43b1e300",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ffce4f3_865a402a",
@@ -54,6 +78,24 @@
       "writtenOn": "2023-10-20T18:08:57Z",
       "side": 1,
       "message": "Not needed? i.e The loop below will check this anyway. Maybe se FPDF_GetPageCount() to check the expected page count?",
+      "revId": "4680f87a19e3feb3eb5ba8c363779f2a43b1e300",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9690b095_3948904b",
+        "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 9581
+      },
+      "writtenOn": "2023-10-20T18:44:48Z",
+      "side": 1,
+      "message": "Removed. Probably ASSERT_TRUE for the page will handle the page count as in the other tests.",
+      "parentUuid": "6ffce4f3_865a402a",
       "revId": "4680f87a19e3feb3eb5ba8c363779f2a43b1e300",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -81,6 +123,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a90057c_fe791117",
+        "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 9581
+      },
+      "writtenOn": "2023-10-20T18:44:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "295b4d29_bd4dd401",
+      "range": {
+        "startLine": 405,
+        "startChar": 23,
+        "endLine": 405,
+        "endChar": 31
+      },
+      "revId": "4680f87a19e3feb3eb5ba8c363779f2a43b1e300",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2732ddc3_e624e16d",
@@ -94,6 +160,24 @@
       "writtenOn": "2023-10-20T18:08:57Z",
       "side": 1,
       "message": "End the sentence with a period.",
+      "revId": "4680f87a19e3feb3eb5ba8c363779f2a43b1e300",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e679770_804feed8",
+        "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 9581
+      },
+      "writtenOn": "2023-10-20T18:44:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2732ddc3_e624e16d",
       "revId": "4680f87a19e3feb3eb5ba8c363779f2a43b1e300",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -121,6 +205,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "05628b3e_99a9fd64",
+        "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 9581
+      },
+      "writtenOn": "2023-10-20T18:44:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "895cc374_59b84ce6",
+      "range": {
+        "startLine": 419,
+        "startChar": 10,
+        "endLine": 419,
+        "endChar": 54
+      },
+      "revId": "4680f87a19e3feb3eb5ba8c363779f2a43b1e300",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "87227635_356e6def",
@@ -134,6 +242,24 @@
       "writtenOn": "2023-10-20T18:08:57Z",
       "side": 1,
       "message": "Typo; append period.",
+      "revId": "4680f87a19e3feb3eb5ba8c363779f2a43b1e300",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad86e39a_92df5837",
+        "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 9581
+      },
+      "writtenOn": "2023-10-20T18:44:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87227635_356e6def",
       "revId": "4680f87a19e3feb3eb5ba8c363779f2a43b1e300",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -161,6 +287,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2cb86f1_3fa771a4",
+        "filename": "fpdfsdk/fpdf_structtree_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 9581
+      },
+      "writtenOn": "2023-10-20T18:44:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9821e9d_0b4905aa",
+      "range": {
+        "startLine": 433,
+        "startChar": 7,
+        "endLine": 433,
+        "endChar": 14
+      },
+      "revId": "4680f87a19e3feb3eb5ba8c363779f2a43b1e300",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a739e288_91df0afc",
@@ -174,6 +324,24 @@
       "writtenOn": "2023-10-20T18:08:57Z",
       "side": 1,
       "message": "Put the /Type (and /SubType) key first, so readers can easily see what the object\u0027s type is, like in object 3 0.",
+      "revId": "4680f87a19e3feb3eb5ba8c363779f2a43b1e300",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70b82315_1fd83b78",
+        "filename": "testing/resources/tagged_mcr_multipage.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 9581
+      },
+      "writtenOn": "2023-10-20T18:44:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a739e288_91df0afc",
       "revId": "4680f87a19e3feb3eb5ba8c363779f2a43b1e300",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -201,6 +369,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b45f72e4_a10d8c2d",
+        "filename": "testing/resources/tagged_mcr_multipage.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 9581
+      },
+      "writtenOn": "2023-10-20T18:44:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e169c328_34fcf9dd",
+      "range": {
+        "startLine": 33,
+        "startChar": 2,
+        "endLine": 38,
+        "endChar": 3
+      },
+      "revId": "4680f87a19e3feb3eb5ba8c363779f2a43b1e300",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "79aba25b_4f1082ae",
@@ -218,6 +410,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d5956a6_c932920e",
+        "filename": "testing/resources/tagged_mcr_multipage.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 9581
+      },
+      "writtenOn": "2023-10-20T18:44:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79aba25b_4f1082ae",
+      "revId": "4680f87a19e3feb3eb5ba8c363779f2a43b1e300",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e3cce0e4_08ca6a47",
@@ -231,6 +441,24 @@
       "writtenOn": "2023-10-20T18:08:57Z",
       "side": 1,
       "message": "Extra blank line here.",
+      "revId": "4680f87a19e3feb3eb5ba8c363779f2a43b1e300",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ff4b305_6d96deaa",
+        "filename": "testing/resources/tagged_mcr_multipage.in",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 9581
+      },
+      "writtenOn": "2023-10-20T18:44:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3cce0e4_08ca6a47",
       "revId": "4680f87a19e3feb3eb5ba8c363779f2a43b1e300",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
