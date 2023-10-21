@@ -195,6 +195,8 @@ SK_API void SkDebugf_FileLine(const char* file,
 #define SK_SUPPORT_LEGACY_ANISOTROPIC_MIPMAP_SCALE
 #endif
 
+#define SK_IMPROVE_RASTER_PIPELINE_PRECISION
+
 ///////////////////////// Imported from BUILD.gn
 
 /* In some places Skia can use static initializers for global initialization,
