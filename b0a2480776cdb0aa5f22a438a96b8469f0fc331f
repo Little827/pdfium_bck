@@ -81,6 +81,30 @@
       },
       "revId": "b0a2480776cdb0aa5f22a438a96b8469f0fc331f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "148a5457_5c73bfa6",
+        "filename": "core/fxge/cfx_fillrenderoptions.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-10-21T00:01:20Z",
+      "side": 1,
+      "message": "s\u0027awright.  This feels like it would be better off as an aggregate (e.g. no user-defined ctors) with designated initializers e.g. `return { .fill_type_ \u003d FillType::kWinding }; ` at line 30 above, but I\u0027m not sure if designated initializers play with the bitfields below, so this is just fine as is.",
+      "parentUuid": "0706519a_879a0d86",
+      "range": {
+        "startLine": 34,
+        "startChar": 7,
+        "endLine": 34,
+        "endChar": 51
+      },
+      "revId": "b0a2480776cdb0aa5f22a438a96b8469f0fc331f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
