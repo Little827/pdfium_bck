@@ -105,6 +105,30 @@
       },
       "revId": "b0a2480776cdb0aa5f22a438a96b8469f0fc331f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a894186_8ee8ab2d",
+        "filename": "core/fxge/cfx_fillrenderoptions.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-10-21T00:25:55Z",
+      "side": 1,
+      "message": "I will try to clean this up a bit more later. For now, I just want to break some PDFium users who are still building with C++17. :)",
+      "parentUuid": "148a5457_5c73bfa6",
+      "range": {
+        "startLine": 34,
+        "startChar": 7,
+        "endLine": 34,
+        "endChar": 51
+      },
+      "revId": "b0a2480776cdb0aa5f22a438a96b8469f0fc331f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
