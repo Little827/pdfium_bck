@@ -16,6 +16,46 @@
       "message": "Do you like the way this reads vs. existing?",
       "revId": "ffe3a423e0e4892ca3dab95564326cc186350be0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59f08c2a_50621a3a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-10-23T20:30:39Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "ffe3a423e0e4892ca3dab95564326cc186350be0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab8dfca3_7c27e86a",
+        "filename": "core/fpdfapi/render/cpdf_rendershading.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 715,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-10-23T20:30:39Z",
+      "side": 1,
+      "message": "Let\u0027s just change `bNoPathSmooth` to a bool instead.",
+      "range": {
+        "startLine": 715,
+        "startChar": 26,
+        "endLine": 715,
+        "endChar": 37
+      },
+      "revId": "ffe3a423e0e4892ca3dab95564326cc186350be0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
