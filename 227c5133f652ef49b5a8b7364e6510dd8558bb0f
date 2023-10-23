@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a12ef9d_805b1cff",
+        "filename": "fpdfsdk/fpdf_sysfontinfo.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-10-23T23:21:14Z",
+      "side": 1,
+      "message": "- Maybe the type should be `FPDF_BOOL*` here to match the public/ header?\n- Comment it out to show its ignored, but keep the name so readers know what is being ignored.\n\ne.g. `FPDF_BOOL* /*exact*/) {`",
+      "range": {
+        "startLine": 193,
+        "startChar": 33,
+        "endLine": 193,
+        "endChar": 40
+      },
+      "revId": "227c5133f652ef49b5a8b7364e6510dd8558bb0f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
