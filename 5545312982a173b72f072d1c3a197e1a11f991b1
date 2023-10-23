@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47cdf2f8_99988e53",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-10-23T23:22:07Z",
+      "side": 1,
+      "message": "FYI, I found more code to remove in the latest patch set.",
+      "revId": "5545312982a173b72f072d1c3a197e1a11f991b1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
