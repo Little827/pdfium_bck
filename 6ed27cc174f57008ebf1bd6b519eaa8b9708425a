@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7ffd6a56_72970047",
+        "filename": "core/fpdfapi/font/cpdf_font.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-10-24T20:47:37Z",
+      "side": 1,
+      "message": "Also, maybe these two should be the clamped values ... does it read cleaner?",
+      "range": {
+        "startLine": 419,
+        "startChar": 2,
+        "endLine": 419,
+        "endChar": 10
+      },
+      "revId": "6ed27cc174f57008ebf1bd6b519eaa8b9708425a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f9374444_751dd421",
         "filename": "core/fpdfapi/font/cpdf_simplefont.cpp",
         "patchSetId": 1
