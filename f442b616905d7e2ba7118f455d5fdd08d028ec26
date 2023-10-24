@@ -16,6 +16,23 @@
       "message": "No \"base::\" is a strong signal that they don\u0027t need base includes.",
       "revId": "f442b616905d7e2ba7118f455d5fdd08d028ec26",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8176637c_0e6dbd90",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-10-24T22:16:31Z",
+      "side": 1,
+      "message": "OWNERS stamp, though I didn\u0027t validate no base on each, only spots.",
+      "revId": "f442b616905d7e2ba7118f455d5fdd08d028ec26",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
