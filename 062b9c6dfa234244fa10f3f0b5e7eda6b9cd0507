@@ -39,6 +39,30 @@
       },
       "revId": "062b9c6dfa234244fa10f3f0b5e7eda6b9cd0507",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e38cbe5_6c8be4af",
+        "filename": "core/fpdfapi/font/cpdf_font.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-10-24T21:18:54Z",
+      "side": 1,
+      "message": "Oftentimes, `face` gets passed to FreeType, and FreeType APIs take a non-const handle. I\u0027m just going to leave it as-is, since nearly all code is written this way.",
+      "parentUuid": "6a6184b6_1c9f6ca1",
+      "range": {
+        "startLine": 143,
+        "startChar": 36,
+        "endLine": 143,
+        "endChar": 48
+      },
+      "revId": "062b9c6dfa234244fa10f3f0b5e7eda6b9cd0507",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
