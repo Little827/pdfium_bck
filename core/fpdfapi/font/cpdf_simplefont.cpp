@@ -17,6 +17,7 @@
 #include "core/fxcrt/fx_codepage.h"
 #include "core/fxge/freetype/fx_freetype.h"
 #include "core/fxge/fx_font.h"
+#include "third_party/base/numerics/clamped_math.h"
 #include "third_party/base/numerics/safe_math.h"
 
 namespace {

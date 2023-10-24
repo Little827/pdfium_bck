@@ -416,11 +416,16 @@ int CPDF_Font::TT2PDF(FT_Pos m, FXFT_FaceRec* face) {
 
 // static
 FX_RECT CPDF_Font::GetCharBBoxForFace(FXFT_FaceRec* face) {
-  FT_Pos iHoriBearingX = FXFT_Get_Glyph_HoriBearingX(face);
-  FT_Pos iHoriBearingY = FXFT_Get_Glyph_HoriBearingY(face);
-  return FX_RECT(TT2PDF(iHoriBearingX, face), TT2PDF(iHoriBearingY, face),
-                 TT2PDF(iHoriBearingX + FXFT_Get_Glyph_Width(face), face),
-                 TT2PDF(iHoriBearingY - FXFT_Get_Glyph_Height(face), face));
+  FT_Pos left = FXFT_Get_Glyph_HoriBearingX(face);
+  FT_Pos top = FXFT_Get_Glyph_HoriBearingY(face);
+
+  pdfium::base::ClampedNumeric<FT_Pos> right = left;
+  right += FXFT_Get_Glyph_Width(face);
+  pdfium::base::ClampedNumeric<FT_Pos> bottom = top;
+  bottom -= FXFT_Get_Glyph_Height(face);
+
+  return FX_RECT(TT2PDF(left, face), TT2PDF(top, face), TT2PDF(right, face),
+                 TT2PDF(bottom, face));
 }
 
 // static
