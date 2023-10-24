@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23ae35d7_5953792f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-10-24T20:38:47Z",
+      "side": 1,
+      "message": "LG/w nit.",
+      "revId": "062b9c6dfa234244fa10f3f0b5e7eda6b9cd0507",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a6184b6_1c9f6ca1",
+        "filename": "core/fpdfapi/font/cpdf_font.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-10-24T20:38:47Z",
+      "side": 1,
+      "message": "nit:  probably const FXFT_FaceRec* , but none of the others are ... and a lot of code would change ?",
+      "range": {
+        "startLine": 143,
+        "startChar": 36,
+        "endLine": 143,
+        "endChar": 48
+      },
+      "revId": "062b9c6dfa234244fa10f3f0b5e7eda6b9cd0507",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
