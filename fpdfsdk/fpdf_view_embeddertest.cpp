@@ -2131,8 +2131,7 @@ TEST_F(FPDFViewEmbedderTest, Bug2087) {
     FPDF_DestroyLibrary();
   }
 
-  // TODO(pdfium:2087): These checksums should not be equal.
-  EXPECT_EQ(agg_checksum, skia_checksum);
+  EXPECT_NE(agg_checksum, skia_checksum);
 }
 #endif  // defined(_SKIA_SUPPORT_)
 
