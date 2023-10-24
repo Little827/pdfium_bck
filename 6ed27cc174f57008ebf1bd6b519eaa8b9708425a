@@ -41,6 +41,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a95c6926_56b8cef8",
+        "filename": "core/fpdfapi/font/cpdf_font.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-10-24T21:32:37Z",
+      "side": 1,
+      "message": "Sure. That shrank the function body down to 5 lines.",
+      "parentUuid": "7ffd6a56_72970047",
+      "range": {
+        "startLine": 419,
+        "startChar": 2,
+        "endLine": 419,
+        "endChar": 10
+      },
+      "revId": "6ed27cc174f57008ebf1bd6b519eaa8b9708425a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f9374444_751dd421",
@@ -54,6 +78,30 @@
       "writtenOn": "2023-10-24T20:42:29Z",
       "side": 1,
       "message": "I didn\u0027t see where this was required (or safe_math.h either).",
+      "range": {
+        "startLine": 20,
+        "startChar": 1,
+        "endLine": 20,
+        "endChar": 8
+      },
+      "revId": "6ed27cc174f57008ebf1bd6b519eaa8b9708425a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99f4b9d5_d424ade1",
+        "filename": "core/fpdfapi/font/cpdf_simplefont.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-10-24T21:32:37Z",
+      "side": 1,
+      "message": "Oh, how did I add this header to the wrong file.\n\nAs for safe_math.h, https://pdfium-review.googlesource.com/59670 moved the CheckedNumeric usage to cpdf_font.cpp, but did not remove the include.",
+      "parentUuid": "f9374444_751dd421",
       "range": {
         "startLine": 20,
         "startChar": 1,
