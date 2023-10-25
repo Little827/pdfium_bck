@@ -16,6 +16,46 @@
       "message": "More of the same.",
       "revId": "dbee2b0ff816137c378921a537f8b83a52b35283",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c45b2ba_24fe67a1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-10-25T17:06:06Z",
+      "side": 1,
+      "message": "LG otherwise.",
+      "revId": "dbee2b0ff816137c378921a537f8b83a52b35283",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0e4f5ec_132e64de",
+        "filename": "core/fxcodec/bmp/bmp_progressive_decoder.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-10-25T17:06:06Z",
+      "side": 1,
+      "message": "Should we DCHECK(!g_bmp_decoder), or use a stronger CHECK(), or write if (!g_bmp_decoder0) {...} ?",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 46
+      },
+      "revId": "dbee2b0ff816137c378921a537f8b83a52b35283",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
