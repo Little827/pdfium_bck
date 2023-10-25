@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "929b60d6_526eb09c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-10-25T18:55:14Z",
+      "side": 1,
+      "message": "Aside from the new test case, nothing else changed in PDFium. But the code is clearly wrong, so let\u0027s fix it and hope it improves some PDF rendering somewhere.",
+      "revId": "6553e7a90fcf875c5bd816923827487e90335454",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
