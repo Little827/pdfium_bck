@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13e6e02f_9bb8c979",
+        "filename": "core/fxcrt/cfx_timer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-10-25T17:07:42Z",
+      "side": 1,
+      "message": "nit: as in prior CL, CHECK(!g_pwl_timer_map) ???",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 35
+      },
+      "revId": "d15953f004598d89ec67748ea60ef2d195c4d2f3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
