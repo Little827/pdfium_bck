@@ -11,10 +11,26 @@
 
 namespace fxcodec {
 
+namespace {
+
+BmpProgressiveDecoder* g_bmp_decoder = nullptr;
+
+}  // namespace
+
+// static
+void BmpProgressiveDecoder::InitializeGlobals() {
+  g_bmp_decoder = new BmpProgressiveDecoder;
+}
+
+// static
+void BmpProgressiveDecoder::DestroyGlobals() {
+  delete g_bmp_decoder;
+  g_bmp_decoder = nullptr;
+}
+
 // static
 BmpProgressiveDecoder* BmpProgressiveDecoder::GetInstance() {
-  static pdfium::base::NoDestructor<BmpProgressiveDecoder> s;
-  return s.get();
+  return g_bmp_decoder;
 }
 
 BmpProgressiveDecoder::BmpProgressiveDecoder() = default;
