@@ -9,17 +9,24 @@
 #include <map>
 
 #include "third_party/base/check.h"
-#include "third_party/base/no_destructor.h"
 
 namespace {
 
 using TimerMap = std::map<int32_t, CFX_Timer*>;
-TimerMap& GetPWLTimerMap() {
-  static pdfium::base::NoDestructor<TimerMap> timer_map;
-  return *timer_map;
-}
+TimerMap* g_pwl_timer_map = nullptr;
 
 }  // namespace
+
+// static
+void CFX_Timer::InitializeGlobals() {
+  g_pwl_timer_map = new TimerMap();
+}
+
+// static
+void CFX_Timer::DestroyGlobals() {
+  delete g_pwl_timer_map;
+  g_pwl_timer_map = nullptr;
+}
 
 CFX_Timer::CFX_Timer(HandlerIface* pHandlerIface,
                      CallbackIface* pCallbackIface,
@@ -29,13 +36,13 @@ CFX_Timer::CFX_Timer(HandlerIface* pHandlerIface,
   if (m_pHandlerIface) {
     m_nTimerID = m_pHandlerIface->SetTimer(nInterval, TimerProc);
     if (HasValidID())
-      GetPWLTimerMap()[m_nTimerID] = this;
+      (*g_pwl_timer_map)[m_nTimerID] = this;
   }
 }
 
 CFX_Timer::~CFX_Timer() {
   if (HasValidID()) {
-    GetPWLTimerMap().erase(m_nTimerID);
+    g_pwl_timer_map->erase(m_nTimerID);
     if (m_pHandlerIface)
       m_pHandlerIface->KillTimer(m_nTimerID);
   }
@@ -43,7 +50,8 @@ CFX_Timer::~CFX_Timer() {
 
 // static
 void CFX_Timer::TimerProc(int32_t idEvent) {
-  auto it = GetPWLTimerMap().find(idEvent);
-  if (it != GetPWLTimerMap().end())
+  auto it = g_pwl_timer_map->find(idEvent);
+  if (it != g_pwl_timer_map->end()) {
     it->second->m_pCallbackIface->OnTimerFired();
+  }
 }
