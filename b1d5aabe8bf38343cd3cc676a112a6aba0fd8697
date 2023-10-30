@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "1903db85_0314544a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-10-30T20:57:21Z",
+      "side": 1,
+      "message": "s/dawn/PDFium/ ?",
+      "range": {
+        "startLine": 9,
+        "startChar": 43,
+        "endLine": 9,
+        "endChar": 47
+      },
+      "revId": "b1d5aabe8bf38343cd3cc676a112a6aba0fd8697",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "9e8a0293_84641046",
@@ -14,6 +37,40 @@
       "writtenOn": "2023-10-30T20:28:00Z",
       "side": 1,
       "message": "I can not run trybots, but this is a roll of some stuff and a no-op otherwise without turning on checkout_rust/enable_rust.",
+      "revId": "b1d5aabe8bf38343cd3cc676a112a6aba0fd8697",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa52b86d_82e90e65",
+        "filename": "DEPS",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-10-30T20:57:21Z",
+      "side": 1,
+      "message": "Can this roll separately? https://pdfium-review.googlesource.com/113213 might be rolling past this commit already.",
+      "revId": "b1d5aabe8bf38343cd3cc676a112a6aba0fd8697",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5cabb04_5be237ce",
+        "filename": "DEPS",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-10-30T20:57:21Z",
+      "side": 1,
+      "message": "- Please keep the list sorted.\n- Who will be responsible for keeping these DEPS entries up-to-date?",
       "revId": "b1d5aabe8bf38343cd3cc676a112a6aba0fd8697",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
