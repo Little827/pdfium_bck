@@ -73,6 +73,23 @@
       "message": "- Please keep the list sorted.\n- Who will be responsible for keeping these DEPS entries up-to-date?",
       "revId": "b1d5aabe8bf38343cd3cc676a112a6aba0fd8697",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01b80694_ee43efae",
+        "filename": "DEPS",
+        "patchSetId": 2
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-10-30T21:00:49Z",
+      "side": 1,
+      "message": "Red bots - missing condition entry?",
+      "revId": "b1d5aabe8bf38343cd3cc676a112a6aba0fd8697",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
