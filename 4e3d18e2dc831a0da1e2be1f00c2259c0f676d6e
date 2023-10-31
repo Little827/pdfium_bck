@@ -33,6 +33,24 @@
       "message": "I can\u0027t +1 as I\u0027m not special\n\nbut this is lgtm\n\nthis code isn\u0027t even called anyway as\n\nhttps://source.chromium.org/chromium/chromium/src/+/main:third_party/pdfium/core/fxge/win32/cwin32_platform.cpp;l\u003d456\n\npdfium::base::win::IsUser32AndGdi32Available always returns false for chrome pdf renderers as win32k lockdown is unconditionally enabled.\n\nI don\u0027t know if you need to worry about other embedders of pdfium? presumably not?",
       "revId": "4e3d18e2dc831a0da1e2be1f00c2259c0f676d6e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f74393f0_3fa373e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-10-31T21:12:48Z",
+      "side": 1,
+      "message": "PDFium needs to be able to stand on its own.\n\nThis code is also only used as part of FPDF_RenderPage(), which is only called by PdfToEmfConverter in Chromium.",
+      "parentUuid": "e1aba0c0_77389f15",
+      "revId": "4e3d18e2dc831a0da1e2be1f00c2259c0f676d6e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
