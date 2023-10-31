@@ -27,7 +27,7 @@ double JS_DateParse(v8::Isolate* pIsolate, const WideString& str);
 // names as wchar_t string literals corresponding to each positional argument.
 // The result will always contain |nKeywords| value, check for the unspecified
 // ones in the result using IsExpandedParamKnown() below.
-std::vector<v8::Local<v8::Value>> ExpandKeywordParams(
+v8::LocalVector<v8::Value> ExpandKeywordParams(
     CJS_Runtime* pRuntime,
     pdfium::span<v8::Local<v8::Value>> originals,
     size_t nKeywords,
@@ -123,7 +123,7 @@ void JSMethod(const char* method_name_string,
   if (!pRuntime)
     return;
 
-  std::vector<v8::Local<v8::Value>> parameters;
+  v8::LocalVector<v8::Value> parameters(info.GetIsolate());
   for (unsigned int i = 0; i < (unsigned int)info.Length(); i++)
     parameters.push_back(info[i]);
 
