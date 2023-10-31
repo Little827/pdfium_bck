@@ -261,6 +261,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "854c0ef9_d8fadbf1",
+        "filename": "DEPS",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2023-10-31T17:36:33Z",
+      "side": 1,
+      "message": "Ok, sounds good thank you.",
+      "parentUuid": "40e2352a_dcc3fcc8",
+      "revId": "b1d5aabe8bf38343cd3cc676a112a6aba0fd8697",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "01b80694_ee43efae",
