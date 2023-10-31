@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64743154_6f8207c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-10-31T18:22:46Z",
+      "side": 1,
+      "message": "OWNERS stamp + Will for all things windows in case this changes what we can sandbox. Lei, do you know if this is executed when linked into chrome?",
+      "revId": "4e3d18e2dc831a0da1e2be1f00c2259c0f676d6e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
