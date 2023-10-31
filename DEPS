@@ -28,6 +28,14 @@ vars = {
 
   'checkout_instrumented_libraries': 'checkout_linux and checkout_configuration != "small" and checkout_configuration != "minimal"',
 
+  # Fetch the rust toolchain.
+  #
+  # Use a custom_vars section to enable it:
+  # "custom_vars": {
+  #   "checkout_rust": True,
+  # }
+  'checkout_rust': False,
+
   'checkout_skia': 'checkout_configuration != "minimal"',
 
   'checkout_testing_corpus': 'checkout_configuration != "small" and checkout_configuration != "minimal"',
@@ -81,6 +89,14 @@ vars = {
   # the commit queue can handle CLs rolling clang
   # and whatever else without interference from each other.
   'clang_revision': 'abf1537140febdd258bf6cc5b31ce97df3216262',
+  # Three lines of non-changing comments so that
+  # the commit queue can handle CLs rolling clang
+  # and whatever else without interference from each other.
+  'rust_revision': 'c2a0e44aaa68e02826feea4a4e152bdd8b897266',
+  # Three lines of non-changing comments so that
+  # the commit queue can handle CLs rolling clang
+  # and whatever else without interference from each other.
+  'testing_rust_revision': '1938e1e7b5fa41992992e9f2fceff9b8a77de6c3',
   # Three lines of non-changing comments so that
   # the commit queue can handle CLs rolling code_coverage
   # and whatever else without interference from each other.
@@ -276,6 +292,12 @@ deps = {
     'condition': 'checkout_testing_corpus',
   },
 
+  'testing/scripts/rust': {
+    'url': Var('chromium_git') + '/chromium/src/testing/scripts/rust.git@' +
+        Var('testing_rust_revision'),
+    'condition': 'checkout_rust',
+  },
+
   'third_party/abseil-cpp':
     Var('chromium_git') + '/chromium/src/third_party/abseil-cpp.git@' +
         Var('abseil_revision'),
@@ -408,6 +430,12 @@ deps = {
       },
     ],
     'dep_type': 'cipd',
+  },
+
+  'tools/rust': {
+    'url': Var('chromium_git') + '/chromium/src/tools/rust@' +
+        Var('rust_revision'),
+    'condition': 'checkout_rust',
   },
 
   # TODO(crbug.com/pdfium/1650): Set up autorollers for goldctl.
@@ -612,6 +640,14 @@ hooks = [
     'action': ['python3',
                'tools/clang/scripts/update.py'
     ],
+  },
+  {
+    'name': 'rust',
+    'pattern': '.',
+    'action': ['python3',
+               'tools/rust/update_rust.py'
+    ],
+    'condition': 'checkout_rust',
   },
   {
     'name': 'sysroot_arm',
