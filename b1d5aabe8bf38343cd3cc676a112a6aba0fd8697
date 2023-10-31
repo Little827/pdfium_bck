@@ -245,6 +245,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "40e2352a_dcc3fcc8",
+        "filename": "DEPS",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-10-31T16:49:35Z",
+      "side": 1,
+      "message": "As seen in https://pdfium-review.googlesource.com/113213, rolling //build in PDFium can be tricky. Rolling //tools/clang can oftentimes be just as tricky. While some PDFium DEPS entries are auto-rolled, //tools/clang is manually rolled because changes are the auto-roll won\u0027t work. There\u0027s a team rotation to do this. We can add the 2 new Rust DEPS roll entries to our list.",
+      "parentUuid": "18a7ac51_3d469496",
+      "revId": "b1d5aabe8bf38343cd3cc676a112a6aba0fd8697",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "01b80694_ee43efae",
         "filename": "DEPS",
         "patchSetId": 2
