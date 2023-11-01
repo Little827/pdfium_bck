@@ -97,7 +97,7 @@ void CFXJSE_Value::SetArray(
     v8::Isolate* pIsolate,
     const std::vector<std::unique_ptr<CFXJSE_Value>>& values) {
   CFXJSE_ScopeUtil_IsolateHandleRootContext scope(pIsolate);
-  std::vector<v8::Local<v8::Value>> local_values;
+  v8::LocalVector<v8::Value> local_values(pIsolate);
   local_values.reserve(values.size());
   for (auto& v : values) {
     if (v->IsEmpty())
