@@ -16,6 +16,24 @@
       "message": "Is there a loss of const-ness with this change?",
       "revId": "e8ad8ffbf952682be4ab26a546151b487a9fdb98",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc363286_2ec7dce1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-11-01T17:46:44Z",
+      "side": 1,
+      "message": "No, because we are moving from pass-by ref to pass by value. The const applied to the ref, but having a const value just means the function wouldn\u0027t be able to modify its local copy of the argument (as opposed to the caller\u0027s copy).",
+      "parentUuid": "77add65e_5d1beb67",
+      "revId": "e8ad8ffbf952682be4ab26a546151b487a9fdb98",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
