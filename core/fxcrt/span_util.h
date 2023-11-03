@@ -6,6 +6,7 @@
 #define CORE_FXCRT_SPAN_UTIL_H_
 
 #include "core/fxcrt/fx_memcpy_wrappers.h"
+#include "third_party/abseil-cpp/absl/types/optional.h"
 #include "third_party/base/check_op.h"
 #include "third_party/base/containers/span.h"
 
@@ -39,6 +40,36 @@ void spanset(pdfium::span<T> dst, uint8_t val) {
 template <typename T>
 void spanclr(pdfium::span<T> dst) {
   FXSYS_memset(dst.data(), 0, dst.size_bytes());
+}
+
+// These rely on implementation details of pdfium::span<T>, however they
+// can be made to work with std-conforming implementation by doing the
+// bounds checking explicitly here.
+template <typename T>
+absl::optional<pdfium::span<T>> try_subspan(
+    pdfium::span<T> span,
+    size_t offset,
+    size_t count = pdfium::dynamic_extent) {
+  if (!span.has_subspan(offset, count)) {
+    return absl::nullopt;
+  }
+  return span.unsafe_subspan(offset, count);
+}
+
+template <typename T>
+absl::optional<pdfium::span<T>> try_first(pdfium::span<T> span, size_t count) {
+  if (!span.has_first(count)) {
+    return absl::nullopt;
+  }
+  return span.unsafe_first(count);
+}
+
+template <typename T>
+absl::optional<pdfium::span<T>> try_last(pdfium::span<T> span, size_t count) {
+  if (!span.has_last(count)) {
+    return absl::nullopt;
+  }
+  return span.unsafe_last(count);
 }
 
 }  // namespace fxcrt
