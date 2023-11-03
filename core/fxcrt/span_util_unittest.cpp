@@ -89,3 +89,78 @@ TEST(Span, AssignOverOnePastEnd) {
   span = pdfium::make_span(src);
   EXPECT_EQ(span.size(), 2u);
 }
+
+TEST(Span, TrySubspan) {
+  std::vector<char> src(2, 'A');
+  pdfium::span<char> span = pdfium::make_span(src);
+  {
+    auto maybe_span = fxcrt::try_subspan(span, 0);
+    ASSERT_TRUE(maybe_span.has_value());
+    EXPECT_EQ(maybe_span.value().size(), 2u);
+    EXPECT_EQ(maybe_span.value().data(), src.data());
+  }
+  {
+    auto maybe_span = fxcrt::try_subspan(span, 2);
+    ASSERT_TRUE(maybe_span.has_value());
+    EXPECT_EQ(maybe_span.value().size(), 0u);
+  }
+  {
+    auto maybe_span = fxcrt::try_subspan(span, 3);
+    EXPECT_FALSE(maybe_span.has_value());
+  }
+  {
+    auto maybe_span = fxcrt::try_subspan(span, 1, 0);
+    ASSERT_TRUE(maybe_span.has_value());
+    EXPECT_EQ(maybe_span.value().size(), 0u);
+  }
+  {
+    auto maybe_span = fxcrt::try_subspan(span, 1, 1);
+    ASSERT_TRUE(maybe_span.has_value());
+    EXPECT_EQ(maybe_span.value().size(), 1u);
+    EXPECT_EQ(maybe_span.value().data(), src.data() + 1);
+  }
+  {
+    auto maybe_span = fxcrt::try_subspan(span, 1, 2);
+    EXPECT_FALSE(maybe_span.has_value());
+  }
+}
+
+TEST(Span, TryFirst) {
+  std::vector<char> src(2, 'A');
+  pdfium::span<char> span = pdfium::make_span(src);
+  {
+    auto maybe_span = fxcrt::try_first(span, 0);
+    ASSERT_TRUE(maybe_span.has_value());
+    EXPECT_EQ(maybe_span.value().size(), 0u);
+  }
+  {
+    auto maybe_span = fxcrt::try_first(span, 2);
+    ASSERT_TRUE(maybe_span.has_value());
+    EXPECT_EQ(maybe_span.value().size(), 2u);
+    EXPECT_EQ(maybe_span.value().data(), src.data());
+  }
+  {
+    auto maybe_span = fxcrt::try_first(span, 3);
+    EXPECT_FALSE(maybe_span.has_value());
+  }
+}
+
+TEST(Span, TryLast) {
+  std::vector<char> src(2, 'A');
+  pdfium::span<char> span = pdfium::make_span(src);
+  {
+    auto maybe_span = fxcrt::try_last(span, 0);
+    ASSERT_TRUE(maybe_span.has_value());
+    EXPECT_EQ(maybe_span.value().size(), 0u);
+  }
+  {
+    auto maybe_span = fxcrt::try_last(span, 2);
+    ASSERT_TRUE(maybe_span.has_value());
+    EXPECT_EQ(maybe_span.value().size(), 2u);
+    EXPECT_EQ(maybe_span.value().data(), src.data());
+  }
+  {
+    auto maybe_span = fxcrt::try_last(span, 3);
+    EXPECT_FALSE(maybe_span.has_value());
+  }
+}
