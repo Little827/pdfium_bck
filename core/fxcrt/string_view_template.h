@@ -15,6 +15,7 @@
 
 #include "core/fxcrt/fx_memcpy_wrappers.h"
 #include "core/fxcrt/fx_system.h"
+#include "core/fxcrt/span_util.h"
 #include "third_party/abseil-cpp/absl/types/optional.h"
 #include "third_party/base/containers/span.h"
 
@@ -204,19 +205,11 @@ class StringViewTemplate {
   }
 
   StringViewTemplate Substr(size_t first, size_t count) const {
-    if (!m_Span.data())
+    auto maybe_span = fxcrt::try_subspan(m_Span, first, count);
+    if (!maybe_span.has_value()) {
       return StringViewTemplate();
-
-    if (!IsValidIndex(first))
-      return StringViewTemplate();
-
-    if (count == 0 || !IsValidLength(count))
-      return StringViewTemplate();
-
-    if (!IsValidIndex(first + count - 1))
-      return StringViewTemplate();
-
-    return StringViewTemplate(m_Span.subspan(first, count));
+    }
+    return StringViewTemplate(maybe_span.value());
   }
 
   StringViewTemplate First(size_t count) const {

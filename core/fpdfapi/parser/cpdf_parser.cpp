@@ -798,14 +798,22 @@ bool CPDF_Parser::LoadCrossRefV5(FX_FILESIZE* pos, bool bMainXRef) {
   pdfium::span<const uint8_t> data_span = pAcc->GetSpan();
   uint32_t segindex = 0;
   for (const auto& index : indices) {
-    FX_SAFE_UINT32 seg_end = segindex;
-    seg_end += index.obj_count;
-    seg_end *= total_width;
-    if (!seg_end.IsValid() || seg_end.ValueOrDie() > data_span.size())
+    FX_SAFE_UINT32 seg_offset = segindex;
+    seg_offset *= total_width;
+    if (!seg_offset.IsValid()) {
       continue;
-
-    pdfium::span<const uint8_t> seg_span = data_span.subspan(
-        segindex * total_width, index.obj_count * total_width);
+    }
+    FX_SAFE_UINT32 seg_count = index.obj_count;
+    seg_count *= total_width;
+    if (!seg_count.IsValid()) {
+      continue;
+    }
+    auto maybe_span = pdfium::try_subspan(data_span, seg_offset.ValueOrDie(),
+                                          seg_count.ValueOrDie());
+    if (!maybe_span.has_value()) {
+      continue;
+    }
+    pdfium::span<const uint8_t> seg_span = maybe_span.value();
     FX_SAFE_UINT32 safe_new_size = index.start_obj_num;
     safe_new_size += index.obj_count;
     if (!safe_new_size.IsValid()) {

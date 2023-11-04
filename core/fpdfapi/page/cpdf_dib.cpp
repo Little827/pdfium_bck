@@ -1156,8 +1156,9 @@ pdfium::span<const uint8_t> CPDF_DIB::GetScanline(int line) const {
   } else if (m_pStreamAcc->GetSize() > line * src_pitch_value) {
     pdfium::span<const uint8_t> remaining_bytes =
         m_pStreamAcc->GetSpan().subspan(line * src_pitch_value);
-    if (remaining_bytes.size() >= src_pitch_value) {
-      pSrcLine = remaining_bytes.first(src_pitch_value);
+    auto maybe_span = fxcrt::try_first(remaining_bytes, src_pitch_value);
+    if (maybe_span.has_value()) {
+      pSrcLine = maybe_span.value();
     } else {
       temp_buffer = DataVector<uint8_t>(src_pitch_value);
       pdfium::span<uint8_t> result = temp_buffer;

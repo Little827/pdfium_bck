@@ -23,10 +23,11 @@ constexpr uint16_t kNameWindowsEncodingUnicode = 1;
 ByteString GetStringFromTable(pdfium::span<const uint8_t> string_span,
                               uint16_t offset,
                               uint16_t length) {
-  if (string_span.size() < static_cast<uint32_t>(offset + length))
+  auto maybe_span = pdfium::try_subspan(string_span, offset, length);
+  if (!maybe_span.has_value()) {
     return ByteString();
-
-  string_span = string_span.subspan(offset, length);
+  }
+  string_span = maybe_span.value();
   return ByteString(string_span.data(), string_span.size());
 }
 
@@ -85,10 +86,11 @@ ByteString GetNameFromTT(pdfium::span<const uint8_t> name_table,
   uint32_t string_offset = FXSYS_UINT16_GET_MSBFIRST(&name_table[4]);
   // We will ignore the possibility of overlap of structures and
   // string table as if it's all corrupt there's not a lot we can do.
-  if (name_table.size() < string_offset)
+  auto maybe_span = fxcrt::try_subspan(name_table, string_offset);
+  if (!maybe_span.has_value()) {
     return ByteString();
-
-  pdfium::span<const uint8_t> string_span = name_table.subspan(string_offset);
+  }
+  auto string_span = maybe_span.value();
   name_table = name_table.subspan(6);
   if (name_table.size() < name_count * 12)
     return ByteString();

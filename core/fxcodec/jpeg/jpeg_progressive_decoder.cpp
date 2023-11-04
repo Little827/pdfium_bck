@@ -175,12 +175,13 @@ bool JpegProgressiveDecoder::Input(Context* pContext,
   pdfium::span<uint8_t> src_buf = codec_memory->GetUnconsumedSpan();
   auto* ctx = static_cast<CJpegContext*>(pContext);
   if (ctx->m_SkipSize) {
-    if (ctx->m_SkipSize > src_buf.size()) {
+    auto maybe_buf = pdfium::try_subspan(srcbuf, ctx->m_SkipSize);
+    if (!maybe_buf.has_value()) {
       ctx->m_SrcMgr.bytes_in_buffer = 0;
       ctx->m_SkipSize -= src_buf.size();
       return true;
     }
-    src_buf = src_buf.subspan(ctx->m_SkipSize);
+    src_buf = maybe_buf.value();
     ctx->m_SkipSize = 0;
   }
   ctx->m_SrcMgr.next_input_byte = src_buf.data();
