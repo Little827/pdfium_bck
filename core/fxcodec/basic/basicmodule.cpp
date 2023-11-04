@@ -329,8 +329,12 @@ DataVector<uint8_t> BasicModule::A85Encode(
   auto result_span = pdfium::make_span(result);
   uint32_t pos = 0;
   uint32_t line_length = 0;
-  while (src_span.size() >= 4 && pos < src_span.size() - 3) {
-    auto val_span = src_span.subspan(pos, 4);
+  while (1) {
+    auto maybe_span = fxcrt::try_subspan(src_span, pos, 4);
+    if (!maybe_span.has_value()) {
+      break;
+    }
+    auto val_span = maybe_span.value();
     uint32_t val = FXSYS_UINT32_GET_MSBFIRST(val_span);
     pos += 4;
     if (val == 0) {  // All zero special case

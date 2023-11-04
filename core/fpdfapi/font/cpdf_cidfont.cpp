@@ -28,6 +28,7 @@
 #include "core/fxcrt/fx_memory.h"
 #include "core/fxcrt/fx_safe_types.h"
 #include "core/fxcrt/fx_unicode.h"
+#include "core/fxcrt/span_util.h"
 #include "core/fxcrt/stl_util.h"
 #include "core/fxge/fx_font.h"
 #include "third_party/base/check.h"
@@ -813,11 +814,11 @@ int CPDF_CIDFont::GlyphFromCharCode(uint32_t charcode, bool* pVertGlyph) {
     }
     return GetGlyphIndex(charcode, pVertGlyph);
   }
-  uint32_t byte_pos = cid * 2;
-  if (byte_pos + 2 > m_pStreamAcc->GetSize())
+  auto maybe_span = fxcrt::try_subspan(m_pStreamAcc->GetSpan(), cid * 2, 2);
+  if (!maybe_span.has_value()) {
     return -1;
-
-  pdfium::span<const uint8_t> span = m_pStreamAcc->GetSpan().subspan(byte_pos);
+  }
+  const auto span = maybe_span.value();
   return span[0] * 256 + span[1];
 }
 

@@ -13,6 +13,7 @@
 #include "core/fxcodec/jpeg/jpeg_common.h"
 #include "core/fxcodec/scanlinedecoder.h"
 #include "core/fxcrt/fx_safe_types.h"
+#include "core/fxcrt/span_util.h"
 #include "core/fxge/dib/cfx_dibbase.h"
 #include "core/fxge/dib/fx_dib.h"
 #include "third_party/abseil-cpp/absl/types/optional.h"
@@ -175,12 +176,13 @@ bool JpegProgressiveDecoder::Input(Context* pContext,
   pdfium::span<uint8_t> src_buf = codec_memory->GetUnconsumedSpan();
   auto* ctx = static_cast<CJpegContext*>(pContext);
   if (ctx->m_SkipSize) {
-    if (ctx->m_SkipSize > src_buf.size()) {
+    auto maybe_buf = fxcrt::try_subspan(src_buf, ctx->m_SkipSize);
+    if (!maybe_buf.has_value()) {
       ctx->m_SrcMgr.bytes_in_buffer = 0;
       ctx->m_SkipSize -= src_buf.size();
       return true;
     }
-    src_buf = src_buf.subspan(ctx->m_SkipSize);
+    src_buf = maybe_buf.value();
     ctx->m_SkipSize = 0;
   }
   ctx->m_SrcMgr.next_input_byte = src_buf.data();
