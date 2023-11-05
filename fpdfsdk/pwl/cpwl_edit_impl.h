@@ -186,13 +186,21 @@ class CPWL_EditImpl {
     // Undo/Redo the current undo item and returns the number of additional
     // items to be processed in |m_UndoItemStack| to fully undo/redo the action.
     // (An example is UndoReplaceSelection::Undo(), if UndoReplaceSelection
-    // marks the end of a replace action, UndoReplaceSelection::Undo() returns 3
-    // because 3 more undo items need to be processed to revert the replace
-    // action: insert text, clear selection and the UndoReplaceSelection which
-    // marks the beginning of replace action.) Implementations should return 0
-    // by default.
+    // marks the end of a replace action, UndoReplaceSelection::Undo() returns
+    // |m_nUndoRemain|. The default value of |m_nUndoRemain| in
+    // UndoReplaceSelection is 3. because 3 more undo items need to be processed
+    // to revert the replace action: insert text, clear selection and the
+    // UndoReplaceSelection which marks the beginning of replace action. If
+    // ClearSelection() returns false, the value of |m_nUndoRemain| in
+    // UndoReplaceSelection needs to be set to 2) Implementations should return
+    // 0 by default.
     virtual int Undo() = 0;
     virtual int Redo() = 0;
+    void SetUndoRemain(int nUndoRemain) { m_nUndoRemain = nUndoRemain; }
+    int GetUndoRemain() { return m_nUndoRemain; }
+
+   protected:
+    int m_nUndoRemain = 0;
   };
 
   class UndoStack {
@@ -205,6 +213,7 @@ class CPWL_EditImpl {
     void Redo();
     bool CanUndo() const;
     bool CanRedo() const;
+    UndoItemIface* GetLastAddItem();
 
    private:
     void RemoveHeads();
