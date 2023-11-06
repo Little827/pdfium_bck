@@ -137,6 +137,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3534ac80_8872f99c",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3316,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-06T23:05:01Z",
+      "side": 1,
+      "message": "To be clear, I was fine with line 3311. I was trying to say line 3311 does not need to be paired with a CheckSelection() call.",
+      "parentUuid": "796fb3c1_41733c06",
+      "revId": "7a89a3664ac9bc8d38d4d8410fe33f8b85a86664",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e7243084_7cc5e0d3",
         "filename": "fpdfsdk/pwl/cpwl_edit_impl.cpp",
         "patchSetId": 1
