@@ -16,6 +16,23 @@
       "message": "For discussion porpoises.  The idea being that I\u0027d like to get callers out of explicit bounds checking, since they might do it wrong.  And then avoid re-checking on copy ...",
       "revId": "684f0c0620d862722749c7ce44558bfad2ccc3ca",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2038a319_c8b6fb64",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2023-11-06T18:35:04Z",
+      "side": 1,
+      "message": "Seems good",
+      "revId": "684f0c0620d862722749c7ce44558bfad2ccc3ca",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
