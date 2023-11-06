@@ -60,6 +60,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b753f418_3df27064",
+        "filename": "core/fpdfapi/font/cpdf_cidfont.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 821,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-11-06T19:26:16Z",
+      "side": 1,
+      "message": "Not a big fan of .map() nor of preprocessor macros.  Any other ideas?",
+      "parentUuid": "df32b3b5_be832959",
+      "range": {
+        "startLine": 817,
+        "startChar": 0,
+        "endLine": 821,
+        "endChar": 39
+      },
+      "revId": "9cb2bc7bc222625b38f0869a9c328330682568c2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "007ffc00_75f56677",
         "filename": "core/fpdfapi/page/cpdf_dib.cpp",
         "patchSetId": 2
@@ -71,6 +95,30 @@
       "writtenOn": "2023-11-06T18:46:09Z",
       "side": 1,
       "message": "We could probably write here:\n\n```\nif (remaining_bytes.has_first(src_pitch_value)) {\n  pSrcLine \u003d remaining_bytes.first(src_pitch_value);\n}\n```\n\nand rely on the compiler to drop the redundant CHECK for the same thing you just wrote.\n\nbut you\u0027d be more confident if the functions were constexpr. not sure why `first()` is not but probably historical?\n\n(we\u0027re relying on the same thing for the check in `optional::value`)",
+      "range": {
+        "startLine": 1160,
+        "startChar": 0,
+        "endLine": 1161,
+        "endChar": 36
+      },
+      "revId": "9cb2bc7bc222625b38f0869a9c328330682568c2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37033124_0400ff02",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1161,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-11-06T19:26:16Z",
+      "side": 1,
+      "message": "Hmmm, still trying to get out of the checks in the caller.",
+      "parentUuid": "007ffc00_75f56677",
       "range": {
         "startLine": 1160,
         "startChar": 0,
@@ -94,6 +142,30 @@
       "writtenOn": "2023-11-06T18:46:09Z",
       "side": 1,
       "message": "This is a good example of how you can\u0027t write a bunch of bugs anymore that you could before.\n\nSo many branches eliminated!",
+      "range": {
+        "startLine": 208,
+        "startChar": 0,
+        "endLine": 213,
+        "endChar": 0
+      },
+      "revId": "9cb2bc7bc222625b38f0869a9c328330682568c2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b96afa37_56d7b3a1",
+        "filename": "core/fxcrt/string_view_template.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-11-06T19:26:16Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "cfb0915c_4a75e557",
       "range": {
         "startLine": 208,
         "startChar": 0,
