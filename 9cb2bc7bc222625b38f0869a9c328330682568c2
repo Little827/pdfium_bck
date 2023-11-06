@@ -108,6 +108,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "56fcf55d_4f969fbd",
+        "filename": "core/fpdfapi/font/cpdf_cidfont.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 821,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2023-11-06T21:12:46Z",
+      "side": 1,
+      "message": "mmh, does optional support visit? I don\u0027t think I mean that - it\u0027s for variant. I mean some sort of functional composition where you \"do this if it has a value, otherwise that\".\n\n`.map(lambda).unwrap_or(val)` is how rust spells it.\n\nThe macro is what people have to do to interrupt control flow in C++, and comes from the `?` operator in rust as well. Though the operator is much nicer, macros are a vocab to learn..\n\nWhen you\u0027re working with a new type, functional stuff is how you stay in that type \nwithout introducing local vars and branches, yet conditionally deal with the stuff inside or not. You can write it however you like:\n\n```\nreturn opt_or(maybe_span, -1, [](auto span) { return span[0] * 256 + span[1]; });\n```\n\nThe less functional, more locally branchy:\n\n```\nauto x \u003d map_opt([](auto span) { return span[0] * 256 + span[1]; });\nreturn x.has_value() ? x.value() : -1;\n```\n\nThe other end of the spectrum is what you have written here which does it all in place with branches, for both \"work with the value\" and \"return on empty\".",
+      "parentUuid": "338a185e_bd5ffbe5",
+      "range": {
+        "startLine": 817,
+        "startChar": 0,
+        "endLine": 821,
+        "endChar": 39
+      },
+      "revId": "9cb2bc7bc222625b38f0869a9c328330682568c2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "007ffc00_75f56677",
         "filename": "core/fpdfapi/page/cpdf_dib.cpp",
         "patchSetId": 2
