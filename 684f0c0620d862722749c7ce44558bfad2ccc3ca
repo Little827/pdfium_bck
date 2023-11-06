@@ -33,6 +33,40 @@
       "message": "Seems good",
       "revId": "684f0c0620d862722749c7ce44558bfad2ccc3ca",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e296ea87_6b314d2b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-06T19:17:12Z",
+      "side": 1,
+      "message": "Does it make sense for the caller to ask for a span with 0 count?",
+      "revId": "684f0c0620d862722749c7ce44558bfad2ccc3ca",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2456e18b_356d93d2",
+        "filename": "third_party/base/containers/span.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-06T19:17:12Z",
+      "side": 1,
+      "message": "has_first() is safe to use, right? Move 1 line down, or be more specific about what needs extreme caution.",
+      "revId": "684f0c0620d862722749c7ce44558bfad2ccc3ca",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
