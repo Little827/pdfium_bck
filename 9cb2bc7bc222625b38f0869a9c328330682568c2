@@ -16,6 +16,92 @@
       "message": "Sample usage showing it is maybe less useful than I thought.",
       "revId": "9cb2bc7bc222625b38f0869a9c328330682568c2",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d1f7158_d62c3a3a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2023-11-06T18:46:09Z",
+      "side": 1,
+      "message": "Thoughts below if they are helpful",
+      "revId": "9cb2bc7bc222625b38f0869a9c328330682568c2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df32b3b5_be832959",
+        "filename": "core/fpdfapi/font/cpdf_cidfont.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 821,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2023-11-06T18:46:09Z",
+      "side": 1,
+      "message": "this is much nicer with a better optional.\n\n```\nreturn fxcrt::try_subspan(m_pStreamAcc-\u003eGetSpan(), cid * 2, 2)\n  .map([](auto span) { return span[0] * 256 + span[1]; })\n  .unwrap_or(-1);\n```\n\nOr maybe with a try macro like Dawn uses: https://source.chromium.org/chromium/chromium/src/+/main:third_party/dawn/src/dawn/native/Error.h;l\u003d150-153?ss\u003dchromium%2Fchromium%2Fsrc\u0026q\u003ddawn_try\n\nSomething like\n\n```\nPDFUIM_TRY_ASSIGN_OR(auto span, -1, fxcrt::try_subspan(\n    m_pStreamAcc-\u003eGetSpan(), cid * 2, 2));\nreturn span[0] * 256 + span[1];\n```",
+      "range": {
+        "startLine": 817,
+        "startChar": 0,
+        "endLine": 821,
+        "endChar": 39
+      },
+      "revId": "9cb2bc7bc222625b38f0869a9c328330682568c2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "007ffc00_75f56677",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1161,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2023-11-06T18:46:09Z",
+      "side": 1,
+      "message": "We could probably write here:\n\n```\nif (remaining_bytes.has_first(src_pitch_value)) {\n  pSrcLine \u003d remaining_bytes.first(src_pitch_value);\n}\n```\n\nand rely on the compiler to drop the redundant CHECK for the same thing you just wrote.\n\nbut you\u0027d be more confident if the functions were constexpr. not sure why `first()` is not but probably historical?\n\n(we\u0027re relying on the same thing for the check in `optional::value`)",
+      "range": {
+        "startLine": 1160,
+        "startChar": 0,
+        "endLine": 1161,
+        "endChar": 36
+      },
+      "revId": "9cb2bc7bc222625b38f0869a9c328330682568c2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfb0915c_4a75e557",
+        "filename": "core/fxcrt/string_view_template.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2023-11-06T18:46:09Z",
+      "side": 1,
+      "message": "This is a good example of how you can\u0027t write a bunch of bugs anymore that you could before.\n\nSo many branches eliminated!",
+      "range": {
+        "startLine": 208,
+        "startChar": 0,
+        "endLine": 213,
+        "endChar": 0
+      },
+      "revId": "9cb2bc7bc222625b38f0869a9c328330682568c2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
