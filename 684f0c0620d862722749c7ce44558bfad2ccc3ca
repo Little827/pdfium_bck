@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e52b1f70_e4349f51",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-11-06T18:23:53Z",
+      "side": 1,
+      "message": "For discussion porpoises.  The idea being that I\u0027d like to get callers out of explicit bounds checking, since they might do it wrong.  And then avoid re-checking on copy ...",
+      "revId": "684f0c0620d862722749c7ce44558bfad2ccc3ca",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
