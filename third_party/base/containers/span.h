@@ -20,6 +20,11 @@
 #include "partition_alloc/pointers/raw_ptr.h"
 #endif
 
+// Differences from base::span<T>:
+// - uses pdfium namespace, not base
+// - std:: non-compliant has_subspan(), has_first(), has_last().
+// - std:: non-compliant unsafe_subspan(), unsafe_first(), unsafe_last().
+
 namespace pdfium {
 
 constexpr size_t dynamic_extent = static_cast<size_t>(-1);
@@ -240,20 +245,18 @@ class TRIVIAL_ABI GSL_POINTER span {
 
   // [span.sub], span subviews
   const span first(size_t count) const {
-    CHECK(count <= size_);
-    return span(static_cast<T*>(data_), count);
+    CHECK(has_first(count));
+    return unsafe_first(count);
   }
 
   const span last(size_t count) const {
-    CHECK(count <= size_);
-    return span(static_cast<T*>(data_) + (size_ - count), count);
+    CHECK(has_last(count));
+    return unsafe_last(count);
   }
 
   const span subspan(size_t pos, size_t count = dynamic_extent) const {
-    CHECK(pos <= size_);
-    CHECK(count == dynamic_extent || count <= size_ - pos);
-    return span(static_cast<T*>(data_) + pos,
-                count == dynamic_extent ? size_ - pos : count);
+    CHECK(has_subspan(pos, count));
+    return unsafe_subspan(pos, count);
   }
 
   // [span.obs], span observers
@@ -298,6 +301,24 @@ class TRIVIAL_ABI GSL_POINTER span {
   }
   constexpr const_reverse_iterator crend() const noexcept {
     return const_reverse_iterator(cbegin());
+  }
+
+  constexpr bool has_first(size_t count) const { return count <= size_; }
+  constexpr bool has_last(size_t count) const { return count <= size_; }
+  constexpr bool has_subspan(size_t pos, size_t count) const {
+    return pos <= size_ && (count == dynamic_extent || count <= size_ - pos);
+  }
+
+  // Use with extreme caution.
+  const span unsafe_first(size_t count) const {
+    return span(static_cast<T*>(data_), count);
+  }
+  const span unsafe_last(size_t count) const {
+    return span(static_cast<T*>(data_) + (size_ - count), count);
+  }
+  const span unsafe_subspan(size_t pos, size_t count) const {
+    return span(static_cast<T*>(data_) + pos,
+                count == dynamic_extent ? size_ - pos : count);
   }
 
  private:
