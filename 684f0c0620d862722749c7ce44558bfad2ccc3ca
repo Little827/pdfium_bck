@@ -70,6 +70,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "21048203_6ef172ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-06T19:29:31Z",
+      "side": 1,
+      "message": "I was thinking the alternative would be to return a non-optional span, and indicate failure with an empty span. WDYT?",
+      "parentUuid": "d016e6e5_62cf8326",
+      "revId": "684f0c0620d862722749c7ce44558bfad2ccc3ca",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2456e18b_356d93d2",
