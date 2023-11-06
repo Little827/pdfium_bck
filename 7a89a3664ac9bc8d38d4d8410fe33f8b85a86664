@@ -1,6 +1,46 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a237076_685ea560",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-06T20:49:48Z",
+      "side": 1,
+      "message": "Is it possible to shorten the summary to fit within 72 chars on 1 line?",
+      "revId": "7a89a3664ac9bc8d38d4d8410fe33f8b85a86664",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "213f4ef2_771ca5ad",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-06T20:49:48Z",
+      "side": 1,
+      "message": "nit: Capitalize the first letter in a sentence.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 4
+      },
+      "revId": "7a89a3664ac9bc8d38d4d8410fe33f8b85a86664",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "1154ea80_c9674acc",
@@ -14,6 +54,149 @@
       "writtenOn": "2023-11-05T05:28:36Z",
       "side": 1,
       "message": "This change is ready for review.",
+      "revId": "7a89a3664ac9bc8d38d4d8410fe33f8b85a86664",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "796fb3c1_41733c06",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3316,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-06T20:49:48Z",
+      "side": 1,
+      "message": "It may be helpful to add `CheckSelection(L\"\");` here, so readers can better understand the state of the text form at this point. Same for line 3325.\n\nLine 3311 does not need it, as there is no text, so naturally there is no selection.",
+      "revId": "7a89a3664ac9bc8d38d4d8410fe33f8b85a86664",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7243084_7cc5e0d3",
+        "filename": "fpdfsdk/pwl/cpwl_edit_impl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-06T20:49:48Z",
+      "side": 1,
+      "message": "nit: space after period.",
+      "revId": "7a89a3664ac9bc8d38d4d8410fe33f8b85a86664",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d668c661_650caf2c",
+        "filename": "fpdfsdk/pwl/cpwl_edit_impl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1787,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-06T20:49:48Z",
+      "side": 1,
+      "message": "Try to use Google Style in new code. Use snake_case here.",
+      "range": {
+        "startLine": 1787,
+        "startChar": 7,
+        "endLine": 1787,
+        "endChar": 24
+      },
+      "revId": "7a89a3664ac9bc8d38d4d8410fe33f8b85a86664",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d2fb9fd_773ee1c3",
+        "filename": "fpdfsdk/pwl/cpwl_edit_impl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1788,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-06T20:49:48Z",
+      "side": 1,
+      "message": "nit: Use backticks instead of pipes in new code.",
+      "range": {
+        "startLine": 1788,
+        "startChar": 55,
+        "endLine": 1788,
+        "endChar": 56
+      },
+      "revId": "7a89a3664ac9bc8d38d4d8410fe33f8b85a86664",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96d86159_09840a88",
+        "filename": "fpdfsdk/pwl/cpwl_edit_impl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1790,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-06T20:49:48Z",
+      "side": 1,
+      "message": "Save and reuse the result, instead of calling it twice?",
+      "range": {
+        "startLine": 1790,
+        "startChar": 35,
+        "endLine": 1790,
+        "endChar": 49
+      },
+      "revId": "7a89a3664ac9bc8d38d4d8410fe33f8b85a86664",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "417974fa_f5ba9888",
+        "filename": "fpdfsdk/pwl/cpwl_edit_impl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-06T20:49:48Z",
+      "side": 1,
+      "message": "This interface does not have a ClearSelection() method. Please prepend the class name so it is clear what this refers to.",
+      "range": {
+        "startLine": 194,
+        "startChar": 7,
+        "endLine": 194,
+        "endChar": 21
+      },
+      "revId": "7a89a3664ac9bc8d38d4d8410fe33f8b85a86664",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12e64b10_5d9bec41",
+        "filename": "fpdfsdk/pwl/cpwl_edit_impl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-06T20:49:48Z",
+      "side": 1,
+      "message": "Getter methods should be const. i.e. `int val() const { return val_; }`",
       "revId": "7a89a3664ac9bc8d38d4d8410fe33f8b85a86664",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
