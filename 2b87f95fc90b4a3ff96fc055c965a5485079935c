@@ -16,6 +16,52 @@
       "message": "Can you give more details on which value(s) are NULL / 0 that are problematic?",
       "revId": "2b87f95fc90b4a3ff96fc055c965a5485079935c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d5a91fc_fe88d513",
+        "filename": "core/fxge/cfx_glyphcache.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-11-09T18:23:14Z",
+      "side": 1,
+      "message": "Use FXSYS_memset() in  third_party/pdfium/core/fxcrt/fx_memcpy_wrappers.h",
+      "range": {
+        "startLine": 223,
+        "startChar": 4,
+        "endLine": 223,
+        "endChar": 16
+      },
+      "revId": "2b87f95fc90b4a3ff96fc055c965a5485079935c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "725b26d7_5b6dbb54",
+        "filename": "core/fxge/cfx_glyphcache.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-11-09T18:23:14Z",
+      "side": 1,
+      "message": "Ditto for FXSYS_memcpy()",
+      "range": {
+        "startLine": 226,
+        "startChar": 6,
+        "endLine": 226,
+        "endChar": 17
+      },
+      "revId": "2b87f95fc90b4a3ff96fc055c965a5485079935c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
