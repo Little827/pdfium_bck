@@ -9,6 +9,7 @@
 #include <vector>
 
 #include "core/fxcrt/bytestring.h"
+#include "core/fxcrt/span_util.h"
 #include "public/fpdf_doc.h"
 #include "public/fpdfview.h"
 #include "testing/embedder_test.h"
@@ -41,12 +42,13 @@ class TestAsyncLoader final : public FX_DOWNLOADHINTS, FX_FILEAVAIL {
     if (file_path.empty()) {
       return;
     }
-    file_contents_ = GetFileContents(file_path.c_str(), &file_length_);
-    if (!file_contents_)
+    file_contents_ = GetFileContents(file_path.c_str());
+    if (file_contents_.empty()) {
       return;
+    }
 
     file_access_.m_FileLen =
-        pdfium::base::checked_cast<unsigned long>(file_length_);
+        pdfium::base::checked_cast<unsigned long>(file_contents_.size());
     file_access_.m_GetBlock = SGetBlock;
     file_access_.m_Param = this;
 
@@ -57,7 +59,7 @@ class TestAsyncLoader final : public FX_DOWNLOADHINTS, FX_FILEAVAIL {
     FX_FILEAVAIL::IsDataAvail = SIsDataAvail;
   }
 
-  bool IsOpened() const { return !!file_contents_; }
+  bool IsOpened() const { return !file_contents_.empty(); }
 
   FPDF_FILEACCESS* file_access() { return &file_access_; }
   FX_DOWNLOADHINTS* hints() { return this; }
@@ -92,8 +94,8 @@ class TestAsyncLoader final : public FX_DOWNLOADHINTS, FX_FILEAVAIL {
     ClearRequestedSegments();
   }
 
-  char* file_contents() { return file_contents_.get(); }
-  size_t file_length() const { return file_length_; }
+  pdfium::span<const uint8_t> file_contents() const { return file_contents_; }
+  pdfium::span<uint8_t> file_contents() { return file_contents_; }
 
  private:
   void SetDataAvailable(size_t start, size_t size) {
@@ -108,10 +110,11 @@ class TestAsyncLoader final : public FX_DOWNLOADHINTS, FX_FILEAVAIL {
     if (!IsDataAvailImpl(pos, size))
       return 0;
     const unsigned long end = std::min(
-        pdfium::base::checked_cast<unsigned long>(file_length_), pos + size);
+        pdfium::base::checked_cast<unsigned long>(file_contents_.size()),
+        pos + size);
     if (end <= pos)
       return 0;
-    memcpy(pBuf, file_contents_.get() + pos, end - pos);
+    memcpy(pBuf, file_contents_.data() + pos, end - pos);
     SetDataAvailable(pos, end - pos);
     return static_cast<int>(end - pos);
   }
@@ -122,8 +125,9 @@ class TestAsyncLoader final : public FX_DOWNLOADHINTS, FX_FILEAVAIL {
   }
 
   bool IsDataAvailImpl(size_t offset, size_t size) {
-    if (offset + size > file_length_)
+    if (offset + size > file_contents_.size()) {
       return false;
+    }
     if (is_new_data_available_) {
       SetDataAvailable(offset, size);
       return true;
@@ -150,8 +154,7 @@ class TestAsyncLoader final : public FX_DOWNLOADHINTS, FX_FILEAVAIL {
 
   FPDF_FILEACCESS file_access_;
 
-  std::unique_ptr<char, pdfium::FreeDeleter> file_contents_;
-  size_t file_length_ = 0;
+  std::vector<uint8_t> file_contents_;
   std::vector<std::pair<size_t, size_t>> requested_segments_;
   size_t max_requested_bound_ = 0;
   bool is_new_data_available_ = true;
@@ -303,10 +306,10 @@ TEST_F(FPDFDataAvailEmbedderTest, LoadInfoAfterReceivingFirstPage) {
   TestAsyncLoader loader("linearized.pdf");
   // Map "Info" to an object within the first section without breaking
   // linearization.
-  ByteString data(loader.file_contents(), loader.file_length());
+  ByteString data(ByteStringView(loader.file_contents()));
   absl::optional<size_t> index = data.Find("/Info 27 0 R");
   ASSERT_TRUE(index);
-  memcpy(loader.file_contents() + *index, "/Info 29 0 R", 12);
+  memcpy(loader.file_contents().data() + *index, "/Info 29 0 R", 12);
 
   loader.set_is_new_data_available(false);
   CreateAvail(loader.file_avail(), loader.file_access());
@@ -328,10 +331,10 @@ TEST_F(FPDFDataAvailEmbedderTest, LoadInfoAfterReceivingFirstPage) {
 TEST_F(FPDFDataAvailEmbedderTest, TryLoadInvalidInfo) {
   TestAsyncLoader loader("linearized.pdf");
   // Map "Info" to an invalid object without breaking linearization.
-  ByteString data(loader.file_contents(), loader.file_length());
+  ByteString data(ByteStringView(loader.file_contents()));
   absl::optional<size_t> index = data.Find("/Info 27 0 R");
   ASSERT_TRUE(index);
-  memcpy(loader.file_contents() + *index, "/Info 99 0 R", 12);
+  memcpy(loader.file_contents().data() + *index, "/Info 99 0 R", 12);
 
   loader.set_is_new_data_available(false);
   CreateAvail(loader.file_avail(), loader.file_access());
@@ -354,10 +357,10 @@ TEST_F(FPDFDataAvailEmbedderTest, TryLoadInvalidInfo) {
 TEST_F(FPDFDataAvailEmbedderTest, TryLoadNonExistsInfo) {
   TestAsyncLoader loader("linearized.pdf");
   // Break the "Info" parameter without breaking linearization.
-  ByteString data(loader.file_contents(), loader.file_length());
+  ByteString data(ByteStringView(loader.file_contents()));
   absl::optional<size_t> index = data.Find("/Info 27 0 R");
   ASSERT_TRUE(index);
-  memcpy(loader.file_contents() + *index, "/I_fo 27 0 R", 12);
+  memcpy(loader.file_contents().data() + *index, "/I_fo 27 0 R", 12);
 
   loader.set_is_new_data_available(false);
   CreateAvail(loader.file_avail(), loader.file_access());
