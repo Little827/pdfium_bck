@@ -40,7 +40,7 @@ class CPDF_PageObject : public CPDF_GraphicStates {
   explicit CPDF_PageObject(int32_t content_stream);
   CPDF_PageObject(const CPDF_PageObject& src) = delete;
   CPDF_PageObject& operator=(const CPDF_PageObject& src) = delete;
-  ~CPDF_PageObject() override;
+  virtual ~CPDF_PageObject();
 
   virtual Type GetType() const = 0;
   virtual void Transform(const CFX_Matrix& matrix) = 0;
