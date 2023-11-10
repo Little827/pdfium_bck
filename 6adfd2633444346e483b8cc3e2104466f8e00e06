@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2686b261_19b79dac",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-11-10T17:55:43Z",
+      "side": 1,
+      "message": "I suspect we may delete the sub-classes through pointers to the parent class, at which point the destructor must be virtual or sub-class cleanup will be missed. Please confirm.",
+      "range": {
+        "startLine": 9,
+        "startChar": 46,
+        "endLine": 10,
+        "endChar": 18
+      },
+      "revId": "6adfd2633444346e483b8cc3e2104466f8e00e06",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd47de49_fae50f39",
+        "filename": "core/fpdfapi/page/cpdf_graphicstates.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-11-10T17:55:43Z",
+      "side": 1,
+      "message": "If we are still OK to go in light of the previous comment, then this destructor needs to be protected to prevent deleting though the base class, ideally with a comment saying this.",
+      "range": {
+        "startLine": 19,
+        "startChar": 2,
+        "endLine": 19,
+        "endChar": 24
+      },
+      "revId": "6adfd2633444346e483b8cc3e2104466f8e00e06",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
