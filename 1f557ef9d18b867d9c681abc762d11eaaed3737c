@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62026d67_45dfa9a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-10T19:09:15Z",
+      "side": 1,
+      "message": "Because WCHAR_T_IS_UTF32 is going to become WCHAR_T_IS_32_BIT.",
+      "revId": "1f557ef9d18b867d9c681abc762d11eaaed3737c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
