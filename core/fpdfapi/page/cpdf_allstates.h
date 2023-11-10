@@ -17,9 +17,10 @@ class CPDF_StreamContentParser;
 class CPDF_AllStates {
  public:
   CPDF_AllStates();
+  CPDF_AllStates(const CPDF_AllStates& that);
+  CPDF_AllStates& operator=(const CPDF_AllStates& that);
   ~CPDF_AllStates();
 
-  void Copy(const CPDF_AllStates& src);
   void ProcessExtGS(const CPDF_Dictionary* pGS,
                     CPDF_StreamContentParser* pParser);
   void SetLineDash(const CPDF_Array* pArray, float phase, float scale);

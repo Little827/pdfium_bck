@@ -81,7 +81,7 @@ pdfium::span<const ByteString> CPDF_PageObject::GetGraphicsResourceNames()
 }
 
 void CPDF_PageObject::CopyData(const CPDF_PageObject* pSrc) {
-  m_GraphicStates.CopyStates(pSrc->m_GraphicStates);
+  m_GraphicStates = pSrc->m_GraphicStates;
   m_Rect = pSrc->m_Rect;
   m_bDirty = true;
 }

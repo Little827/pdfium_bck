@@ -31,8 +31,9 @@ void CPDF_ShadingObject::Transform(const CFX_Matrix& matrix) {
   m_Matrix.Concat(matrix);
   if (m_GraphicStates.m_ClipPath.HasRef()) {
     CalcBoundingBox();
-  } else
+  } else {
     SetRect(matrix.TransformRect(GetRect()));
+  }
   SetDirty(true);
 }
 
