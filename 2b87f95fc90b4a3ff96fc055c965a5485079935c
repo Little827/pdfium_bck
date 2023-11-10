@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eda8799f_3a16b285",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 9656
+      },
+      "writtenOn": "2023-11-10T02:50:08Z",
+      "side": 1,
+      "message": "You should basically never call memcpy or memset. They\u0027re broken. :-) See updated CL description.",
+      "parentUuid": "d1413552_972c90ac",
+      "revId": "2b87f95fc90b4a3ff96fc055c965a5485079935c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d5a91fc_fe88d513",
@@ -41,6 +59,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e824b727_1015a3c9",
+        "filename": "core/fxge/cfx_glyphcache.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 9656
+      },
+      "writtenOn": "2023-11-10T02:50:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d5a91fc_fe88d513",
+      "range": {
+        "startLine": 223,
+        "startChar": 4,
+        "endLine": 223,
+        "endChar": 16
+      },
+      "revId": "2b87f95fc90b4a3ff96fc055c965a5485079935c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "725b26d7_5b6dbb54",
@@ -54,6 +96,30 @@
       "writtenOn": "2023-11-09T18:23:14Z",
       "side": 1,
       "message": "Ditto for FXSYS_memcpy()",
+      "range": {
+        "startLine": 226,
+        "startChar": 6,
+        "endLine": 226,
+        "endChar": 17
+      },
+      "revId": "2b87f95fc90b4a3ff96fc055c965a5485079935c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54ada6e9_64e58572",
+        "filename": "core/fxge/cfx_glyphcache.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 9656
+      },
+      "writtenOn": "2023-11-10T02:50:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "725b26d7_5b6dbb54",
       "range": {
         "startLine": 226,
         "startChar": 6,
