@@ -203,6 +203,11 @@ TEST(fxcrt, FXSYS_wcsnicmp) {
   EXPECT_EQ(0, FXSYS_wcsnicmp(L"foO", L"Foo", 3));
   EXPECT_EQ(0, FXSYS_wcsnicmp(L"food", L"FOOT", 3));
   EXPECT_GT(0, FXSYS_wcsnicmp(L"food", L"FOOT", 4));
+
+#if defined(WCHAR_T_IS_32_BIT)
+  const wchar_t kLargeValue[] = {static_cast<wchar_t>(0x80000000), 0};
+  EXPECT_GT(0, FXSYS_wcsnicmp(kLargeValue, L"f", 1));
+#endif
 }
 
 TEST(fxcrt, FXSYS_SafeOps) {
