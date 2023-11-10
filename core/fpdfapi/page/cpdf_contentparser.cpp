@@ -100,11 +100,13 @@ CPDF_ContentParser::CPDF_ContentParser(
   m_pParser->GetCurStates()->m_CTM = form_matrix;
   m_pParser->GetCurStates()->m_ParentMatrix = form_matrix;
   if (ClipPath.HasRef()) {
-    m_pParser->GetCurStates()->m_ClipPath.AppendPathWithAutoMerge(
-        ClipPath, CFX_FillRenderOptions::FillType::kWinding);
+    m_pParser->GetCurStates()
+        ->m_GraphicStates.m_ClipPath.AppendPathWithAutoMerge(
+            ClipPath, CFX_FillRenderOptions::FillType::kWinding);
   }
   if (m_pPageObjectHolder->GetTransparency().IsGroup()) {
-    CPDF_GeneralState* pState = &m_pParser->GetCurStates()->m_GeneralState;
+    CPDF_GeneralState* pState =
+        &m_pParser->GetCurStates()->m_GraphicStates.m_GeneralState;
     pState->SetBlendType(BlendMode::kNormal);
     pState->SetStrokeAlpha(1.0f);
     pState->SetFillAlpha(1.0f);
@@ -205,7 +207,7 @@ CPDF_ContentParser::Stage CPDF_ContentParser::Parse() {
         m_pPageObjectHolder->GetMutablePageResources(), nullptr, nullptr,
         m_pPageObjectHolder, m_pPageObjectHolder->GetMutableResources(),
         m_pPageObjectHolder->GetBBox(), nullptr, &m_RecursionState);
-    m_pParser->GetCurStates()->m_ColorState.SetDefault();
+    m_pParser->GetCurStates()->m_GraphicStates.m_ColorState.SetDefault();
   }
   if (m_CurrentOffset >= GetData().size())
     return Stage::kCheckClip;
