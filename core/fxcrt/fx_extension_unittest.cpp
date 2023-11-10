@@ -191,6 +191,20 @@ TEST(fxcrt, FXSYS_wcstof) {
   EXPECT_EQ(131u, used_len);
 }
 
+TEST(fxcrt, FXSYS_wcsnicmp) {
+  EXPECT_EQ(0, FXSYS_wcsnicmp(L"foo", L"foo", 1));
+  EXPECT_EQ(0, FXSYS_wcsnicmp(L"foo", L"foo", 2));
+  EXPECT_EQ(0, FXSYS_wcsnicmp(L"foo", L"foo", 3));
+
+  EXPECT_LT(0, FXSYS_wcsnicmp(L"foo", L"barr", 3));
+  EXPECT_GT(0, FXSYS_wcsnicmp(L"bar", L"fooo", 3));
+
+  EXPECT_EQ(0, FXSYS_wcsnicmp(L"FOO", L"foo", 3));
+  EXPECT_EQ(0, FXSYS_wcsnicmp(L"foO", L"Foo", 3));
+  EXPECT_EQ(0, FXSYS_wcsnicmp(L"food", L"FOOT", 3));
+  EXPECT_GT(0, FXSYS_wcsnicmp(L"food", L"FOOT", 4));
+}
+
 TEST(fxcrt, FXSYS_SafeOps) {
   const float fMin = std::numeric_limits<float>::min();
   const float fMax = std::numeric_limits<float>::max();
