@@ -41,6 +41,23 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2c03125_9b8c1615",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-11-10T23:17:11Z",
+      "side": 1,
+      "message": "So I took a quick stab at this in the chain of CLs starting at https://pdfium-review.googlesource.com/c/pdfium/+/113514 . It gets ugly until we get to the end when we get to write \u003ddefault a lot.",
+      "revId": "6adfd2633444346e483b8cc3e2104466f8e00e06",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "011049f0_8fec3458",
