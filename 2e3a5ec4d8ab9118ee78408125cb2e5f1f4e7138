@@ -16,6 +16,121 @@
       "message": "ping",
       "revId": "2e3a5ec4d8ab9118ee78408125cb2e5f1f4e7138",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b171f9ca_ead5d3ea",
+        "filename": "fpdfsdk/fpdf_dataavail_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-11-10T18:28:21Z",
+      "side": 1,
+      "message": "Nit: This can be written as file_contents().subspan(pos).data() to get your checks for free. Or you can go whole hog and spancpy() from file_contents().subspan(pos, end-pos).",
+      "range": {
+        "startLine": 117,
+        "startChar": 17,
+        "endLine": 117,
+        "endChar": 44
+      },
+      "revId": "2e3a5ec4d8ab9118ee78408125cb2e5f1f4e7138",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "232a343a_c67c9a50",
+        "filename": "fpdfsdk/fpdf_dataavail_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-11-10T18:28:21Z",
+      "side": 1,
+      "message": "maybe use subspan(*index).data()  - several places.",
+      "range": {
+        "startLine": 312,
+        "startChar": 16,
+        "endLine": 312,
+        "endChar": 47
+      },
+      "revId": "2e3a5ec4d8ab9118ee78408125cb2e5f1f4e7138",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35795e18_7fb86df6",
+        "filename": "testing/embedder_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-11-10T18:28:21Z",
+      "side": 1,
+      "message": "or assign std::vector\u003cuint8_t\u003e() if you want to force it to give back the memory rather than just setting the size to zero and holding onto it for future uses.",
+      "range": {
+        "startLine": 431,
+        "startChar": 17,
+        "endLine": 431,
+        "endChar": 22
+      },
+      "revId": "2e3a5ec4d8ab9118ee78408125cb2e5f1f4e7138",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34af7128_44f7f917",
+        "filename": "testing/utils/file_util.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-11-10T18:28:21Z",
+      "side": 1,
+      "message": "nit: subspan().data()",
+      "range": {
+        "startLine": 57,
+        "startChar": 16,
+        "endLine": 57,
+        "endChar": 36
+      },
+      "revId": "2e3a5ec4d8ab9118ee78408125cb2e5f1f4e7138",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8fb07a8_fb61e851",
+        "filename": "testing/utils/file_util.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-11-10T18:28:21Z",
+      "side": 1,
+      "message": "nit: Not quite true -- we\u0027re cool with non-existent .evt files in pdfium test being treated the same as empty one.",
+      "range": {
+        "startLine": 16,
+        "startChar": 12,
+        "endLine": 17,
+        "endChar": 12
+      },
+      "revId": "2e3a5ec4d8ab9118ee78408125cb2e5f1f4e7138",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
