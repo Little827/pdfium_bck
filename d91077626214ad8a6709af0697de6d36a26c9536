@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21b37bd4_7efcf563",
+        "filename": "core/fxcrt/fx_extension_unittest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-11-10T17:50:47Z",
+      "side": 1,
+      "message": "can we add some \\uXXXX high-valued characters for these tests, too?",
+      "range": {
+        "startLine": 195,
+        "startChar": 31,
+        "endLine": 195,
+        "endChar": 36
+      },
+      "revId": "d91077626214ad8a6709af0697de6d36a26c9536",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
