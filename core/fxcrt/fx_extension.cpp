@@ -133,10 +133,11 @@ int32_t FXSYS_wcsnicmp(const wchar_t* s1, const wchar_t* s2, size_t count) {
   while (count-- > 0) {
     wch1 = static_cast<wchar_t>(FXSYS_towlower(*s1++));
     wch2 = static_cast<wchar_t>(FXSYS_towlower(*s2++));
-    if (wch1 != wch2)
-      break;
+    if (wch1 != wch2) {
+      return wch1 > wch2 ? 1 : -1;
+    }
   }
-  return wch1 - wch2;
+  return 0;
 }
 
 void FXSYS_IntToTwoHexChars(uint8_t n, char* buf) {
