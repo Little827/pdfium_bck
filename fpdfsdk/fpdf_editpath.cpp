@@ -58,7 +58,7 @@ FPDF_EXPORT FPDF_PAGEOBJECT FPDF_CALLCONV FPDFPageObj_CreateNewPath(float x,
                                                                     float y) {
   auto pPathObj = std::make_unique<CPDF_PathObject>();
   pPathObj->path().AppendPoint(CFX_PointF(x, y), CFX_Path::Point::Type::kMove);
-  pPathObj->m_GraphicStates.DefaultStates();
+  pPathObj->m_GraphicStates.SetDefaultStates();
 
   // Caller takes ownership.
   return FPDFPageObjectFromCPDFPageObject(pPathObj.release());
@@ -70,7 +70,7 @@ FPDF_EXPORT FPDF_PAGEOBJECT FPDF_CALLCONV FPDFPageObj_CreateNewRect(float x,
                                                                     float h) {
   auto pPathObj = std::make_unique<CPDF_PathObject>();
   pPathObj->path().AppendRect(x, y, x + w, y + h);
-  pPathObj->m_GraphicStates.DefaultStates();
+  pPathObj->m_GraphicStates.SetDefaultStates();
 
   // Caller takes ownership.
   return FPDFPageObjectFromCPDFPageObject(pPathObj.release());
