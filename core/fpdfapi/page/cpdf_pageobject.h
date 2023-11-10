@@ -24,7 +24,7 @@ class CPDF_TextObject;
 // Represents an object within the page, like a form or image. Not to be
 // confused with the PDF spec's page object that lives in a page tree, which is
 // represented by CPDF_Page.
-class CPDF_PageObject : public CPDF_GraphicStates {
+class CPDF_PageObject {
  public:
   // Values must match corresponding values in //public.
   enum class Type {
@@ -40,7 +40,7 @@ class CPDF_PageObject : public CPDF_GraphicStates {
   explicit CPDF_PageObject(int32_t content_stream);
   CPDF_PageObject(const CPDF_PageObject& src) = delete;
   CPDF_PageObject& operator=(const CPDF_PageObject& src) = delete;
-  ~CPDF_PageObject() override;
+  virtual ~CPDF_PageObject();
 
   virtual Type GetType() const = 0;
   virtual void Transform(const CFX_Matrix& matrix) = 0;
@@ -96,6 +96,8 @@ class CPDF_PageObject : public CPDF_GraphicStates {
   }
 
   pdfium::span<const ByteString> GetGraphicsResourceNames() const;
+
+  CPDF_GraphicStates m_GraphicStates;
 
  protected:
   void CopyData(const CPDF_PageObject* pSrcObject);

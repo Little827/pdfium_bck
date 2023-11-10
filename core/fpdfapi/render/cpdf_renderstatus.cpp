@@ -91,7 +91,7 @@ CFX_FillRenderOptions GetFillOptionsForDrawPathWithBlend(
   if (options.bNoPathSmooth) {
     fill_options.aliased_path = true;
   }
-  if (path_obj->m_GeneralState.GetStrokeAdjust()) {
+  if (path_obj->m_GraphicStates.m_GeneralState.GetStrokeAdjust()) {
     fill_options.adjust_stroke = true;
   }
   if (is_stroke) {
@@ -114,7 +114,7 @@ CFX_FillRenderOptions GetFillOptionsForDrawTextPath(
     fill_options.stroke = true;
     fill_options.stroke_text_mode = true;
   }
-  if (text_obj->m_GeneralState.GetStrokeAdjust()) {
+  if (text_obj->m_GraphicStates.m_GeneralState.GetStrokeAdjust()) {
     fill_options.adjust_stroke = true;
   }
   if (options.bNoTextSmooth) {
@@ -233,7 +233,7 @@ void CPDF_RenderStatus::RenderSingleObject(CPDF_PageObject* pObj,
   if (!m_Options.CheckPageObjectVisible(pObj)) {
     return;
   }
-  ProcessClipPath(pObj->m_ClipPath, mtObj2Device);
+  ProcessClipPath(pObj->m_GraphicStates.m_ClipPath, mtObj2Device);
   if (ProcessTransparency(pObj, mtObj2Device)) {
     return;
   }
@@ -257,7 +257,7 @@ bool CPDF_RenderStatus::ContinueSingleObject(CPDF_PageObject* pObj,
   if (!m_Options.CheckPageObjectVisible(pObj))
     return false;
 
-  ProcessClipPath(pObj->m_ClipPath, mtObj2Device);
+  ProcessClipPath(pObj->m_GraphicStates.m_ClipPath, mtObj2Device);
   if (ProcessTransparency(pObj, mtObj2Device))
     return false;
 
@@ -366,7 +366,7 @@ bool CPDF_RenderStatus::ProcessForm(const CPDF_FormObject* pFormObj,
   status.SetTransparency(m_Transparency);
   status.SetDropObjects(m_bDropObjects);
   status.SetFormResource(std::move(pResources));
-  status.Initialize(this, pFormObj);
+  status.Initialize(this, &pFormObj->m_GraphicStates);
   status.m_curBlend = m_curBlend;
   {
     CFX_RenderDevice::StateRestorer restorer(m_pDevice);
@@ -404,7 +404,8 @@ bool CPDF_RenderStatus::ProcessPath(CPDF_PathObject* path_obj,
 
   return m_pDevice->DrawPathWithBlend(
       *path_obj->path().GetObject(), &path_matrix,
-      path_obj->m_GraphState.GetObject(), fill_argb, stroke_argb,
+      path_obj->m_GraphicStates.m_GraphState.GetObject(), fill_argb,
+      stroke_argb,
       GetFillOptionsForDrawPathWithBlend(options, path_obj, fill_type, stroke,
                                          m_pType3Char),
       m_curBlend);
@@ -418,14 +419,16 @@ RetainPtr<CPDF_TransferFunc> CPDF_RenderStatus::GetTransferFunc(
 }
 
 FX_ARGB CPDF_RenderStatus::GetFillArgb(CPDF_PageObject* pObj) const {
-  if (Type3CharMissingFillColor(m_pType3Char, &pObj->m_ColorState))
+  if (Type3CharMissingFillColor(m_pType3Char,
+                                &pObj->m_GraphicStates.m_ColorState)) {
     return m_T3FillColor;
+  }
 
   return GetFillArgbForType3(pObj);
 }
 
 FX_ARGB CPDF_RenderStatus::GetFillArgbForType3(CPDF_PageObject* pObj) const {
-  const CPDF_ColorState* pColorState = &pObj->m_ColorState;
+  const CPDF_ColorState* pColorState = &pObj->m_GraphicStates.m_ColorState;
   if (MissingFillColor(pColorState))
     pColorState = &m_InitialStates.m_ColorState;
 
@@ -433,16 +436,18 @@ FX_ARGB CPDF_RenderStatus::GetFillArgbForType3(CPDF_PageObject* pObj) const {
   if (colorref == 0xFFFFFFFF)
     return 0;
 
-  int32_t alpha =
-      static_cast<int32_t>((pObj->m_GeneralState.GetFillAlpha() * 255));
-  RetainPtr<const CPDF_Object> pTR = pObj->m_GeneralState.GetTR();
+  int32_t alpha = static_cast<int32_t>(
+      (pObj->m_GraphicStates.m_GeneralState.GetFillAlpha() * 255));
+  RetainPtr<const CPDF_Object> pTR =
+      pObj->m_GraphicStates.m_GeneralState.GetTR();
   if (pTR) {
-    if (!pObj->m_GeneralState.GetTransferFunc()) {
-      pObj->m_GeneralState.SetTransferFunc(GetTransferFunc(std::move(pTR)));
+    if (!pObj->m_GraphicStates.m_GeneralState.GetTransferFunc()) {
+      pObj->m_GraphicStates.m_GeneralState.SetTransferFunc(
+          GetTransferFunc(std::move(pTR)));
     }
-    if (pObj->m_GeneralState.GetTransferFunc()) {
-      colorref =
-          pObj->m_GeneralState.GetTransferFunc()->TranslateColor(colorref);
+    if (pObj->m_GraphicStates.m_GeneralState.GetTransferFunc()) {
+      colorref = pObj->m_GraphicStates.m_GeneralState.GetTransferFunc()
+                     ->TranslateColor(colorref);
     }
   }
   return m_Options.TranslateObjectColor(AlphaAndColorRefToArgb(alpha, colorref),
@@ -451,7 +456,7 @@ FX_ARGB CPDF_RenderStatus::GetFillArgbForType3(CPDF_PageObject* pObj) const {
 }
 
 FX_ARGB CPDF_RenderStatus::GetStrokeArgb(CPDF_PageObject* pObj) const {
-  const CPDF_ColorState* pColorState = &pObj->m_ColorState;
+  const CPDF_ColorState* pColorState = &pObj->m_GraphicStates.m_ColorState;
   if (Type3CharMissingStrokeColor(m_pType3Char, pColorState))
     return m_T3FillColor;
 
@@ -462,16 +467,19 @@ FX_ARGB CPDF_RenderStatus::GetStrokeArgb(CPDF_PageObject* pObj) const {
   if (colorref == 0xFFFFFFFF)
     return 0;
 
-  int32_t alpha = static_cast<int32_t>(pObj->m_GeneralState.GetStrokeAlpha() *
-                                       255);  // not rounded.
-  RetainPtr<const CPDF_Object> pTR = pObj->m_GeneralState.GetTR();
+  int32_t alpha = static_cast<int32_t>(
+      pObj->m_GraphicStates.m_GeneralState.GetStrokeAlpha() *
+      255);  // not rounded.
+  RetainPtr<const CPDF_Object> pTR =
+      pObj->m_GraphicStates.m_GeneralState.GetTR();
   if (pTR) {
-    if (!pObj->m_GeneralState.GetTransferFunc()) {
-      pObj->m_GeneralState.SetTransferFunc(GetTransferFunc(std::move(pTR)));
+    if (!pObj->m_GraphicStates.m_GeneralState.GetTransferFunc()) {
+      pObj->m_GraphicStates.m_GeneralState.SetTransferFunc(
+          GetTransferFunc(std::move(pTR)));
     }
-    if (pObj->m_GeneralState.GetTransferFunc()) {
-      colorref =
-          pObj->m_GeneralState.GetTransferFunc()->TranslateColor(colorref);
+    if (pObj->m_GraphicStates.m_GeneralState.GetTransferFunc()) {
+      colorref = pObj->m_GraphicStates.m_GeneralState.GetTransferFunc()
+                     ->TranslateColor(colorref);
     }
   }
   return m_Options.TranslateObjectColor(
@@ -557,9 +565,9 @@ bool CPDF_RenderStatus::SelectClipPath(const CPDF_PathObject* path_obj,
                                        bool stroke) {
   CFX_Matrix path_matrix = path_obj->matrix() * mtObj2Device;
   if (stroke) {
-    return m_pDevice->SetClip_PathStroke(*path_obj->path().GetObject(),
-                                         &path_matrix,
-                                         path_obj->m_GraphState.GetObject());
+    return m_pDevice->SetClip_PathStroke(
+        *path_obj->path().GetObject(), &path_matrix,
+        path_obj->m_GraphicStates.m_GraphState.GetObject());
   }
   CFX_FillRenderOptions fill_options(path_obj->filltype());
   if (m_Options.GetOptions().bNoPathSmooth) {
@@ -571,9 +579,10 @@ bool CPDF_RenderStatus::SelectClipPath(const CPDF_PathObject* path_obj,
 
 bool CPDF_RenderStatus::ProcessTransparency(CPDF_PageObject* pPageObj,
                                             const CFX_Matrix& mtObj2Device) {
-  const BlendMode blend_type = pPageObj->m_GeneralState.GetBlendType();
+  const BlendMode blend_type =
+      pPageObj->m_GraphicStates.m_GeneralState.GetBlendType();
   RetainPtr<CPDF_Dictionary> pSMaskDict =
-      pPageObj->m_GeneralState.GetMutableSoftMask();
+      pPageObj->m_GraphicStates.m_GeneralState.GetMutableSoftMask();
   if (pSMaskDict) {
     if (pPageObj->IsImage() &&
         pPageObj->AsImage()->GetImage()->GetDict()->KeyExist("SMask")) {
@@ -586,14 +595,14 @@ bool CPDF_RenderStatus::ProcessTransparency(CPDF_PageObject* pPageObj,
   bool bGroupTransparent = false;
   const CPDF_FormObject* pFormObj = pPageObj->AsForm();
   if (pFormObj) {
-    group_alpha = pFormObj->m_GeneralState.GetFillAlpha();
+    group_alpha = pFormObj->m_GraphicStates.m_GeneralState.GetFillAlpha();
     transparency = pFormObj->form()->GetTransparency();
     bGroupTransparent = transparency.IsIsolated();
     pFormResource = pFormObj->form()->GetDict()->GetDictFor("Resources");
   }
   bool bTextClip =
-      (pPageObj->m_ClipPath.HasRef() &&
-       pPageObj->m_ClipPath.GetTextCount() > 0 && !m_bPrint &&
+      (pPageObj->m_GraphicStates.m_ClipPath.HasRef() &&
+       pPageObj->m_GraphicStates.m_ClipPath.GetTextCount() > 0 && !m_bPrint &&
        !(m_pDevice->GetDeviceCaps(FXDC_RENDER_CAPS) & FXRC_SOFT_CLIP));
   if (!pSMaskDict && group_alpha == 1.0f && blend_type == BlendMode::kNormal &&
       !bTextClip && !bGroupTransparent) {
@@ -644,17 +653,20 @@ bool CPDF_RenderStatus::ProcessTransparency(CPDF_PageObject* pPageObj,
 
     CFX_DefaultRenderDevice text_device;
     text_device.Attach(pTextMask);
-    for (size_t i = 0; i < pPageObj->m_ClipPath.GetTextCount(); ++i) {
-      CPDF_TextObject* textobj = pPageObj->m_ClipPath.GetText(i);
+    for (size_t i = 0; i < pPageObj->m_GraphicStates.m_ClipPath.GetTextCount();
+         ++i) {
+      CPDF_TextObject* textobj =
+          pPageObj->m_GraphicStates.m_ClipPath.GetText(i);
       if (!textobj)
         break;
 
       // TODO(thestig): Should we check the return value here?
       CPDF_TextRenderer::DrawTextPath(
           &text_device, textobj->GetCharCodes(), textobj->GetCharPositions(),
-          textobj->m_TextState.GetFont().Get(),
-          textobj->m_TextState.GetFontSize(), textobj->GetTextMatrix(),
-          &new_matrix, textobj->m_GraphState.GetObject(), 0xffffffff, 0,
+          textobj->m_GraphicStates.m_TextState.GetFont().Get(),
+          textobj->m_GraphicStates.m_TextState.GetFontSize(),
+          textobj->GetTextMatrix(), &new_matrix,
+          textobj->m_GraphicStates.m_GraphState.GetObject(), 0xffffffff, 0,
           nullptr, CFX_FillRenderOptions());
     }
   }
@@ -676,7 +688,8 @@ bool CPDF_RenderStatus::ProcessTransparency(CPDF_PageObject* pPageObj,
   m_bStopped = bitmap_render.m_bStopped;
   if (pSMaskDict) {
     CFX_Matrix smask_matrix =
-        *pPageObj->m_GeneralState.GetSMaskMatrix() * mtObj2Device;
+        *pPageObj->m_GraphicStates.m_GeneralState.GetSMaskMatrix() *
+        mtObj2Device;
     RetainPtr<CFX_DIBBase> pSMaskSource =
         LoadSMask(pSMaskDict.Get(), &rect, smask_matrix);
     if (pSMaskSource)
@@ -771,11 +784,12 @@ bool CPDF_RenderStatus::ProcessText(CPDF_TextObject* textobj,
   if (textobj->GetCharCodes().empty())
     return true;
 
-  const TextRenderingMode text_render_mode = textobj->m_TextState.GetTextMode();
+  const TextRenderingMode text_render_mode =
+      textobj->m_GraphicStates.m_TextState.GetTextMode();
   if (text_render_mode == TextRenderingMode::MODE_INVISIBLE)
     return true;
 
-  RetainPtr<CPDF_Font> pFont = textobj->m_TextState.GetFont();
+  RetainPtr<CPDF_Font> pFont = textobj->m_GraphicStates.m_TextState.GetFont();
   if (pFont->IsType3Font())
     return ProcessType3Text(textobj, mtObj2Device);
 
@@ -817,14 +831,14 @@ bool CPDF_RenderStatus::ProcessText(CPDF_TextObject* textobj,
   FX_ARGB fill_argb = 0;
   bool bPattern = false;
   if (is_stroke) {
-    if (textobj->m_ColorState.GetStrokeColor()->IsPattern()) {
+    if (textobj->m_GraphicStates.m_ColorState.GetStrokeColor()->IsPattern()) {
       bPattern = true;
     } else {
       stroke_argb = GetStrokeArgb(textobj);
     }
   }
   if (is_fill) {
-    if (textobj->m_ColorState.GetFillColor()->IsPattern()) {
+    if (textobj->m_GraphicStates.m_ColorState.GetFillColor()->IsPattern()) {
       bPattern = true;
     } else {
       fill_argb = GetFillArgb(textobj);
@@ -834,7 +848,7 @@ bool CPDF_RenderStatus::ProcessText(CPDF_TextObject* textobj,
   if (!IsAvailableMatrix(text_matrix))
     return true;
 
-  float font_size = textobj->m_TextState.GetFontSize();
+  float font_size = textobj->m_GraphicStates.m_TextState.GetFontSize();
   if (bPattern) {
     DrawTextPathWithPattern(textobj, mtObj2Device, pFont.Get(), font_size,
                             text_matrix, is_fill, is_stroke);
@@ -844,7 +858,8 @@ bool CPDF_RenderStatus::ProcessText(CPDF_TextObject* textobj,
     const CFX_Matrix* pDeviceMatrix = &mtObj2Device;
     CFX_Matrix device_matrix;
     if (is_stroke) {
-      pdfium::span<const float> pCTM = textobj->m_TextState.GetCTM();
+      pdfium::span<const float> pCTM =
+          textobj->m_GraphicStates.m_TextState.GetCTM();
       if (pCTM[0] != 1.0f || pCTM[3] != 1.0f) {
         CFX_Matrix ctm(pCTM[0], pCTM[1], pCTM[2], pCTM[3], 0, 0);
         text_matrix *= ctm.GetInverse();
@@ -855,8 +870,8 @@ bool CPDF_RenderStatus::ProcessText(CPDF_TextObject* textobj,
     return CPDF_TextRenderer::DrawTextPath(
         m_pDevice, textobj->GetCharCodes(), textobj->GetCharPositions(),
         pFont.Get(), font_size, text_matrix, pDeviceMatrix,
-        textobj->m_GraphState.GetObject(), fill_argb, stroke_argb,
-        clipping_path,
+        textobj->m_GraphicStates.m_GraphState.GetObject(), fill_argb,
+        stroke_argb, clipping_path,
         GetFillOptionsForDrawTextPath(m_Options.GetOptions(), textobj,
                                       is_stroke, is_fill));
   }
@@ -869,7 +884,8 @@ bool CPDF_RenderStatus::ProcessText(CPDF_TextObject* textobj,
 // TODO(npm): Font fallback for type 3 fonts? (Completely separate code!!)
 bool CPDF_RenderStatus::ProcessType3Text(CPDF_TextObject* textobj,
                                          const CFX_Matrix& mtObj2Device) {
-  CPDF_Type3Font* pType3Font = textobj->m_TextState.GetFont()->AsType3Font();
+  CPDF_Type3Font* pType3Font =
+      textobj->m_GraphicStates.m_TextState.GetFont()->AsType3Font();
   if (pdfium::Contains(m_Type3FontCache, pType3Font))
     return true;
 
@@ -880,7 +896,7 @@ bool CPDF_RenderStatus::ProcessType3Text(CPDF_TextObject* textobj,
 
   CFX_Matrix text_matrix = textobj->GetTextMatrix();
   CFX_Matrix char_matrix = pType3Font->GetFontMatrix();
-  float font_size = textobj->m_TextState.GetFontSize();
+  float font_size = textobj->m_GraphicStates.m_TextState.GetFontSize();
   char_matrix.Scale(font_size, font_size);
 
   // Must come before |glyphs|, because |glyphs| points into |refTypeCache|.
@@ -920,7 +936,7 @@ bool CPDF_RenderStatus::ProcessType3Text(CPDF_TextObject* textobj,
       }
 
       std::unique_ptr<CPDF_GraphicStates> pStates =
-          CloneObjStates(textobj, false);
+          CloneObjStates(&textobj->m_GraphicStates, false);
       CPDF_RenderOptions options = m_Options;
       options.GetOptions().bForceHalftone = true;
       options.GetOptions().bRectAA = true;
@@ -1049,10 +1065,11 @@ void CPDF_RenderStatus::DrawTextPathWithPattern(const CPDF_TextObject* textobj,
 
     CPDF_PathObject path;
     path.set_filltype(CFX_FillRenderOptions::FillType::kWinding);
-    path.m_ClipPath.CopyClipPath(m_LastClipPath);
-    path.m_ClipPath.AppendTexts(&pCopy);
-    path.m_ColorState = textobj->m_ColorState;
-    path.m_GeneralState = textobj->m_GeneralState;
+    path.m_GraphicStates.m_ClipPath.CopyClipPath(m_LastClipPath);
+    path.m_GraphicStates.m_ClipPath.AppendTexts(&pCopy);
+    path.m_GraphicStates.m_ColorState = textobj->m_GraphicStates.m_ColorState;
+    path.m_GraphicStates.m_GeneralState =
+        textobj->m_GraphicStates.m_GeneralState;
     path.path().AppendFloatRect(textobj->GetRect());
     path.SetRect(textobj->GetRect());
 
@@ -1073,8 +1090,8 @@ void CPDF_RenderStatus::DrawTextPathWithPattern(const CPDF_TextObject* textobj,
       continue;
 
     CPDF_PathObject path;
-    path.m_GraphState = textobj->m_GraphState;
-    path.m_ColorState = textobj->m_ColorState;
+    path.m_GraphicStates.m_GraphState = textobj->m_GraphicStates.m_GraphState;
+    path.m_GraphicStates.m_ColorState = textobj->m_GraphicStates.m_ColorState;
 
     CFX_Matrix matrix = charpos.GetEffectiveMatrix(CFX_Matrix(
         font_size, 0, 0, font_size, charpos.m_Origin.x, charpos.m_Origin.y));
@@ -1104,9 +1121,9 @@ void CPDF_RenderStatus::DrawShadingPattern(CPDF_ShadingPattern* pattern,
     return;
 
   CFX_Matrix matrix = pattern->pattern_to_form() * mtObj2Device;
-  int alpha =
-      FXSYS_roundf(255 * (stroke ? pPageObj->m_GeneralState.GetStrokeAlpha()
-                                 : pPageObj->m_GeneralState.GetFillAlpha()));
+  int alpha = FXSYS_roundf(
+      255 * (stroke ? pPageObj->m_GraphicStates.m_GeneralState.GetStrokeAlpha()
+                    : pPageObj->m_GraphicStates.m_GeneralState.GetFillAlpha()));
   CPDF_RenderShading::Draw(m_pDevice, m_pContext, m_pCurObj, pattern, matrix,
                            rect, alpha, m_Options);
 }
@@ -1120,7 +1137,8 @@ void CPDF_RenderStatus::ProcessShading(const CPDF_ShadingObject* pShadingObj,
   CFX_Matrix matrix = pShadingObj->matrix() * mtObj2Device;
   CPDF_RenderShading::Draw(
       m_pDevice, m_pContext, m_pCurObj, pShadingObj->pattern(), matrix, rect,
-      FXSYS_roundf(255 * pShadingObj->m_GeneralState.GetFillAlpha()),
+      FXSYS_roundf(255 *
+                   pShadingObj->m_GraphicStates.m_GeneralState.GetFillAlpha()),
       m_Options);
 }
 
@@ -1173,14 +1191,16 @@ void CPDF_RenderStatus::ProcessPathPattern(
   DCHECK(stroke);
 
   if (*fill_type != CFX_FillRenderOptions::FillType::kNoFill) {
-    const CPDF_Color& FillColor = *path_obj->m_ColorState.GetFillColor();
+    const CPDF_Color& FillColor =
+        *path_obj->m_GraphicStates.m_ColorState.GetFillColor();
     if (FillColor.IsPattern()) {
       DrawPathWithPattern(path_obj, mtObj2Device, &FillColor, false);
       *fill_type = CFX_FillRenderOptions::FillType::kNoFill;
     }
   }
   if (*stroke) {
-    const CPDF_Color& StrokeColor = *path_obj->m_ColorState.GetStrokeColor();
+    const CPDF_Color& StrokeColor =
+        *path_obj->m_GraphicStates.m_ColorState.GetStrokeColor();
     if (StrokeColor.IsPattern()) {
       DrawPathWithPattern(path_obj, mtObj2Device, &StrokeColor, true);
       *stroke = false;

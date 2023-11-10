@@ -528,25 +528,30 @@ void CPDF_PageContentGenerator::ProcessGraphics(fxcrt::ostringstream* buf,
                                                 CPDF_PageObject* pPageObj) {
   *buf << "q ";
   float fillColor[3];
-  if (GetColor(pPageObj->m_ColorState.GetFillColor(), fillColor)) {
+  if (GetColor(pPageObj->m_GraphicStates.m_ColorState.GetFillColor(),
+               fillColor)) {
     *buf << fillColor[0] << " " << fillColor[1] << " " << fillColor[2]
          << " rg ";
   }
   float strokeColor[3];
-  if (GetColor(pPageObj->m_ColorState.GetStrokeColor(), strokeColor)) {
+  if (GetColor(pPageObj->m_GraphicStates.m_ColorState.GetStrokeColor(),
+               strokeColor)) {
     *buf << strokeColor[0] << " " << strokeColor[1] << " " << strokeColor[2]
          << " RG ";
   }
-  float lineWidth = pPageObj->m_GraphState.GetLineWidth();
+  float lineWidth = pPageObj->m_GraphicStates.m_GraphState.GetLineWidth();
   if (lineWidth != 1.0f)
     WriteFloat(*buf, lineWidth) << " w ";
-  CFX_GraphStateData::LineCap lineCap = pPageObj->m_GraphState.GetLineCap();
+  CFX_GraphStateData::LineCap lineCap =
+      pPageObj->m_GraphicStates.m_GraphState.GetLineCap();
   if (lineCap != CFX_GraphStateData::LineCap::kButt)
     *buf << static_cast<int>(lineCap) << " J ";
-  CFX_GraphStateData::LineJoin lineJoin = pPageObj->m_GraphState.GetLineJoin();
+  CFX_GraphStateData::LineJoin lineJoin =
+      pPageObj->m_GraphicStates.m_GraphState.GetLineJoin();
   if (lineJoin != CFX_GraphStateData::LineJoin::kMiter)
     *buf << static_cast<int>(lineJoin) << " j ";
-  std::vector<float> dash_array = pPageObj->m_GraphState.GetLineDashArray();
+  std::vector<float> dash_array =
+      pPageObj->m_GraphicStates.m_GraphState.GetLineDashArray();
   if (dash_array.size()) {
     *buf << "[";
     for (size_t i = 0; i < dash_array.size(); ++i) {
@@ -556,10 +561,11 @@ void CPDF_PageContentGenerator::ProcessGraphics(fxcrt::ostringstream* buf,
       WriteFloat(*buf, dash_array[i]);
     }
     *buf << "] ";
-    WriteFloat(*buf, pPageObj->m_GraphState.GetLineDashPhase()) << " d ";
+    WriteFloat(*buf, pPageObj->m_GraphicStates.m_GraphState.GetLineDashPhase())
+        << " d ";
   }
 
-  const CPDF_ClipPath& clip_path = pPageObj->m_ClipPath;
+  const CPDF_ClipPath& clip_path = pPageObj->m_GraphicStates.m_ClipPath;
   if (clip_path.HasRef()) {
     for (size_t i = 0; i < clip_path.GetPathCount(); ++i) {
       CPDF_Path path = clip_path.GetPath(i);
@@ -582,9 +588,10 @@ void CPDF_PageContentGenerator::ProcessGraphics(fxcrt::ostringstream* buf,
   }
 
   GraphicsData graphD;
-  graphD.fillAlpha = pPageObj->m_GeneralState.GetFillAlpha();
-  graphD.strokeAlpha = pPageObj->m_GeneralState.GetStrokeAlpha();
-  graphD.blendType = pPageObj->m_GeneralState.GetBlendType();
+  graphD.fillAlpha = pPageObj->m_GraphicStates.m_GeneralState.GetFillAlpha();
+  graphD.strokeAlpha =
+      pPageObj->m_GraphicStates.m_GeneralState.GetStrokeAlpha();
+  graphD.blendType = pPageObj->m_GraphicStates.m_GeneralState.GetBlendType();
   if (graphD.fillAlpha == 1.0f && graphD.strokeAlpha == 1.0f &&
       graphD.blendType == BlendMode::kNormal) {
     return;
@@ -604,12 +611,12 @@ void CPDF_PageContentGenerator::ProcessGraphics(fxcrt::ostringstream* buf,
       gsDict->SetNewFor<CPDF_Number>("CA", graphD.strokeAlpha);
 
     if (graphD.blendType != BlendMode::kNormal) {
-      gsDict->SetNewFor<CPDF_Name>("BM",
-                                   pPageObj->m_GeneralState.GetBlendMode());
+      gsDict->SetNewFor<CPDF_Name>(
+          "BM", pPageObj->m_GraphicStates.m_GeneralState.GetBlendMode());
     }
     m_pDocument->AddIndirectObject(gsDict);
     name = RealizeResource(std::move(gsDict), "ExtGState");
-    pPageObj->m_GeneralState.SetGraphicsResourceNames({name});
+    pPageObj->m_GraphicStates.m_GeneralState.SetGraphicsResourceNames({name});
     m_pObjHolder->GraphicsMapInsert(graphD, name);
   }
   *buf << "/" << PDF_NameEncode(name) << " gs ";

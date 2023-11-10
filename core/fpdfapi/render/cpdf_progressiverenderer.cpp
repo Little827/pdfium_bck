@@ -79,8 +79,9 @@ void CPDF_ProgressiveRenderer::Continue(PauseIndicatorIface* pPause) {
             pCurObj->AsImage()->GetImage()->IsMask()) {
           if (m_pDevice->GetDeviceType() == DeviceType::kPrinter) {
             m_LastObjectRendered = iter;
-            m_pRenderStatus->ProcessClipPath(pCurObj->m_ClipPath,
-                                             m_pCurrentLayer->GetMatrix());
+            m_pRenderStatus->ProcessClipPath(
+                pCurObj->m_GraphicStates.m_ClipPath,
+                m_pCurrentLayer->GetMatrix());
             return;
           }
           is_mask = true;
