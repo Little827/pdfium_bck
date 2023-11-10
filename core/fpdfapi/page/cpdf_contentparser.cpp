@@ -228,14 +228,17 @@ CPDF_ContentParser::Stage CPDF_ContentParser::CheckClip() {
   }
 
   for (auto& pObj : *m_pPageObjectHolder) {
-    if (!pObj->m_ClipPath.HasRef())
+    if (!pObj->m_GraphicStates.m_ClipPath.HasRef()) {
       continue;
-    if (pObj->m_ClipPath.GetPathCount() != 1)
+    }
+    if (pObj->m_GraphicStates.m_ClipPath.GetPathCount() != 1) {
       continue;
-    if (pObj->m_ClipPath.GetTextCount() > 0)
+    }
+    if (pObj->m_GraphicStates.m_ClipPath.GetTextCount() > 0) {
       continue;
+    }
 
-    CPDF_Path ClipPath = pObj->m_ClipPath.GetPath(0);
+    CPDF_Path ClipPath = pObj->m_GraphicStates.m_ClipPath.GetPath(0);
     if (!ClipPath.IsRect() || pObj->IsShading())
       continue;
 
@@ -243,7 +246,7 @@ CPDF_ContentParser::Stage CPDF_ContentParser::CheckClip() {
     CFX_PointF point2 = ClipPath.GetPoint(2);
     CFX_FloatRect old_rect(point0.x, point0.y, point2.x, point2.y);
     if (old_rect.Contains(pObj->GetRect()))
-      pObj->m_ClipPath.SetNull();
+      pObj->m_GraphicStates.m_ClipPath.SetNull();
   }
   return Stage::kComplete;
 }

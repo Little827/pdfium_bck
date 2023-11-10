@@ -178,13 +178,15 @@ const CPDF_TextObject* CPDF_TextObject::AsText() const {
 }
 
 CFX_Matrix CPDF_TextObject::GetTextMatrix() const {
-  pdfium::span<const float> pTextMatrix = m_TextState.GetMatrix();
+  pdfium::span<const float> pTextMatrix =
+      m_GraphicStates.m_TextState.GetMatrix();
   return CFX_Matrix(pTextMatrix[0], pTextMatrix[2], pTextMatrix[1],
                     pTextMatrix[3], m_Pos.x, m_Pos.y);
 }
 
 void CPDF_TextObject::SetTextMatrix(const CFX_Matrix& matrix) {
-  pdfium::span<float> pTextMatrix = m_TextState.GetMutableMatrix();
+  pdfium::span<float> pTextMatrix =
+      m_GraphicStates.m_TextState.GetMutableMatrix();
   pTextMatrix[0] = matrix.a;
   pTextMatrix[1] = matrix.c;
   pTextMatrix[2] = matrix.b;
@@ -240,19 +242,19 @@ float CPDF_TextObject::GetCharWidth(uint32_t charcode) const {
 }
 
 RetainPtr<CPDF_Font> CPDF_TextObject::GetFont() const {
-  return m_TextState.GetFont();
+  return m_GraphicStates.m_TextState.GetFont();
 }
 
 float CPDF_TextObject::GetFontSize() const {
-  return m_TextState.GetFontSize();
+  return m_GraphicStates.m_TextState.GetFontSize();
 }
 
 TextRenderingMode CPDF_TextObject::GetTextRenderMode() const {
-  return m_TextState.GetTextMode();
+  return m_GraphicStates.m_TextState.GetTextMode();
 }
 
 void CPDF_TextObject::SetTextRenderMode(TextRenderingMode mode) {
-  m_TextState.SetTextMode(mode);
+  m_GraphicStates.m_TextState.SetTextMode(mode);
   SetDirty(true);
 }
 
@@ -313,9 +315,9 @@ float CPDF_TextObject::CalcPositionDataInternal(
     }
     curpos += charwidth;
     if (charcode == ' ' && (!pCIDFont || pCIDFont->GetCharSize(' ') == 1))
-      curpos += m_TextState.GetWordSpace();
+      curpos += m_GraphicStates.m_TextState.GetWordSpace();
 
-    curpos += m_TextState.GetCharSpace();
+    curpos += m_GraphicStates.m_TextState.GetCharSpace();
   }
 
   if (bVertWriting) {
@@ -328,10 +330,11 @@ float CPDF_TextObject::CalcPositionDataInternal(
 
   SetOriginalRect(CFX_FloatRect(min_x, min_y, max_x, max_y));
   CFX_FloatRect rect = GetTextMatrix().TransformRect(GetOriginalRect());
-  if (TextRenderingModeIsStrokeMode(m_TextState.GetTextMode())) {
+  if (TextRenderingModeIsStrokeMode(
+          m_GraphicStates.m_TextState.GetTextMode())) {
     // TODO(crbug.com/pdfium/1840): Does the original rect need a similar
     // adjustment?
-    const float half_width = m_GraphState.GetLineWidth() / 2;
+    const float half_width = m_GraphicStates.m_GraphState.GetLineWidth() / 2;
     rect.Inflate(half_width, half_width);
   }
   SetRect(rect);

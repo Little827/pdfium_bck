@@ -547,17 +547,21 @@ void CPDF_StreamContentParser::SetGraphicStates(CPDF_PageObject* pObj,
                                                 bool bColor,
                                                 bool bText,
                                                 bool bGraph) {
-  pObj->m_GeneralState = m_pCurStates->m_GraphicStates.m_GeneralState;
-  pObj->m_ClipPath = m_pCurStates->m_GraphicStates.m_ClipPath;
+  pObj->m_GraphicStates.m_GeneralState =
+      m_pCurStates->m_GraphicStates.m_GeneralState;
+  pObj->m_GraphicStates.m_ClipPath = m_pCurStates->m_GraphicStates.m_ClipPath;
   pObj->SetContentMarks(*m_ContentMarksStack.top());
   if (bColor) {
-    pObj->m_ColorState = m_pCurStates->m_GraphicStates.m_ColorState;
+    pObj->m_GraphicStates.m_ColorState =
+        m_pCurStates->m_GraphicStates.m_ColorState;
   }
   if (bGraph) {
-    pObj->m_GraphState = m_pCurStates->m_GraphicStates.m_GraphState;
+    pObj->m_GraphicStates.m_GraphState =
+        m_pCurStates->m_GraphicStates.m_GraphState;
   }
   if (bText) {
-    pObj->m_TextState = m_pCurStates->m_GraphicStates.m_TextState;
+    pObj->m_GraphicStates.m_TextState =
+        m_pCurStates->m_GraphicStates.m_TextState;
   }
 }
 
@@ -1128,8 +1132,9 @@ void CPDF_StreamContentParser::Handle_ShadeFill() {
   auto pObj = std::make_unique<CPDF_ShadingObject>(GetCurrentStreamIndex(),
                                                    pShading, matrix);
   SetGraphicStates(pObj.get(), false, false, false);
-  CFX_FloatRect bbox =
-      pObj->m_ClipPath.HasRef() ? pObj->m_ClipPath.GetClipBox() : m_BBox;
+  CFX_FloatRect bbox = pObj->m_GraphicStates.m_ClipPath.HasRef()
+                           ? pObj->m_GraphicStates.m_ClipPath.GetClipBox()
+                           : m_BBox;
   if (pShading->IsMeshShading())
     bbox.Intersect(GetShadingBBox(pShading.Get(), pObj->matrix()));
   pObj->SetRect(bbox);
@@ -1275,7 +1280,8 @@ void CPDF_StreamContentParser::AddTextObject(const ByteString* pStrs,
     pText->SetResourceName(pFont->GetResourceName());
     SetGraphicStates(pText.get(), true, true, true);
     if (TextRenderingModeIsStrokeMode(text_mode)) {
-      pdfium::span<float> pCTM = pText->m_TextState.GetMutableCTM();
+      pdfium::span<float> pCTM =
+          pText->m_GraphicStates.m_TextState.GetMutableCTM();
       pCTM[0] = m_pCurStates->m_CTM.a;
       pCTM[1] = m_pCurStates->m_CTM.c;
       pCTM[2] = m_pCurStates->m_CTM.b;
