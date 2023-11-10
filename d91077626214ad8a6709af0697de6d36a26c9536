@@ -97,6 +97,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f02a1860_6a7fe992",
+        "filename": "core/fxcrt/fx_extension_unittest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-10T18:37:21Z",
+      "side": 1,
+      "message": "FXSYS_wcsnicmp() has DCHECKs that saw the caller should not do that.",
+      "parentUuid": "647755b5_15dc3bbd",
+      "range": {
+        "startLine": 195,
+        "startChar": 2,
+        "endLine": 195,
+        "endChar": 8
+      },
+      "revId": "d91077626214ad8a6709af0697de6d36a26c9536",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07311053_71c0bf6a",
+        "filename": "core/fxcrt/fx_extension_unittest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-10T18:37:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49c0bfaa_9ab5e4ff",
+      "range": {
+        "startLine": 195,
+        "startChar": 31,
+        "endLine": 195,
+        "endChar": 36
+      },
+      "revId": "d91077626214ad8a6709af0697de6d36a26c9536",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4c0592f3_460a0697",
         "filename": "core/fxcrt/fx_extension_unittest.cpp",
         "patchSetId": 2
@@ -108,6 +156,30 @@
       "writtenOn": "2023-11-10T18:11:15Z",
       "side": 1,
       "message": "Might make my head hurt less if the args were re-ordered. Currently we are writing the equiv of 0 \u003c FXSYS_wcsnimp(...) but it might be simpler if we were writing the equiv of FXSYS_wcsnimp(...) \u003e 0.",
+      "range": {
+        "startLine": 199,
+        "startChar": 2,
+        "endLine": 199,
+        "endChar": 51
+      },
+      "revId": "d91077626214ad8a6709af0697de6d36a26c9536",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcbb9261_1f20b738",
+        "filename": "core/fxcrt/fx_extension_unittest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-10T18:37:21Z",
+      "side": 1,
+      "message": "Flipped.",
+      "parentUuid": "4c0592f3_460a0697",
       "range": {
         "startLine": 199,
         "startChar": 2,
