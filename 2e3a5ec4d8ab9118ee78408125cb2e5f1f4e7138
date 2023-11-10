@@ -41,6 +41,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d1a46f0_4b82eecb",
+        "filename": "fpdfsdk/fpdf_dataavail_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-10T19:51:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b171f9ca_ead5d3ea",
+      "range": {
+        "startLine": 117,
+        "startChar": 17,
+        "endLine": 117,
+        "endChar": 44
+      },
+      "revId": "2e3a5ec4d8ab9118ee78408125cb2e5f1f4e7138",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "232a343a_c67c9a50",
@@ -54,6 +78,30 @@
       "writtenOn": "2023-11-10T18:28:21Z",
       "side": 1,
       "message": "maybe use subspan(*index).data()  - several places.",
+      "range": {
+        "startLine": 312,
+        "startChar": 16,
+        "endLine": 312,
+        "endChar": 47
+      },
+      "revId": "2e3a5ec4d8ab9118ee78408125cb2e5f1f4e7138",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c06eb216_744acf8d",
+        "filename": "fpdfsdk/fpdf_dataavail_embeddertest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-10T19:51:43Z",
+      "side": 1,
+      "message": "I used spans and modified only the bytes that needed changing.",
+      "parentUuid": "232a343a_c67c9a50",
       "range": {
         "startLine": 312,
         "startChar": 16,
@@ -87,6 +135,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "015f2120_21649401",
+        "filename": "testing/embedder_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-10T19:51:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35795e18_7fb86df6",
+      "range": {
+        "startLine": 431,
+        "startChar": 17,
+        "endLine": 431,
+        "endChar": 22
+      },
+      "revId": "2e3a5ec4d8ab9118ee78408125cb2e5f1f4e7138",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "34af7128_44f7f917",
@@ -110,6 +182,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a65390e6_fb4869d2",
+        "filename": "testing/utils/file_util.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-10T19:51:43Z",
+      "side": 1,
+      "message": "spancpy()",
+      "parentUuid": "34af7128_44f7f917",
+      "range": {
+        "startLine": 57,
+        "startChar": 16,
+        "endLine": 57,
+        "endChar": 36
+      },
+      "revId": "2e3a5ec4d8ab9118ee78408125cb2e5f1f4e7138",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a8fb07a8_fb61e851",
@@ -123,6 +219,30 @@
       "writtenOn": "2023-11-10T18:28:21Z",
       "side": 1,
       "message": "nit: Not quite true -- we\u0027re cool with non-existent .evt files in pdfium test being treated the same as empty one.",
+      "range": {
+        "startLine": 16,
+        "startChar": 12,
+        "endLine": 17,
+        "endChar": 12
+      },
+      "revId": "2e3a5ec4d8ab9118ee78408125cb2e5f1f4e7138",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36a6041e_6e922e0a",
+        "filename": "testing/utils/file_util.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-10T19:51:43Z",
+      "side": 1,
+      "message": "I updated the comment slightly.",
+      "parentUuid": "a8fb07a8_fb61e851",
       "range": {
         "startLine": 16,
         "startChar": 12,
