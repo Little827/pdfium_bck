@@ -70,6 +70,52 @@
       },
       "revId": "d91077626214ad8a6709af0697de6d36a26c9536",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "647755b5_15dc3bbd",
+        "filename": "core/fxcrt/fx_extension_unittest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-11-10T18:11:15Z",
+      "side": 1,
+      "message": "As long as I\u0027m being picky, can we get FXSYS_wcsnicmp(nullptr, nullptr, 0) since the FXSYS_ functions are expected to avoid this bugagoo in the C spec.",
+      "range": {
+        "startLine": 195,
+        "startChar": 2,
+        "endLine": 195,
+        "endChar": 8
+      },
+      "revId": "d91077626214ad8a6709af0697de6d36a26c9536",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c0592f3_460a0697",
+        "filename": "core/fxcrt/fx_extension_unittest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-11-10T18:11:15Z",
+      "side": 1,
+      "message": "Might make my head hurt less if the args were re-ordered. Currently we are writing the equiv of 0 \u003c FXSYS_wcsnimp(...) but it might be simpler if we were writing the equiv of FXSYS_wcsnimp(...) \u003e 0.",
+      "range": {
+        "startLine": 199,
+        "startChar": 2,
+        "endLine": 199,
+        "endChar": 51
+      },
+      "revId": "d91077626214ad8a6709af0697de6d36a26c9536",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
