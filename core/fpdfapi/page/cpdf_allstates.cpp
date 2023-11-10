@@ -24,7 +24,7 @@ CPDF_AllStates::CPDF_AllStates() = default;
 CPDF_AllStates::~CPDF_AllStates() = default;
 
 void CPDF_AllStates::Copy(const CPDF_AllStates& src) {
-  CopyStates(src);
+  m_GraphicStates.CopyStates(src.m_GraphicStates);
   m_TextMatrix = src.m_TextMatrix;
   m_ParentMatrix = src.m_ParentMatrix;
   m_CTM = src.m_CTM;
@@ -39,7 +39,7 @@ void CPDF_AllStates::SetLineDash(const CPDF_Array* pArray,
                                  float phase,
                                  float scale) {
   std::vector<float> dashes = ReadArrayElementsToVector(pArray, pArray->size());
-  m_GraphState.SetLineDash(std::move(dashes), phase, scale);
+  m_GraphicStates.m_GraphState.SetLineDash(std::move(dashes), phase, scale);
 }
 
 void CPDF_AllStates::ProcessExtGS(const CPDF_Dictionary* pGS,
@@ -53,18 +53,18 @@ void CPDF_AllStates::ProcessExtGS(const CPDF_Dictionary* pGS,
     uint32_t key = it.first.GetID();
     switch (key) {
       case FXBSTR_ID('L', 'W', 0, 0):
-        m_GraphState.SetLineWidth(pObject->GetNumber());
+        m_GraphicStates.m_GraphState.SetLineWidth(pObject->GetNumber());
         break;
       case FXBSTR_ID('L', 'C', 0, 0):
-        m_GraphState.SetLineCap(
+        m_GraphicStates.m_GraphState.SetLineCap(
             static_cast<CFX_GraphStateData::LineCap>(pObject->GetInteger()));
         break;
       case FXBSTR_ID('L', 'J', 0, 0):
-        m_GraphState.SetLineJoin(
+        m_GraphicStates.m_GraphState.SetLineJoin(
             static_cast<CFX_GraphStateData::LineJoin>(pObject->GetInteger()));
         break;
       case FXBSTR_ID('M', 'L', 0, 0):
-        m_GraphState.SetMiterLimit(pObject->GetNumber());
+        m_GraphicStates.m_GraphState.SetMiterLimit(pObject->GetNumber());
         break;
       case FXBSTR_ID('D', 0, 0, 0): {
         const CPDF_Array* pDash = pObject->AsArray();
@@ -79,15 +79,16 @@ void CPDF_AllStates::ProcessExtGS(const CPDF_Dictionary* pGS,
         break;
       }
       case FXBSTR_ID('R', 'I', 0, 0):
-        m_GeneralState.SetRenderIntent(pObject->GetString());
+        m_GraphicStates.m_GeneralState.SetRenderIntent(pObject->GetString());
         break;
       case FXBSTR_ID('F', 'o', 'n', 't'): {
         const CPDF_Array* pFont = pObject->AsArray();
         if (!pFont)
           break;
 
-        m_TextState.SetFontSize(pFont->GetFloatAt(1));
-        m_TextState.SetFont(pParser->FindFont(pFont->GetByteStringAt(0)));
+        m_GraphicStates.m_TextState.SetFontSize(pFont->GetFloatAt(1));
+        m_GraphicStates.m_TextState.SetFont(
+            pParser->FindFont(pFont->GetByteStringAt(0)));
         break;
       }
       case FXBSTR_ID('T', 'R', 0, 0):
@@ -96,41 +97,45 @@ void CPDF_AllStates::ProcessExtGS(const CPDF_Dictionary* pGS,
         }
         [[fallthrough]];
       case FXBSTR_ID('T', 'R', '2', 0):
-        m_GeneralState.SetTR(!pObject->IsName() ? std::move(pObject) : nullptr);
+        m_GraphicStates.m_GeneralState.SetTR(
+            !pObject->IsName() ? std::move(pObject) : nullptr);
         break;
       case FXBSTR_ID('B', 'M', 0, 0): {
         const CPDF_Array* pArray = pObject->AsArray();
-        m_GeneralState.SetBlendMode(pArray ? pArray->GetByteStringAt(0)
-                                           : pObject->GetString());
-        if (m_GeneralState.GetBlendType() > BlendMode::kMultiply)
+        m_GraphicStates.m_GeneralState.SetBlendMode(
+            pArray ? pArray->GetByteStringAt(0) : pObject->GetString());
+        if (m_GraphicStates.m_GeneralState.GetBlendType() >
+            BlendMode::kMultiply) {
           pParser->GetPageObjectHolder()->SetBackgroundAlphaNeeded(true);
+        }
         break;
       }
       case FXBSTR_ID('S', 'M', 'a', 's'): {
         RetainPtr<CPDF_Dictionary> pMaskDict = ToDictionary(pObject);
-        m_GeneralState.SetSoftMask(pMaskDict);
+        m_GraphicStates.m_GeneralState.SetSoftMask(pMaskDict);
         if (pMaskDict)
-          m_GeneralState.SetSMaskMatrix(pParser->GetCurStates()->m_CTM);
+          m_GraphicStates.m_GeneralState.SetSMaskMatrix(
+              pParser->GetCurStates()->m_CTM);
         break;
       }
       case FXBSTR_ID('C', 'A', 0, 0):
-        m_GeneralState.SetStrokeAlpha(
+        m_GraphicStates.m_GeneralState.SetStrokeAlpha(
             std::clamp(pObject->GetNumber(), 0.0f, 1.0f));
         break;
       case FXBSTR_ID('c', 'a', 0, 0):
-        m_GeneralState.SetFillAlpha(
+        m_GraphicStates.m_GeneralState.SetFillAlpha(
             std::clamp(pObject->GetNumber(), 0.0f, 1.0f));
         break;
       case FXBSTR_ID('O', 'P', 0, 0):
-        m_GeneralState.SetStrokeOP(!!pObject->GetInteger());
+        m_GraphicStates.m_GeneralState.SetStrokeOP(!!pObject->GetInteger());
         if (!pGS->KeyExist("op"))
-          m_GeneralState.SetFillOP(!!pObject->GetInteger());
+          m_GraphicStates.m_GeneralState.SetFillOP(!!pObject->GetInteger());
         break;
       case FXBSTR_ID('o', 'p', 0, 0):
-        m_GeneralState.SetFillOP(!!pObject->GetInteger());
+        m_GraphicStates.m_GeneralState.SetFillOP(!!pObject->GetInteger());
         break;
       case FXBSTR_ID('O', 'P', 'M', 0):
-        m_GeneralState.SetOPMode(pObject->GetInteger());
+        m_GraphicStates.m_GeneralState.SetOPMode(pObject->GetInteger());
         break;
       case FXBSTR_ID('B', 'G', 0, 0):
         if (pGS->KeyExist("BG2")) {
@@ -138,7 +143,7 @@ void CPDF_AllStates::ProcessExtGS(const CPDF_Dictionary* pGS,
         }
         [[fallthrough]];
       case FXBSTR_ID('B', 'G', '2', 0):
-        m_GeneralState.SetBG(std::move(pObject));
+        m_GraphicStates.m_GeneralState.SetBG(std::move(pObject));
         break;
       case FXBSTR_ID('U', 'C', 'R', 0):
         if (pGS->KeyExist("UCR2")) {
@@ -146,27 +151,27 @@ void CPDF_AllStates::ProcessExtGS(const CPDF_Dictionary* pGS,
         }
         [[fallthrough]];
       case FXBSTR_ID('U', 'C', 'R', '2'):
-        m_GeneralState.SetUCR(std::move(pObject));
+        m_GraphicStates.m_GeneralState.SetUCR(std::move(pObject));
         break;
       case FXBSTR_ID('H', 'T', 0, 0):
-        m_GeneralState.SetHT(std::move(pObject));
+        m_GraphicStates.m_GeneralState.SetHT(std::move(pObject));
         break;
       case FXBSTR_ID('F', 'L', 0, 0):
-        m_GeneralState.SetFlatness(pObject->GetNumber());
+        m_GraphicStates.m_GeneralState.SetFlatness(pObject->GetNumber());
         break;
       case FXBSTR_ID('S', 'M', 0, 0):
-        m_GeneralState.SetSmoothness(pObject->GetNumber());
+        m_GraphicStates.m_GeneralState.SetSmoothness(pObject->GetNumber());
         break;
       case FXBSTR_ID('S', 'A', 0, 0):
-        m_GeneralState.SetStrokeAdjust(!!pObject->GetInteger());
+        m_GraphicStates.m_GeneralState.SetStrokeAdjust(!!pObject->GetInteger());
         break;
       case FXBSTR_ID('A', 'I', 'S', 0):
-        m_GeneralState.SetAlphaSource(!!pObject->GetInteger());
+        m_GraphicStates.m_GeneralState.SetAlphaSource(!!pObject->GetInteger());
         break;
       case FXBSTR_ID('T', 'K', 0, 0):
-        m_GeneralState.SetTextKnockout(!!pObject->GetInteger());
+        m_GraphicStates.m_GeneralState.SetTextKnockout(!!pObject->GetInteger());
         break;
     }
   }
-  m_GeneralState.SetMatrix(m_CTM);
+  m_GraphicStates.m_GeneralState.SetMatrix(m_CTM);
 }

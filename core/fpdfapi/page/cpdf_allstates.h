@@ -14,16 +14,17 @@ class CPDF_Array;
 class CPDF_Dictionary;
 class CPDF_StreamContentParser;
 
-class CPDF_AllStates final : public CPDF_GraphicStates {
+class CPDF_AllStates {
  public:
   CPDF_AllStates();
-  ~CPDF_AllStates() override;
+  ~CPDF_AllStates();
 
   void Copy(const CPDF_AllStates& src);
   void ProcessExtGS(const CPDF_Dictionary* pGS,
                     CPDF_StreamContentParser* pParser);
   void SetLineDash(const CPDF_Array* pArray, float phase, float scale);
 
+  CPDF_GraphicStates m_GraphicStates;
   CFX_Matrix m_TextMatrix;
   CFX_Matrix m_CTM;
   CFX_Matrix m_ParentMatrix;
