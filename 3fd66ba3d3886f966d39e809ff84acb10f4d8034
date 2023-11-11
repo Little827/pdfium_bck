@@ -41,6 +41,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "151e6df6_35998645",
+        "filename": "core/fpdfapi/page/cpdf_pageobject.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-11T02:22:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "041d56e7_40aec8e6",
+      "range": {
+        "startLine": 99,
+        "startChar": 2,
+        "endLine": 99,
+        "endChar": 4
+      },
+      "revId": "3fd66ba3d3886f966d39e809ff84acb10f4d8034",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "674df286_9e168834",
@@ -54,6 +78,24 @@
       "writtenOn": "2023-11-11T02:04:54Z",
       "side": 1,
       "message": "nit: brace here for consistency (darn clang-fmt) (also 2x below).",
+      "revId": "3fd66ba3d3886f966d39e809ff84acb10f4d8034",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89b2c80d_d1c02740",
+        "filename": "fpdfsdk/fpdf_editpage.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-11T02:22:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "674df286_9e168834",
       "revId": "3fd66ba3d3886f966d39e809ff84acb10f4d8034",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -75,6 +117,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "86f58a05_b4484794",
+        "filename": "fpdfsdk/fpdf_editpage.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-11T02:22:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2799d41_9ba2d72c",
+      "revId": "3fd66ba3d3886f966d39e809ff84acb10f4d8034",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "51244acd_24ad39d7",
@@ -88,6 +148,30 @@
       "writtenOn": "2023-11-11T02:04:54Z",
       "side": 1,
       "message": "nit: also {} here and no blank line following.",
+      "range": {
+        "startLine": 871,
+        "startChar": 0,
+        "endLine": 871,
+        "endChar": 40
+      },
+      "revId": "3fd66ba3d3886f966d39e809ff84acb10f4d8034",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45fef104_efb918df",
+        "filename": "fpdfsdk/fpdf_editpage.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 871,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-11T02:22:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51244acd_24ad39d7",
       "range": {
         "startLine": 871,
         "startChar": 0,
