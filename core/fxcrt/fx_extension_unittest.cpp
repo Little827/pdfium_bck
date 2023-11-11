@@ -5,6 +5,7 @@
 #include "core/fxcrt/fx_extension.h"
 
 #include <math.h>
+#include <stdint.h>
 
 #include <iterator>
 #include <limits>
@@ -203,6 +204,32 @@ TEST(fxcrt, FXSYS_wcsnicmp) {
   EXPECT_EQ(FXSYS_wcsnicmp(L"foO", L"Foo", 3), 0);
   EXPECT_EQ(FXSYS_wcsnicmp(L"food", L"FOOT", 3), 0);
   EXPECT_LT(FXSYS_wcsnicmp(L"food", L"FOOT", 4), 0);
+
+  const wchar_t kMax16bitSigned[] = {
+      static_cast<wchar_t>(std::numeric_limits<int16_t>::max()), 0};
+  EXPECT_GT(FXSYS_wcsnicmp(kMax16bitSigned, L"f", 1), 0);
+#if 0
+  // TODO(thestig): Figure out the cross-platform behavior here and re-enable
+  // this code.
+  const wchar_t kMin16bitSigned[] = {
+      static_cast<wchar_t>(std::numeric_limits<int16_t>::min()), 0};
+  EXPECT_LT(FXSYS_wcsnicmp(kMin16bitSigned, L"f", 1), 0);
+#endif
+  const wchar_t kMax16bitUnsigned[] = {
+      static_cast<wchar_t>(std::numeric_limits<uint16_t>::max()), 0};
+  EXPECT_GT(FXSYS_wcsnicmp(kMax16bitUnsigned, L"f", 1), 0);
+
+#if defined(WCHAR_T_IS_32_BIT)
+  const wchar_t kMax32bitSigned[] = {
+      static_cast<wchar_t>(std::numeric_limits<int32_t>::max()), 0};
+  EXPECT_GT(FXSYS_wcsnicmp(kMax32bitSigned, L"f", 1), 0);
+  const wchar_t kMin32bitSigned[] = {
+      static_cast<wchar_t>(std::numeric_limits<int32_t>::min()), 0};
+  EXPECT_LT(FXSYS_wcsnicmp(kMin32bitSigned, L"f", 1), 0);
+  const wchar_t kMax32bitUnsigned[] = {
+      static_cast<wchar_t>(std::numeric_limits<uint32_t>::max()), 0};
+  EXPECT_LT(FXSYS_wcsnicmp(kMax32bitUnsigned, L"f", 1), 0);
+#endif
 }
 
 TEST(fxcrt, FXSYS_SafeOps) {
