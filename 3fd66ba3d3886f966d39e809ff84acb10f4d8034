@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c722b65e_c327c91e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-11-11T02:04:54Z",
+      "side": 1,
+      "message": "Just nits.",
+      "revId": "3fd66ba3d3886f966d39e809ff84acb10f4d8034",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "041d56e7_40aec8e6",
+        "filename": "core/fpdfapi/page/cpdf_pageobject.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-11-11T02:04:54Z",
+      "side": 1,
+      "message": "nit: maybe local\u0026 for consistency with line 90.",
+      "range": {
+        "startLine": 99,
+        "startChar": 2,
+        "endLine": 99,
+        "endChar": 4
+      },
+      "revId": "3fd66ba3d3886f966d39e809ff84acb10f4d8034",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "674df286_9e168834",
+        "filename": "fpdfsdk/fpdf_editpage.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-11-11T02:04:54Z",
+      "side": 1,
+      "message": "nit: brace here for consistency (darn clang-fmt) (also 2x below).",
+      "revId": "3fd66ba3d3886f966d39e809ff84acb10f4d8034",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2799d41_9ba2d72c",
+        "filename": "fpdfsdk/fpdf_editpage.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-11-11T02:04:54Z",
+      "side": 1,
+      "message": "nit: so long as we have braces, no need blank lines, so long as we are manually fixing above ...",
+      "revId": "3fd66ba3d3886f966d39e809ff84acb10f4d8034",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51244acd_24ad39d7",
+        "filename": "fpdfsdk/fpdf_editpage.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 871,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-11-11T02:04:54Z",
+      "side": 1,
+      "message": "nit: also {} here and no blank line following.",
+      "range": {
+        "startLine": 871,
+        "startChar": 0,
+        "endLine": 871,
+        "endChar": 40
+      },
+      "revId": "3fd66ba3d3886f966d39e809ff84acb10f4d8034",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1fa75c0_d6719824",
+        "filename": "fpdfsdk/fpdf_editpage.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 877,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-11-11T02:04:54Z",
+      "side": 1,
+      "message": "blank line here ok, introducing new block of decls.",
+      "revId": "3fd66ba3d3886f966d39e809ff84acb10f4d8034",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
