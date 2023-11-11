@@ -94,6 +94,23 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "95e5809a_d344dca0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-11-11T00:52:36Z",
+      "side": 1,
+      "message": "Anyway, in the mean time, it dawns on me that you can land this, too, so long as the destructor in CPDF_GraphicStates is marked protected.",
+      "revId": "6adfd2633444346e483b8cc3e2104466f8e00e06",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "011049f0_8fec3458",
