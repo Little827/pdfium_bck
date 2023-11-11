@@ -58,6 +58,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbcddcf9_2c676b5d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-11T00:02:27Z",
+      "side": 1,
+      "message": "Maybe we could do the encapsulation first, and then add a duplicate set of setters/getters in CPDF_AllStates that forwards to CPDF_GraphicStates.",
+      "parentUuid": "e2c03125_9b8c1615",
+      "revId": "6adfd2633444346e483b8cc3e2104466f8e00e06",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "011049f0_8fec3458",
