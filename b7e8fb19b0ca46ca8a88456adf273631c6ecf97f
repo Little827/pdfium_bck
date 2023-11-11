@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06ccf54b_a849fc30",
+        "filename": "core/fxcrt/fx_extension_unittest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-11-11T01:50:30Z",
+      "side": 1,
+      "message": "so this is -32768,\non windows (unsigned short)-32786 \u003d\u003d 32768\non linux (signed int)-32768 \u003d\u003d -32768\n\nSo on windows, \u0027f\u0027 \u003c 32768\nso on linux, \u0027f\u0027 \u003e -32768\n\nIts not just the size, its also swithching between uint16_t and int32_t.",
+      "range": {
+        "startLine": 215,
+        "startChar": 17,
+        "endLine": 215,
+        "endChar": 26
+      },
+      "revId": "b7e8fb19b0ca46ca8a88456adf273631c6ecf97f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
