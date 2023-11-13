@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2abc6f56_519027fd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 8936
+      },
+      "writtenOn": "2023-11-13T17:35:52Z",
+      "side": 1,
+      "message": "Optional: maybe some comments in the code about when it traverses front-to-end and end-to-front and when entries should be overwritten?",
+      "range": {
+        "startLine": 11,
+        "startChar": 37,
+        "endLine": 14,
+        "endChar": 47
+      },
+      "revId": "fcbd7f1f5334b41033e00fb2e1f6f42a45b8b1cc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50e9d248_0b54cb61",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8936
+      },
+      "writtenOn": "2023-11-13T17:35:52Z",
+      "side": 1,
+      "message": "LGTM, although I don\u0027t have +1 privileges.",
+      "revId": "fcbd7f1f5334b41033e00fb2e1f6f42a45b8b1cc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7321ac67_d459c282",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1183,
+      "author": {
+        "id": 8936
+      },
+      "writtenOn": "2023-11-13T17:35:52Z",
+      "side": 1,
+      "message": "Why is `is_main_xref` false in LoadLinearizedAllCrossRefV5() but true in LoadAllCrossRefV5()?",
+      "range": {
+        "startLine": 1183,
+        "startChar": 53,
+        "endLine": 1183,
+        "endChar": 58
+      },
+      "revId": "fcbd7f1f5334b41033e00fb2e1f6f42a45b8b1cc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
