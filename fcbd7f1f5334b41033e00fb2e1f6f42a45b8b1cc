@@ -62,6 +62,30 @@
       },
       "revId": "fcbd7f1f5334b41033e00fb2e1f6f42a45b8b1cc",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e52be9a1_3c9289e9",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1183,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-13T19:38:26Z",
+      "side": 1,
+      "message": "CPDF_Parser::StartLinearizedParse() already called LoadCrossRefV5() with `is_main_xref` set to true. The linearized PDF loading process span several public API calls, where FPDFAvail_GetDocument() has to get called earlier, and FPDFAvail_GetDocument() is the only possible caller for CPDF_Parser::StartLinearizedParse().",
+      "parentUuid": "7321ac67_d459c282",
+      "range": {
+        "startLine": 1183,
+        "startChar": 53,
+        "endLine": 1183,
+        "endChar": 58
+      },
+      "revId": "fcbd7f1f5334b41033e00fb2e1f6f42a45b8b1cc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
