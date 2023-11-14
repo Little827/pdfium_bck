@@ -27,6 +27,21 @@ extern "C" {
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
 FPDFCatalog_IsTagged(FPDF_DOCUMENT document);
 
+/**
+ * Experimental API.
+ *
+ * Determine if |document| represents a PDF with an outline.
+ *
+ * For the definition of PDF outlines, See (see 12.3.3 "Document Outline"
+ * in PDF Reference 1.7).
+ *
+ *   document - handle to a document.
+ *
+ * Returns |true| iff |document| has a PDF outline.
+ */
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
+FPDFCatalog_HasOutline(FPDF_DOCUMENT document);
+
 #ifdef __cplusplus
 }  // extern "C"
 #endif  // __cplusplus

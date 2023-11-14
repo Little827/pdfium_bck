@@ -21,3 +21,17 @@ FPDFCatalog_IsTagged(FPDF_DOCUMENT document) {
   RetainPtr<const CPDF_Dictionary> pMarkInfo = pCatalog->GetDictFor("MarkInfo");
   return pMarkInfo && pMarkInfo->GetIntegerFor("Marked") != 0;
 }
+
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
+FPDFCatalog_HasOutline(FPDF_DOCUMENT document) {
+  CPDF_Document* pDoc = CPDFDocumentFromFPDFDocument(document);
+  if (!pDoc)
+    return false;
+
+  const CPDF_Dictionary* pCatalog = pDoc->GetRoot();
+  if (!pCatalog)
+    return false;
+
+  RetainPtr<const CPDF_Dictionary> pOutlines = pCatalog->GetDictFor("Outlines");
+  return static_cast<bool>(pOutlines);
+}
