@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "990da1f1_7b92fca9",
+        "filename": ".vpython3",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-14T01:09:44Z",
+      "side": 0,
+      "message": "Stopped using six in crrev.com/1057731",
+      "revId": "08f11e596f93f900e987b0149be968bb205cd8c9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a9487ab_d12b6ef5",
+        "filename": ".vpython3",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-14T01:09:44Z",
+      "side": 0,
+      "message": "Stopped using six in crrev.com/1175480",
+      "revId": "08f11e596f93f900e987b0149be968bb205cd8c9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
