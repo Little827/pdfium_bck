@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0671d4ce_990d2fa0",
+        "filename": ".vpython3",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-14T01:10:44Z",
+      "side": 1,
+      "message": "Not upgrade as there is no py3-only alternative.",
+      "revId": "8964dc983ff1745609f8ac37704806e34254d9bf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
