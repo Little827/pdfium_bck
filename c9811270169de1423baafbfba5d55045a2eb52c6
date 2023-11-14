@@ -33,6 +33,24 @@
       "message": "Can a PDFium embedder call the existing FPDFBookmark_GetFirstChild() to determine if there\u0027s an outline?",
       "revId": "c9811270169de1423baafbfba5d55045a2eb52c6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "596fab80_9e56860b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5845
+      },
+      "writtenOn": "2023-11-14T23:10:34Z",
+      "side": 1,
+      "message": "Yes, I think so. I was looking all over the place for something in the API with \"outline\" in the name. I suppose I should have searched for \"Outlines\" to get to `core/fpdfdoc/cpdf_bookmarktree.cpp` and discover these we called \"bookmarks\" in the API.",
+      "parentUuid": "7e181f09_f2451bb6",
+      "revId": "c9811270169de1423baafbfba5d55045a2eb52c6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
