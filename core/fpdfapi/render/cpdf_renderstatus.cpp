@@ -1208,32 +1208,22 @@ void CPDF_RenderStatus::CompositeDIBitmap(
     BlendMode blend_mode,
     const CPDF_Transparency& transparency) {
   CHECK(pDIBitmap);
+  CHECK(!pDIBitmap->IsMaskFormat());
 
   if (blend_mode == BlendMode::kNormal) {
-    if (!pDIBitmap->IsMaskFormat()) {
-      if (bitmap_alpha < 255) {
-        if (CFX_DefaultRenderDevice::UseSkiaRenderer()) {
-          std::unique_ptr<CFX_ImageRenderer> dummy;
-          CFX_Matrix m = CFX_RenderDevice::GetFlipMatrix(
-              pDIBitmap->GetWidth(), pDIBitmap->GetHeight(), left, top);
-          m_pDevice->StartDIBits(pDIBitmap, bitmap_alpha, 0, m,
-                                 FXDIB_ResampleOptions(), &dummy);
-          return;
-        }
-        pDIBitmap->MultiplyAlpha(bitmap_alpha);
-      }
-      if (m_pDevice->SetDIBits(pDIBitmap, left, top)) {
+    if (bitmap_alpha < 255) {
+      if (CFX_DefaultRenderDevice::UseSkiaRenderer()) {
+        std::unique_ptr<CFX_ImageRenderer> dummy;
+        CFX_Matrix m = CFX_RenderDevice::GetFlipMatrix(
+            pDIBitmap->GetWidth(), pDIBitmap->GetHeight(), left, top);
+        m_pDevice->StartDIBits(pDIBitmap, bitmap_alpha, 0, m,
+                               FXDIB_ResampleOptions(), &dummy);
         return;
       }
-    } else {
-      uint32_t fill_argb = m_Options.TranslateColor(mask_argb);
-      if (bitmap_alpha < 255) {
-        uint8_t* fill_argb8 = reinterpret_cast<uint8_t*>(&fill_argb);
-        fill_argb8[3] *= bitmap_alpha / 255;
-      }
-      if (m_pDevice->SetBitMask(pDIBitmap, left, top, fill_argb)) {
-        return;
-      }
+      pDIBitmap->MultiplyAlpha(bitmap_alpha);
+    }
+    if (m_pDevice->SetDIBits(pDIBitmap, left, top)) {
+      return;
     }
   }
   bool bIsolated = transparency.IsIsolated();
@@ -1245,8 +1235,7 @@ void CPDF_RenderStatus::CompositeDIBitmap(
        (m_pDevice->GetRenderCaps() & FXRC_GET_BITS) && !bBackAlphaRequired);
   if (bGetBackGround) {
     if (bIsolated || !transparency.IsGroup()) {
-      if (!pDIBitmap->IsMaskFormat())
-        m_pDevice->SetDIBitsWithBlend(pDIBitmap, left, top, blend_mode);
+      m_pDevice->SetDIBitsWithBlend(pDIBitmap, left, top, blend_mode);
       return;
     }
 
@@ -1265,28 +1254,19 @@ void CPDF_RenderStatus::CompositeDIBitmap(
                               BlendMode::kNormal, nullptr, false);
       left = std::min(left, 0);
       top = std::min(top, 0);
-      if (pDIBitmap->IsMaskFormat()) {
-        pClone->CompositeMask(0, 0, pClone->GetWidth(), pClone->GetHeight(),
-                              pDIBitmap, mask_argb, left, top, blend_mode,
-                              nullptr, false);
-      } else {
-        pClone->CompositeBitmap(0, 0, pClone->GetWidth(), pClone->GetHeight(),
-                                pDIBitmap, left, top, blend_mode, nullptr,
-                                false);
-      }
+      pClone->CompositeBitmap(0, 0, pClone->GetWidth(), pClone->GetHeight(),
+                              pDIBitmap, left, top, blend_mode, nullptr, false);
     } else {
       pClone = pDIBitmap;
     }
     if (m_pDevice->GetBackDrop()) {
       m_pDevice->SetDIBits(pClone, rect.left, rect.top);
     } else {
-      if (!pDIBitmap->IsMaskFormat()) {
-        m_pDevice->SetDIBitsWithBlend(pDIBitmap, rect.left, rect.top,
-                                      blend_mode);
-      }
+      m_pDevice->SetDIBitsWithBlend(pDIBitmap, rect.left, rect.top, blend_mode);
     }
     return;
   }
+
   FX_RECT bbox = GetClippedBBox(FX_RECT(left, top, left + pDIBitmap->GetWidth(),
                                         top + pDIBitmap->GetHeight()));
   RetainPtr<CFX_DIBitmap> pBackdrop = GetBackdrop(
@@ -1294,16 +1274,9 @@ void CPDF_RenderStatus::CompositeDIBitmap(
   if (!pBackdrop)
     return;
 
-  if (pDIBitmap->IsMaskFormat()) {
-    pBackdrop->CompositeMask(left - bbox.left, top - bbox.top,
+  pBackdrop->CompositeBitmap(left - bbox.left, top - bbox.top,
                              pDIBitmap->GetWidth(), pDIBitmap->GetHeight(),
-                             pDIBitmap, mask_argb, 0, 0, blend_mode, nullptr,
-                             false);
-  } else {
-    pBackdrop->CompositeBitmap(left - bbox.left, top - bbox.top,
-                               pDIBitmap->GetWidth(), pDIBitmap->GetHeight(),
-                               pDIBitmap, 0, 0, blend_mode, nullptr, false);
-  }
+                             pDIBitmap, 0, 0, blend_mode, nullptr, false);
 
   auto pBackdrop1 = pdfium::MakeRetain<CFX_DIBitmap>();
   pBackdrop1->Create(pBackdrop->GetWidth(), pBackdrop->GetHeight(),
