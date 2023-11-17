@@ -18,6 +18,23 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1a873c7_7512ac84",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-17T01:20:33Z",
+      "side": 1,
+      "message": "If the Skia DEPS roll doesn\u0027t have to land at the same time as this CL, then I would suggest doing that first. In a new branch, run: `roll-dep third_party/skia`.",
+      "revId": "0d8b5b36e7898e144627bccd4f95c90a1c598a7a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f8ad779_8fe1354d",
