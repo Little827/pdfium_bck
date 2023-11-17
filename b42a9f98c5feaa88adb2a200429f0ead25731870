@@ -22,6 +22,30 @@
       },
       "revId": "b42a9f98c5feaa88adb2a200429f0ead25731870",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2b80358_4268cd8c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-17T21:36:13Z",
+      "side": 1,
+      "message": "Oh, I read https://source.chromium.org/chromium/chromium/src/+/main:third_party/pdfium/core/fpdfapi/render/cpdf_imagerenderer.cpp;drc\u003d42f0b9c4f60f67676d9096b3e94df9fd47f568f4;l\u003d453 wrong and thought the mask format case returned early.",
+      "parentUuid": "d6739e74_7b0393af",
+      "range": {
+        "startLine": 9,
+        "startChar": 6,
+        "endLine": 9,
+        "endChar": 25
+      },
+      "revId": "b42a9f98c5feaa88adb2a200429f0ead25731870",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
