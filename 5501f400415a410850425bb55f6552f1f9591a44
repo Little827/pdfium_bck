@@ -46,6 +46,30 @@
       },
       "revId": "5501f400415a410850425bb55f6552f1f9591a44",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "734a7f11_03a445f7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-11-20T22:45:39Z",
+      "side": 1,
+      "message": "SGTM.",
+      "parentUuid": "7c25074b_bc19ef15",
+      "range": {
+        "startLine": 10,
+        "startChar": 30,
+        "endLine": 10,
+        "endChar": 38
+      },
+      "revId": "5501f400415a410850425bb55f6552f1f9591a44",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
