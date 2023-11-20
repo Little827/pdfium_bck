@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f945a7bf_46aca3db",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7620
+      },
+      "writtenOn": "2023-11-20T18:21:32Z",
+      "side": 1,
+      "message": "Can we add CHECK() in Blend() to make sure the integer values are within the range?\nIf there is no CHECK(), I think out-of-range inputs should be expected in the unit test.",
+      "range": {
+        "startLine": 10,
+        "startChar": 30,
+        "endLine": 10,
+        "endChar": 38
+      },
+      "revId": "5501f400415a410850425bb55f6552f1f9591a44",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
