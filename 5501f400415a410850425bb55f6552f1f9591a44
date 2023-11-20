@@ -22,6 +22,30 @@
       },
       "revId": "5501f400415a410850425bb55f6552f1f9591a44",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c25074b_bc19ef15",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-20T22:04:37Z",
+      "side": 1,
+      "message": "Maybe as a follow-up improvement? This CL is just adding tests.",
+      "parentUuid": "f945a7bf_46aca3db",
+      "range": {
+        "startLine": 10,
+        "startChar": 30,
+        "endLine": 10,
+        "endChar": 38
+      },
+      "revId": "5501f400415a410850425bb55f6552f1f9591a44",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
