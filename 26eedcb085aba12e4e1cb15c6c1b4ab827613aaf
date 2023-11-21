@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b547298_d9d9ec05",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-21T22:47:38Z",
+      "side": 1,
+      "message": "LGTM with green bots.",
+      "revId": "26eedcb085aba12e4e1cb15c6c1b4ab827613aaf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51d08b68_885cb144",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-21T22:47:38Z",
+      "side": 1,
+      "message": "In reverse order, this should come after CPDFXFA_ModuleDestroy().",
+      "revId": "26eedcb085aba12e4e1cb15c6c1b4ab827613aaf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23240c2f_8a0eb60c",
+        "filename": "xfa/fde/cfde_textout_unittest.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-21T22:47:38Z",
+      "side": 1,
+      "message": "Tear down in reverse order? i.e. Make this last.",
+      "revId": "26eedcb085aba12e4e1cb15c6c1b4ab827613aaf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
