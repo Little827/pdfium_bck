@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92c99282_b448d21f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-21T20:21:41Z",
+      "side": 1,
+      "message": "Got a red bot - does the failing test need to call InitializeGlobals() and DestroyGlobals(), or is something else different?",
+      "revId": "13a8245dd9c80f12e1beec825a0effe9cb99ac4f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
