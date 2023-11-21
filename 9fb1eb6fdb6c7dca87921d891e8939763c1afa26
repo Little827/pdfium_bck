@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0734b681_4b152814",
+        "filename": "core/fxge/cfx_glyphcache.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-21T17:57:43Z",
+      "side": 1,
+      "message": "As part of crbug.com/pdfium/1876, I\u0027m trying to stop using NoDestructor in PDFium. Is it possible to hook up the SkFontMgr creation / destruction to FPDF_InitLibraryWithConfig() and FPDF_DestroyLibrary(), respectively?\n\nI understand some of PDFium\u0027s dependencies may use NoDestructor, but that\u0027s a separate issue which is out of PDFium\u0027s control.",
+      "revId": "9fb1eb6fdb6c7dca87921d891e8939763c1afa26",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b86ee69c_ccb884e9",
+        "filename": "core/fxge/cfx_glyphcache.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-21T17:57:43Z",
+      "side": 1,
+      "message": "If variables are getting renamed, can they follow Google C++ style?",
+      "range": {
+        "startLine": 371,
+        "startChar": 21,
+        "endLine": 371,
+        "endChar": 32
+      },
+      "revId": "9fb1eb6fdb6c7dca87921d891e8939763c1afa26",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
