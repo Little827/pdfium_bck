@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dda76de1_ee16eb92",
+        "filename": "core/fxge/cfx_glyphcache.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-21T19:34:42Z",
+      "side": 1,
+      "message": "Does this add a static initializer? This may need to be marked as static and wrapped in a function, similar to how NoDestructor gets used.\n\nOne possible alternative, though it\u0027s less good for encapsulation, is make this a member in CFX_GEModule.",
+      "revId": "bb573e154ee0c68773d7052a9471342ace6eaffc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
