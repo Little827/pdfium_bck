@@ -256,6 +256,24 @@
       "parentUuid": "a2eb9538_adfb66ea",
       "revId": "4072fb47f24582cc2d6955c381b0c838c71d808e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79f53869_7e979278",
+        "filename": "testing/resources/utf-8.pdf",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-22T21:48:43Z",
+      "side": 1,
+      "message": "Or maybe kmoon@ can check in the files attached to https://bugs.chromium.org/p/pdfium/issues/detail?id\u003d2101#c1",
+      "parentUuid": "9d033349_bdefcc2a",
+      "revId": "4072fb47f24582cc2d6955c381b0c838c71d808e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
