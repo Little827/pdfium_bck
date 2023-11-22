@@ -50,6 +50,24 @@
       "message": "It should be relatively easy to follow testing/resources/hello_world.in / hello_world.pdf as an example and write a .in source file for this PDF. Then use testing/tools/fixup_pdf_template.py to regenerate this PDF. Though fixup_pdf_template.py hard codes \"%PDF-1.7\" into the header.",
       "revId": "4072fb47f24582cc2d6955c381b0c838c71d808e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e30a82a_43c768b6",
+        "filename": "testing/resources/utf-8.pdf",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5475
+      },
+      "writtenOn": "2023-11-22T19:36:38Z",
+      "side": 1,
+      "message": "there are oodles of checked-in PDFs. is there any downside to just checking in the PDF?",
+      "parentUuid": "b585f1ff_11dad674",
+      "revId": "4072fb47f24582cc2d6955c381b0c838c71d808e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
