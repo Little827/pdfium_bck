@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "16c24597_d9a085ad",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5475
+      },
+      "writtenOn": "2023-11-22T22:41:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0cfd329b_bc74d062",
+      "revId": "4072fb47f24582cc2d6955c381b0c838c71d808e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9a67b14b_955e2217",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-11-22T21:47:09Z",
       "side": 1,
       "message": "Parenthesis not needed? (No OR operation like lines 540-541.)",
+      "range": {
+        "startLine": 562,
+        "startChar": 13,
+        "endLine": 562,
+        "endChar": 14
+      },
+      "revId": "4072fb47f24582cc2d6955c381b0c838c71d808e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c55ff12_c026265b",
+        "filename": "core/fpdfapi/parser/fpdf_parser_decode.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 5475
+      },
+      "writtenOn": "2023-11-22T22:41:31Z",
+      "side": 1,
+      "message": "It\u0027s technically not needed, but some compiler\u0027s -Wparentheses warn without it. (Note 540-41 has _two_ sets of paranetheses, one of which isn\u0027t needed there either.)",
+      "parentUuid": "9a67b14b_955e2217",
       "range": {
         "startLine": 562,
         "startChar": 13,
@@ -75,6 +117,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc88fe40_edbdcd32",
+        "filename": "core/fxcrt/fx_string.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 5475
+      },
+      "writtenOn": "2023-11-22T22:41:31Z",
+      "side": 1,
+      "message": "\"This\" being the span overload?\n\nApparently not, thanks!",
+      "parentUuid": "915e6365_d8d0fa66",
+      "revId": "4072fb47f24582cc2d6955c381b0c838c71d808e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "705fb023_105813b1",
@@ -88,6 +148,30 @@
       "writtenOn": "2023-11-22T21:47:09Z",
       "side": 1,
       "message": "Maybe \"Utf8Metadata\" to be more descriptive?",
+      "range": {
+        "startLine": 765,
+        "startChar": 28,
+        "endLine": 765,
+        "endChar": 32
+      },
+      "revId": "4072fb47f24582cc2d6955c381b0c838c71d808e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2ade972_849313fb",
+        "filename": "fpdfsdk/fpdf_doc_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 765,
+      "author": {
+        "id": 5475
+      },
+      "writtenOn": "2023-11-22T22:41:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "705fb023_105813b1",
       "range": {
         "startLine": 765,
         "startChar": 28,
@@ -272,6 +356,24 @@
       "side": 1,
       "message": "Or maybe kmoon@ can check in the files attached to https://bugs.chromium.org/p/pdfium/issues/detail?id\u003d2101#c1",
       "parentUuid": "9d033349_bdefcc2a",
+      "revId": "4072fb47f24582cc2d6955c381b0c838c71d808e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af89b72e_24f9cdd4",
+        "filename": "testing/resources/utf-8.pdf",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5475
+      },
+      "writtenOn": "2023-11-22T22:41:31Z",
+      "side": 1,
+      "message": "Fair enough, I added a .in file.",
+      "parentUuid": "79f53869_7e979278",
       "revId": "4072fb47f24582cc2d6955c381b0c838c71d808e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
