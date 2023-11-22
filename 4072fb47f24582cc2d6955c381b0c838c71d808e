@@ -109,6 +109,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "4fc95e3e_4a344369",
+        "filename": "core/fpdfapi/parser/fpdf_parser_decode.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 5475
+      },
+      "writtenOn": "2023-11-22T23:30:19Z",
+      "side": 1,
+      "message": "Oooh sorry for being dense!\n\n...but when I remove it, `git cl format` turns it into\n\n```\n  } else if (span.size() \u003e\u003d 3 \u0026\u0026 span[0] \u003d\u003d 0xef \u0026\u0026 span[1] \u003d\u003d 0xbb \u0026\u0026\n             span[2] \u003d\u003d 0xbf) {\n```\n\nwhich isn\u0027t super great either. I suppose it\u0027s ok.",
+      "parentUuid": "14fcc23d_ec274fab",
+      "range": {
+        "startLine": 562,
+        "startChar": 13,
+        "endLine": 562,
+        "endChar": 14
+      },
+      "revId": "4072fb47f24582cc2d6955c381b0c838c71d808e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "aa716c6d_8bc5aa7e",
         "filename": "core/fpdfapi/parser/fpdf_parser_decode.cpp",
         "patchSetId": 2

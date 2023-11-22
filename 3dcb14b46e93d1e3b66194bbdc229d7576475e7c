@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a3c49a1_7bf5b335",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5475
+      },
+      "writtenOn": "2023-11-22T23:30:19Z",
+      "side": 1,
+      "message": "Sure. Do you know if we have docs explaining how to do that?",
+      "parentUuid": "c6f4cd8d_2c113a70",
+      "revId": "3dcb14b46e93d1e3b66194bbdc229d7576475e7c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e2d3937_bf408dfc",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-11-22T23:14:35Z",
       "side": 1,
       "message": "Or write `for (uint8_t code_unit : bsStr.raw_span())`. As you like.",
+      "revId": "3dcb14b46e93d1e3b66194bbdc229d7576475e7c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f08b95a2_16ced920",
+        "filename": "core/fxcrt/fx_string.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 5475
+      },
+      "writtenOn": "2023-11-22T23:30:19Z",
+      "side": 1,
+      "message": "Since I\u0027m now not modifying this file, I\u0027ll leave it as-is. (I like your suggestion better, though :P)",
+      "parentUuid": "4e2d3937_bf408dfc",
       "revId": "3dcb14b46e93d1e3b66194bbdc229d7576475e7c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -52,6 +88,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "15da2f61_e22985db",
+        "filename": "testing/resources/utf-8.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 5475
+      },
+      "writtenOn": "2023-11-22T23:30:19Z",
+      "side": 1,
+      "message": "I like vim\u0027s `{` / `}` to move through files, which needs the newline :P",
+      "parentUuid": "b036f2f5_c2afe400",
+      "revId": "3dcb14b46e93d1e3b66194bbdc229d7576475e7c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "26f003c0_68cb1ee8",
@@ -69,6 +123,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "04c33b2c_40db6d5b",
+        "filename": "testing/resources/utf-8.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5475
+      },
+      "writtenOn": "2023-11-22T23:30:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26f003c0_68cb1ee8",
+      "revId": "3dcb14b46e93d1e3b66194bbdc229d7576475e7c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9a3d92d1_1cbe233a",
@@ -82,6 +154,24 @@
       "writtenOn": "2023-11-22T23:14:35Z",
       "side": 1,
       "message": "Can object 6 0 and object 7 0 swap numbers? Being an object hierarchy, it would be nicer to have the parent be first. e.g. object 2 0 is the parent of object 3 0.",
+      "revId": "3dcb14b46e93d1e3b66194bbdc229d7576475e7c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45aecb05_c0982889",
+        "filename": "testing/resources/utf-8.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 5475
+      },
+      "writtenOn": "2023-11-22T23:30:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a3d92d1_1cbe233a",
       "revId": "3dcb14b46e93d1e3b66194bbdc229d7576475e7c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -117,6 +207,24 @@
       "side": 1,
       "message": "I guess Acrobat Reader also does not (fully?) support UTF-8. The PDF Association\u0027s pdf20-utf8-test.pdf has the same issue.",
       "parentUuid": "42847484_63358431",
+      "revId": "3dcb14b46e93d1e3b66194bbdc229d7576475e7c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8acd772f_64447ed0",
+        "filename": "testing/resources/utf-8.pdf",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5475
+      },
+      "writtenOn": "2023-11-22T23:30:19Z",
+      "side": 1,
+      "message": "Whaaaaaaaa???\n\nThat\u0027s, uh, a bit surprising.\n\nIs there anything that supports it? Is there a point in this patch then?\n\nhttps://pdfa.org/understanding-utf-8-in-pdf-2-0/ suggests that some programs do support it, and the spec contains it. But how can the spec have that text and Acrobat not support it?",
+      "parentUuid": "b37505e5_4bd242c8",
       "revId": "3dcb14b46e93d1e3b66194bbdc229d7576475e7c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
