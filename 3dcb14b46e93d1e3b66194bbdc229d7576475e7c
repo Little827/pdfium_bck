@@ -227,6 +227,24 @@
       "parentUuid": "b37505e5_4bd242c8",
       "revId": "3dcb14b46e93d1e3b66194bbdc229d7576475e7c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1fcb8be_a3cc0724",
+        "filename": "testing/resources/utf-8.pdf",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5475
+      },
+      "writtenOn": "2023-11-22T23:36:58Z",
+      "side": 1,
+      "message": "On the bug, kmoon says that Ff supports utf-8 in PDFs. So might as well follow suite, I suppose.",
+      "parentUuid": "8acd772f_64447ed0",
+      "revId": "3dcb14b46e93d1e3b66194bbdc229d7576475e7c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
