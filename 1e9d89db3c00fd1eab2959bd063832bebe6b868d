@@ -16,6 +16,24 @@
       "message": "I believe the existing code shares this flaw, but I wonder to what extent the parser should degrade gracefully if the code section is not a multiple of 2.\n\nI\u0027m curious if Acrobat has the same behavior, since the use of 001B as both the beginning and ending escape sequence (and using 2-byte codes) would seem to suggest processing in 2-byte units in UTF-16 mode.\n\nI also wondered to what extent we should validate that the codes actually are ASCII, but this shouldn\u0027t matter in the end since 001B cannot be part of a surrogate pair or a multibyte UTF-8 sequence.",
       "revId": "1e9d89db3c00fd1eab2959bd063832bebe6b868d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81354392_f6d8f692",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 5475
+      },
+      "writtenOn": "2023-11-22T18:22:15Z",
+      "side": 1,
+      "message": "That\u0027s a great question! I think the answer would be \"check how often this happens in practice\". There\u0027s 8 TB of PDFs at https://pdfa.org/new-large-scale-pdf-corpus-now-publicly-available/ ; we probably have more than that internally (?) Do we have a way to run queries on that corpus? (Do we even have such a corpus?)\n\nIf it _is_ something to worry about (my gut feeling is: likely not), then a nicer way for handling this is to pre-process the data before conversion to pad the escaped data to multiples of 2, instead of having one loop that tries to handle all the special cases.\n\n(The thing that worries me most is that per https://en.wikipedia.org/wiki/IETF_language_tag , there are now three-char tags. The PDF spec explicitly says that this tag has to be 2 bytes, but it\u0027s just text in the end.)\n\nWhile I\u0027m rambling on the topic: My understanding of the spec text is that these language texts are there to include multiple translations of the same string. So instead of stripping these tags, the Right Thing is to keep them around and at display time, pick the string in the language of the rest of the UI, or have a combo box with a picker, or some such.\n\n(But again, my gut is that this isn\u0027t something to worry about.)",
+      "parentUuid": "4c7de58c_bbd87624",
+      "revId": "1e9d89db3c00fd1eab2959bd063832bebe6b868d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
