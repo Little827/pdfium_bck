@@ -36,6 +36,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d867bea5_ccf1d3cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-22T23:37:58Z",
+      "side": 1,
+      "message": "https://chromium.googlesource.com/chromium/src/+/main/docs/contributing.md#uploading-dependent-changes",
+      "parentUuid": "2a3c49a1_7bf5b335",
+      "revId": "3dcb14b46e93d1e3b66194bbdc229d7576475e7c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e2d3937_bf408dfc",
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "Since I\u0027m now not modifying this file, I\u0027ll leave it as-is. (I like your suggestion better, though :P)",
       "parentUuid": "4e2d3937_bf408dfc",
+      "revId": "3dcb14b46e93d1e3b66194bbdc229d7576475e7c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23fb3deb_7dad27ab",
+        "filename": "core/fxcrt/fx_string.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-22T23:37:58Z",
+      "side": 1,
+      "message": "Oh, I missed the revert because I was diffing the patchsets.",
+      "parentUuid": "f08b95a2_16ced920",
       "revId": "3dcb14b46e93d1e3b66194bbdc229d7576475e7c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -242,6 +278,24 @@
       "writtenOn": "2023-11-22T23:36:58Z",
       "side": 1,
       "message": "On the bug, kmoon says that Ff supports utf-8 in PDFs. So might as well follow suite, I suppose.",
+      "parentUuid": "8acd772f_64447ed0",
+      "revId": "3dcb14b46e93d1e3b66194bbdc229d7576475e7c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9321de14_330cd735",
+        "filename": "testing/resources/utf-8.pdf",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-22T23:37:58Z",
+      "side": 1,
+      "message": "I am similarly surprised. Curious, does Mac Preview.app support UTF-8 in PDFs?\n\nI\u0027m not that good at recognizing the different softwares in pdfa.org\u0027s screen shot. So I don\u0027t actually know what supports it. Maybe Foxit Reader?\n\nAs another data point, Okular on Linux does not.\n\nIn any case, I agree it\u0027s good to move in this direction.",
       "parentUuid": "8acd772f_64447ed0",
       "revId": "3dcb14b46e93d1e3b66194bbdc229d7576475e7c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
