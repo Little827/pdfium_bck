@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c7de58c_bbd87624",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-11-22T15:07:27Z",
+      "side": 1,
+      "message": "I believe the existing code shares this flaw, but I wonder to what extent the parser should degrade gracefully if the code section is not a multiple of 2.\n\nI\u0027m curious if Acrobat has the same behavior, since the use of 001B as both the beginning and ending escape sequence (and using 2-byte codes) would seem to suggest processing in 2-byte units in UTF-16 mode.\n\nI also wondered to what extent we should validate that the codes actually are ASCII, but this shouldn\u0027t matter in the end since 001B cannot be part of a surrogate pair or a multibyte UTF-8 sequence.",
+      "revId": "1e9d89db3c00fd1eab2959bd063832bebe6b868d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
