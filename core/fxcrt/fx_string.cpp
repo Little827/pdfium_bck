@@ -99,13 +99,12 @@ ByteString FX_UTF8Encode(WideStringView wsStr) {
   return buffer;
 }
 
-WideString FX_UTF8Decode(ByteStringView bsStr) {
+WideString FX_UTF8Decode(pdfium::span<const uint8_t> span) {
   WideString buffer;
 
   int remaining = 0;
   char32_t code_point = 0;
-  for (char byte : bsStr) {
-    uint8_t code_unit = static_cast<uint8_t>(byte);
+  for (uint8_t code_unit : span) {
     if (code_unit < 0x80) {
       remaining = 0;
       AppendCodePointToWideString(code_unit, buffer);
@@ -132,6 +131,10 @@ WideString FX_UTF8Decode(ByteStringView bsStr) {
   }
 
   return buffer;
+}
+
+WideString FX_UTF8Decode(ByteStringView bsStr) {
+  return FX_UTF8Decode(bsStr.raw_span());
 }
 
 namespace {
