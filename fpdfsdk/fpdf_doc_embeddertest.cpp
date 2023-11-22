@@ -762,6 +762,15 @@ TEST_F(FPDFDocEmbedderTest, GetMetaText) {
   EXPECT_EQ(L"D:20160411190039+00'00'", GetPlatformWString(buf));
 }
 
+TEST_F(FPDFDocEmbedderTest, Utf8) {
+  ASSERT_TRUE(OpenDocument("utf-8.pdf"));
+
+  unsigned short buf[128];
+
+  ASSERT_EQ(34u, FPDF_GetMetaText(document(), "Producer", buf, sizeof(buf)));
+  EXPECT_EQ(L"Manüally Created", GetPlatformWString(buf));
+}
+
 TEST_F(FPDFDocEmbedderTest, Bug_182) {
   ASSERT_TRUE(OpenDocument("bug_182.pdf"));
 
