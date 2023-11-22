@@ -35,6 +35,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "285b8052_e924ae22",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 8906
+      },
+      "writtenOn": "2023-11-22T12:48:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51d08b68_885cb144",
+      "revId": "26eedcb085aba12e4e1cb15c6c1b4ab827613aaf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "23240c2f_8a0eb60c",
@@ -48,6 +66,24 @@
       "writtenOn": "2023-11-21T22:47:38Z",
       "side": 1,
       "message": "Tear down in reverse order? i.e. Make this last.",
+      "revId": "26eedcb085aba12e4e1cb15c6c1b4ab827613aaf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6852bffd_7d5fe1f7",
+        "filename": "xfa/fde/cfde_textout_unittest.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 8906
+      },
+      "writtenOn": "2023-11-22T12:48:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23240c2f_8a0eb60c",
       "revId": "26eedcb085aba12e4e1cb15c6c1b4ab827613aaf",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
