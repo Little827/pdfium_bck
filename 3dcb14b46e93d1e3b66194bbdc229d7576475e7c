@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6f4cd8d_2c113a70",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-22T22:50:41Z",
+      "side": 1,
+      "message": "Did you want to chain this CL to https://pdfium-review.googlesource.com/113810, which is in CQ, so I can actually CQ+2 this CL without causing a collision?",
+      "revId": "3dcb14b46e93d1e3b66194bbdc229d7576475e7c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
