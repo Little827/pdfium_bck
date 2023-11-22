@@ -52,6 +52,24 @@
       "parentUuid": "81354392_f6d8f692",
       "revId": "1e9d89db3c00fd1eab2959bd063832bebe6b868d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af7858f7_2c88ee08",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-11-22T19:59:14Z",
+      "side": 1,
+      "message": "\u003e (Do we even have such a corpus?)\n\nI don\u0027t have internal knowledge anymore, but I believe the answer is no. The corpus you linked to is much larger than any other PDF corpus I\u0027m aware of, and is one I was exploring to use for PDFium testing.\n\n(I proposed building a pipeline to do this, but there wasn\u0027t interest in spending time on it.)\n\n\u003e (The thing that worries me most is that per https://en.wikipedia.org/wiki/IETF_language_tag , there are now three-char tags. The PDF spec explicitly says that this tag has to be 2 bytes, but it\u0027s just text in the end.)\n\nThe PDF spec doesn\u0027t support any kind of delimiter between the first 2 bytes and the second 2 bytes, so I don\u0027t think support for 3-byte codes is expected; the PDF spec would need to be revised to add such support.\n\n\u003e My understanding of the spec text is that these language texts are there to include multiple translations of the same string. So instead of stripping these tags, the Right Thing is to keep them around and at display time, pick the string in the language of the rest of the UI, or have a combo box with a picker, or some such.\n\nI believe the purpose of this feature is to be able to mix languages within a single text. This is intended for cases where the language can\u0027t be determined by the character codes alone; for example, you might have a predominantly English text, with some French phrases mixed in. (The \"lang\" attribute in HTML serves a similar function.)\n\nThis distinction seems semantically useful, but I\u0027m not sure if it matters in terms of presentation in most cases.\n\n\u003e If this is a concern, one should be able to generate PDFs with varying string data and do black box testing on various PDF viewer implementations.\n\nI\u0027m curious about this, so I might generate and upload something.\n\nI didn\u0027t see an existing bug for this work, so I filed pdfium:2101. I\u0027ll post any findings there.",
+      "parentUuid": "69b2a227_cb1d8ecd",
+      "revId": "1e9d89db3c00fd1eab2959bd063832bebe6b868d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
