@@ -54,6 +54,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d902e09c_6d185b4f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5475
+      },
+      "writtenOn": "2023-11-22T23:40:43Z",
+      "side": 1,
+      "message": "Thanks! Done, maybe.",
+      "parentUuid": "d867bea5_ccf1d3cd",
+      "revId": "3dcb14b46e93d1e3b66194bbdc229d7576475e7c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e2d3937_bf408dfc",
@@ -297,6 +315,24 @@
       "side": 1,
       "message": "I am similarly surprised. Curious, does Mac Preview.app support UTF-8 in PDFs?\n\nI\u0027m not that good at recognizing the different softwares in pdfa.org\u0027s screen shot. So I don\u0027t actually know what supports it. Maybe Foxit Reader?\n\nAs another data point, Okular on Linux does not.\n\nIn any case, I agree it\u0027s good to move in this direction.",
       "parentUuid": "8acd772f_64447ed0",
+      "revId": "3dcb14b46e93d1e3b66194bbdc229d7576475e7c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "424bec81_263a8aa2",
+        "filename": "testing/resources/utf-8.pdf",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5475
+      },
+      "writtenOn": "2023-11-22T23:40:43Z",
+      "side": 1,
+      "message": "\u003e I am similarly surprised. Curious, does Mac Preview.app support UTF-8 in PDFs?\n\nNo.",
+      "parentUuid": "9321de14_330cd735",
       "revId": "3dcb14b46e93d1e3b66194bbdc229d7576475e7c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
