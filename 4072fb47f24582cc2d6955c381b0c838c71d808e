@@ -3,6 +3,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "aa716c6d_8bc5aa7e",
+        "filename": "core/fpdfapi/parser/fpdf_parser_decode.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 5475
+      },
+      "writtenOn": "2023-11-22T14:48:39Z",
+      "side": 1,
+      "message": "Forgot to say: Decoding before stripping language codes is ok because language codes are ascii and won\u0027t confuse the utf-8 decoder. (At least for valid files. For invalid files, the utf-8 decoder knows how to re-sync to a valid state; it\u0027s no different for generally invalid utf-8.)",
+      "revId": "4072fb47f24582cc2d6955c381b0c838c71d808e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "d0a0b66f_8ed51ca7",
         "filename": "fpdfsdk/fpdf_doc_embeddertest.cpp",
         "patchSetId": 2
