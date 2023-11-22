@@ -16,6 +16,91 @@
       "message": "Did you want to chain this CL to https://pdfium-review.googlesource.com/113810, which is in CQ, so I can actually CQ+2 this CL without causing a collision?",
       "revId": "3dcb14b46e93d1e3b66194bbdc229d7576475e7c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e2d3937_bf408dfc",
+        "filename": "core/fxcrt/fx_string.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-22T23:14:35Z",
+      "side": 1,
+      "message": "Or write `for (uint8_t code_unit : bsStr.raw_span())`. As you like.",
+      "revId": "3dcb14b46e93d1e3b66194bbdc229d7576475e7c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b036f2f5_c2afe400",
+        "filename": "testing/resources/utf-8.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-22T23:14:35Z",
+      "side": 1,
+      "message": "At least for me, I find the `endjob` lines to be sufficiently distinct that I don\u0027t bother with blank lines as separators.",
+      "revId": "3dcb14b46e93d1e3b66194bbdc229d7576475e7c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26f003c0_68cb1ee8",
+        "filename": "testing/resources/utf-8.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-22T23:14:35Z",
+      "side": 1,
+      "message": "nit: space after \"Kids\"",
+      "revId": "3dcb14b46e93d1e3b66194bbdc229d7576475e7c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a3d92d1_1cbe233a",
+        "filename": "testing/resources/utf-8.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-22T23:14:35Z",
+      "side": 1,
+      "message": "Can object 6 0 and object 7 0 swap numbers? Being an object hierarchy, it would be nicer to have the parent be first. e.g. object 2 0 is the parent of object 3 0.",
+      "revId": "3dcb14b46e93d1e3b66194bbdc229d7576475e7c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42847484_63358431",
+        "filename": "testing/resources/utf-8.pdf",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-22T23:14:35Z",
+      "side": 1,
+      "message": "BTW, neither string in this file renders correctly in Acrobat Reader. I have 2023.006.20380 on Windows here, and I just installed it yesterday, so it is up to date.\n\nI wondered if this was because of line 1 (small deficiency in fixup_pdf_template.py mentioned previously) so I manually edited that to 2.0. Now Acrobat Reader correctly displays version 2.0 in the document properties, but same issue.",
+      "revId": "3dcb14b46e93d1e3b66194bbdc229d7576475e7c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
