@@ -50,6 +50,24 @@
       "message": "(When I tried running `out/gn/pdfium_embeddertests` locally (arm mac), I got three unrelated failures that also fail on main:\n\n```\n[  FAILED  ] 3 tests, listed below:\n[  FAILED  ] FPDFAnnotEmbedderTest.AddAndModifyText\n[  FAILED  ] FPDFEditEmbedderTest.RemoveMarkedObjectsPrime\n[  FAILED  ] FPDFEditEmbedderTest.RemoveAllFromStream\n```\n\nIs that expected?\n)",
       "revId": "465a70363b49e15f27bd38b350d8f14242a292cb",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f99543e2_c23c29f6",
+        "filename": "fpdfsdk/fpdf_doc_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 772,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-22T20:00:15Z",
+      "side": 1,
+      "message": "That looks like https://bugs.chromium.org/p/pdfium/issues/detail?id\u003d1590#c6\n\nI tried to fix this in https://pdfium-review.googlesource.com/107850, but my ARM Mac machine and the Arm MAC try bot didn\u0027t agree on the bitmap hash value. I didn\u0027t get a chance to look further.",
+      "parentUuid": "9d2b39db_aed11dc7",
+      "revId": "465a70363b49e15f27bd38b350d8f14242a292cb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
