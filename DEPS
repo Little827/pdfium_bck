@@ -72,7 +72,7 @@ vars = {
   # Three lines of non-changing comments so that
   # the commit queue can handle CLs rolling build
   # and whatever else without interference from each other.
-  'build_revision': '292639dc3d2fdf6fab10144ef52baf4c4c40993d',
+  'build_revision': 'eb410d53b341d011a0f1967f010340b7819ecfd2',
   # Three lines of non-changing comments so that
   # the commit queue can handle CLs rolling buildtools
   # and whatever else without interference from each other.
@@ -170,7 +170,7 @@ vars = {
   # Three lines of non-changing comments so that
   # the commit queue can handle CLs rolling partition_allocator
   # and whatever else without interference from each other.
-  'partition_allocator_revision': '4d90e004b935506a1acab63fe7037cab791412fb',
+  'partition_allocator_revision': '799b826adf18d407aff3b7164e4d1fc4e21cb7db',
   # Three lines of non-changing comments so that
   # the commit queue can handle CLs rolling pdfium_tests
   # and whatever else without interference from each other.
