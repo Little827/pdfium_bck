@@ -101,6 +101,24 @@
       "message": "BTW, neither string in this file renders correctly in Acrobat Reader. I have 2023.006.20380 on Windows here, and I just installed it yesterday, so it is up to date.\n\nI wondered if this was because of line 1 (small deficiency in fixup_pdf_template.py mentioned previously) so I manually edited that to 2.0. Now Acrobat Reader correctly displays version 2.0 in the document properties, but same issue.",
       "revId": "3dcb14b46e93d1e3b66194bbdc229d7576475e7c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b37505e5_4bd242c8",
+        "filename": "testing/resources/utf-8.pdf",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-22T23:20:21Z",
+      "side": 1,
+      "message": "I guess Acrobat Reader also does not (fully?) support UTF-8. The PDF Association\u0027s pdf20-utf8-test.pdf has the same issue.",
+      "parentUuid": "42847484_63358431",
+      "revId": "3dcb14b46e93d1e3b66194bbdc229d7576475e7c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
