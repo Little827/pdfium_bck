@@ -70,6 +70,24 @@
       "parentUuid": "69b2a227_cb1d8ecd",
       "revId": "1e9d89db3c00fd1eab2959bd063832bebe6b868d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16b48af5_3eaa4b82",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 7613
+      },
+      "writtenOn": "2023-11-22T22:14:10Z",
+      "side": 1,
+      "message": "My conclusion (https://crbug.com/pdfium/2101#c2) is that none of the major PDF viewers I tested handle this case well, so as long as there isn\u0027t a buffer overrun or something, we\u0027re probably OK not trying to handle it.",
+      "parentUuid": "af7858f7_2c88ee08",
+      "revId": "1e9d89db3c00fd1eab2959bd063832bebe6b868d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
