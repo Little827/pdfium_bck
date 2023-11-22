@@ -651,3 +651,32 @@ TEST_F(FPDFPPOEmbedderTest, ImportIntoDestDocWithoutInfo) {
   EXPECT_TRUE(FPDF_ImportPages(document(), src_doc.get(), "1", 0));
   EXPECT_EQ(3, FPDF_GetPageCount(document()));
 }
+
+TEST_F(FPDFPPOEmbedderTest, ImportIntoDocWithWrongPageType) {
+  ASSERT_TRUE(OpenDocument("bad_page_type.pdf"));
+  EXPECT_EQ(2, FPDF_GetPageCount(document()));
+
+  std::string file_path = PathService::GetTestFilePath("rectangles.pdf");
+  ASSERT_FALSE(file_path.empty());
+  std::vector<uint8_t> file_contents = GetFileContents(file_path.c_str());
+  ASSERT_FALSE(file_contents.empty());
+
+  ScopedFPDFDocument src_doc(FPDF_LoadMemDocument(
+      file_contents.data(), file_contents.size(), nullptr));
+  ASSERT_TRUE(src_doc);
+  EXPECT_EQ(1, FPDF_GetPageCount(src_doc.get()));
+
+  FPDFPage_Delete(document(), 0);
+  EXPECT_EQ(1, FPDF_GetPageCount(document()));
+
+  static constexpr int kPageIndices[] = {0};
+  ASSERT_TRUE(FPDF_ImportPagesByIndex(document(), src_doc.get(), kPageIndices,
+                                      std::size(kPageIndices), 0));
+  EXPECT_EQ(2, FPDF_GetPageCount(document()));
+
+  EXPECT_TRUE(FPDF_SaveAsCopy(document(), this, 0));
+
+  ASSERT_TRUE(OpenSavedDocument());
+  // TODO(crbug.com/pdfium/2098): The saved doc should have 2 pages.
+  EXPECT_EQ(1, FPDF_GetPageCount(saved_document()));
+}
