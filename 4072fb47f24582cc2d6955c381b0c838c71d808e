@@ -35,6 +35,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "971fa12a_e18a6301",
+        "filename": "fpdfsdk/fpdf_doc_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 770,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-22T20:04:47Z",
+      "side": 1,
+      "message": "Your are probably looking for FPDFBookmark_GetFirstChild() and FPDFBookmark_GetTitle(). PDFium carried these APIs over from FoxIt, so they are named this way. I landed https://pdfium-review.googlesource.com/113593 last week since somebody else couldn\u0027t find this either.",
+      "parentUuid": "d0a0b66f_8ed51ca7",
+      "revId": "4072fb47f24582cc2d6955c381b0c838c71d808e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b585f1ff_11dad674",
