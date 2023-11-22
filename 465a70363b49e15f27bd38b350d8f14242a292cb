@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8ac3dcc_06c1e130",
+        "filename": "core/fpdfapi/parser/fpdf_parser_decode.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-22T21:47:09Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "a2541a45_4234306c",
+      "revId": "465a70363b49e15f27bd38b350d8f14242a292cb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8dc8f031_6fff0b72",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-11-22T14:44:38Z",
       "side": 1,
       "message": "See how little code this is now :) Ignoring new tests, I\u0027m net -10 lines while adding this feature.",
+      "revId": "465a70363b49e15f27bd38b350d8f14242a292cb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdb7ae2a_7254d3a6",
+        "filename": "core/fpdfapi/parser/fpdf_parser_decode.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-22T21:47:09Z",
+      "side": 1,
+      "message": "Yay!",
+      "parentUuid": "8dc8f031_6fff0b72",
       "revId": "465a70363b49e15f27bd38b350d8f14242a292cb",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },

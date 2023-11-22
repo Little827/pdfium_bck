@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a67b14b_955e2217",
+        "filename": "core/fpdfapi/parser/fpdf_parser_decode.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-22T21:47:09Z",
+      "side": 1,
+      "message": "Parenthesis not needed? (No OR operation like lines 540-541.)",
+      "range": {
+        "startLine": 562,
+        "startChar": 13,
+        "endLine": 562,
+        "endChar": 14
+      },
+      "revId": "4072fb47f24582cc2d6955c381b0c838c71d808e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "aa716c6d_8bc5aa7e",
@@ -14,6 +37,46 @@
       "writtenOn": "2023-11-22T14:48:39Z",
       "side": 1,
       "message": "Forgot to say: Decoding before stripping language codes is ok because language codes are ascii and won\u0027t confuse the utf-8 decoder. (At least for valid files. For invalid files, the utf-8 decoder knows how to re-sync to a valid state; it\u0027s no different for generally invalid utf-8.)",
+      "revId": "4072fb47f24582cc2d6955c381b0c838c71d808e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "915e6365_d8d0fa66",
+        "filename": "core/fxcrt/fx_string.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-22T21:47:09Z",
+      "side": 1,
+      "message": "Is this necessary?",
+      "revId": "4072fb47f24582cc2d6955c381b0c838c71d808e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "705fb023_105813b1",
+        "filename": "fpdfsdk/fpdf_doc_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 765,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-22T21:47:09Z",
+      "side": 1,
+      "message": "Maybe \"Utf8Metadata\" to be more descriptive?",
+      "range": {
+        "startLine": 765,
+        "startChar": 28,
+        "endLine": 765,
+        "endChar": 32
+      },
       "revId": "4072fb47f24582cc2d6955c381b0c838c71d808e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -156,6 +219,24 @@
       "side": 1,
       "message": "Sure, but PDFium developers naturally prefer their own tools and their own handwritten style. e.g.\n\n```\n5 0 obj \u003c\u003c\n  /Foo /Bar\n  /Qux /Baz\n\u003e\u003e\n```\n\nis more like Google C++ style than\n\n```\n5 0 obj\n\u003c\u003c/Foo/Bar/Qux/Baz\u003e\u003e\n```",
       "parentUuid": "543d3639_38a92d73",
+      "revId": "4072fb47f24582cc2d6955c381b0c838c71d808e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d033349_bdefcc2a",
+        "filename": "testing/resources/utf-8.pdf",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-22T21:47:09Z",
+      "side": 1,
+      "message": "Anyway, I would be happy to rewrite this file if you\u0027d like.",
+      "parentUuid": "a2eb9538_adfb66ea",
       "revId": "4072fb47f24582cc2d6955c381b0c838c71d808e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
