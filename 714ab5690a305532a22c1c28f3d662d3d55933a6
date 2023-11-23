@@ -68,6 +68,24 @@
       "message": "ugh, now I\u0027m in a state where `git cl upload` says\n\n\"\"\"\nFound change with 5 commits...\nAt least one branch in the stack has diverged from its upstream branch and does not contain its upstream\u0027s last upload.\nPlease rebase the stack with `git rebase-update` before uploading.\n\"\"\"\n\nbut if I run `git rebase-update`, that makes a total mess :/",
       "revId": "714ab5690a305532a22c1c28f3d662d3d55933a6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b3c9114_9717590b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-23T18:08:04Z",
+      "side": 1,
+      "message": "This is a Gerrit quirk. I usually use the rebase button in Gerrit and that resolves the problem.",
+      "parentUuid": "1f0c8ff1_bd823681",
+      "revId": "714ab5690a305532a22c1c28f3d662d3d55933a6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
