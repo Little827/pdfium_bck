@@ -51,6 +51,23 @@
       "parentUuid": "ea81c603_ac452442",
       "revId": "714ab5690a305532a22c1c28f3d662d3d55933a6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e4a6d64_4e5ec390",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5475
+      },
+      "writtenOn": "2023-11-23T02:39:47Z",
+      "side": 1,
+      "message": "ugh, now I\u0027m in a state where `git cl upload` says\n\n\"\"\"\nFound change with 5 commits...\nAt least one branch in the stack has diverged from its upstream branch and does not contain its upstream\u0027s last upload.\nPlease rebase the stack with `git rebase-update` before uploading.\n\"\"\"\n\nbut if I run `git rebase-update`, that makes a total mess :/",
+      "revId": "714ab5690a305532a22c1c28f3d662d3d55933a6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
