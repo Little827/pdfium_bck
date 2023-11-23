@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e3ee40b_49b91394",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5475
+      },
+      "writtenOn": "2023-11-23T02:42:08Z",
+      "side": 1,
+      "message": "Ended up running\n\n```\ngit branch --unset-upstream\ngit cl upload\n```\n\nafter just running `git rebase main mylocalbranch` and that worked. Even left the relation chain intact on gerrit, somehow.",
+      "revId": "49ec4944231e6aba23771c8342a10b1cbd7fbd7e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
