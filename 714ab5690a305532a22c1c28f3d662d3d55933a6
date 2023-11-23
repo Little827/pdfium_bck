@@ -16,6 +16,41 @@
       "message": "Hm, now this has a merge conflict. Looks like I didn\u0027t do the relation chain quite right :/",
       "revId": "714ab5690a305532a22c1c28f3d662d3d55933a6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddeab149_73878d22",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5475
+      },
+      "writtenOn": "2023-11-23T02:35:45Z",
+      "side": 1,
+      "message": "...ah",
+      "revId": "714ab5690a305532a22c1c28f3d662d3d55933a6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f0c8ff1_bd823681",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5475
+      },
+      "writtenOn": "2023-11-23T02:35:45Z",
+      "side": 1,
+      "message": "...aha, because I edited the other CL in gerrit to tweak the comment about the for loop body. But that code isn\u0027t even touched here – I suppose gerrit morally runs `git rebase` internally for relation chains (?)",
+      "parentUuid": "ea81c603_ac452442",
+      "revId": "714ab5690a305532a22c1c28f3d662d3d55933a6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
