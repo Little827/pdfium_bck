@@ -55,8 +55,8 @@ class CFGAS_TxtBreak final : public CFGAS_Break {
     WideString wsStr;
     UNOWNED_PTR_EXCLUSION int32_t* pWidths = nullptr;
     // TODO(thestig): These 2 members probably should be size_t.
-    int32_t iStart = 0;
-    int32_t iLength = 0;
+    size_t iStart = 0;
+    size_t iLength = 0;
     RetainPtr<CFGAS_GEFont> pFont;
     float fFontSize = 12.0f;
     Mask<LayoutStyle> dwStyles = LayoutStyle::kNone;
