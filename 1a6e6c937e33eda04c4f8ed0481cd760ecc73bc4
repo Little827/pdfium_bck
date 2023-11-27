@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19294cdf_da80f905",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-11-27T18:05:31Z",
+      "side": 1,
+      "message": "Thanks for the patch, and I think your code is correct. However, I\u0027m not sure that we want to optimize away from the case where the entire string passes on the first try. I don\u0027t have data about often that happens, but if it is indeed the most common, it seems unfortunate to have to do log(n) passes to find this out.\n\nAdditionally, we tend to frown upon hand-written search in favor of std::lower_bound(). Can we re-code this in terms of first checking the full-up case and then invoking lower_bound() to find the result when that is not the case?",
+      "revId": "1a6e6c937e33eda04c4f8ed0481cd760ecc73bc4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
