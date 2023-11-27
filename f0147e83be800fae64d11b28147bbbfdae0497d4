@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5398315_1cbf48bc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-27T22:04:31Z",
+      "side": 1,
+      "message": "Per go/avoid-we, maybe replace \"us\" with \"the UTF-16 codepath\"\n\nI\u0027m ok with how I look, and I don\u0027t need to look like the UTF-8 codepath. ;-)",
+      "range": {
+        "startLine": 13,
+        "startChar": 27,
+        "endLine": 13,
+        "endChar": 29
+      },
+      "revId": "f0147e83be800fae64d11b28147bbbfdae0497d4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfc86aea_f2be8f9d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-27T22:04:31Z",
+      "side": 1,
+      "message": "nit: newline after.",
+      "revId": "f0147e83be800fae64d11b28147bbbfdae0497d4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
