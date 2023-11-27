@@ -1,0 +1,378 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8017b166_7c233807",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5475
+      },
+      "writtenOn": "2023-11-27T09:01:10Z",
+      "side": 1,
+      "message": "I think this is overall a good change. More \"better\"s than \"worse\"s below, slightly less code, and allows us to call this elsewhere.",
+      "revId": "e7f176467e9869f4f6021476cb42da317eb0ba94",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8014f30_c7981c89",
+        "filename": "core/fxge/fx_font.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 5475
+      },
+      "writtenOn": "2023-11-27T09:01:10Z",
+      "side": 1,
+      "message": "better",
+      "revId": "e7f176467e9869f4f6021476cb42da317eb0ba94",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64f11ab0_92cf7352",
+        "filename": "core/fxge/win32/cwin32_platform.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 5475
+      },
+      "writtenOn": "2023-11-27T09:01:10Z",
+      "side": 1,
+      "message": "worse",
+      "revId": "e7f176467e9869f4f6021476cb42da317eb0ba94",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31453d6f_32cfaee8",
+        "filename": "fpdfsdk/cpdfsdk_formfillenvironment.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 5475
+      },
+      "writtenOn": "2023-11-27T09:01:10Z",
+      "side": 1,
+      "message": "slightly better",
+      "revId": "e7f176467e9869f4f6021476cb42da317eb0ba94",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c414d7a_e3a012a5",
+        "filename": "fpdfsdk/cpdfsdk_formfillenvironment.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 5475
+      },
+      "writtenOn": "2023-11-27T09:01:10Z",
+      "side": 1,
+      "message": "slightly better",
+      "revId": "e7f176467e9869f4f6021476cb42da317eb0ba94",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9aff765_7deefe57",
+        "filename": "fpdfsdk/cpdfsdk_formfillenvironment.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 5475
+      },
+      "writtenOn": "2023-11-27T09:01:10Z",
+      "side": 1,
+      "message": "tossup",
+      "revId": "e7f176467e9869f4f6021476cb42da317eb0ba94",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe2a9719_a17a5df5",
+        "filename": "fpdfsdk/cpdfsdk_helpers.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 5475
+      },
+      "writtenOn": "2023-11-27T09:01:10Z",
+      "side": 1,
+      "message": "worse",
+      "revId": "e7f176467e9869f4f6021476cb42da317eb0ba94",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "521bb79e_4021212e",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 5475
+      },
+      "writtenOn": "2023-11-27T09:01:10Z",
+      "side": 1,
+      "message": "caught a minor bug: FORM_GetSelectedText wants size in bytes, not in chars, so the storage was too large",
+      "revId": "e7f176467e9869f4f6021476cb42da317eb0ba94",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9de628b4_2bd6755b",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 5475
+      },
+      "writtenOn": "2023-11-27T09:01:10Z",
+      "side": 1,
+      "message": "likewise",
+      "revId": "e7f176467e9869f4f6021476cb42da317eb0ba94",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06aaf7ab_a3b4eb6f",
+        "filename": "fpdfsdk/fpdfxfa/cpdfxfa_context.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 5475
+      },
+      "writtenOn": "2023-11-27T09:01:10Z",
+      "side": 1,
+      "message": "slightly better",
+      "revId": "e7f176467e9869f4f6021476cb42da317eb0ba94",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de3f4032_726c5ad3",
+        "filename": "fpdfsdk/fpdfxfa/cpdfxfa_docenvironment.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 5475
+      },
+      "writtenOn": "2023-11-27T09:01:10Z",
+      "side": 1,
+      "message": "better",
+      "revId": "e7f176467e9869f4f6021476cb42da317eb0ba94",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03ee0674_ff244714",
+        "filename": "fxjs/cjs_app.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 5475
+      },
+      "writtenOn": "2023-11-27T09:01:10Z",
+      "side": 1,
+      "message": "slightly better",
+      "revId": "e7f176467e9869f4f6021476cb42da317eb0ba94",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c95cab9_e2a69b71",
+        "filename": "testing/BUILD.gn",
+        "patchSetId": 13
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 5475
+      },
+      "writtenOn": "2023-11-27T09:01:10Z",
+      "side": 1,
+      "message": "(i think this should be ok; DEPS allows it and another target in here already has this dep)",
+      "revId": "e7f176467e9869f4f6021476cb42da317eb0ba94",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e21a7d1a_e3288041",
+        "filename": "testing/fuzzers/pdf_bidi_fuzzer.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 5475
+      },
+      "writtenOn": "2023-11-27T09:01:10Z",
+      "side": 1,
+      "message": "better",
+      "revId": "e7f176467e9869f4f6021476cb42da317eb0ba94",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9215636b_0a143563",
+        "filename": "testing/fuzzers/pdf_cfx_barcode_fuzzer.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5475
+      },
+      "writtenOn": "2023-11-27T09:01:10Z",
+      "side": 1,
+      "message": "better",
+      "revId": "e7f176467e9869f4f6021476cb42da317eb0ba94",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c87aad6_fdb2bfcb",
+        "filename": "testing/fuzzers/pdf_cjs_util_fuzzer.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5475
+      },
+      "writtenOn": "2023-11-27T09:01:10Z",
+      "side": 1,
+      "message": "mostly better (the `4` is a bit jank)",
+      "revId": "e7f176467e9869f4f6021476cb42da317eb0ba94",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3229d74b_d01f2bad",
+        "filename": "testing/fuzzers/pdf_fx_date_helpers_fuzzer.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5475
+      },
+      "writtenOn": "2023-11-27T09:01:10Z",
+      "side": 1,
+      "message": "same",
+      "revId": "e7f176467e9869f4f6021476cb42da317eb0ba94",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd6dfca6_7431851a",
+        "filename": "testing/fuzzers/pdf_nametree_fuzzer.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 5475
+      },
+      "writtenOn": "2023-11-27T09:01:10Z",
+      "side": 1,
+      "message": "slightly better",
+      "revId": "e7f176467e9869f4f6021476cb42da317eb0ba94",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e79fc838_df8a4cb9",
+        "filename": "testing/fx_string_testhelpers.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 5475
+      },
+      "writtenOn": "2023-11-27T09:01:10Z",
+      "side": 1,
+      "message": "better but mostly unrelated to this cl -- calls an existing helper instead of reimplementing it",
+      "revId": "e7f176467e9869f4f6021476cb42da317eb0ba94",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3caea77e_6f1636d2",
+        "filename": "xfa/fwl/cfwl_edit_embeddertest.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 5475
+      },
+      "writtenOn": "2023-11-27T09:01:10Z",
+      "side": 1,
+      "message": "That\u0027s the \"FORM_GetSelectedText wants bytes\" bug again",
+      "revId": "e7f176467e9869f4f6021476cb42da317eb0ba94",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "915c0527_5751f08c",
+        "filename": "xfa/fwl/cfwl_edit_embeddertest.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 5475
+      },
+      "writtenOn": "2023-11-27T09:01:10Z",
+      "side": 1,
+      "message": "It also returns bytes, so not 100% certain how this used to work…",
+      "revId": "e7f176467e9869f4f6021476cb42da317eb0ba94",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b974427e_c706e590",
+        "filename": "xfa/fwl/cfwl_edit_embeddertest.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 5475
+      },
+      "writtenOn": "2023-11-27T09:01:10Z",
+      "side": 1,
+      "message": "same",
+      "revId": "e7f176467e9869f4f6021476cb42da317eb0ba94",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
