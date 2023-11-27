@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc52065d_8b6d55f1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-11-27T17:45:00Z",
+      "side": 1,
+      "message": "Hi, and welcome to PDFium. We appreciate efforts of the community to improve our product.\n\nHowever, resolving this longstanding issue isn\u0027t quite as simple as changing the types in the header to size_t because doing so changes from a signed type to an unsigned type (in addition to any possibly widening). The consequence of the sign changeis that comparisons (consider, say, iTotalLines \u003c 0) may no longer be valid, so care is required.\n\nOne way to show that we\u0027ve validated that all such comparisons are unaffected would be to rename the member to something like, say, iTotalLinesNew. This will fail to compile until all usage is updated, including the comparisons we are so concerned about. At which point a diff will allow us to fully reviews the effect of the change.",
+      "revId": "652b7a9e353d388406ecbbea3205df0cfc486cac",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
