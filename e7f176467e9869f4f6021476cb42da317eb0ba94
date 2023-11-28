@@ -105,6 +105,41 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c44e757c_c4d1d2c9",
+        "filename": "core/fxge/fx_font.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-28T23:06:27Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "c8014f30_c7981c89",
+      "revId": "e7f176467e9869f4f6021476cb42da317eb0ba94",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e193769b_df8d0976",
+        "filename": "core/fxge/win32/cwin32_platform.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-28T23:06:27Z",
+      "side": 1,
+      "message": "I wonder if struct Variant can just include the size, so this doesn\u0027t need to be calculated at runtime. Then the code won\u0027t need to cast `m_pVariantName` twice.",
+      "revId": "e7f176467e9869f4f6021476cb42da317eb0ba94",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "64f11ab0_92cf7352",
@@ -186,6 +221,24 @@
       "writtenOn": "2023-11-27T09:01:10Z",
       "side": 1,
       "message": "worse",
+      "revId": "e7f176467e9869f4f6021476cb42da317eb0ba94",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "525ad9fc_d4a89cb5",
+        "filename": "fpdfsdk/cpdfsdk_helpers.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-28T23:06:27Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "fe2a9719_a17a5df5",
       "revId": "e7f176467e9869f4f6021476cb42da317eb0ba94",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -357,6 +410,41 @@
       "writtenOn": "2023-11-27T09:01:10Z",
       "side": 1,
       "message": "mostly better (the `4` is a bit jank)",
+      "revId": "e7f176467e9869f4f6021476cb42da317eb0ba94",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14e21f16_3cf1ab60",
+        "filename": "testing/fuzzers/pdf_cjs_util_fuzzer.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-28T23:06:27Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "7c87aad6_fdb2bfcb",
+      "revId": "e7f176467e9869f4f6021476cb42da317eb0ba94",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b00bc60_c8fae028",
+        "filename": "testing/fuzzers/pdf_cjs_util_fuzzer.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-28T23:06:27Z",
+      "side": 1,
+      "message": "As you like: Alternatively, create a span at the top of the function, and then use span APIs for the rest. Same for pdf_fx_date_helpers_fuzzer.cc and others.",
       "revId": "e7f176467e9869f4f6021476cb42da317eb0ba94",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
