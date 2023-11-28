@@ -121,22 +121,15 @@ source_set("fxcrt") {
     "../../third_party:fx_tiff",
     "../../xfa/*",
   ]
-  deps = [
-    "../../third_party:pdfium_base",
-    "../../third_party:pdfium_compiler_specific",
-  ]
   public_deps = [
     "../../:freetype_common",
     "../../third_party:pdfium_base",
     "//third_party/icu:icuuc",
   ]
+  deps = [ "../../third_party:pdfium_compiler_specific" ]
   if (pdf_use_partition_alloc) {
     sources += [ "fx_memory_pa.cpp" ]
-    deps += [ "//base/allocator/partition_allocator/src/partition_alloc" ]
-    public_deps += [
-      "//base/allocator/partition_allocator/src/partition_alloc:partition_alloc_buildflags",
-      "//base/allocator/partition_allocator/src/partition_alloc:raw_ptr",
-    ]
+    public_deps += [ "../../third_party:pdfium_pa" ]
   } else {
     sources += [ "fx_memory_malloc.cpp" ]
   }
