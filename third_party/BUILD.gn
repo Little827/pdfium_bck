@@ -575,10 +575,6 @@ source_set("pdfium_base") {
     ":pdfium_compiler_specific",
     "//third_party/abseil-cpp:absl",
   ]
-  if (pdf_use_partition_alloc) {
-    public_deps +=
-        [ "//base/allocator/partition_allocator/src/partition_alloc:raw_ptr" ]
-  }
   if (is_win) {
     sources += [
       "base/win/scoped_select_object.h",

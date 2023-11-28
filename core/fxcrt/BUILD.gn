@@ -132,11 +132,14 @@ source_set("fxcrt") {
   ]
   if (pdf_use_partition_alloc) {
     sources += [ "fx_memory_pa.cpp" ]
-    deps += [ "//base/allocator/partition_allocator/src/partition_alloc" ]
-    public_deps += [
-      "//base/allocator/partition_allocator/src/partition_alloc:partition_alloc_buildflags",
-      "//base/allocator/partition_allocator/src/partition_alloc:raw_ptr",
-    ]
+    if (build_with_chromium && is_component_build) {
+      public_deps += [ "//base" ]
+    } else {
+      public_deps += [
+        "//base/allocator/partition_allocator/src/partition_alloc:partition_alloc_buildflags",
+        "//base/allocator/partition_allocator/src/partition_alloc:raw_ptr",
+      ]
+    }
   } else {
     sources += [ "fx_memory_malloc.cpp" ]
   }
