@@ -22,6 +22,30 @@
       },
       "revId": "9b8ac25af8da61c8a81e0162c39a85eed2cc38dc",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be2d9bfb_bcbe6e5f",
+        "filename": "core/fxcrt/BUILD.gn",
+        "patchSetId": 6
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-28T19:07:26Z",
+      "side": 0,
+      "message": "I usually list public_deps first, and then add deps, where deps does not repeat anything in public_deps.",
+      "parentUuid": "11d901ff_ba0dc789",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 36
+      },
+      "revId": "9b8ac25af8da61c8a81e0162c39a85eed2cc38dc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
