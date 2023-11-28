@@ -129,6 +129,24 @@
       "parentUuid": "c5cf4cd8_641f054e",
       "revId": "9b8ac25af8da61c8a81e0162c39a85eed2cc38dc",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9dd20494_4a0abaa0",
+        "filename": "core/fxcrt/BUILD.gn",
+        "patchSetId": 6
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-28T19:21:40Z",
+      "side": 0,
+      "message": "Well, configs can\u0027t include deps anyway. How about a group then?",
+      "parentUuid": "8c500f3f_d0f655b2",
+      "revId": "9b8ac25af8da61c8a81e0162c39a85eed2cc38dc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
