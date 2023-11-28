@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11d901ff_ba0dc789",
+        "filename": "core/fxcrt/BUILD.gn",
+        "patchSetId": 6
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-11-28T19:05:06Z",
+      "side": 0,
+      "message": "e.g. duplicated at line 127, or did we say that public_deps had to be a subset of deps?  If so, lots are missing.",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 36
+      },
+      "revId": "9b8ac25af8da61c8a81e0162c39a85eed2cc38dc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
