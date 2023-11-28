@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bdd6637_5f840095",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5475
+      },
+      "writtenOn": "2023-11-28T00:27:22Z",
+      "side": 1,
+      "message": "It\u0027s a great look though!",
+      "parentUuid": "f5398315_1cbf48bc",
+      "range": {
+        "startLine": 13,
+        "startChar": 27,
+        "endLine": 13,
+        "endChar": 29
+      },
+      "revId": "f0147e83be800fae64d11b28147bbbfdae0497d4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bfc86aea_f2be8f9d",
@@ -37,6 +61,24 @@
       "writtenOn": "2023-11-27T22:04:31Z",
       "side": 1,
       "message": "nit: newline after.",
+      "revId": "f0147e83be800fae64d11b28147bbbfdae0497d4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91dd38f8_d216da5d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5475
+      },
+      "writtenOn": "2023-11-28T00:27:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bfc86aea_f2be8f9d",
       "revId": "f0147e83be800fae64d11b28147bbbfdae0497d4",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
