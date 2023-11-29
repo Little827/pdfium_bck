@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0300612_b9ec0f5c",
+        "filename": "core/fxge/win32/cwin32_platform.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-29T02:50:18Z",
+      "side": 1,
+      "message": "No longer needed.",
+      "revId": "89ad3f9f9bfd8a5186c105af1085494648e27db6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
