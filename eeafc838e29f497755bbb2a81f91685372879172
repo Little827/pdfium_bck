@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "714aced7_30b69882",
+        "filename": "core/fxcrt/widestring.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-29T23:24:06Z",
+      "side": 1,
+      "message": "Feel free to give this a name more fitting with Google C++ style. No need for the FX_ prefix, considering it\u0027s now stashed away inside a .cpp file.",
+      "range": {
+        "startLine": 309,
+        "startChar": 11,
+        "endLine": 309,
+        "endChar": 24
+      },
+      "revId": "eeafc838e29f497755bbb2a81f91685372879172",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8d8c04d_35a51edf",
+        "filename": "core/fxcrt/widestring_unittest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1140,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-29T23:24:06Z",
+      "side": 1,
+      "message": "Use \"FromUTF8\" in the test names in this file to match the new method name.",
+      "range": {
+        "startLine": 1140,
+        "startChar": 17,
+        "endLine": 1140,
+        "endChar": 29
+      },
+      "revId": "eeafc838e29f497755bbb2a81f91685372879172",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
