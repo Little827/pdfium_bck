@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9624d07_292a400d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-11-29T21:05:12Z",
+      "side": 1,
+      "message": "LG w/question on strict type correctness.",
+      "revId": "0b97a8d4dbd99ef49df3cdc8e499f661bba1402b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53cce933_ad06801e",
+        "filename": "fpdfsdk/fpdf_formfill_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-11-29T21:05:12Z",
+      "side": 1,
+      "message": "Should this be FPDF_WCHAR from fpdfview.h? GetPlatformString() takes FPDF_WIDESTRING which is FPDF_WCHAR* which is unsigned short*. Note that unsigned short !\u003d uint16_t in theory ...",
+      "range": {
+        "startLine": 137,
+        "startChar": 16,
+        "endLine": 137,
+        "endChar": 24
+      },
+      "revId": "0b97a8d4dbd99ef49df3cdc8e499f661bba1402b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
