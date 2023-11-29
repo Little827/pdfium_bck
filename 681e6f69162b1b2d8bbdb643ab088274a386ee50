@@ -16,6 +16,40 @@
       "message": "Thanks!",
       "revId": "681e6f69162b1b2d8bbdb643ab088274a386ee50",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67eeb46b_88ce94d2",
+        "filename": "core/fxge/win32/cwin32_platform.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-29T01:46:46Z",
+      "side": 1,
+      "message": "Is the terminator still required?",
+      "revId": "681e6f69162b1b2d8bbdb643ab088274a386ee50",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "986fe2ea_0794fcab",
+        "filename": "core/fxge/win32/cwin32_platform.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-29T01:46:46Z",
+      "side": 1,
+      "message": "Just call `pdfium::as_bytes(variant.m_pVariantName)`?",
+      "revId": "681e6f69162b1b2d8bbdb643ab088274a386ee50",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }

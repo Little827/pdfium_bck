@@ -193,6 +193,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "02d4ef75_a89d4ea2",
+        "filename": "core/fxge/win32/cwin32_platform.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-29T01:46:46Z",
+      "side": 1,
+      "message": "We can make it better!",
+      "parentUuid": "64f11ab0_92cf7352",
+      "revId": "e7f176467e9869f4f6021476cb42da317eb0ba94",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "31453d6f_32cfaee8",
@@ -700,6 +718,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d706acc0_23794303",
+        "filename": "testing/fuzzers/pdf_fx_date_helpers_fuzzer.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-29T01:46:46Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "3229d74b_d01f2bad",
+      "revId": "e7f176467e9869f4f6021476cb42da317eb0ba94",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd6dfca6_7431851a",
@@ -749,6 +785,24 @@
       "side": 1,
       "message": "I\u0027m not sure, then it\u0027ll either always have length of exactly kMaxNameLen, or I have to put in code to make a random length. Maybe better as-is?",
       "parentUuid": "8db5ac4e_3ef299ba",
+      "revId": "e7f176467e9869f4f6021476cb42da317eb0ba94",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8188f3b4_a065383b",
+        "filename": "testing/fuzzers/pdf_nametree_fuzzer.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-29T01:46:46Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "4741a306_bd4541e3",
       "revId": "e7f176467e9869f4f6021476cb42da317eb0ba94",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
