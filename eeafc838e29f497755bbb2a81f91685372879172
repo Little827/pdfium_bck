@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "27862881_4e28bccb",
+        "filename": "core/fxcrt/widestring.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 5475
+      },
+      "writtenOn": "2023-11-29T23:56:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "714aced7_30b69882",
+      "range": {
+        "startLine": 309,
+        "startChar": 11,
+        "endLine": 309,
+        "endChar": 24
+      },
+      "revId": "eeafc838e29f497755bbb2a81f91685372879172",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e8d8c04d_35a51edf",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-11-29T23:24:06Z",
       "side": 1,
       "message": "Use \"FromUTF8\" in the test names in this file to match the new method name.",
+      "range": {
+        "startLine": 1140,
+        "startChar": 17,
+        "endLine": 1140,
+        "endChar": 29
+      },
+      "revId": "eeafc838e29f497755bbb2a81f91685372879172",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec42ec24_00cbba65",
+        "filename": "core/fxcrt/widestring_unittest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1140,
+      "author": {
+        "id": 5475
+      },
+      "writtenOn": "2023-11-29T23:56:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8d8c04d_35a51edf",
       "range": {
         "startLine": 1140,
         "startChar": 17,
