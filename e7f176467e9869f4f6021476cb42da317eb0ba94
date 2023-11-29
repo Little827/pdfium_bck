@@ -88,6 +88,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19d57e7f_f503915c",
+        "filename": "core/fxcrt/widestring.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 961,
+      "author": {
+        "id": 5475
+      },
+      "writtenOn": "2023-11-29T01:31:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e465107_74a42599",
+      "revId": "e7f176467e9869f4f6021476cb42da317eb0ba94",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c8014f30_c7981c89",
@@ -136,6 +154,24 @@
       "writtenOn": "2023-11-28T23:06:27Z",
       "side": 1,
       "message": "I wonder if struct Variant can just include the size, so this doesn\u0027t need to be calculated at runtime. Then the code won\u0027t need to cast `m_pVariantName` twice.",
+      "revId": "e7f176467e9869f4f6021476cb42da317eb0ba94",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa2dcc2b_9bdf134c",
+        "filename": "core/fxge/win32/cwin32_platform.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 5475
+      },
+      "writtenOn": "2023-11-29T01:31:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e193769b_df8d0976",
       "revId": "e7f176467e9869f4f6021476cb42da317eb0ba94",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -629,6 +665,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "71303354_9deaf63c",
+        "filename": "testing/fuzzers/pdf_cjs_util_fuzzer.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5475
+      },
+      "writtenOn": "2023-11-29T01:31:25Z",
+      "side": 1,
+      "message": "I think that\u0027d be a nice change, but it\u0027s fairly unrelated to what this CL here is doing, so I\u0027d prefer not to do it.",
+      "parentUuid": "8b00bc60_c8fae028",
+      "revId": "e7f176467e9869f4f6021476cb42da317eb0ba94",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3229d74b_d01f2bad",
@@ -677,6 +731,24 @@
       "side": 1,
       "message": "Should line 29 become ConsumeBytes() instead?\n\nSeparately, I\u0027ll copy base::as_byte_span() into PDFium.",
       "parentUuid": "bd6dfca6_7431851a",
+      "revId": "e7f176467e9869f4f6021476cb42da317eb0ba94",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4741a306_bd4541e3",
+        "filename": "testing/fuzzers/pdf_nametree_fuzzer.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 5475
+      },
+      "writtenOn": "2023-11-29T01:31:25Z",
+      "side": 1,
+      "message": "I\u0027m not sure, then it\u0027ll either always have length of exactly kMaxNameLen, or I have to put in code to make a random length. Maybe better as-is?",
+      "parentUuid": "8db5ac4e_3ef299ba",
       "revId": "e7f176467e9869f4f6021476cb42da317eb0ba94",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
