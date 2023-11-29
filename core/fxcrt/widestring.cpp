@@ -18,6 +18,7 @@
 #include "core/fxcrt/fx_safe_types.h"
 #include "core/fxcrt/fx_system.h"
 #include "core/fxcrt/string_pool_template.h"
+#include "core/fxcrt/utf16.h"
 #include "third_party/base/check.h"
 #include "third_party/base/check_op.h"
 #include "third_party/base/numerics/safe_math.h"
@@ -956,6 +957,23 @@ WideString WideString::FromUTF8(ByteStringView str) {
   return FX_UTF8Decode(str);
 }
 
+#if defined(WCHAR_T_IS_32_BIT)
+static size_t FuseSurrogates(pdfium::span<wchar_t> s, size_t n) {
+  size_t dest_pos = 0;
+  for (size_t i = 0; i < n; ++i) {
+    // TODO(crbug.com/pdfium/2031): Always use UTF-16.
+    if (pdfium::IsHighSurrogate(s[i]) && i + 1 < n &&
+        pdfium::IsLowSurrogate(s[i + 1])) {
+      s[dest_pos++] = pdfium::SurrogatePair(s[i], s[i + 1]).ToCodePoint();
+      ++i;
+      continue;
+    }
+    s[dest_pos++] = s[i];
+  }
+  return dest_pos;
+}
+#endif  // defined(WCHAR_T_IS_UTF32)
+
 // static
 WideString WideString::FromUTF16LE(pdfium::span<const uint8_t> data) {
   if (data.empty()) {
@@ -970,6 +988,10 @@ WideString WideString::FromUTF16LE(pdfium::span<const uint8_t> data) {
     for (size_t i = 0; i < data.size() - 1; i += 2) {
       buf[length++] = data[i] | data[i + 1] << 8;
     }
+
+#if defined(WCHAR_T_IS_32_BIT)
+    length = FuseSurrogates(buf, length);
+#endif
   }
   result.ReleaseBuffer(length);
   return result;
@@ -988,6 +1010,10 @@ WideString WideString::FromUTF16BE(pdfium::span<const uint8_t> data) {
     for (size_t i = 0; i < data.size() - 1; i += 2) {
       buf[length++] = data[i] << 8 | data[i + 1];
     }
+
+#if defined(WCHAR_T_IS_32_BIT)
+    length = FuseSurrogates(buf, length);
+#endif
   }
   result.ReleaseBuffer(length);
   return result;
