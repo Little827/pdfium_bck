@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "517bb887_78dc6b85",
+        "filename": "core/fxcrt/widestring.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 961,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-29T23:18:37Z",
+      "side": 1,
+      "message": "Just use anonymous namespace instead? Either here or move into the existing one near the top of the file.",
+      "range": {
+        "startLine": 961,
+        "startChar": 0,
+        "endLine": 961,
+        "endChar": 6
+      },
+      "revId": "d0007f9a27b5ff0fc719542e6bf80e2f2cac2f29",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8eba5fe9_636a7ac7",
+        "filename": "core/fxcrt/widestring.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 975,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-29T23:18:37Z",
+      "side": 1,
+      "message": "BTW, this is the old name. Please change it to match line 960.",
+      "range": {
+        "startLine": 975,
+        "startChar": 19,
+        "endLine": 975,
+        "endChar": 35
+      },
+      "revId": "d0007f9a27b5ff0fc719542e6bf80e2f2cac2f29",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
