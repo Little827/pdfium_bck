@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f1e0f79_1d524a32",
+        "filename": "core/fxcrt/widestring.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 961,
+      "author": {
+        "id": 5475
+      },
+      "writtenOn": "2023-11-29T23:53:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "517bb887_78dc6b85",
+      "range": {
+        "startLine": 961,
+        "startChar": 0,
+        "endLine": 961,
+        "endChar": 6
+      },
+      "revId": "d0007f9a27b5ff0fc719542e6bf80e2f2cac2f29",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8eba5fe9_636a7ac7",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-11-29T23:18:37Z",
       "side": 1,
       "message": "BTW, this is the old name. Please change it to match line 960.",
+      "range": {
+        "startLine": 975,
+        "startChar": 19,
+        "endLine": 975,
+        "endChar": 35
+      },
+      "revId": "d0007f9a27b5ff0fc719542e6bf80e2f2cac2f29",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c7081e4_6b6145fc",
+        "filename": "core/fxcrt/widestring.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 975,
+      "author": {
+        "id": 5475
+      },
+      "writtenOn": "2023-11-29T23:53:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8eba5fe9_636a7ac7",
       "range": {
         "startLine": 975,
         "startChar": 19,
