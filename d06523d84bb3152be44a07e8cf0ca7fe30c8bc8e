@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad606a97_5c743b1e",
+        "filename": "core/fxcrt/widestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-11-30T21:41:57Z",
+      "side": 1,
+      "message": "drive-by: Curious why this still takes a length rather than inferring it from the span (reason is likely that I never got around to fixing this). Should this get cleaned up?",
+      "range": {
+        "startLine": 38,
+        "startChar": 22,
+        "endLine": 38,
+        "endChar": 55
+      },
+      "revId": "d06523d84bb3152be44a07e8cf0ca7fe30c8bc8e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72fafb03_9e4396c4",
+        "filename": "core/fxcrt/widestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 993,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-11-30T21:41:57Z",
+      "side": 1,
+      "message": "drive-by: having made the change suggested above, if length really is still needed, this can become `length \u003d FuseSurrogates(buf.first(length));",
+      "range": {
+        "startLine": 993,
+        "startChar": 4,
+        "endLine": 993,
+        "endChar": 41
+      },
+      "revId": "d06523d84bb3152be44a07e8cf0ca7fe30c8bc8e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
