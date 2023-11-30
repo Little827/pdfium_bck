@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e3f49c2_296ffa5e",
+        "filename": "fpdfsdk/pwl/cpwl_edit.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-11-30T17:39:10Z",
+      "side": 0,
+      "message": "NOTE: only place these change from original values is in the if-block, and original values don\u0027t trigger returns here, so safe to move.",
+      "range": {
+        "startLine": 443,
+        "startChar": 2,
+        "endLine": 444,
+        "endChar": 16
+      },
+      "revId": "11f81a320c9f9c9db4bc01bba7b52da24eddca93",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
