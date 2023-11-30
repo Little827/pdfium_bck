@@ -16,6 +16,23 @@
       "message": "I believe we should take this as it had no bearing on the failure of the PA roll when I tried it against it.",
       "revId": "15bd4f7b5055abe05b5c36df712c179b4ddc02a5",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b2d9579_e6d59fa7",
+        "filename": "core/fxcrt/BUILD.gn",
+        "patchSetId": 7
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-30T21:58:23Z",
+      "side": 1,
+      "message": "https://gn.googlesource.com/gn/+/main/docs/style_guide.md#ordering-within-a-target suggests moving visibility up.",
+      "revId": "15bd4f7b5055abe05b5c36df712c179b4ddc02a5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
