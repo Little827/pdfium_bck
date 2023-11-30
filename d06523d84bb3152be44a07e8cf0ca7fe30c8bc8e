@@ -45,6 +45,30 @@
       },
       "revId": "d06523d84bb3152be44a07e8cf0ca7fe30c8bc8e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ef8f5ed_c76a3506",
+        "filename": "core/fxcrt/widestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 993,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-11-30T21:45:44Z",
+      "side": 1,
+      "message": "(and it is needed, GetBuffer() may be generous and give more than needed.",
+      "parentUuid": "72fafb03_9e4396c4",
+      "range": {
+        "startLine": 993,
+        "startChar": 4,
+        "endLine": 993,
+        "endChar": 41
+      },
+      "revId": "d06523d84bb3152be44a07e8cf0ca7fe30c8bc8e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
