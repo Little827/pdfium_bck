@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d989435_df215d20",
+        "filename": "xfa/fxfa/cxfa_eventparam.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-11-30T19:02:20Z",
+      "side": 1,
+      "message": "Alternatively, also add a 0-param ctor that delegates to this ctor with the unknown type. Then many existing ctors can stay as they were.",
+      "revId": "b5ad92870fa17759a9bcdd88b28c62cf133fd704",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
