@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cf8bc34_59b5e94b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5475
+      },
+      "writtenOn": "2023-11-30T05:59:05Z",
+      "side": 1,
+      "message": "Hm, looks like this lost its cr+1 after rebasing :/",
+      "revId": "09b0d8a92e2bd406642d8f558f6d503ab4a35825",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
