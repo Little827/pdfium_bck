@@ -16,6 +16,23 @@
       "message": "Thanks!",
       "revId": "ca21320b70a88f3d9e6be69e3e191bcab1b316ed",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c756136a_d23a2798",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-11-30T23:43:30Z",
+      "side": 1,
+      "message": "+Lei for OWNERS stamp",
+      "revId": "ca21320b70a88f3d9e6be69e3e191bcab1b316ed",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
