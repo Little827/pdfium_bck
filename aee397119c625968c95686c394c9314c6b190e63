@@ -94,6 +94,30 @@
       },
       "revId": "aee397119c625968c95686c394c9314c6b190e63",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "885a464b_a2071e16",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1264,
+      "author": {
+        "id": 5475
+      },
+      "writtenOn": "2023-12-01T22:04:01Z",
+      "side": 1,
+      "message": "Should I just abandon this one and leave that to you? (As a P-low that might not happen soon, if ever)",
+      "parentUuid": "6ba639c8_4426d5d0",
+      "range": {
+        "startLine": 1264,
+        "startChar": 22,
+        "endLine": 1264,
+        "endChar": 72
+      },
+      "revId": "aee397119c625968c95686c394c9314c6b190e63",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
