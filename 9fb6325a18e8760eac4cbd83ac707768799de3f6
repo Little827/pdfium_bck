@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "efa43d29_9a3085b0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-12-01T00:46:04Z",
+      "side": 1,
+      "message": "There\u0027s a short-circuit for empty strings in WideStringToBuffer() that we may want to introduce into Utf16EncodeMaybeCopyAndReturnLength() simply to avoid work -- though I think this boundary condition is properly handled either way,",
+      "revId": "9fb6325a18e8760eac4cbd83ac707768799de3f6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
