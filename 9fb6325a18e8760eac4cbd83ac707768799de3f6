@@ -16,6 +16,24 @@
       "message": "There\u0027s a short-circuit for empty strings in WideStringToBuffer() that we may want to introduce into Utf16EncodeMaybeCopyAndReturnLength() simply to avoid work -- though I think this boundary condition is properly handled either way,",
       "revId": "9fb6325a18e8760eac4cbd83ac707768799de3f6",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04ade4a5_2a73c80f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-12-01T00:48:14Z",
+      "side": 1,
+      "message": "In other words, I think that you may be getting back a buffer with \u0027\\u0000\u0027 vs. a null string causing the test to fail;",
+      "parentUuid": "efa43d29_9a3085b0",
+      "revId": "9fb6325a18e8760eac4cbd83ac707768799de3f6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
