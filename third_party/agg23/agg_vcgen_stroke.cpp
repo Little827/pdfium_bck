@@ -140,10 +140,10 @@ unsigned vcgen_stroke::vertex(float* x, float* y)
                         break;
                     }
                 } else {
-                    if(m_src_vertex >= m_src_vertices.size() - 1) {
-                        m_status = cap2;
-                        break;
-                    }
+                  if (m_src_vertex + 1 >= m_src_vertices.size()) {
+                    m_status = cap2;
+                    break;
+                  }
                 }
                 curj = m_src_vertices[m_src_vertex].cmd & path_flags_jr ? miter_join_round : m_line_join;
                 stroke_calc_join(m_out_vertices,
