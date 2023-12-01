@@ -1261,16 +1261,14 @@ FPDF_EXPORT FPDF_DEST FPDF_CALLCONV FPDF_GetNamedDest(FPDF_DOCUMENT document,
   if (!pDestObj->IsArray())
     return nullptr;
 
-  ByteString utf16Name = wsName.ToUTF16LE();
-  int len = pdfium::base::checked_cast<int>(utf16Name.GetLength());
-  if (!buffer) {
-    *buflen = len;
-  } else if (len <= *buflen) {
-    memcpy(buffer, utf16Name.c_str(), len);
-    *buflen = len;
-  } else {
-    *buflen = -1;
+  unsigned long len = pdfium::base::checked_cast<unsigned long>(*buflen);
+  len = Utf16EncodeMaybeCopyAndReturnLength(wsName, buffer, len);
+  long out_len = pdfium::base::checked_cast<long>(len);
+  if (buffer && out_len > *buflen) {
+    out_len = -1;
   }
+  *buflen = out_len;
+
   return FPDFDestFromCPDFArray(pDestObj->AsArray());
 }
 
