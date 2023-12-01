@@ -22,6 +22,30 @@
       },
       "revId": "aee397119c625968c95686c394c9314c6b190e63",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cde9cc1_00196d00",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1264,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-12-01T19:39:12Z",
+      "side": 1,
+      "message": "Maybe FPDF_GetNamedDest() (no non-test callers AFAICT) can be deprecated and replaced with more targeted APIs to:\n\n1) Get the FPDF_DEST at an index.\n2) Get the name given an FPDF_DEST.",
+      "parentUuid": "76416869_969d72d9",
+      "range": {
+        "startLine": 1264,
+        "startChar": 22,
+        "endLine": 1264,
+        "endChar": 72
+      },
+      "revId": "aee397119c625968c95686c394c9314c6b190e63",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
