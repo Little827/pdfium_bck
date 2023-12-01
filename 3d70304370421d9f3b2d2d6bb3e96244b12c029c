@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2dcc5513_e8ef3317",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-12-01T19:41:18Z",
+      "side": 1,
+      "message": "nit: stray space.",
+      "range": {
+        "startLine": 27,
+        "startChar": 8,
+        "endLine": 27,
+        "endChar": 11
+      },
+      "revId": "3d70304370421d9f3b2d2d6bb3e96244b12c029c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "915a9b47_10095300",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-12-01T19:41:18Z",
+      "side": 1,
+      "message": "nit: Bug: ?",
+      "revId": "3d70304370421d9f3b2d2d6bb3e96244b12c029c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b20e9ac3_d4fc5f02",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-12-01T19:41:18Z",
+      "side": 1,
+      "message": "LG w/comments.",
+      "revId": "3d70304370421d9f3b2d2d6bb3e96244b12c029c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41dbf636_713a33a9",
+        "filename": "core/fxcrt/widestring.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 787,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-12-01T19:41:18Z",
+      "side": 1,
+      "message": "nit: maybe fold this into the above ifdef, duplicating line 788 and the close-brace on 795 seems a kind of minimal duplication.",
+      "range": {
+        "startLine": 787,
+        "startChar": 0,
+        "endLine": 787,
+        "endChar": 30
+      },
+      "revId": "3d70304370421d9f3b2d2d6bb3e96244b12c029c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c6c9740_2795817b",
+        "filename": "core/fxcrt/widestring_unittest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1282,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-12-01T19:41:18Z",
+      "side": 1,
+      "message": "Is there a way to escape this, to keep the test file source-set ascii?",
+      "range": {
+        "startLine": 1282,
+        "startChar": 8,
+        "endLine": 1282,
+        "endChar": 11
+      },
+      "revId": "3d70304370421d9f3b2d2d6bb3e96244b12c029c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
