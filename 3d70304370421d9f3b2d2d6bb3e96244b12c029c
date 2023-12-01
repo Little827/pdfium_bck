@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb30ec90_2a0eb58e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5475
+      },
+      "writtenOn": "2023-12-01T22:17:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2dcc5513_e8ef3317",
+      "range": {
+        "startLine": 27,
+        "startChar": 8,
+        "endLine": 27,
+        "endChar": 11
+      },
+      "revId": "3d70304370421d9f3b2d2d6bb3e96244b12c029c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "915a9b47_10095300",
@@ -37,6 +61,24 @@
       "writtenOn": "2023-12-01T19:41:18Z",
       "side": 1,
       "message": "nit: Bug: ?",
+      "revId": "3d70304370421d9f3b2d2d6bb3e96244b12c029c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28bcf243_e45a509e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 5475
+      },
+      "writtenOn": "2023-12-01T22:17:36Z",
+      "side": 1,
+      "message": "Filed a bug and linked to it.",
+      "parentUuid": "915a9b47_10095300",
       "revId": "3d70304370421d9f3b2d2d6bb3e96244b12c029c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -81,6 +123,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cc60f02_9073ce07",
+        "filename": "core/fxcrt/widestring.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 787,
+      "author": {
+        "id": 5475
+      },
+      "writtenOn": "2023-12-01T22:17:36Z",
+      "side": 1,
+      "message": "It\u0027d also duplicate the loop header, and the end of the loop body.\n\nDuring the time this CL has been marinating, I came up with the following, which I think should make this and other things nicer: Once this is in, I\u0027d like to add a `std::u16string FX_UTF16Encode(WideStringView)` to fxcrt/fx_string and then use that in all places that want nul-terminated in-memory utf16 strings (which are most of them). And the ones that actually want a ByteString can then call `FX_UTF16Encode()` internally and only break the `char16_t`s down to bytes. That will make the ifdef\u0027d block in the future `FX_UTF16Encode()` quite a bit smaller.\n\nBut I\u0027d like to land this here first if that\u0027s alright 😊",
+      "parentUuid": "41dbf636_713a33a9",
+      "range": {
+        "startLine": 787,
+        "startChar": 0,
+        "endLine": 787,
+        "endChar": 30
+      },
+      "revId": "3d70304370421d9f3b2d2d6bb3e96244b12c029c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c6c9740_2795817b",
@@ -94,6 +160,30 @@
       "writtenOn": "2023-12-01T19:41:18Z",
       "side": 1,
       "message": "Is there a way to escape this, to keep the test file source-set ascii?",
+      "range": {
+        "startLine": 1282,
+        "startChar": 8,
+        "endLine": 1282,
+        "endChar": 11
+      },
+      "revId": "3d70304370421d9f3b2d2d6bb3e96244b12c029c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa1e6413_2114508c",
+        "filename": "core/fxcrt/widestring_unittest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1282,
+      "author": {
+        "id": 5475
+      },
+      "writtenOn": "2023-12-01T22:17:36Z",
+      "side": 1,
+      "message": "The source set is already pretty non-ASCII:\n\n```\n% git grep -P \u0027[^\\x00-\\x7F]\u0027 \u0027*.cpp\u0027 | wc -l\n      32\n```\n\nI copied this test character from another string that does the same thing.\n\nWhat\u0027s the motivation for keeping the source set ascii? This used to cause problems, but nowadays it\u0027s all specced and well-supported.\n\n(Marking resolved since it\u0027s following precedent in the project, but happy to follow up on this!)",
+      "parentUuid": "6c6c9740_2795817b",
       "range": {
         "startLine": 1282,
         "startChar": 8,
