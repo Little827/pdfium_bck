@@ -1045,10 +1045,12 @@ WideString WideString::FromUTF16LE(pdfium::span<const uint8_t> data) {
   {
     // Span's lifetime must end before ReleaseBuffer() below.
     pdfium::span<wchar_t> buf = result.GetBuffer(data.size() / 2);
-    for (size_t i = 0; i < data.size() - 1; i += 2) {
-      buf[length++] = data[i] | data[i + 1] << 8;
-    }
 
+    // Iterate over second byte in pair thus ignoring any stray trailing
+    // byte which may be present.
+    for (size_t i = 1; i < data.size(); i += 2) {
+      buf[length++] = data[i - 1] | data[i] << 8;
+    }
 #if defined(WCHAR_T_IS_32_BIT)
     length = FuseSurrogates(buf.first(length));
 #endif
@@ -1067,10 +1069,12 @@ WideString WideString::FromUTF16BE(pdfium::span<const uint8_t> data) {
   {
     // Span's lifetime must end before ReleaseBuffer() below.
     pdfium::span<wchar_t> buf = result.GetBuffer(data.size() / 2);
-    for (size_t i = 0; i < data.size() - 1; i += 2) {
-      buf[length++] = data[i] << 8 | data[i + 1];
-    }
 
+    // Iterate over second byte in pair thus ignoring any stray trailing
+    // byte which may be present.
+    for (size_t i = 1; i < data.size(); i += 2) {
+      buf[length++] = data[i - 1] << 8 | data[i];
+    }
 #if defined(WCHAR_T_IS_32_BIT)
     length = FuseSurrogates(buf.first(length));
 #endif
