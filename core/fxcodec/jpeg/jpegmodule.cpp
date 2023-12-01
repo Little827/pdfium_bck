@@ -27,11 +27,10 @@
 
 static pdfium::span<const uint8_t> JpegScanSOI(
     pdfium::span<const uint8_t> src_span) {
-  DCHECK(!src_span.empty());
-
-  for (size_t offset = 0; offset < src_span.size() - 1; ++offset) {
-    if (src_span[offset] == 0xff && src_span[offset + 1] == 0xd8)
+  for (size_t offset = 1; offset < src_span.size(); ++offset) {
+    if (src_span[offset - 1] == 0xff && src_span[offset] == 0xd8) {
       return src_span.subspan(offset);
+    }
   }
   return src_span;
 }

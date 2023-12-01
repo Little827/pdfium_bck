@@ -110,13 +110,17 @@ bool CPDF_StitchFunc::v_Call(pdfium::span<const float> inputs,
                              pdfium::span<float> results) const {
   float input = inputs[0];
   size_t i;
-  for (i = 0; i < m_pSubFunctions.size() - 1; i++) {
-    if (input < m_bounds[i + 1])
+  // Sub-functions to check start at index 1.
+  for (i = 1; i < m_pSubFunctions.size(); i++) {
+    if (input < m_bounds[i]) {
       break;
+    }
   }
-  input = Interpolate(input, m_bounds[i], m_bounds[i + 1], m_encode[i * 2],
-                      m_encode[i * 2 + 1]);
-  return m_pSubFunctions[i]
+  // Other indices are zero-based.
+  size_t j = i - 1;
+  input = Interpolate(input, m_bounds[j], m_bounds[j + 1], m_encode[j * 2],
+                      m_encode[j * 2 + 1]);
+  return m_pSubFunctions[j]
       ->Call(pdfium::make_span(&input, 1u), results)
       .has_value();
 }
