@@ -11,6 +11,7 @@
 #include <memory>
 #include <set>
 
+#include "fxjs/gc/compiler_specific.h"
 #include "fxjs/gc/heap.h"
 #include "v8/include/cppgc/garbage-collected.h"
 #include "v8/include/cppgc/member.h"
@@ -50,6 +51,8 @@ class CFWL_NoteDriver final : public cppgc::GarbageCollected<CFWL_NoteDriver> {
    private:
     bool m_bValid = true;
     cppgc::Member<CFWL_Widget> const m_pListener;
+    // TODO(crbug.com/1472363): Remove annotation.
+    BLINK_GC_PLUGIN_IGNORE
     std::set<cppgc::Member<CFWL_Widget>> m_widgets;
   };
 
@@ -68,6 +71,8 @@ class CFWL_NoteDriver final : public cppgc::GarbageCollected<CFWL_NoteDriver> {
   cppgc::Member<CFWL_Widget> m_pHover;
   cppgc::Member<CFWL_Widget> m_pFocus;
   cppgc::Member<CFWL_Widget> m_pGrab;
+  // TODO(crbug.com/1472363): Remove annotation.
+  BLINK_GC_PLUGIN_IGNORE
   std::map<uint64_t, cppgc::Member<Target>> m_eventTargets;
 };
 

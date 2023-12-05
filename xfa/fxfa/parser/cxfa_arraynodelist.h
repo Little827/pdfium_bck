@@ -9,6 +9,7 @@
 
 #include <vector>
 
+#include "fxjs/gc/compiler_specific.h"
 #include "v8/include/cppgc/member.h"
 #include "v8/include/cppgc/visitor.h"
 #include "xfa/fxfa/parser/cxfa_treelist.h"
@@ -35,6 +36,8 @@ class CXFA_ArrayNodeList final : public CXFA_TreeList {
  private:
   explicit CXFA_ArrayNodeList(CXFA_Document* pDocument);
 
+  // TODO(crbug.com/1472363): Remove annotation.
+  BLINK_GC_PLUGIN_IGNORE
   std::vector<cppgc::Member<CXFA_Node>> m_array;
 };
 

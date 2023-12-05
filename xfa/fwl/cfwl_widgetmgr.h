@@ -10,6 +10,7 @@
 #include <map>
 
 #include "core/fxcrt/fx_coordinates.h"
+#include "fxjs/gc/compiler_specific.h"
 #include "fxjs/gc/gced_tree_node.h"
 #include "fxjs/gc/heap.h"
 #include "v8/include/cppgc/garbage-collected.h"
@@ -94,6 +95,8 @@ class CFWL_WidgetMgr final : public cppgc::GarbageCollected<CFWL_WidgetMgr> {
 
   cppgc::Member<AdapterIface> const m_pAdapter;
   cppgc::Member<CFWL_App> const m_pApp;
+  // TODO(crbug.com/1472363): Remove annotation.
+  BLINK_GC_PLUGIN_IGNORE
   std::map<cppgc::Member<const CFWL_Widget>, cppgc::Member<Item>>
       m_mapWidgetItem;
 };

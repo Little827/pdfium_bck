@@ -16,6 +16,7 @@
 #include "core/fxcrt/xml/cfx_xmltext.h"
 #include "fxjs/cjs_result.h"
 #include "fxjs/fxv8.h"
+#include "fxjs/gc/compiler_specific.h"
 #include "fxjs/gc/container_trace.h"
 #include "fxjs/xfa/cfxjse_engine.h"
 #include "fxjs/xfa/cfxjse_mapmodule.h"
@@ -550,6 +551,8 @@ void CJX_Object::SetContent(const WideString& wsContent,
         if (bSyncData && pBind) {
           std::vector<WideString> wsSaveTextArray =
               fxcrt::Split(wsContent, L'\n');
+          // TODO(crbug.com/1472363): Remove annotation.
+          BLINK_GC_PLUGIN_IGNORE
           std::vector<CXFA_Node*> valueNodes =
               pBind->GetNodeListForType(XFA_Element::DataValue);
 
@@ -840,7 +843,8 @@ absl::optional<CXFA_Measurement> CJX_Object::GetMapModuleMeasurement(
 
 absl::optional<int32_t> CJX_Object::GetMapModuleValueFollowingChain(
     uint32_t key) const {
-  std::set<const CXFA_Node*> visited;
+  // TODO(crbug.com/1472363): Remove annotation.
+  BLINK_GC_PLUGIN_IGNORE std::set<const CXFA_Node*> visited;
   for (const CXFA_Node* pNode = GetXFANode(); pNode;
        pNode = pNode->GetTemplateNodeIfExists()) {
     if (!visited.insert(pNode).second)
@@ -858,7 +862,8 @@ absl::optional<int32_t> CJX_Object::GetMapModuleValueFollowingChain(
 
 absl::optional<WideString> CJX_Object::GetMapModuleStringFollowingChain(
     uint32_t key) const {
-  std::set<const CXFA_Node*> visited;
+  // TODO(crbug.com/1472363): Remove annotation.
+  BLINK_GC_PLUGIN_IGNORE std::set<const CXFA_Node*> visited;
   for (const CXFA_Node* pNode = GetXFANode(); pNode;
        pNode = pNode->GetTemplateNodeIfExists()) {
     if (!visited.insert(pNode).second)
@@ -877,7 +882,8 @@ absl::optional<WideString> CJX_Object::GetMapModuleStringFollowingChain(
 
 absl::optional<CXFA_Measurement>
 CJX_Object::GetMapModuleMeasurementFollowingChain(uint32_t key) const {
-  std::set<const CXFA_Node*> visited;
+  // TODO(crbug.com/1472363): Remove annotation.
+  BLINK_GC_PLUGIN_IGNORE std::set<const CXFA_Node*> visited;
   for (const CXFA_Node* pNode = GetXFANode(); pNode;
        pNode = pNode->GetTemplateNodeIfExists()) {
     if (!visited.insert(pNode).second)

@@ -10,6 +10,7 @@
 #include <utility>
 #include <vector>
 
+#include "fxjs/gc/compiler_specific.h"
 #include "third_party/base/check.h"
 #include "v8/include/cppgc/visitor.h"
 #include "xfa/fde/cfde_textout.h"
@@ -158,7 +159,8 @@ CFX_PointF CFWL_Widget::TransformTo(CFWL_Widget* pWidget,
 
 CFX_Matrix CFWL_Widget::GetMatrix() const {
   CFWL_Widget* parent = GetParent();
-  std::vector<CFWL_Widget*> parents;
+  // TODO(crbug.com/1472363): Remove annotation.
+  BLINK_GC_PLUGIN_IGNORE std::vector<CFWL_Widget*> parents;
   while (parent) {
     parents.push_back(parent);
     parent = parent->GetParent();

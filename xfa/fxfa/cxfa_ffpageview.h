@@ -11,6 +11,7 @@
 
 #include "core/fxcrt/mask.h"
 #include "core/fxcrt/widestring.h"
+#include "fxjs/gc/compiler_specific.h"
 #include "fxjs/gc/heap.h"
 #include "v8/include/cppgc/garbage-collected.h"
 #include "v8/include/cppgc/member.h"
@@ -99,6 +100,8 @@ class CXFA_FFTabOrderPageWidgetIterator final
   std::vector<CXFA_ContentLayoutItem*> CreateSpaceOrderLayoutItems();
 
   cppgc::Member<CXFA_ViewLayoutItem> const m_pPageViewLayout;
+  // TODO(crbug.com/1472363): Remove annotation.
+  BLINK_GC_PLUGIN_IGNORE
   std::vector<cppgc::Member<CXFA_ContentLayoutItem>> m_TabOrderWidgetArray;
   const Mask<XFA_WidgetStatus> m_dwFilter;
   int32_t m_iCurWidget = -1;

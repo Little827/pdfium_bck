@@ -17,6 +17,7 @@
 #include "core/fxcrt/xml/cfx_xmlelement.h"
 #include "core/fxcrt/xml/cfx_xmlparser.h"
 #include "fxjs/fxv8.h"
+#include "fxjs/gc/compiler_specific.h"
 #include "fxjs/js_resources.h"
 #include "fxjs/xfa/cfxjse_engine.h"
 #include "third_party/base/containers/span.h"
@@ -457,7 +458,8 @@ void CJX_Node::oneOfChild(v8::Isolate* pIsolate,
     return;
   }
 
-  std::vector<CXFA_Node*> properties =
+  // TODO(crbug.com/1472363): Remove annotation.
+  BLINK_GC_PLUGIN_IGNORE std::vector<CXFA_Node*> properties =
       GetXFANode()->GetNodeListWithFilter(XFA_NodeFilter::kOneOfProperty);
   if (!properties.empty()) {
     *pValue = GetDocument()->GetScriptContext()->GetOrCreateJSBindingFromMap(

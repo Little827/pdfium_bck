@@ -11,6 +11,7 @@
 
 #include "core/fxcrt/fx_coordinates.h"
 #include "fxjs/fxv8.h"
+#include "fxjs/gc/compiler_specific.h"
 #include "fxjs/js_resources.h"
 #include "fxjs/xfa/cfxjse_class.h"
 #include "fxjs/xfa/cfxjse_engine.h"
@@ -224,7 +225,8 @@ std::vector<CXFA_Node*> CJX_LayoutPseudoModel::GetObjArray(
   if (!pLayoutPage)
     return std::vector<CXFA_Node*>();
 
-  std::vector<CXFA_Node*> retArray;
+  // TODO(crbug.com/1472363): Remove annotation.
+  BLINK_GC_PLUGIN_IGNORE std::vector<CXFA_Node*> retArray;
   if (wsType.EqualsASCII("pageArea")) {
     if (pLayoutPage->GetFormNode())
       retArray.push_back(pLayoutPage->GetFormNode());
@@ -238,7 +240,8 @@ std::vector<CXFA_Node*> CJX_LayoutPseudoModel::GetObjArray(
     }
     return retArray;
   }
-  std::set<CXFA_Node*> formItems;
+  // TODO(crbug.com/1472363): Remove annotation.
+  BLINK_GC_PLUGIN_IGNORE std::set<CXFA_Node*> formItems;
   if (wsType.IsEmpty()) {
     if (pLayoutPage->GetFormNode())
       retArray.push_back(pLayoutPage->GetFormNode());

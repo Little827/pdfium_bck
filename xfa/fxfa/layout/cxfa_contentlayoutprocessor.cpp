@@ -11,6 +11,7 @@
 #include <vector>
 
 #include "core/fxcrt/stl_util.h"
+#include "fxjs/gc/compiler_specific.h"
 #include "fxjs/gc/container_trace.h"
 #include "fxjs/xfa/cjx_object.h"
 #include "third_party/base/check.h"
@@ -758,6 +759,8 @@ void CXFA_ContentLayoutProcessor::SplitLayoutItem(
     bOrphanedItem = true;
   }
 
+  // TODO(crbug.com/1472363): Remove annotation.
+  BLINK_GC_PLUGIN_IGNORE
   std::vector<CXFA_ContentLayoutItem*> children;
   while (auto* pFirst = ToContentLayoutItem(pLayoutItem->GetFirstChild())) {
     children.push_back(pFirst);
@@ -766,6 +769,8 @@ void CXFA_ContentLayoutProcessor::SplitLayoutItem(
 
   float lHeightForKeep = 0;
   float fAddMarginHeight = 0;
+  // TODO(crbug.com/1472363): Remove annotation.
+  BLINK_GC_PLUGIN_IGNORE
   std::vector<CXFA_ContentLayoutItem*> keepLayoutItems;
   for (CXFA_ContentLayoutItem* pChildItem : children) {
     if (fSplitPos <= fCurTopMargin + pChildItem->m_sPos.y + fCurBottomMargin +
@@ -1226,6 +1231,8 @@ void CXFA_ContentLayoutProcessor::DoLayoutTableContainer(
   int32_t iRowCount = 0;
   int32_t iColCount = 0;
   {
+    // TODO(crbug.com/1472363): Remove annotation.
+    BLINK_GC_PLUGIN_IGNORE
     std::vector<CXFA_ContentLayoutItem*> rgRowItems;
     std::vector<int32_t> rgRowItemsSpan;
     std::vector<float> rgRowItemsWidth;
@@ -1432,6 +1439,8 @@ bool CXFA_ContentLayoutProcessor::ProcessKeepForSplit(
     return false;
 
   CFX_SizeF childSize = pChildProcessor->GetCurrentComponentSize();
+  // TODO(crbug.com/1472363): Remove annotation.
+  BLINK_GC_PLUGIN_IGNORE
   std::vector<CXFA_ContentLayoutItem*> keepLayoutItems;
   if (JudgePutNextPage(m_pLayoutItem.Get(), childSize.height,
                        &keepLayoutItems)) {

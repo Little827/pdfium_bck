@@ -10,6 +10,7 @@
 #include <vector>
 
 #include "core/fxcrt/autorestorer.h"
+#include "fxjs/gc/compiler_specific.h"
 #include "v8/include/cppgc/heap.h"
 
 namespace {
@@ -30,7 +31,8 @@ CXFA_FMAST* CXFA_FMParser::Parse() {
   if (HasError())
     return nullptr;
 
-  auto expressions = ParseExpressionList();
+  // TODO(crbug.com/1472363): Remove annotation.
+  BLINK_GC_PLUGIN_IGNORE auto expressions = ParseExpressionList();
   if (HasError())
     return nullptr;
 
@@ -73,6 +75,8 @@ CXFA_FMParser::ParseExpressionList() {
   if (HasError() || !IncrementParseDepthAndCheck())
     return std::vector<cppgc::Member<CXFA_FMExpression>>();
 
+  // TODO(crbug.com/1472363): Remove annotation.
+  BLINK_GC_PLUGIN_IGNORE
   std::vector<cppgc::Member<CXFA_FMExpression>> expressions;
   while (!HasError()) {
     if (m_token.GetType() == TOKeof || m_token.GetType() == TOKendfunc ||
@@ -141,6 +145,8 @@ CXFA_FMExpression* CXFA_FMParser::ParseFunction() {
   if (!CheckThenNext(TOKdo))
     return nullptr;
 
+  // TODO(crbug.com/1472363): Remove annotation.
+  BLINK_GC_PLUGIN_IGNORE
   std::vector<cppgc::Member<CXFA_FMExpression>> expressions;
   if (m_token.GetType() != TOKendfunc)
     expressions = ParseExpressionList();
@@ -651,14 +657,15 @@ CXFA_FMSimpleExpression* CXFA_FMParser::ParsePostExpression(
 
     switch (m_token.GetType()) {
       case TOKlparen: {
-        absl::optional<std::vector<cppgc::Member<CXFA_FMSimpleExpression>>>
-            expressions = ParseArgumentList();
-        if (!expressions.has_value())
+        // TODO(crbug.com/1472363): Remove annotation.
+        BLINK_GC_PLUGIN_IGNORE
+        std::vector<cppgc::Member<CXFA_FMSimpleExpression>> expressions;
+        if (!ParseArgumentList(expressions)) {
           return nullptr;
+        }
 
         expr = cppgc::MakeGarbageCollected<CXFA_FMCallExpression>(
-            m_heap->GetAllocationHandle(), expr, std::move(expressions.value()),
-            false);
+            m_heap->GetAllocationHandle(), expr, std::move(expressions), false);
         if (!NextToken())
           return nullptr;
         if (m_token.GetType() != TOKlbracket)
@@ -682,17 +689,19 @@ CXFA_FMSimpleExpression* CXFA_FMParser::ParsePostExpression(
         if (!NextToken())
           return nullptr;
         if (m_token.GetType() == TOKlparen) {
-          absl::optional<std::vector<cppgc::Member<CXFA_FMSimpleExpression>>>
-              expressions = ParseArgumentList();
-          if (!expressions.has_value())
+          // TODO(crbug.com/1472363): Remove annotation.
+          BLINK_GC_PLUGIN_IGNORE
+          std::vector<cppgc::Member<CXFA_FMSimpleExpression>> expressions;
+          if (!ParseArgumentList(expressions)) {
             return nullptr;
+          }
 
           auto* pIdentifier =
               cppgc::MakeGarbageCollected<CXFA_FMIdentifierExpression>(
                   m_heap->GetAllocationHandle(), std::move(tempStr));
           auto* pExpCall = cppgc::MakeGarbageCollected<CXFA_FMCallExpression>(
               m_heap->GetAllocationHandle(), pIdentifier,
-              std::move(expressions.value()), true);
+              std::move(expressions), true);
           expr = cppgc::MakeGarbageCollected<CXFA_FMMethodCallExpression>(
               m_heap->GetAllocationHandle(), expr, pExpCall);
           if (!NextToken())
@@ -800,31 +809,31 @@ CXFA_FMSimpleExpression* CXFA_FMParser::ParsePostExpression(
 
 // Argument lists are zero or more comma seperated simple expressions found
 // between '(' and ')'
-absl::optional<std::vector<cppgc::Member<CXFA_FMSimpleExpression>>>
-CXFA_FMParser::ParseArgumentList() {
-  if (m_token.GetType() != TOKlparen || !NextToken())
-    return absl::nullopt;
 
-  std::vector<cppgc::Member<CXFA_FMSimpleExpression>> expressions;
+bool CXFA_FMParser::ParseArgumentList(
+    std::vector<cppgc::Member<CXFA_FMSimpleExpression>>& expressions) {
+  if (m_token.GetType() != TOKlparen || !NextToken())
+    return false;
+
   bool first_arg = true;
   while (m_token.GetType() != TOKrparen) {
     if (first_arg) {
       first_arg = false;
     } else {
       if (m_token.GetType() != TOKcomma || !NextToken())
-        return absl::nullopt;
+        return false;
     }
 
     CXFA_FMSimpleExpression* exp = ParseSimpleExpression();
     if (!exp)
-      return absl::nullopt;
+      return false;
 
     expressions.push_back(exp);
     if (expressions.size() > kMaxPostExpressions)
-      return absl::nullopt;
+      return false;
   }
 
-  return expressions;
+  return true;
 }
 
 // Index := '[' ('*' | '+' SimpleExpression | '-' SimpleExpression) ']'
@@ -912,6 +921,8 @@ CXFA_FMExpression* CXFA_FMParser::ParseIfExpression() {
   auto* pIfExpressions = cppgc::MakeGarbageCollected<CXFA_FMBlockExpression>(
       m_heap->GetAllocationHandle(), ParseExpressionList());
 
+  // TODO(crbug.com/1472363): Remove annotation.
+  BLINK_GC_PLUGIN_IGNORE
   std::vector<cppgc::Member<CXFA_FMIfExpression>> pElseIfExpressions;
   while (m_token.GetType() == TOKelseif) {
     if (!NextToken())
@@ -923,7 +934,8 @@ CXFA_FMExpression* CXFA_FMParser::ParseIfExpression() {
     if (!CheckThenNext(TOKthen))
       return nullptr;
 
-    auto elseIfExprs = ParseExpressionList();
+    // TODO(crbug.com/1472363): Remove annotation.
+    BLINK_GC_PLUGIN_IGNORE auto elseIfExprs = ParseExpressionList();
     pElseIfExpressions.push_back(
         cppgc::MakeGarbageCollected<CXFA_FMIfExpression>(
             m_heap->GetAllocationHandle(), elseIfCondition,
@@ -960,7 +972,8 @@ CXFA_FMExpression* CXFA_FMParser::ParseWhileExpression() {
   if (!pCondition || !CheckThenNext(TOKdo))
     return nullptr;
 
-  auto exprs = ParseExpressionList();
+  // TODO(crbug.com/1472363): Remove annotation.
+  BLINK_GC_PLUGIN_IGNORE auto exprs = ParseExpressionList();
   if (!CheckThenNext(TOKendwhile))
     return nullptr;
 
@@ -1019,7 +1032,8 @@ CXFA_FMExpression* CXFA_FMParser::ParseForExpression() {
   if (!CheckThenNext(TOKdo))
     return nullptr;
 
-  auto exprs = ParseExpressionList();
+  // TODO(crbug.com/1472363): Remove annotation.
+  BLINK_GC_PLUGIN_IGNORE auto exprs = ParseExpressionList();
   if (!CheckThenNext(TOKendfor))
     return nullptr;
 
@@ -1048,6 +1062,8 @@ CXFA_FMExpression* CXFA_FMParser::ParseForeachExpression() {
   if (!NextToken() || !CheckThenNext(TOKin) || !CheckThenNext(TOKlparen))
     return nullptr;
 
+  // TODO(crbug.com/1472363): Remove annotation.
+  BLINK_GC_PLUGIN_IGNORE
   std::vector<cppgc::Member<CXFA_FMSimpleExpression>> pArgumentList;
   while (m_token.GetType() != TOKrparen) {
     CXFA_FMSimpleExpression* s = ParseSimpleExpression();
@@ -1066,7 +1082,8 @@ CXFA_FMExpression* CXFA_FMParser::ParseForeachExpression() {
   if (!CheckThenNext(TOKrparen))
     return nullptr;
 
-  auto exprs = ParseExpressionList();
+  // TODO(crbug.com/1472363): Remove annotation.
+  BLINK_GC_PLUGIN_IGNORE auto exprs = ParseExpressionList();
   if (!CheckThenNext(TOKendfor))
     return nullptr;
 
@@ -1088,7 +1105,8 @@ CXFA_FMExpression* CXFA_FMParser::ParseDoExpression() {
   if (!CheckThenNext(TOKdo))
     return nullptr;
 
-  auto exprs = ParseExpressionList();
+  // TODO(crbug.com/1472363): Remove annotation.
+  BLINK_GC_PLUGIN_IGNORE auto exprs = ParseExpressionList();
   if (!CheckThenNext(TOKend))
     return nullptr;
 

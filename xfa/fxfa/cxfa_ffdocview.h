@@ -10,6 +10,7 @@
 #include <list>
 #include <vector>
 
+#include "fxjs/gc/compiler_specific.h"
 #include "fxjs/gc/heap.h"
 #include "v8/include/cppgc/garbage-collected.h"
 #include "v8/include/cppgc/member.h"
@@ -123,6 +124,8 @@ class CXFA_FFDocView : public cppgc::GarbageCollected<CXFA_FFDocView> {
   cppgc::Member<CXFA_Node> m_pFocusNode;
   cppgc::Member<CXFA_FFWidget> m_pFocusWidget;
   std::list<cppgc::Member<CXFA_Node>> m_ValidateNodes;
+  // TODO(crbug.com/1472363): Remove annotation.
+  BLINK_GC_PLUGIN_IGNORE
   std::vector<cppgc::Member<CXFA_Node>> m_CalculateNodes;
   std::list<cppgc::Member<CXFA_BindItems>> m_BindItems;
   std::list<cppgc::Member<CXFA_Node>> m_NewAddedNodes;

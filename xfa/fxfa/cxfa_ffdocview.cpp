@@ -12,6 +12,7 @@
 #include "core/fxcrt/fx_extension.h"
 #include "core/fxcrt/stl_util.h"
 #include "core/fxcrt/xml/cfx_xmlparser.h"
+#include "fxjs/gc/compiler_specific.h"
 #include "fxjs/gc/container_trace.h"
 #include "fxjs/xfa/cfxjse_engine.h"
 #include "fxjs/xfa/cjx_object.h"
@@ -515,7 +516,8 @@ bool CXFA_FFDocView::RunLayout() {
 }
 
 void CXFA_FFDocView::RunSubformIndexChange() {
-  std::set<CXFA_Node*> seen;
+  // TODO(crbug.com/1472363): Remove annotation.
+  BLINK_GC_PLUGIN_IGNORE std::set<CXFA_Node*> seen;
   while (!m_IndexChangedSubforms.empty()) {
     CXFA_Node* pSubformNode = m_IndexChangedSubforms.front();
     m_IndexChangedSubforms.pop_front();

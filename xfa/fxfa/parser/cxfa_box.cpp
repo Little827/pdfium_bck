@@ -11,6 +11,7 @@
 #include <algorithm>
 #include <utility>
 
+#include "fxjs/gc/compiler_specific.h"
 #include "fxjs/xfa/cjx_object.h"
 #include "third_party/base/notreached.h"
 #include "third_party/base/numerics/safe_conversions.h"
@@ -127,7 +128,9 @@ std::tuple<XFA_AttributeValue, bool, float> CXFA_Box::Get3DStyle() {
   if (GetElementType() == XFA_Element::Arc)
     return {XFA_AttributeValue::Unknown, false, 0.0f};
 
-  std::vector<CXFA_Stroke*> strokes = GetStrokesInternal(true);
+  // TODO(crbug.com/1472363): Remove annotation.
+  BLINK_GC_PLUGIN_IGNORE std::vector<CXFA_Stroke*> strokes =
+      GetStrokesInternal(true);
   CXFA_Stroke* stroke;
   XFA_AttributeValue iType;
 
@@ -139,7 +142,8 @@ std::tuple<XFA_AttributeValue, bool, float> CXFA_Box::Get3DStyle() {
 }
 
 std::vector<CXFA_Stroke*> CXFA_Box::GetStrokesInternal(bool bNull) {
-  std::vector<CXFA_Stroke*> strokes;
+  // TODO(crbug.com/1472363): Remove annotation.
+  BLINK_GC_PLUGIN_IGNORE std::vector<CXFA_Stroke*> strokes;
   strokes.resize(8);
 
   for (int32_t i = 0, j = 0; i < 4; i++) {
@@ -196,7 +200,8 @@ void CXFA_Box::Draw(CFGAS_GEGraphics* pGS,
       eType != XFA_Element::Rectangle) {
     return;
   }
-  std::vector<CXFA_Stroke*> strokes;
+  // TODO(crbug.com/1472363): Remove annotation.
+  BLINK_GC_PLUGIN_IGNORE std::vector<CXFA_Stroke*> strokes;
   if (!forceRound && eType != XFA_Element::Arc)
     strokes = GetStrokes();
 

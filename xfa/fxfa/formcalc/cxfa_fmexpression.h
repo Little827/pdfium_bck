@@ -11,6 +11,7 @@
 
 #include "core/fxcrt/widestring.h"
 #include "core/fxcrt/widetext_buffer.h"
+#include "fxjs/gc/compiler_specific.h"
 #include "fxjs/gc/heap.h"
 #include "third_party/abseil-cpp/absl/types/optional.h"
 #include "v8/include/cppgc/garbage-collected.h"
@@ -334,6 +335,8 @@ class CXFA_FMCallExpression final : public CXFA_FMSimpleExpression {
       bool bIsSomMethod);
 
   cppgc::Member<CXFA_FMSimpleExpression> m_pExp;
+  // TODO(crbug.com/1472363): Remove annotation.
+  BLINK_GC_PLUGIN_IGNORE
   std::vector<cppgc::Member<CXFA_FMSimpleExpression>> m_Arguments;
   bool m_bIsSomMethod;
 };
@@ -424,6 +427,8 @@ class CXFA_FMFunctionDefinition final : public CXFA_FMExpression {
 
   const WideString m_wsName;
   std::vector<WideString> const m_pArguments;
+  // TODO(crbug.com/1472363): Remove annotation.
+  BLINK_GC_PLUGIN_IGNORE
   std::vector<cppgc::Member<CXFA_FMExpression>> const m_pExpressions;
 };
 
@@ -467,7 +472,8 @@ class CXFA_FMBlockExpression final : public CXFA_FMExpression {
  private:
   CXFA_FMBlockExpression(
       std::vector<cppgc::Member<CXFA_FMExpression>>&& pExpressionList);
-
+  // TODO(crbug.com/1472363): Remove annotation.
+  BLINK_GC_PLUGIN_IGNORE
   std::vector<cppgc::Member<CXFA_FMExpression>> const m_ExpressionList;
 };
 
@@ -502,6 +508,8 @@ class CXFA_FMIfExpression final : public CXFA_FMExpression {
 
   cppgc::Member<CXFA_FMSimpleExpression> const m_pExpression;
   cppgc::Member<CXFA_FMExpression> const m_pIfExpression;
+  // TODO(crbug.com/1472363): Remove annotation.
+  BLINK_GC_PLUGIN_IGNORE
   std::vector<cppgc::Member<CXFA_FMIfExpression>> const m_pElseIfExpressions;
   cppgc::Member<CXFA_FMExpression> const m_pElseExpression;
 };
@@ -584,6 +592,8 @@ class CXFA_FMForeachExpression final : public CXFA_FMExpression {
       CXFA_FMExpression* pList);
 
   const WideString m_wsIdentifier;
+  // TODO(crbug.com/1472363): Remove annotation.
+  BLINK_GC_PLUGIN_IGNORE
   std::vector<cppgc::Member<CXFA_FMSimpleExpression>> const m_pAccessors;
   cppgc::Member<CXFA_FMExpression> const m_pList;
 };
@@ -597,9 +607,13 @@ class CXFA_FMAST : public cppgc::GarbageCollected<CXFA_FMAST> {
   absl::optional<WideTextBuffer> ToJavaScript() const;
 
  private:
+  // TODO(crbug.com/1472363): Remove annotation.
   explicit CXFA_FMAST(
-      std::vector<cppgc::Member<CXFA_FMExpression>> expressions);
+      BLINK_GC_PLUGIN_IGNORE std::vector<cppgc::Member<CXFA_FMExpression>>
+          expressions);
 
+  // TODO(crbug.com/1472363): Remove annotation.
+  BLINK_GC_PLUGIN_IGNORE
   std::vector<cppgc::Member<CXFA_FMExpression>> const expressions_;
 };
 

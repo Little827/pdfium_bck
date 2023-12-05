@@ -9,6 +9,7 @@
 
 #include <vector>
 
+#include "fxjs/gc/compiler_specific.h"
 #include "fxjs/gc/heap.h"
 #include "v8/include/cppgc/garbage-collected.h"
 #include "v8/include/cppgc/member.h"
@@ -27,6 +28,8 @@ class CXFA_NodeOwner : public cppgc::GarbageCollected<CXFA_NodeOwner> {
  private:
   CXFA_NodeOwner();
 
+  // TODO(crbug.com/1472363): Remove annotation.
+  BLINK_GC_PLUGIN_IGNORE
   std::vector<cppgc::Member<CXFA_List>> lists_;
 };
 
