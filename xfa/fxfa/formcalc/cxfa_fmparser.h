@@ -11,7 +11,6 @@
 
 #include "core/fxcrt/unowned_ptr_exclusion.h"
 #include "fxjs/gc/heap.h"
-#include "third_party/abseil-cpp/absl/types/optional.h"
 #include "v8/include/cppgc/macros.h"
 #include "v8/include/cppgc/member.h"
 #include "xfa/fxfa/formcalc/cxfa_fmexpression.h"
@@ -60,8 +59,10 @@ class CXFA_FMParser {
   CXFA_FMSimpleExpression* ParsePostExpression(CXFA_FMSimpleExpression* e);
   CXFA_FMSimpleExpression* ParseIndexExpression();
   CXFA_FMSimpleExpression* ParseLiteral();
-  absl::optional<std::vector<cppgc::Member<CXFA_FMSimpleExpression>>>
-  ParseArgumentList();
+  // TODO(crbug.com/1472363): Return an optional instead of using an
+  // out-parameter.
+  bool ParseArgumentList(
+      std::vector<cppgc::Member<CXFA_FMSimpleExpression>>& expressions);
 
   UnownedPtr<cppgc::Heap> const m_heap;
   UNOWNED_PTR_EXCLUSION CXFA_FMLexer* const m_lexer;  // Stack allocated.

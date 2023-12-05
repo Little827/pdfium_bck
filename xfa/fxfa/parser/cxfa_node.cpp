@@ -549,7 +549,12 @@ bool SplitDateTime(const WideString& wsDateTime,
 // Stack allocated. Using containers of members would be correct here
 // if advanced GC worked with STL.
 using NodeSet = std::set<cppgc::Member<CXFA_Node>>;
-using NodeSetPair = std::pair<NodeSet, NodeSet>;
+struct NodeSetPair {
+  // TODO(crbug.com/1472363): Remove annotation.
+  __attribute__((annotate("blink_gc_plugin_ignore"))) NodeSet first;
+  // TODO(crbug.com/1472363): Remove annotation.
+  __attribute__((annotate("blink_gc_plugin_ignore"))) NodeSet second;
+};
 using NodeSetPairMap = std::map<uint32_t, NodeSetPair>;
 using NodeSetPairMapMap = std::map<CXFA_Node*, NodeSetPairMap>;
 using NodeVector = std::vector<cppgc::Member<CXFA_Node>>;
@@ -558,7 +563,8 @@ NodeVector NodesSortedByDocumentIdx(const NodeSet& rgNodeSet) {
   if (rgNodeSet.empty())
     return NodeVector();
 
-  NodeVector rgNodeArray;
+  // TODO(crbug.com/1472363): Remove annotation.
+  __attribute__((annotate("blink_gc_plugin_ignore"))) NodeVector rgNodeArray;
   CXFA_Node* pCommonParent = (*rgNodeSet.begin())->GetParent();
   for (CXFA_Node* pNode = pCommonParent->GetFirstChild(); pNode;
        pNode = pNode->GetNextSibling()) {
@@ -580,7 +586,8 @@ NodeSetPair* NodeSetPairForNode(CXFA_Node* pNode, NodeSetPairMapMap* pMap) {
 void ReorderDataNodes(const NodeSet& sSet1,
                       const NodeSet& sSet2,
                       bool bInsertBefore) {
-  NodeSetPairMapMap rgMap;
+  // TODO(crbug.com/1472363): Remove annotation.
+  __attribute__((annotate("blink_gc_plugin_ignore"))) NodeSetPairMapMap rgMap;
   for (CXFA_Node* pNode : sSet1) {
     NodeSetPair* pNodeSetPair = NodeSetPairForNode(pNode, &rgMap);
     if (pNodeSetPair)
@@ -600,7 +607,11 @@ void ReorderDataNodes(const NodeSet& sSet1,
     for (auto& iter2 : *pNodeSetPairMap) {
       NodeSetPair* pNodeSetPair = &iter2.second;
       if (!pNodeSetPair->first.empty() && !pNodeSetPair->second.empty()) {
+        // TODO(crbug.com/1472363): Remove annotation.
+        __attribute__((annotate("blink_gc_plugin_ignore")))
         NodeVector rgNodeArray1 = NodesSortedByDocumentIdx(pNodeSetPair->first);
+        // TODO(crbug.com/1472363): Remove annotation.
+        __attribute__((annotate("blink_gc_plugin_ignore")))
         NodeVector rgNodeArray2 =
             NodesSortedByDocumentIdx(pNodeSetPair->second);
         CXFA_Node* pParentNode = nullptr;
@@ -1199,7 +1210,9 @@ XFA_AttributeType CXFA_Node::GetAttributeType(XFA_Attribute type) const {
 }
 
 std::vector<CXFA_Node*> CXFA_Node::GetNodeListForType(XFA_Element eTypeFilter) {
-  std::vector<CXFA_Node*> nodes;
+  // TODO(crbug.com/1472363): Remove annotation.
+  __attribute__((annotate("blink_gc_plugin_ignore"))) std::vector<CXFA_Node*>
+      nodes;
   for (CXFA_Node* pChild = GetFirstChild(); pChild;
        pChild = pChild->GetNextSibling()) {
     if (pChild->GetElementType() == eTypeFilter)
@@ -1218,7 +1231,9 @@ std::vector<CXFA_Node*> CXFA_Node::GetNodeListWithFilter(
   const bool bFilterOneOfProperties =
       !!(dwFilter & XFA_NodeFilter::kOneOfProperty);
 
-  std::vector<CXFA_Node*> nodes;
+  // TODO(crbug.com/1472363): Remove annotation.
+  __attribute__((annotate("blink_gc_plugin_ignore"))) std::vector<CXFA_Node*>
+      nodes;
   if (bFilterChildren && bFilterProperties && !bFilterOneOfProperties) {
     for (CXFA_Node* pChild = GetFirstChild(); pChild;
          pChild = pChild->GetNextSibling()) {
@@ -1724,7 +1739,9 @@ CXFA_Node* CXFA_Node::GetOneChildOfClass(WideStringView wsClass) {
 }
 
 std::vector<CXFA_Node*> CXFA_Node::GetSiblings(bool bIsClassName) {
-  std::vector<CXFA_Node*> siblings;
+  // TODO(crbug.com/1472363): Remove annotation.
+  __attribute__((annotate("blink_gc_plugin_ignore"))) std::vector<CXFA_Node*>
+      siblings;
   CXFA_Node* parent = GetParent();
   if (!parent)
     return siblings;
@@ -1750,7 +1767,9 @@ size_t CXFA_Node::GetIndex(bool bIsProperty, bool bIsClassIndex) {
       return 0;
   }
   uint32_t dwHashName = bIsClassIndex ? GetClassHashCode() : GetNameHash();
-  std::vector<CXFA_Node*> siblings;
+  // TODO(crbug.com/1472363): Remove annotation.
+  __attribute__((annotate("blink_gc_plugin_ignore"))) std::vector<CXFA_Node*>
+      siblings;
   TraversePropertiesOrSiblings(parent, dwHashName, &siblings, bIsClassIndex);
   for (size_t i = 0; i < siblings.size(); ++i) {
     if (siblings[i] == this)
@@ -1934,7 +1953,8 @@ void CXFA_Node::InsertItem(CXFA_Node* pNewInstance,
         iCount > 0 ? item->GetNextSibling() : GetNextSibling();
     GetParent()->InsertChildAndNotify(pNewInstance, pNextSibling);
     if (bMoveDataBindingNodes) {
-      NodeSet sNew;
+      // TODO(crbug.com/1472363): Remove annotation.
+      __attribute__((annotate("blink_gc_plugin_ignore"))) NodeSet sNew;
       CXFA_NodeIteratorTemplate<CXFA_Node,
                                 CXFA_TraverseStrategy_XFAContainerNode>
           sIteratorNew(pNewInstance);
@@ -1944,7 +1964,8 @@ void CXFA_Node::InsertItem(CXFA_Node* pNewInstance,
         if (pDataNode)
           sNew.insert(pDataNode);
       }
-      NodeSet sAfter;
+      // TODO(crbug.com/1472363): Remove annotation.
+      __attribute__((annotate("blink_gc_plugin_ignore"))) NodeSet sAfter;
       CXFA_NodeIteratorTemplate<CXFA_Node,
                                 CXFA_TraverseStrategy_XFAContainerNode>
           sIteratorAfter(pNextSibling);
@@ -1965,7 +1986,8 @@ void CXFA_Node::InsertItem(CXFA_Node* pNewInstance,
 
     GetParent()->InsertChildAndNotify(pNewInstance, pBeforeInstance);
     if (bMoveDataBindingNodes) {
-      NodeSet sNew;
+      // TODO(crbug.com/1472363): Remove annotation.
+      __attribute__((annotate("blink_gc_plugin_ignore"))) NodeSet sNew;
       CXFA_NodeIteratorTemplate<CXFA_Node,
                                 CXFA_TraverseStrategy_XFAContainerNode>
           sIteratorNew(pNewInstance);
@@ -1975,7 +1997,8 @@ void CXFA_Node::InsertItem(CXFA_Node* pNewInstance,
         if (pDataNode)
           sNew.insert(pDataNode);
       }
-      NodeSet sBefore;
+      // TODO(crbug.com/1472363): Remove annotation.
+      __attribute__((annotate("blink_gc_plugin_ignore"))) NodeSet sBefore;
       CXFA_NodeIteratorTemplate<CXFA_Node,
                                 CXFA_TraverseStrategy_XFAContainerNode>
           sIteratorBefore(pBeforeInstance);
@@ -2427,8 +2450,9 @@ XFA_EventError CXFA_Node::ProcessEvent(CXFA_FFDocView* pDocView,
   if (GetElementType() == XFA_Element::Draw)
     return XFA_EventError::kNotExist;
 
-  std::vector<CXFA_Event*> eventArray =
-      GetEventByActivity(iActivity, pEventParam->m_bIsFormReady);
+  // TODO(crbug.com/1472363): Remove annotation.
+  __attribute__((annotate("blink_gc_plugin_ignore"))) std::vector<CXFA_Event*>
+      eventArray = GetEventByActivity(iActivity, pEventParam->m_bIsFormReady);
   bool first = true;
   XFA_EventError iRet = XFA_EventError::kNotExist;
   for (CXFA_Event* event : eventArray) {
@@ -3018,7 +3042,10 @@ CFX_RectF CXFA_Node::GetUIMargin() {
     std::tie(iType, bVisible, fThickness) = border->Get3DStyle();
     if (!left.has_value() || !top.has_value() || !right.has_value() ||
         !bottom.has_value()) {
-      std::vector<CXFA_Stroke*> strokes = border->GetStrokes();
+      // TODO(crbug.com/1472363): Remove annotation.
+      __attribute__((annotate("blink_gc_plugin_ignore")))
+      std::vector<CXFA_Stroke*>
+          strokes = border->GetStrokes();
       if (!top.has_value())
         top = GetEdgeThickness(strokes, bVisible, 0);
       if (!right.has_value())
@@ -3036,7 +3063,9 @@ CFX_RectF CXFA_Node::GetUIMargin() {
 std::vector<CXFA_Event*> CXFA_Node::GetEventByActivity(
     XFA_AttributeValue iActivity,
     bool bIsFormReady) {
-  std::vector<CXFA_Event*> events;
+  // TODO(crbug.com/1472363): Remove annotation.
+  __attribute__((annotate("blink_gc_plugin_ignore"))) std::vector<CXFA_Event*>
+      events;
   for (CXFA_Node* node : GetNodeListForType(XFA_Element::Event)) {
     auto* event = static_cast<CXFA_Event*>(node);
     if (event->GetActivity() != iActivity)
@@ -4192,7 +4221,9 @@ bool CXFA_Node::IsListBox() {
 }
 
 size_t CXFA_Node::CountChoiceListItems(bool bSaveValue) {
-  std::vector<CXFA_Node*> pItems;
+  // TODO(crbug.com/1472363): Remove annotation.
+  __attribute__((annotate("blink_gc_plugin_ignore"))) std::vector<CXFA_Node*>
+      pItems;
   int32_t iCount = 0;
   for (CXFA_Node* pNode = GetFirstChild(); pNode;
        pNode = pNode->GetNextSibling()) {
@@ -4220,7 +4251,9 @@ size_t CXFA_Node::CountChoiceListItems(bool bSaveValue) {
 
 absl::optional<WideString> CXFA_Node::GetChoiceListItem(int32_t nIndex,
                                                         bool bSaveValue) {
-  std::vector<CXFA_Node*> pItemsArray;
+  // TODO(crbug.com/1472363): Remove annotation.
+  __attribute__((annotate("blink_gc_plugin_ignore"))) std::vector<CXFA_Node*>
+      pItemsArray;
   int32_t iCount = 0;
   for (CXFA_Node* pNode = GetFirstChild(); pNode;
        pNode = pNode->GetNextSibling()) {
@@ -4256,7 +4289,9 @@ absl::optional<WideString> CXFA_Node::GetChoiceListItem(int32_t nIndex,
 }
 
 std::vector<WideString> CXFA_Node::GetChoiceListItems(bool bSaveValue) {
-  std::vector<CXFA_Node*> items;
+  // TODO(crbug.com/1472363): Remove annotation.
+  __attribute__((annotate("blink_gc_plugin_ignore"))) std::vector<CXFA_Node*>
+      items;
   for (CXFA_Node* pNode = GetFirstChild(); pNode && items.size() < 2;
        pNode = pNode->GetNextSibling()) {
     if (pNode->GetElementType() == XFA_Element::Items)
@@ -4429,7 +4464,9 @@ void CXFA_Node::InsertItem(const WideString& wsLabel,
   if (wsNewValue.IsEmpty())
     wsNewValue = wsLabel;
 
-  std::vector<CXFA_Node*> listitems;
+  // TODO(crbug.com/1472363): Remove annotation.
+  __attribute__((annotate("blink_gc_plugin_ignore"))) std::vector<CXFA_Node*>
+      listitems;
   for (CXFA_Node* pItem = GetFirstChild(); pItem;
        pItem = pItem->GetNextSibling()) {
     if (pItem->GetElementType() == XFA_Element::Items)
@@ -4479,7 +4516,9 @@ void CXFA_Node::InsertItem(const WideString& wsLabel,
 }
 
 WideString CXFA_Node::GetItemLabel(WideStringView wsValue) const {
-  std::vector<CXFA_Node*> listitems;
+  // TODO(crbug.com/1472363): Remove annotation.
+  __attribute__((annotate("blink_gc_plugin_ignore"))) std::vector<CXFA_Node*>
+      listitems;
   CXFA_Node* pItems = GetFirstChild();
   for (; pItems; pItems = pItems->GetNextSibling()) {
     if (pItems->GetElementType() != XFA_Element::Items)
@@ -4520,7 +4559,9 @@ WideString CXFA_Node::GetItemLabel(WideStringView wsValue) const {
 
 WideString CXFA_Node::GetItemValue(WideStringView wsLabel) {
   int32_t iCount = 0;
-  std::vector<CXFA_Node*> listitems;
+  // TODO(crbug.com/1472363): Remove annotation.
+  __attribute__((annotate("blink_gc_plugin_ignore"))) std::vector<CXFA_Node*>
+      listitems;
   for (CXFA_Node* pItems = GetFirstChild(); pItems;
        pItems = pItems->GetNextSibling()) {
     if (pItems->GetElementType() != XFA_Element::Items)

@@ -94,6 +94,8 @@ class CFWL_WidgetMgr final : public cppgc::GarbageCollected<CFWL_WidgetMgr> {
 
   cppgc::Member<AdapterIface> const m_pAdapter;
   cppgc::Member<CFWL_App> const m_pApp;
+  // TODO(crbug.com/1472363): Remove annotation.
+  __attribute__((annotate("blink_gc_plugin_ignore")))
   std::map<cppgc::Member<const CFWL_Widget>, cppgc::Member<Item>>
       m_mapWidgetItem;
 };

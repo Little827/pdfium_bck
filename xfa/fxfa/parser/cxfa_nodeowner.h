@@ -27,7 +27,10 @@ class CXFA_NodeOwner : public cppgc::GarbageCollected<CXFA_NodeOwner> {
  private:
   CXFA_NodeOwner();
 
-  std::vector<cppgc::Member<CXFA_List>> lists_;
+  // TODO(crbug.com/1472363): Remove annotation.
+  __attribute__((annotate("blink_gc_plugin_ignore")))
+  std::vector<cppgc::Member<CXFA_List>>
+      lists_;
 };
 
 #endif  // XFA_FXFA_PARSER_CXFA_NODEOWNER_H_

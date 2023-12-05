@@ -224,7 +224,9 @@ std::vector<CXFA_Node*> CJX_LayoutPseudoModel::GetObjArray(
   if (!pLayoutPage)
     return std::vector<CXFA_Node*>();
 
-  std::vector<CXFA_Node*> retArray;
+  // TODO(crbug.com/1472363): Remove annotation.
+  __attribute__((annotate("blink_gc_plugin_ignore"))) std::vector<CXFA_Node*>
+      retArray;
   if (wsType.EqualsASCII("pageArea")) {
     if (pLayoutPage->GetFormNode())
       retArray.push_back(pLayoutPage->GetFormNode());
@@ -238,7 +240,9 @@ std::vector<CXFA_Node*> CJX_LayoutPseudoModel::GetObjArray(
     }
     return retArray;
   }
-  std::set<CXFA_Node*> formItems;
+  // TODO(crbug.com/1472363): Remove annotation.
+  __attribute__((annotate("blink_gc_plugin_ignore"))) std::set<CXFA_Node*>
+      formItems;
   if (wsType.IsEmpty()) {
     if (pLayoutPage->GetFormNode())
       retArray.push_back(pLayoutPage->GetFormNode());

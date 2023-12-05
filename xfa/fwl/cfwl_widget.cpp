@@ -158,7 +158,9 @@ CFX_PointF CFWL_Widget::TransformTo(CFWL_Widget* pWidget,
 
 CFX_Matrix CFWL_Widget::GetMatrix() const {
   CFWL_Widget* parent = GetParent();
-  std::vector<CFWL_Widget*> parents;
+  // TODO(crbug.com/1472363): Remove annotation.
+  __attribute__((annotate("blink_gc_plugin_ignore"))) std::vector<CFWL_Widget*>
+      parents;
   while (parent) {
     parents.push_back(parent);
     parent = parent->GetParent();

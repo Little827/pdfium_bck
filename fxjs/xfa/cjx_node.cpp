@@ -457,8 +457,10 @@ void CJX_Node::oneOfChild(v8::Isolate* pIsolate,
     return;
   }
 
-  std::vector<CXFA_Node*> properties =
-      GetXFANode()->GetNodeListWithFilter(XFA_NodeFilter::kOneOfProperty);
+  // TODO(crbug.com/1472363): Remove annotation.
+  __attribute__((annotate("blink_gc_plugin_ignore"))) std::vector<CXFA_Node*>
+      properties =
+          GetXFANode()->GetNodeListWithFilter(XFA_NodeFilter::kOneOfProperty);
   if (!properties.empty()) {
     *pValue = GetDocument()->GetScriptContext()->GetOrCreateJSBindingFromMap(
         properties.front());

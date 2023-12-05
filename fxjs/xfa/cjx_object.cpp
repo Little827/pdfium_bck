@@ -550,8 +550,10 @@ void CJX_Object::SetContent(const WideString& wsContent,
         if (bSyncData && pBind) {
           std::vector<WideString> wsSaveTextArray =
               fxcrt::Split(wsContent, L'\n');
-          std::vector<CXFA_Node*> valueNodes =
-              pBind->GetNodeListForType(XFA_Element::DataValue);
+          // TODO(crbug.com/1472363): Remove annotation.
+          __attribute__((annotate("blink_gc_plugin_ignore")))
+          std::vector<CXFA_Node*>
+              valueNodes = pBind->GetNodeListForType(XFA_Element::DataValue);
 
           // Adusting node count might have side effects, do not trust that
           // we'll ever actually get there.
@@ -840,7 +842,9 @@ absl::optional<CXFA_Measurement> CJX_Object::GetMapModuleMeasurement(
 
 absl::optional<int32_t> CJX_Object::GetMapModuleValueFollowingChain(
     uint32_t key) const {
-  std::set<const CXFA_Node*> visited;
+  // TODO(crbug.com/1472363): Remove annotation.
+  __attribute__((annotate("blink_gc_plugin_ignore"))) std::set<const CXFA_Node*>
+      visited;
   for (const CXFA_Node* pNode = GetXFANode(); pNode;
        pNode = pNode->GetTemplateNodeIfExists()) {
     if (!visited.insert(pNode).second)
@@ -858,7 +862,9 @@ absl::optional<int32_t> CJX_Object::GetMapModuleValueFollowingChain(
 
 absl::optional<WideString> CJX_Object::GetMapModuleStringFollowingChain(
     uint32_t key) const {
-  std::set<const CXFA_Node*> visited;
+  // TODO(crbug.com/1472363): Remove annotation.
+  __attribute__((annotate("blink_gc_plugin_ignore"))) std::set<const CXFA_Node*>
+      visited;
   for (const CXFA_Node* pNode = GetXFANode(); pNode;
        pNode = pNode->GetTemplateNodeIfExists()) {
     if (!visited.insert(pNode).second)
@@ -877,7 +883,9 @@ absl::optional<WideString> CJX_Object::GetMapModuleStringFollowingChain(
 
 absl::optional<CXFA_Measurement>
 CJX_Object::GetMapModuleMeasurementFollowingChain(uint32_t key) const {
-  std::set<const CXFA_Node*> visited;
+  // TODO(crbug.com/1472363): Remove annotation.
+  __attribute__((annotate("blink_gc_plugin_ignore"))) std::set<const CXFA_Node*>
+      visited;
   for (const CXFA_Node* pNode = GetXFANode(); pNode;
        pNode = pNode->GetTemplateNodeIfExists()) {
     if (!visited.insert(pNode).second)

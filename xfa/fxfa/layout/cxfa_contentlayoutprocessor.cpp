@@ -758,7 +758,10 @@ void CXFA_ContentLayoutProcessor::SplitLayoutItem(
     bOrphanedItem = true;
   }
 
-  std::vector<CXFA_ContentLayoutItem*> children;
+  // TODO(crbug.com/1472363): Remove annotation.
+  __attribute__((annotate("blink_gc_plugin_ignore")))
+  std::vector<CXFA_ContentLayoutItem*>
+      children;
   while (auto* pFirst = ToContentLayoutItem(pLayoutItem->GetFirstChild())) {
     children.push_back(pFirst);
     pLayoutItem->RemoveChild(children.back());
@@ -766,7 +769,10 @@ void CXFA_ContentLayoutProcessor::SplitLayoutItem(
 
   float lHeightForKeep = 0;
   float fAddMarginHeight = 0;
-  std::vector<CXFA_ContentLayoutItem*> keepLayoutItems;
+  // TODO(crbug.com/1472363): Remove annotation.
+  __attribute__((annotate("blink_gc_plugin_ignore")))
+  std::vector<CXFA_ContentLayoutItem*>
+      keepLayoutItems;
   for (CXFA_ContentLayoutItem* pChildItem : children) {
     if (fSplitPos <= fCurTopMargin + pChildItem->m_sPos.y + fCurBottomMargin +
                          kXFALayoutPrecision) {
@@ -1226,7 +1232,10 @@ void CXFA_ContentLayoutProcessor::DoLayoutTableContainer(
   int32_t iRowCount = 0;
   int32_t iColCount = 0;
   {
-    std::vector<CXFA_ContentLayoutItem*> rgRowItems;
+    // TODO(crbug.com/1472363): Remove annotation.
+    __attribute__((annotate("blink_gc_plugin_ignore")))
+    std::vector<CXFA_ContentLayoutItem*>
+        rgRowItems;
     std::vector<int32_t> rgRowItemsSpan;
     std::vector<float> rgRowItemsWidth;
     for (CXFA_LayoutItem* pIter = m_pLayoutItem->GetFirstChild(); pIter;
@@ -1432,7 +1441,10 @@ bool CXFA_ContentLayoutProcessor::ProcessKeepForSplit(
     return false;
 
   CFX_SizeF childSize = pChildProcessor->GetCurrentComponentSize();
-  std::vector<CXFA_ContentLayoutItem*> keepLayoutItems;
+  // TODO(crbug.com/1472363): Remove annotation.
+  __attribute__((annotate("blink_gc_plugin_ignore")))
+  std::vector<CXFA_ContentLayoutItem*>
+      keepLayoutItems;
   if (JudgePutNextPage(m_pLayoutItem.Get(), childSize.height,
                        &keepLayoutItems)) {
     m_ArrayKeepItems.clear();

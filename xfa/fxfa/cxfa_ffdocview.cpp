@@ -515,7 +515,8 @@ bool CXFA_FFDocView::RunLayout() {
 }
 
 void CXFA_FFDocView::RunSubformIndexChange() {
-  std::set<CXFA_Node*> seen;
+  // TODO(crbug.com/1472363): Remove annotation.
+  __attribute__((annotate("blink_gc_plugin_ignore"))) std::set<CXFA_Node*> seen;
   while (!m_IndexChangedSubforms.empty()) {
     CXFA_Node* pSubformNode = m_IndexChangedSubforms.front();
     m_IndexChangedSubforms.pop_front();

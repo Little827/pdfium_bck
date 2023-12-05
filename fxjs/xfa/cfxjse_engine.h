@@ -71,7 +71,10 @@ class CFXJSE_Engine final : public CFX_V8 {
 
     // Vector of Member would be correct for stack-based vectors, if
     // STL worked with cppgc.
-    std::vector<cppgc::Member<CXFA_Object>> objects;
+    // TODO(crbug.com/1472363): Remove annotation.
+    __attribute__((annotate("blink_gc_plugin_ignore")))
+    std::vector<cppgc::Member<CXFA_Object>>
+        objects;
   };
 
   static CXFA_Object* ToObject(const v8::FunctionCallbackInfo<v8::Value>& info);

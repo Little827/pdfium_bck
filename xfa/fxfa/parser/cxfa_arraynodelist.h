@@ -35,7 +35,10 @@ class CXFA_ArrayNodeList final : public CXFA_TreeList {
  private:
   explicit CXFA_ArrayNodeList(CXFA_Document* pDocument);
 
-  std::vector<cppgc::Member<CXFA_Node>> m_array;
+  // TODO(crbug.com/1472363): Remove annotation.
+  __attribute__((annotate("blink_gc_plugin_ignore")))
+  std::vector<cppgc::Member<CXFA_Node>>
+      m_array;
 };
 
 #endif  // XFA_FXFA_PARSER_CXFA_ARRAYNODELIST_H_

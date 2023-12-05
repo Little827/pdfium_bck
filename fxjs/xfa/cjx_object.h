@@ -91,7 +91,10 @@ class CJX_Object : public cppgc::GarbageCollected<CJX_Object>,
 
     void Trace(cppgc::Visitor* visitor) const;
 
-    std::vector<cppgc::Member<CXFA_Node>> m_Globals;
+    // TODO(crbug.com/1472363): Remove annotation.
+    __attribute__((annotate("blink_gc_plugin_ignore")))
+    std::vector<cppgc::Member<CXFA_Node>>
+        m_Globals;
 
    private:
     CalcData();

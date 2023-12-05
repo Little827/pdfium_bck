@@ -194,8 +194,14 @@ class CXFA_ViewLayoutProcessor
   int32_t m_nCurPageCount = 0;
   XFA_AttributeValue m_ePageSetMode = XFA_AttributeValue::OrderedOccurrence;
   bool m_bCreateOverFlowPage = false;
-  std::map<cppgc::Member<CXFA_Node>, int32_t> m_pPageSetMap;
-  std::vector<cppgc::Member<CXFA_ViewLayoutItem>> m_PageArray;
+  // TODO(crbug.com/1472363): Remove annotation.
+  __attribute__((annotate("blink_gc_plugin_ignore")))
+  std::map<cppgc::Member<CXFA_Node>, int32_t>
+      m_pPageSetMap;
+  // TODO(crbug.com/1472363): Remove annotation.
+  __attribute__((annotate("blink_gc_plugin_ignore")))
+  std::vector<cppgc::Member<CXFA_ViewLayoutItem>>
+      m_PageArray;
 };
 
 #endif  // XFA_FXFA_LAYOUT_CXFA_VIEWLAYOUTPROCESSOR_H_

@@ -236,9 +236,18 @@ class CXFA_ContentLayoutProcessor
   cppgc::Member<CXFA_ViewLayoutProcessor> m_pViewLayoutProcessor;
   cppgc::Member<CXFA_ContentLayoutProcessor> m_pCurChildPreprocessor;
   std::vector<float> m_rgSpecifiedColumnWidths;
-  std::vector<cppgc::Member<CXFA_ContentLayoutItem>> m_ArrayKeepItems;
-  std::list<cppgc::Member<CXFA_Node>> m_PendingNodes;
-  std::map<cppgc::Member<CXFA_Node>, int32_t> m_PendingNodesCount;
+  // TODO(crbug.com/1472363): Remove annotation.
+  __attribute__((annotate("blink_gc_plugin_ignore")))
+  std::vector<cppgc::Member<CXFA_ContentLayoutItem>>
+      m_ArrayKeepItems;
+  // TODO(crbug.com/1472363): Remove annotation.
+  __attribute__((annotate("blink_gc_plugin_ignore")))
+  std::list<cppgc::Member<CXFA_Node>>
+      m_PendingNodes;
+  // TODO(crbug.com/1472363): Remove annotation.
+  __attribute__((annotate("blink_gc_plugin_ignore")))
+  std::map<cppgc::Member<CXFA_Node>, int32_t>
+      m_PendingNodesCount;
 };
 
 #endif  // XFA_FXFA_LAYOUT_CXFA_CONTENTLAYOUTPROCESSOR_H_

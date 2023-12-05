@@ -63,8 +63,14 @@ class CXFA_LocaleMgr final : public cppgc::GarbageCollected<CXFA_LocaleMgr>,
   CXFA_XMLLocale* GetLocale(LangID lcid);
 
   UnownedPtr<cppgc::Heap> m_pHeap;
-  std::vector<cppgc::Member<CXFA_NodeLocale>> m_LocaleArray;
-  std::vector<cppgc::Member<CXFA_XMLLocale>> m_XMLLocaleArray;
+  // TODO(crbug.com/1472363): Remove annotation.
+  __attribute__((annotate("blink_gc_plugin_ignore")))
+  std::vector<cppgc::Member<CXFA_NodeLocale>>
+      m_LocaleArray;
+  // TODO(crbug.com/1472363): Remove annotation.
+  __attribute__((annotate("blink_gc_plugin_ignore")))
+  std::vector<cppgc::Member<CXFA_XMLLocale>>
+      m_XMLLocaleArray;
   cppgc::Member<GCedLocaleIface> m_pDefLocale;
 
   // Note: three possiblities

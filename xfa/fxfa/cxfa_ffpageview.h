@@ -99,7 +99,10 @@ class CXFA_FFTabOrderPageWidgetIterator final
   std::vector<CXFA_ContentLayoutItem*> CreateSpaceOrderLayoutItems();
 
   cppgc::Member<CXFA_ViewLayoutItem> const m_pPageViewLayout;
-  std::vector<cppgc::Member<CXFA_ContentLayoutItem>> m_TabOrderWidgetArray;
+  // TODO(crbug.com/1472363): Remove annotation.
+  __attribute__((annotate("blink_gc_plugin_ignore")))
+  std::vector<cppgc::Member<CXFA_ContentLayoutItem>>
+      m_TabOrderWidgetArray;
   const Mask<XFA_WidgetStatus> m_dwFilter;
   int32_t m_iCurWidget = -1;
   const bool m_bIgnoreRelevant;

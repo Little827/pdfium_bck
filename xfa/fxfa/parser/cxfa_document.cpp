@@ -675,8 +675,11 @@ void CreateDataBinding(CXFA_Node* pFormNode,
     }
     case XFA_FFWidgetType::kChoiceList:
       if (pFormNode->IsChoiceListMultiSelect()) {
-        std::vector<CXFA_Node*> items = pDataNode->GetNodeListWithFilter(
-            {XFA_NodeFilter::kChildren, XFA_NodeFilter::kProperties});
+        // TODO(crbug.com/1472363): Remove annotation.
+        __attribute__((annotate("blink_gc_plugin_ignore")))
+        std::vector<CXFA_Node*>
+            items = pDataNode->GetNodeListWithFilter(
+                {XFA_NodeFilter::kChildren, XFA_NodeFilter::kProperties});
         if (!items.empty()) {
           bool single = items.size() == 1;
           wsNormalizeValue.clear();
@@ -836,7 +839,9 @@ CXFA_Node* CopyContainer_SubformSet(CXFA_Document* pDocument,
   bool bUseInstanceManager =
       pFormParentNode->GetElementType() != XFA_Element::Area;
   CXFA_Node* pInstMgrNode = nullptr;
-  std::vector<CXFA_Node*> subformArray;
+  // TODO(crbug.com/1472363): Remove annotation.
+  __attribute__((annotate("blink_gc_plugin_ignore"))) std::vector<CXFA_Node*>
+      subformArray;
   std::vector<CXFA_Node*>* pSearchArray = nullptr;
   if (!bOneInstance &&
       (eType == XFA_Element::SubformSet || eType == XFA_Element::Subform)) {
@@ -891,8 +896,14 @@ CXFA_Node* CopyContainer_SubformSet(CXFA_Document* pDocument,
     if (eType == XFA_Element::SubformSet || eType == XFA_Element::Area) {
       sNodeIterator.MoveToNext();
     } else {
-      std::map<CXFA_Node*, CXFA_Node*> subformMapArray;
-      std::vector<CXFA_Node*> nodeArray;
+      // TODO(crbug.com/1472363): Remove annotation.
+      __attribute__((annotate("blink_gc_plugin_ignore")))
+      std::map<CXFA_Node*, CXFA_Node*>
+          subformMapArray;
+      // TODO(crbug.com/1472363): Remove annotation.
+      __attribute__((annotate("blink_gc_plugin_ignore")))
+      std::vector<CXFA_Node*>
+          nodeArray;
       for (; iMax < 0 || iCurRepeatIndex < iMax; iCurRepeatIndex++) {
         bool bSelfMatch = false;
         XFA_AttributeValue eBindMatch = XFA_AttributeValue::None;
@@ -956,8 +967,14 @@ CXFA_Node* CopyContainer_SubformSet(CXFA_Document* pDocument,
         if (!pFirstInstance)
           pFirstInstance = pSubformSetNode;
 
-        std::vector<RecurseRecord> rgItemMatchList;
-        std::vector<CXFA_Node*> rgItemUnmatchList;
+        // TODO(crbug.com/1472363): Remove annotation.
+        __attribute__((annotate("blink_gc_plugin_ignore")))
+        std::vector<RecurseRecord>
+            rgItemMatchList;
+        // TODO(crbug.com/1472363): Remove annotation.
+        __attribute__((annotate("blink_gc_plugin_ignore")))
+        std::vector<CXFA_Node*>
+            rgItemUnmatchList;
         for (CXFA_Node* pTemplateChild = pTemplateNode->GetFirstChild();
              pTemplateChild;
              pTemplateChild = pTemplateChild->GetNextSibling()) {
@@ -1524,8 +1541,13 @@ void CXFA_Document::DoProtoMerge() {
   if (!pTemplateRoot)
     return;
 
-  std::map<uint32_t, CXFA_Node*> mIDMap;
-  std::set<CXFA_Node*> sUseNodes;
+  // TODO(crbug.com/1472363): Remove annotation.
+  __attribute__((annotate("blink_gc_plugin_ignore")))
+  std::map<uint32_t, CXFA_Node*>
+      mIDMap;
+  // TODO(crbug.com/1472363): Remove annotation.
+  __attribute__((annotate("blink_gc_plugin_ignore"))) std::set<CXFA_Node*>
+      sUseNodes;
   CXFA_NodeIterator sIterator(pTemplateRoot);
   for (CXFA_Node* pNode = sIterator.GetCurrent(); pNode;
        pNode = sIterator.MoveToNext()) {

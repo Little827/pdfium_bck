@@ -111,11 +111,15 @@ bool CFXJSE_ResolveProcessor::ResolveAnyChild(v8::Isolate* pIsolate,
     return true;
   }
 
-  std::vector<CXFA_Node*> nodes;
+  // TODO(crbug.com/1472363): Remove annotation.
+  __attribute__((annotate("blink_gc_plugin_ignore"))) std::vector<CXFA_Node*>
+      nodes;
   for (const auto& pObject : rnd.m_Result.objects)
     nodes.push_back(pObject->AsNode());
 
-  std::vector<CXFA_Node*> siblings = pChild->GetSiblings(bClassName);
+  // TODO(crbug.com/1472363): Remove annotation.
+  __attribute__((annotate("blink_gc_plugin_ignore"))) std::vector<CXFA_Node*>
+      siblings = pChild->GetSiblings(bClassName);
   nodes.insert(nodes.end(), siblings.begin(), siblings.end());
   rnd.m_Result.objects =
       std::vector<cppgc::Member<CXFA_Object>>(nodes.begin(), nodes.end());
@@ -242,8 +246,12 @@ bool CFXJSE_ResolveProcessor::ResolveNormal(v8::Isolate* pIsolate,
   rndFind.m_nLevel = rnd.m_nLevel + 1;
   rndFind.m_uHashName = uNameHash;
 
-  std::vector<CXFA_Node*> children;
-  std::vector<CXFA_Node*> properties;
+  // TODO(crbug.com/1472363): Remove annotation.
+  __attribute__((annotate("blink_gc_plugin_ignore"))) std::vector<CXFA_Node*>
+      children;
+  // TODO(crbug.com/1472363): Remove annotation.
+  __attribute__((annotate("blink_gc_plugin_ignore"))) std::vector<CXFA_Node*>
+      properties;
   CXFA_Node* pVariablesNode = nullptr;
   CXFA_Node* pPageSetNode = nullptr;
   for (CXFA_Node* pChild = curNode->GetFirstChild(); pChild;
@@ -313,7 +321,10 @@ bool CFXJSE_ResolveProcessor::ResolveNormal(v8::Isolate* pIsolate,
     }
     if (rnd.m_Result.objects.size() > nNum) {
       if (!(dwStyles & XFA_ResolveFlag::kALL)) {
-        std::vector<CXFA_Node*> upArrayNodes;
+        // TODO(crbug.com/1472363): Remove annotation.
+        __attribute__((annotate("blink_gc_plugin_ignore")))
+        std::vector<CXFA_Node*>
+            upArrayNodes;
         if (curNode->IsTransparent()) {
           CXFA_Node* pCurrent = ToNode(rnd.m_Result.objects.front().Get());
           if (pCurrent) {
@@ -450,7 +461,10 @@ bool CFXJSE_ResolveProcessor::ResolveNormal(v8::Isolate* pIsolate,
     }
     if (rnd.m_Result.objects.size() > nNum) {
       if (parentNode->IsTransparent()) {
-        std::vector<CXFA_Node*> upArrayNodes;
+        // TODO(crbug.com/1472363): Remove annotation.
+        __attribute__((annotate("blink_gc_plugin_ignore")))
+        std::vector<CXFA_Node*>
+            upArrayNodes;
         CXFA_Node* pCurrent = ToNode(rnd.m_Result.objects.front().Get());
         if (pCurrent) {
           upArrayNodes =
@@ -493,8 +507,10 @@ bool CFXJSE_ResolveProcessor::ResolveNormal(v8::Isolate* pIsolate,
 
 bool CFXJSE_ResolveProcessor::ResolveAsterisk(NodeData& rnd) {
   CXFA_Node* curNode = ToNode(rnd.m_CurObject);
-  std::vector<CXFA_Node*> array = curNode->GetNodeListWithFilter(
-      {XFA_NodeFilter::kChildren, XFA_NodeFilter::kProperties});
+  // TODO(crbug.com/1472363): Remove annotation.
+  __attribute__((annotate("blink_gc_plugin_ignore"))) std::vector<CXFA_Node*>
+      array = curNode->GetNodeListWithFilter(
+          {XFA_NodeFilter::kChildren, XFA_NodeFilter::kProperties});
   rnd.m_Result.objects.insert(rnd.m_Result.objects.end(), array.begin(),
                               array.end());
   return !rnd.m_Result.objects.empty();

@@ -123,7 +123,10 @@ class CXFA_FFDocView : public cppgc::GarbageCollected<CXFA_FFDocView> {
   cppgc::Member<CXFA_Node> m_pFocusNode;
   cppgc::Member<CXFA_FFWidget> m_pFocusWidget;
   std::list<cppgc::Member<CXFA_Node>> m_ValidateNodes;
-  std::vector<cppgc::Member<CXFA_Node>> m_CalculateNodes;
+  // TODO(crbug.com/1472363): Remove annotation.
+  __attribute__((annotate("blink_gc_plugin_ignore")))
+  std::vector<cppgc::Member<CXFA_Node>>
+      m_CalculateNodes;
   std::list<cppgc::Member<CXFA_BindItems>> m_BindItems;
   std::list<cppgc::Member<CXFA_Node>> m_NewAddedNodes;
   std::list<cppgc::Member<CXFA_Subform>> m_IndexChangedSubforms;

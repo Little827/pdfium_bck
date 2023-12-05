@@ -537,7 +537,10 @@ class CXFA_Node : public CXFA_Object, public GCedTreeNodeMixin<CXFA_Node> {
   cppgc::Member<CXFA_Node> m_pAuxNode;
   cppgc::Member<CXFA_WidgetLayoutData> m_pLayoutData;
   cppgc::Member<CXFA_Ui> ui_;
-  std::vector<cppgc::Member<CXFA_Node>> binding_nodes_;
+  // TODO(crbug.com/1472363): Remove annotation.
+  __attribute__((annotate("blink_gc_plugin_ignore")))
+  std::vector<cppgc::Member<CXFA_Node>>
+      binding_nodes_;
 };
 
 #endif  // XFA_FXFA_PARSER_CXFA_NODE_H_

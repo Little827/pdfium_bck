@@ -50,7 +50,10 @@ class CFWL_NoteDriver final : public cppgc::GarbageCollected<CFWL_NoteDriver> {
    private:
     bool m_bValid = true;
     cppgc::Member<CFWL_Widget> const m_pListener;
-    std::set<cppgc::Member<CFWL_Widget>> m_widgets;
+    // TODO(crbug.com/1472363): Remove annotation.
+    __attribute__((annotate("blink_gc_plugin_ignore")))
+    std::set<cppgc::Member<CFWL_Widget>>
+        m_widgets;
   };
 
   explicit CFWL_NoteDriver(CFWL_App* pApp);
@@ -68,7 +71,10 @@ class CFWL_NoteDriver final : public cppgc::GarbageCollected<CFWL_NoteDriver> {
   cppgc::Member<CFWL_Widget> m_pHover;
   cppgc::Member<CFWL_Widget> m_pFocus;
   cppgc::Member<CFWL_Widget> m_pGrab;
-  std::map<uint64_t, cppgc::Member<Target>> m_eventTargets;
+  // TODO(crbug.com/1472363): Remove annotation.
+  __attribute__((annotate("blink_gc_plugin_ignore")))
+  std::map<uint64_t, cppgc::Member<Target>>
+      m_eventTargets;
 };
 
 #endif  // XFA_FWL_CFWL_NOTEDRIVER_H_

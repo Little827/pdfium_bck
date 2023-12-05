@@ -176,8 +176,14 @@ class CXFA_Document final : public cppgc::GarbageCollected<CXFA_Document> {
   cppgc::Member<CScript_LogPseudoModel> m_pScriptLog;
   cppgc::Member<CScript_LayoutPseudoModel> m_pScriptLayout;
   cppgc::Member<CScript_SignaturePseudoModel> m_pScriptSignature;
-  std::map<uint32_t, cppgc::Member<CXFA_Node>> m_rgGlobalBinding;
-  std::vector<cppgc::Member<CXFA_Node>> m_pPendingPageSet;
+  // TODO(crbug.com/1472363): Remove annotation.
+  __attribute__((annotate("blink_gc_plugin_ignore")))
+  std::map<uint32_t, cppgc::Member<CXFA_Node>>
+      m_rgGlobalBinding;
+  // TODO(crbug.com/1472363): Remove annotation.
+  __attribute__((annotate("blink_gc_plugin_ignore")))
+  std::vector<cppgc::Member<CXFA_Node>>
+      m_pPendingPageSet;
   XFA_VERSION m_eCurVersionMode = XFA_VERSION_DEFAULT;
   absl::optional<bool> m_Interactive;
   bool m_bStrictScoping = false;

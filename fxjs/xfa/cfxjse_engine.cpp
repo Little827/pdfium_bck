@@ -723,7 +723,10 @@ CFXJSE_Engine::ResolveObjectsWithBindNode(CXFA_Object* refObject,
   int32_t nStart = 0;
   int32_t nLevel = 0;
 
-  std::vector<cppgc::Member<CXFA_Object>> findObjects;
+  // TODO(crbug.com/1472363): Remove annotation.
+  __attribute__((annotate("blink_gc_plugin_ignore")))
+  std::vector<cppgc::Member<CXFA_Object>>
+      findObjects;
   findObjects.emplace_back(refObject ? refObject : m_pDocument->GetRoot());
   int32_t nNodes = 0;
   CFXJSE_ScopeUtil_IsolateHandleContext scope(GetJseContext());
@@ -766,7 +769,10 @@ CFXJSE_Engine::ResolveObjectsWithBindNode(CXFA_Object* refObject,
       }
       break;
     }
-    std::vector<cppgc::Member<CXFA_Object>> retObjects;
+    // TODO(crbug.com/1472363): Remove annotation.
+    __attribute__((annotate("blink_gc_plugin_ignore")))
+    std::vector<cppgc::Member<CXFA_Object>>
+        retObjects;
     while (i < nNodes) {
       bool bDataBind = false;
       if (((dwStyles & XFA_ResolveFlag::kBind) ||

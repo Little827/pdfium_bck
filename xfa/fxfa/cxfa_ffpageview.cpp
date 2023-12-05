@@ -433,8 +433,10 @@ CXFA_FFWidget* CXFA_FFTabOrderPageWidgetIterator::FindWidgetByName(
 void CXFA_FFTabOrderPageWidgetIterator::CreateTabOrderWidgetArray() {
   m_TabOrderWidgetArray.clear();
 
-  const std::vector<CXFA_ContentLayoutItem*> items =
-      CreateSpaceOrderLayoutItems();
+  // TODO(crbug.com/1472363): Remove annotation.
+  __attribute__((annotate("blink_gc_plugin_ignore")))
+  const std::vector<CXFA_ContentLayoutItem*>
+      items = CreateSpaceOrderLayoutItems();
   if (items.empty())
     return;
 
@@ -469,7 +471,10 @@ void CXFA_FFTabOrderPageWidgetIterator::CreateTabOrderWidgetArray() {
 
 std::vector<CXFA_ContentLayoutItem*>
 CXFA_FFTabOrderPageWidgetIterator::CreateSpaceOrderLayoutItems() {
-  std::vector<CXFA_ContentLayoutItem*> items;
+  // TODO(crbug.com/1472363): Remove annotation.
+  __attribute__((annotate("blink_gc_plugin_ignore")))
+  std::vector<CXFA_ContentLayoutItem*>
+      items;
   CXFA_LayoutItemIterator sIterator(m_pPageViewLayout.Get());
   CXFA_TabParam tabparam;
   bool bCurrentItem = false;
