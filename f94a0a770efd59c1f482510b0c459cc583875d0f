@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d070c78c_49d7ca69",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8571
+      },
+      "writtenOn": "2023-12-05T08:46:26Z",
+      "side": 1,
+      "message": "We already had an exemption for pdfium in place: https://source.chromium.org/chromium/chromium/src/+/main:tools/clang/blink_gc_plugin/BadPatternFinder.cpp;drc\u003d8ec39d56a2c328ea5da3c6139093f6ac901ecd2f;l\u003d501.\nAny idea why that one didn\u0027t work?\nI\u0027d rather fix the plugin than add so many ignore annotations.",
+      "revId": "f94a0a770efd59c1f482510b0c459cc583875d0f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
