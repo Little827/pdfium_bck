@@ -223,6 +223,7 @@ if (pdf_enable_v8) {
   if (pdf_enable_xfa) {
     source_set("gc") {
       sources = [
+        "gc/compiler_specific.h",
         "gc/container_trace.h",
         "gc/gced_tree_node.h",
         "gc/gced_tree_node_mixin.h",

@@ -12,6 +12,7 @@
 #include <vector>
 
 #include "core/fxcrt/widestring.h"
+#include "fxjs/gc/compiler_specific.h"
 #include "fxjs/gc/heap.h"
 #include "fxjs/xfa/fxjse.h"
 #include "fxjs/xfa/jse_define.h"
@@ -91,6 +92,8 @@ class CJX_Object : public cppgc::GarbageCollected<CJX_Object>,
 
     void Trace(cppgc::Visitor* visitor) const;
 
+    // TODO(crbug.com/1472363): Remove annotation.
+    BLINK_GC_PLUGIN_IGNORE
     std::vector<cppgc::Member<CXFA_Node>> m_Globals;
 
    private:

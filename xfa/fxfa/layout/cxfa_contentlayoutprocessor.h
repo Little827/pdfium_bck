@@ -16,6 +16,7 @@
 
 #include "core/fxcrt/fx_coordinates.h"
 #include "core/fxcrt/unowned_ptr.h"
+#include "fxjs/gc/compiler_specific.h"
 #include "fxjs/gc/heap.h"
 #include "third_party/abseil-cpp/absl/types/optional.h"
 #include "v8/include/cppgc/garbage-collected.h"
@@ -236,8 +237,14 @@ class CXFA_ContentLayoutProcessor
   cppgc::Member<CXFA_ViewLayoutProcessor> m_pViewLayoutProcessor;
   cppgc::Member<CXFA_ContentLayoutProcessor> m_pCurChildPreprocessor;
   std::vector<float> m_rgSpecifiedColumnWidths;
+  // TODO(crbug.com/1472363): Remove annotation.
+  BLINK_GC_PLUGIN_IGNORE
   std::vector<cppgc::Member<CXFA_ContentLayoutItem>> m_ArrayKeepItems;
+  // TODO(crbug.com/1472363): Remove annotation.
+  BLINK_GC_PLUGIN_IGNORE
   std::list<cppgc::Member<CXFA_Node>> m_PendingNodes;
+  // TODO(crbug.com/1472363): Remove annotation.
+  BLINK_GC_PLUGIN_IGNORE
   std::map<cppgc::Member<CXFA_Node>, int32_t> m_PendingNodesCount;
 };
 

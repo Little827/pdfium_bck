@@ -10,6 +10,7 @@
 #include <vector>
 
 #include "core/fxcrt/stl_util.h"
+#include "fxjs/gc/compiler_specific.h"
 #include "fxjs/gc/container_trace.h"
 #include "fxjs/xfa/cjx_object.h"
 #include "third_party/base/check.h"
@@ -433,6 +434,8 @@ CXFA_FFWidget* CXFA_FFTabOrderPageWidgetIterator::FindWidgetByName(
 void CXFA_FFTabOrderPageWidgetIterator::CreateTabOrderWidgetArray() {
   m_TabOrderWidgetArray.clear();
 
+  // TODO(crbug.com/1472363): Remove annotation.
+  BLINK_GC_PLUGIN_IGNORE
   const std::vector<CXFA_ContentLayoutItem*> items =
       CreateSpaceOrderLayoutItems();
   if (items.empty())
@@ -469,6 +472,8 @@ void CXFA_FFTabOrderPageWidgetIterator::CreateTabOrderWidgetArray() {
 
 std::vector<CXFA_ContentLayoutItem*>
 CXFA_FFTabOrderPageWidgetIterator::CreateSpaceOrderLayoutItems() {
+  // TODO(crbug.com/1472363): Remove annotation.
+  BLINK_GC_PLUGIN_IGNORE
   std::vector<CXFA_ContentLayoutItem*> items;
   CXFA_LayoutItemIterator sIterator(m_pPageViewLayout.Get());
   CXFA_TabParam tabparam;

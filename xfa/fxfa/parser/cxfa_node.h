@@ -20,6 +20,7 @@
 #include "core/fxcrt/unowned_ptr_exclusion.h"
 #include "core/fxcrt/widestring.h"
 #include "core/fxge/dib/fx_dib.h"
+#include "fxjs/gc/compiler_specific.h"
 #include "fxjs/gc/gced_tree_node_mixin.h"
 #include "third_party/abseil-cpp/absl/types/optional.h"
 #include "third_party/base/containers/span.h"
@@ -537,6 +538,8 @@ class CXFA_Node : public CXFA_Object, public GCedTreeNodeMixin<CXFA_Node> {
   cppgc::Member<CXFA_Node> m_pAuxNode;
   cppgc::Member<CXFA_WidgetLayoutData> m_pLayoutData;
   cppgc::Member<CXFA_Ui> ui_;
+  // TODO(crbug.com/1472363): Remove annotation.
+  BLINK_GC_PLUGIN_IGNORE
   std::vector<cppgc::Member<CXFA_Node>> binding_nodes_;
 };
 

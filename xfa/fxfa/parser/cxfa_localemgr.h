@@ -11,6 +11,7 @@
 
 #include "core/fxcrt/unowned_ptr.h"
 #include "core/fxcrt/widestring.h"
+#include "fxjs/gc/compiler_specific.h"
 #include "fxjs/gc/heap.h"
 #include "third_party/abseil-cpp/absl/types/optional.h"
 #include "v8/include/cppgc/garbage-collected.h"
@@ -63,7 +64,11 @@ class CXFA_LocaleMgr final : public cppgc::GarbageCollected<CXFA_LocaleMgr>,
   CXFA_XMLLocale* GetLocale(LangID lcid);
 
   UnownedPtr<cppgc::Heap> m_pHeap;
+  // TODO(crbug.com/1472363): Remove annotation.
+  BLINK_GC_PLUGIN_IGNORE
   std::vector<cppgc::Member<CXFA_NodeLocale>> m_LocaleArray;
+  // TODO(crbug.com/1472363): Remove annotation.
+  BLINK_GC_PLUGIN_IGNORE
   std::vector<cppgc::Member<CXFA_XMLLocale>> m_XMLLocaleArray;
   cppgc::Member<GCedLocaleIface> m_pDefLocale;
 

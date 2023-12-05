@@ -16,6 +16,7 @@
 
 #include "core/fxcrt/unowned_ptr.h"
 #include "core/fxcrt/widestring.h"
+#include "fxjs/gc/compiler_specific.h"
 #include "fxjs/gc/heap.h"
 #include "third_party/abseil-cpp/absl/types/optional.h"
 #include "third_party/base/containers/span.h"
@@ -176,7 +177,11 @@ class CXFA_Document final : public cppgc::GarbageCollected<CXFA_Document> {
   cppgc::Member<CScript_LogPseudoModel> m_pScriptLog;
   cppgc::Member<CScript_LayoutPseudoModel> m_pScriptLayout;
   cppgc::Member<CScript_SignaturePseudoModel> m_pScriptSignature;
+  // TODO(crbug.com/1472363): Remove annotation.
+  BLINK_GC_PLUGIN_IGNORE
   std::map<uint32_t, cppgc::Member<CXFA_Node>> m_rgGlobalBinding;
+  // TODO(crbug.com/1472363): Remove annotation.
+  BLINK_GC_PLUGIN_IGNORE
   std::vector<cppgc::Member<CXFA_Node>> m_pPendingPageSet;
   XFA_VERSION m_eCurVersionMode = XFA_VERSION_DEFAULT;
   absl::optional<bool> m_Interactive;

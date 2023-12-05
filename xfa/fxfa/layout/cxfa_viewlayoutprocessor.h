@@ -14,6 +14,7 @@
 
 #include "core/fxcrt/unowned_ptr.h"
 #include "core/fxcrt/unowned_ptr_exclusion.h"
+#include "fxjs/gc/compiler_specific.h"
 #include "fxjs/gc/heap.h"
 #include "third_party/abseil-cpp/absl/types/optional.h"
 #include "v8/include/cppgc/garbage-collected.h"
@@ -194,7 +195,11 @@ class CXFA_ViewLayoutProcessor
   int32_t m_nCurPageCount = 0;
   XFA_AttributeValue m_ePageSetMode = XFA_AttributeValue::OrderedOccurrence;
   bool m_bCreateOverFlowPage = false;
+  // TODO(crbug.com/1472363): Remove annotation.
+  BLINK_GC_PLUGIN_IGNORE
   std::map<cppgc::Member<CXFA_Node>, int32_t> m_pPageSetMap;
+  // TODO(crbug.com/1472363): Remove annotation.
+  BLINK_GC_PLUGIN_IGNORE
   std::vector<cppgc::Member<CXFA_ViewLayoutItem>> m_PageArray;
 };
 

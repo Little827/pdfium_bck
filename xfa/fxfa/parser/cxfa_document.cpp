@@ -13,6 +13,7 @@
 #include "core/fxcrt/stl_util.h"
 #include "core/fxcrt/xml/cfx_xmldocument.h"
 #include "core/fxcrt/xml/cfx_xmlelement.h"
+#include "fxjs/gc/compiler_specific.h"
 #include "fxjs/gc/container_trace.h"
 #include "fxjs/xfa/cfxjse_engine.h"
 #include "fxjs/xfa/cfxjse_resolveprocessor.h"
@@ -675,6 +676,8 @@ void CreateDataBinding(CXFA_Node* pFormNode,
     }
     case XFA_FFWidgetType::kChoiceList:
       if (pFormNode->IsChoiceListMultiSelect()) {
+        // TODO(crbug.com/1472363): Remove annotation.
+        BLINK_GC_PLUGIN_IGNORE
         std::vector<CXFA_Node*> items = pDataNode->GetNodeListWithFilter(
             {XFA_NodeFilter::kChildren, XFA_NodeFilter::kProperties});
         if (!items.empty()) {
@@ -836,7 +839,8 @@ CXFA_Node* CopyContainer_SubformSet(CXFA_Document* pDocument,
   bool bUseInstanceManager =
       pFormParentNode->GetElementType() != XFA_Element::Area;
   CXFA_Node* pInstMgrNode = nullptr;
-  std::vector<CXFA_Node*> subformArray;
+  // TODO(crbug.com/1472363): Remove annotation.
+  BLINK_GC_PLUGIN_IGNORE std::vector<CXFA_Node*> subformArray;
   std::vector<CXFA_Node*>* pSearchArray = nullptr;
   if (!bOneInstance &&
       (eType == XFA_Element::SubformSet || eType == XFA_Element::Subform)) {
@@ -891,7 +895,11 @@ CXFA_Node* CopyContainer_SubformSet(CXFA_Document* pDocument,
     if (eType == XFA_Element::SubformSet || eType == XFA_Element::Area) {
       sNodeIterator.MoveToNext();
     } else {
+      // TODO(crbug.com/1472363): Remove annotation.
+      BLINK_GC_PLUGIN_IGNORE
       std::map<CXFA_Node*, CXFA_Node*> subformMapArray;
+      // TODO(crbug.com/1472363): Remove annotation.
+      BLINK_GC_PLUGIN_IGNORE
       std::vector<CXFA_Node*> nodeArray;
       for (; iMax < 0 || iCurRepeatIndex < iMax; iCurRepeatIndex++) {
         bool bSelfMatch = false;
@@ -956,7 +964,11 @@ CXFA_Node* CopyContainer_SubformSet(CXFA_Document* pDocument,
         if (!pFirstInstance)
           pFirstInstance = pSubformSetNode;
 
+        // TODO(crbug.com/1472363): Remove annotation.
+        BLINK_GC_PLUGIN_IGNORE
         std::vector<RecurseRecord> rgItemMatchList;
+        // TODO(crbug.com/1472363): Remove annotation.
+        BLINK_GC_PLUGIN_IGNORE
         std::vector<CXFA_Node*> rgItemUnmatchList;
         for (CXFA_Node* pTemplateChild = pTemplateNode->GetFirstChild();
              pTemplateChild;
@@ -1524,8 +1536,11 @@ void CXFA_Document::DoProtoMerge() {
   if (!pTemplateRoot)
     return;
 
+  // TODO(crbug.com/1472363): Remove annotation.
+  BLINK_GC_PLUGIN_IGNORE
   std::map<uint32_t, CXFA_Node*> mIDMap;
-  std::set<CXFA_Node*> sUseNodes;
+  // TODO(crbug.com/1472363): Remove annotation.
+  BLINK_GC_PLUGIN_IGNORE std::set<CXFA_Node*> sUseNodes;
   CXFA_NodeIterator sIterator(pTemplateRoot);
   for (CXFA_Node* pNode = sIterator.GetCurrent(); pNode;
        pNode = sIterator.MoveToNext()) {

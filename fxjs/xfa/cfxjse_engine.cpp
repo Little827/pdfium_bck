@@ -14,6 +14,7 @@
 #include "core/fxcrt/widetext_buffer.h"
 #include "fxjs/cjs_runtime.h"
 #include "fxjs/fxv8.h"
+#include "fxjs/gc/compiler_specific.h"
 #include "fxjs/xfa/cfxjse_class.h"
 #include "fxjs/xfa/cfxjse_context.h"
 #include "fxjs/xfa/cfxjse_formcalc_context.h"
@@ -723,6 +724,8 @@ CFXJSE_Engine::ResolveObjectsWithBindNode(CXFA_Object* refObject,
   int32_t nStart = 0;
   int32_t nLevel = 0;
 
+  // TODO(crbug.com/1472363): Remove annotation.
+  BLINK_GC_PLUGIN_IGNORE
   std::vector<cppgc::Member<CXFA_Object>> findObjects;
   findObjects.emplace_back(refObject ? refObject : m_pDocument->GetRoot());
   int32_t nNodes = 0;
@@ -766,6 +769,8 @@ CFXJSE_Engine::ResolveObjectsWithBindNode(CXFA_Object* refObject,
       }
       break;
     }
+    // TODO(crbug.com/1472363): Remove annotation.
+    BLINK_GC_PLUGIN_IGNORE
     std::vector<cppgc::Member<CXFA_Object>> retObjects;
     while (i < nNodes) {
       bool bDataBind = false;

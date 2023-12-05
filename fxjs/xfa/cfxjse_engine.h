@@ -15,6 +15,7 @@
 #include "core/fxcrt/mask.h"
 #include "core/fxcrt/unowned_ptr.h"
 #include "fxjs/cfx_v8.h"
+#include "fxjs/gc/compiler_specific.h"
 #include "fxjs/xfa/cfxjse_context.h"
 #include "v8/include/cppgc/persistent.h"
 #include "v8/include/v8-forward.h"
@@ -71,6 +72,8 @@ class CFXJSE_Engine final : public CFX_V8 {
 
     // Vector of Member would be correct for stack-based vectors, if
     // STL worked with cppgc.
+    // TODO(crbug.com/1472363): Remove annotation.
+    BLINK_GC_PLUGIN_IGNORE
     std::vector<cppgc::Member<CXFA_Object>> objects;
   };
 
