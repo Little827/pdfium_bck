@@ -174,8 +174,6 @@ CPDF_PageContentGenerator::GenerateModifiedStreams() {
 
     // Set the default graphic state values
     buf << "q\n";
-    if (!m_pObjHolder->GetLastCTM().IsIdentity())
-      WriteMatrix(buf, m_pObjHolder->GetLastCTM().GetInverse()) << " cm\n";
 
     ProcessDefaultGraphics(&buf);
     streams[dirty_stream] = std::move(buf);
