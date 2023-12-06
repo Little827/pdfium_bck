@@ -1045,7 +1045,7 @@ WideString WideString::FromUTF16LE(pdfium::span<const uint8_t> data) {
   {
     // Span's lifetime must end before ReleaseBuffer() below.
     pdfium::span<wchar_t> buf = result.GetBuffer(data.size() / 2);
-    for (size_t i = 0; i < data.size() - 1; i += 2) {
+    for (size_t i = 0; i + 1 < data.size(); i += 2) {
       buf[length++] = data[i] | data[i + 1] << 8;
     }
 
@@ -1067,7 +1067,7 @@ WideString WideString::FromUTF16BE(pdfium::span<const uint8_t> data) {
   {
     // Span's lifetime must end before ReleaseBuffer() below.
     pdfium::span<wchar_t> buf = result.GetBuffer(data.size() / 2);
-    for (size_t i = 0; i < data.size() - 1; i += 2) {
+    for (size_t i = 0; i + 1 < data.size(); i += 2) {
       buf[length++] = data[i] << 8 | data[i + 1];
     }
 
