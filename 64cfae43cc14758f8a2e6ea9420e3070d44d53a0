@@ -16,6 +16,24 @@
       "message": "Thoughts about moving this into cpdf_parser.cpp? Then the affected lines in that file gets shorter or stays the same.",
       "revId": "64cfae43cc14758f8a2e6ea9420e3070d44d53a0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd0f016c_be1f5e19",
+        "filename": "core/fpdfapi/parser/cpdf_parser.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-12-08T23:34:39Z",
+      "side": 0,
+      "message": "cpdf_parser.h includes cpdf_cross_ref_table.h, but not the other way around, which is what drove the decision to leave it where it is.",
+      "parentUuid": "141e5554_6a12b7b9",
+      "revId": "64cfae43cc14758f8a2e6ea9420e3070d44d53a0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
