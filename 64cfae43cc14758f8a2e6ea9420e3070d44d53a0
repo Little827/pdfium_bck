@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "141e5554_6a12b7b9",
+        "filename": "core/fpdfapi/parser/cpdf_parser.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-12-08T23:31:41Z",
+      "side": 0,
+      "message": "Thoughts about moving this into cpdf_parser.cpp? Then the affected lines in that file gets shorter or stays the same.",
+      "revId": "64cfae43cc14758f8a2e6ea9420e3070d44d53a0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
