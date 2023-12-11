@@ -1054,8 +1054,8 @@ WideString WideString::FromUTF8(ByteStringView str) {
 }
 
 // static
-WideString WideString::FromUTF16LE(pdfium::span<const uint8_t> data) {
-  if (data.empty()) {
+WideString WideString::FromUTF16(std::u16string_view str) {
+  if (str.empty()) {
     return WideString();
   }
 
@@ -1063,39 +1063,35 @@ WideString WideString::FromUTF16LE(pdfium::span<const uint8_t> data) {
   size_t length = 0;
   {
     // Span's lifetime must end before ReleaseBuffer() below.
-    pdfium::span<wchar_t> buf = result.GetBuffer(data.size() / 2);
-    for (size_t i = 0; i + 1 < data.size(); i += 2) {
-      buf[length++] = data[i] | data[i + 1] << 8;
-    }
+    pdfium::span<wchar_t> buf = result.GetBuffer(str.size());
+    std::copy_n(str.begin(), str.size(), buf.begin());
 
 #if defined(WCHAR_T_IS_32_BIT)
-    length = FuseSurrogates(buf.first(length));
+    length = FuseSurrogates(buf);
 #endif
   }
   result.ReleaseBuffer(length);
   return result;
 }
 
+// static
+WideString WideString::FromUTF16LE(pdfium::span<const uint8_t> data) {
+  std::u16string utf16;
+  utf16.reserve(data.size() / 2);
+  for (size_t i = 0; i + 1 < data.size(); i += 2) {
+    utf16.push_back(data[i] | data[i + 1] << 8);
+  }
+  return FromUTF16(utf16);
+}
+
+// static
 WideString WideString::FromUTF16BE(pdfium::span<const uint8_t> data) {
-  if (data.empty()) {
-    return WideString();
+  std::u16string utf16;
+  utf16.reserve(data.size() / 2);
+  for (size_t i = 0; i + 1 < data.size(); i += 2) {
+    utf16.push_back(data[i] << 8 | data[i + 1]);
   }
-
-  WideString result;
-  size_t length = 0;
-  {
-    // Span's lifetime must end before ReleaseBuffer() below.
-    pdfium::span<wchar_t> buf = result.GetBuffer(data.size() / 2);
-    for (size_t i = 0; i + 1 < data.size(); i += 2) {
-      buf[length++] = data[i] << 8 | data[i + 1];
-    }
-
-#if defined(WCHAR_T_IS_32_BIT)
-    length = FuseSurrogates(buf.first(length));
-#endif
-  }
-  result.ReleaseBuffer(length);
-  return result;
+  return FromUTF16(utf16);
 }
 
 void WideString::SetAt(size_t index, wchar_t c) {
