@@ -16,6 +16,24 @@
       "message": "Do you have an opinion on if it\u0027s ok to make FPDF_WIDESTRING use the native endianness? I\u0027m guessing in practice almost nobody cares about big-endian, and even fewer care about it for consumer software like pdfium (?)\n\nSince this change came out so nicely (imho), it probably makes sense to also add WideString::FromUTF16(u16string) and implement FromUTF16LE and FromUTF16BE on top of those.",
       "revId": "c5f989c378af6b8892ed10276427e3aba488bcc7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9501707d_c31debc7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-12-11T17:10:37Z",
+      "side": 1,
+      "message": "We\u0027ve been really cautious about breaking public/ APIs, of which FPDF_WIDESTRING is a part, however, we know that there are parts of PDFium that just won\u0027t work on big endian machines. \n\nI\u0027d ping Lei to get a message out to the wider set of embedders announcing the change, and see if we get any push back.",
+      "parentUuid": "f19787d7_6adf8c4b",
+      "revId": "c5f989c378af6b8892ed10276427e3aba488bcc7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
