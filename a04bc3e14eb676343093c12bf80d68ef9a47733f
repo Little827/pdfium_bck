@@ -16,6 +16,23 @@
       "message": "NM, passed in mid-flight.",
       "revId": "a04bc3e14eb676343093c12bf80d68ef9a47733f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48b7f05f_131887c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5475
+      },
+      "writtenOn": "2023-12-11T17:15:01Z",
+      "side": 1,
+      "message": "yes, sorry, gerrit / me got confused about me sending comments while i had uploaded a new patch set but not refreshed it on gerrit yet while having the \u0027send replies\u0027 UI up. it\u0027s done now.",
+      "revId": "a04bc3e14eb676343093c12bf80d68ef9a47733f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
