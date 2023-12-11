@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad3b99ca_8eab4e2e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-12-11T17:14:21Z",
+      "side": 1,
+      "message": "still needs an IWYU for string ?",
+      "revId": "d56b2343997d56b467811b1148c5df4d049ea404",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f8933c11_124b125b",
@@ -38,6 +55,30 @@
       "side": 1,
       "message": "yes: I\u0027d like to move most callers of WideString::ToUTF16LE to calling this instead.",
       "parentUuid": "f8933c11_124b125b",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 53
+      },
+      "revId": "d56b2343997d56b467811b1148c5df4d049ea404",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2eaee439_8f6e9169",
+        "filename": "core/fxcrt/fx_string.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-12-11T17:14:21Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "eddeaedd_5f58fe84",
       "range": {
         "startLine": 77,
         "startChar": 0,
