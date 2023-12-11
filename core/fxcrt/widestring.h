@@ -71,6 +71,7 @@ class WideString {
   [[nodiscard]] static WideString FromLatin1(ByteStringView str);
   [[nodiscard]] static WideString FromDefANSI(ByteStringView str);
   [[nodiscard]] static WideString FromUTF8(ByteStringView str);
+  [[nodiscard]] static WideString FromUTF16(std::u16string_view str);
   [[nodiscard]] static WideString FromUTF16LE(pdfium::span<const uint8_t> data);
   [[nodiscard]] static WideString FromUTF16BE(pdfium::span<const uint8_t> data);
 
