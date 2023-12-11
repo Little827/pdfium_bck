@@ -1,7 +1,7 @@
 # UUID                                  	Group Name
 #
-483267b793affc296ed656cfbf210ca92d04d566	pdfium-committers
 b41662507056846df3d91946f2f4bc1bdea74a69	pdfium-scoped@luci-project-accounts.iam.gserviceaccount.com
+cria:project-pdfium-committers          	cria/project-pdfium-committers
 global:Change-Owner                     	Change Owner
 global:Registered-Users                 	Registered Users
 mdb:copybara-git-writers                	mdb/copybara-git-writers
