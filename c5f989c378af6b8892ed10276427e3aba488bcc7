@@ -52,6 +52,24 @@
       "parentUuid": "9501707d_c31debc7",
       "revId": "c5f989c378af6b8892ed10276427e3aba488bcc7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c224ac59_11ca7a05",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8751
+      },
+      "writtenOn": "2023-12-12T15:29:15Z",
+      "side": 1,
+      "message": "If changing to native endianness, how would pdfium deal with the BOM? Would it accept a BOM with input strings, or even require it? Would it add the BOM to output strings?",
+      "parentUuid": "488cf0b2_1fb0ed15",
+      "revId": "c5f989c378af6b8892ed10276427e3aba488bcc7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
