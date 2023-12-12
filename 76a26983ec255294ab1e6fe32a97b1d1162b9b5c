@@ -34,6 +34,24 @@
       "parentUuid": "7b433365_18cbc91b",
       "revId": "76a26983ec255294ab1e6fe32a97b1d1162b9b5c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c10a1d5b_e70ee291",
+        "filename": "core/fxcrt/fx_string.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 5475
+      },
+      "writtenOn": "2023-12-12T16:46:09Z",
+      "side": 1,
+      "message": "Here\u0027s an example of the kind of thing that\u0027s easier if there\u0027s some explicit UTF16 string type: https://pdfium-review.googlesource.com/c/pdfium/+/114750",
+      "parentUuid": "e5b8903a_dec03ce0",
+      "revId": "76a26983ec255294ab1e6fe32a97b1d1162b9b5c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
