@@ -88,6 +88,24 @@
       "parentUuid": "d51a8c5f_d2f669a1",
       "revId": "76a26983ec255294ab1e6fe32a97b1d1162b9b5c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4965fedc_2ddc3120",
+        "filename": "core/fxcrt/fx_string.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-12-12T19:59:45Z",
+      "side": 1,
+      "message": "re: CoW - doesn\u0027t Blink have its own string types for similar reasons? I don\u0027t have concrete measurements about strings, but for from recent memory, crbug.com/1477279 is a case where I forgot to use CoW correctly in PDFium for other data types, and it lead to 55 GB of memory usage for a 25 MB PDF.",
+      "parentUuid": "2d7b04e5_99e92020",
+      "revId": "76a26983ec255294ab1e6fe32a97b1d1162b9b5c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
