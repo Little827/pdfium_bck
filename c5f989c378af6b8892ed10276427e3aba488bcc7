@@ -88,6 +88,24 @@
       "parentUuid": "c224ac59_11ca7a05",
       "revId": "c5f989c378af6b8892ed10276427e3aba488bcc7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "adb6eb52_2d816ba0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8751
+      },
+      "writtenOn": "2023-12-12T17:00:04Z",
+      "side": 1,
+      "message": "Not currently, no. However, IMHO it\u0027s good practice to draft code in a fashion compatible with either host endianness.\nIIUC, if pdfium switches to native endianness, we could stay compatible with big endian in principle by changing from `utf-16-le` to just `utf-16` on our side (python), right?\nI asked about the BOM on behalf of the interfacing, and because it could add a little more checking to the situation. (`utf-16` adds the BOM by default, and PEP 100 encourages its use.)",
+      "parentUuid": "723a68ec_beac754a",
+      "revId": "c5f989c378af6b8892ed10276427e3aba488bcc7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
