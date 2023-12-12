@@ -22,6 +22,30 @@
       },
       "revId": "9024519852366634eb428cc3f86495397091e932",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72c1aee0_fc567264",
+        "filename": "core/fxge/cfx_face.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-12-12T18:36:16Z",
+      "side": 1,
+      "message": "Done. I was just trying to keep the existing names, but I\u0027m fine with GetData(), since the stream looks like a FreeType-ism.\n\nI\u0027m not 100% sure if the data can be from a TTC, as I didn\u0027t trace through FT code to see where its stream data comes from.",
+      "parentUuid": "9df6f70c_29f2a9ea",
+      "range": {
+        "startLine": 37,
+        "startChar": 24,
+        "endLine": 37,
+        "endChar": 33
+      },
+      "revId": "9024519852366634eb428cc3f86495397091e932",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
