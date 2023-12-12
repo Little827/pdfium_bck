@@ -106,6 +106,24 @@
       "parentUuid": "723a68ec_beac754a",
       "revId": "c5f989c378af6b8892ed10276427e3aba488bcc7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "298361ae_fa5eeb1b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5475
+      },
+      "writtenOn": "2023-12-12T19:47:56Z",
+      "side": 1,
+      "message": "\u003e Not currently, no. However, IMHO it\u0027s good practice to draft code in a fashion compatible with either host endianness.\n\nAbstractly, agreed. Concretely, I\u0027m not aware of any big-endian chip running consumer software.\n\nYes, if we do a change like that (we haven\u0027t, yet), moving from `foo.decode(\u0027utf-16le\u0027)` to `foo.decode(\u0027utf-16\u0027)` in python would do the right thing.",
+      "parentUuid": "adb6eb52_2d816ba0",
+      "revId": "c5f989c378af6b8892ed10276427e3aba488bcc7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }

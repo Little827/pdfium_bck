@@ -70,6 +70,24 @@
       "parentUuid": "c10a1d5b_e70ee291",
       "revId": "76a26983ec255294ab1e6fe32a97b1d1162b9b5c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d7b04e5_99e92020",
+        "filename": "core/fxcrt/fx_string.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 5475
+      },
+      "writtenOn": "2023-12-12T19:47:56Z",
+      "side": 1,
+      "message": "It\u0027s not starting to use std::string, it\u0027s starting to use std::u16string, for which it doesn\u0027t have its own type. So I\u0027m not sure if u16string causes confusion.\n\nSomething like https://pdfium-review.googlesource.com/c/pdfium/+/114750 is only possible if there\u0027s a string type that\u0027s guaranteed to be UTF-16. PDFium currently doesn\u0027t have such a string type. Do you want me to add one and use that instead of u16string?\n\nRe:\n\n```\n// A mutable string with shared buffers using copy-on-write semantics that\n// avoids the cost of std::string\u0027s iterator stability guarantees.\n```\n\nHas this cost been quantified? Chrome uses std::string types. If they\u0027re expensive, we should probably stop doing that (?)",
+      "parentUuid": "d51a8c5f_d2f669a1",
+      "revId": "76a26983ec255294ab1e6fe32a97b1d1162b9b5c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
