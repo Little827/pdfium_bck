@@ -52,6 +52,24 @@
       "parentUuid": "e5b8903a_dec03ce0",
       "revId": "76a26983ec255294ab1e6fe32a97b1d1162b9b5c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d51a8c5f_d2f669a1",
+        "filename": "core/fxcrt/fx_string.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-12-12T18:07:52Z",
+      "side": 1,
+      "message": "See the comment at the top of bytestring.h / widestring.h re: CoW. If PDFium starts using std::string and ByteString, then developers are going to need guidance on when to use what.\n\nI believe WideString does have a trailing NUL. Otherwise, how can WideString::c_str() simply return its data? https://pdfium.googlesource.com/pdfium.git/+/cb1cd2f12898d7cdc0d9435be2244ce27f88afe3/core/fxcrt/widestring.h#79\n\nI don\u0027t think this CL needs to be reverted. Just reworked to not use std::u16string.",
+      "parentUuid": "c10a1d5b_e70ee291",
+      "revId": "76a26983ec255294ab1e6fe32a97b1d1162b9b5c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
