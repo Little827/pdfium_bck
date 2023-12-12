@@ -18,15 +18,15 @@ class CPDF_Dictionary;
 class CPDF_CrossRefTable {
  public:
   enum class ObjectType : uint8_t {
-    kFree = 0x00,
-    kNormal = 0x01,
-    kCompressed = 0x02,
-    kObjStream = 0xFF,
-    kNull = kObjStream,
+    kFree = 0,
+    kNormal = 1,
+    kCompressed = 2,
+    kNull = 3,
   };
 
   struct ObjectInfo {
     ObjectType type = ObjectType::kFree;
+    bool is_object_stream_flag = false;
     uint16_t gennum = 0;
     // If `type` is `ObjectType::kCompressed`, `archive` should be used.
     // If `type` is `ObjectType::kNormal`, `pos` should be used.
@@ -53,7 +53,10 @@ class CPDF_CrossRefTable {
   void AddCompressed(uint32_t obj_num,
                      uint32_t archive_obj_num,
                      uint32_t archive_obj_index);
-  void AddNormal(uint32_t obj_num, uint16_t gen_num, FX_FILESIZE pos);
+  void AddNormal(uint32_t obj_num,
+                 uint16_t gen_num,
+                 bool is_object_stream,
+                 FX_FILESIZE pos);
   void SetFree(uint32_t obj_num);
 
   void SetTrailer(RetainPtr<CPDF_Dictionary> trailer,
