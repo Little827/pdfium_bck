@@ -106,6 +106,24 @@
       "parentUuid": "2d7b04e5_99e92020",
       "revId": "76a26983ec255294ab1e6fe32a97b1d1162b9b5c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "181e4746_cc130a94",
+        "filename": "core/fxcrt/fx_string.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 5475
+      },
+      "writtenOn": "2023-12-13T02:52:21Z",
+      "side": 1,
+      "message": "crbug.com/1477279 is unrelated to WideString I think (?) From a distance it looks like it\u0027s due to a type that isn\u0027t CoW itself and was manually moved into a CoW container (?)\n\nI should preface the following with: I\u0027m not super familiar with PDFium, it is only based on a general understanding of PDF (which I\u0027m somewhat familiar with, but also not a world expert on either). With that said:\n\nI can maybe see CoW being important for ByteStrings, but WideString should only be used for \"text strings\". Text strings are things like page title, page metadata, outline titles, etc – fairly small amounts of data. They aren\u0027t used for page contents, image data, etc.\n\nMaybe they are used for XFA form data? But even if that\u0027s the case, it\u0027s just text there too, and text is small.\n\nMaybe /ToUnicode objects use large amounts of text and WideString? …yes, looks like CPDF_ToUnicodeMap is WideString-based. But it only returns 1-char strings, which without CoW would fit into an SSO type setup.\n\nSo I\u0027m not sure I see the argument for having CoW WideStrings.\n\n(To be clear, this doesn\u0027t change anything abount WideString\u0027s CoW behavior – I\u0027m just saying I\u0027m not immediately seeing how a type without CoW would necessarily make things worse.)",
+      "parentUuid": "4965fedc_2ddc3120",
+      "revId": "76a26983ec255294ab1e6fe32a97b1d1162b9b5c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
