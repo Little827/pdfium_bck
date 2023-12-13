@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6779a08c_eeead1d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5475
+      },
+      "writtenOn": "2023-12-13T02:53:05Z",
+      "side": 1,
+      "message": "Feel the allure of u16string and let it seep into the codebase...",
+      "revId": "62ed2fd72b18df8b0b6fb1a6252648ee4e0d92b8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
