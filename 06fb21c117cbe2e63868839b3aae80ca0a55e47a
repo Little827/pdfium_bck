@@ -22,6 +22,30 @@
       },
       "revId": "06fb21c117cbe2e63868839b3aae80ca0a55e47a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbe03ab5_3b8c2a76",
+        "filename": "core/fxge/android/cfpf_skiafontmgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-12-14T21:56:36Z",
+      "side": 1,
+      "message": "Leaving this comment open. I\u0027ll make another pass after this CL chain lands.",
+      "parentUuid": "8e1571c7_5e1f93e3",
+      "range": {
+        "startLine": 391,
+        "startChar": 0,
+        "endLine": 407,
+        "endChar": 3
+      },
+      "revId": "06fb21c117cbe2e63868839b3aae80ca0a55e47a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
