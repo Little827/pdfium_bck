@@ -32,6 +32,11 @@ class CFX_Face final : public Retainable, public Observable {
  public:
   using CharMap = void*;
 
+  struct CharCodeAndIndex {
+    uint32_t char_code;
+    uint32_t glyph_index;
+  };
+
   static RetainPtr<CFX_Face> New(FT_Library library,
                                  RetainPtr<Retainable> pDesc,
                                  pdfium::span<const FT_Byte> data,
@@ -94,6 +99,9 @@ class CFX_Face final : public Retainable, public Observable {
 
   int GetCharIndex(uint32_t code);
   int GetNameIndex(const char* name);
+
+  CharCodeAndIndex GetFirstCharCodeAndIndex();
+  CharCodeAndIndex GetNextCharCodeAndIndex(uint32_t char_code);
 
   CharMap GetCurrentCharMap() const;
   absl::optional<fxge::FontEncoding> GetCurrentCharMapEncoding() const;
