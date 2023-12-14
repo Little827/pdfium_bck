@@ -1053,7 +1053,7 @@ bool CFX_RenderDevice::DrawNormalText(pdfium::span<const TextCharPos> pCharPos,
         // rendering options provided by |text_options|. No change needs to be
         // done for |text_options| here.
         anti_alias = FT_RENDER_MODE_LCD;
-        normalize = !pFont->GetFaceRec() ||
+        normalize = !pFont->GetFace() ||
                     options.aliasing_type != CFX_TextRenderOptions::kLcd;
       }
     }
@@ -1080,7 +1080,7 @@ bool CFX_RenderDevice::DrawNormalText(pdfium::span<const TextCharPos> pCharPos,
   char2device.Scale(font_size, -font_size);
   if (fabs(char2device.a) + fabs(char2device.b) > 50 * 1.0f ||
       GetDeviceType() == DeviceType::kPrinter) {
-    if (pFont->GetFaceRec()) {
+    if (pFont->GetFace()) {
       CFX_FillRenderOptions path_options;
       path_options.aliased_path = !is_text_smooth;
       return DrawTextPath(pCharPos, pFont, font_size, mtText2Device, nullptr,

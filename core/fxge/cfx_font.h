@@ -76,9 +76,6 @@ class CFX_Font {
                     bool force_vertical,
                     uint64_t object_tag);
   RetainPtr<CFX_Face> GetFace() const { return m_Face; }
-  FXFT_FaceRec* GetFaceRec() const {
-    return m_Face ? m_Face->GetRec() : nullptr;
-  }
   CFX_SubstFont* GetSubstFont() const { return m_pSubstFont.get(); }
   int GetSubstFontItalicAngle() const;
 
@@ -115,8 +112,10 @@ class CFX_Font {
   ByteString GetBaseFontName() const;
   bool IsTTFont() const;
 
+#if BUILDFLAG(IS_WIN)
   // Raw bounding box.
   absl::optional<FX_RECT> GetRawBBox() const;
+#endif
 
   // Bounding box adjusted for font units.
   absl::optional<FX_RECT> GetBBox() const;

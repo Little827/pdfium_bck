@@ -48,7 +48,6 @@ class CFX_Face final : public Retainable, public Observable {
 
   bool HasGlyphNames() const;
   bool IsTtOt() const;
-  bool IsTricky() const;
   bool IsFixedWidth() const;
 
 #if defined(PDF_ENABLE_XFA)
@@ -62,8 +61,8 @@ class CFX_Face final : public Retainable, public Observable {
   ByteString GetFamilyName() const;
   ByteString GetStyleName() const;
 
-  FX_RECT GetBBox() const;
-  uint16_t GetUnitsPerEm() const;
+  FX_RECT GetRawBBox() const;
+  FX_RECT GetAdjustedBBox() const;
   int16_t GetAscender() const;
   int16_t GetDescender() const;
   int GetAdjustedAscender() const;
@@ -83,8 +82,8 @@ class CFX_Face final : public Retainable, public Observable {
   absl::optional<std::array<uint8_t, 2>> GetOs2Panose();
 
   int GetGlyphCount() const;
-  // TODO(crbug.com/pdfium/2037): Can this method be private?
-  FX_RECT GetGlyphBBox() const;
+  FX_RECT GetCurrentGlyphBBox() const;
+  absl::optional<FX_RECT> GetGlyphBBox(uint32_t glyph_index);
   std::unique_ptr<CFX_GlyphBitmap> RenderGlyph(const CFX_Font* pFont,
                                                uint32_t glyph_index,
                                                bool bFontStyle,
@@ -95,17 +94,17 @@ class CFX_Face final : public Retainable, public Observable {
                                           int dest_width,
                                           bool is_vertical,
                                           const CFX_SubstFont* subst_font);
-  int GetGlyphWidth(uint32_t glyph_index,
-                    int dest_width,
-                    int weight,
-                    const CFX_SubstFont* subst_font);
+  int AdjustMMAndGetGlyphWidth(uint32_t glyph_index,
+                               int dest_width,
+                               int weight,
+                               const CFX_SubstFont* subst_font);
+  int GetGlyphWidth(uint32_t glyph_index);
+  ByteString GetGlyphName(uint32_t glyph_index);
 
   int GetCharIndex(uint32_t code);
   int GetNameIndex(const char* name);
 
   FX_RECT GetCharBBox(uint32_t code, int glyph_index);
-  // TODO(crbug.com/pdfium/2037): Can this method be private?
-  int TT2PDF(FT_Pos m) const;
 
   CharCodeAndIndex GetFirstCharCodeAndIndex();
   CharCodeAndIndex GetNextCharCodeAndIndex(uint32_t char_code);
@@ -120,6 +119,8 @@ class CFX_Face final : public Retainable, public Observable {
   void SetCharMapByIndex(size_t index);
   bool SelectCharMap(fxge::FontEncoding encoding);
 
+  bool SetPixelSize(uint32_t width, uint32_t height);
+
 #if BUILDFLAG(IS_WIN)
   bool CanEmbed();
 #endif
@@ -132,6 +133,9 @@ class CFX_Face final : public Retainable, public Observable {
   ~CFX_Face() override;
 
   void AdjustMMParams(int glyph_index, int dest_width, int weight);
+  int TT2PDF(FT_Pos m) const;
+  bool IsTricky() const;
+  uint16_t GetUnitsPerEm() const;
 
   ScopedFXFTFaceRec const m_pRec;
   RetainPtr<Retainable> const m_pDesc;

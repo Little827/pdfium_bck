@@ -15,7 +15,6 @@
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/parser/cpdf_name.h"
 #include "core/fxcrt/fx_codepage.h"
-#include "core/fxge/freetype/fx_freetype.h"
 #include "core/fxge/fx_font.h"
 
 namespace {
@@ -59,13 +58,16 @@ int CPDF_SimpleFont::GlyphFromCharCode(uint32_t charcode, bool* pVertGlyph) {
 }
 
 void CPDF_SimpleFont::LoadCharMetrics(int charcode) {
-  if (!m_Font.GetFaceRec())
-    return;
-
   if (charcode < 0 || charcode > 0xff) {
     return;
   }
-  int glyph_index = m_GlyphIndex[charcode];
+
+  RetainPtr<CFX_Face> face = m_Font.GetFace();
+  if (!face) {
+    return;
+  }
+
+  uint16_t glyph_index = m_GlyphIndex[charcode];
   if (glyph_index == 0xffff) {
     if (!m_pFontFile && charcode != 32) {
       LoadCharMetrics(32);
@@ -76,29 +78,22 @@ void CPDF_SimpleFont::LoadCharMetrics(int charcode) {
     }
     return;
   }
-  RetainPtr<CFX_Face> face = m_Font.GetFace();
-  if (!face) {
+
+  int tt_width = face->GetGlyphWidth(glyph_index);
+  if (!tt_width) {
     return;
   }
 
-  FXFT_FaceRec* face_rec = face->GetRec();
-  int err =
-      FT_Load_Glyph(face_rec, glyph_index,
-                    FT_LOAD_NO_SCALE | FT_LOAD_IGNORE_GLOBAL_ADVANCE_WIDTH);
-  if (err)
-    return;
-
-  m_CharBBox[charcode] = face->GetGlyphBBox();
+  m_CharBBox[charcode] = face->GetCurrentGlyphBBox();
 
   if (m_bUseFontWidth) {
-    int TT_Width = face->TT2PDF(FXFT_Get_Glyph_HoriAdvance(face_rec));
     if (m_CharWidth[charcode] == 0xffff) {
-      m_CharWidth[charcode] = TT_Width;
-    } else if (TT_Width && !IsEmbedded()) {
+      m_CharWidth[charcode] = tt_width;
+    } else if (tt_width && !IsEmbedded()) {
       m_CharBBox[charcode].right =
-          m_CharBBox[charcode].right * m_CharWidth[charcode] / TT_Width;
+          m_CharBBox[charcode].right * m_CharWidth[charcode] / tt_width;
       m_CharBBox[charcode].left =
-          m_CharBBox[charcode].left * m_CharWidth[charcode] / TT_Width;
+          m_CharBBox[charcode].left * m_CharWidth[charcode] / tt_width;
     }
   }
 }

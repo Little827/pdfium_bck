@@ -9,7 +9,6 @@
 #include <memory>
 
 #include "core/fxge/cfx_font.h"
-#include "core/fxge/freetype/fx_freetype.h"
 #include "core/fxge/fx_font.h"
 #include "core/fxge/fx_fontencoding.h"
 
@@ -44,9 +43,10 @@ CFX_UnicodeEncodingEx::~CFX_UnicodeEncodingEx() = default;
 
 uint32_t CFX_UnicodeEncodingEx::GlyphFromCharCode(uint32_t charcode) {
   RetainPtr<CFX_Face> face = m_pFont->GetFace();
-  FT_UInt nIndex = face->GetCharIndex(charcode);
-  if (nIndex > 0)
-    return nIndex;
+  int char_index = face->GetCharIndex(charcode);
+  if (char_index > 0) {
+    return char_index;
+  }
 
   size_t map_index = 0;
   while (map_index < face->GetCharMapCount()) {
@@ -58,10 +58,10 @@ uint32_t CFX_UnicodeEncodingEx::GlyphFromCharCode(uint32_t charcode) {
     if (!face->SelectCharMap(encoding_id)) {
       continue;
     }
-    nIndex = face->GetCharIndex(charcode);
-    if (nIndex > 0) {
+    char_index = face->GetCharIndex(charcode);
+    if (char_index > 0) {
       encoding_id_ = encoding_id;
-      return nIndex;
+      return char_index;
     }
   }
   face->SelectCharMap(encoding_id_);

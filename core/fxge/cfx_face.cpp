@@ -206,6 +206,27 @@ int Outline_CubicTo(const FT_Vector* control1,
   return 0;
 }
 
+FX_RECT FXRectFromFTPos(FT_Pos left, FT_Pos top, FT_Pos right, FT_Pos bottom) {
+  return FX_RECT(pdfium::base::checked_cast<int32_t>(left),
+                 pdfium::base::checked_cast<int32_t>(top),
+                 pdfium::base::checked_cast<int32_t>(right),
+                 pdfium::base::checked_cast<int32_t>(bottom));
+}
+
+FX_RECT ScaledFXRectFromFTPos(FT_Pos left,
+                              FT_Pos top,
+                              FT_Pos right,
+                              FT_Pos bottom,
+                              int x_scale,
+                              int y_scale) {
+  if (x_scale == 0 || y_scale == 0) {
+    return FXRectFromFTPos(left, top, right, bottom);
+  }
+
+  return FXRectFromFTPos(left * 1000 / x_scale, top * 1000 / y_scale,
+                         right * 1000 / x_scale, bottom * 1000 / y_scale);
+}
+
 }  // namespace
 
 // static
@@ -277,11 +298,21 @@ ByteString CFX_Face::GetStyleName() const {
   return ByteString(GetRec()->style_name);
 }
 
-FX_RECT CFX_Face::GetBBox() const {
-  return FX_RECT(pdfium::base::checked_cast<int32_t>(GetRec()->bbox.xMin),
-                 pdfium::base::checked_cast<int32_t>(GetRec()->bbox.yMin),
-                 pdfium::base::checked_cast<int32_t>(GetRec()->bbox.xMax),
-                 pdfium::base::checked_cast<int32_t>(GetRec()->bbox.yMax));
+FX_RECT CFX_Face::GetRawBBox() const {
+  const auto& bbox = GetRec()->bbox;
+  return FX_RECT(pdfium::base::checked_cast<int32_t>(bbox.xMin),
+                 pdfium::base::checked_cast<int32_t>(bbox.yMin),
+                 pdfium::base::checked_cast<int32_t>(bbox.xMax),
+                 pdfium::base::checked_cast<int32_t>(bbox.yMax));
+}
+
+FX_RECT CFX_Face::GetAdjustedBBox() const {
+  FX_RECT result = GetRawBBox();
+  result.left = TT2PDF(result.left);
+  result.top = TT2PDF(result.top);
+  result.right = TT2PDF(result.right);
+  result.bottom = TT2PDF(result.bottom);
+  return result;
 }
 
 uint16_t CFX_Face::GetUnitsPerEm() const {
@@ -551,14 +582,18 @@ std::unique_ptr<CFX_Path> CFX_Face::LoadGlyphPath(
   return pPath;
 }
 
-int CFX_Face::GetGlyphWidth(uint32_t glyph_index,
-                            int dest_width,
-                            int weight,
-                            const CFX_SubstFont* subst_font) {
+int CFX_Face::AdjustMMAndGetGlyphWidth(uint32_t glyph_index,
+                                       int dest_width,
+                                       int weight,
+                                       const CFX_SubstFont* subst_font) {
   if (subst_font && subst_font->IsBuiltInGenericFont()) {
     AdjustMMParams(glyph_index, dest_width, weight);
   }
 
+  return GetGlyphWidth(glyph_index);
+}
+
+int CFX_Face::GetGlyphWidth(uint32_t glyph_index) {
   FXFT_FaceRec* rec = GetRec();
   int err = FT_Load_Glyph(
       rec, glyph_index, FT_LOAD_NO_SCALE | FT_LOAD_IGNORE_GLOBAL_ADVANCE_WIDTH);
@@ -567,6 +602,13 @@ int CFX_Face::GetGlyphWidth(uint32_t glyph_index,
   }
 
   return TT2PDF(rec->glyph->metrics.horiAdvance);
+}
+
+ByteString CFX_Face::GetGlyphName(uint32_t glyph_index) {
+  char name[256] = {};
+  FT_Get_Glyph_Name(GetRec(), glyph_index, name, sizeof(name));
+  name[255] = 0;
+  return ByteString(name);
 }
 
 int CFX_Face::GetCharIndex(uint32_t code) {
@@ -610,7 +652,7 @@ FX_RECT CFX_Face::GetCharBBox(uint32_t code, int glyph_index) {
   } else {
     int err = FT_Load_Glyph(rec, glyph_index, FT_LOAD_NO_SCALE);
     if (err == 0) {
-      rect = GetGlyphBBox();
+      rect = GetCurrentGlyphBBox();
       if (rect.top <= kMaxRectTop) {
         rect.top += rect.top / 64;
       } else {
@@ -621,12 +663,58 @@ FX_RECT CFX_Face::GetCharBBox(uint32_t code, int glyph_index) {
   return rect;
 }
 
-FX_RECT CFX_Face::GetGlyphBBox() const {
+FX_RECT CFX_Face::GetCurrentGlyphBBox() const {
   const auto* glyph = GetRec()->glyph;
   pdfium::base::ClampedNumeric<FT_Pos> left = glyph->metrics.horiBearingX;
   pdfium::base::ClampedNumeric<FT_Pos> top = glyph->metrics.horiBearingY;
   return FX_RECT(TT2PDF(left), TT2PDF(top), TT2PDF(left + glyph->metrics.width),
                  TT2PDF(top - glyph->metrics.height));
+}
+
+absl::optional<FX_RECT> CFX_Face::GetGlyphBBox(uint32_t glyph_index) {
+  FXFT_FaceRec* rec = GetRec();
+  if (IsTricky()) {
+    int error = FT_Set_Char_Size(rec, 0, 1000 * 64, 72, 72);
+    if (error) {
+      return absl::nullopt;
+    }
+
+    error =
+        FT_Load_Glyph(rec, glyph_index, FT_LOAD_IGNORE_GLOBAL_ADVANCE_WIDTH);
+    if (error) {
+      return absl::nullopt;
+    }
+
+    FT_Glyph glyph;
+    error = FT_Get_Glyph(rec->glyph, &glyph);
+    if (error) {
+      return absl::nullopt;
+    }
+
+    FT_BBox cbox;
+    FT_Glyph_Get_CBox(glyph, FT_GLYPH_BBOX_PIXELS, &cbox);
+    int pixel_size_x = rec->size->metrics.x_ppem;
+    int pixel_size_y = rec->size->metrics.y_ppem;
+    FX_RECT result = ScaledFXRectFromFTPos(
+        cbox.xMin, cbox.yMax, cbox.xMax, cbox.yMin, pixel_size_x, pixel_size_y);
+    result.top = std::min(result.top, static_cast<int>(GetAscender()));
+    result.bottom = std::max(result.bottom, static_cast<int>(GetDescender()));
+    FT_Done_Glyph(glyph);
+    if (FT_Set_Pixel_Sizes(rec, 0, 64) != 0) {
+      return absl::nullopt;
+    }
+    return result;
+  }
+  constexpr int kFlag = FT_LOAD_NO_SCALE | FT_LOAD_IGNORE_GLOBAL_ADVANCE_WIDTH;
+  if (FT_Load_Glyph(rec, glyph_index, kFlag) != 0) {
+    return absl::nullopt;
+  }
+  int em = GetUnitsPerEm();
+  return ScaledFXRectFromFTPos(
+      rec->glyph->metrics.horiBearingX,
+      rec->glyph->metrics.horiBearingY - rec->glyph->metrics.height,
+      rec->glyph->metrics.horiBearingX + rec->glyph->metrics.width,
+      rec->glyph->metrics.horiBearingY, em, em);
 }
 
 int CFX_Face::TT2PDF(FT_Pos m) const {
@@ -698,6 +786,11 @@ void CFX_Face::SetCharMapByIndex(size_t index) {
 bool CFX_Face::SelectCharMap(fxge::FontEncoding encoding) {
   FT_Error error =
       FT_Select_Charmap(GetRec(), static_cast<FT_Encoding>(encoding));
+  return !error;
+}
+
+bool CFX_Face::SetPixelSize(uint32_t width, uint32_t height) {
+  FT_Error error = FT_Set_Pixel_Sizes(GetRec(), width, height);
   return !error;
 }
 

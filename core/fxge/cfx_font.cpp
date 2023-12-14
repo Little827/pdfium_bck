@@ -26,32 +26,9 @@
 #include "core/fxge/cfx_path.h"
 #include "core/fxge/cfx_substfont.h"
 #include "core/fxge/fx_font.h"
-#include "core/fxge/scoped_font_transform.h"
-#include "third_party/base/check.h"
 #include "third_party/base/containers/span.h"
-#include "third_party/base/numerics/safe_conversions.h"
 
 namespace {
-
-FX_RECT FXRectFromFTPos(FT_Pos left, FT_Pos top, FT_Pos right, FT_Pos bottom) {
-  return FX_RECT(pdfium::base::checked_cast<int32_t>(left),
-                 pdfium::base::checked_cast<int32_t>(top),
-                 pdfium::base::checked_cast<int32_t>(right),
-                 pdfium::base::checked_cast<int32_t>(bottom));
-}
-
-FX_RECT ScaledFXRectFromFTPos(FT_Pos left,
-                              FT_Pos top,
-                              FT_Pos right,
-                              FT_Pos bottom,
-                              int x_scale,
-                              int y_scale) {
-  if (x_scale == 0 || y_scale == 0)
-    return FXRectFromFTPos(left, top, right, bottom);
-
-  return FXRectFromFTPos(left * 1000 / x_scale, top * 1000 / y_scale,
-                         right * 1000 / x_scale, bottom * 1000 / y_scale);
-}
 
 #ifdef PDF_ENABLE_XFA
 unsigned long FTStreamRead(FXFT_StreamRec* stream,
@@ -191,7 +168,7 @@ bool CFX_Font::LoadFile(RetainPtr<IFX_SeekableReadStream> pFile,
 
   m_pOwnedFile = std::move(pFile);
   m_pOwnedStreamRec = std::move(pStreamRec);
-  FT_Set_Pixel_Sizes(m_Face->GetRec(), 0, 64);
+  m_Face->SetPixelSize(0, 64);
   return true;
 }
 
@@ -253,8 +230,8 @@ int CFX_Font::GetGlyphWidthImpl(uint32_t glyph_index,
   if (!m_Face)
     return 0;
 
-  return m_Face->GetGlyphWidth(glyph_index, dest_width, weight,
-                               m_pSubstFont.get());
+  return m_Face->AdjustMMAndGetGlyphWidth(glyph_index, dest_width, weight,
+                                          m_pSubstFont.get());
 }
 
 bool CFX_Font::LoadEmbedded(pdfium::span<const uint8_t> src_span,
@@ -286,46 +263,7 @@ absl::optional<FX_RECT> CFX_Font::GetGlyphBBox(uint32_t glyph_index) {
   if (!m_Face)
     return absl::nullopt;
 
-  if (m_Face->IsTricky()) {
-    int error = FT_Set_Char_Size(m_Face->GetRec(), 0, 1000 * 64, 72, 72);
-    if (error)
-      return absl::nullopt;
-
-    error = FT_Load_Glyph(m_Face->GetRec(), glyph_index,
-                          FT_LOAD_IGNORE_GLOBAL_ADVANCE_WIDTH);
-    if (error)
-      return absl::nullopt;
-
-    FT_Glyph glyph;
-    error = FT_Get_Glyph(m_Face->GetRec()->glyph, &glyph);
-    if (error)
-      return absl::nullopt;
-
-    FT_BBox cbox;
-    FT_Glyph_Get_CBox(glyph, FT_GLYPH_BBOX_PIXELS, &cbox);
-    int pixel_size_x = m_Face->GetRec()->size->metrics.x_ppem;
-    int pixel_size_y = m_Face->GetRec()->size->metrics.y_ppem;
-    FX_RECT result = ScaledFXRectFromFTPos(
-        cbox.xMin, cbox.yMax, cbox.xMax, cbox.yMin, pixel_size_x, pixel_size_y);
-    result.top = std::min(result.top, static_cast<int>(m_Face->GetAscender()));
-    result.bottom =
-        std::max(result.bottom, static_cast<int>(m_Face->GetDescender()));
-    FT_Done_Glyph(glyph);
-    if (FT_Set_Pixel_Sizes(m_Face->GetRec(), 0, 64) != 0)
-      return absl::nullopt;
-    return result;
-  }
-  constexpr int kFlag = FT_LOAD_NO_SCALE | FT_LOAD_IGNORE_GLOBAL_ADVANCE_WIDTH;
-  if (FT_Load_Glyph(m_Face->GetRec(), glyph_index, kFlag) != 0)
-    return absl::nullopt;
-  int em = m_Face->GetUnitsPerEm();
-  return ScaledFXRectFromFTPos(FXFT_Get_Glyph_HoriBearingX(m_Face->GetRec()),
-                               FXFT_Get_Glyph_HoriBearingY(m_Face->GetRec()) -
-                                   FXFT_Get_Glyph_Height(m_Face->GetRec()),
-                               FXFT_Get_Glyph_HoriBearingX(m_Face->GetRec()) +
-                                   FXFT_Get_Glyph_Width(m_Face->GetRec()),
-                               FXFT_Get_Glyph_HoriBearingY(m_Face->GetRec()),
-                               em, em);
+  return m_Face->GetGlyphBBox(glyph_index);
 }
 
 bool CFX_Font::IsItalic() const {
@@ -409,26 +347,19 @@ ByteString CFX_Font::GetBaseFontName() const {
   return ByteString();
 }
 
+#if BUILDFLAG(IS_WIN)
 absl::optional<FX_RECT> CFX_Font::GetRawBBox() const {
   if (!m_Face)
     return absl::nullopt;
-  return m_Face->GetBBox();
+  return m_Face->GetRawBBox();
 }
+#endif
 
 absl::optional<FX_RECT> CFX_Font::GetBBox() const {
-  absl::optional<FX_RECT> result = GetRawBBox();
-  if (!result.has_value())
-    return result;
-
-  int em = m_Face->GetUnitsPerEm();
-  if (em != 0) {
-    FX_RECT& bbox = result.value();
-    bbox.left = (bbox.left * 1000) / em;
-    bbox.top = (bbox.top * 1000) / em;
-    bbox.right = (bbox.right * 1000) / em;
-    bbox.bottom = (bbox.bottom * 1000) / em;
+  if (!m_Face) {
+    return absl::nullopt;
   }
-  return result;
+  return m_Face->GetAdjustedBBox();
 }
 
 RetainPtr<CFX_GlyphCache> CFX_Font::GetOrCreateGlyphCache() const {

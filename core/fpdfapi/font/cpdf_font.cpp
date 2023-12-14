@@ -218,11 +218,8 @@ void CPDF_Font::CheckFontMetrics() {
     RetainPtr<CFX_Face> face = m_Font.GetFace();
     if (face) {
       // Note that `m_FontBBox` is deliberately flipped.
-      const FX_RECT raw_bbox = face->GetBBox();
-      m_FontBBox.left = face->TT2PDF(raw_bbox.left);
-      m_FontBBox.bottom = face->TT2PDF(raw_bbox.top);
-      m_FontBBox.right = face->TT2PDF(raw_bbox.right);
-      m_FontBBox.top = face->TT2PDF(raw_bbox.bottom);
+      m_FontBBox = face->GetAdjustedBBox();
+      std::swap(m_FontBBox.top, m_FontBBox.bottom);
       m_Ascent = face->GetAdjustedAscender();
       m_Descent = face->GetAdjustedDescender();
     } else {
