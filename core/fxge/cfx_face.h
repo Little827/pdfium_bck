@@ -83,6 +83,8 @@ class CFX_Face final : public Retainable, public Observable {
   absl::optional<std::array<uint8_t, 2>> GetOs2Panose();
 
   int GetGlyphCount() const;
+  // TODO(crbug.com/pdfium/2037): Can this method be private?
+  FX_RECT GetGlyphBBox() const;
   std::unique_ptr<CFX_GlyphBitmap> RenderGlyph(const CFX_Font* pFont,
                                                uint32_t glyph_index,
                                                bool bFontStyle,
@@ -100,6 +102,10 @@ class CFX_Face final : public Retainable, public Observable {
 
   int GetCharIndex(uint32_t code);
   int GetNameIndex(const char* name);
+
+  FX_RECT GetCharBBox(uint32_t code, int glyph_index);
+  // TODO(crbug.com/pdfium/2037): Can this method be private?
+  int TT2PDF(FT_Pos m) const;
 
   CharCodeAndIndex GetFirstCharCodeAndIndex();
   CharCodeAndIndex GetNextCharCodeAndIndex(uint32_t char_code);

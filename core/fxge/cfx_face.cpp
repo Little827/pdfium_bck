@@ -21,6 +21,7 @@
 #include "core/fxge/scoped_font_transform.h"
 #include "third_party/base/check.h"
 #include "third_party/base/check_op.h"
+#include "third_party/base/numerics/clamped_math.h"
 #include "third_party/base/numerics/safe_conversions.h"
 #include "third_party/base/numerics/safe_math.h"
 
@@ -39,6 +40,9 @@ constexpr int kThousandthMinInt = std::numeric_limits<int>::min() / 1000;
 constexpr int kThousandthMaxInt = std::numeric_limits<int>::max() / 1000;
 
 constexpr int kMaxGlyphDimension = 2048;
+
+// Boundary value to avoid integer overflow when adding 1/64th of the value.
+constexpr int kMaxRectTop = 2114445437;
 
 constexpr uint8_t kWeightPow[] = {
     0,   6,   12,  14,  16,  18,  22,  24,  28,  30,  32,  34,  36,  38,  40,
@@ -100,6 +104,13 @@ int GetSkewFromAngle(int angle) {
     return -58;
   }
   return kAngleSkew[-angle];
+}
+
+int FTPosToCBoxInt(FT_Pos pos) {
+  // Boundary values to avoid integer overflow when multiplied by 1000.
+  constexpr FT_Pos kMinCBox = -2147483;
+  constexpr FT_Pos kMaxCBox = 2147483;
+  return static_cast<int>(std::clamp(pos, kMinCBox, kMaxCBox));
 }
 
 void Outline_CheckEmptyContour(OUTLINE_PARAMS* param) {
@@ -581,6 +592,68 @@ int CFX_Face::GetCharIndex(uint32_t code) {
 
 int CFX_Face::GetNameIndex(const char* name) {
   return FT_Get_Name_Index(GetRec(), name);
+}
+
+FX_RECT CFX_Face::GetCharBBox(uint32_t code, int glyph_index) {
+  FX_RECT rect;
+  FXFT_FaceRec* rec = GetRec();
+  if (IsTricky()) {
+    int err =
+        FT_Load_Glyph(rec, glyph_index, FT_LOAD_IGNORE_GLOBAL_ADVANCE_WIDTH);
+    if (!err) {
+      FT_Glyph glyph;
+      err = FT_Get_Glyph(rec->glyph, &glyph);
+      if (!err) {
+        FT_BBox cbox;
+        FT_Glyph_Get_CBox(glyph, FT_GLYPH_BBOX_PIXELS, &cbox);
+        const int xMin = FTPosToCBoxInt(cbox.xMin);
+        const int xMax = FTPosToCBoxInt(cbox.xMax);
+        const int yMin = FTPosToCBoxInt(cbox.yMin);
+        const int yMax = FTPosToCBoxInt(cbox.yMax);
+        const int pixel_size_x = rec->size->metrics.x_ppem;
+        const int pixel_size_y = rec->size->metrics.y_ppem;
+        if (pixel_size_x == 0 || pixel_size_y == 0) {
+          rect = FX_RECT(xMin, yMax, xMax, yMin);
+        } else {
+          rect =
+              FX_RECT(xMin * 1000 / pixel_size_x, yMax * 1000 / pixel_size_y,
+                      xMax * 1000 / pixel_size_x, yMin * 1000 / pixel_size_y);
+        }
+        rect.top = std::min(rect.top, static_cast<int>(GetAscender()));
+        rect.bottom = std::max(rect.bottom, static_cast<int>(GetDescender()));
+        FT_Done_Glyph(glyph);
+      }
+    }
+  } else {
+    int err = FT_Load_Glyph(rec, glyph_index, FT_LOAD_NO_SCALE);
+    if (err == 0) {
+      rect = GetGlyphBBox();
+      if (rect.top <= kMaxRectTop) {
+        rect.top += rect.top / 64;
+      } else {
+        rect.top = std::numeric_limits<int>::max();
+      }
+    }
+  }
+  return rect;
+}
+
+FX_RECT CFX_Face::GetGlyphBBox() const {
+  const auto* glyph = GetRec()->glyph;
+  pdfium::base::ClampedNumeric<FT_Pos> left = glyph->metrics.horiBearingX;
+  pdfium::base::ClampedNumeric<FT_Pos> top = glyph->metrics.horiBearingY;
+  return FX_RECT(TT2PDF(left), TT2PDF(top), TT2PDF(left + glyph->metrics.width),
+                 TT2PDF(top - glyph->metrics.height));
+}
+
+int CFX_Face::TT2PDF(FT_Pos m) const {
+  int upm = GetUnitsPerEm();
+  if (upm == 0) {
+    return pdfium::base::saturated_cast<int>(m);
+  }
+
+  const double dm = (m * 1000.0 + upm / 2) / upm;
+  return pdfium::base::saturated_cast<int>(dm);
 }
 
 CFX_Face::CharCodeAndIndex CFX_Face::GetFirstCharCodeAndIndex() {

@@ -31,11 +31,8 @@
 #include "core/fxcrt/stl_util.h"
 #include "core/fxge/cfx_fontmapper.h"
 #include "core/fxge/cfx_substfont.h"
-#include "core/fxge/freetype/fx_freetype.h"
 #include "core/fxge/fx_font.h"
 #include "third_party/base/check.h"
-#include "third_party/base/numerics/clamped_math.h"
-#include "third_party/base/numerics/safe_conversions.h"
 
 namespace {
 
@@ -222,12 +219,12 @@ void CPDF_Font::CheckFontMetrics() {
     if (face) {
       // Note that `m_FontBBox` is deliberately flipped.
       const FX_RECT raw_bbox = face->GetBBox();
-      m_FontBBox.left = TT2PDF(raw_bbox.left, face);
-      m_FontBBox.bottom = TT2PDF(raw_bbox.top, face);
-      m_FontBBox.right = TT2PDF(raw_bbox.right, face);
-      m_FontBBox.top = TT2PDF(raw_bbox.bottom, face);
-      m_Ascent = TT2PDF(face->GetAscender(), face);
-      m_Descent = TT2PDF(face->GetDescender(), face);
+      m_FontBBox.left = face->TT2PDF(raw_bbox.left);
+      m_FontBBox.bottom = face->TT2PDF(raw_bbox.top);
+      m_FontBBox.right = face->TT2PDF(raw_bbox.right);
+      m_FontBBox.top = face->TT2PDF(raw_bbox.bottom);
+      m_Ascent = face->TT2PDF(face->GetAscender());
+      m_Descent = face->TT2PDF(face->GetDescender());
     } else {
       bool bFirst = true;
       for (int i = 0; i < 256; i++) {
@@ -404,26 +401,6 @@ CFX_Font* CPDF_Font::GetFontFallback(int position) {
   if (position < 0 || static_cast<size_t>(position) >= m_FontFallbacks.size())
     return nullptr;
   return m_FontFallbacks[position].get();
-}
-
-// static
-int CPDF_Font::TT2PDF(FT_Pos m, const RetainPtr<CFX_Face>& face) {
-  int upm = face->GetUnitsPerEm();
-  if (upm == 0)
-    return pdfium::base::saturated_cast<int>(m);
-
-  const double dm = (m * 1000.0 + upm / 2) / upm;
-  return pdfium::base::saturated_cast<int>(dm);
-}
-
-// static
-FX_RECT CPDF_Font::GetCharBBoxForFace(const RetainPtr<CFX_Face>& face) {
-  FXFT_FaceRec* rec = face->GetRec();
-  pdfium::base::ClampedNumeric<FT_Pos> left = FXFT_Get_Glyph_HoriBearingX(rec);
-  pdfium::base::ClampedNumeric<FT_Pos> top = FXFT_Get_Glyph_HoriBearingY(rec);
-  return FX_RECT(TT2PDF(left, face), TT2PDF(top, face),
-                 TT2PDF(left + FXFT_Get_Glyph_Width(rec), face),
-                 TT2PDF(top - FXFT_Get_Glyph_Height(rec), face));
 }
 
 // static
