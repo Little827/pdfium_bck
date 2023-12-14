@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f1aaae5_824872c1",
+        "filename": "core/fxge/cfx_face.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 6715
+      },
+      "writtenOn": "2023-12-14T08:55:20Z",
+      "side": 1,
+      "message": "I think rather than moving the exact FT API it would be useful to expose this as a C++ iterator or as an interface that returns the full set of codepoints to glyph mappings.",
+      "revId": "4a5c42933d302215adcbc75fc818b5e3dababcfc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
