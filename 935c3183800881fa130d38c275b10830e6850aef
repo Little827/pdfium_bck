@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "244abe8b_2e0e45f6",
+        "filename": "core/fxge/cfx_face.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 6715
+      },
+      "writtenOn": "2023-12-14T09:35:45Z",
+      "side": 1,
+      "message": "I don\u0027t understand from this method name what the method does. Does it to a kind of unit conversion? I suggest to give this a more descriptive name.\n\nNot sure this needs to be on `CFX_Face`, I am thinking this could be provided as a function in a utility namespace, and would take upem as a parameter, then upem could be exposed on CFX_Face.",
+      "range": {
+        "startLine": 108,
+        "startChar": 6,
+        "endLine": 108,
+        "endChar": 12
+      },
+      "revId": "935c3183800881fa130d38c275b10830e6850aef",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
