@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4c227bf_2229c5de",
+        "filename": "core/fpdfapi/font/cpdf_simplefont.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 6715
+      },
+      "writtenOn": "2023-12-14T09:42:41Z",
+      "side": 1,
+      "message": "This looks a bit fragile as it requires `face` to be in a certain state after a call to `FT_Load_Glyph` implicitly (here, probably that state is reached as a side effect of `GetGlyphWidth`. The `FT_Load_Glyph` concept is not available in fontations, there are no glyph slots. \n\nSo could this be reworked to a more stateless implementation like `getBoundingBoxForChar(charcode)`?",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 53
+      },
+      "revId": "6f323432d6becfa91ecf553d3753c2144eb89304",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3adf7c9e_598d1dae",
+        "filename": "core/fpdfapi/font/cpdf_type1font.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 6715
+      },
+      "writtenOn": "2023-12-14T09:42:41Z",
+      "side": 1,
+      "message": "For clarity, can we split the name retrieval changes into a separate CL?",
+      "range": {
+        "startLine": 216,
+        "startChar": 40,
+        "endLine": 216,
+        "endChar": 52
+      },
+      "revId": "6f323432d6becfa91ecf553d3753c2144eb89304",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db41772f_bd640bab",
+        "filename": "core/fxge/cfx_face.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 6715
+      },
+      "writtenOn": "2023-12-14T09:42:41Z",
+      "side": 1,
+      "message": "Are these for a particular glyph or for the max bounding box for the whole font? In the latter case, let\u0027s express that in the name.",
+      "range": {
+        "startLine": 301,
+        "startChar": 18,
+        "endLine": 301,
+        "endChar": 28
+      },
+      "revId": "6f323432d6becfa91ecf553d3753c2144eb89304",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5aa255a5_5eac0162",
+        "filename": "core/fxge/cfx_face.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 6715
+      },
+      "writtenOn": "2023-12-14T09:42:41Z",
+      "side": 1,
+      "message": "Ditto re name.",
+      "range": {
+        "startLine": 309,
+        "startChar": 18,
+        "endLine": 309,
+        "endChar": 33
+      },
+      "revId": "6f323432d6becfa91ecf553d3753c2144eb89304",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a677b699_e512a2be",
+        "filename": "core/fxge/cfx_face.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 6715
+      },
+      "writtenOn": "2023-12-14T09:42:41Z",
+      "side": 1,
+      "message": "Naming, `AdjustVariationsAndGetGlyphWidth`?",
+      "range": {
+        "startLine": 585,
+        "startChar": 14,
+        "endLine": 585,
+        "endChar": 38
+      },
+      "revId": "6f323432d6becfa91ecf553d3753c2144eb89304",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2aee06c7_c589e9f9",
+        "filename": "core/fxge/cfx_face.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 666,
+      "author": {
+        "id": 6715
+      },
+      "writtenOn": "2023-12-14T09:42:41Z",
+      "side": 1,
+      "message": "See above, if possible, let\u0027s avoid dependency on the internal loaded glyph state.",
+      "range": {
+        "startLine": 666,
+        "startChar": 18,
+        "endLine": 666,
+        "endChar": 37
+      },
+      "revId": "6f323432d6becfa91ecf553d3753c2144eb89304",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
