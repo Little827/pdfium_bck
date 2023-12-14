@@ -47,7 +47,6 @@ class CFX_GlyphCache final : public Retainable, public Observable {
                     int weight);
 
   RetainPtr<CFX_Face> GetFace() { return m_Face; }
-  FXFT_FaceRec* GetFaceRec() { return m_Face ? m_Face->GetRec() : nullptr; }
 
 #if defined(_SKIA_SUPPORT_)
   CFX_TypeFace* GetDeviceCache(const CFX_Font* pFont);

@@ -306,11 +306,12 @@ RetainPtr<CPDF_Font> LoadSimpleFont(CPDF_Document* pDoc,
   pFontDict->SetNewFor<CPDF_Name>("BaseFont", name);
 
   // If it doesn't have a single char, just fail.
-  if (pFont->GetFaceRec()->num_glyphs <= 0) {
+  RetainPtr<CFX_Face> face = pFont->GetFace();
+  if (face->GetGlyphCount() <= 0) {
     return nullptr;
   }
 
-  auto char_code_and_index = pFont->GetFace()->GetFirstCharCodeAndIndex();
+  auto char_code_and_index = face->GetFirstCharCodeAndIndex();
   static constexpr uint32_t kMaxSimpleFontChar = 0xFF;
   if (char_code_and_index.char_code > kMaxSimpleFontChar) {
     return nullptr;
@@ -322,8 +323,7 @@ RetainPtr<CPDF_Font> LoadSimpleFont(CPDF_Document* pDoc,
   while (true) {
     widthsArray->AppendNew<CPDF_Number>(
         pFont->GetGlyphWidth(char_code_and_index.glyph_index));
-    char_code_and_index =
-        pFont->GetFace()->GetNextCharCodeAndIndex(current_char_code);
+    char_code_and_index = face->GetNextCharCodeAndIndex(current_char_code);
     // Simple fonts have 1-byte charcodes only.
     if (char_code_and_index.char_code > kMaxSimpleFontChar ||
         char_code_and_index.glyph_index == 0) {
@@ -383,11 +383,12 @@ RetainPtr<CPDF_Font> LoadCompositeFont(CPDF_Document* pDoc,
                                       pFontDesc->GetObjNum());
 
   // If it doesn't have a single char, just fail.
-  if (pFont->GetFaceRec()->num_glyphs <= 0) {
+  RetainPtr<CFX_Face> face = pFont->GetFace();
+  if (face->GetGlyphCount() <= 0) {
     return nullptr;
   }
 
-  auto char_code_and_index = pFont->GetFace()->GetFirstCharCodeAndIndex();
+  auto char_code_and_index = face->GetFirstCharCodeAndIndex();
   if (char_code_and_index.char_code > pdfium::kMaximumSupplementaryCodePoint) {
     return nullptr;
   }
@@ -406,8 +407,8 @@ RetainPtr<CPDF_Font> LoadCompositeFont(CPDF_Document* pDoc,
     }
     to_unicode.emplace(char_code_and_index.glyph_index,
                        char_code_and_index.char_code);
-    char_code_and_index = pFont->GetFace()->GetNextCharCodeAndIndex(
-        char_code_and_index.char_code);
+    char_code_and_index =
+        face->GetNextCharCodeAndIndex(char_code_and_index.char_code);
     if (char_code_and_index.glyph_index == 0) {
       break;
     }
