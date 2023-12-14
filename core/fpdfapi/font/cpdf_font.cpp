@@ -223,8 +223,8 @@ void CPDF_Font::CheckFontMetrics() {
       m_FontBBox.bottom = face->TT2PDF(raw_bbox.top);
       m_FontBBox.right = face->TT2PDF(raw_bbox.right);
       m_FontBBox.top = face->TT2PDF(raw_bbox.bottom);
-      m_Ascent = face->TT2PDF(face->GetAscender());
-      m_Descent = face->TT2PDF(face->GetDescender());
+      m_Ascent = face->GetAdjustedAscender();
+      m_Descent = face->GetAdjustedDescender();
     } else {
       bool bFirst = true;
       for (int i = 0; i < 256; i++) {
