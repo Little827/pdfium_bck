@@ -16,6 +16,24 @@
       "message": "Just as a head-up, the code in this function still relies very much on specifics of the `FT_Face` API, even if the logic moves to CFX_Face, in this file, more work would be needed to move this to Fontations, unless CFX_Face implements a simulation of FT_Face behavior at some point.",
       "revId": "85d4af3f6e415a8262fa6a6aa6ebec54e3d6f221",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f487eda4_226e867c",
+        "filename": "core/fpdfapi/font/cpdf_truetypefont.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-12-14T21:54:14Z",
+      "side": 1,
+      "message": "Yes, I strongly suspect after this CL chain is done, most FreeType code will be encapsulated, but the way CFX_Face is used is very much based on FreeType-isms. We\u0027ll have to figure out how to work with Fontations and see where the CFX_Face caller can be the same, and where the caller needs two implementations.",
+      "parentUuid": "aef3c16a_f3d71353",
+      "revId": "85d4af3f6e415a8262fa6a6aa6ebec54e3d6f221",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
