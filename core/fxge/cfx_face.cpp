@@ -579,6 +579,21 @@ int CFX_Face::GetNameIndex(const char* name) {
   return FT_Get_Name_Index(GetRec(), name);
 }
 
+CFX_Face::CharCodeAndIndex CFX_Face::GetFirstCharCodeAndIndex() {
+  CFX_Face::CharCodeAndIndex result;
+  result.char_code =
+      static_cast<uint32_t>(FT_Get_First_Char(GetRec(), &result.glyph_index));
+  return result;
+}
+
+CFX_Face::CharCodeAndIndex CFX_Face::GetNextCharCodeAndIndex(
+    uint32_t char_code) {
+  CFX_Face::CharCodeAndIndex result;
+  result.char_code = static_cast<uint32_t>(
+      FT_Get_Next_Char(GetRec(), char_code, &result.glyph_index));
+  return result;
+}
+
 CFX_Face::CharMap CFX_Face::GetCurrentCharMap() const {
   return GetRec()->charmap;
 }
