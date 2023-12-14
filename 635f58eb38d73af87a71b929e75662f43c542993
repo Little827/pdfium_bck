@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "4ea6c17a_f69aba62",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 8631
+      },
+      "writtenOn": "2023-12-14T17:00:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98fa71dc_93745e96",
+      "revId": "635f58eb38d73af87a71b929e75662f43c542993",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "cdceeb90_5155d617",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -82,6 +100,24 @@
       "writtenOn": "2023-12-14T16:38:09Z",
       "side": 1,
       "message": "I see `Unknown blink-gc-plugin argument: disable-off-heap-collections-of-gced-check` in the logs, but it\u0027s not fatal.",
+      "revId": "635f58eb38d73af87a71b929e75662f43c542993",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28f8f634_ad5fbea6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8631
+      },
+      "writtenOn": "2023-12-14T17:00:57Z",
+      "side": 1,
+      "message": "I guess PDFium would need to roll a new clang version.\nIn chromium it already rolled and works fine with this CL.",
+      "parentUuid": "71821203_e564758f",
       "revId": "635f58eb38d73af87a71b929e75662f43c542993",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
