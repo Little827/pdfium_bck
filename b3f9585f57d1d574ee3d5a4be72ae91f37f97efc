@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a990fa0c_2582f895",
+        "filename": "core/fpdfapi/font/cpdf_cidfont.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-12-15T20:06:48Z",
+      "side": 1,
+      "message": "https://pdfium-review.googlesource.com/114777 later in the CL chain will remove the \"FT_\" prefix.",
+      "revId": "b3f9585f57d1d574ee3d5a4be72ae91f37f97efc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69423852_70590779",
+        "filename": "core/fpdfapi/font/cpdf_cidfont.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-12-15T20:06:48Z",
+      "side": 1,
+      "message": "This variable is short-lived. https://pdfium-review.googlesource.com/114792 will remove it. These are numerous examples of this in the CL chain. Towards the end, most/all the public GetRec() calls will be gone.",
+      "revId": "b3f9585f57d1d574ee3d5a4be72ae91f37f97efc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
