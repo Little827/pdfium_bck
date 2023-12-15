@@ -58,6 +58,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "47f10518_b62d1d4c",
+        "filename": "core/fxge/fx_fontencoding.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-12-15T20:23:50Z",
+      "side": 1,
+      "message": "https://pdfium-review.googlesource.com/114830 will remove this file entirely. This file will be short-lived.",
+      "parentUuid": "01e94c3c_ccf52b11",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 13
+      },
+      "revId": "c85dd420d6427cb1e4bbcf7f39c0d1bdf1bc708c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "941e8df9_72ea562e",
@@ -95,6 +119,30 @@
       "side": 1,
       "message": "Good idea. I appended https://pdfium-review.googlesource.com/114830 in the middle of the CL chain to do that. By that point, the CL chain has progressed enough so that ToFTEncoding() can live inside cfx_face.cpp. Whereas if I do it in this CL, then it has to live in fx_fontencoding.cpp, and then get moved over.\n\nSo consider this CL as temporary scaffolding.",
       "parentUuid": "941e8df9_72ea562e",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 72
+      },
+      "revId": "c85dd420d6427cb1e4bbcf7f39c0d1bdf1bc708c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c05965fe_1302e5a0",
+        "filename": "core/fxge/fx_fontencoding.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-12-15T20:23:50Z",
+      "side": 1,
+      "message": "Done in a future CL.",
+      "parentUuid": "348c9ccc_6bb0c969",
       "range": {
         "startLine": 14,
         "startChar": 0,
