@@ -96,6 +96,7 @@ class CPDF_Parser {
   uint32_t GetLastObjNum() const;
   bool IsValidObjectNumber(uint32_t objnum) const;
   FX_FILESIZE GetObjectPositionOrZero(uint32_t objnum) const;
+  const CPDF_CrossRefTable::ObjectInfo* GetObjectInfo(uint32_t objnum) const;
   bool IsObjectFreeOrNull(uint32_t objnum) const;
   const RetainPtr<CPDF_SecurityHandler>& GetSecurityHandler() const {
     return m_pSecurityHandler;
@@ -174,8 +175,6 @@ class CPDF_Parser {
 
   bool InitSyntaxParser(RetainPtr<CPDF_ReadValidator> validator);
   bool ParseFileVersion();
-
-  CPDF_CrossRefTable::ObjectType GetObjectType(uint32_t objnum) const;
 
   std::unique_ptr<CPDF_SyntaxParser> m_pSyntax;
   std::unique_ptr<ParsedObjectsHolder> m_pOwnedObjectsHolder;

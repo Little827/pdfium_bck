@@ -47,51 +47,56 @@ class TestObjectsHolder final : public CPDF_Parser::ParsedObjectsHolder {
 
 }  // namespace
 
-// Test-only helper to support Gmock. Cannot be in an anonymous namespace.
-bool operator==(const CPDF_CrossRefTable::ObjectInfo& lhs,
-                const CPDF_CrossRefTable::ObjectInfo& rhs) {
-  if (lhs.type != rhs.type) {
-    return false;
-  }
+using ObjectInfo = CPDF_CrossRefTable::ObjectInfo;
 
-  if (lhs.gennum != rhs.gennum) {
-    return false;
-  }
-
-  switch (lhs.type) {
-    case CPDF_CrossRefTable::ObjectType::kFree:
-      return true;
-    case CPDF_CrossRefTable::ObjectType::kNormal:
-      return lhs.pos == rhs.pos;
-    case CPDF_CrossRefTable::ObjectType::kCompressed:
-      return lhs.archive.obj_num == rhs.archive.obj_num &&
-             lhs.archive.obj_index == rhs.archive.obj_index;
-    case CPDF_CrossRefTable::ObjectType::kNull:
-      return false;
-  }
+// Test-only helpers to support Gmock. Cannot be in an anonymous namespace.
+bool operator==(const ObjectInfo::Free& lhs, const ObjectInfo::Free& rhs) {
+  return true;
 }
 
-// Test-only helper to let Gmock pretty-print `info`. Cannot be in an anonymous
-// namespace.
-std::ostream& operator<<(std::ostream& os,
-                         const CPDF_CrossRefTable::ObjectInfo& info) {
+bool operator==(const ObjectInfo::Normal& lhs, const ObjectInfo::Normal& rhs) {
+  return lhs.pos == rhs.pos;
+}
+
+bool operator==(const ObjectInfo::ObjStream& lhs,
+                const ObjectInfo::ObjStream& rhs) {
+  return false;
+}
+
+bool operator==(const ObjectInfo::Compressed& lhs,
+                const ObjectInfo::Compressed& rhs) {
+  return rhs.obj_num == lhs.obj_num && rhs.obj_index == lhs.obj_index;
+}
+
+bool operator==(const ObjectInfo& lhs, const ObjectInfo& rhs) {
+  return lhs.gennum == rhs.gennum && lhs.vary == rhs.vary;
+}
+
+// Test-only helpers to let Gmock pretty-print `info`. Cannot be in an
+// anonymous namespace.
+std::ostream& operator<<(std::ostream& os, const ObjectInfo::Free&) {
+  os << "clams";
+  return os;
+}
+
+std::ostream& operator<<(std::ostream& os, const ObjectInfo::Normal&) {
+  os << "clams";
+  return os;
+}
+
+std::ostream& operator<<(std::ostream& os, const ObjectInfo::ObjStream&) {
+  os << "clams";
+  return os;
+}
+
+std::ostream& operator<<(std::ostream& os, const ObjectInfo::Compressed&) {
+  os << "clams";
+  return os;
+}
+
+std::ostream& operator<<(std::ostream& os, const ObjectInfo& info) {
   os << "(";
-  switch (info.type) {
-    case CPDF_CrossRefTable::ObjectType::kFree:
-      os << "Free object";
-      break;
-    case CPDF_CrossRefTable::ObjectType::kNormal:
-      os << "Normal object, pos: " << info.pos
-         << ", obj_stream=" << info.is_object_stream_flag;
-      break;
-    case CPDF_CrossRefTable::ObjectType::kCompressed:
-      os << "Compressed object, archive obj_num: " << info.archive.obj_num
-         << ", archive obj_index: " << info.archive.obj_index;
-      break;
-    case CPDF_CrossRefTable::ObjectType::kNull:
-      os << "Null object";
-      break;
-  }
+  absl::visit([&](const auto& vary) { os << vary; }, info.vary);
   os << ", gennum: " << info.gennum << ")";
   return os;
 }
