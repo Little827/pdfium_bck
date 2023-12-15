@@ -34,6 +34,69 @@
       "parentUuid": "4d28a85e_68be5dcc",
       "revId": "2ca424e42abaa686a2b1c30d0e06bd17cb7c7212",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc884fbf_5162eef2",
+        "filename": "core/fpdfapi/parser/cpdf_cross_ref_table.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-12-15T22:24:35Z",
+      "side": 1,
+      "message": "Swap with line 135, so this finishes comparing `cur_it` before moving on to `new_it`?",
+      "revId": "2ca424e42abaa686a2b1c30d0e06bd17cb7c7212",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93dfd886_336e86b3",
+        "filename": "core/fpdfapi/parser/cpdf_cross_ref_table.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-12-15T22:24:35Z",
+      "side": 1,
+      "message": "Does this name need the \"_flag\" suffix?",
+      "range": {
+        "startLine": 30,
+        "startChar": 25,
+        "endLine": 30,
+        "endChar": 30
+      },
+      "revId": "2ca424e42abaa686a2b1c30d0e06bd17cb7c7212",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94921487_cd54eb81",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 752,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-12-15T22:24:35Z",
+      "side": 1,
+      "message": "`/*is_object_stream\u003d*/\u003dfalse` here and below?",
+      "range": {
+        "startLine": 752,
+        "startChar": 53,
+        "endLine": 752,
+        "endChar": 58
+      },
+      "revId": "2ca424e42abaa686a2b1c30d0e06bd17cb7c7212",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
