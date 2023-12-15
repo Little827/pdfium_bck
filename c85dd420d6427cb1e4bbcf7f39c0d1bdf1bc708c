@@ -37,6 +37,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "01e94c3c_ccf52b11",
+        "filename": "core/fxge/fx_fontencoding.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-12-15T20:20:12Z",
+      "side": 1,
+      "message": "nit: C++\u003csomething-or-other\u003e allows static_assert() with a single arg, so try omitting the useless string arg, and see if we are up to version something-or-other.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 13
+      },
+      "revId": "c85dd420d6427cb1e4bbcf7f39c0d1bdf1bc708c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "941e8df9_72ea562e",
         "filename": "core/fxge/fx_fontencoding.h",
         "patchSetId": 2
