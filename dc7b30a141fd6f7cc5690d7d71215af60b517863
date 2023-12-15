@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43c1d876_3f148d14",
+        "filename": "build_overrides/pdfium.gni",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-12-15T22:12:46Z",
+      "side": 1,
+      "message": "Chromium\u0027s build_overrides/pdfium.gni can set this to use_typeface_fontations from build/config/rust.gni, when it\u0027s sufficiently ready.",
+      "revId": "dc7b30a141fd6f7cc5690d7d71215af60b517863",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
