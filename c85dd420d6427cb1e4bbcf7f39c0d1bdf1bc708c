@@ -16,6 +16,29 @@
       "message": "Bump. The very long CL chain starts here. It may have been not visible in the Gerrit UI.",
       "revId": "c85dd420d6427cb1e4bbcf7f39c0d1bdf1bc708c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "941e8df9_72ea562e",
+        "filename": "core/fxge/fx_fontencoding.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 6715
+      },
+      "writtenOn": "2023-12-15T10:04:06Z",
+      "side": 1,
+      "message": "How about turning this comment into an explicit `ToFTEncoding()` function, that centralizes the cast and makes the codebase more flexible should there be changes to the encoding values.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 72
+      },
+      "revId": "c85dd420d6427cb1e4bbcf7f39c0d1bdf1bc708c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
