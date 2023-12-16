@@ -36,6 +36,7 @@
 #include "third_party/base/check_op.h"
 #include "third_party/base/containers/contains.h"
 #include "third_party/base/containers/span.h"
+#include "third_party/base/functional/overloaded.h"
 #include "third_party/base/notreached.h"
 
 namespace {
@@ -659,31 +660,25 @@ bool CPDF_Parser::LoadCrossRefV4(FX_FILESIZE pos, bool bSkip) {
 void CPDF_Parser::MergeCrossRefObjectsData(
     const std::vector<CrossRefObjData>& objects) {
   for (const auto& obj : objects) {
-    absl::visit([=](const auto& arg) { MergeVary(obj, arg); }, obj.info.vary);
+    absl::visit(pdfium::Overloaded{
+                    [=](const ObjectInfo::Free&) {
+                      if (obj.info.gennum > 0) {
+                        m_CrossRefTable->SetFree(obj.obj_num);
+                      }
+                    },
+                    [=](const ObjectInfo::Normal& norm) {
+                      m_CrossRefTable->AddNormal(obj.obj_num, obj.info.gennum,
+                                                 obj.info.is_object_stream_flag,
+                                                 norm.pos);
+                    },
+                    [=](const ObjectInfo::Compressed& comp) {
+                      m_CrossRefTable->AddCompressed(obj.obj_num, comp.obj_num,
+                                                     comp.obj_index);
+                    },
+                    [](const ObjectInfo::Null&) {},
+                },
+                obj.info.vary);
   }
-}
-
-void CPDF_Parser::MergeVary(const CrossRefObjData& obj,
-                            const ObjectInfo::Free&) {
-  if (obj.info.gennum > 0) {
-    m_CrossRefTable->SetFree(obj.obj_num);
-  }
-}
-
-void CPDF_Parser::MergeVary(const CrossRefObjData& obj,
-                            const ObjectInfo::Normal& norm) {
-  m_CrossRefTable->AddNormal(obj.obj_num, obj.info.gennum,
-                             obj.info.is_object_stream_flag, norm.pos);
-}
-
-void CPDF_Parser::MergeVary(const CrossRefObjData& obj,
-                            const ObjectInfo::Compressed& comp) {
-  m_CrossRefTable->AddCompressed(obj.obj_num, comp.obj_num, comp.obj_index);
-}
-
-void CPDF_Parser::MergeVary(const CrossRefObjData& obj,
-                            const ObjectInfo::Null&) {
-  // Na ga doo.
 }
 
 bool CPDF_Parser::LoadAllCrossRefV5(FX_FILESIZE xref_offset) {
