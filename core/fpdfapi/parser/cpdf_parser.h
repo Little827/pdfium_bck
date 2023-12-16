@@ -49,6 +49,16 @@ class CPDF_Parser {
     HANDLER_ERROR
   };
 
+  // See ISO 32000-1:2008 table 18.
+  enum class ObjectType : uint8_t {
+    kFree = 0,
+    kNormal = 1,
+    kCompressed = 2,
+    kNull = 3,  // Numbers 3 and above are reseved and treated as null.
+  };
+
+  using ObjectInfo = CPDF_CrossRefTable::ObjectInfo;
+
   // A limit on the maximum object number in the xref table. Theoretical limits
   // are higher, but this may be large enough in practice.
   // Note: This was 1M, but https://crbug.com/910009 encountered a PDF with
@@ -96,6 +106,7 @@ class CPDF_Parser {
   uint32_t GetLastObjNum() const;
   bool IsValidObjectNumber(uint32_t objnum) const;
   FX_FILESIZE GetObjectPositionOrZero(uint32_t objnum) const;
+  const ObjectInfo* GetObjectInfo(uint32_t objnum) const;
   bool IsObjectFreeOrNull(uint32_t objnum) const;
   const RetainPtr<CPDF_SecurityHandler>& GetSecurityHandler() const {
     return m_pSecurityHandler;
@@ -140,7 +151,7 @@ class CPDF_Parser {
 
   struct CrossRefObjData {
     uint32_t obj_num = 0;
-    CPDF_CrossRefTable::ObjectInfo info;
+    ObjectInfo info;
   };
 
   bool LoadAllCrossRefV4(FX_FILESIZE xref_offset);
@@ -172,10 +183,15 @@ class CPDF_Parser {
   bool ParseCrossRefV4(std::vector<CrossRefObjData>* out_objects);
   void MergeCrossRefObjectsData(const std::vector<CrossRefObjData>& objects);
 
+  // Overloaded for each object type in variant.
+  void MergeVary(const CrossRefObjData& obj, const ObjectInfo::Free& fr);
+  void MergeVary(const CrossRefObjData& obj, const ObjectInfo::Normal& norm);
+  void MergeVary(const CrossRefObjData& obj,
+                 const ObjectInfo::Compressed& comp);
+  void MergeVary(const CrossRefObjData& obj, const ObjectInfo::Null& nl);
+
   bool InitSyntaxParser(RetainPtr<CPDF_ReadValidator> validator);
   bool ParseFileVersion();
-
-  CPDF_CrossRefTable::ObjectType GetObjectType(uint32_t objnum) const;
 
   std::unique_ptr<CPDF_SyntaxParser> m_pSyntax;
   std::unique_ptr<ParsedObjectsHolder> m_pOwnedObjectsHolder;
