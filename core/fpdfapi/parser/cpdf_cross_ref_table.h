@@ -12,33 +12,26 @@
 
 #include "core/fxcrt/fx_types.h"
 #include "core/fxcrt/retain_ptr.h"
+#include "third_party/abseil-cpp/absl/types/variant.h"
 
 class CPDF_Dictionary;
 
 class CPDF_CrossRefTable {
  public:
-  // See ISO 32000-1:2008 table 18.
-  enum class ObjectType : uint8_t {
-    kFree = 0,
-    kNormal = 1,
-    kCompressed = 2,
-    kNull = 3,  // Higher values reserved, treat all as the null object.
-  };
-
   struct ObjectInfo {
-    ObjectType type = ObjectType::kFree;
-    bool is_object_stream_flag = false;
-    uint16_t gennum = 0;
-    // If `type` is `ObjectType::kCompressed`, `archive` should be used.
-    // If `type` is `ObjectType::kNormal`, `pos` should be used.
-    // In other cases, it is unused.
-    union {
+    struct Free {};
+    struct Normal {
       FX_FILESIZE pos = 0;
-      struct {
-        uint32_t obj_num;
-        uint32_t obj_index;
-      } archive;
     };
+    struct Compressed {
+      uint32_t obj_num = 0;
+      uint32_t obj_index = 0;
+    };
+    struct Null {};
+
+    uint16_t gennum = 0;
+    bool is_object_stream_flag = false;
+    absl::variant<Free, Normal, Compressed, Null> vary;
   };
 
   // Merge cross reference tables.  Apply top on current.
