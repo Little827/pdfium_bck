@@ -17,12 +17,10 @@ void ConfigurePartitionAllocShimPartitionForTest() {
 #if BUILDFLAG(ENABLE_DANGLING_RAW_PTR_CHECKS)
   partition_alloc::SetDanglingRawPtrDetectedFn([](uintptr_t) { CHECK(0); });
 #endif  // BUILDFLAG(ENABLE_DANGLING_RAW_PTR_CHECKS)
-  allocator_shim::ConfigurePartitions(
+  allocator_shim::ConfigurePartitionsForPdfiumTesting(
       allocator_shim::EnableBrp(true),
       allocator_shim::EnableMemoryTagging(false),
-      allocator_shim::SplitMainPartition(true),
-      allocator_shim::UseDedicatedAlignedPartition(true), 0,
-      allocator_shim::BucketDistribution::kNeutral);
+      allocator_shim::SplitMainPartition(true));
 #endif  // BUILDFLAG(ENABLE_BACKUP_REF_PTR_SUPPORT)
 #endif  // BUILDFLAG(USE_PARTITION_ALLOC_AS_MALLOC)
 }
