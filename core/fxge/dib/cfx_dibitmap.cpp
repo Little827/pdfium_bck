@@ -670,29 +670,33 @@ absl::optional<CFX_DIBitmap::PitchAndSize> CFX_DIBitmap::CalculatePitchAndSize(
     int height,
     FXDIB_Format format,
     uint32_t pitch) {
-  if (width <= 0 || height <= 0)
+  if (width <= 0 || height <= 0) {
     return absl::nullopt;
-
+  }
   int bpp = GetBppFromFormat(format);
-  if (!bpp)
+  if (!bpp) {
     return absl::nullopt;
-
-  uint32_t actual_pitch = pitch;
-  if (actual_pitch == 0) {
+  }
+  if (pitch == 0) {
     absl::optional<uint32_t> pitch32 = fxge::CalculatePitch32(bpp, width);
     if (!pitch32.has_value()) {
       return absl::nullopt;
     }
-
-    actual_pitch = pitch32.value();
+    pitch = pitch32.value();
+  } else {
+    FX_SAFE_UINT32 maximum_safe_width = pitch;
+    maximum_safe_width *= 8;
+    maximum_safe_width /= bpp;
+    if (static_cast<int32_t>(width) > maximum_safe_width.ValueOrDefault(0)) {
+      return absl::nullopt;
+    }
   }
-
-  FX_SAFE_UINT32 safe_size = actual_pitch;
+  FX_SAFE_UINT32 safe_size = pitch;
   safe_size *= height;
   if (!safe_size.IsValid())
     return absl::nullopt;
 
-  return PitchAndSize{actual_pitch, safe_size.ValueOrDie()};
+  return PitchAndSize{pitch, safe_size.ValueOrDie()};
 }
 
 bool CFX_DIBitmap::CompositeBitmap(int dest_left,
