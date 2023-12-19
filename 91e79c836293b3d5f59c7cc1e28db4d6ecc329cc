@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9a240a3_b9872d09",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 9211
+      },
+      "writtenOn": "2023-12-19T05:34:38Z",
+      "side": 1,
+      "message": "Once reviewed, can you hit +2? I am not a committer.",
+      "revId": "91e79c836293b3d5f59c7cc1e28db4d6ecc329cc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
