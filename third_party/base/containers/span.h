@@ -320,9 +320,14 @@ span<const uint8_t> as_bytes(span<T> s) noexcept {
 }
 
 template <typename T,
-          typename U = typename std::enable_if<!std::is_const<T>::value>::type>
+          typename = typename std::enable_if<!std::is_const<T>::value>::type>
 span<uint8_t> as_writable_bytes(span<T> s) noexcept {
   return {reinterpret_cast<uint8_t*>(s.data()), s.size_bytes()};
+}
+
+template <typename T, typename U>
+span<T> reinterpret_span(span<U> s) noexcept {
+  return {reinterpret_cast<T*>(s.data()), s.size_bytes() / sizeof(T)};
 }
 
 // Type-deducing helpers for constructing a span.
