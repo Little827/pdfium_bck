@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eda87950_4e64f4eb",
+        "filename": "core/fxge/dib/cfx_dibitmap.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 690,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-12-20T23:39:34Z",
+      "side": 1,
+      "message": "follow-on: maybe we can replace this whole if-else with\n  `pitch \u003d std::max(pitch, pitch32.value())`",
+      "range": {
+        "startLine": 684,
+        "startChar": 2,
+        "endLine": 690,
+        "endChar": 3
+      },
+      "revId": "a1275f3293960bdeb607a2a67c93c2a7ebd16a19",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
