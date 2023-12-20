@@ -16,6 +16,23 @@
       "message": "drott@: ping",
       "revId": "ed065bf6dd61cc5accec8c1afced5684bf03a3e9",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de5192bb_6a00b088",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 6715
+      },
+      "writtenOn": "2023-12-20T19:24:49Z",
+      "side": 1,
+      "message": "LGTM. I leave it up to you to decide whether we can afford the relatively large temporary allocation for the full map. IMO, an implementation derived from `std::iterator` mapping to the FT API could avoid that.",
+      "revId": "ed065bf6dd61cc5accec8c1afced5684bf03a3e9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
