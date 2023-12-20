@@ -413,7 +413,9 @@ BmpDecoder::Status CFX_BmpDecompressor::DecodeRGB() {
         break;
       }
       case 16: {
-        uint16_t* buf = reinterpret_cast<uint16_t*>(dest_buf.data());
+        uint16_t* buf =
+            pdfium::reinterpret_span<uint16_t>(pdfium::make_span(dest_buf))
+                .data();
         uint8_t blue_bits = 0;
         uint8_t green_bits = 0;
         uint8_t red_bits = 0;

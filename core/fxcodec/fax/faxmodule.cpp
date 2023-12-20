@@ -586,9 +586,10 @@ uint32_t FaxDecoder::GetSrcOffset() {
 void FaxDecoder::InvertBuffer() {
   DCHECK_EQ(m_Pitch, m_ScanlineBuf.size());
   DCHECK_EQ(m_Pitch % 4, 0u);
-  uint32_t* data = reinterpret_cast<uint32_t*>(m_ScanlineBuf.data());
-  for (size_t i = 0; i < m_ScanlineBuf.size() / 4; ++i)
-    data[i] = ~data[i];
+  auto data = reinterpret_span<uint32_t>(pdfium::make_span(m_ScanlineBuf));
+  for (auto& datum : data) {
+    datum = ~datum;
+  }
 }
 
 }  // namespace
