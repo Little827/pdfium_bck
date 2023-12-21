@@ -33,6 +33,24 @@
       "message": "Several random thoughts:\n- is there a use case for this for converting from things other than byte spans (i.e. `span\u003cuint8_t\u003e`)?\n- should we somehow ensure that U and T match in const-ness, i.e. you can\u0027t use reinterpret_span to drop/add const?\n- should we dcheck/check that the size in bytes contains exactly s.size_bytes() / sizeof(T) elements, with no partial T?",
       "revId": "bb89145c36492303134ec242f7d590e7218a131c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2212d51_7500f93e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2023-12-21T17:44:02Z",
+      "side": 1,
+      "message": "* Is there a use case? - yes, I hit this on the chromium side where converting a span of uint8_t to one of several types later on -- span of float, span of uint16_t, etc. looks really ugly.  And I wanted to be sure folks didn\u0027t have to manually divide by sizeof(T)\n\n* Should U\u0026T match in constness?  Good idea, will do.\n\n* Should s.size_bytes() mod sizeof(T) \u003d\u003d 0 ? I\u0027d be fine in documenting truncation as the behaviour, esp that we\u0027re not testing alignment neither.",
+      "parentUuid": "cd121ec3_f09b82fe",
+      "revId": "bb89145c36492303134ec242f7d590e7218a131c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
