@@ -104,6 +104,24 @@
       "parentUuid": "9fa370ff_588f2584",
       "revId": "91e79c836293b3d5f59c7cc1e28db4d6ecc329cc",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d1d23e7_1e5419d6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 9211
+      },
+      "writtenOn": "2023-12-21T02:59:46Z",
+      "side": 1,
+      "message": "Actually, you care about the PA repo commit, here it is\nhttps://chromium.googlesource.com/chromium/src/base/allocator/partition_allocator.git/+/06a2dffc396662e5d4186111211fea1c4d9fb40f",
+      "parentUuid": "a404ee86_7c2221a8",
+      "revId": "91e79c836293b3d5f59c7cc1e28db4d6ecc329cc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
