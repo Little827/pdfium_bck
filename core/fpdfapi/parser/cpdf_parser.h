@@ -183,13 +183,6 @@ class CPDF_Parser {
   bool ParseCrossRefV4(std::vector<CrossRefObjData>* out_objects);
   void MergeCrossRefObjectsData(const std::vector<CrossRefObjData>& objects);
 
-  // Overloaded for each object type in variant.
-  void MergeVary(const CrossRefObjData& obj, const ObjectInfo::Free& fr);
-  void MergeVary(const CrossRefObjData& obj, const ObjectInfo::Normal& norm);
-  void MergeVary(const CrossRefObjData& obj,
-                 const ObjectInfo::Compressed& comp);
-  void MergeVary(const CrossRefObjData& obj, const ObjectInfo::Null& nl);
-
   bool InitSyntaxParser(RetainPtr<CPDF_ReadValidator> validator);
   bool ParseFileVersion();
 
