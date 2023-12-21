@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcba7f99_8c054906",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-12-21T20:43:19Z",
+      "side": 1,
+      "message": "- Rendering with GDI mode doesn\u0027t trigger the exact same path as printing, so there\u0027s no good way to test this right now, except manually with `pdfium_test --emf`.\n\n- There is likely an underlying issue with Skia where CFX_RenderDevice::GetBitmap() is holding the wrong bitmap for 24 BPP rendering, but fixing that looks more involved.",
+      "revId": "24fc2275c71b4345d5292a78fd9b95135d190b63",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
