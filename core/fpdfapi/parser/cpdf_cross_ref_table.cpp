@@ -41,19 +41,18 @@ void CPDF_CrossRefTable::AddCompressed(uint32_t obj_num,
   CHECK_LT(archive_obj_num, CPDF_Parser::kMaxObjectNumber);
 
   auto& info = objects_info_[obj_num];
-  if (info.gennum > 0)
+  if (info.gennum > 0) {
     return;
-
+  }
   // Don't add known object streams to object streams.
   if (info.is_object_stream_flag) {
     return;
   }
-
-  info.type = ObjectType::kCompressed;
-  info.archive.obj_num = archive_obj_num;
-  info.archive.obj_index = archive_obj_index;
   info.gennum = 0;
-
+  info.vary = ObjectInfo::Compressed{
+      .obj_num = archive_obj_num,
+      .obj_index = archive_obj_index,
+  };
   objects_info_[archive_obj_num].is_object_stream_flag = true;
 }
 
@@ -64,25 +63,23 @@ void CPDF_CrossRefTable::AddNormal(uint32_t obj_num,
   CHECK_LT(obj_num, CPDF_Parser::kMaxObjectNumber);
 
   auto& info = objects_info_[obj_num];
-  if (info.gennum > gen_num)
+  if (info.gennum > gen_num) {
     return;
-
-  if (info.type == ObjectType::kCompressed && gen_num == 0)
+  }
+  if (info.IsCompressed() && gen_num == 0) {
     return;
-
-  info.type = ObjectType::kNormal;
-  info.is_object_stream_flag |= is_object_stream;
+  }
   info.gennum = gen_num;
-  info.pos = pos;
+  info.is_object_stream_flag |= is_object_stream;
+  info.vary = ObjectInfo::Normal{pos};
 }
 
 void CPDF_CrossRefTable::SetFree(uint32_t obj_num) {
   CHECK_LT(obj_num, CPDF_Parser::kMaxObjectNumber);
 
   auto& info = objects_info_[obj_num];
-  info.type = ObjectType::kFree;
   info.gennum = 0xFFFF;
-  info.pos = 0;
+  info.vary = ObjectInfo::Free{};
 }
 
 void CPDF_CrossRefTable::SetTrailer(RetainPtr<CPDF_Dictionary> trailer,
@@ -112,7 +109,7 @@ void CPDF_CrossRefTable::SetObjectMapSize(uint32_t size) {
   objects_info_.erase(objects_info_.lower_bound(size), objects_info_.end());
 
   if (!pdfium::Contains(objects_info_, size - 1)) {
-    objects_info_[size - 1].pos = 0;
+    objects_info_[size - 1].vary = ObjectInfo::Free{};
   }
 }
 
@@ -121,18 +118,15 @@ void CPDF_CrossRefTable::UpdateInfo(
   if (new_objects_info.empty()) {
     return;
   }
-
   if (objects_info_.empty()) {
     objects_info_ = std::move(new_objects_info);
     return;
   }
-
   auto cur_it = objects_info_.begin();
   auto new_it = new_objects_info.begin();
   while (cur_it != objects_info_.end() && new_it != new_objects_info.end()) {
     if (cur_it->first == new_it->first) {
-      if (new_it->second.type == ObjectType::kNormal &&
-          cur_it->second.type == ObjectType::kNormal &&
+      if (new_it->second.IsNormal() && cur_it->second.IsNormal() &&
           cur_it->second.is_object_stream_flag) {
         new_it->second.is_object_stream_flag = true;
       }
