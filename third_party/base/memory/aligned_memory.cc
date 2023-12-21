@@ -3,7 +3,7 @@
 // found in the LICENSE file.
 
 #include "third_party/base/memory/aligned_memory.h"
-
+#include <bit>
 #include "build/build_config.h"
 #include "third_party/base/check_op.h"
 
@@ -16,7 +16,7 @@ namespace base {
 
 void* AlignedAlloc(size_t size, size_t alignment) {
   DCHECK(size > 0U);
-  DCHECK(bits::IsPowerOfTwo(alignment));
+  DCHECK(std::has_single_bit(alignment));
   DCHECK_EQ(alignment % sizeof(void*), 0U);
   void* ptr = nullptr;
 #if defined(COMPILER_MSVC)

@@ -7,7 +7,7 @@
 
 #include <stddef.h>
 #include <stdint.h>
-
+#include <bit>
 #include <type_traits>
 
 #include "build/build_config.h"
@@ -67,7 +67,7 @@ inline bool IsAligned(uintptr_t val, size_t alignment) {
 #if SUPPORTS_BUILTIN_IS_ALIGNED
   return __builtin_is_aligned(val, alignment);
 #else
-  DCHECK(bits::IsPowerOfTwo(alignment));
+  DCHECK(std::has_single_bit(alignment));
   return (val & (alignment - 1)) == 0;
 #endif
 }
