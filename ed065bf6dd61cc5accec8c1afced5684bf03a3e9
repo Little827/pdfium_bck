@@ -69,6 +69,24 @@
       "parentUuid": "88eab108_41fdc98c",
       "revId": "ed065bf6dd61cc5accec8c1afced5684bf03a3e9",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88030cb5_2c9206de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-12-21T18:48:23Z",
+      "side": 1,
+      "message": "It\u0027s called by embedders that want to load in more fonts when they are creating / editing PDFs. A temporary allocation that\u0027s less than 500 KB for an infrequently called function should be ok in modern computing environments.",
+      "parentUuid": "2e080534_94b8c92a",
+      "revId": "ed065bf6dd61cc5accec8c1afced5684bf03a3e9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
