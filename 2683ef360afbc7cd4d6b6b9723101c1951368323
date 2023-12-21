@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c57f151f_2387ffd6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 9211
+      },
+      "writtenOn": "2023-12-21T03:07:50Z",
+      "side": 1,
+      "message": "I created this CL manually. I tried to do it automatically, but got the error below. First time I\u0027m doing this...\n\n```\n$ roll-dep base/allocator/partition_allocator\nDependency base/allocator/partition_allocator not found at /usr/local/google/home/bartekn/chromium2/base/allocator/partition_allocator\nWill look for relative dependency at /usr/local/google/home/bartekn/chromium2/src/third_party/pdfium/base/allocator/partition_allocator\nerror: Directory not found: base/allocator/partition_allocator (/usr/local/google/home/bartekn/chromium2/src/third_party/pdfium/base/allocator/partition_allocator)\n```",
+      "revId": "2683ef360afbc7cd4d6b6b9723101c1951368323",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
