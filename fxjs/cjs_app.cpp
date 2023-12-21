@@ -546,7 +546,7 @@ CJS_Result CJS_App::response(CJS_Runtime* pRuntime,
   constexpr int kMaxWideChars = 1024;
   constexpr int kMaxBytes = kMaxWideChars * sizeof(uint16_t);
   FixedZeroedDataVector<uint8_t> buffer(kMaxBytes);
-  pdfium::span<uint8_t> buffer_span = buffer.writable_span();
+  pdfium::span<uint8_t> buffer_span = buffer.span();
   int byte_length = pRuntime->GetFormFillEnv()->JS_appResponse(
       swQuestion, swTitle, swDefault, swLabel, bPassword, buffer_span);
   if (byte_length < 0 || byte_length > kMaxBytes)
