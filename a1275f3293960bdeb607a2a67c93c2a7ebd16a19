@@ -46,6 +46,30 @@
       },
       "revId": "a1275f3293960bdeb607a2a67c93c2a7ebd16a19",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9398cdde_abc0b33f",
+        "filename": "core/fxge/dib/cfx_dibitmap.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 690,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2023-12-21T00:07:06Z",
+      "side": 1,
+      "message": "Not sure if we want to mask over callers providing invalid pitch values.",
+      "parentUuid": "c2f04c6f_33e16da3",
+      "range": {
+        "startLine": 684,
+        "startChar": 2,
+        "endLine": 690,
+        "endChar": 3
+      },
+      "revId": "a1275f3293960bdeb607a2a67c93c2a7ebd16a19",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
