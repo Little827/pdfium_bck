@@ -38,9 +38,6 @@
 #include "third_party/base/containers/span.h"
 #include "third_party/base/notreached.h"
 
-using ObjectType = CPDF_CrossRefTable::ObjectType;
-using ObjectInfo = CPDF_CrossRefTable::ObjectInfo;
-
 namespace {
 
 // A limit on the size of the xref table. Theoretical limits are higher, but
@@ -63,16 +60,17 @@ struct CrossRefV5IndexEntry {
   uint32_t obj_count;
 };
 
-ObjectType GetObjectTypeFromCrossRefStreamType(uint32_t cross_ref_stream_type) {
-  switch (cross_ref_stream_type) {
+CPDF_Parser::ObjectType GetObjectTypeFromCrossRefStreamEntry(
+    uint32_t cross_ref_stream_entry) {
+  switch (cross_ref_stream_entry) {
     case 0:
-      return ObjectType::kFree;
+      return CPDF_Parser::ObjectType::kFree;
     case 1:
-      return ObjectType::kNormal;
+      return CPDF_Parser::ObjectType::kNormal;
     case 2:
-      return ObjectType::kCompressed;
+      return CPDF_Parser::ObjectType::kCompressed;
     default:
-      return ObjectType::kNull;
+      return CPDF_Parser::ObjectType::kNull;
   }
 }
 
@@ -150,6 +148,22 @@ class ObjectsHolderStub final : public CPDF_Parser::ParsedObjectsHolder {
   bool TryInit() override { return true; }
 };
 
+bool IsObjectInfoFree(const CPDF_Parser::ObjectInfo* info) {
+  return !info || info->IsFree();
+}
+
+bool IsObjectInfoNormal(const CPDF_Parser::ObjectInfo* info) {
+  return info && info->IsNormal();
+}
+
+bool IsObjectInfoCompressed(const CPDF_Parser::ObjectInfo* info) {
+  return info && info->IsCompressed();
+}
+
+bool IsObjectInfoNull(const CPDF_Parser::ObjectInfo* info) {
+  return info && info->IsNull();
+}
+
 }  // namespace
 
 CPDF_Parser::CPDF_Parser(ParsedObjectsHolder* holder)
@@ -177,29 +191,25 @@ bool CPDF_Parser::IsValidObjectNumber(uint32_t objnum) const {
 
 FX_FILESIZE CPDF_Parser::GetObjectPositionOrZero(uint32_t objnum) const {
   const auto* info = m_CrossRefTable->GetObjectInfo(objnum);
-  return (info && info->type == ObjectType::kNormal) ? info->pos : 0;
+  if (!IsObjectInfoNormal(info)) {
+    return 0;
+  }
+  return absl::get<ObjectInfo::Normal>(info->vary).pos;
 }
 
-ObjectType CPDF_Parser::GetObjectType(uint32_t objnum) const {
+const CPDF_CrossRefTable::ObjectInfo* CPDF_Parser::GetObjectInfo(
+    uint32_t objnum) const {
   DCHECK(IsValidObjectNumber(objnum));
-  const auto* info = m_CrossRefTable->GetObjectInfo(objnum);
-  return info ? info->type : ObjectType::kFree;
+  return m_CrossRefTable->GetObjectInfo(objnum);
 }
 
 bool CPDF_Parser::IsObjectFreeOrNull(uint32_t objnum) const {
-  switch (GetObjectType(objnum)) {
-    case ObjectType::kFree:
-    case ObjectType::kNull:
-      return true;
-    case ObjectType::kNormal:
-    case ObjectType::kCompressed:
-      return false;
-  }
-  NOTREACHED_NORETURN();
+  auto* info = GetObjectInfo(objnum);
+  return IsObjectInfoFree(info) || IsObjectInfoNull(info);
 }
 
 bool CPDF_Parser::IsObjectFree(uint32_t objnum) const {
-  return GetObjectType(objnum) == ObjectType::kFree;
+  return IsObjectInfoFree(GetObjectInfo(objnum));
 }
 
 bool CPDF_Parser::InitSyntaxParser(RetainPtr<CPDF_ReadValidator> validator) {
@@ -353,17 +363,22 @@ void CPDF_Parser::ReleaseEncryptHandler() {
 // in the cross reference table are all off by one.
 bool CPDF_Parser::VerifyCrossRefV4() {
   for (const auto& it : m_CrossRefTable->objects_info()) {
-    if (it.second.pos <= 0)
+    if (!IsObjectInfoNormal(&it.second)) {
       continue;
+    }
+    const auto& norm = absl::get<ObjectInfo::Normal>(it.second.vary);
+    if (norm.pos <= 0) {
+      continue;
+    }
     // Find the first non-zero position.
     FX_FILESIZE SavedPos = m_pSyntax->GetPos();
-    m_pSyntax->SetPos(it.second.pos);
+    m_pSyntax->SetPos(norm.pos);
     CPDF_SyntaxParser::WordResult word_result = m_pSyntax->GetNextWord();
     m_pSyntax->SetPos(SavedPos);
+    // If the object number read doesn't match the one stored,
+    // something is wrong with the cross reference table.
     if (!word_result.is_number || word_result.word.IsEmpty() ||
         FXSYS_atoui(word_result.word.c_str()) != it.first) {
-      // If the object number read doesn't match the one stored,
-      // something is wrong with the cross reference table.
       return false;
     }
     break;
@@ -569,8 +584,7 @@ bool CPDF_Parser::ParseAndAppendCrossRefSubsectionData(
 
       const char* pEntry = &buf[i * kEntrySize];
       if (pEntry[17] == 'f') {
-        info.pos = 0;
-        info.type = ObjectType::kFree;
+        info.vary = ObjectInfo::Free{};
       } else {
         const FX_SAFE_FILESIZE offset = FXSYS_atoi64(pEntry);
         if (!offset.IsValid())
@@ -583,13 +597,12 @@ bool CPDF_Parser::ParseAndAppendCrossRefSubsectionData(
           }
         }
 
-        info.pos = offset.ValueOrDie();
-
         // TODO(art-snake): The info.gennum is uint16_t, but version may be
         // greated than max<uint16_t>. Needs solve this issue.
-        const int32_t version = FXSYS_atoi(pEntry + 11);
-        info.gennum = version;
-        info.type = ObjectType::kNormal;
+        info.gennum = FXSYS_atoi(pEntry + 11);
+        info.vary = ObjectInfo::Normal{
+            .pos = offset.ValueOrDie(),
+        };
       }
     }
     entries_to_read -= entries_in_block;
@@ -646,25 +659,31 @@ bool CPDF_Parser::LoadCrossRefV4(FX_FILESIZE pos, bool bSkip) {
 void CPDF_Parser::MergeCrossRefObjectsData(
     const std::vector<CrossRefObjData>& objects) {
   for (const auto& obj : objects) {
-    switch (obj.info.type) {
-      case ObjectType::kFree:
-        if (obj.info.gennum > 0)
-          m_CrossRefTable->SetFree(obj.obj_num);
-        break;
-      case ObjectType::kNormal:
-        m_CrossRefTable->AddNormal(obj.obj_num, obj.info.gennum,
-                                   obj.info.is_object_stream_flag,
-                                   obj.info.pos);
-        break;
-      case ObjectType::kCompressed:
-        m_CrossRefTable->AddCompressed(obj.obj_num, obj.info.archive.obj_num,
-                                       obj.info.archive.obj_index);
-        break;
-      case ObjectType::kNull:
-        // Ignored.
-        break;
-    }
+    absl::visit([=](const auto& arg) { MergeVary(obj, arg); }, obj.info.vary);
   }
+}
+
+void CPDF_Parser::MergeVary(const CrossRefObjData& obj,
+                            const ObjectInfo::Free&) {
+  if (obj.info.gennum > 0) {
+    m_CrossRefTable->SetFree(obj.obj_num);
+  }
+}
+
+void CPDF_Parser::MergeVary(const CrossRefObjData& obj,
+                            const ObjectInfo::Normal& norm) {
+  m_CrossRefTable->AddNormal(obj.obj_num, obj.info.gennum,
+                             obj.info.is_object_stream_flag, norm.pos);
+}
+
+void CPDF_Parser::MergeVary(const CrossRefObjData& obj,
+                            const ObjectInfo::Compressed& comp) {
+  m_CrossRefTable->AddCompressed(obj.obj_num, comp.obj_num, comp.obj_index);
+}
+
+void CPDF_Parser::MergeVary(const CrossRefObjData& obj,
+                            const ObjectInfo::Null&) {
+  // Na ga doo.
 }
 
 bool CPDF_Parser::LoadAllCrossRefV5(FX_FILESIZE xref_offset) {
@@ -877,23 +896,22 @@ void CPDF_Parser::ProcessCrossRefV5Entry(
     uint32_t obj_num,
     bool overwrite_existing) {
   DCHECK_GE(field_widths.size(), kMinFieldCount);
-  ObjectType type;
+  ObjectType required_type;
   if (field_widths[0]) {
-    const uint32_t cross_ref_stream_obj_type =
-        GetFirstXRefStreamEntry(entry_span, field_widths);
-    type = GetObjectTypeFromCrossRefStreamType(cross_ref_stream_obj_type);
-    if (type == ObjectType::kNull) {
+    required_type = GetObjectTypeFromCrossRefStreamEntry(
+        GetFirstXRefStreamEntry(entry_span, field_widths));
+    if (required_type == ObjectType::kNull) {
       return;
     }
   } else {
     // Per ISO 32000-1:2008 table 17, use the default value of 1 for the xref
-    // stream entry when it is not specified. The `type` assignment is the
+    // stream entry when it is not specified. The type assignment is the
     // equivalent to calling GetObjectTypeFromCrossRefStreamType(1).
-    type = ObjectType::kNormal;
+    required_type = ObjectType::kNormal;
   }
 
-  const ObjectType existing_type = GetObjectType(obj_num);
-  if (existing_type == ObjectType::kNull) {
+  auto* info = GetObjectInfo(obj_num);
+  if (IsObjectInfoNull(info)) {
     const uint32_t offset = GetSecondXRefStreamEntry(entry_span, field_widths);
     if (pdfium::base::IsValueInRangeForNumericType<FX_FILESIZE>(offset))
       m_CrossRefTable->AddNormal(obj_num, 0, /*is_object_stream=*/false,
@@ -901,16 +919,16 @@ void CPDF_Parser::ProcessCrossRefV5Entry(
     return;
   }
 
-  if (!overwrite_existing && existing_type != ObjectType::kFree) {
+  if (!overwrite_existing && !IsObjectInfoFree(info)) {
     return;
   }
 
-  if (type == ObjectType::kFree) {
+  if (required_type == ObjectType::kFree) {
     m_CrossRefTable->SetFree(obj_num);
     return;
   }
 
-  if (type == ObjectType::kNormal) {
+  if (required_type == ObjectType::kNormal) {
     const uint32_t offset = GetSecondXRefStreamEntry(entry_span, field_widths);
     if (pdfium::base::IsValueInRangeForNumericType<FX_FILESIZE>(offset))
       m_CrossRefTable->AddNormal(obj_num, 0, /*is_object_stream=*/false,
@@ -918,7 +936,7 @@ void CPDF_Parser::ProcessCrossRefV5Entry(
     return;
   }
 
-  DCHECK_EQ(type, ObjectType::kCompressed);
+  DCHECK_EQ(required_type, ObjectType::kCompressed);
   const uint32_t archive_obj_num =
       GetSecondXRefStreamEntry(entry_span, field_widths);
   if (!IsValidObjectNumber(archive_obj_num)) {
@@ -1006,23 +1024,20 @@ RetainPtr<CPDF_Object> CPDF_Parser::ParseIndirectObject(uint32_t objnum) {
     return nullptr;
 
   ScopedSetInsertion<uint32_t> local_insert(&m_ParsingObjNums, objnum);
-  if (GetObjectType(objnum) == ObjectType::kNormal) {
-    FX_FILESIZE pos = GetObjectPositionOrZero(objnum);
-    if (pos <= 0)
-      return nullptr;
-    return ParseIndirectObjectAt(pos, objnum);
+  auto* info = GetObjectInfo(objnum);
+  if (IsObjectInfoNormal(info)) {
+    FX_FILESIZE pos = absl::get<ObjectInfo::Normal>(info->vary).pos;
+    return pos > 0 ? ParseIndirectObjectAt(pos, objnum) : nullptr;
   }
-  if (GetObjectType(objnum) != ObjectType::kCompressed) {
+  if (!IsObjectInfoCompressed(info)) {
     return nullptr;
   }
-
-  const auto& info = *m_CrossRefTable->GetObjectInfo(objnum);
-  const CPDF_ObjectStream* pObjStream = GetObjectStream(info.archive.obj_num);
-  if (!pObjStream)
+  const auto& comp = absl::get<ObjectInfo::Compressed>(info->vary);
+  const CPDF_ObjectStream* pObjStream = GetObjectStream(comp.obj_num);
+  if (!pObjStream) {
     return nullptr;
-
-  return pObjStream->ParseObject(m_pObjectsHolder, objnum,
-                                 info.archive.obj_index);
+  }
+  return pObjStream->ParseObject(m_pObjectsHolder, objnum, comp.obj_index);
 }
 
 const CPDF_ObjectStream* CPDF_Parser::GetObjectStream(uint32_t object_number) {
@@ -1039,7 +1054,7 @@ const CPDF_ObjectStream* CPDF_Parser::GetObjectStream(uint32_t object_number) {
     return nullptr;
   }
 
-  const FX_FILESIZE object_pos = info->pos;
+  const FX_FILESIZE object_pos = absl::get<ObjectInfo::Normal>(info->vary).pos;
   if (object_pos <= 0)
     return nullptr;
 
