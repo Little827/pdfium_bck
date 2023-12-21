@@ -51,6 +51,24 @@
       "parentUuid": "de5192bb_6a00b088",
       "revId": "ed065bf6dd61cc5accec8c1afced5684bf03a3e9",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e080534_94b8c92a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 6715
+      },
+      "writtenOn": "2023-12-21T10:51:12Z",
+      "side": 1,
+      "message": "I am not sure exactly in which context this is called. If it really transfers a whole cmap table to a PDF, then this might be big for CJK fonts for example: Noto Sans CJK VF has for example ~42220 entries in its CMAP format 14 subtable - so it\u0027s roughly 42220*8/1024 \u003d 329,8kB.",
+      "parentUuid": "88eab108_41fdc98c",
+      "revId": "ed065bf6dd61cc5accec8c1afced5684bf03a3e9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
