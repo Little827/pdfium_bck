@@ -205,19 +205,23 @@ size_t CFDE_TextEditEngine::CountCharsExceedingSize(const WideString& text,
 
   float vertical_height = line_spacing_ * visible_line_count_;
   size_t chars_exceeding_size = 0;
-  // TODO(dsinclair): Can this get changed to a binary search?
-  for (size_t i = 0; i < num_to_check; i++) {
-    text_out->CalcLogicSize(temp, &text_rect);
-    if (limit_horizontal_area_ && text_rect.width <= available_width_)
-      break;
-    if (limit_vertical_area_ && text_rect.height <= vertical_height)
-      break;
+  size_t low = 0;
+  size_t high = num_to_check;
 
-    ++chars_exceeding_size;
-
-    --length;
-    temp = temp.First(length);
+  text_out->CalcLogicSize(temp.First(num_to_check), &text_rect);
+  if (!(limit_horizontal_area_ && text_rect.width > available_width_) &&
+      !(limit_vertical_area_ && text_rect.height > vertical_height)) {
+    return 0;  // All characters within limits
   }
+
+  // Use std::lower_bound for efficient search
+  auto it = std::lower_bound(temp.begin(), temp.end(), 0, [&](size_t mid) {
+    text_out->CalcLogicSize(temp.First(mid), &text_rect);
+    return (limit_horizontal_area_ && text_rect.width > available_width_) ||
+           (limit_vertical_area_ && text_rect.height > vertical_height);
+  });
+
+  size_t chars_exceeding_size = num_to_check - std::distance(temp.begin(), it);
 
   return chars_exceeding_size;
 }
