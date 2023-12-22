@@ -313,7 +313,7 @@ bool CStretchEngine::ContinueStretchHorz(PauseIndicatorIface* pPause) {
     }
 
     const uint8_t* src_scan = m_pSource->GetScanline(m_CurRow).data();
-    pdfium::span<uint8_t> dest_span = m_InterBuf.writable_span().subspan(
+    pdfium::span<uint8_t> dest_span = m_InterBuf.span().subspan(
         (m_CurRow - m_SrcClip.top) * m_InterPitch, m_InterPitch);
     size_t dest_span_index = 0;
     // TODO(npm): reduce duplicated code here
