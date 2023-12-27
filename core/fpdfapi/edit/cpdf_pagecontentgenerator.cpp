@@ -154,7 +154,11 @@ std::map<int32_t, fxcrt::ostringstream>
 CPDF_PageContentGenerator::GenerateModifiedStreams() {
   // Figure out which streams are dirty.
   std::set<int32_t> all_dirty_streams;
+  int32_t first_stream = INT_MAX;
   for (auto& pPageObj : m_pageObjects) {
+    if (pPageObj->GetContentStream() < first_stream) {
+      first_stream = pPageObj->GetContentStream();
+    }
     if (pPageObj->IsDirty())
       all_dirty_streams.insert(pPageObj->GetContentStream());
   }
@@ -174,8 +178,10 @@ CPDF_PageContentGenerator::GenerateModifiedStreams() {
 
     // Set the default graphic state values
     buf << "q\n";
-    if (!m_pObjHolder->GetLastCTM().IsIdentity())
+    if (dirty_stream != first_stream &&
+        !m_pObjHolder->GetLastCTM().IsIdentity()) {
       WriteMatrix(buf, m_pObjHolder->GetLastCTM().GetInverse()) << " cm\n";
+    }
 
     ProcessDefaultGraphics(&buf);
     streams[dirty_stream] = std::move(buf);
