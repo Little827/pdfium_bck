@@ -16,6 +16,23 @@
       "message": "Please see summary here: https://pdfium-review.googlesource.com/c/pdfium/+/114450",
       "revId": "d1535c14e634f5b1ec5c3dfa37cad92c7e0d547c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c067216_41836a0e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 9186
+      },
+      "writtenOn": "2023-12-27T10:16:21Z",
+      "side": 1,
+      "message": "Please see issue here https://bugs.chromium.org/p/pdfium/issues/detail?id\u003d1893#makechanges\n\nAnd summary here https://docs.google.com/document/d/1UADoqD4GU2AV99LmcYn7Zu81BRN8m8fUBNXfqq3tcJ8/edit",
+      "revId": "d1535c14e634f5b1ec5c3dfa37cad92c7e0d547c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
