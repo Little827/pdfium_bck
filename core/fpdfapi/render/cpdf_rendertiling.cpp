@@ -230,8 +230,8 @@ RetainPtr<CFX_DIBitmap> CPDF_RenderTiling::Draw(
         uint32_t* dest_buf = reinterpret_cast<uint32_t*>(
             pScreen->GetWritableScanline(start_y).subspan(start_x * 4).data());
         if (pPattern->colored()) {
-          const auto* src_buf32 =
-              reinterpret_cast<const uint32_t*>(src_buf.data());
+          const uint32_t* src_buf32 =
+              pdfium::reinterpret_span<const uint32_t>(src_buf).data();
           *dest_buf = *src_buf32;
         } else {
           *dest_buf = (*(src_buf.data()) << 24) | (fill_argb & 0xffffff);

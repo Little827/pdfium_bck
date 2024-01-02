@@ -15,6 +15,7 @@
 #include <utility>
 
 #include "third_party/base/check.h"
+#include "third_party/base/check_op.h"
 #include "third_party/base/compiler_specific.h"
 
 #if defined(PDF_USE_PARTITION_ALLOC)
@@ -180,6 +181,7 @@ using EnableIfConstSpanCompatibleContainer =
 //
 // Additions beyond the C++ standard draft
 // - as_byte_span() function.
+// - reinterpret_span<>() function.
 
 // [span], class template span
 template <typename T>
@@ -314,15 +316,25 @@ class TRIVIAL_ABI GSL_POINTER span {
 };
 
 // [span.objectrep], views of object representation
+template <typename T,
+          typename U,
+          typename = typename std::enable_if_t<std::is_const_v<T> ||
+                                               !std::is_const_v<U>>>
+span<T> reinterpret_span(span<U> s) noexcept {
+  CHECK_EQ(s.size_bytes() % sizeof(T), 0u);
+  CHECK_EQ(reinterpret_cast<uintptr_t>(s.data()) % alignof(T), 0u);
+  return {reinterpret_cast<T*>(s.data()), s.size_bytes() / sizeof(T)};
+}
+
 template <typename T>
 span<const uint8_t> as_bytes(span<T> s) noexcept {
-  return {reinterpret_cast<const uint8_t*>(s.data()), s.size_bytes()};
+  return reinterpret_span<const uint8_t>(s);
 }
 
 template <typename T,
-          typename U = typename std::enable_if<!std::is_const<T>::value>::type>
+          typename = typename std::enable_if<!std::is_const<T>::value>::type>
 span<uint8_t> as_writable_bytes(span<T> s) noexcept {
-  return {reinterpret_cast<uint8_t*>(s.data()), s.size_bytes()};
+  return reinterpret_span<uint8_t>(s);
 }
 
 // Type-deducing helpers for constructing a span.
