@@ -69,6 +69,24 @@
       "parentUuid": "a2212d51_7500f93e",
       "revId": "bb89145c36492303134ec242f7d590e7218a131c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c7ec45f_97c6b9ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-01-02T16:22:25Z",
+      "side": 1,
+      "message": "I\u0027d prefer requiring exact bytes than implicitly truncate. The caller can truncate bytes by doing a subspan if needed.\n\nShould we check that the pointer is aligned correctly for alignof(Target)? Since this is coming from spans it seems super easy to do subspan(1) and then cast to some T. We saw UBSan catch this sometimes when we turned it on, and it\u0027d be nicer to catch it outside of sanitizers.",
+      "parentUuid": "92853495_91469556",
+      "revId": "bb89145c36492303134ec242f7d590e7218a131c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
