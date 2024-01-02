@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3411fdc8_8c40fb81",
+        "filename": "third_party/base/containers/span.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-01-02T17:54:27Z",
+      "side": 1,
+      "message": "nit: because this is a template you don\u0027t need `inline` but I still do prefer `inline`.",
+      "revId": "040941b799d65ff9d156bd10da369f27ec351d19",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e500bfd_ce07d0f9",
+        "filename": "third_party/base/containers/span.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-01-02T17:54:27Z",
+      "side": 1,
+      "message": "This lgtm, but we should add some tests?",
+      "revId": "040941b799d65ff9d156bd10da369f27ec351d19",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
