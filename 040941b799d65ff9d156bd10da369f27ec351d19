@@ -33,6 +33,24 @@
       "message": "This lgtm, but we should add some tests?",
       "revId": "040941b799d65ff9d156bd10da369f27ec351d19",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bff170dd_12c3c655",
+        "filename": "third_party/base/containers/span.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-01-02T18:41:03Z",
+      "side": 1,
+      "message": "Yeah, since this is diverging from base, yes. Formerly we relied upon base doing this and pdfium just snarfing the .h file ... in which case, this should move to span_util.h which has a test file apart from base.",
+      "parentUuid": "0e500bfd_ce07d0f9",
+      "revId": "040941b799d65ff9d156bd10da369f27ec351d19",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
