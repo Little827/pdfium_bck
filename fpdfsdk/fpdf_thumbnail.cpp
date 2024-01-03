@@ -13,7 +13,7 @@
 #include "core/fpdfapi/parser/cpdf_stream_acc.h"
 #include "core/fxge/dib/cfx_dibitmap.h"
 #include "fpdfsdk/cpdfsdk_helpers.h"
-#include "public/fpdfview.h"
+#include "public/fpdf_view.h"
 
 namespace {
 

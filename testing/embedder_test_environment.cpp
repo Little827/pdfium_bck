@@ -7,7 +7,7 @@
 #include <ostream>
 
 #include "core/fxcrt/fx_system.h"
-#include "public/fpdfview.h"
+#include "public/fpdf_view.h"
 #include "testing/command_line_helpers.h"
 #include "third_party/base/check.h"
 

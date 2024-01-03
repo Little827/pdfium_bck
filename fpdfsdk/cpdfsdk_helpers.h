@@ -16,7 +16,7 @@
 #include "core/fxge/cfx_path.h"
 #include "public/fpdf_doc.h"
 #include "public/fpdf_ext.h"
-#include "public/fpdfview.h"
+#include "public/fpdf_view.h"
 
 #ifdef PDF_ENABLE_XFA
 #include "core/fxcrt/fx_stream.h"

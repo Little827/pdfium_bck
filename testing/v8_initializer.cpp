@@ -9,7 +9,7 @@
 #include <cstring>
 #include <vector>
 
-#include "public/fpdfview.h"
+#include "public/fpdf_view.h"
 #include "testing/utils/file_util.h"
 #include "testing/utils/path_service.h"
 #include "third_party/base/numerics/safe_conversions.h"

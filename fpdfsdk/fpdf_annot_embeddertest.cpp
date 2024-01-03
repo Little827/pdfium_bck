@@ -21,7 +21,7 @@
 #include "public/cpp/fpdf_scopers.h"
 #include "public/fpdf_edit.h"
 #include "public/fpdf_formfill.h"
-#include "public/fpdfview.h"
+#include "public/fpdf_view.h"
 #include "testing/embedder_test.h"
 #include "testing/embedder_test_constants.h"
 #include "testing/fx_string_testhelpers.h"

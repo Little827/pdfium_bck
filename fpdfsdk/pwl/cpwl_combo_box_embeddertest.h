@@ -5,7 +5,7 @@
 #ifndef FPDFSDK_PWL_CPWL_COMBO_BOX_EMBEDDERTEST_H_
 #define FPDFSDK_PWL_CPWL_COMBO_BOX_EMBEDDERTEST_H_
 
-#include "public/fpdfview.h"
+#include "public/fpdf_view.h"
 #include "testing/embedder_test.h"
 #include "testing/gtest/include/gtest/gtest.h"
 

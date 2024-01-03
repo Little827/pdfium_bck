@@ -32,7 +32,7 @@
 #include "public/fpdf_progressive.h"
 #include "public/fpdf_structtree.h"
 #include "public/fpdf_text.h"
-#include "public/fpdfview.h"
+#include "public/fpdf_view.h"
 #include "samples/helpers/dump.h"
 #include "samples/helpers/event.h"
 #include "samples/helpers/page_renderer.h"
