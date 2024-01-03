@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c51f1e4_224be780",
+        "filename": "core/fxcrt/fixed_try_alloc_zeroed_data_vector_unittest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-03T02:15:49Z",
+      "side": 1,
+      "message": "Isn\u0027t this just a repeat of the previous line at this point?",
+      "revId": "2168cd08f654c28a9e573c9d87b094128fc8ac45",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0e2dfbb_2dbc7e88",
+        "filename": "core/fxge/dib/cstretchengine.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-03T02:15:49Z",
+      "side": 1,
+      "message": "Should the new methods get more use? e.g. omit `span()` here.",
+      "revId": "2168cd08f654c28a9e573c9d87b094128fc8ac45",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
