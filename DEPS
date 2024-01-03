@@ -104,6 +104,10 @@ vars = {
   # Three lines of non-changing comments so that
   # the commit queue can handle CLs rolling freetype
   # and whatever else without interference from each other.
+  'fp16_revision': '0a92994d729ff76a58f692d3028ca1b64b145d91',
+  # Three lines of non-changing comments so that
+  # the commit queue can handle CLs rolling freetype
+  # and whatever else without interference from each other.
   'freetype_revision': '8f255c89e14219ca2489043f699797ee106ec6e9',
   # Three lines of non-changing comments so that
   # the commit queue can handle CLs rolling freetype
@@ -328,6 +332,10 @@ deps = {
   'third_party/depot_tools':
     Var('chromium_git') + '/chromium/tools/depot_tools.git@' +
         Var('depot_tools_revision'),
+
+  'third_party/fp16/src':
+    Var('chromium_git') + '/external/github.com/Maratyszcza/FP16.git' + '@' +
+        Var('fp16_revision'),
 
   'third_party/freetype/src':
     Var('chromium_git') + '/chromium/src/third_party/freetype2.git@' +
