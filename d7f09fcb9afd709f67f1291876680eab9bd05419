@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3b861af_3e1da83e",
+        "filename": "core/fxcrt/fixed_uninit_data_vector_unittest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-01-03T23:14:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ed8e55b_f2c8607a",
+      "revId": "d7f09fcb9afd709f67f1291876680eab9bd05419",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "edf90b80_72ded847",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-01-03T22:29:41Z",
       "side": 1,
       "message": "Use spancpy() like other test cases, or maybe std::iota()?",
+      "revId": "d7f09fcb9afd709f67f1291876680eab9bd05419",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ad1c680_910acbdd",
+        "filename": "core/fxcrt/fixed_uninit_data_vector_unittest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-01-03T23:14:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "edf90b80_72ded847",
       "revId": "d7f09fcb9afd709f67f1291876680eab9bd05419",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -52,6 +88,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c4e82cc_8ef90b23",
+        "filename": "core/fxcrt/fixed_uninit_data_vector_unittest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-01-03T23:14:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3934cf8a_dce6430e",
+      "revId": "d7f09fcb9afd709f67f1291876680eab9bd05419",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9c62506f_1ae1a303",
@@ -65,6 +119,24 @@
       "writtenOn": "2024-01-03T22:29:41Z",
       "side": 1,
       "message": "And here.",
+      "revId": "d7f09fcb9afd709f67f1291876680eab9bd05419",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e52922e_ce2d58c4",
+        "filename": "core/fxcrt/fixed_zeroed_data_vector_unittest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-01-03T23:14:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c62506f_1ae1a303",
       "revId": "d7f09fcb9afd709f67f1291876680eab9bd05419",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
