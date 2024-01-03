@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ed8e55b_f2c8607a",
+        "filename": "core/fxcrt/fixed_uninit_data_vector_unittest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-03T22:29:41Z",
+      "side": 1,
+      "message": "More here.",
+      "revId": "d7f09fcb9afd709f67f1291876680eab9bd05419",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edf90b80_72ded847",
+        "filename": "core/fxcrt/fixed_uninit_data_vector_unittest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-03T22:29:41Z",
+      "side": 1,
+      "message": "Use spancpy() like other test cases, or maybe std::iota()?",
+      "revId": "d7f09fcb9afd709f67f1291876680eab9bd05419",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3934cf8a_dce6430e",
+        "filename": "core/fxcrt/fixed_uninit_data_vector_unittest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-03T22:29:41Z",
+      "side": 1,
+      "message": "ASSERT_EQ() to avoid potential OOB access on the next line. More instances below.",
+      "revId": "d7f09fcb9afd709f67f1291876680eab9bd05419",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c62506f_1ae1a303",
+        "filename": "core/fxcrt/fixed_zeroed_data_vector_unittest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-03T22:29:41Z",
+      "side": 1,
+      "message": "And here.",
+      "revId": "d7f09fcb9afd709f67f1291876680eab9bd05419",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
