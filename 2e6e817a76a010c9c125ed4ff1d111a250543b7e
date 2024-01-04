@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78a67476_4dd5f625",
+        "filename": "DEPS",
+        "patchSetId": 5
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-04T18:32:24Z",
+      "side": 1,
+      "message": "nit: copy+pasta. There\u0027s another pre-existing one on line 113.",
+      "range": {
+        "startLine": 105,
+        "startChar": 44,
+        "endLine": 105,
+        "endChar": 52
+      },
+      "revId": "2e6e817a76a010c9c125ed4ff1d111a250543b7e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c68953e6_68fc3f65",
+        "filename": "DEPS",
+        "patchSetId": 5
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-04T18:32:24Z",
+      "side": 1,
+      "message": "No need to concatenate the \"@\" separately.",
+      "range": {
+        "startLine": 337,
+        "startChar": 65,
+        "endLine": 337,
+        "endChar": 77
+      },
+      "revId": "2e6e817a76a010c9c125ed4ff1d111a250543b7e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a658eb9a_dd5599e7",
+        "filename": "third_party/fp16/BUILD.gn",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-04T18:32:24Z",
+      "side": 1,
+      "message": "2024; PDFium",
+      "revId": "2e6e817a76a010c9c125ed4ff1d111a250543b7e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce6266ad_1ae3aed0",
+        "filename": "third_party/fp16/OWNERS",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-04T18:32:24Z",
+      "side": 1,
+      "message": "Just don\u0027t bother adding this in PDFium? Ownership falls back to //OWNERS anyway.",
+      "revId": "2e6e817a76a010c9c125ed4ff1d111a250543b7e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
