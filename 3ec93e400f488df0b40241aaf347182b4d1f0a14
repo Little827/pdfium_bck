@@ -1,0 +1,141 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b7792a7_efc06c01",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-04T02:19:49Z",
+      "side": 1,
+      "message": "fxcrt",
+      "range": {
+        "startLine": 7,
+        "startChar": 10,
+        "endLine": 7,
+        "endChar": 16
+      },
+      "revId": "3ec93e400f488df0b40241aaf347182b4d1f0a14",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68a1d078_ea9963f4",
+        "filename": "core/fxcodec/fax/faxmodule.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 588,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-04T02:19:49Z",
+      "side": 1,
+      "message": "Probably no longer needed, since reinterpret_span() does the check already?",
+      "revId": "3ec93e400f488df0b40241aaf347182b4d1f0a14",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c67407e_43f86199",
+        "filename": "core/fxcodec/fax/faxmodule.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-04T02:19:49Z",
+      "side": 1,
+      "message": "Would `fxcrt::reinterpret_span\u003cuint32_t\u003e(pdfium::make_span(m_ScanlineBuf))` be easier to read?",
+      "revId": "3ec93e400f488df0b40241aaf347182b4d1f0a14",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fcfb77c_314cee4c",
+        "filename": "core/fxcodec/gif/cfx_gifcontext.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-04T02:19:49Z",
+      "side": 1,
+      "message": "BTW, since the GIF data structure only allocated 3 bits to `pal_bits`, `palette_count` is limited to 256 and this checked_cast() won\u0027t ever fail. Also, ReadAllOrNone() can probably take a span in the future.",
+      "revId": "3ec93e400f488df0b40241aaf347182b4d1f0a14",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e612830b_f6919071",
+        "filename": "core/fxcrt/span_util_unittest.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-04T02:19:49Z",
+      "side": 1,
+      "message": "ASSERT_EQ()",
+      "revId": "3ec93e400f488df0b40241aaf347182b4d1f0a14",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "802695ef_0807440d",
+        "filename": "core/fxge/dib/cfx_dibbase.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 661,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-04T02:19:49Z",
+      "side": 1,
+      "message": "nit: Name `dst_span` and `dest_scan` consistently.",
+      "range": {
+        "startLine": 661,
+        "startChar": 11,
+        "endLine": 661,
+        "endChar": 19
+      },
+      "revId": "3ec93e400f488df0b40241aaf347182b4d1f0a14",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b57068a_ece4602c",
+        "filename": "xfa/fgas/graphics/cfgas_gegraphics.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-04T02:19:49Z",
+      "side": 1,
+      "message": "Why not need `uint32_t*` like line 301?",
+      "range": {
+        "startLine": 336,
+        "startChar": 8,
+        "endLine": 336,
+        "endChar": 12
+      },
+      "revId": "3ec93e400f488df0b40241aaf347182b4d1f0a14",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
