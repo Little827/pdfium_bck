@@ -33,6 +33,24 @@
       "message": "i will submit a test as soon as i can\n\nthe original issue is reproducable by regenerating content stream of any document which uses grayscale color (that is, the \"G\" or \"g\" operator)\n\nhttps://imgur.com/a/k5sgiJB",
       "revId": "4fccc670847c98412e562d8a6b0f0560bc808af1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9186755f_c802d564",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-05T19:23:02Z",
+      "side": 1,
+      "message": "Yes, as always, tests are great to have.\n\nHave you considered filing a bug report for this as well?",
+      "parentUuid": "73ae9325_93c997a5",
+      "revId": "4fccc670847c98412e562d8a6b0f0560bc808af1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
