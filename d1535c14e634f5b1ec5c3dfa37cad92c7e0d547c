@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef8ed860_2d01076c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-06T00:30:22Z",
+      "side": 1,
+      "message": "Please do.",
+      "revId": "d1535c14e634f5b1ec5c3dfa37cad92c7e0d547c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "18180639_1c7c94bb",
@@ -31,6 +48,23 @@
       "writtenOn": "2023-12-27T10:16:21Z",
       "side": 1,
       "message": "Please see issue here https://bugs.chromium.org/p/pdfium/issues/detail?id\u003d1893#makechanges\n\nAnd summary here https://docs.google.com/document/d/1UADoqD4GU2AV99LmcYn7Zu81BRN8m8fUBNXfqq3tcJ8/edit",
+      "revId": "d1535c14e634f5b1ec5c3dfa37cad92c7e0d547c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2716bd0c_611a5a51",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentgenerator.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-06T00:30:22Z",
+      "side": 1,
+      "message": "In modern C++ code, just use `absl::optional\u003cint32_t\u003e` instead of making up a sentinel value. The entire codebase will move to std::optional eventually, but that\u0027s not ready yet.",
       "revId": "d1535c14e634f5b1ec5c3dfa37cad92c7e0d547c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
