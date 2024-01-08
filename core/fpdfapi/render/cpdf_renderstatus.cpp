@@ -1304,9 +1304,9 @@ void CPDF_RenderStatus::CompositeDIBitmap(
   }
 
   auto pBackdrop1 = pdfium::MakeRetain<CFX_DIBitmap>();
-  pBackdrop1->Create(pBackdrop->GetWidth(), pBackdrop->GetHeight(),
-                     FXDIB_Format::kRgb32);
-  pBackdrop1->Clear((uint32_t)-1);
+  CHECK(pBackdrop1->Create(pBackdrop->GetWidth(), pBackdrop->GetHeight(),
+                           FXDIB_Format::kRgb32));
+  pBackdrop1->Clear(0xffffffff);
   pBackdrop1->CompositeBitmap(0, 0, pBackdrop->GetWidth(),
                               pBackdrop->GetHeight(), pBackdrop, 0, 0,
                               BlendMode::kNormal, nullptr, false);

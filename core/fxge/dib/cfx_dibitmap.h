@@ -24,12 +24,12 @@ class CFX_DIBitmap final : public CFX_DIBBase {
 
   CONSTRUCT_VIA_MAKE_RETAIN;
 
-  bool Create(int width, int height, FXDIB_Format format);
-  bool Create(int width,
-              int height,
-              FXDIB_Format format,
-              uint8_t* pBuffer,
-              uint32_t pitch);
+  [[nodiscard]] bool Create(int width, int height, FXDIB_Format format);
+  [[nodiscard]] bool Create(int width,
+                            int height,
+                            FXDIB_Format format,
+                            uint8_t* pBuffer,
+                            uint32_t pitch);
 
   bool Copy(const RetainPtr<CFX_DIBBase>& pSrc);
 

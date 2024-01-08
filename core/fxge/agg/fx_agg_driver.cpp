@@ -1056,8 +1056,8 @@ void CFX_AggDeviceDriver::SetClipMask(agg::rasterizer_scanline_aa& rasterizer) {
                     rasterizer.max_x() + 1, rasterizer.max_y() + 1);
   path_rect.Intersect(m_pClipRgn->GetBox());
   auto pThisLayer = pdfium::MakeRetain<CFX_DIBitmap>();
-  pThisLayer->Create(path_rect.Width(), path_rect.Height(),
-                     FXDIB_Format::k8bppMask);
+  CHECK(pThisLayer->Create(path_rect.Width(), path_rect.Height(),
+                           FXDIB_Format::k8bppMask));
   agg::rendering_buffer raw_buf(pThisLayer->GetWritableBuffer().data(),
                                 pThisLayer->GetWidth(), pThisLayer->GetHeight(),
                                 pThisLayer->GetPitch());
