@@ -19,7 +19,7 @@ src:*/usr/*
 fun:*hashEntry*
 fun:*LocaleCacheKey*hashCode*
 fun:*google*protobuf*hash*
-fun:*(hash|Hash)*
+fun:*{hash,Hash}*
 
 #############################################################################
 # Bounds ignore list.
