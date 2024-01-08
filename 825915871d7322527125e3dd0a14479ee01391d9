@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ced3062c_f945ef1c",
+        "filename": "core/fxge/cfx_renderdevice.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-01-08T21:43:14Z",
+      "side": 1,
+      "message": "follow-on: does it work if we pass by value and force callers to std::move, say?",
+      "range": {
+        "startLine": 229,
+        "startChar": 16,
+        "endLine": 229,
+        "endChar": 55
+      },
+      "revId": "825915871d7322527125e3dd0a14479ee01391d9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
