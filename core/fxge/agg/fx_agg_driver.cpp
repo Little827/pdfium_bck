@@ -1130,12 +1130,13 @@ int CFX_AggDeviceDriver::GetDriverType() const {
   return 1;
 }
 
-bool CFX_AggDeviceDriver::MultiplyAlpha(float alpha) {
+bool CFX_AggDeviceDriver::MultiplyAlphaF(float alpha) {
   return m_pBitmap->MultiplyAlpha(static_cast<int32_t>(alpha * 255));
 }
 
-bool CFX_AggDeviceDriver::MultiplyAlpha(const RetainPtr<CFX_DIBBase>& mask) {
-  return m_pBitmap->MultiplyAlpha(mask);
+bool CFX_AggDeviceDriver::MultiplyAlphaMask(
+    const RetainPtr<CFX_DIBBase>& mask) {
+  return m_pBitmap->MultiplyAlphaMask(mask);
 }
 
 void CFX_AggDeviceDriver::Clear(uint32_t color) {

@@ -538,14 +538,14 @@ bool CGdiDeviceDriver::GetClipBox(FX_RECT* pRect) {
   return !!(::GetClipBox(m_hDC, (RECT*)pRect));
 }
 
-bool CGdiDeviceDriver::MultiplyAlpha(float alpha) {
+bool CGdiDeviceDriver::MultiplyAlphaF(float alpha) {
   // Not implemented. All callers are using `CFX_DIBitmap`-backed raster devices
   // anyway.
   NOTREACHED();
   return false;
 }
 
-bool CGdiDeviceDriver::MultiplyAlpha(const RetainPtr<CFX_DIBBase>& mask) {
+bool CGdiDeviceDriver::MultiplyAlphaMask(const RetainPtr<CFX_DIBBase>& mask) {
   // Not implemented. All callers are using `CFX_DIBitmap`-backed raster devices
   // anyway.
   NOTREACHED();

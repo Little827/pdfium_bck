@@ -1460,12 +1460,12 @@ void CFX_RenderDevice::DrawBorder(const CFX_Matrix* pUser2Device,
   }
 }
 
-bool CFX_RenderDevice::MultiplyAlpha(float alpha) {
-  return m_pDeviceDriver->MultiplyAlpha(alpha);
+bool CFX_RenderDevice::MultiplyAlphaF(float alpha) {
+  return m_pDeviceDriver->MultiplyAlphaF(alpha);
 }
 
-bool CFX_RenderDevice::MultiplyAlpha(const RetainPtr<CFX_DIBBase>& mask) {
-  return m_pDeviceDriver->MultiplyAlpha(mask);
+bool CFX_RenderDevice::MultiplyAlphaMask(const RetainPtr<CFX_DIBBase>& mask) {
+  return m_pDeviceDriver->MultiplyAlphaMask(mask);
 }
 
 CFX_RenderDevice::StateRestorer::StateRestorer(CFX_RenderDevice* pDevice)

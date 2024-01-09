@@ -98,8 +98,8 @@ class CFX_AggDeviceDriver final : public RenderDeviceDriverIface {
                       uint32_t color,
                       const CFX_TextRenderOptions& options) override;
   int GetDriverType() const override;
-  bool MultiplyAlpha(float alpha) override;
-  bool MultiplyAlpha(const RetainPtr<CFX_DIBBase>& mask) override;
+  bool MultiplyAlphaF(float alpha) override;
+  bool MultiplyAlphaMask(const RetainPtr<CFX_DIBBase>& mask) override;
 
   void Clear(uint32_t color);
 
