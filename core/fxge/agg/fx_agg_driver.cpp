@@ -129,10 +129,10 @@ void RgbByteOrderCompositeRect(const RetainPtr<CFX_DIBitmap>& pBitmap,
   }
 }
 
-void RgbByteOrderTransferBitmap(const RetainPtr<CFX_DIBitmap>& pBitmap,
+void RgbByteOrderTransferBitmap(RetainPtr<CFX_DIBitmap> pBitmap,
                                 int width,
                                 int height,
-                                const RetainPtr<CFX_DIBBase>& pSrcBitmap,
+                                RetainPtr<const CFX_DIBBase> pSrcBitmap,
                                 int src_left,
                                 int src_top) {
   int dest_left = 0;
@@ -1135,7 +1135,7 @@ bool CFX_AggDeviceDriver::MultiplyAlpha(float alpha) {
 }
 
 bool CFX_AggDeviceDriver::MultiplyAlpha(const RetainPtr<CFX_DIBBase>& mask) {
-  return m_pBitmap->MultiplyAlpha(mask);
+  return m_pBitmap->MultiplyAlpha(std::move(mask));
 }
 
 void CFX_AggDeviceDriver::RenderRasterizer(
@@ -1288,12 +1288,12 @@ bool CFX_AggDeviceDriver::GetDIBits(const RetainPtr<CFX_DIBitmap>& pBitmap,
   left = std::min(left, 0);
   top = std::min(top, 0);
   if (m_bRgbByteOrder) {
-    RgbByteOrderTransferBitmap(pBitmap, rect.Width(), rect.Height(), pBack,
-                               left, top);
+    RgbByteOrderTransferBitmap(std::move(pBitmap), rect.Width(), rect.Height(),
+                               std::move(pBack), left, top);
     return true;
   }
-  return pBitmap->TransferBitmap(0, 0, rect.Width(), rect.Height(), pBack, left,
-                                 top);
+  return pBitmap->TransferBitmap(0, 0, rect.Width(), rect.Height(),
+                                 std::move(pBack), left, top);
 }
 
 RetainPtr<CFX_DIBitmap> CFX_AggDeviceDriver::GetBackDrop() {
@@ -1311,13 +1311,14 @@ bool CFX_AggDeviceDriver::SetDIBits(const RetainPtr<const CFX_DIBBase>& pBitmap,
 
   if (pBitmap->IsMaskFormat()) {
     return m_pBitmap->CompositeMask(left, top, src_rect.Width(),
-                                    src_rect.Height(), pBitmap, argb,
+                                    src_rect.Height(), std::move(pBitmap), argb,
                                     src_rect.left, src_rect.top, blend_type,
                                     m_pClipRgn.get(), m_bRgbByteOrder);
   }
-  return m_pBitmap->CompositeBitmap(
-      left, top, src_rect.Width(), src_rect.Height(), pBitmap, src_rect.left,
-      src_rect.top, blend_type, m_pClipRgn.get(), m_bRgbByteOrder);
+  return m_pBitmap->CompositeBitmap(left, top, src_rect.Width(),
+                                    src_rect.Height(), std::move(pBitmap),
+                                    src_rect.left, src_rect.top, blend_type,
+                                    m_pClipRgn.get(), m_bRgbByteOrder);
 }
 
 bool CFX_AggDeviceDriver::StretchDIBits(
