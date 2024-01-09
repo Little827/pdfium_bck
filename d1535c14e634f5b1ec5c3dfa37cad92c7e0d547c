@@ -105,6 +105,23 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1f5a41f_09fdfd08",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 9186
+      },
+      "writtenOn": "2024-01-09T12:18:43Z",
+      "side": 1,
+      "message": "i\u0027m on the cusp of kinda breaking this open... fixing regeneration of dirtied streams will go a long way towards making pdfium much more usable as an EDITOR rather than the more typical use case of a READER...\n\nanyways, thanks for your patience 😎",
+      "revId": "d1535c14e634f5b1ec5c3dfa37cad92c7e0d547c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2716bd0c_611a5a51",
