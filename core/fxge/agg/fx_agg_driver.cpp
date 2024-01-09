@@ -1131,7 +1131,7 @@ int CFX_AggDeviceDriver::GetDriverType() const {
 }
 
 bool CFX_AggDeviceDriver::MultiplyAlpha(float alpha) {
-  return m_pBitmap->MultiplyAlpha(static_cast<int32_t>(alpha * 255));
+  return m_pBitmap->MultiplyAlpha(alpha);
 }
 
 bool CFX_AggDeviceDriver::MultiplyAlphaMask(
@@ -1349,8 +1349,9 @@ bool CFX_AggDeviceDriver::StretchDIBits(
   FX_RECT dest_clip = dest_rect;
   dest_clip.Intersect(*pClipRect);
   CFX_BitmapComposer composer;
-  composer.Compose(m_pBitmap, m_pClipRgn.get(), 255, argb, dest_clip, false,
-                   false, false, m_bRgbByteOrder, blend_type);
+  composer.Compose(m_pBitmap, m_pClipRgn.get(), /*alpha=*/1.0f, argb, dest_clip,
+                   /*bVertical=*/false, /*bFlipX=*/false, /*bFlipY=*/false,
+                   m_bRgbByteOrder, blend_type);
   dest_clip.Offset(-dest_rect.left, -dest_rect.top);
   CFX_ImageStretcher stretcher(&composer, pSource, dest_width, dest_height,
                                dest_clip, options);
@@ -1361,7 +1362,7 @@ bool CFX_AggDeviceDriver::StretchDIBits(
 
 bool CFX_AggDeviceDriver::StartDIBits(
     const RetainPtr<const CFX_DIBBase>& pSource,
-    int bitmap_alpha,
+    float alpha,
     uint32_t argb,
     const CFX_Matrix& matrix,
     const FXDIB_ResampleOptions& options,
@@ -1370,9 +1371,9 @@ bool CFX_AggDeviceDriver::StartDIBits(
   if (m_pBitmap->GetBuffer().empty())
     return true;
 
-  *handle = std::make_unique<CFX_ImageRenderer>(
-      m_pBitmap, m_pClipRgn.get(), pSource, bitmap_alpha, argb, matrix, options,
-      m_bRgbByteOrder);
+  *handle = std::make_unique<CFX_ImageRenderer>(m_pBitmap, m_pClipRgn.get(),
+                                                pSource, alpha, argb, matrix,
+                                                options, m_bRgbByteOrder);
   return true;
 }
 

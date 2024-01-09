@@ -88,7 +88,7 @@ class RenderDeviceDriverIface {
                              const FXDIB_ResampleOptions& options,
                              BlendMode blend_type) = 0;
   virtual bool StartDIBits(const RetainPtr<const CFX_DIBBase>& pBitmap,
-                           int bitmap_alpha,
+                           float alpha,
                            uint32_t color,
                            const CFX_Matrix& matrix,
                            const FXDIB_ResampleOptions& options,
@@ -113,7 +113,7 @@ class RenderDeviceDriverIface {
                                const RetainPtr<CFX_DIBBase>& pMask,
                                int left,
                                int top,
-                               int bitmap_alpha,
+                               float alpha,
                                BlendMode blend_type);
   virtual void SetGroupKnockout(bool group_knockout);
 
