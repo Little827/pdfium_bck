@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dadff096_c61eb3d8",
+        "filename": "core/fxge/dib/cfx_dibitmap.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-09T01:42:38Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "7ab6b086_4572bf46",
+      "range": {
+        "startLine": 303,
+        "startChar": 2,
+        "endLine": 303,
+        "endChar": 54
+      },
+      "revId": "bf1e638d19f599e799e9f166e17f54c775d3959c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "31cd6fa8_e2936807",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-01-09T00:12:06Z",
       "side": 1,
       "message": "nit: pass by value and move? (also below)",
+      "range": {
+        "startLine": 366,
+        "startChar": 0,
+        "endLine": 366,
+        "endChar": 53
+      },
+      "revId": "bf1e638d19f599e799e9f166e17f54c775d3959c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c77c935f_23469d26",
+        "filename": "core/fxge/dib/cfx_dibitmap.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-09T01:42:38Z",
+      "side": 1,
+      "message": "Follow-up in: https://pdfium-review.googlesource.com/115413",
+      "parentUuid": "31cd6fa8_e2936807",
       "range": {
         "startLine": 366,
         "startChar": 0,
