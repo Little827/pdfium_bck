@@ -36,6 +36,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d9be998_6386bfb6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 9186
+      },
+      "writtenOn": "2024-01-09T08:56:08Z",
+      "side": 1,
+      "message": "hold off on this one, it\u0027s quite a rabbit hole\n\nI\u0027ll ping you again after continued investigation as well as update the google docs with summary",
+      "parentUuid": "4a14b675_d5652a67",
+      "revId": "d1535c14e634f5b1ec5c3dfa37cad92c7e0d547c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "18180639_1c7c94bb",
@@ -66,6 +84,23 @@
       "writtenOn": "2023-12-27T10:16:21Z",
       "side": 1,
       "message": "Please see issue here https://bugs.chromium.org/p/pdfium/issues/detail?id\u003d1893#makechanges\n\nAnd summary here https://docs.google.com/document/d/1UADoqD4GU2AV99LmcYn7Zu81BRN8m8fUBNXfqq3tcJ8/edit",
+      "revId": "d1535c14e634f5b1ec5c3dfa37cad92c7e0d547c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9d1deaf_40632178",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 9186
+      },
+      "writtenOn": "2024-01-09T08:56:08Z",
+      "side": 1,
+      "message": "thanks mate, this needs more investigation, it\u0027s more nuanced than I originally thought\n\nI\u0027ll focus on getting a test written for the colorspace-related CL (https://pdfium-review.googlesource.com/c/pdfium/+/115330) and then come back to this",
       "revId": "d1535c14e634f5b1ec5c3dfa37cad92c7e0d547c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
