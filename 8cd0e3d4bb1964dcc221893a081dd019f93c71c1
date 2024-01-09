@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27765705_29482208",
+        "filename": "core/fxge/dib/cfx_dibitmap.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-01-09T22:58:16Z",
+      "side": 1,
+      "message": "seems like this one might want to stay const-ref, as it isn\u0027t stashing the source away anywhere, so it needn\u0027t live beyond the call?",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 62
+      },
+      "revId": "8cd0e3d4bb1964dcc221893a081dd019f93c71c1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
