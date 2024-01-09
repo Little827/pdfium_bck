@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f29dd9da_9cf8922b",
+        "filename": "core/fxge/agg/fx_agg_driver.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1369,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-09T18:47:53Z",
+      "side": 1,
+      "message": "I\u0027ll follow-up with moving away from const-ref. Eventually CFX_ImageRenderer pass it to a class that increments the ref-count.",
+      "parentUuid": "f862a7ef_1472e24f",
+      "range": {
+        "startLine": 1369,
+        "startChar": 35,
+        "endLine": 1369,
+        "endChar": 42
+      },
+      "revId": "b831e527364f7d58eecc8482b7a0c2e6b178e04b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "624eabd5_6d2296d0",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-01-09T01:11:56Z",
       "side": 1,
       "message": "nit: again, pSource needs to outlive the call, should be by value ...",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 48
+      },
+      "revId": "b831e527364f7d58eecc8482b7a0c2e6b178e04b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cc7d2ba_a219d3d2",
+        "filename": "core/fxge/dib/cfx_imagerenderer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-09T18:47:53Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "624eabd5_6d2296d0",
       "range": {
         "startLine": 21,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d332c81_78fa462f",
+        "filename": "core/fxge/dib/cfx_imagerenderer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-09T18:47:53Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "08703d4d_d8a674af",
+      "range": {
+        "startLine": 56,
+        "startChar": 23,
+        "endLine": 56,
+        "endChar": 30
+      },
+      "revId": "b831e527364f7d58eecc8482b7a0c2e6b178e04b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "13f8d55c_917c62da",
@@ -83,6 +155,30 @@
       "writtenOn": "2024-01-09T01:11:56Z",
       "side": 1,
       "message": "nit: makes const-ref seem less desirable.",
+      "range": {
+        "startLine": 556,
+        "startChar": 46,
+        "endLine": 556,
+        "endChar": 53
+      },
+      "revId": "b831e527364f7d58eecc8482b7a0c2e6b178e04b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc79895c_efe30432",
+        "filename": "core/fxge/win32/cfx_psrenderer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-09T18:47:53Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "13f8d55c_917c62da",
       "range": {
         "startLine": 556,
         "startChar": 46,
