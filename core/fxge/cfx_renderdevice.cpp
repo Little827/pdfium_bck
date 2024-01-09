@@ -541,8 +541,8 @@ RetainPtr<const CFX_DIBitmap> CFX_RenderDevice::GetBitmap() const {
   return m_pBitmap;
 }
 
-void CFX_RenderDevice::SetBitmap(const RetainPtr<CFX_DIBitmap>& pBitmap) {
-  m_pBitmap = pBitmap;
+void CFX_RenderDevice::SetBitmap(RetainPtr<CFX_DIBitmap> bitmap) {
+  m_pBitmap = std::move(bitmap);
 }
 
 bool CFX_RenderDevice::CreateCompatibleBitmap(
@@ -780,7 +780,8 @@ bool CFX_RenderDevice::DrawFillStrokePath(
     backdrop->Copy(bitmap);
   }
   CFX_DefaultRenderDevice bitmap_device;
-  bitmap_device.AttachWithBackdropAndGroupKnockout(bitmap, std::move(backdrop),
+  bitmap_device.AttachWithBackdropAndGroupKnockout(std::move(bitmap),
+                                                   std::move(backdrop),
                                                    /*bGroupKnockout=*/true);
 
   CFX_Matrix matrix;
@@ -904,8 +905,9 @@ bool CFX_RenderDevice::SetDIBitsWithBlend(const RetainPtr<CFX_DIBBase>& pBitmap,
                    dest_rect.top - top + dest_rect.Height());
   if ((blend_mode == BlendMode::kNormal || (m_RenderCaps & FXRC_BLEND_MODE)) &&
       (!pBitmap->IsAlphaFormat() || (m_RenderCaps & FXRC_ALPHA_IMAGE))) {
-    return m_pDeviceDriver->SetDIBits(pBitmap, 0, src_rect, dest_rect.left,
-                                      dest_rect.top, blend_mode);
+    return m_pDeviceDriver->SetDIBits(std::move(pBitmap), 0, src_rect,
+                                      dest_rect.left, dest_rect.top,
+                                      blend_mode);
   }
   if (!(m_RenderCaps & FXRC_GET_BITS))
     return false;
@@ -921,8 +923,8 @@ bool CFX_RenderDevice::SetDIBitsWithBlend(const RetainPtr<CFX_DIBBase>& pBitmap,
     return false;
 
   if (!background->CompositeBitmap(0, 0, bg_pixel_width, bg_pixel_height,
-                                   pBitmap, src_rect.left, src_rect.top,
-                                   blend_mode, nullptr, false)) {
+                                   std::move(pBitmap), src_rect.left,
+                                   src_rect.top, blend_mode, nullptr, false)) {
     return false;
   }
   FX_RECT rect(0, 0, bg_pixel_width, bg_pixel_height);
