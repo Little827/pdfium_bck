@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a2954ae6_faecfc6a",
+        "filename": "core/fxge/dib/cfx_bitmapcomposer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-10T19:51:32Z",
+      "side": 1,
+      "message": "I was trying to keep the pre-existing behavior, but I\u0027m fine with making the change. Now \"255\" is only in the else-branch.\n\nI checked 255 vs. 255.0f on Godbolt, and they generate the same code either way.",
+      "parentUuid": "3c85cccb_b65124c5",
+      "range": {
+        "startLine": 83,
+        "startChar": 8,
+        "endLine": 83,
+        "endChar": 62
+      },
+      "revId": "8eed08cb6ff7b9986d447bf07d57fed1498ce000",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "24a5b742_fd707904",
         "filename": "core/fxge/dib/cfx_imagerenderer.cpp",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2024-01-10T19:24:07Z",
       "side": 1,
       "message": "nit: maybe reads better if before the call we have\nconst bool flip_x \u003d m_Matrix.c \u003e 0;\nconst bool flip_y \u003d m_Matrix.b \u003c 0;",
+      "range": {
+        "startLine": 54,
+        "startChar": 30,
+        "endLine": 54,
+        "endChar": 52
+      },
+      "revId": "8eed08cb6ff7b9986d447bf07d57fed1498ce000",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51f14be8_483d6008",
+        "filename": "core/fxge/dib/cfx_imagerenderer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-10T19:51:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24a5b742_fd707904",
       "range": {
         "startLine": 54,
         "startChar": 30,
