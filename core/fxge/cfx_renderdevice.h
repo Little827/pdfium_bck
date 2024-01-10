@@ -121,24 +121,24 @@ class CFX_RenderDevice {
       int dest_height,
       const FXDIB_ResampleOptions& options,
       BlendMode blend_mode);
-  bool SetBitMask(const RetainPtr<CFX_DIBBase>& pBitmap,
+  bool SetBitMask(const RetainPtr<const CFX_DIBBase>& pBitmap,
                   int left,
                   int top,
                   uint32_t argb);
-  bool StretchBitMask(const RetainPtr<CFX_DIBBase>& pBitmap,
+  bool StretchBitMask(const RetainPtr<const CFX_DIBBase>& pBitmap,
                       int left,
                       int top,
                       int dest_width,
                       int dest_height,
                       uint32_t color);
-  bool StretchBitMaskWithFlags(const RetainPtr<CFX_DIBBase>& pBitmap,
+  bool StretchBitMaskWithFlags(const RetainPtr<const CFX_DIBBase>& pBitmap,
                                int left,
                                int top,
                                int dest_width,
                                int dest_height,
                                uint32_t argb,
                                const FXDIB_ResampleOptions& options);
-  bool StartDIBits(const RetainPtr<CFX_DIBBase>& pBitmap,
+  bool StartDIBits(const RetainPtr<const CFX_DIBBase>& pBitmap,
                    float alpha,
                    uint32_t argb,
                    const CFX_Matrix& matrix,
@@ -147,7 +147,7 @@ class CFX_RenderDevice {
     return StartDIBitsWithBlend(pBitmap, alpha, argb, matrix, options, handle,
                                 BlendMode::kNormal);
   }
-  bool StartDIBitsWithBlend(const RetainPtr<CFX_DIBBase>& pBitmap,
+  bool StartDIBitsWithBlend(const RetainPtr<const CFX_DIBBase>& pBitmap,
                             float alpha,
                             uint32_t argb,
                             const CFX_Matrix& matrix,

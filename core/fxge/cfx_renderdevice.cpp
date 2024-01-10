@@ -947,7 +947,7 @@ bool CFX_RenderDevice::StretchDIBitsWithFlagsAndBlend(
                                    dest_height, &clip_box, options, blend_mode);
 }
 
-bool CFX_RenderDevice::SetBitMask(const RetainPtr<CFX_DIBBase>& pBitmap,
+bool CFX_RenderDevice::SetBitMask(const RetainPtr<const CFX_DIBBase>& pBitmap,
                                   int left,
                                   int top,
                                   uint32_t argb) {
@@ -956,18 +956,19 @@ bool CFX_RenderDevice::SetBitMask(const RetainPtr<CFX_DIBBase>& pBitmap,
                                     BlendMode::kNormal);
 }
 
-bool CFX_RenderDevice::StretchBitMask(const RetainPtr<CFX_DIBBase>& pBitmap,
-                                      int left,
-                                      int top,
-                                      int dest_width,
-                                      int dest_height,
-                                      uint32_t color) {
+bool CFX_RenderDevice::StretchBitMask(
+    const RetainPtr<const CFX_DIBBase>& pBitmap,
+    int left,
+    int top,
+    int dest_width,
+    int dest_height,
+    uint32_t color) {
   return StretchBitMaskWithFlags(pBitmap, left, top, dest_width, dest_height,
                                  color, FXDIB_ResampleOptions());
 }
 
 bool CFX_RenderDevice::StretchBitMaskWithFlags(
-    const RetainPtr<CFX_DIBBase>& pBitmap,
+    const RetainPtr<const CFX_DIBBase>& pBitmap,
     int left,
     int top,
     int dest_width,
@@ -983,7 +984,7 @@ bool CFX_RenderDevice::StretchBitMaskWithFlags(
 }
 
 bool CFX_RenderDevice::StartDIBitsWithBlend(
-    const RetainPtr<CFX_DIBBase>& pBitmap,
+    const RetainPtr<const CFX_DIBBase>& pBitmap,
     float alpha,
     uint32_t argb,
     const CFX_Matrix& matrix,

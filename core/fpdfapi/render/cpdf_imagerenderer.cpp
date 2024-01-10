@@ -459,7 +459,9 @@ bool CPDF_ImageRenderer::StartDIBBase() {
   RetainPtr<CFX_DIBitmap> pStretched = m_pDIBBase->StretchTo(
       dest_width, dest_height, m_ResampleOptions, &dest_clip);
   if (pStretched) {
-    m_pRenderStatus->CompositeDIBitmap(pStretched, dest_rect.left,
+    CFX_DefaultRenderDevice bitmap_device;
+    bitmap_device.Attach(std::move(pStretched));
+    m_pRenderStatus->CompositeToDevice(bitmap_device, dest_rect.left,
                                        dest_rect.top, m_FillArgb, m_Alpha,
                                        m_BlendType, CPDF_Transparency());
   }

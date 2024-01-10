@@ -699,8 +699,8 @@ bool CPDF_RenderStatus::ProcessTransparency(CPDF_PageObject* pPageObj,
     bitmap_device.GetBitmap()->UnPreMultiply();
   }
 #endif
-  CompositeDIBitmap(bitmap_device.GetBitmap(), rect.left, rect.top,
-                    /*mask_argb=*/0, /*alpha=*/1.0f, blend_type, transparency);
+  CompositeToDevice(bitmap_device, rect.left, rect.top, /*mask_argb=*/0,
+                    /*alpha=*/1.0f, blend_type, transparency);
   return true;
 }
 
@@ -1147,7 +1147,9 @@ void CPDF_RenderStatus::DrawTilingPattern(CPDF_TilingPattern* pattern,
   if (!pScreen)
     return;
 
-  CompositeDIBitmap(pScreen, clip_box.left, clip_box.top, /*mask_argb=*/0,
+  CFX_DefaultRenderDevice bitmap_device;
+  bitmap_device.Attach(std::move(pScreen));
+  CompositeToDevice(bitmap_device, clip_box.left, clip_box.top, /*mask_argb=*/0,
                     /*alpha=*/1.0f, BlendMode::kNormal, CPDF_Transparency());
 }
 
@@ -1197,16 +1199,15 @@ bool CPDF_RenderStatus::ProcessImage(CPDF_ImageObject* pImageObj,
   return render.GetResult();
 }
 
-void CPDF_RenderStatus::CompositeDIBitmap(
-    const RetainPtr<CFX_DIBitmap>& pDIBitmap,
+void CPDF_RenderStatus::CompositeToDevice(
+    CFX_RenderDevice& device,
     int left,
     int top,
     FX_ARGB mask_argb,
     float alpha,
     BlendMode blend_mode,
     const CPDF_Transparency& transparency) {
-  CHECK(pDIBitmap);
-
+  RetainPtr<const CFX_DIBitmap> pDIBitmap = device.GetBitmap();
   if (blend_mode == BlendMode::kNormal) {
     if (!pDIBitmap->IsMaskFormat()) {
       if (alpha != 1.0f) {
@@ -1218,7 +1219,7 @@ void CPDF_RenderStatus::CompositeDIBitmap(
                                  FXDIB_ResampleOptions(), &dummy);
           return;
         }
-        pDIBitmap->MultiplyAlpha(alpha);
+        device.MultiplyAlpha(alpha);
       }
       if (m_pDevice->SetDIBits(pDIBitmap, left, top)) {
         return;
@@ -1251,13 +1252,13 @@ void CPDF_RenderStatus::CompositeDIBitmap(
     FX_RECT rect(left, top, left + pDIBitmap->GetWidth(),
                  top + pDIBitmap->GetHeight());
     rect.Intersect(m_pDevice->GetClipBox());
-    RetainPtr<CFX_DIBitmap> pClone;
+    RetainPtr<const CFX_DIBitmap> background_bitmap;
     if (m_pDevice->GetBackDrop() && m_pDevice->GetBitmap()) {
-      pClone = m_pDevice->GetBackDrop()->ClipTo(rect);
+      RetainPtr<CFX_DIBitmap> pClone = m_pDevice->GetBackDrop()->ClipTo(rect);
       if (!pClone)
         return;
 
-      RetainPtr<CFX_DIBitmap> pForeBitmap = m_pDevice->GetBitmap();
+      RetainPtr<const CFX_DIBitmap> pForeBitmap = m_pDevice->GetBitmap();
       pClone->CompositeBitmap(0, 0, pClone->GetWidth(), pClone->GetHeight(),
                               pForeBitmap, rect.left, rect.top,
                               BlendMode::kNormal, nullptr, false);
@@ -1272,11 +1273,12 @@ void CPDF_RenderStatus::CompositeDIBitmap(
                                 pDIBitmap, left, top, blend_mode, nullptr,
                                 false);
       }
+      background_bitmap = pClone;
     } else {
-      pClone = pDIBitmap;
+      background_bitmap = pDIBitmap;
     }
     if (m_pDevice->GetBackDrop()) {
-      m_pDevice->SetDIBits(pClone, rect.left, rect.top);
+      m_pDevice->SetDIBits(background_bitmap, rect.left, rect.top);
     } else {
       if (!pDIBitmap->IsMaskFormat()) {
         m_pDevice->SetDIBitsWithBlend(pDIBitmap, rect.left, rect.top,
