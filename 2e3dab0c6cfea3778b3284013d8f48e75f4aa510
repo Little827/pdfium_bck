@@ -33,6 +33,29 @@
       "message": "Hmm, got a red bot.",
       "revId": "2e3dab0c6cfea3778b3284013d8f48e75f4aa510",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f12b6ab_6c67cdc2",
+        "filename": "core/fpdfapi/render/cpdf_imagerenderer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-01-10T19:36:48Z",
+      "side": 1,
+      "message": "needed? esp. if we are going to make this short-circuit?",
+      "range": {
+        "startLine": 317,
+        "startChar": 0,
+        "endLine": 317,
+        "endChar": 37
+      },
+      "revId": "2e3dab0c6cfea3778b3284013d8f48e75f4aa510",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
