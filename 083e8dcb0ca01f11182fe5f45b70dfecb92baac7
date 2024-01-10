@@ -45,6 +45,30 @@
       },
       "revId": "083e8dcb0ca01f11182fe5f45b70dfecb92baac7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c8124b8_e7cdca18",
+        "filename": "core/fxge/dib/cfx_imagerenderer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-10T21:15:01Z",
+      "side": 1,
+      "message": "You mean, check if the input is 1.0f and return early? Sure.",
+      "parentUuid": "f7982c70_0c6cc621",
+      "range": {
+        "startLine": 115,
+        "startChar": 15,
+        "endLine": 115,
+        "endChar": 28
+      },
+      "revId": "083e8dcb0ca01f11182fe5f45b70dfecb92baac7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
