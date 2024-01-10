@@ -984,14 +984,14 @@ bool CFX_RenderDevice::StretchBitMaskWithFlags(
 
 bool CFX_RenderDevice::StartDIBitsWithBlend(
     const RetainPtr<CFX_DIBBase>& pBitmap,
-    int bitmap_alpha,
+    float alpha,
     uint32_t argb,
     const CFX_Matrix& matrix,
     const FXDIB_ResampleOptions& options,
     std::unique_ptr<CFX_ImageRenderer>* handle,
     BlendMode blend_mode) {
-  return m_pDeviceDriver->StartDIBits(pBitmap, bitmap_alpha, argb, matrix,
-                                      options, handle, blend_mode);
+  return m_pDeviceDriver->StartDIBits(pBitmap, alpha, argb, matrix, options,
+                                      handle, blend_mode);
 }
 
 bool CFX_RenderDevice::ContinueDIBits(CFX_ImageRenderer* handle,
@@ -1004,10 +1004,10 @@ bool CFX_RenderDevice::SetBitsWithMask(const RetainPtr<CFX_DIBBase>& pBitmap,
                                        const RetainPtr<CFX_DIBBase>& pMask,
                                        int left,
                                        int top,
-                                       int bitmap_alpha,
+                                       float alpha,
                                        BlendMode blend_type) {
-  return m_pDeviceDriver->SetBitsWithMask(pBitmap, pMask, left, top,
-                                          bitmap_alpha, blend_type);
+  return m_pDeviceDriver->SetBitsWithMask(pBitmap, pMask, left, top, alpha,
+                                          blend_type);
 }
 
 bool CFX_RenderDevice::SyncInternalBitmaps() {
