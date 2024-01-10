@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eab11fbc_f05dc16f",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1150,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-01-10T19:30:38Z",
+      "side": 1,
+      "message": "nit: bad idea warning: is FX_ARGB(0) a thing to make the 0 look less like a 0?",
+      "range": {
+        "startLine": 1150,
+        "startChar": 58,
+        "endLine": 1150,
+        "endChar": 74
+      },
+      "revId": "46d03342cb9ffca8dfc3af48bdeb514aa9181d8c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c02a7d2_9561eb2e",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1217,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-01-10T19:30:38Z",
+      "side": 1,
+      "message": "nit: 255.0f (also line 1231)",
+      "range": {
+        "startLine": 1217,
+        "startChar": 56,
+        "endLine": 1217,
+        "endChar": 59
+      },
+      "revId": "46d03342cb9ffca8dfc3af48bdeb514aa9181d8c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
