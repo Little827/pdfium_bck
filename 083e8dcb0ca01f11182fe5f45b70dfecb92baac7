@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2d7dcc4_6616eb3a",
+        "filename": "core/fxge/dib/cfx_imagerenderer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-10T23:27:10Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "7f4a25a4_bdefb25d",
+      "range": {
+        "startLine": 107,
+        "startChar": 73,
+        "endLine": 107,
+        "endChar": 76
+      },
+      "revId": "083e8dcb0ca01f11182fe5f45b70dfecb92baac7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f7982c70_0c6cc621",
