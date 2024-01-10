@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "049a6e1b_26fe099a",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 602,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-01-10T19:19:34Z",
+      "side": 1,
+      "message": "nit: put a description of this change in the CL description somehow.\n\n-- remove argb argument from ...",
+      "range": {
+        "startLine": 602,
+        "startChar": 0,
+        "endLine": 602,
+        "endChar": 80
+      },
+      "revId": "8857b6cbed7a473e1c4f725170f0c5d9b33639ac",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
