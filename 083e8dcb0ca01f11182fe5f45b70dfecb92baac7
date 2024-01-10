@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f4a25a4_bdefb25d",
+        "filename": "core/fxge/dib/cfx_imagerenderer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-01-10T19:27:04Z",
+      "side": 1,
+      "message": "nit: 255.0f consistently?",
+      "range": {
+        "startLine": 107,
+        "startChar": 73,
+        "endLine": 107,
+        "endChar": 76
+      },
+      "revId": "083e8dcb0ca01f11182fe5f45b70dfecb92baac7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7982c70_0c6cc621",
+        "filename": "core/fxge/dib/cfx_imagerenderer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-01-10T19:27:04Z",
+      "side": 1,
+      "message": "follow-on: wonder if MultiplyAlpha() should make this check itself and short-circuit?",
+      "range": {
+        "startLine": 115,
+        "startChar": 15,
+        "endLine": 115,
+        "endChar": 28
+      },
+      "revId": "083e8dcb0ca01f11182fe5f45b70dfecb92baac7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
