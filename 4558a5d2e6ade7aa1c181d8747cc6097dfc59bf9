@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64b8457a_43be4174",
+        "filename": "core/fpdfapi/render/cpdf_imagerenderer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-01-10T19:39:00Z",
+      "side": 1,
+      "message": "Performance cost of making this device just to hold the bitmap?",
+      "range": {
+        "startLine": 462,
+        "startChar": 0,
+        "endLine": 462,
+        "endChar": 42
+      },
+      "revId": "4558a5d2e6ade7aa1c181d8747cc6097dfc59bf9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
