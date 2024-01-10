@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6686c660_8ad6b942",
+        "filename": "core/fxge/agg/fx_agg_driver.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1374,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-01-10T19:17:17Z",
+      "side": 1,
+      "message": "nit: do we care that this isn\u0027t written as 255.0f ?",
+      "range": {
+        "startLine": 1374,
+        "startChar": 65,
+        "endLine": 1374,
+        "endChar": 68
+      },
+      "revId": "20fd87d7d3c54107158063a89c00f5fcb6d4bd17",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
