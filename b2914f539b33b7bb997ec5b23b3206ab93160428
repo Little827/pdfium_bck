@@ -39,6 +39,29 @@
       },
       "revId": "b2914f539b33b7bb997ec5b23b3206ab93160428",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c183c78_c63d8f3a",
+        "filename": "core/fxge/dib/cfx_dibitmap.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-01-11T21:03:30Z",
+      "side": 1,
+      "message": "follow-on or something: return value from MultiplyAlpha appears unused by all callers.",
+      "range": {
+        "startLine": 463,
+        "startChar": 0,
+        "endLine": 463,
+        "endChar": 16
+      },
+      "revId": "b2914f539b33b7bb997ec5b23b3206ab93160428",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
