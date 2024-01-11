@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "0ed6e903_a99c8c95",
+        "filename": "core/fxge/dib/cfx_dibbase.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 953,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-11T21:50:38Z",
+      "side": 1,
+      "message": "Will try. This would require a SetPalette() variant that takes ownership fo the input.",
+      "parentUuid": "a068845d_683e39af",
+      "range": {
+        "startLine": 953,
+        "startChar": 23,
+        "endLine": 953,
+        "endChar": 31
+      },
+      "revId": "8b4bc163beeeb095cbb7db259c87b7f298258ff2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "38b84eee_016a6375",
         "filename": "core/fxge/dib/cfx_dibbase.cpp",
         "patchSetId": 3
@@ -64,6 +88,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "14476f01_21cdeaff",
+        "filename": "core/fxge/dib/cfx_dibbase.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1096,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-11T21:50:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5aebd11_17fbee3f",
+      "range": {
+        "startLine": 1096,
+        "startChar": 10,
+        "endLine": 1096,
+        "endChar": 35
+      },
+      "revId": "8b4bc163beeeb095cbb7db259c87b7f298258ff2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d52774d_7ce58c67",
@@ -87,6 +135,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "76bbcd15_88e3ff1f",
+        "filename": "core/fxge/dib/cfx_dibbase.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-11T21:50:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d52774d_7ce58c67",
+      "range": {
+        "startLine": 108,
+        "startChar": 32,
+        "endLine": 108,
+        "endChar": 34
+      },
+      "revId": "8b4bc163beeeb095cbb7db259c87b7f298258ff2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "af0c0558_b75a76ff",
@@ -100,6 +172,30 @@
       "writtenOn": "2024-01-11T18:27:57Z",
       "side": 1,
       "message": "nit: maybe DCHECK() (with a D) that we got an empty palette?",
+      "range": {
+        "startLine": 252,
+        "startChar": 2,
+        "endLine": 252,
+        "endChar": 15
+      },
+      "revId": "8b4bc163beeeb095cbb7db259c87b7f298258ff2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19d163fd_6407905a",
+        "filename": "core/fxge/dib/cfx_dibitmap.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-11T21:50:38Z",
+      "side": 1,
+      "message": "Done. Let\u0027s see if it works out.",
+      "parentUuid": "af0c0558_b75a76ff",
       "range": {
         "startLine": 252,
         "startChar": 2,
