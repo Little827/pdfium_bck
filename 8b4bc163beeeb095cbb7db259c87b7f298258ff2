@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a068845d_683e39af",
+        "filename": "core/fxge/dib/cfx_dibbase.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 953,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-01-11T18:27:57Z",
+      "side": 1,
+      "message": "follow-on: can we move this and avoid a copy?",
+      "range": {
+        "startLine": 953,
+        "startChar": 23,
+        "endLine": 953,
+        "endChar": 31
+      },
+      "revId": "8b4bc163beeeb095cbb7db259c87b7f298258ff2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38b84eee_016a6375",
+        "filename": "core/fxge/dib/cfx_dibbase.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1090,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-01-11T18:27:57Z",
+      "side": 1,
+      "message": "S\u0027awright, I go back and forth in my mind between {} and DataVector\u003cuint32_t\u003e() being better for the empty return ...",
+      "revId": "8b4bc163beeeb095cbb7db259c87b7f298258ff2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5aebd11_17fbee3f",
+        "filename": "core/fxge/dib/cfx_dibbase.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1096,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-01-11T18:27:57Z",
+      "side": 1,
+      "message": "follow-on: Can this return the palette, too?",
+      "range": {
+        "startLine": 1096,
+        "startChar": 10,
+        "endLine": 1096,
+        "endChar": 35
+      },
+      "revId": "8b4bc163beeeb095cbb7db259c87b7f298258ff2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d52774d_7ce58c67",
+        "filename": "core/fxge/dib/cfx_dibbase.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-01-11T18:27:57Z",
+      "side": 1,
+      "message": "nit: maybe say \"or an empty vector if none present\".",
+      "range": {
+        "startLine": 108,
+        "startChar": 32,
+        "endLine": 108,
+        "endChar": 34
+      },
+      "revId": "8b4bc163beeeb095cbb7db259c87b7f298258ff2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af0c0558_b75a76ff",
+        "filename": "core/fxge/dib/cfx_dibitmap.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-01-11T18:27:57Z",
+      "side": 1,
+      "message": "nit: maybe DCHECK() (with a D) that we got an empty palette?",
+      "range": {
+        "startLine": 252,
+        "startChar": 2,
+        "endLine": 252,
+        "endChar": 15
+      },
+      "revId": "8b4bc163beeeb095cbb7db259c87b7f298258ff2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
