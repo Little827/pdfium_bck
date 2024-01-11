@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3410b54d_00e036b4",
+        "filename": "core/fxge/dib/cfx_dibbase.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 858,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-11T23:54:24Z",
+      "side": 1,
+      "message": "Hoping this doesn\u0027t happen too often, or if it does due to an empty input, then at least the copy on line 854 is cheap.",
+      "revId": "ce0d023a7102f5e54d20f84a35324f3e4474d702",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
