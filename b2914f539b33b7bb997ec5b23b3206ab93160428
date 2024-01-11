@@ -16,6 +16,29 @@
       "message": "Per your earlier suggestion.",
       "revId": "b2914f539b33b7bb997ec5b23b3206ab93160428",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e925cf9e_742689bd",
+        "filename": "core/fxge/dib/cfx_dibitmap.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-01-11T18:16:12Z",
+      "side": 1,
+      "message": "maybe std::clamp(alpha) to 0.0..1.0, since its a float, and it would be a shame to check due to a rounding issue, for example?",
+      "range": {
+        "startLine": 459,
+        "startChar": 2,
+        "endLine": 461,
+        "endChar": 0
+      },
+      "revId": "b2914f539b33b7bb997ec5b23b3206ab93160428",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
