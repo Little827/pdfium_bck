@@ -456,8 +456,16 @@ bool CFX_DIBitmap::MultiplyAlphaMask(
 }
 
 bool CFX_DIBitmap::MultiplyAlpha(float alpha) {
-  if (!m_pBuffer)
+  CHECK_GE(alpha, 0.0f);
+  CHECK_LE(alpha, 1.0f);
+
+  if (alpha == 1.0f) {
+    return true;
+  }
+
+  if (!m_pBuffer) {
     return false;
+  }
 
   switch (GetFormat()) {
     case FXDIB_Format::k1bppMask:
