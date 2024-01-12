@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a061634e_9f37e271",
+        "filename": "core/fxge/dib/cfx_bitmapcomposer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-12T20:47:37Z",
+      "side": 1,
+      "message": "Init() here sometimes reads `src_palette`, and sometimes copies it. Meanwhile, the other Init() caller that passes in a non-empty palette only has access to a span. So leaving Init() as-is.",
+      "revId": "1f54bd30a9602a4e049cd6f15191e5fe9060f9c6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
