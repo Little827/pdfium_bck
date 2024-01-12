@@ -16,6 +16,52 @@
       "message": "Follow-up to comments from a prior CL.",
       "revId": "d082e5c69d447b4d5c80cc80b17f265dfcfdf483",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81a4a582_c4538af9",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1411,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-01-12T18:46:24Z",
+      "side": 1,
+      "message": "this is still a ref, but it is moved at line 1435?",
+      "range": {
+        "startLine": 1411,
+        "startChar": 0,
+        "endLine": 1411,
+        "endChar": 48
+      },
+      "revId": "d082e5c69d447b4d5c80cc80b17f265dfcfdf483",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e52062a_e90d5a9f",
+        "filename": "core/fxge/skia/fx_skia_device.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1436,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-01-12T18:46:24Z",
+      "side": 1,
+      "message": "Need to build temporaruy rect on the stack before moving pSource in this call.",
+      "range": {
+        "startLine": 1436,
+        "startChar": 5,
+        "endLine": 1436,
+        "endChar": 62
+      },
+      "revId": "d082e5c69d447b4d5c80cc80b17f265dfcfdf483",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
