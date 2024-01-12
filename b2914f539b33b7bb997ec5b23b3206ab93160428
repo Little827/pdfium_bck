@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d3ce0866_26d894f3",
+        "filename": "core/fxge/dib/cfx_dibitmap.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-12T20:52:04Z",
+      "side": 1,
+      "message": "It\u0027s already clamped in CPDF_AllStates::ProcessExtGS() and other places that parses alpha values. Now that the call stack passes the same float value around, there shouldn\u0027t be any rounding errors that would cause the value to go out of bound.",
+      "parentUuid": "e925cf9e_742689bd",
+      "range": {
+        "startLine": 459,
+        "startChar": 2,
+        "endLine": 461,
+        "endChar": 0
+      },
+      "revId": "b2914f539b33b7bb997ec5b23b3206ab93160428",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5c183c78_c63d8f3a",
         "filename": "core/fxge/dib/cfx_dibitmap.cpp",
         "patchSetId": 1
@@ -78,6 +102,30 @@
       "side": 1,
       "message": "Same for MultiplyAlphaMask.",
       "parentUuid": "5c183c78_c63d8f3a",
+      "range": {
+        "startLine": 463,
+        "startChar": 0,
+        "endLine": 463,
+        "endChar": 16
+      },
+      "revId": "b2914f539b33b7bb997ec5b23b3206ab93160428",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4174f02_3a6379e9",
+        "filename": "core/fxge/dib/cfx_dibitmap.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-12T20:52:04Z",
+      "side": 1,
+      "message": "Yes, I noticed. Not sure which direction to go with that yet.",
+      "parentUuid": "af7b7e28_6d3ef2eb",
       "range": {
         "startLine": 463,
         "startChar": 0,
