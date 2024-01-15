@@ -53,7 +53,7 @@ using ResourcesMap = std::map<ByteString, std::set<ByteString>>;
 
 bool GetColor(const CPDF_Color* pColor, float* rgb) {
   int intRGB[3];
-  if (!pColor || !pColor->IsColorSpaceRGB() ||
+  if (!pColor || (!pColor->IsColorSpaceRGB() && !pColor->IsColorSpaceGray()) ||
       !pColor->GetRGB(&intRGB[0], &intRGB[1], &intRGB[2])) {
     return false;
   }

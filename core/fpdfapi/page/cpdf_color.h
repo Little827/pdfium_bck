@@ -37,6 +37,7 @@ class CPDF_Color {
 
   uint32_t CountComponents() const;
   bool IsColorSpaceRGB() const;
+  bool IsColorSpaceGray() const;
   bool GetRGB(int* R, int* G, int* B) const;
 
   // Should only be called if IsPattern() returns true.

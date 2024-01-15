@@ -77,6 +77,11 @@ bool CPDF_Color::IsColorSpaceRGB() const {
          CPDF_ColorSpace::GetStockCS(CPDF_ColorSpace::Family::kDeviceRGB);
 }
 
+bool CPDF_Color::IsColorSpaceGray() const {
+  return m_pCS ==
+         CPDF_ColorSpace::GetStockCS(CPDF_ColorSpace::Family::kDeviceGray);
+}
+
 bool CPDF_Color::GetRGB(int* R, int* G, int* B) const {
   float r = 0.0f;
   float g = 0.0f;
