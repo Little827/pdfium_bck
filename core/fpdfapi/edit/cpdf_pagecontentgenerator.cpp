@@ -53,8 +53,7 @@ using ResourcesMap = std::map<ByteString, std::set<ByteString>>;
 
 bool GetColor(const CPDF_Color* pColor, float* rgb) {
   int intRGB[3];
-  if (!pColor || !pColor->IsColorSpaceRGB() ||
-      !pColor->GetRGB(&intRGB[0], &intRGB[1], &intRGB[2])) {
+  if (!pColor || !pColor->GetRGB(&intRGB[0], &intRGB[1], &intRGB[2])) {
     return false;
   }
   rgb[0] = intRGB[0] / 255.0f;
