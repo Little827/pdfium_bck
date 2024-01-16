@@ -16,6 +16,29 @@
       "message": "Hmm. I\u0027d assumed the optimizer would give us nearly identical code, except perhaps for a 64 bit vs 32 bit add, is this really faster?",
       "revId": "44386741ee551dac9bdd78dafc8b65cca2c3c0a9",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fdb9be7_bf0e4a21",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-01-16T20:47:46Z",
+      "side": 1,
+      "message": "given the cost of StringToWideString(), can\u0027t imagine the safe type matters ....",
+      "range": {
+        "startLine": 207,
+        "startChar": 22,
+        "endLine": 207,
+        "endChar": 40
+      },
+      "revId": "44386741ee551dac9bdd78dafc8b65cca2c3c0a9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
