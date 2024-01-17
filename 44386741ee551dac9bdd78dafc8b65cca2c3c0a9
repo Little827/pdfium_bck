@@ -145,6 +145,30 @@
       },
       "revId": "44386741ee551dac9bdd78dafc8b65cca2c3c0a9",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccdaabbd_630f4425",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-01-17T17:07:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b27c2ccd_81d1807d",
+      "range": {
+        "startLine": 232,
+        "startChar": 41,
+        "endLine": 232,
+        "endChar": 54
+      },
+      "revId": "44386741ee551dac9bdd78dafc8b65cca2c3c0a9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
