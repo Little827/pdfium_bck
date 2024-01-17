@@ -36,6 +36,23 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0760b54e_c8159b7f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-01-17T03:46:36Z",
+      "side": 1,
+      "message": "Ok, but I think the larger issue is whether a debug fuzzer is worthwhile vs. dcheck_always_on optimized builds (since fuzzing success depends on speed). But that\u0027s not your issue.",
+      "revId": "44386741ee551dac9bdd78dafc8b65cca2c3c0a9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7fdb9be7_bf0e4a21",
@@ -73,6 +90,30 @@
       "side": 1,
       "message": "The input case on the bug spends a lot of time in the 224 path. This is just changing the surrounding code for consistency.",
       "parentUuid": "7fdb9be7_bf0e4a21",
+      "range": {
+        "startLine": 207,
+        "startChar": 22,
+        "endLine": 207,
+        "endChar": 40
+      },
+      "revId": "44386741ee551dac9bdd78dafc8b65cca2c3c0a9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67b447f2_ce5511bb",
+        "filename": "core/fpdfapi/font/cpdf_tounicodemap.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-01-17T03:46:36Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "4516d957_f12c09d0",
       "range": {
         "startLine": 207,
         "startChar": 22,
