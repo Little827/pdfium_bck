@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "2ae22aa5_5e4cd834",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-17T18:22:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c13be02_d05d8db3",
+      "revId": "989d5c13be9760e5e27610d977d0079155a11902",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "cb66d337_c4a037b8",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -58,6 +76,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "98ccbae9_00ec37e4",
+        "filename": "core/fpdfapi/render/cpdf_devicebuffer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-17T18:22:48Z",
+      "side": 1,
+      "message": "This CL added a std::move().",
+      "parentUuid": "54cfd73e_b1e8409d",
+      "range": {
+        "startLine": 9,
+        "startChar": 10,
+        "endLine": 9,
+        "endChar": 17
+      },
+      "revId": "989d5c13be9760e5e27610d977d0079155a11902",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a87ee58c_d9beb7b5",
@@ -71,6 +113,30 @@
       "writtenOn": "2024-01-16T20:35:15Z",
       "side": 1,
       "message": "nit: maybe just `return blend_type \u003d\u003d BlendMode::kNormal \u0026\u0026 ...`",
+      "range": {
+        "startLine": 180,
+        "startChar": 2,
+        "endLine": 182,
+        "endChar": 36
+      },
+      "revId": "989d5c13be9760e5e27610d977d0079155a11902",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cdf670e_e626c80f",
+        "filename": "core/fxge/win32/cps_printer_driver.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-17T18:22:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a87ee58c_d9beb7b5",
       "range": {
         "startLine": 180,
         "startChar": 2,
