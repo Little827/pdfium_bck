@@ -227,11 +227,6 @@ allowed_hosts = [
 ]
 
 deps = {
-  'base/allocator/partition_allocator':
-    Var('chromium_git') +
-        '/chromium/src/base/allocator/partition_allocator.git@' +
-        Var('partition_allocator_revision'),
-
   'base/trace_event/common':
     Var('chromium_git') + '/chromium/src/base/trace_event/common.git@' +
         Var('trace_event_revision'),
@@ -405,6 +400,11 @@ deps = {
     ],
     'dep_type': 'cipd',
   },
+
+  'third_party/partition_alloc':
+    Var('chromium_git') +
+        '/chromium/src/base/allocator/partition_allocator.git@' +
+        Var('partition_allocator_revision'),
 
   'third_party/skia': {
     'url': Var('skia_git') + '/skia.git@' + Var('skia_revision'),

@@ -129,7 +129,7 @@ source_set("fxcrt") {
   deps = [ "../../third_party:pdfium_compiler_specific" ]
   if (pdf_use_partition_alloc) {
     sources += [ "fx_memory_pa.cpp" ]
-    public_deps += [ "../../third_party:pdfium_pa" ]
+    public_deps += [ "../../third_party:pdfium_partition_alloc" ]
   } else {
     sources += [ "fx_memory_malloc.cpp" ]
   }
@@ -229,7 +229,7 @@ pdfium_unittest_source_set("unittests") {
   deps = [ ":unit_test_support" ]
   pdfium_root_dir = "../../"
   if (pdf_use_partition_alloc) {
-    deps += [ "//base/allocator/partition_allocator/src/partition_alloc" ]
+    deps += [ "../../third_party:pdfium_partition_alloc" ]
   }
   if (pdf_enable_xfa) {
     sources += [ "cfx_memorystream_unittest.cpp" ]
