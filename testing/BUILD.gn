@@ -57,7 +57,7 @@ source_set("test_support") {
       "allocator_shim_config.cpp",
       "allocator_shim_config.h",
     ]
-    deps += [ "//base/allocator/partition_allocator/src/partition_alloc" ]
+    deps += [ "../third_party:pdfium_partition_alloc" ]
   }
   if (pdf_enable_v8) {
     sources += [

@@ -8,6 +8,12 @@ buildconfig = "//build/config/BUILDCONFIG.gn"
 # for python3.exe and python3.bat.
 script_executable = "python3"
 
+declare_args() {
+  # The source location of partition_alloc. This is useful only when
+  # `pdf_use_partition_alloc` is turned on.
+  pdf_partition_alloc_dir = "//third_party/partition_alloc"
+}
+
 default_args = {
   # PDFs only need to run JavaScript.
   v8_enable_webassembly = false
