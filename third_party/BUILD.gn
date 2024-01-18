@@ -535,16 +535,6 @@ source_set("pdfium_compiler_specific") {
   sources = [ "base/compiler_specific.h" ]
 }
 
-if (pdf_use_partition_alloc) {
-  group("pdfium_pa") {
-    public_deps = [
-      "//base/allocator/partition_allocator/src/partition_alloc:partition_alloc_buildflags",
-      "//base/allocator/partition_allocator/src/partition_alloc:raw_ptr",
-    ]
-    deps = [ "//base/allocator/partition_allocator/src/partition_alloc" ]
-  }
-}
-
 source_set("pdfium_base") {
   configs -= [ "//build/config/compiler:chromium_code" ]
   configs += [
@@ -585,6 +575,7 @@ source_set("pdfium_base") {
     ":pdfium_compiler_specific",
     "//third_party/abseil-cpp:absl",
   ]
+  deps = []
   if (is_win) {
     sources += [
       "base/win/scoped_select_object.h",
@@ -593,7 +584,11 @@ source_set("pdfium_base") {
     ]
   }
   if (pdf_use_partition_alloc) {
-    public_deps += [ ":pdfium_pa" ]
+    public_deps += [
+      "${pdf_partition_alloc_dir}:buildflags",
+      "${pdf_partition_alloc_dir}:raw_ptr",
+    ]
+    deps += [ "${pdf_partition_alloc_dir}:partition_alloc" ]
   }
 }
 
