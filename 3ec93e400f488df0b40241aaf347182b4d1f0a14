@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5d6126a_d480d722",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-01-18T18:03:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b7792a7_efc06c01",
+      "range": {
+        "startLine": 7,
+        "startChar": 10,
+        "endLine": 7,
+        "endChar": 16
+      },
+      "revId": "3ec93e400f488df0b40241aaf347182b4d1f0a14",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "68a1d078_ea9963f4",
@@ -41,6 +65,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e208546d_ad50eb66",
+        "filename": "core/fxcodec/fax/faxmodule.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 588,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-01-18T18:03:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68a1d078_ea9963f4",
+      "revId": "3ec93e400f488df0b40241aaf347182b4d1f0a14",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c67407e_43f86199",
@@ -54,6 +96,24 @@
       "writtenOn": "2024-01-04T02:19:49Z",
       "side": 1,
       "message": "Would `fxcrt::reinterpret_span\u003cuint32_t\u003e(pdfium::make_span(m_ScanlineBuf))` be easier to read?",
+      "revId": "3ec93e400f488df0b40241aaf347182b4d1f0a14",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73cab909_ee8e6e75",
+        "filename": "core/fxcodec/fax/faxmodule.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-01-18T18:03:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c67407e_43f86199",
       "revId": "3ec93e400f488df0b40241aaf347182b4d1f0a14",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -92,6 +152,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e00dde29_0cd500e2",
+        "filename": "core/fxcrt/span_util_unittest.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-01-18T18:03:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e612830b_f6919071",
+      "revId": "3ec93e400f488df0b40241aaf347182b4d1f0a14",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "802695ef_0807440d",
@@ -115,6 +193,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c09ac89_af9160dd",
+        "filename": "core/fxge/dib/cfx_dibbase.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 661,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-01-18T18:03:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "802695ef_0807440d",
+      "range": {
+        "startLine": 661,
+        "startChar": 11,
+        "endLine": 661,
+        "endChar": 19
+      },
+      "revId": "3ec93e400f488df0b40241aaf347182b4d1f0a14",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0b57068a_ece4602c",
@@ -128,6 +230,30 @@
       "writtenOn": "2024-01-04T02:19:49Z",
       "side": 1,
       "message": "Why not need `uint32_t*` like line 301?",
+      "range": {
+        "startLine": 336,
+        "startChar": 8,
+        "endLine": 336,
+        "endChar": 12
+      },
+      "revId": "3ec93e400f488df0b40241aaf347182b4d1f0a14",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08385f72_e9807dc2",
+        "filename": "xfa/fgas/graphics/cfgas_gegraphics.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-01-18T18:03:30Z",
+      "side": 1,
+      "message": "Yeah, ok.  Here we face the eternal question of whether to make a per-pixel bounds check. Done.",
+      "parentUuid": "0b57068a_ece4602c",
       "range": {
         "startLine": 336,
         "startChar": 8,
