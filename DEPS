@@ -174,7 +174,7 @@ vars = {
   # Three lines of non-changing comments so that
   # the commit queue can handle CLs rolling partition_allocator
   # and whatever else without interference from each other.
-  'partition_allocator_revision': '72b7e1a3fb42281f5ef11691656d759646651468',
+  'partition_alloc_revision': '0b1f9d5e46f7e8d5e1412b36ad23d81e472e952d',
   # Three lines of non-changing comments so that
   # the commit queue can handle CLs rolling pdfium_tests
   # and whatever else without interference from each other.
@@ -227,11 +227,6 @@ allowed_hosts = [
 ]
 
 deps = {
-  'base/allocator/partition_allocator':
-    Var('chromium_git') +
-        '/chromium/src/base/allocator/partition_allocator.git@' +
-        Var('partition_allocator_revision'),
-
   'base/trace_event/common':
     Var('chromium_git') + '/chromium/src/base/trace_event/common.git@' +
         Var('trace_event_revision'),
@@ -404,6 +399,13 @@ deps = {
       }
     ],
     'dep_type': 'cipd',
+  },
+
+  'third_party/partition_alloc': {
+    'url': Var('chromium_git') +
+      '/chromium/src/base/allocator/partition_allocator.git@' +
+      Var('partition_alloc_revision'),
+    'condition': 'pdf_is_standalone'
   },
 
   'third_party/skia': {
