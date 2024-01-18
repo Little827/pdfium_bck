@@ -1,6 +1,40 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb8c665b_4a60668c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-18T17:58:08Z",
+      "side": 1,
+      "message": "Nit: probably not needed with the next line.",
+      "revId": "570bcddf1d0102b0b17aa9a1ba44fb260a8fd6e1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e33b7ae_51ebfed1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-18T17:58:08Z",
+      "side": 1,
+      "message": "Nit: space after the first colon.",
+      "revId": "570bcddf1d0102b0b17aa9a1ba44fb260a8fd6e1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "789e0c00_76233668",
@@ -14,6 +48,23 @@
       "writtenOn": "2024-01-18T17:31:44Z",
       "side": 1,
       "message": "Hi Tom,\nCould you please take a look?",
+      "revId": "570bcddf1d0102b0b17aa9a1ba44fb260a8fd6e1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d43bc12_fb01f15d",
+        "filename": "DEPS",
+        "patchSetId": 5
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-18T17:58:08Z",
+      "side": 1,
+      "message": "Can this DEPS roll be its own CL?",
       "revId": "570bcddf1d0102b0b17aa9a1ba44fb260a8fd6e1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
