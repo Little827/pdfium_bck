@@ -54,6 +54,7 @@ CPDF_Stream::CPDF_Stream(RetainPtr<IFX_SeekableReadStream> file,
                          RetainPtr<CPDF_Dictionary> dict)
     : data_(std::move(file)), dict_(std::move(dict)) {
   CHECK(dict_);
+  CHECK(dict_->IsInline());
   SetLengthInDict(pdfium::base::checked_cast<int>(
       absl::get<RetainPtr<IFX_SeekableReadStream>>(data_)->GetSize()));
 }
@@ -62,6 +63,7 @@ CPDF_Stream::CPDF_Stream(DataVector<uint8_t> data,
                          RetainPtr<CPDF_Dictionary> dict)
     : data_(std::move(data)), dict_(std::move(dict)) {
   CHECK(dict_);
+  CHECK(dict_->IsInline());
   SetLengthInDict(pdfium::base::checked_cast<int>(
       absl::get<DataVector<uint8_t>>(data_).size()));
 }
