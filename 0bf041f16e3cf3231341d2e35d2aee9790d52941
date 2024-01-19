@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efab199a_b3f36b9e",
+        "filename": "core/fpdfapi/page/cpdf_image.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-01-19T17:57:31Z",
+      "side": 1,
+      "message": "nit: If our formatter is going to bracify, I tend to remove the trailing blank lines - as you like.",
+      "revId": "0bf041f16e3cf3231341d2e35d2aee9790d52941",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
