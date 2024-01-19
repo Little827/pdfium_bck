@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27b9c616_68d63ae8",
+        "filename": "core/fxcrt/fixed_size_data_vector.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-19T19:46:49Z",
+      "side": 1,
+      "message": "Here and line 38 - \"A CHECK() failure occurs ...\"",
+      "revId": "f2c3706873c107a6a377268e648538f846406fb9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
