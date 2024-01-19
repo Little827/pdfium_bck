@@ -16,6 +16,24 @@
       "message": "crrev.com/1248905 is shorter.",
       "revId": "d2a95aee570e36bc68cb23d7afabfa637935614a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ce4fb48_9dca01ae",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-01-19T17:17:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1dc9196d_53922252",
+      "revId": "d2a95aee570e36bc68cb23d7afabfa637935614a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
