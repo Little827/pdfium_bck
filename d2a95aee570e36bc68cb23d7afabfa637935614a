@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1dc9196d_53922252",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-19T06:18:03Z",
+      "side": 1,
+      "message": "crrev.com/1248905 is shorter.",
+      "revId": "d2a95aee570e36bc68cb23d7afabfa637935614a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
