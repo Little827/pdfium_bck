@@ -29,9 +29,6 @@ bool CPDF_StitchFunc::v_Init(const CPDF_Object* pObj, VisitedSet* pVisited) {
     return false;
 
   RetainPtr<const CPDF_Dictionary> pDict = pObj->GetDict();
-  if (!pDict)
-    return false;
-
   RetainPtr<const CPDF_Array> pFunctionsArray = pDict->GetArrayFor("Functions");
   if (!pFunctionsArray)
     return false;

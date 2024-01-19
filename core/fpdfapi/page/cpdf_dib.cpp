@@ -791,9 +791,6 @@ bool CPDF_DIB::LoadInternal(const CPDF_Dictionary* pFormResources,
     return false;
 
   m_pDict = m_pStream->GetDict();
-  if (!m_pDict)
-    return false;
-
   m_Width = m_pDict->GetIntegerFor("Width");
   m_Height = m_pDict->GetIntegerFor("Height");
   if (!IsValidDimension(m_Width) || !IsValidDimension(m_Height))
@@ -843,8 +840,7 @@ CPDF_DIB::LoadState CPDF_DIB::StartLoadMask() {
   }
 
   RetainPtr<const CPDF_Array> pMatte = mask->GetDict()->GetArrayFor("Matte");
-  if (pMatte && m_pColorSpace &&
-      m_Family != CPDF_ColorSpace::Family::kPattern &&
+  if (m_pColorSpace && m_Family != CPDF_ColorSpace::Family::kPattern &&
       pMatte->size() == m_nComponents &&
       m_pColorSpace->CountComponents() <= m_nComponents) {
     std::vector<float> colors =
