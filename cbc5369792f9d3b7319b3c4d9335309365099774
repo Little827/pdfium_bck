@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "70b51aa8_42aaa9d3",
+        "filename": "core/fpdfapi/parser/cpdf_dictionary.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-01-19T03:11:37Z",
+      "side": 1,
+      "message": "Could I ask you to file a bug to convert all usage of enable_if in pdfium to requires() clauses? I think we need full on C++20 so not there yet, would hate to forget.",
+      "range": {
+        "startLine": 92,
+        "startChar": 13,
+        "endLine": 94,
+        "endChar": 45
+      },
+      "revId": "cbc5369792f9d3b7319b3c4d9335309365099774",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5e557ecc_283c5fe2",
         "filename": "core/fpdfapi/parser/cpdf_dictionary.h",
         "patchSetId": 5
