@@ -347,37 +347,35 @@ RetainPtr<CPDF_ColorSpace> CPDF_DocPageData::GetColorSpaceInternal(
 RetainPtr<CPDF_Pattern> CPDF_DocPageData::GetPattern(
     RetainPtr<CPDF_Object> pPatternObj,
     const CFX_Matrix& matrix) {
-  if (!pPatternObj)
-    return nullptr;
+  CHECK(pPatternObj);
+  CHECK(pPatternObj->IsDictionary() || pPatternObj->IsStream());
 
   auto it = m_PatternMap.find(pPatternObj);
   if (it != m_PatternMap.end() && it->second)
     return pdfium::WrapRetain(it->second.Get());
 
-  RetainPtr<const CPDF_Dictionary> pDict = pPatternObj->GetDict();
-  if (!pDict)
-    return nullptr;
-
   RetainPtr<CPDF_Pattern> pPattern;
-  int type = pDict->GetIntegerFor("PatternType");
-  if (type == CPDF_Pattern::kTiling) {
-    pPattern = pdfium::MakeRetain<CPDF_TilingPattern>(GetDocument(),
-                                                      pPatternObj, matrix);
-  } else if (type == CPDF_Pattern::kShading) {
-    pPattern = pdfium::MakeRetain<CPDF_ShadingPattern>(
-        GetDocument(), pPatternObj, false, matrix);
-  } else {
-    return nullptr;
+  switch (pPatternObj->GetDict()->GetIntegerFor("PatternType")) {
+    case CPDF_Pattern::kTiling:
+      pPattern = pdfium::MakeRetain<CPDF_TilingPattern>(GetDocument(),
+                                                        pPatternObj, matrix);
+      break;
+    case CPDF_Pattern::kShading:
+      pPattern = pdfium::MakeRetain<CPDF_ShadingPattern>(
+          GetDocument(), pPatternObj, false, matrix);
+      break;
   }
-  m_PatternMap[pPatternObj].Reset(pPattern.Get());
+  if (pPattern) {
+    m_PatternMap[pPatternObj].Reset(pPattern.Get());
+  }
   return pPattern;
 }
 
 RetainPtr<CPDF_ShadingPattern> CPDF_DocPageData::GetShading(
     RetainPtr<CPDF_Object> pPatternObj,
     const CFX_Matrix& matrix) {
-  if (!pPatternObj)
-    return nullptr;
+  CHECK(pPatternObj);
+  CHECK(pPatternObj->IsDictionary() || pPatternObj->IsStream());
 
   auto it = m_PatternMap.find(pPatternObj);
   if (it != m_PatternMap.end() && it->second)
