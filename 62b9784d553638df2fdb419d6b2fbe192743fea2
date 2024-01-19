@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27d9a89f_e2ad7d46",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-01-19T18:02:33Z",
+      "side": 1,
+      "message": "LG w/question and nit.",
+      "revId": "62b9784d553638df2fdb419d6b2fbe192743fea2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6b11e5c_f632da6c",
+        "filename": "core/fpdfapi/parser/cpdf_stream.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-01-19T18:02:33Z",
+      "side": 1,
+      "message": "nit: I think we get a hard check from absl::get when there is a tag mismatch in the variant, so this would be redundant.",
+      "range": {
+        "startLine": 203,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 26
+      },
+      "revId": "62b9784d553638df2fdb419d6b2fbe192743fea2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
