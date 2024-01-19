@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0d73c7b_cfceb283",
+        "filename": "core/fpdfapi/parser/cpdf_dictionary.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-19T06:25:33Z",
+      "side": 1,
+      "message": "crbug.com/pdfium/2121",
+      "parentUuid": "70b51aa8_42aaa9d3",
+      "range": {
+        "startLine": 92,
+        "startChar": 13,
+        "endLine": 94,
+        "endChar": 45
+      },
+      "revId": "cbc5369792f9d3b7319b3c4d9335309365099774",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e557ecc_283c5fe2",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-01-19T03:09:37Z",
       "side": 1,
       "message": "Need to also update this form here.",
+      "range": {
+        "startLine": 101,
+        "startChar": 2,
+        "endLine": 101,
+        "endChar": 52
+      },
+      "revId": "cbc5369792f9d3b7319b3c4d9335309365099774",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef1d2230_6683989c",
+        "filename": "core/fpdfapi/parser/cpdf_dictionary.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-19T06:25:33Z",
+      "side": 1,
+      "message": "CanInternStrings is array/dict/name/string, so there\u0027s no need to update this.",
+      "parentUuid": "5e557ecc_283c5fe2",
       "range": {
         "startLine": 101,
         "startChar": 2,
