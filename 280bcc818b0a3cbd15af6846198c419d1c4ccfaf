@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37d92390_8f09c885",
+        "filename": "core/fpdfapi/parser/cpdf_document.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-01-19T17:53:52Z",
+      "side": 1,
+      "message": "pre-nit: What does keeps track of really mean? \"Adds stream\u0027s object number to the list of modified ap streamss\" maybe?",
+      "range": {
+        "startLine": 132,
+        "startChar": 54,
+        "endLine": 132,
+        "endChar": 65
+      },
+      "revId": "280bcc818b0a3cbd15af6846198c419d1c4ccfaf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5093dd59_255cefdf",
+        "filename": "core/fpdfapi/parser/cpdf_document.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-01-19T17:53:52Z",
+      "side": 1,
+      "message": "pre-nit: say \"newly created\", perhaps. Or not.",
+      "range": {
+        "startLine": 132,
+        "startChar": 73,
+        "endLine": 132,
+        "endChar": 76
+      },
+      "revId": "280bcc818b0a3cbd15af6846198c419d1c4ccfaf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30baa4dc_24c116c1",
+        "filename": "core/fpdfdoc/cpdf_bafontmap.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-01-19T17:53:52Z",
+      "side": 1,
+      "message": "I kinda like the old way better, where if the NewIndirect\u003c\u003e call were somehow change to make an entirely new dict copy, the subsequent fetch would ensure we are updating the right one ... plus avoids an else.",
+      "range": {
+        "startLine": 307,
+        "startChar": 0,
+        "endLine": 307,
+        "endChar": 54
+      },
+      "revId": "280bcc818b0a3cbd15af6846198c419d1c4ccfaf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49480cd0_83dbde2e",
+        "filename": "fpdfsdk/cpdfsdk_appstream.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1854,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-01-19T17:53:52Z",
+      "side": 1,
+      "message": "pre: why not just assign? CreatedModifiedAPStream returns RetainPtr, right?",
+      "range": {
+        "startLine": 1854,
+        "startChar": 11,
+        "endLine": 1854,
+        "endChar": 16
+      },
+      "revId": "280bcc818b0a3cbd15af6846198c419d1c4ccfaf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
