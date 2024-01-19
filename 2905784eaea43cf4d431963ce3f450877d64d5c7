@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "0e499830_7786cf7b",
+        "filename": "core/fpdfapi/parser/cpdf_stream.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-19T22:46:22Z",
+      "side": 1,
+      "message": "That behavior is going away 4 CLs down the chain, so I prefer to avoid the churn. https://pdfium-review.googlesource.com/c/pdfium/+/115692/1/core/fpdfapi/parser/cpdf_stream.cpp",
+      "parentUuid": "1e48be47_21ae8d31",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 35
+      },
+      "revId": "2905784eaea43cf4d431963ce3f450877d64d5c7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "712c95a7_7e1cf4ba",
         "filename": "core/fpdfdoc/cpdf_filespec_unittest.cpp",
         "patchSetId": 3
@@ -37,6 +61,30 @@
       "writtenOn": "2024-01-19T17:42:07Z",
       "side": 1,
       "message": "there\u0027s gotta be a better way of writing this, but I can\u0027t figure out what it is ...",
+      "range": {
+        "startLine": 179,
+        "startChar": 50,
+        "endLine": 180,
+        "endChar": 70
+      },
+      "revId": "2905784eaea43cf4d431963ce3f450877d64d5c7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31643095_5dda380e",
+        "filename": "core/fpdfdoc/cpdf_filespec_unittest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-19T22:46:22Z",
+      "side": 1,
+      "message": "How do you feel about ByteStringView(streams[i]).raw_span() ?",
+      "parentUuid": "712c95a7_7e1cf4ba",
       "range": {
         "startLine": 179,
         "startChar": 50,
@@ -83,6 +131,30 @@
       "writtenOn": "2024-01-19T17:42:07Z",
       "side": 1,
       "message": "Sooo ... does the CPDF_Stream care about a terminating NUL or not?\nI think these can all be pdfium::as_byte_span(kData) if the trailing NUL is ok to be included.",
+      "range": {
+        "startLine": 19,
+        "startChar": 25,
+        "endLine": 19,
+        "endChar": 36
+      },
+      "revId": "2905784eaea43cf4d431963ce3f450877d64d5c7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a55dc8d9_bc8baddb",
+        "filename": "core/fpdfdoc/cpdf_metadata_unittest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-19T22:46:22Z",
+      "side": 1,
+      "message": "I don\u0027t think CPDF_Stream cares. It\u0027s really up to the caller to pass in the appropriate data, and its the code that reads the stream that determines whether the NUL matters or not.\n\nIn this case, CPDF_Metadata passes the stream to CFX_XMLParser. I didn\u0027t look at the CFX_XMLParser code in detail, but I imagine it\u0027s pretty forgiving about trailing whitespaces and such.",
+      "parentUuid": "bf47d31b_4db0242f",
       "range": {
         "startLine": 19,
         "startChar": 25,
