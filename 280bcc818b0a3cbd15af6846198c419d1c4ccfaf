@@ -47,6 +47,54 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e6350d5_1882c15d",
+        "filename": "core/fpdfapi/parser/cpdf_document.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-20T02:06:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37d92390_8f09c885",
+      "range": {
+        "startLine": 132,
+        "startChar": 54,
+        "endLine": 132,
+        "endChar": 65
+      },
+      "revId": "280bcc818b0a3cbd15af6846198c419d1c4ccfaf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac73a85d_f25e4c4e",
+        "filename": "core/fpdfapi/parser/cpdf_document.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-20T02:06:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5093dd59_255cefdf",
+      "range": {
+        "startLine": 132,
+        "startChar": 73,
+        "endLine": 132,
+        "endChar": 76
+      },
+      "revId": "280bcc818b0a3cbd15af6846198c419d1c4ccfaf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "30baa4dc_24c116c1",
@@ -70,6 +118,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd570b51_ea6a0122",
+        "filename": "core/fpdfdoc/cpdf_bafontmap.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-20T02:06:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30baa4dc_24c116c1",
+      "range": {
+        "startLine": 307,
+        "startChar": 0,
+        "endLine": 307,
+        "endChar": 54
+      },
+      "revId": "280bcc818b0a3cbd15af6846198c419d1c4ccfaf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "49480cd0_83dbde2e",
@@ -83,6 +155,30 @@
       "writtenOn": "2024-01-19T17:53:52Z",
       "side": 1,
       "message": "pre: why not just assign? CreatedModifiedAPStream returns RetainPtr, right?",
+      "range": {
+        "startLine": 1854,
+        "startChar": 11,
+        "endLine": 1854,
+        "endChar": 16
+      },
+      "revId": "280bcc818b0a3cbd15af6846198c419d1c4ccfaf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c78e8d7_0b4e501b",
+        "filename": "fpdfsdk/cpdfsdk_appstream.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1854,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-20T02:06:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49480cd0_83dbde2e",
       "range": {
         "startLine": 1854,
         "startChar": 11,
