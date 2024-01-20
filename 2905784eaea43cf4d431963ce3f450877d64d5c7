@@ -95,6 +95,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7abfaef_8b1b5806",
+        "filename": "core/fpdfdoc/cpdf_filespec_unittest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-20T01:28:32Z",
+      "side": 1,
+      "message": "Or change `streams` to be an array of ByteStringView. The NUL will go away, but I don\u0027t think it matters.",
+      "parentUuid": "31643095_5dda380e",
+      "range": {
+        "startLine": 179,
+        "startChar": 50,
+        "endLine": 180,
+        "endChar": 70
+      },
+      "revId": "2905784eaea43cf4d431963ce3f450877d64d5c7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f60917ef_59a0ad18",
@@ -108,6 +132,30 @@
       "writtenOn": "2024-01-19T17:42:07Z",
       "side": 1,
       "message": "nit: can we get away with pdfium::as_byte_span(kHello) ?",
+      "range": {
+        "startLine": 221,
+        "startChar": 19,
+        "endLine": 221,
+        "endChar": 42
+      },
+      "revId": "2905784eaea43cf4d431963ce3f450877d64d5c7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8c11603_c3c9b863",
+        "filename": "core/fpdfdoc/cpdf_filespec_unittest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-20T01:28:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f60917ef_59a0ad18",
       "range": {
         "startLine": 221,
         "startChar": 19,
