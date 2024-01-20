@@ -50,6 +50,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "a82c4b1e_4c940bfc",
+        "filename": "core/fpdfapi/parser/cpdf_stream.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-01-20T19:39:18Z",
+      "side": 1,
+      "message": "ack.",
+      "parentUuid": "0e499830_7786cf7b",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 35
+      },
+      "revId": "2905784eaea43cf4d431963ce3f450877d64d5c7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "712c95a7_7e1cf4ba",
         "filename": "core/fpdfdoc/cpdf_filespec_unittest.cpp",
         "patchSetId": 3
@@ -203,6 +227,30 @@
       "side": 1,
       "message": "I don\u0027t think CPDF_Stream cares. It\u0027s really up to the caller to pass in the appropriate data, and its the code that reads the stream that determines whether the NUL matters or not.\n\nIn this case, CPDF_Metadata passes the stream to CFX_XMLParser. I didn\u0027t look at the CFX_XMLParser code in detail, but I imagine it\u0027s pretty forgiving about trailing whitespaces and such.",
       "parentUuid": "bf47d31b_4db0242f",
+      "range": {
+        "startLine": 19,
+        "startChar": 25,
+        "endLine": 19,
+        "endChar": 36
+      },
+      "revId": "2905784eaea43cf4d431963ce3f450877d64d5c7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c70b889_41e1e1fc",
+        "filename": "core/fpdfdoc/cpdf_metadata_unittest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-01-20T19:39:18Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "a55dc8d9_bc8baddb",
       "range": {
         "startLine": 19,
         "startChar": 25,
