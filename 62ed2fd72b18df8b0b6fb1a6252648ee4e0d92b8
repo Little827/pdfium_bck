@@ -16,6 +16,23 @@
       "message": "Feel the allure of u16string and let it seep into the codebase...",
       "revId": "62ed2fd72b18df8b0b6fb1a6252648ee4e0d92b8",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4656681_56f6ac87",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5475
+      },
+      "writtenOn": "2024-01-21T15:30:02Z",
+      "side": 1,
+      "message": "Post-holiday ping.\n\nThere was some unresolved discussion about this here: https://pdfium-review.googlesource.com/c/pdfium/+/114670/4/core/fxcrt/fx_string.h#25\n\nThe summary is:\n* Having a type that\u0027s guaranteed to be UTF-16 makes some things easier (e.g. this CL)\n* It\u0027s unclear of CoW matters for text strings, hence it\u0027s undecided if u16string is a good UTF-16 type for pdfium",
+      "revId": "62ed2fd72b18df8b0b6fb1a6252648ee4e0d92b8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
