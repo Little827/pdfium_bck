@@ -76,6 +76,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c062a2e_e8c93bdb",
+        "filename": "fpdfsdk/fpdf_edittext.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-23T22:16:27Z",
+      "side": 1,
+      "message": "Leaving it as is, since both ways are slightly weird.",
+      "parentUuid": "63d5b1a0_ae50dc3d",
+      "range": {
+        "startLine": 84,
+        "startChar": 9,
+        "endLine": 84,
+        "endChar": 23
+      },
+      "revId": "6f593371e462877e96232ffcd819dd31801ecd2a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "51e5040c_fd537bff",
@@ -101,6 +125,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6b9ca7ce_1f767ea4",
+        "filename": "fpdfsdk/fpdf_edittext.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-23T22:16:27Z",
+      "side": 1,
+      "message": "The other variable of the same name is on line 221. We could reuse the variable, but I like the smaller scopes.",
+      "parentUuid": "51e5040c_fd537bff",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 206,
+        "endChar": 37
+      },
+      "revId": "6f593371e462877e96232ffcd819dd31801ecd2a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "70ea40a0_270c78ff",
         "filename": "fpdfsdk/fpdf_ppo.cpp",
         "patchSetId": 4
@@ -112,6 +160,30 @@
       "writtenOn": "2024-01-23T19:21:35Z",
       "side": 1,
       "message": "nit: just\n`return UpdateReference(pStream-\u003eGetMutableDict())`\n\nas result of the get mutable dict call is already an rvalue.",
+      "range": {
+        "startLine": 333,
+        "startChar": 5,
+        "endLine": 334,
+        "endChar": 47
+      },
+      "revId": "6f593371e462877e96232ffcd819dd31801ecd2a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "930c9236_6726030c",
+        "filename": "fpdfsdk/fpdf_ppo.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-23T22:16:27Z",
+      "side": 1,
+      "message": "Done in https://pdfium-review.googlesource.com/115710, and like 332 got merged in as well.",
+      "parentUuid": "70ea40a0_270c78ff",
       "range": {
         "startLine": 333,
         "startChar": 5,
