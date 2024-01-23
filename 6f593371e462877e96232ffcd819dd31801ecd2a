@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "23e795be_ff274ca5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-23T22:05:05Z",
+      "side": 1,
+      "message": "Yarg. Bad rebase.",
+      "parentUuid": "9e3f60eb_38c2cca0",
+      "revId": "6f593371e462877e96232ffcd819dd31801ecd2a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "f9443cd2_aed476f1",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
