@@ -33,6 +33,23 @@
       "message": "Ok, kind of a generic name that might collide someday, tho.",
       "revId": "509824d6473fd6e5c157bb6854ce0fa095416f03",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b08622e_b2581314",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5645
+      },
+      "writtenOn": "2024-01-23T19:01:46Z",
+      "side": 1,
+      "message": "G-approval stamp.",
+      "revId": "509824d6473fd6e5c157bb6854ce0fa095416f03",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
