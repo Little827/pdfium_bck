@@ -50,6 +50,24 @@
       "message": "G-approval stamp.",
       "revId": "509824d6473fd6e5c157bb6854ce0fa095416f03",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a85285a7_ea3acb8b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-23T19:39:08Z",
+      "side": 1,
+      "message": "Hopefully we can figure out the namespace story before then.",
+      "parentUuid": "3b122c46_435fdb05",
+      "revId": "509824d6473fd6e5c157bb6854ce0fa095416f03",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
