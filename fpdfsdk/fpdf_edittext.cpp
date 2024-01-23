@@ -81,10 +81,7 @@ namespace {
 ByteString BaseFontNameForType(CFX_Font* pFont, int font_type) {
   ByteString name = font_type == FPDF_FONT_TYPE1 ? pFont->GetPsName()
                                                  : pFont->GetBaseFontName();
-  if (!name.IsEmpty())
-    return name;
-
-  return CFX_Font::kUntitledFontName;
+  return name.IsEmpty() ? CFX_Font::kUntitledFontName : name;
 }
 
 RetainPtr<CPDF_Dictionary> LoadFontDesc(CPDF_Document* pDoc,
@@ -108,7 +105,7 @@ RetainPtr<CPDF_Dictionary> LoadFontDesc(CPDF_Document* pDoc,
     flags |= FXFONT_FORCE_BOLD;
   }
 
-  // TODO(npm): How do I know if a  font is symbolic, script, allcap, smallcap
+  // TODO(npm): How do I know if a font is symbolic, script, allcap, smallcap?
   flags |= FXFONT_NONSYMBOLIC;
 
   pFontDesc->SetNewFor<CPDF_Number>("Flags", flags);
@@ -129,7 +126,7 @@ RetainPtr<CPDF_Dictionary> LoadFontDesc(CPDF_Document* pDoc,
   // TODO(npm): Lengths for Type1 fonts.
   if (font_type == FPDF_FONT_TRUETYPE) {
     stream->GetMutableDict()->SetNewFor<CPDF_Number>(
-        "Length1", static_cast<int>(span.size()));
+        "Length1", pdfium::base::checked_cast<int>(span.size()));
   }
   ByteString fontFile = font_type == FPDF_FONT_TYPE1 ? "FontFile" : "FontFile2";
   pFontDesc->SetNewFor<CPDF_Reference>(fontFile, pDoc, stream->GetObjNum());
@@ -158,7 +155,7 @@ const char ToUnicodeEnd[] =
     "end\n";
 
 void AddCharcode(fxcrt::ostringstream* pBuffer, uint32_t number) {
-  DCHECK(number <= 0xFFFF);
+  CHECK_LE(number, 0xFFFF);
   *pBuffer << "<";
   char ans[4];
   FXSYS_IntToFourHexChars(number, ans);
@@ -287,7 +284,6 @@ RetainPtr<CPDF_Stream> LoadUnicode(
   }
   buffer << "endbfrange\n";
   buffer << ToUnicodeEnd;
-  // TODO(npm): Encrypt / Compress?
   auto stream = pDoc->NewIndirect<CPDF_Stream>(&buffer);
   return stream;
 }
