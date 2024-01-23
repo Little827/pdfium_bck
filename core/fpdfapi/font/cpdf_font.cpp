@@ -224,8 +224,8 @@ void CPDF_Font::CheckFontMetrics() {
       m_FontBBox.bottom = NormalizeFontMetric(raw_bbox.top, upem);
       m_FontBBox.right = NormalizeFontMetric(raw_bbox.right, upem);
       m_FontBBox.top = NormalizeFontMetric(raw_bbox.bottom, upem);
-      m_Ascent = NormalizeFontMetric(face->GetAscender(), upem);
-      m_Descent = NormalizeFontMetric(face->GetDescender(), upem);
+      m_Ascent = face->GetAdjustedAscender();
+      m_Descent = face->GetAdjustedDescender();
     } else {
       bool bFirst = true;
       for (int i = 0; i < 256; i++) {
