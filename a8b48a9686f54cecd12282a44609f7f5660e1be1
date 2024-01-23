@@ -48,6 +48,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "12b701bc_a6d8a803",
+        "filename": "core/fpdfapi/page/cpdf_docpagedata.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-23T01:40:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f0f70b6_01608057",
+      "range": {
+        "startLine": 367,
+        "startChar": 2,
+        "endLine": 367,
+        "endChar": 3
+      },
+      "revId": "a8b48a9686f54cecd12282a44609f7f5660e1be1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e9c44ede_5c93cb17",
@@ -61,6 +85,30 @@
       "writtenOn": "2024-01-19T18:08:38Z",
       "side": 1,
       "message": "segv for free on 27 otherwise.",
+      "range": {
+        "startLine": 25,
+        "startChar": 1,
+        "endLine": 25,
+        "endChar": 14
+      },
+      "revId": "a8b48a9686f54cecd12282a44609f7f5660e1be1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f61037c1_048a7485",
+        "filename": "core/fpdfapi/page/cpdf_expintfunc.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-23T01:40:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9c44ede_5c93cb17",
       "range": {
         "startLine": 25,
         "startChar": 1,
@@ -118,6 +166,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "126c070d_526c6b10",
+        "filename": "core/fpdfapi/page/cpdf_function.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-23T01:40:09Z",
+      "side": 1,
+      "message": "There\u0027s only 1 caller, so I\u0027m not too worried about this.",
+      "parentUuid": "600197b8_dd288ce9",
+      "range": {
+        "startLine": 65,
+        "startChar": 15,
+        "endLine": 65,
+        "endChar": 25
+      },
+      "revId": "a8b48a9686f54cecd12282a44609f7f5660e1be1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b17f3b80_392c99b8",
@@ -131,6 +203,30 @@
       "writtenOn": "2024-01-19T18:08:38Z",
       "side": 1,
       "message": "redundant.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 14
+      },
+      "revId": "a8b48a9686f54cecd12282a44609f7f5660e1be1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0f7fc2b_b80255a4",
+        "filename": "core/fpdfapi/page/cpdf_stitchfunc.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-23T01:40:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b17f3b80_392c99b8",
       "range": {
         "startLine": 31,
         "startChar": 0,
