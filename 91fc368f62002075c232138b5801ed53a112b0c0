@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b50d353c_70d4ada5",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-24T18:22:57Z",
+      "side": 1,
+      "message": "This is also out of date. e.g. https://groups.google.com/a/chromium.org/g/chromium-dev/c/rajt7THxIng mentions other developers using it outside of Google.",
+      "range": {
+        "startLine": 81,
+        "startChar": 25,
+        "endLine": 81,
+        "endChar": 33
+      },
+      "revId": "91fc368f62002075c232138b5801ed53a112b0c0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
