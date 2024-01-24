@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "edd8f73b_52721cec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-24T19:10:06Z",
+      "side": 1,
+      "message": "In a model where the embedder knows the PDFium build configuration, doesn\u0027t the embedder already know whether PDF_USE_SKIA would be defined or not, without needing this CL?",
+      "revId": "e0ec20fe139b692bd8c72ad3c5b57e953eaa3276",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
