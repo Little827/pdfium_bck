@@ -16,6 +16,24 @@
       "message": "In a model where the embedder knows the PDFium build configuration, doesn\u0027t the embedder already know whether PDF_USE_SKIA would be defined or not, without needing this CL?",
       "revId": "e0ec20fe139b692bd8c72ad3c5b57e953eaa3276",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c26145ae_debf2eb1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2024-01-24T19:29:09Z",
+      "side": 1,
+      "message": "AFAICT, yes -- however:\n\nI discovered this issue when trying to use `FPDF_RenderPageSkia()` for Windows XPS printing.  Even though Chromium has [1], I would get: `error: use of undeclared identifier \u0027FPDF_RenderPageSkia\u0027` until I patched my local PDFium with this change.\n\n[1] https://crsrc.org/c/build_overrides/pdfium.gni;drc\u003da43af10a71471b76153986b5149f0c77e47f9ed4;l\u003d22",
+      "parentUuid": "edd8f73b_52721cec",
+      "revId": "e0ec20fe139b692bd8c72ad3c5b57e953eaa3276",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
