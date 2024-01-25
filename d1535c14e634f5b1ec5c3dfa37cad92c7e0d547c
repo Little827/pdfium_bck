@@ -137,6 +137,24 @@
       "message": "In modern C++ code, just use `absl::optional\u003cint32_t\u003e` instead of making up a sentinel value. The entire codebase will move to std::optional eventually, but that\u0027s not ready yet.",
       "revId": "d1535c14e634f5b1ec5c3dfa37cad92c7e0d547c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7a05cd2_93a8f4d9",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentgenerator.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 9186
+      },
+      "writtenOn": "2024-01-25T03:17:31Z",
+      "side": 1,
+      "message": "thanks for the feedback\n\nI will keep this in mind when this is revisted",
+      "parentUuid": "2716bd0c_611a5a51",
+      "revId": "d1535c14e634f5b1ec5c3dfa37cad92c7e0d547c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
