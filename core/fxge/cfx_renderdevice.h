@@ -204,10 +204,18 @@ class CFX_RenderDevice {
                    bool bAlphaMode);
 
   // Multiplies the device by a constant alpha, returning `true` on success.
+  // Assumes `this` is bitmap-based and `this` is not of a mask format.
+  // The backing bitmap for `this` will be converted to format
+  // `FXDIB_Format::kArgb` on success when `alpha` is not 1.
   bool MultiplyAlpha(float alpha);
 
   // Multiplies the device by an alpha mask, returning `true` on success.
+  // Assumes `this` is bitmap-based and of format `FXDIB_Format::kArgb` or
+  // `FXDIB_Format::kRgb32`.
+  // `mask` must have the same dimensions as `this`.
   // `mask` must be of format `FXDIB_Format::k8bppMask`.
+  // The backing bitmap for `this` will be converted to format
+  // `FXDIB_Format::kArgb` on success.
   bool MultiplyAlphaMask(RetainPtr<const CFX_DIBitmap> mask);
 
 #if defined(PDF_USE_SKIA)
