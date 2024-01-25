@@ -41,6 +41,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebc39de0_f77d53e5",
+        "filename": "core/fxge/cfx_renderdevice.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-25T19:20:47Z",
+      "side": 1,
+      "message": "That\u0027s a typo. s/if/is/. Does that make sense now?",
+      "parentUuid": "4f840226_7626a764",
+      "range": {
+        "startLine": 207,
+        "startChar": 40,
+        "endLine": 207,
+        "endChar": 46
+      },
+      "revId": "6100ab4f3d19ac7fc6ad4ab3a7dac95aa577e03a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "11641616_ef8e0011",
@@ -54,6 +78,24 @@
       "writtenOn": "2024-01-25T18:54:09Z",
       "side": 1,
       "message": "nit: do we like to write 255.0f ?",
+      "revId": "6100ab4f3d19ac7fc6ad4ab3a7dac95aa577e03a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1631da3_43dbd41b",
+        "filename": "core/fxge/dib/cfx_dibitmap.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-25T19:20:47Z",
+      "side": 1,
+      "message": "Sure, why not.",
+      "parentUuid": "11641616_ef8e0011",
       "revId": "6100ab4f3d19ac7fc6ad4ab3a7dac95aa577e03a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
