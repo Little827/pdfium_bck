@@ -124,10 +124,18 @@ class RenderDeviceDriverIface {
 #endif
 
   // Multiplies the device by a constant alpha, returning `true` on success.
+  // Assumes `this` is bitmap-based and if not of a mask format.
+  // The backing bitmap for `this` will be converted to format
+  // `FXDIB_Format::kArgb` on success when `alpha` is not 1.
   virtual bool MultiplyAlpha(float alpha) = 0;
 
   // Multiplies the device by an alpha mask, returning `true` on success.
+  // Assumes `this` is bitmap-based and of format `FXDIB_Format::kArgb` or
+  // `FXDIB_Format::kRgb32`.
+  // `mask` must have the same dimensions as `this`.
   // `mask` must be of format `FXDIB_Format::k8bppMask`.
+  // The backing bitmap for `this` will be converted to format
+  // `FXDIB_Format::kArgb` on success.
   virtual bool MultiplyAlphaMask(RetainPtr<const CFX_DIBitmap> mask) = 0;
 };
 
