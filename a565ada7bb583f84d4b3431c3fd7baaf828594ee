@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa50ece3_868548b1",
+        "filename": "core/fxge/dib/cfx_dibitmap.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-25T18:28:39Z",
+      "side": 0,
+      "message": "Cast is here.",
+      "revId": "a565ada7bb583f84d4b3431c3fd7baaf828594ee",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
