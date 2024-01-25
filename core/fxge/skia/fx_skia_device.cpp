@@ -715,18 +715,13 @@ CFX_SkiaDeviceDriver::CFX_SkiaDeviceDriver(
       return;
     }
 
-    color_type = Get32BitSkColorType(bRgbByteOrder);
+    color_type = Get32BitSkColorType(m_bRgbByteOrder);
   } else {
     DCHECK_EQ(bpp, 32);
-    color_type = Get32BitSkColorType(bRgbByteOrder);
+    color_type = Get32BitSkColorType(m_bRgbByteOrder);
   }
 
-  SkImageInfo imageInfo =
-      SkImageInfo::Make(m_pBitmap->GetWidth(), m_pBitmap->GetHeight(),
-                        color_type, kPremul_SkAlphaType);
-  surface_ = SkSurfaces::WrapPixels(
-      imageInfo, m_pBitmap->GetWritableBuffer().data(), m_pBitmap->GetPitch());
-  m_pCanvas = surface_->getCanvas();
+  InitializeSurfaceAndCanvas(color_type);
 }
 
 CFX_SkiaDeviceDriver::CFX_SkiaDeviceDriver(SkCanvas* canvas)
@@ -955,25 +950,40 @@ int CFX_SkiaDeviceDriver::GetDriverType() const {
 bool CFX_SkiaDeviceDriver::MultiplyAlpha(float alpha) {
   CHECK_GE(alpha, 0.0f);
   CHECK_LE(alpha, 1.0f);
+  CHECK(!m_pBitmap->IsMaskFormat());
 
-  if (alpha != 1.0f) {
-    SkPaint paint;
-    paint.setAlphaf(alpha);
-    paint.setBlendMode(SkBlendMode::kDstIn);
-    m_pCanvas->drawPaint(paint);
+  if (alpha == 1.0f) {
+    return true;
   }
+
+  if (!ConvertToArgbBitmap()) {
+    return false;
+  }
+
+  SkPaint paint;
+  paint.setAlphaf(alpha);
+  paint.setBlendMode(SkBlendMode::kDstIn);
+  m_pCanvas->drawPaint(paint);
   return true;
 }
 
 bool CFX_SkiaDeviceDriver::MultiplyAlphaMask(
     RetainPtr<const CFX_DIBitmap> mask) {
+  CHECK_EQ(m_pBitmap->GetWidth(), mask->GetWidth());
+  CHECK_EQ(m_pBitmap->GetHeight(), mask->GetHeight());
   CHECK_EQ(FXDIB_Format::k8bppMask, mask->GetFormat());
+  CHECK(m_pBitmap->GetFormat() == FXDIB_Format::kArgb ||
+        m_pBitmap->GetFormat() == FXDIB_Format::kRgb32);
 
   sk_sp<SkImage> skia_mask = mask->RealizeSkImage();
   if (!skia_mask) {
     return false;
   }
   DCHECK_EQ(skia_mask->colorType(), kAlpha_8_SkColorType);
+
+  if (!ConvertToArgbBitmap()) {
+    return false;
+  }
 
   SkPaint paint;
   paint.setBlendMode(SkBlendMode::kDstIn);
@@ -1626,6 +1636,45 @@ bool CFX_SkiaDeviceDriver::StartDIBitsSkia(RetainPtr<const CFX_DIBBase> bitmap,
   }
 
   DebugValidate(m_pBitmap);
+  return true;
+}
+
+void CFX_SkiaDeviceDriver::InitializeSurfaceAndCanvas(SkColorType color_type) {
+  SkImageInfo image_info =
+      SkImageInfo::Make(m_pBitmap->GetWidth(), m_pBitmap->GetHeight(),
+                        color_type, kPremul_SkAlphaType);
+  surface_ = SkSurfaces::WrapPixels(
+      image_info, m_pBitmap->GetWritableBuffer().data(), m_pBitmap->GetPitch());
+  m_pCanvas = surface_->getCanvas();
+}
+
+bool CFX_SkiaDeviceDriver::ConvertToArgbBitmap() {
+  if (m_pOriginalBitmap) {
+    // Convert `m_pOriginalBitmap`.
+    DCHECK_EQ(m_pOriginalBitmap->GetFormat(), FXDIB_Format::kRgb);
+    if (!m_pOriginalBitmap->ConvertFormat(FXDIB_Format::kArgb)) {
+      return false;
+    }
+    // Sync `m_pBitmap` to `m_pOriginalBitmap`, and replace `m_pBitmap` with
+    // `m_pOriginalBitmap`. After the replacement, `m_pOriginalBitmap` is no
+    // longer in use.
+    int width = m_pOriginalBitmap->GetWidth();
+    int height = m_pOriginalBitmap->GetHeight();
+    DCHECK_EQ(width, m_pBitmap->GetWidth());
+    DCHECK_EQ(height, m_pBitmap->GetHeight());
+    DCHECK_EQ(FXDIB_Format::kRgb, m_pOriginalBitmap->GetFormat());
+    m_pOriginalBitmap->TransferBitmap(/*dest_left=*/0, /*dest_top=*/0, width,
+                                      height, m_pBitmap, /*src_left=*/0,
+                                      /*src_top=*/0);
+    m_pBitmap = std::move(m_pOriginalBitmap);
+  } else {
+    // Without `m_pOriginalBitmap`, just convert `m_pBitmap` directly.
+    if (!m_pBitmap->ConvertFormat(FXDIB_Format::kArgb)) {
+      return false;
+    }
+  }
+
+  InitializeSurfaceAndCanvas(Get32BitSkColorType(m_bRgbByteOrder));
   return true;
 }
 
