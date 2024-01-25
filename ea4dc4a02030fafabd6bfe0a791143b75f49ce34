@@ -33,6 +33,91 @@
       "message": "now requiring two reviewers?",
       "revId": "ea4dc4a02030fafabd6bfe0a791143b75f49ce34",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c399ff2_7a91b8b4",
+        "filename": "fpdfsdk/fpdf_save_embeddertest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-25T23:14:08Z",
+      "side": 1,
+      "message": "Please consider adding the test in one CL, and then doing the fix in a second CL. That way, it becomes much more obvious that the second CL is having the intended effect. To make that work, the first CL still needs to pass, so in this case, it has to test that the objects are black.",
+      "revId": "ea4dc4a02030fafabd6bfe0a791143b75f49ce34",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74031120_49aab2ff",
+        "filename": "fpdfsdk/fpdf_save_embeddertest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-25T23:14:08Z",
+      "side": 1,
+      "message": "No need to add a comment to say OpenDocument() opens the document.",
+      "revId": "ea4dc4a02030fafabd6bfe0a791143b75f49ce34",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "301ebaf6_e9217969",
+        "filename": "fpdfsdk/fpdf_save_embeddertest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-25T23:14:08Z",
+      "side": 1,
+      "message": "1) Shouldn\u0027t this be LoadSavedPage()?\n2) Just create a new variable. Then one does not have remember that `page` is sometimes the original page, and sometimes the new page.",
+      "revId": "ea4dc4a02030fafabd6bfe0a791143b75f49ce34",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "334ea826_87425fcf",
+        "filename": "fpdfsdk/fpdf_save_embeddertest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-25T23:14:08Z",
+      "side": 1,
+      "message": "EXPECT_FALSE(a \u003d\u003d b) transforms to EXPECT_NE(a, b). If the test fails, EXPECT_NE() will print out a better diagnostic message.",
+      "revId": "ea4dc4a02030fafabd6bfe0a791143b75f49ce34",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b104e306_b0ba8d09",
+        "filename": "testing/resources/bug_2116.pdf",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-25T23:14:08Z",
+      "side": 1,
+      "message": "It would be nicer if there can be a smaller, handwritten PDF for use as a test case. If you need help, please let me know.",
+      "revId": "ea4dc4a02030fafabd6bfe0a791143b75f49ce34",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
