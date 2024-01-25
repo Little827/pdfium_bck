@@ -88,6 +88,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "31e32a7c_b76fa7e8",
+        "filename": "fpdfsdk/fpdf_save_embeddertest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-25T23:29:31Z",
+      "side": 1,
+      "message": "When using LoadSavedPage(), the correspoding unload function is CloseSavedPage().",
+      "parentUuid": "301ebaf6_e9217969",
+      "revId": "ea4dc4a02030fafabd6bfe0a791143b75f49ce34",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "334ea826_87425fcf",
         "filename": "fpdfsdk/fpdf_save_embeddertest.cpp",
         "patchSetId": 4
