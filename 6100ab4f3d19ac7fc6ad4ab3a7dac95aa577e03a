@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b548bb3_d7bc26b7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-01-25T18:54:09Z",
+      "side": 1,
+      "message": "Code LG w/nits.",
+      "revId": "6100ab4f3d19ac7fc6ad4ab3a7dac95aa577e03a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f840226_7626a764",
+        "filename": "core/fxge/cfx_renderdevice.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-01-25T18:54:09Z",
+      "side": 1,
+      "message": "nit: did you mean \"and not a\"? My brain isn\u0027t parsing \"and if not of a\"",
+      "range": {
+        "startLine": 207,
+        "startChar": 40,
+        "endLine": 207,
+        "endChar": 46
+      },
+      "revId": "6100ab4f3d19ac7fc6ad4ab3a7dac95aa577e03a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11641616_ef8e0011",
+        "filename": "core/fxge/dib/cfx_dibitmap.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-01-25T18:54:09Z",
+      "side": 1,
+      "message": "nit: do we like to write 255.0f ?",
+      "revId": "6100ab4f3d19ac7fc6ad4ab3a7dac95aa577e03a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
