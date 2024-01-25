@@ -33,6 +33,24 @@
       "message": "Curious, if you add your own +1, is this suddenly 2-G approved?",
       "revId": "c493d61e9a942524f5736f29aeb1fd886134daa5",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffefc14f_fd935937",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-25T22:28:55Z",
+      "side": 1,
+      "message": "I guess I can try, but it feels weird to CR+1 one\u0027s own CL. But then again, I\u0027ve done weirder things on PDFium Gerrit today.",
+      "parentUuid": "d54b3651_af119c7d",
+      "revId": "c493d61e9a942524f5736f29aeb1fd886134daa5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
