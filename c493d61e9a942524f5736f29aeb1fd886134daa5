@@ -16,6 +16,23 @@
       "message": "G-approval stamp.",
       "revId": "c493d61e9a942524f5736f29aeb1fd886134daa5",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d54b3651_af119c7d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-01-25T22:05:16Z",
+      "side": 1,
+      "message": "Curious, if you add your own +1, is this suddenly 2-G approved?",
+      "revId": "c493d61e9a942524f5736f29aeb1fd886134daa5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
