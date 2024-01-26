@@ -16,6 +16,23 @@
       "message": "Chromium code owner approval.",
       "revId": "1ffa6c7a7c3476e6727818d5086bfc74fa164615",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b53fd1c_c0c232cf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5645
+      },
+      "writtenOn": "2024-01-26T19:14:29Z",
+      "side": 1,
+      "message": "G-approval stamp.",
+      "revId": "1ffa6c7a7c3476e6727818d5086bfc74fa164615",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
