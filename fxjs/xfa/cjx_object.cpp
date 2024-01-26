@@ -606,7 +606,9 @@ void CJX_Object::SetContent(const WideString& wsContent,
                                               bScriptModify, false);
         }
       }
-      pBindNode = GetXFANode()->GetBindData();
+      if (GetXFANode()->GetPacketType() == XFA_PacketType::Form) {
+        pBindNode = GetXFANode()->GetBindData();
+      }
       if (pBindNode && bSyncData) {
         pBindNode->JSObject()->SetContent(wsContent, wsXMLValue, bNotify,
                                           bScriptModify, false);
