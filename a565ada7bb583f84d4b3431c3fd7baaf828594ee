@@ -16,6 +16,23 @@
       "message": "Bump for the CL at the start of this CL chain.",
       "revId": "a565ada7bb583f84d4b3431c3fd7baaf828594ee",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c38136ab_1b435319",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5645
+      },
+      "writtenOn": "2024-01-26T17:55:38Z",
+      "side": 1,
+      "message": "G-approval stamp.",
+      "revId": "a565ada7bb583f84d4b3431c3fd7baaf828594ee",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
