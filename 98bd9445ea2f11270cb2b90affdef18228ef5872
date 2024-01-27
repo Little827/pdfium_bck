@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cba60095_aad2bf1a",
+        "filename": "core/fxge/cfx_renderdevice.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-27T00:18:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e23cd302_a4e3c22e",
+      "range": {
+        "startLine": 210,
+        "startChar": 54,
+        "endLine": 210,
+        "endChar": 55
+      },
+      "revId": "98bd9445ea2f11270cb2b90affdef18228ef5872",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "89c5dc64_7443ca41",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-01-26T18:12:07Z",
       "side": 1,
       "message": "nit: or quick return_false ?",
+      "range": {
+        "startLine": 298,
+        "startChar": 2,
+        "endLine": 298,
+        "endChar": 10
+      },
+      "revId": "98bd9445ea2f11270cb2b90affdef18228ef5872",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3eb0a4a1_f393e2b0",
+        "filename": "core/fxge/dib/cfx_dibitmap.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-01-27T00:18:05Z",
+      "side": 1,
+      "message": "There\u0027s only one caller. https://pdfium-review.googlesource.com/c/pdfium/+/115893/4/core/fxge/dib/cfx_dibitmap.h will try to change the return type to void.",
+      "parentUuid": "89c5dc64_7443ca41",
       "range": {
         "startLine": 298,
         "startChar": 2,
