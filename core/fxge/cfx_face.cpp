@@ -28,8 +28,6 @@
 #include "third_party/base/numerics/safe_conversions.h"
 #include "third_party/base/numerics/safe_math.h"
 
-#define EM_ADJUST(em, a) (em == 0 ? (a) : (a) * 1000 / em)
-
 namespace {
 
 struct OUTLINE_PARAMS {
@@ -639,7 +637,7 @@ int CFX_Face::GetGlyphWidth(uint32_t glyph_index,
     return 0;
   }
 
-  return static_cast<int>(EM_ADJUST(GetUnitsPerEm(), horizontal_advance));
+  return NormalizeFontMetric(horizontal_advance, GetUnitsPerEm());
 }
 
 int CFX_Face::GetCharIndex(uint32_t code) {
