@@ -67,6 +67,159 @@
       "message": "crrev.com/1255055 says UNSAFE_BUFFERS() usage should be very rare. Does that mean we\u0027ll be doing more spanification in PDFium to get rid of some of the UNSAFE_BUFFERS() usage in this CL?",
       "revId": "1b84dc3c8c64bd18656feced5a31a8eef833975d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9699b6c3_07a737e5",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-02-01T22:29:59Z",
+      "side": 1,
+      "message": "auto?",
+      "revId": "1b84dc3c8c64bd18656feced5a31a8eef833975d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4c8ffe6_fd4042e7",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-02-01T22:29:59Z",
+      "side": 1,
+      "message": "Why did this move so far away from when it\u0027s first used?",
+      "revId": "1b84dc3c8c64bd18656feced5a31a8eef833975d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0402a705_322978c9",
+        "filename": "core/fxcrt/bytestring.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-02-01T22:29:59Z",
+      "side": 1,
+      "message": "Can we consistently use the \"CHECK() above\" comment?",
+      "revId": "1b84dc3c8c64bd18656feced5a31a8eef833975d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "646d515f_c4b2b105",
+        "filename": "core/fxcrt/code_point_view.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-02-01T22:29:59Z",
+      "side": 1,
+      "message": "IWYU for compiler_specific.h",
+      "revId": "1b84dc3c8c64bd18656feced5a31a8eef833975d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a1b9668_6978700b",
+        "filename": "core/fxcrt/fx_coordinates.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-02-01T22:29:59Z",
+      "side": 1,
+      "message": "So if this was a for-loop like line 506, and not range-based for-loop, would this also need UNSAFE_BUFFERS?",
+      "revId": "1b84dc3c8c64bd18656feced5a31a8eef833975d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51cfc823_fcc223cf",
+        "filename": "core/fxcrt/fx_random.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-02-01T22:29:59Z",
+      "side": 1,
+      "message": "IWYU for compiler_specific.h",
+      "revId": "1b84dc3c8c64bd18656feced5a31a8eef833975d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d88d8bfc_81cda360",
+        "filename": "core/fxcrt/fx_unicode.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-02-01T22:29:59Z",
+      "side": 1,
+      "message": "IWYU for compiler_specific.h",
+      "revId": "1b84dc3c8c64bd18656feced5a31a8eef833975d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46299473_11c37d80",
+        "filename": "core/fxcrt/unowned_ptr.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-02-01T22:29:59Z",
+      "side": 1,
+      "message": "Is this header safe? Move out of scope?",
+      "revId": "1b84dc3c8c64bd18656feced5a31a8eef833975d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a666c4ab_3863fda0",
+        "filename": "third_party/base/compiler_specific.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-02-01T22:29:59Z",
+      "side": 1,
+      "message": "Is this effectively a TODO to copy the Chromium equivalent that needs to be fulfilled?",
+      "revId": "1b84dc3c8c64bd18656feced5a31a8eef833975d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
