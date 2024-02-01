@@ -9,9 +9,12 @@
 
 #include "build/build_config.h"
 #include "testing/gtest/include/gtest/gtest.h"
+#include "third_party/base/compiler_specific.h"
 
 #if defined(PDF_USE_PARTITION_ALLOC)
+UNSAFE_HEADERS_BEGIN()
 #include "partition_alloc/partition_address_space.h"
+UNSAFE_HEADERS_END()
 #endif
 
 namespace {
