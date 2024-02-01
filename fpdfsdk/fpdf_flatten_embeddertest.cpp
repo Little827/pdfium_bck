@@ -80,7 +80,7 @@ TEST_F(FPDFFlattenEmbedderTest, BUG_889099) {
 #elif BUILDFLAG(IS_APPLE)
       return "3b6f937deec2d27029cbce02111dc065";
 #else
-      return "de7119d99f42deab2f4215017bdb16af";
+      return "1ce2e06c12972973b8f04a2f79245313";
 #endif
     }
 #if BUILDFLAG(IS_APPLE)
@@ -96,7 +96,7 @@ TEST_F(FPDFFlattenEmbedderTest, BUG_889099) {
 #elif BUILDFLAG(IS_APPLE)
       return "f1bbe115355a2ad6d8ac34c7ff14ba75";
 #else
-      return "7978c7b3d643a5f0ac0f03ce759c55fe";
+      return "e03b1b8157c30c77ea94f9c24dc85a00";
 #endif
     }
 #if BUILDFLAG(IS_APPLE)

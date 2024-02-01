@@ -127,16 +127,11 @@ class CFDETextOutLargeBitmapTest : public CFDETextOutTest {
   CFX_Size GetBitmapSize() override { return CFX_Size(2100, 20); }
 
   const char* GetEmptyBitmapChecksum() override {
-    static const char kEmptyLargeBitmapChecksum[] =
-        "101745f76351fd5d916bf3817b71563c";
-    return kEmptyLargeBitmapChecksum;
+    return "101745f76351fd5d916bf3817b71563c";
   }
 
   const char* GetLargeTextBlobChecksum() {
-    if (CFX_DefaultRenderDevice::UseSkiaRenderer()) {
-      return "cd357c6afbf17bb2ac48817df5d9eaad";
-    }
-    return "268b71a8660b51e31c6bf30fc7ff1e08";
+    return "f91f71be69c729305afcdcfa0fcc70e9";
   }
 };
 
