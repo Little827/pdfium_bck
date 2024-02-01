@@ -209,6 +209,30 @@
       },
       "revId": "1d210ea0966bb38ad5fafb1ec80531b82f7dd394",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "087b56cc_face1bf1",
+        "filename": "core/fxcrt/fx_string.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-01T17:05:07Z",
+      "side": 1,
+      "message": "Yep it can go around either",
+      "parentUuid": "ef4f6c2e_2fb24de4",
+      "range": {
+        "startLine": 59,
+        "startChar": 29,
+        "endLine": 59,
+        "endChar": 51
+      },
+      "revId": "1d210ea0966bb38ad5fafb1ec80531b82f7dd394",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
