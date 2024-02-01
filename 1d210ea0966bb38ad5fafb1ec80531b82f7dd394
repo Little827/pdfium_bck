@@ -142,6 +142,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5ac53de_72d7691b",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-01T21:23:16Z",
+      "side": 1,
+      "message": "Done. In fact, the code still reads very nicely even when doing so.",
+      "parentUuid": "b3219c87_7b02def7",
+      "revId": "1d210ea0966bb38ad5fafb1ec80531b82f7dd394",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "545cd89c_dee44d32",
@@ -195,6 +213,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca2aa440_d3b5b3f3",
+        "filename": "core/fxcrt/bytestring.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-01T21:23:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18e976e9_7e916d65",
+      "revId": "1d210ea0966bb38ad5fafb1ec80531b82f7dd394",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33b91ed8_67eb0d93",
@@ -208,6 +244,30 @@
       "writtenOn": "2024-02-01T00:58:28Z",
       "side": 1,
       "message": "THIS.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 22
+      },
+      "revId": "1d210ea0966bb38ad5fafb1ec80531b82f7dd394",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7dcc61c_f59b1154",
+        "filename": "core/fxcrt/fx_memory_pa.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-01T21:23:16Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "33b91ed8_67eb0d93",
       "range": {
         "startLine": 17,
         "startChar": 0,
@@ -279,6 +339,30 @@
       "side": 1,
       "message": "Yep it can go around either",
       "parentUuid": "ef4f6c2e_2fb24de4",
+      "range": {
+        "startLine": 59,
+        "startChar": 29,
+        "endLine": 59,
+        "endChar": 51
+      },
+      "revId": "1d210ea0966bb38ad5fafb1ec80531b82f7dd394",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa25d070_c16030a1",
+        "filename": "core/fxcrt/fx_string.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-01T21:23:16Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "087b56cc_face1bf1",
       "range": {
         "startLine": 59,
         "startChar": 29,
