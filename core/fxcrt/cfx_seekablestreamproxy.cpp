@@ -18,6 +18,7 @@
 #include "core/fxcrt/fx_safe_types.h"
 #include "third_party/base/check.h"
 #include "third_party/base/check_op.h"
+#include "third_party/base/compiler_specific.h"
 
 namespace {
 
@@ -78,15 +79,20 @@ void UTF16ToWChar(void* pBuffer, size_t iLength) {
   wchar_t* pDst = static_cast<wchar_t*>(pBuffer);
 
   // Perform self-intersecting copy in reverse order.
-  for (size_t i = iLength; i > 0; --i)
-    pDst[i - 1] = static_cast<wchar_t>(pSrc[i - 1]);
+  UNSAFE_BUFFERS({
+    for (size_t i = iLength; i > 0; --i) {
+      pDst[i - 1] = static_cast<wchar_t>(pSrc[i - 1]);
+    }
+  });
 }
 #endif  // defined(WCHAR_T_IS_32_BIT)
 
 void SwapByteOrder(uint16_t* pStr, size_t iLength) {
   while (iLength-- > 0) {
-    uint16_t wch = *pStr;
-    *pStr++ = (wch >> 8) | (wch << 8);
+    UNSAFE_BUFFERS({
+      uint16_t wch = *pStr;
+      *pStr++ = (wch >> 8) | (wch << 8);
+    });
   }
 }
 

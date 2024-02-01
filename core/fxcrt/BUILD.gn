@@ -116,6 +116,7 @@ source_set("fxcrt") {
   ]
   configs += [
     "../../:pdfium_strict_config",
+    "../../:pdfium_nounsafe_buffer_usage_config",
     "../../:pdfium_noshorten_config",
   ]
   public_deps = [

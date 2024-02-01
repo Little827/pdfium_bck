@@ -40,8 +40,11 @@ static_assert(kTextLayoutCodePropertiesSize == 65536, "missing characters");
 
 uint16_t GetUnicodeProperties(wchar_t wch) {
   size_t idx = static_cast<size_t>(wch);
-  if (idx < kTextLayoutCodePropertiesSize)
-    return kTextLayoutCodeProperties[idx];
+  UNSAFE_BUFFERS({
+    if (idx < kTextLayoutCodePropertiesSize) {
+      return kTextLayoutCodeProperties[idx];
+    }
+  });
   return 0;
 }
 
@@ -74,8 +77,11 @@ static_assert(kExtendedTextLayoutCodePropertiesSize == 65536,
 
 uint16_t GetExtendedUnicodeProperties(wchar_t wch) {
   size_t idx = static_cast<size_t>(wch);
-  if (idx < kExtendedTextLayoutCodePropertiesSize)
-    return kExtendedTextLayoutCodeProperties[idx];
+  UNSAFE_BUFFERS({
+    if (idx < kExtendedTextLayoutCodePropertiesSize) {
+      return kExtendedTextLayoutCodeProperties[idx];
+    }
+  });
   return 0;
 }
 
@@ -146,7 +152,7 @@ wchar_t GetMirrorChar(wchar_t wch) {
   if (idx == kMirrorMax)
     return wch;
   DCHECK(idx < kFXTextLayoutBidiMirrorSize);
-  return kFXTextLayoutBidiMirror[idx];
+  UNSAFE_BUFFERS({ return kFXTextLayoutBidiMirror[idx]; });
 }
 
 FX_BIDICLASS GetBidiClass(wchar_t wch) {

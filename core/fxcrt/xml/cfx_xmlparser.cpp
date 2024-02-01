@@ -26,6 +26,7 @@
 #include "core/fxcrt/xml/cfx_xmlnode.h"
 #include "core/fxcrt/xml/cfx_xmltext.h"
 #include "third_party/base/check.h"
+#include "third_party/base/compiler_specific.h"
 #include "third_party/base/notreached.h"
 
 namespace {
@@ -470,51 +471,57 @@ void CFX_XMLParser::ProcessTextChar(wchar_t character) {
   current_text_.push_back(character);
 
   if (entity_start_.has_value() && character == L';') {
-    // Copy the entity out into a string and remove from the vector. When we
-    // copy the entity we don't want to copy out the & or the ; so we start
-    // shifted by one and want to copy 2 less characters in total.
-    WideString csEntity(current_text_.data() + entity_start_.value() + 1,
-                        current_text_.size() - entity_start_.value() - 2);
-    current_text_.erase(current_text_.begin() + entity_start_.value(),
-                        current_text_.end());
+    UNSAFE_BUFFERS({
+      // Copy the entity out into a string and remove from the vector. When we
+      // copy the entity we don't want to copy out the & or the ; so we start
+      // shifted by one and want to copy 2 less characters in total.
+      WideString csEntity(current_text_.data() + entity_start_.value() + 1,
+                          current_text_.size() - entity_start_.value() - 2);
+      current_text_.erase(current_text_.begin() + entity_start_.value(),
+                          current_text_.end());
 
-    size_t iLen = csEntity.GetLength();
-    if (iLen > 0) {
-      if (csEntity[0] == L'#') {
-        uint32_t ch = 0;
-        if (iLen > 1 && csEntity[1] == L'x') {
-          for (size_t i = 2; i < iLen; i++) {
-            if (!FXSYS_IsHexDigit(csEntity[i]))
-              break;
-            ch = (ch << 4) + FXSYS_HexCharToInt(csEntity[i]);
+      size_t iLen = csEntity.GetLength();
+      if (iLen > 0) {
+        if (csEntity[0] == L'#') {
+          uint32_t ch = 0;
+          if (iLen > 1 && csEntity[1] == L'x') {
+            for (size_t i = 2; i < iLen; i++) {
+              if (!FXSYS_IsHexDigit(csEntity[i])) {
+                break;
+              }
+              ch = (ch << 4) + FXSYS_HexCharToInt(csEntity[i]);
+            }
+          } else {
+            for (size_t i = 1; i < iLen; i++) {
+              if (!FXSYS_IsDecimalDigit(csEntity[i])) {
+                break;
+              }
+              ch = ch * 10 + FXSYS_DecimalCharToInt(csEntity[i]);
+            }
+          }
+          if (ch > kMaxCharRange) {
+            ch = ' ';
+          }
+
+          character = static_cast<wchar_t>(ch);
+          if (character != 0) {
+            current_text_.push_back(character);
           }
         } else {
-          for (size_t i = 1; i < iLen; i++) {
-            if (!FXSYS_IsDecimalDigit(csEntity[i]))
-              break;
-            ch = ch * 10 + FXSYS_DecimalCharToInt(csEntity[i]);
+          if (csEntity == L"amp") {
+            current_text_.push_back(L'&');
+          } else if (csEntity == L"lt") {
+            current_text_.push_back(L'<');
+          } else if (csEntity == L"gt") {
+            current_text_.push_back(L'>');
+          } else if (csEntity == L"apos") {
+            current_text_.push_back(L'\'');
+          } else if (csEntity == L"quot") {
+            current_text_.push_back(L'"');
           }
         }
-        if (ch > kMaxCharRange)
-          ch = ' ';
-
-        character = static_cast<wchar_t>(ch);
-        if (character != 0)
-          current_text_.push_back(character);
-      } else {
-        if (csEntity == L"amp") {
-          current_text_.push_back(L'&');
-        } else if (csEntity == L"lt") {
-          current_text_.push_back(L'<');
-        } else if (csEntity == L"gt") {
-          current_text_.push_back(L'>');
-        } else if (csEntity == L"apos") {
-          current_text_.push_back(L'\'');
-        } else if (csEntity == L"quot") {
-          current_text_.push_back(L'"');
-        }
       }
-    }
+    });
     entity_start_ = absl::nullopt;
   } else if (!entity_start_.has_value() && character == L'&') {
     entity_start_ = current_text_.size() - 1;

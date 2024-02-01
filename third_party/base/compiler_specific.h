@@ -77,4 +77,17 @@
 #define GSL_POINTER
 #endif
 
+// Replace with actual code from base/.
+#if defined(__clang__) && HAS_ATTRIBUTE(unsafe_buffer_usage)
+#define UNSAFE_BUFFER_USAGE [[clang::unsafe_buffer_usage]]
+#define UNSAFE_BUFFERS_BEGIN() _Pragma("clang unsafe_buffer_usage begin")
+#define UNSAFE_BUFFERS_END() _Pragma("clang unsafe_buffer_usage end")
+#else
+#define UNSAFE_BUFFER_USAGE
+#define UNSAFE_BUFFERS_BEGIN()
+#define UNSAFE_BUFFERS_END()
+#endif
+#define UNSAFE_BUFFERS(...) \
+  UNSAFE_BUFFERS_BEGIN() __VA_ARGS__ UNSAFE_BUFFERS_END()
+
 #endif  // THIRD_PARTY_BASE_COMPILER_SPECIFIC_H_

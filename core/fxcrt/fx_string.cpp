@@ -56,7 +56,7 @@ void AppendCodePointToByteString(char32_t code_point, ByteString& buffer) {
 
   static constexpr uint8_t kPrefix[] = {0xc0, 0xe0, 0xf0};
   int order = 1 << ((byte_size - 1) * 6);
-  buffer += kPrefix[byte_size - 2] | (code_point / order);
+  UNSAFE_BUFFERS({ buffer += kPrefix[byte_size - 2] | (code_point / order); });
   for (int i = 0; i < byte_size - 1; i++) {
     code_point = code_point % order;
     order >>= 6;
