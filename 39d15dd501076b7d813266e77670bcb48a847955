@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b756345_e2972830",
+        "filename": "core/fpdfapi/font/cpdf_type1font.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 6715
+      },
+      "writtenOn": "2024-02-01T11:38:30Z",
+      "side": 1,
+      "message": "Optional: Would it make sense for the `UnicodeFromAdobeName()` to accept a `ByteString` and perform the `IsEmpty()` check in there?",
+      "range": {
+        "startLine": 220,
+        "startChar": 37,
+        "endLine": 220,
+        "endChar": 78
+      },
+      "revId": "39d15dd501076b7d813266e77670bcb48a847955",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
