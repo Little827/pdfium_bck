@@ -16,7 +16,7 @@ const char* AnnotationStampWithApChecksum() {
 #elif BUILDFLAG(IS_APPLE)
     return "f0867738d59a682b8d57baa88b35afc3";
 #else
-    return "c7ff65a3ad1b01c3a0e94d635f10670e";
+    return "e4e7dc6446fa763a245e03eb5de6ed28";
 #endif
   }
 #if BUILDFLAG(IS_APPLE)
@@ -42,7 +42,7 @@ const char* HelloWorldChecksum() {
 #elif BUILDFLAG(IS_APPLE)
     return "b110924c4af6e87232249ea2a564f0e4";
 #else
-    return "d1decde2de1c07b5274cc8cb44f92427";
+    return "fea3e59b7ac7b7a6940018497034f6cf";
 #endif
   }
 #if BUILDFLAG(IS_APPLE)
@@ -59,7 +59,7 @@ const char* HelloWorldRemovedChecksum() {
 #elif BUILDFLAG(IS_APPLE)
     return "99cefacd84710f3fb2e3d129ba68ae8a";
 #else
-    return "6e0307348e7c1b92f2f061f92f62fd45";
+    return "e51fe51cc5f03ad66f603030df9b0400";
 #endif
   }
 #if BUILDFLAG(IS_APPLE)
@@ -90,7 +90,7 @@ const char* TextFormChecksum() {
 #elif BUILDFLAG(IS_APPLE)
     return "32913f21b1012b74eef37737a03a92b7";
 #else
-    return "b259776fd156003e2a594d1c7ce2d8d7";
+    return "f8f0817b19ef07d0404caf008964b7f2";
 #endif
   }
 #if BUILDFLAG(IS_APPLE)

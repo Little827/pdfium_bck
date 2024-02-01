@@ -540,12 +540,12 @@ TEST_F(CFDE_TextEditEngineTest, GetCharacterInfo) {
   EXPECT_EQ(0, char_info.first);
   EXPECT_FLOAT_EQ(8.664f, char_info.second.Left());
   EXPECT_FLOAT_EQ(0.0f, char_info.second.Top());
-  EXPECT_FLOAT_EQ(3.324f, char_info.second.Width());
+  EXPECT_FLOAT_EQ(3.336f, char_info.second.Width());
   EXPECT_FLOAT_EQ(12.0f, char_info.second.Height());
 
   char_info = engine()->GetCharacterInfo(2);
   EXPECT_EQ(0, char_info.first);
-  EXPECT_FLOAT_EQ(11.988f, char_info.second.Left());
+  EXPECT_FLOAT_EQ(12.0f, char_info.second.Left());
   EXPECT_FLOAT_EQ(0.0f, char_info.second.Top());
   EXPECT_FLOAT_EQ(3.996f, char_info.second.Width());
   EXPECT_FLOAT_EQ(12.0f, char_info.second.Height());
@@ -555,7 +555,7 @@ TEST_F(CFDE_TextEditEngineTest, GetCharacterInfo) {
   // the end.
   char_info = engine()->GetCharacterInfo(3);
   EXPECT_EQ(0, char_info.first);
-  EXPECT_FLOAT_EQ(15.984, char_info.second.Left());
+  EXPECT_FLOAT_EQ(15.996f, char_info.second.Left());
   EXPECT_FLOAT_EQ(0.0f, char_info.second.Top());
   EXPECT_FLOAT_EQ(0.0f, char_info.second.Width());
   EXPECT_FLOAT_EQ(12.0f, char_info.second.Height());

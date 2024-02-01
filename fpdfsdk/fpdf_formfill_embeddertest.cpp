@@ -1340,7 +1340,7 @@ TEST_F(FPDFFormFillEmbedderTest, FormText) {
 #elif BUILDFLAG(IS_APPLE)
       return "d8cf4e7ef7e1c287441bf350006e66d6";
 #else
-      return "b9fb2245a98ac48146da84237a37f8cc";
+      return "199536b979a42da3c2745297f6e87a77";
 #endif
     }
 #if BUILDFLAG(IS_APPLE)
@@ -1356,7 +1356,7 @@ TEST_F(FPDFFormFillEmbedderTest, FormText) {
 #elif BUILDFLAG(IS_APPLE)
       return "b9702814ac50dc5ef413ea2e9c4002f1";
 #else
-      return "5f3205f0189d9dde54665f970838f614";
+      return "574aa06445957315f0dadd24a0c59811";
 #endif
     }
 #if BUILDFLAG(IS_APPLE)
@@ -1467,7 +1467,7 @@ TEST_F(FPDFFormFillEmbedderTest, Bug1302455EditFirstForm) {
 #elif BUILDFLAG(IS_APPLE)
       return "79538a800f8eb0b4965d43a052303592";
 #else
-      return "143c2bb79fcaecf24f5aa104dce27beb";
+      return "29a06da3e47f67535e266b090a5ac82d";
 #endif
     }
 #if BUILDFLAG(IS_APPLE)
@@ -1507,7 +1507,7 @@ TEST_F(FPDFFormFillEmbedderTest, Bug1302455EditSecondForm) {
 #elif BUILDFLAG(IS_APPLE)
       return "074449f4bd27611a2e12aef3ad121cd8";
 #else
-      return "e36726414acb616dc203e8851b510e2c";
+      return "19f8574d6378ee36e349376d88b7a2c4";
 #endif
     }
 #if BUILDFLAG(IS_APPLE)
@@ -1547,7 +1547,7 @@ TEST_F(FPDFFormFillEmbedderTest, Bug1302455EditBothForms) {
 #elif BUILDFLAG(IS_APPLE)
       return "f5a3b8d2db662cad38b4573ef1dd3f1d";
 #else
-      return "f82a807c056e22aa55d3d7228eedfe6f";
+      return "edbc9b0e190118a9039fffc11e494081";
 #endif
     }
 #if BUILDFLAG(IS_APPLE)
@@ -1594,7 +1594,7 @@ TEST_F(FPDFFormFillEmbedderTest, RemoveFormFieldHighlight) {
 #elif BUILDFLAG(IS_APPLE)
       return "e0ad5b4fe007e2e2c27cf6c6fb5b6529";
 #else
-      return "3bfddb2529085021ad283b7e65f71525";
+      return "013aa241c39c02505d9525550be04e48";
 #endif
     }
 #if BUILDFLAG(IS_APPLE)

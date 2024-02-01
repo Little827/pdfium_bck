@@ -28,8 +28,6 @@
 #include "third_party/base/numerics/safe_conversions.h"
 #include "third_party/base/numerics/safe_math.h"
 
-#define EM_ADJUST(em, a) (em == 0 ? (a) : (a) * 1000 / em)
-
 namespace {
 
 struct OUTLINE_PARAMS {
@@ -38,9 +36,6 @@ struct OUTLINE_PARAMS {
   FT_Pos m_CurY;
   float m_CoordUnit;
 };
-
-constexpr int kThousandthMinInt = std::numeric_limits<int>::min() / 1000;
-constexpr int kThousandthMaxInt = std::numeric_limits<int>::max() / 1000;
 
 constexpr int kMaxGlyphDimension = 2048;
 
@@ -633,13 +628,7 @@ int CFX_Face::GetGlyphWidth(uint32_t glyph_index,
     return 0;
   }
 
-  FT_Pos horizontal_advance = rec->glyph->metrics.horiAdvance;
-  if (horizontal_advance < kThousandthMinInt ||
-      horizontal_advance > kThousandthMaxInt) {
-    return 0;
-  }
-
-  return static_cast<int>(EM_ADJUST(GetUnitsPerEm(), horizontal_advance));
+  return NormalizeFontMetric(rec->glyph->metrics.horiAdvance, GetUnitsPerEm());
 }
 
 int CFX_Face::GetCharIndex(uint32_t code) {

@@ -30,7 +30,7 @@ const char* AnnotationStampWithApBaseContentChecksum() {
 #elif BUILDFLAG(IS_APPLE)
     return "346c4463cf822e39e29a602a504b9153";
 #else
-    return "4fedc838daa6762cf7eee180986a0f1b";
+    return "1a6cb54b1cfc5bb9f6ec3923a52ea7cc";
 #endif
   }
 #if BUILDFLAG(IS_APPLE)
@@ -327,7 +327,7 @@ TEST_F(FPDFProgressiveRenderEmbedderTest, RenderTextWithColorScheme) {
 #elif BUILDFLAG(IS_APPLE)
       return "9eba0a0147f1d9685514d274e03d574e";
 #else
-      return "edd919ec8b59fab1f16b5f2adb1175f3";
+      return "6bbe5a547115b4aa30b49fe7c34030e3";
 #endif
     }
 #if BUILDFLAG(IS_APPLE)
@@ -475,7 +475,7 @@ TEST_F(FPDFProgressiveRenderEmbedderTest, RenderStampWithColorScheme) {
 #elif BUILDFLAG(IS_APPLE)
       return "42d4d73d939cb4a1b40d003985eaf11e";
 #else
-      return "6e028012a4854ebfd9ee92da862bf679";
+      return "bdcd2b91223b1a73582b341d0153a73f";
 #endif
     }
 #if BUILDFLAG(IS_APPLE)
