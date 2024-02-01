@@ -22,6 +22,7 @@
 #include "core/fxcrt/string_view_template.h"
 #include "third_party/abseil-cpp/absl/types/optional.h"
 #include "third_party/base/check.h"
+#include "third_party/base/compiler_specific.h"
 #include "third_party/base/containers/span.h"
 
 namespace fxcrt {
@@ -96,7 +97,9 @@ class WideString {
   // Note: Any subsequent modification of |this| will invalidate iterators.
   const_iterator begin() const { return m_pData ? m_pData->m_String : nullptr; }
   const_iterator end() const {
-    return m_pData ? m_pData->m_String + m_pData->m_nDataLength : nullptr;
+    UNSAFE_BUFFERS({
+      return m_pData ? m_pData->m_String + m_pData->m_nDataLength : nullptr;
+    });
   }
 
   // Note: Any subsequent modification of |this| will invalidate iterators.
@@ -145,7 +148,7 @@ class WideString {
 
   CharType operator[](const size_t index) const {
     CHECK(IsValidIndex(index));
-    return m_pData->m_String[index];
+    UNSAFE_BUFFERS({ return m_pData->m_String[index]; });
   }
 
   CharType Front() const { return GetLength() ? (*this)[0] : 0; }

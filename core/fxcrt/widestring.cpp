@@ -21,6 +21,7 @@
 #include "core/fxcrt/utf16.h"
 #include "third_party/base/check.h"
 #include "third_party/base/check_op.h"
+#include "third_party/base/compiler_specific.h"
 #include "third_party/base/numerics/safe_math.h"
 
 template class fxcrt::StringDataTemplate<wchar_t>;
@@ -57,214 +58,223 @@ const wchar_t* FX_wcsstr(const wchar_t* haystack,
                          size_t haystack_len,
                          const wchar_t* needle,
                          size_t needle_len) {
-  if (needle_len > haystack_len || needle_len == 0)
+  if (needle_len > haystack_len || needle_len == 0) {
     return nullptr;
-
-  const wchar_t* end_ptr = haystack + haystack_len - needle_len;
-  while (haystack <= end_ptr) {
-    size_t i = 0;
-    while (true) {
-      if (haystack[i] != needle[i])
-        break;
-
-      i++;
-      if (i == needle_len)
-        return haystack;
-    }
-    haystack++;
   }
+  UNSAFE_BUFFERS({
+    const wchar_t* end_ptr = haystack + haystack_len - needle_len;
+    while (haystack <= end_ptr) {
+      size_t i = 0;
+      while (true) {
+        if (haystack[i] != needle[i]) {
+          break;
+        }
+        i++;
+        if (i == needle_len) {
+          return haystack;
+        }
+      }
+      haystack++;
+    }
+  });
   return nullptr;
 }
 
 absl::optional<size_t> GuessSizeForVSWPrintf(const wchar_t* pFormat,
                                              va_list argList) {
   size_t nMaxLen = 0;
-  for (const wchar_t* pStr = pFormat; *pStr != 0; pStr++) {
-    if (*pStr != '%' || *(pStr = pStr + 1) == '%') {
-      ++nMaxLen;
-      continue;
-    }
-    int iWidth = 0;
-    for (; *pStr != 0; pStr++) {
-      if (*pStr == '#') {
-        nMaxLen += 2;
-      } else if (*pStr == '*') {
-        iWidth = va_arg(argList, int);
-      } else if (*pStr != '-' && *pStr != '+' && *pStr != '0' && *pStr != ' ') {
-        break;
+  UNSAFE_BUFFERS({
+    for (const wchar_t* pStr = pFormat; *pStr != 0; pStr++) {
+      if (*pStr != '%' || *(pStr = pStr + 1) == '%') {
+        ++nMaxLen;
+        continue;
       }
-    }
-    if (iWidth == 0) {
-      iWidth = FXSYS_wtoi(pStr);
-      while (FXSYS_IsDecimalDigit(*pStr))
-        ++pStr;
-    }
-    if (iWidth < 0 || iWidth > 128 * 1024)
-      return absl::nullopt;
-    uint32_t nWidth = static_cast<uint32_t>(iWidth);
-    int iPrecision = 0;
-    if (*pStr == '.') {
-      pStr++;
-      if (*pStr == '*') {
-        iPrecision = va_arg(argList, int);
-        pStr++;
-      } else {
-        iPrecision = FXSYS_wtoi(pStr);
+      int iWidth = 0;
+      for (; *pStr != 0; pStr++) {
+        if (*pStr == '#') {
+          nMaxLen += 2;
+        } else if (*pStr == '*') {
+          iWidth = va_arg(argList, int);
+        } else if (*pStr != '-' && *pStr != '+' && *pStr != '0' &&
+                   *pStr != ' ') {
+          break;
+        }
+      }
+      if (iWidth == 0) {
+        iWidth = FXSYS_wtoi(pStr);
         while (FXSYS_IsDecimalDigit(*pStr))
           ++pStr;
       }
-    }
-    if (iPrecision < 0 || iPrecision > 128 * 1024)
-      return absl::nullopt;
-    uint32_t nPrecision = static_cast<uint32_t>(iPrecision);
-    int nModifier = 0;
-    if (*pStr == L'I' && *(pStr + 1) == L'6' && *(pStr + 2) == L'4') {
-      pStr += 3;
-      nModifier = FORCE_INT64;
-    } else {
-      switch (*pStr) {
-        case 'h':
-          nModifier = FORCE_ANSI;
-          pStr++;
-          break;
-        case 'l':
-          nModifier = FORCE_UNICODE;
-          pStr++;
-          break;
-        case 'F':
-        case 'N':
-        case 'L':
-          pStr++;
-          break;
+      if (iWidth < 0 || iWidth > 128 * 1024) {
+        return absl::nullopt;
       }
-    }
-    size_t nItemLen = 0;
-    switch (*pStr | nModifier) {
-      case 'c':
-      case 'C':
-        nItemLen = 2;
-        va_arg(argList, int);
-        break;
-      case 'c' | FORCE_ANSI:
-      case 'C' | FORCE_ANSI:
-        nItemLen = 2;
-        va_arg(argList, int);
-        break;
-      case 'c' | FORCE_UNICODE:
-      case 'C' | FORCE_UNICODE:
-        nItemLen = 2;
-        va_arg(argList, int);
-        break;
-      case 's': {
-        const wchar_t* pstrNextArg = va_arg(argList, const wchar_t*);
-        if (pstrNextArg) {
-          nItemLen = wcslen(pstrNextArg);
-          if (nItemLen < 1) {
-            nItemLen = 1;
-          }
+      uint32_t nWidth = static_cast<uint32_t>(iWidth);
+      int iPrecision = 0;
+      if (*pStr == '.') {
+        pStr++;
+        if (*pStr == '*') {
+          iPrecision = va_arg(argList, int);
+          pStr++;
         } else {
-          nItemLen = 6;
-        }
-      } break;
-      case 'S': {
-        const char* pstrNextArg = va_arg(argList, const char*);
-        if (pstrNextArg) {
-          nItemLen = strlen(pstrNextArg);
-          if (nItemLen < 1) {
-            nItemLen = 1;
+          iPrecision = FXSYS_wtoi(pStr);
+          while (FXSYS_IsDecimalDigit(*pStr)) {
+            ++pStr;
           }
-        } else {
-          nItemLen = 6;
         }
-      } break;
-      case 's' | FORCE_ANSI:
-      case 'S' | FORCE_ANSI: {
-        const char* pstrNextArg = va_arg(argList, const char*);
-        if (pstrNextArg) {
-          nItemLen = strlen(pstrNextArg);
-          if (nItemLen < 1) {
-            nItemLen = 1;
-          }
-        } else {
-          nItemLen = 6;
-        }
-      } break;
-      case 's' | FORCE_UNICODE:
-      case 'S' | FORCE_UNICODE: {
-        const wchar_t* pstrNextArg = va_arg(argList, wchar_t*);
-        if (pstrNextArg) {
-          nItemLen = wcslen(pstrNextArg);
-          if (nItemLen < 1) {
-            nItemLen = 1;
-          }
-        } else {
-          nItemLen = 6;
-        }
-      } break;
-    }
-    if (nItemLen != 0) {
-      if (nPrecision != 0 && nItemLen > nPrecision) {
-        nItemLen = nPrecision;
       }
-      if (nItemLen < nWidth) {
-        nItemLen = nWidth;
+      if (iPrecision < 0 || iPrecision > 128 * 1024) {
+        return absl::nullopt;
       }
-    } else {
-      switch (*pStr) {
-        case 'd':
-        case 'i':
-        case 'u':
-        case 'x':
-        case 'X':
-        case 'o':
-          if (nModifier & FORCE_INT64) {
-            va_arg(argList, int64_t);
+      uint32_t nPrecision = static_cast<uint32_t>(iPrecision);
+      int nModifier = 0;
+      if (*pStr == L'I' && *(pStr + 1) == L'6' && *(pStr + 2) == L'4') {
+        pStr += 3;
+        nModifier = FORCE_INT64;
+      } else {
+        switch (*pStr) {
+          case 'h':
+            nModifier = FORCE_ANSI;
+            pStr++;
+            break;
+          case 'l':
+            nModifier = FORCE_UNICODE;
+            pStr++;
+            break;
+          case 'F':
+          case 'N':
+          case 'L':
+            pStr++;
+            break;
+        }
+      }
+      size_t nItemLen = 0;
+      switch (*pStr | nModifier) {
+        case 'c':
+        case 'C':
+          nItemLen = 2;
+          va_arg(argList, int);
+          break;
+        case 'c' | FORCE_ANSI:
+        case 'C' | FORCE_ANSI:
+          nItemLen = 2;
+          va_arg(argList, int);
+          break;
+        case 'c' | FORCE_UNICODE:
+        case 'C' | FORCE_UNICODE:
+          nItemLen = 2;
+          va_arg(argList, int);
+          break;
+        case 's': {
+          const wchar_t* pstrNextArg = va_arg(argList, const wchar_t*);
+          if (pstrNextArg) {
+            nItemLen = wcslen(pstrNextArg);
+            if (nItemLen < 1) {
+              nItemLen = 1;
+            }
           } else {
-            va_arg(argList, int);
+            nItemLen = 6;
           }
-          nItemLen = 32;
-          if (nItemLen < nWidth + nPrecision) {
-            nItemLen = nWidth + nPrecision;
-          }
-          break;
-        case 'a':
-        case 'A':
-        case 'e':
-        case 'E':
-        case 'g':
-        case 'G':
-          va_arg(argList, double);
-          nItemLen = 128;
-          if (nItemLen < nWidth + nPrecision) {
-            nItemLen = nWidth + nPrecision;
-          }
-          break;
-        case 'f':
-          if (nWidth + nPrecision > 100) {
-            nItemLen = nPrecision + nWidth + 128;
+        } break;
+        case 'S': {
+          const char* pstrNextArg = va_arg(argList, const char*);
+          if (pstrNextArg) {
+            nItemLen = strlen(pstrNextArg);
+            if (nItemLen < 1) {
+              nItemLen = 1;
+            }
           } else {
-            double f;
-            char pszTemp[256];
-            f = va_arg(argList, double);
-            FXSYS_snprintf(pszTemp, sizeof(pszTemp), "%*.*f", nWidth,
-                           nPrecision + 6, f);
-            nItemLen = strlen(pszTemp);
+            nItemLen = 6;
           }
-          break;
-        case 'p':
-          va_arg(argList, void*);
-          nItemLen = 32;
-          if (nItemLen < nWidth + nPrecision) {
-            nItemLen = nWidth + nPrecision;
+        } break;
+        case 's' | FORCE_ANSI:
+        case 'S' | FORCE_ANSI: {
+          const char* pstrNextArg = va_arg(argList, const char*);
+          if (pstrNextArg) {
+            nItemLen = strlen(pstrNextArg);
+            if (nItemLen < 1) {
+              nItemLen = 1;
+            }
+          } else {
+            nItemLen = 6;
           }
-          break;
-        case 'n':
-          va_arg(argList, int*);
-          break;
+        } break;
+        case 's' | FORCE_UNICODE:
+        case 'S' | FORCE_UNICODE: {
+          const wchar_t* pstrNextArg = va_arg(argList, wchar_t*);
+          if (pstrNextArg) {
+            nItemLen = wcslen(pstrNextArg);
+            if (nItemLen < 1) {
+              nItemLen = 1;
+            }
+          } else {
+            nItemLen = 6;
+          }
+        } break;
       }
+      if (nItemLen != 0) {
+        if (nPrecision != 0 && nItemLen > nPrecision) {
+          nItemLen = nPrecision;
+        }
+        if (nItemLen < nWidth) {
+          nItemLen = nWidth;
+        }
+      } else {
+        switch (*pStr) {
+          case 'd':
+          case 'i':
+          case 'u':
+          case 'x':
+          case 'X':
+          case 'o':
+            if (nModifier & FORCE_INT64) {
+              va_arg(argList, int64_t);
+            } else {
+              va_arg(argList, int);
+            }
+            nItemLen = 32;
+            if (nItemLen < nWidth + nPrecision) {
+              nItemLen = nWidth + nPrecision;
+            }
+            break;
+          case 'a':
+          case 'A':
+          case 'e':
+          case 'E':
+          case 'g':
+          case 'G':
+            va_arg(argList, double);
+            nItemLen = 128;
+            if (nItemLen < nWidth + nPrecision) {
+              nItemLen = nWidth + nPrecision;
+            }
+            break;
+          case 'f':
+            if (nWidth + nPrecision > 100) {
+              nItemLen = nPrecision + nWidth + 128;
+            } else {
+              double f;
+              char pszTemp[256];
+              f = va_arg(argList, double);
+              FXSYS_snprintf(pszTemp, sizeof(pszTemp), "%*.*f", nWidth,
+                             nPrecision + 6, f);
+              nItemLen = strlen(pszTemp);
+            }
+            break;
+          case 'p':
+            va_arg(argList, void*);
+            nItemLen = 32;
+            if (nItemLen < nWidth + nPrecision) {
+              nItemLen = nWidth + nPrecision;
+            }
+            break;
+          case 'n':
+            va_arg(argList, int*);
+            break;
+        }
+      }
+      nMaxLen += nItemLen;
     }
-    nMaxLen += nItemLen;
-  }
+  });
   nMaxLen += 32;  // Fudge factor.
   return nMaxLen;
 }
@@ -614,7 +624,7 @@ void WideString::ReallocBeforeWrite(size_t nNewLength) {
   } else {
     pNewData->m_nDataLength = 0;
   }
-  pNewData->m_String[pNewData->m_nDataLength] = 0;
+  UNSAFE_BUFFERS({ pNewData->m_String[pNewData->m_nDataLength] = 0; });
   m_pData.Swap(pNewData);
 }
 
@@ -642,7 +652,7 @@ void WideString::ReleaseBuffer(size_t nNewLength) {
 
   DCHECK_EQ(m_pData->m_nRefs, 1);
   m_pData->m_nDataLength = nNewLength;
-  m_pData->m_String[nNewLength] = 0;
+  UNSAFE_BUFFERS({ m_pData->m_String[nNewLength] = 0; });
   if (m_pData->m_nAllocLength - nNewLength >= 32) {
     // Over arbitrary threshold, so pay the price to relocate.  Force copy to
     // always occur by holding a second reference to the string.
@@ -695,8 +705,10 @@ size_t WideString::Delete(size_t index, size_t count) {
 
   ReallocBeforeWrite(old_length);
   size_t chars_to_copy = old_length - removal_length + 1;
-  wmemmove(m_pData->m_String + index, m_pData->m_String + removal_length,
-           chars_to_copy);
+  UNSAFE_BUFFERS({
+    wmemmove(m_pData->m_String + index, m_pData->m_String + removal_length,
+             chars_to_copy);
+  });
   m_pData->m_nDataLength = old_length - count;
   return m_pData->m_nDataLength;
 }
@@ -836,9 +848,11 @@ void WideString::AllocCopy(WideString& dest,
   if (nCopyLen == 0)
     return;
 
-  RetainPtr<StringData> pNewData(
-      StringData::Create(m_pData->m_String + nCopyIndex, nCopyLen));
-  dest.m_pData.Swap(pNewData);
+  UNSAFE_BUFFERS({
+    RetainPtr<StringData> pNewData(
+        StringData::Create(m_pData->m_String + nCopyIndex, nCopyLen));
+    dest.m_pData.Swap(pNewData);
+  });
 }
 
 size_t WideString::Insert(size_t index, wchar_t ch) {
@@ -848,10 +862,12 @@ size_t WideString::Insert(size_t index, wchar_t ch) {
 
   const size_t new_length = cur_length + 1;
   ReallocBeforeWrite(new_length);
-  FXSYS_wmemmove(m_pData->m_String + index + 1, m_pData->m_String + index,
-                 new_length - index);
-  m_pData->m_String[index] = ch;
-  m_pData->m_nDataLength = new_length;
+  UNSAFE_BUFFERS({
+    FXSYS_wmemmove(m_pData->m_String + index + 1, m_pData->m_String + index,
+                   new_length - index);
+    m_pData->m_String[index] = ch;
+    m_pData->m_nDataLength = new_length;
+  });
   return new_length;
 }
 
@@ -862,11 +878,13 @@ absl::optional<size_t> WideString::Find(wchar_t ch, size_t start) const {
   if (!IsValidIndex(start))
     return absl::nullopt;
 
-  const wchar_t* pStr = FXSYS_wmemchr(m_pData->m_String + start, ch,
-                                      m_pData->m_nDataLength - start);
-  return pStr ? absl::optional<size_t>(
-                    static_cast<size_t>(pStr - m_pData->m_String))
-              : absl::nullopt;
+  UNSAFE_BUFFERS({
+    const wchar_t* pStr = FXSYS_wmemchr(m_pData->m_String + start, ch,
+                                        m_pData->m_nDataLength - start);
+    return pStr ? absl::optional<size_t>(
+                      static_cast<size_t>(pStr - m_pData->m_String))
+                : absl::nullopt;
+  });
 }
 
 absl::optional<size_t> WideString::Find(WideStringView subStr,
@@ -877,23 +895,28 @@ absl::optional<size_t> WideString::Find(WideStringView subStr,
   if (!IsValidIndex(start))
     return absl::nullopt;
 
-  const wchar_t* pStr =
-      FX_wcsstr(m_pData->m_String + start, m_pData->m_nDataLength - start,
-                subStr.unterminated_c_str(), subStr.GetLength());
-  return pStr ? absl::optional<size_t>(
-                    static_cast<size_t>(pStr - m_pData->m_String))
-              : absl::nullopt;
+  UNSAFE_BUFFERS({
+    const wchar_t* pStr =
+        FX_wcsstr(m_pData->m_String + start, m_pData->m_nDataLength - start,
+                  subStr.unterminated_c_str(), subStr.GetLength());
+    return pStr ? absl::optional<size_t>(
+                      static_cast<size_t>(pStr - m_pData->m_String))
+                : absl::nullopt;
+  });
 }
 
 absl::optional<size_t> WideString::ReverseFind(wchar_t ch) const {
   if (!m_pData)
     return absl::nullopt;
 
-  size_t nLength = m_pData->m_nDataLength;
-  while (nLength--) {
-    if (m_pData->m_String[nLength] == ch)
-      return nLength;
-  }
+  UNSAFE_BUFFERS({
+    size_t nLength = m_pData->m_nDataLength;
+    while (nLength--) {
+      if (m_pData->m_String[nLength] == ch) {
+        return nLength;
+      }
+    }
+  });
   return absl::nullopt;
 }
 
@@ -914,36 +937,41 @@ void WideString::MakeUpper() {
 }
 
 size_t WideString::Remove(wchar_t chRemove) {
-  if (IsEmpty())
+  if (IsEmpty()) {
     return 0;
-
-  wchar_t* pstrSource = m_pData->m_String;
-  wchar_t* pstrEnd = m_pData->m_String + m_pData->m_nDataLength;
-  while (pstrSource < pstrEnd) {
-    if (*pstrSource == chRemove)
-      break;
-    pstrSource++;
   }
-  if (pstrSource == pstrEnd)
-    return 0;
-
-  ptrdiff_t copied = pstrSource - m_pData->m_String;
-  ReallocBeforeWrite(m_pData->m_nDataLength);
-  pstrSource = m_pData->m_String + copied;
-  pstrEnd = m_pData->m_String + m_pData->m_nDataLength;
-
-  wchar_t* pstrDest = pstrSource;
-  while (pstrSource < pstrEnd) {
-    if (*pstrSource != chRemove) {
-      *pstrDest = *pstrSource;
-      pstrDest++;
+  size_t count = 0;
+  UNSAFE_BUFFERS({
+    wchar_t* pstrSource = m_pData->m_String;
+    wchar_t* pstrEnd = m_pData->m_String + m_pData->m_nDataLength;
+    while (pstrSource < pstrEnd) {
+      if (*pstrSource == chRemove) {
+        break;
+      }
+      pstrSource++;
     }
-    pstrSource++;
-  }
+    if (pstrSource == pstrEnd) {
+      return 0;
+    }
 
-  *pstrDest = 0;
-  size_t count = static_cast<size_t>(pstrSource - pstrDest);
-  m_pData->m_nDataLength -= count;
+    ptrdiff_t copied = pstrSource - m_pData->m_String;
+    ReallocBeforeWrite(m_pData->m_nDataLength);
+    pstrSource = m_pData->m_String + copied;
+    pstrEnd = m_pData->m_String + m_pData->m_nDataLength;
+
+    wchar_t* pstrDest = pstrSource;
+    while (pstrSource < pstrEnd) {
+      if (*pstrSource != chRemove) {
+        *pstrDest = *pstrSource;
+        pstrDest++;
+      }
+      pstrSource++;
+    }
+
+    *pstrDest = 0;
+    count = static_cast<size_t>(pstrSource - pstrDest);
+    m_pData->m_nDataLength -= count;
+  });
   return count;
 }
 
@@ -954,44 +982,49 @@ size_t WideString::Replace(WideStringView pOld, WideStringView pNew) {
   size_t nSourceLen = pOld.GetLength();
   size_t nReplacementLen = pNew.GetLength();
   size_t count = 0;
-  const wchar_t* pStart = m_pData->m_String;
-  wchar_t* pEnd = m_pData->m_String + m_pData->m_nDataLength;
-  while (true) {
-    const wchar_t* pTarget =
-        FX_wcsstr(pStart, static_cast<size_t>(pEnd - pStart),
-                  pOld.unterminated_c_str(), nSourceLen);
-    if (!pTarget)
-      break;
 
-    count++;
-    pStart = pTarget + nSourceLen;
-  }
-  if (count == 0)
-    return 0;
+  UNSAFE_BUFFERS({
+    const wchar_t* pStart = m_pData->m_String;
+    wchar_t* pEnd = m_pData->m_String + m_pData->m_nDataLength;
+    while (true) {
+      const wchar_t* pTarget =
+          FX_wcsstr(pStart, static_cast<size_t>(pEnd - pStart),
+                    pOld.unterminated_c_str(), nSourceLen);
+      if (!pTarget) {
+        break;
+      }
 
-  size_t nNewLength =
-      m_pData->m_nDataLength + (nReplacementLen - nSourceLen) * count;
+      count++;
+      pStart = pTarget + nSourceLen;
+    }
+    if (count == 0) {
+      return 0;
+    }
 
-  if (nNewLength == 0) {
-    clear();
-    return count;
-  }
+    size_t nNewLength =
+        m_pData->m_nDataLength + (nReplacementLen - nSourceLen) * count;
 
-  RetainPtr<StringData> pNewData(StringData::Create(nNewLength));
-  pStart = m_pData->m_String;
-  wchar_t* pDest = pNewData->m_String;
-  for (size_t i = 0; i < count; i++) {
-    const wchar_t* pTarget =
-        FX_wcsstr(pStart, static_cast<size_t>(pEnd - pStart),
-                  pOld.unterminated_c_str(), nSourceLen);
-    FXSYS_wmemcpy(pDest, pStart, pTarget - pStart);
-    pDest += pTarget - pStart;
-    FXSYS_wmemcpy(pDest, pNew.unterminated_c_str(), pNew.GetLength());
-    pDest += pNew.GetLength();
-    pStart = pTarget + nSourceLen;
-  }
-  FXSYS_wmemcpy(pDest, pStart, pEnd - pStart);
-  m_pData.Swap(pNewData);
+    if (nNewLength == 0) {
+      clear();
+      return count;
+    }
+
+    RetainPtr<StringData> pNewData(StringData::Create(nNewLength));
+    pStart = m_pData->m_String;
+    wchar_t* pDest = pNewData->m_String;
+    for (size_t i = 0; i < count; i++) {
+      const wchar_t* pTarget =
+          FX_wcsstr(pStart, static_cast<size_t>(pEnd - pStart),
+                    pOld.unterminated_c_str(), nSourceLen);
+      FXSYS_wmemcpy(pDest, pStart, pTarget - pStart);
+      pDest += pTarget - pStart;
+      FXSYS_wmemcpy(pDest, pNew.unterminated_c_str(), pNew.GetLength());
+      pDest += pNew.GetLength();
+      pStart = pTarget + nSourceLen;
+    }
+    FXSYS_wmemcpy(pDest, pStart, pEnd - pStart);
+    m_pData.Swap(pNewData);
+  });
   return count;
 }
 
@@ -1082,7 +1115,7 @@ WideString WideString::FromUTF16BE(pdfium::span<const uint8_t> data) {
 void WideString::SetAt(size_t index, wchar_t c) {
   DCHECK(IsValidIndex(index));
   ReallocBeforeWrite(m_pData->m_nDataLength);
-  m_pData->m_String[index] = c;
+  UNSAFE_BUFFERS({ m_pData->m_String[index] = c; });
 }
 
 int WideString::Compare(const wchar_t* str) const {
@@ -1116,9 +1149,13 @@ int WideString::CompareNoCase(const wchar_t* str) const {
 
 size_t WideString::WStringLength(const unsigned short* str) {
   size_t len = 0;
-  if (str)
-    while (str[len])
-      len++;
+  if (str) {
+    UNSAFE_BUFFERS({
+      while (str[len]) {
+        len++;
+      }
+    });
+  }
   return len;
 }
 
@@ -1155,25 +1192,29 @@ void WideString::TrimLeft(WideStringView targets) {
   if (len == 0)
     return;
 
-  size_t pos = 0;
-  while (pos < len) {
-    size_t i = 0;
-    while (i < targets.GetLength() &&
-           targets.CharAt(i) != m_pData->m_String[pos]) {
-      i++;
+  UNSAFE_BUFFERS({
+    size_t pos = 0;
+    while (pos < len) {
+      size_t i = 0;
+      while (i < targets.GetLength() &&
+             targets.CharAt(i) != m_pData->m_String[pos]) {
+        i++;
+      }
+      if (i == targets.GetLength()) {
+        break;
+      }
+      pos++;
     }
-    if (i == targets.GetLength())
-      break;
-    pos++;
-  }
-  if (!pos)
-    return;
+    if (!pos) {
+      return;
+    }
 
-  ReallocBeforeWrite(len);
-  size_t nDataLength = len - pos;
-  memmove(m_pData->m_String, m_pData->m_String + pos,
-          (nDataLength + 1) * sizeof(wchar_t));
-  m_pData->m_nDataLength = nDataLength;
+    ReallocBeforeWrite(len);
+    size_t nDataLength = len - pos;
+    memmove(m_pData->m_String, m_pData->m_String + pos,
+            (nDataLength + 1) * sizeof(wchar_t));
+    m_pData->m_nDataLength = nDataLength;
+  });
 }
 
 void WideString::TrimRight() {
@@ -1189,15 +1230,18 @@ void WideString::TrimRight(WideStringView targets) {
   if (IsEmpty() || targets.IsEmpty())
     return;
 
-  size_t pos = GetLength();
-  while (pos && targets.Contains(m_pData->m_String[pos - 1]))
-    pos--;
+  UNSAFE_BUFFERS({
+    size_t pos = GetLength();
+    while (pos && targets.Contains(m_pData->m_String[pos - 1])) {
+      pos--;
+    }
 
-  if (pos < m_pData->m_nDataLength) {
-    ReallocBeforeWrite(m_pData->m_nDataLength);
-    m_pData->m_String[pos] = 0;
-    m_pData->m_nDataLength = pos;
-  }
+    if (pos < m_pData->m_nDataLength) {
+      ReallocBeforeWrite(m_pData->m_nDataLength);
+      m_pData->m_String[pos] = 0;
+      m_pData->m_nDataLength = pos;
+    }
+  });
 }
 
 int WideString::GetInteger() const {
