@@ -1,6 +1,40 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c0aaddf_75c9fd5a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-02-01T22:12:37Z",
+      "side": 1,
+      "message": "Want to link to crrev.com/1255055 here, for context?",
+      "revId": "1b84dc3c8c64bd18656feced5a31a8eef833975d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "466ed847_e3cc2488",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-02-01T22:12:37Z",
+      "side": 1,
+      "message": "Do we want to reference a bug # in this CL?",
+      "revId": "1b84dc3c8c64bd18656feced5a31a8eef833975d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "b370ae13_c0551ea1",
@@ -14,6 +48,23 @@
       "writtenOn": "2024-02-01T21:40:19Z",
       "side": 1,
       "message": "Lei .. the future is scary. PTAL.",
+      "revId": "1b84dc3c8c64bd18656feced5a31a8eef833975d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f74df69e_832d98d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-02-01T22:12:37Z",
+      "side": 1,
+      "message": "crrev.com/1255055 says UNSAFE_BUFFERS() usage should be very rare. Does that mean we\u0027ll be doing more spanification in PDFium to get rid of some of the UNSAFE_BUFFERS() usage in this CL?",
       "revId": "1b84dc3c8c64bd18656feced5a31a8eef833975d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
