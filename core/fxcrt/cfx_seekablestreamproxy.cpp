@@ -18,6 +18,7 @@
 #include "core/fxcrt/fx_safe_types.h"
 #include "third_party/base/check.h"
 #include "third_party/base/check_op.h"
+#include "third_party/base/compiler_specific.h"
 
 namespace {
 
@@ -70,7 +71,7 @@ std::pair<size_t, size_t> UTF8Decode(pdfium::span<const uint8_t> pSrc,
 #if defined(WCHAR_T_IS_32_BIT)
 static_assert(sizeof(wchar_t) > 2, "wchar_t is too small");
 
-void UTF16ToWChar(void* pBuffer, size_t iLength) {
+UNSAFE_BUFFER_USAGE void UTF16ToWChar(void* pBuffer, size_t iLength) {
   DCHECK(pBuffer);
   DCHECK_GT(iLength, 0u);
 
@@ -78,15 +79,18 @@ void UTF16ToWChar(void* pBuffer, size_t iLength) {
   wchar_t* pDst = static_cast<wchar_t*>(pBuffer);
 
   // Perform self-intersecting copy in reverse order.
-  for (size_t i = iLength; i > 0; --i)
-    pDst[i - 1] = static_cast<wchar_t>(pSrc[i - 1]);
+  for (size_t i = iLength; i > 0; --i) {
+    // SAFETY: required from caller.
+    UNSAFE_BUFFERS(pDst[i - 1] = static_cast<wchar_t>(pSrc[i - 1]));
+  }
 }
 #endif  // defined(WCHAR_T_IS_32_BIT)
 
-void SwapByteOrder(uint16_t* pStr, size_t iLength) {
+UNSAFE_BUFFER_USAGE void SwapByteOrder(uint16_t* pStr, size_t iLength) {
   while (iLength-- > 0) {
     uint16_t wch = *pStr;
-    *pStr++ = (wch >> 8) | (wch << 8);
+    // SAFETY: required from caller.
+    UNSAFE_BUFFERS(*pStr++) = (wch >> 8) | (wch << 8);
   }
 }
 
@@ -182,7 +186,8 @@ size_t CFX_SeekableStreamProxy::ReadData(uint8_t* pBuffer, size_t iBufferSize) {
   return new_pos.IsValid() ? iBufferSize : 0;
 }
 
-size_t CFX_SeekableStreamProxy::ReadBlock(wchar_t* pStr, size_t size) {
+UNSAFE_BUFFER_USAGE size_t CFX_SeekableStreamProxy::ReadBlock(wchar_t* pStr,
+                                                              size_t size) {
   if (!pStr || size == 0)
     return 0;
 
@@ -191,12 +196,14 @@ size_t CFX_SeekableStreamProxy::ReadBlock(wchar_t* pStr, size_t size) {
     size_t iBytes = size * 2;
     size_t iLen = ReadData(reinterpret_cast<uint8_t*>(pStr), iBytes);
     size = iLen / 2;
-    if (m_wCodePage == FX_CodePage::kUTF16BE)
-      SwapByteOrder(reinterpret_cast<uint16_t*>(pStr), size);
-
+    if (m_wCodePage == FX_CodePage::kUTF16BE) {
+      // SAFETY: required from caller.
+      UNSAFE_BUFFERS(SwapByteOrder(reinterpret_cast<uint16_t*>(pStr), size));
+    }
 #if defined(WCHAR_T_IS_32_BIT)
-    if (size > 0)
-      UTF16ToWChar(pStr, size);
+    if (size > 0) {
+      UNSAFE_BUFFERS(UTF16ToWChar(pStr, size));
+    }
 #endif
     return size;
   }
