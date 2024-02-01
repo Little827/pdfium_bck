@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0042f744_434e3374",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 3741,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-02-01T19:08:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66e6f970_c55019c9",
+      "range": {
+        "startLine": 3741,
+        "startChar": 42,
+        "endLine": 3741,
+        "endChar": 43
+      },
+      "revId": "c038d4ae7123d07b858a912368a06c1f2efafdfe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5244a6f8_8b8c991b",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-02-01T18:16:46Z",
       "side": 1,
       "message": "follow-up: would like to see more tests with malformed parameters.  Maybe add a fuzzer based upon the above strings someday?",
+      "range": {
+        "startLine": 3807,
+        "startChar": 0,
+        "endLine": 3807,
+        "endChar": 65
+      },
+      "revId": "c038d4ae7123d07b858a912368a06c1f2efafdfe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f93e3678_95102603",
+        "filename": "fpdfsdk/fpdf_edit_embeddertest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 3807,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-02-01T19:08:00Z",
+      "side": 1,
+      "message": "Is the proposed fuzzer trying to fuzz the code in fpdfsdk/fpdf_edittext.cpp, or generate PDFs that then runs through the font parsing code?",
+      "parentUuid": "5244a6f8_8b8c991b",
       "range": {
         "startLine": 3807,
         "startChar": 0,
