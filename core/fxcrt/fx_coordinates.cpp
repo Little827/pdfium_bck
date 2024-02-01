@@ -16,6 +16,7 @@
 #include "core/fxcrt/fx_extension.h"
 #include "core/fxcrt/fx_safe_types.h"
 #include "core/fxcrt/fx_system.h"
+#include "third_party/base/compiler_specific.h"
 
 #ifndef NDEBUG
 #include <ostream>
@@ -501,12 +502,14 @@ CFX_FloatRect CFX_Matrix::TransformRect(const CFX_FloatRect& rect) const {
   float new_left = points[0].x;
   float new_top = points[0].y;
   float new_bottom = points[0].y;
-  for (size_t i = 1; i < std::size(points); i++) {
-    new_right = std::max(new_right, points[i].x);
-    new_left = std::min(new_left, points[i].x);
-    new_top = std::max(new_top, points[i].y);
-    new_bottom = std::min(new_bottom, points[i].y);
-  }
 
+  UNSAFE_BUFFERS({
+    for (size_t i = 1; i < std::size(points); i++) {
+      new_right = std::max(new_right, points[i].x);
+      new_left = std::min(new_left, points[i].x);
+      new_top = std::max(new_top, points[i].y);
+      new_bottom = std::min(new_bottom, points[i].y);
+    }
+  });
   return CFX_FloatRect(new_left, new_bottom, new_right, new_top);
 }
