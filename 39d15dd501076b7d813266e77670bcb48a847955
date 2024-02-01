@@ -22,6 +22,30 @@
       },
       "revId": "39d15dd501076b7d813266e77670bcb48a847955",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4944d19f_d63a6c9d",
+        "filename": "core/fpdfapi/font/cpdf_type1font.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-02-01T16:56:10Z",
+      "side": 1,
+      "message": "There are more callers to `UnicodeFromAdobeName()`, and their behavior vary. So leaving it alone for now.",
+      "parentUuid": "7b756345_e2972830",
+      "range": {
+        "startLine": 220,
+        "startChar": 37,
+        "endLine": 220,
+        "endChar": 78
+      },
+      "revId": "39d15dd501076b7d813266e77670bcb48a847955",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
