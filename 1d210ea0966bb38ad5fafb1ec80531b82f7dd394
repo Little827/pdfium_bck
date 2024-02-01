@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ac3362a_b7620486",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-01T00:58:28Z",
+      "side": 1,
+      "message": "This is what it might look like.  Pretty acceptable I think.",
+      "revId": "1d210ea0966bb38ad5fafb1ec80531b82f7dd394",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33b91ed8_67eb0d93",
+        "filename": "core/fxcrt/fx_memory_pa.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-01T00:58:28Z",
+      "side": 1,
+      "message": "THIS.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 22
+      },
+      "revId": "1d210ea0966bb38ad5fafb1ec80531b82f7dd394",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
