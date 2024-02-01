@@ -29,7 +29,8 @@ class CodePointView final {
 
     Iterator& operator++() {
       DCHECK_LT(current_, end_);
-      current_ += IsSupplementary(code_point_) ? 2 : 1;
+      // TODO(tsepez): DCHECK too weak, possible +2 out-of-bounds.
+      UNSAFE_BUFFERS(current_ += IsSupplementary(code_point_) ? 2 : 1);
       code_point_ = Decode();
       return *this;
     }
@@ -51,15 +52,14 @@ class CodePointView final {
       if (current_ >= end_) {
         return kSentinel;
       }
-
       char32_t code_point = *current_;
       if (IsHighSurrogate(code_point)) {
-        const wchar_t* next = current_ + 1;
+        // TODO(tsepez): investigate safety.
+        const wchar_t* next = UNSAFE_BUFFERS(current_ + 1);
         if (next < end_ && IsLowSurrogate(*next)) {
           code_point = SurrogatePair(code_point, *next).ToCodePoint();
         }
       }
-
       return code_point;
     }
 

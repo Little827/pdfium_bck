@@ -86,9 +86,11 @@ void* FX_Random_MT_Start(uint32_t dwSeed) {
   MTContext* pContext = FX_Alloc(MTContext, 1);
   uint32_t* pBuf = pContext->mt;
   pBuf[0] = dwSeed;
-  for (uint32_t i = 1; i < MT_N; i++)
-    pBuf[i] = (1812433253UL * (pBuf[i - 1] ^ (pBuf[i - 1] >> 30)) + i);
-
+  for (uint32_t i = 1; i < MT_N; i++) {
+    // SAFETY: constant bounds.
+    UNSAFE_BUFFERS(
+        pBuf[i] = (1812433253UL * (pBuf[i - 1] ^ (pBuf[i - 1] >> 30)) + i));
+  }
   pContext->mti = MT_N;
   return pContext;
 }
@@ -100,19 +102,25 @@ uint32_t FX_Random_MT_Generate(void* pContext) {
   if (pMTC->mti >= MT_N) {
     static const uint32_t mag[2] = {0, MT_Matrix_A};
     uint32_t kk;
+    // SAFETY: constant bounds.
     for (kk = 0; kk < MT_N - MT_M; kk++) {
-      v = (pBuf[kk] & MT_Upper_Mask) | (pBuf[kk + 1] & MT_Lower_Mask);
-      pBuf[kk] = pBuf[kk + MT_M] ^ (v >> 1) ^ mag[v & 1];
+      v = UNSAFE_BUFFERS((pBuf[kk] & MT_Upper_Mask) |
+                         (pBuf[kk + 1] & MT_Lower_Mask));
+      UNSAFE_BUFFERS(pBuf[kk] = pBuf[kk + MT_M] ^ (v >> 1) ^ mag[v & 1]);
     }
     for (; kk < MT_N - 1; kk++) {
-      v = (pBuf[kk] & MT_Upper_Mask) | (pBuf[kk + 1] & MT_Lower_Mask);
-      pBuf[kk] = pBuf[kk + (MT_M - MT_N)] ^ (v >> 1) ^ mag[v & 1];
+      v = UNSAFE_BUFFERS((pBuf[kk] & MT_Upper_Mask) |
+                         (pBuf[kk + 1] & MT_Lower_Mask));
+      UNSAFE_BUFFERS(pBuf[kk] =
+                         pBuf[kk + (MT_M - MT_N)] ^ (v >> 1) ^ mag[v & 1]);
     }
-    v = (pBuf[MT_N - 1] & MT_Upper_Mask) | (pBuf[0] & MT_Lower_Mask);
-    pBuf[MT_N - 1] = pBuf[MT_M - 1] ^ (v >> 1) ^ mag[v & 1];
+    v = UNSAFE_BUFFERS((pBuf[MT_N - 1] & MT_Upper_Mask) |
+                       (pBuf[0] & MT_Lower_Mask));
+    UNSAFE_BUFFERS(pBuf[MT_N - 1] = pBuf[MT_M - 1] ^ (v >> 1) ^ mag[v & 1]);
     pMTC->mti = 0;
   }
-  v = pBuf[pMTC->mti++];
+  // SAFETY: pMTC->mti set to 0 if pMTC->mti >= MT_N.
+  v = UNSAFE_BUFFERS(pBuf[pMTC->mti++]);
   v ^= (v >> 11);
   v ^= (v << 7) & 0x9d2c5680UL;
   v ^= (v << 15) & 0xefc60000UL;
@@ -124,10 +132,12 @@ void FX_Random_MT_Close(void* pContext) {
   FX_Free(pContext);
 }
 
-void FX_Random_GenerateMT(uint32_t* pBuffer, int32_t iCount) {
+UNSAFE_BUFFER_USAGE void FX_Random_GenerateMT(uint32_t* pBuffer,
+                                              int32_t iCount) {
   void* pContext = ContextFromNextGlobalSeed();
-  while (iCount-- > 0)
-    *pBuffer++ = FX_Random_MT_Generate(pContext);
-
+  while (iCount-- > 0) {
+    // SAFETY: required from caller.
+    UNSAFE_BUFFERS(*pBuffer++) = FX_Random_MT_Generate(pContext);
+  }
   FX_Random_MT_Close(pContext);
 }

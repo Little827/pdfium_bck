@@ -21,6 +21,7 @@
 #include "core/fxcrt/utf16.h"
 #include "third_party/base/check.h"
 #include "third_party/base/check_op.h"
+#include "third_party/base/compiler_specific.h"
 #include "third_party/base/numerics/safe_math.h"
 
 template class fxcrt::StringDataTemplate<wchar_t>;
@@ -53,25 +54,29 @@ size_t FuseSurrogates(pdfium::span<wchar_t> s) {
 
 constexpr wchar_t kWideTrimChars[] = L"\x09\x0a\x0b\x0c\x0d\x20";
 
-const wchar_t* FX_wcsstr(const wchar_t* haystack,
-                         size_t haystack_len,
-                         const wchar_t* needle,
-                         size_t needle_len) {
-  if (needle_len > haystack_len || needle_len == 0)
+UNSAFE_BUFFER_USAGE const wchar_t* FX_wcsstr(const wchar_t* haystack,
+                                             size_t haystack_len,
+                                             const wchar_t* needle,
+                                             size_t needle_len) {
+  if (needle_len > haystack_len || needle_len == 0) {
     return nullptr;
-
-  const wchar_t* end_ptr = haystack + haystack_len - needle_len;
+  }
+  // SAFETY: needle_len > haystack_len comparison above.
+  const wchar_t* end_ptr = UNSAFE_BUFFERS(haystack + haystack_len - needle_len);
   while (haystack <= end_ptr) {
     size_t i = 0;
     while (true) {
-      if (haystack[i] != needle[i])
+      // SAFETY: required from caller.
+      if (UNSAFE_BUFFERS(haystack[i] != needle[i])) {
         break;
-
-      i++;
-      if (i == needle_len)
+      }
+      ++i;
+      if (i == needle_len) {
         return haystack;
+      }
     }
-    haystack++;
+    // SAFETY: required from caller.
+    UNSAFE_BUFFERS(++haystack);
   }
   return nullptr;
 }
@@ -79,13 +84,16 @@ const wchar_t* FX_wcsstr(const wchar_t* haystack,
 absl::optional<size_t> GuessSizeForVSWPrintf(const wchar_t* pFormat,
                                              va_list argList) {
   size_t nMaxLen = 0;
-  for (const wchar_t* pStr = pFormat; *pStr != 0; pStr++) {
-    if (*pStr != '%' || *(pStr = pStr + 1) == '%') {
+  // SAFETY: NUL check.
+  for (const wchar_t* pStr = pFormat; *pStr != 0; UNSAFE_BUFFERS(++pStr)) {
+    // SAFETY: have non_NUL char, must be at least a NUL following.
+    if (*pStr != '%' || UNSAFE_BUFFERS(*(pStr = pStr + 1) == '%')) {
       ++nMaxLen;
       continue;
     }
     int iWidth = 0;
-    for (; *pStr != 0; pStr++) {
+    // SAFETY: NUL check
+    for (; *pStr != 0; UNSAFE_BUFFERS(++pStr)) {
       if (*pStr == '#') {
         nMaxLen += 2;
       } else if (*pStr == '*') {
@@ -96,45 +104,59 @@ absl::optional<size_t> GuessSizeForVSWPrintf(const wchar_t* pFormat,
     }
     if (iWidth == 0) {
       iWidth = FXSYS_wtoi(pStr);
-      while (FXSYS_IsDecimalDigit(*pStr))
-        ++pStr;
+      while (FXSYS_IsDecimalDigit(*pStr)) {
+        // SAFETY: NUL is not a decimal digit.
+        UNSAFE_BUFFERS(++pStr);
+      }
     }
-    if (iWidth < 0 || iWidth > 128 * 1024)
+    if (iWidth < 0 || iWidth > 128 * 1024) {
       return absl::nullopt;
+    }
     uint32_t nWidth = static_cast<uint32_t>(iWidth);
     int iPrecision = 0;
     if (*pStr == '.') {
-      pStr++;
+      // SAFETY: have non-NUL char, must be at least a NUL following.
+      UNSAFE_BUFFERS(++pStr);
       if (*pStr == '*') {
         iPrecision = va_arg(argList, int);
-        pStr++;
+        // SAFETY: have non-NUL char, must be at least a NUL following.
+        UNSAFE_BUFFERS(++pStr);
       } else {
         iPrecision = FXSYS_wtoi(pStr);
-        while (FXSYS_IsDecimalDigit(*pStr))
-          ++pStr;
+        while (FXSYS_IsDecimalDigit(*pStr)) {
+          // SAFETY: NUL is not a decimal digit.
+          UNSAFE_BUFFERS(++pStr);
+        }
       }
     }
-    if (iPrecision < 0 || iPrecision > 128 * 1024)
+    if (iPrecision < 0 || iPrecision > 128 * 1024) {
       return absl::nullopt;
+    }
     uint32_t nPrecision = static_cast<uint32_t>(iPrecision);
     int nModifier = 0;
-    if (*pStr == L'I' && *(pStr + 1) == L'6' && *(pStr + 2) == L'4') {
-      pStr += 3;
+    // SAFETY: have non-NUL char, must be at least a NUL following
+    if (*pStr == L'I' && UNSAFE_BUFFERS(*(pStr + 1)) == L'6' &&
+        UNSAFE_BUFFERS(*(pStr + 2)) == L'4') {
+      // SAFETY: have non-NUL chars, must be at least a NUL following
+      UNSAFE_BUFFERS(pStr += 3);
       nModifier = FORCE_INT64;
     } else {
       switch (*pStr) {
         case 'h':
           nModifier = FORCE_ANSI;
-          pStr++;
+          // SAFETY: have non-NUL char, must be at least a NUL following
+          UNSAFE_BUFFERS(++pStr);
           break;
         case 'l':
           nModifier = FORCE_UNICODE;
-          pStr++;
+          // SAFETY: have non-NUL char, must be at least a NUL following
+          UNSAFE_BUFFERS(++pStr);
           break;
         case 'F':
         case 'N':
         case 'L':
-          pStr++;
+          // SAFETY: have non-NUL char, must be at least a NUL following
+          UNSAFE_BUFFERS(++pStr);
           break;
       }
     }
@@ -265,6 +287,7 @@ absl::optional<size_t> GuessSizeForVSWPrintf(const wchar_t* pFormat,
     }
     nMaxLen += nItemLen;
   }
+
   nMaxLen += 32;  // Fudge factor.
   return nMaxLen;
 }
@@ -606,7 +629,8 @@ void WideString::ReallocBeforeWrite(size_t nNewLength) {
     return;
   }
 
-  RetainPtr<StringData> pNewData(StringData::Create(nNewLength));
+  RetainPtr<StringData> pNewData =
+      pdfium::WrapRetain(StringData::Create(nNewLength));
   if (m_pData) {
     size_t nCopyLength = std::min(m_pData->m_nDataLength, nNewLength);
     pNewData->CopyContents(m_pData->m_String, nCopyLength);
@@ -614,7 +638,8 @@ void WideString::ReallocBeforeWrite(size_t nNewLength) {
   } else {
     pNewData->m_nDataLength = 0;
   }
-  pNewData->m_String[pNewData->m_nDataLength] = 0;
+  // SAFETY: m_nDataLength management above.
+  UNSAFE_BUFFERS(pNewData->m_String[pNewData->m_nDataLength]) = 0;
   m_pData.Swap(pNewData);
 }
 
@@ -640,9 +665,13 @@ void WideString::ReleaseBuffer(size_t nNewLength) {
     return;
   }
 
+  // TODO(tsepez): make this a CHECK().
   DCHECK_EQ(m_pData->m_nRefs, 1);
+
+  // SAFETY: std::min() above.
+  UNSAFE_BUFFERS(m_pData->m_String[nNewLength]) = 0;
   m_pData->m_nDataLength = nNewLength;
-  m_pData->m_String[nNewLength] = 0;
+
   if (m_pData->m_nAllocLength - nNewLength >= 32) {
     // Over arbitrary threshold, so pay the price to relocate.  Force copy to
     // always occur by holding a second reference to the string.
@@ -695,8 +724,11 @@ size_t WideString::Delete(size_t index, size_t count) {
 
   ReallocBeforeWrite(old_length);
   size_t chars_to_copy = old_length - removal_length + 1;
-  wmemmove(m_pData->m_String + index, m_pData->m_String + removal_length,
-           chars_to_copy);
+
+  // SAFETY: requires correctness of length computations above.
+  wmemmove(UNSAFE_BUFFERS(m_pData->m_String + index),
+           UNSAFE_BUFFERS(m_pData->m_String + removal_length), chars_to_copy);
+
   m_pData->m_nDataLength = old_length - count;
   return m_pData->m_nDataLength;
 }
@@ -817,7 +849,8 @@ WideString WideString::Substr(size_t first, size_t count) const {
     return *this;
 
   WideString dest;
-  AllocCopy(dest, count, first);
+  // SAFETY: count and first validated above.
+  UNSAFE_BUFFERS(AllocCopy(dest, count, first));
   return dest;
 }
 
@@ -830,69 +863,79 @@ WideString WideString::Last(size_t count) const {
   return Substr(GetLength() - count, count);
 }
 
-void WideString::AllocCopy(WideString& dest,
-                           size_t nCopyLen,
-                           size_t nCopyIndex) const {
-  if (nCopyLen == 0)
+UNSAFE_BUFFER_USAGE void WideString::AllocCopy(WideString& dest,
+                                               size_t nCopyLen,
+                                               size_t nCopyIndex) const {
+  if (nCopyLen == 0) {
     return;
-
-  RetainPtr<StringData> pNewData(
-      StringData::Create(m_pData->m_String + nCopyIndex, nCopyLen));
+  }
+  // SAFETY: required from caller.
+  auto pNewData = pdfium::WrapRetain(StringData::Create(
+      UNSAFE_BUFFERS(m_pData->m_String + nCopyIndex), nCopyLen));
   dest.m_pData.Swap(pNewData);
 }
 
 size_t WideString::Insert(size_t index, wchar_t ch) {
   const size_t cur_length = GetLength();
-  if (!IsValidLength(index))
+  if (!IsValidLength(index)) {
     return cur_length;
-
+  }
   const size_t new_length = cur_length + 1;
   ReallocBeforeWrite(new_length);
-  FXSYS_wmemmove(m_pData->m_String + index + 1, m_pData->m_String + index,
-                 new_length - index);
-  m_pData->m_String[index] = ch;
+
+  // SAFETY: length checks above plus ReallocBeforeWrite().
+  FXSYS_wmemmove(UNSAFE_BUFFERS(m_pData->m_String + index + 1),
+                 UNSAFE_BUFFERS(m_pData->m_String + index), new_length - index);
+  UNSAFE_BUFFERS(m_pData->m_String[index]) = ch;
   m_pData->m_nDataLength = new_length;
   return new_length;
 }
 
 absl::optional<size_t> WideString::Find(wchar_t ch, size_t start) const {
-  if (!m_pData)
+  if (!m_pData) {
     return absl::nullopt;
-
-  if (!IsValidIndex(start))
+  }
+  if (!IsValidIndex(start)) {
     return absl::nullopt;
+  }
 
-  const wchar_t* pStr = FXSYS_wmemchr(m_pData->m_String + start, ch,
-                                      m_pData->m_nDataLength - start);
-  return pStr ? absl::optional<size_t>(
-                    static_cast<size_t>(pStr - m_pData->m_String))
+  // SAFETY: IsValidIndex() above.
+  const wchar_t* pStr = FXSYS_wmemchr(UNSAFE_BUFFERS(m_pData->m_String + start),
+                                      ch, m_pData->m_nDataLength - start);
+  return pStr ? absl::optional<size_t>(static_cast<size_t>(
+                    UNSAFE_BUFFERS(pStr - m_pData->m_String)))
               : absl::nullopt;
 }
 
 absl::optional<size_t> WideString::Find(WideStringView subStr,
                                         size_t start) const {
-  if (!m_pData)
+  if (!m_pData) {
     return absl::nullopt;
-
-  if (!IsValidIndex(start))
+  }
+  if (!IsValidIndex(start)) {
     return absl::nullopt;
+  }
 
-  const wchar_t* pStr =
+  // SAFETY: IsValidIndex() above.
+  const wchar_t* pStr = UNSAFE_BUFFERS(
       FX_wcsstr(m_pData->m_String + start, m_pData->m_nDataLength - start,
-                subStr.unterminated_c_str(), subStr.GetLength());
-  return pStr ? absl::optional<size_t>(
-                    static_cast<size_t>(pStr - m_pData->m_String))
+                subStr.unterminated_c_str(), subStr.GetLength()));
+  return pStr ? absl::optional<size_t>(static_cast<size_t>(
+                    UNSAFE_BUFFERS(pStr - m_pData->m_String)))
               : absl::nullopt;
 }
 
 absl::optional<size_t> WideString::ReverseFind(wchar_t ch) const {
-  if (!m_pData)
+  if (!m_pData) {
     return absl::nullopt;
+  }
 
   size_t nLength = m_pData->m_nDataLength;
   while (nLength--) {
-    if (m_pData->m_String[nLength] == ch)
+    // SAFETY: m_nDataLength consistent with allocation.
+    if (UNSAFE_BUFFERS(m_pData->m_String[nLength]) == ch) {
       return nLength;
+    }
   }
   return absl::nullopt;
 }
@@ -914,36 +957,48 @@ void WideString::MakeUpper() {
 }
 
 size_t WideString::Remove(wchar_t chRemove) {
-  if (IsEmpty())
+  if (IsEmpty()) {
     return 0;
-
-  wchar_t* pstrSource = m_pData->m_String;
-  wchar_t* pstrEnd = m_pData->m_String + m_pData->m_nDataLength;
-  while (pstrSource < pstrEnd) {
-    if (*pstrSource == chRemove)
-      break;
-    pstrSource++;
   }
-  if (pstrSource == pstrEnd)
-    return 0;
 
-  ptrdiff_t copied = pstrSource - m_pData->m_String;
+  size_t count = 0;
+  wchar_t* pstrSource = m_pData->m_String;
+  // SAFETY: m_nDataLength consistent with allocation.
+  wchar_t* pstrEnd = UNSAFE_BUFFERS(m_pData->m_String + m_pData->m_nDataLength);
+  while (pstrSource < pstrEnd) {
+    if (*pstrSource == chRemove) {
+      break;
+    }
+    // SAFETY: loop bounds check.
+    UNSAFE_BUFFERS(++pstrSource);
+  }
+  if (pstrSource == pstrEnd) {
+    return 0;
+  }
+
+  // SAFETY: loop above stays in bounds.
+  ptrdiff_t copied = UNSAFE_BUFFERS(pstrSource - m_pData->m_String);
   ReallocBeforeWrite(m_pData->m_nDataLength);
-  pstrSource = m_pData->m_String + copied;
-  pstrEnd = m_pData->m_String + m_pData->m_nDataLength;
+
+  // SAFETY: depends on ReallocBeforeWrite() correctness.
+  pstrSource = UNSAFE_BUFFERS(m_pData->m_String + copied);
+  pstrEnd = UNSAFE_BUFFERS(m_pData->m_String + m_pData->m_nDataLength);
 
   wchar_t* pstrDest = pstrSource;
   while (pstrSource < pstrEnd) {
     if (*pstrSource != chRemove) {
       *pstrDest = *pstrSource;
-      pstrDest++;
+      UNSAFE_BUFFERS(++pstrDest);  // SAFETY: if dest sized correctly.
     }
-    pstrSource++;
+    UNSAFE_BUFFERS(++pstrSource);  // SAFETY: loop bounds.
   }
 
   *pstrDest = 0;
-  size_t count = static_cast<size_t>(pstrSource - pstrDest);
+
+  // SAFETY: bounds check from previous loop.
+  count = static_cast<size_t>(UNSAFE_BUFFERS(pstrSource - pstrDest));
   m_pData->m_nDataLength -= count;
+
   return count;
 }
 
@@ -955,19 +1010,26 @@ size_t WideString::Replace(WideStringView pOld, WideStringView pNew) {
   size_t nReplacementLen = pNew.GetLength();
   size_t count = 0;
   const wchar_t* pStart = m_pData->m_String;
-  wchar_t* pEnd = m_pData->m_String + m_pData->m_nDataLength;
+
+  // SAFETY: m_nDataLength consistent with allocation.
+  wchar_t* pEnd = UNSAFE_BUFFERS(m_pData->m_String + m_pData->m_nDataLength);
+
   while (true) {
+    // SAFETY: if pEnd correctly computed above.
     const wchar_t* pTarget =
-        FX_wcsstr(pStart, static_cast<size_t>(pEnd - pStart),
-                  pOld.unterminated_c_str(), nSourceLen);
-    if (!pTarget)
+        UNSAFE_BUFFERS(FX_wcsstr(pStart, static_cast<size_t>(pEnd - pStart),
+                                 pOld.unterminated_c_str(), nSourceLen));
+    if (!pTarget) {
       break;
+    }
 
     count++;
-    pStart = pTarget + nSourceLen;
+    // TODO(tsepez): double-check safety.
+    pStart = UNSAFE_BUFFERS(pTarget + nSourceLen);
   }
-  if (count == 0)
+  if (count == 0) {
     return 0;
+  }
 
   size_t nNewLength =
       m_pData->m_nDataLength + (nReplacementLen - nSourceLen) * count;
@@ -977,20 +1039,22 @@ size_t WideString::Replace(WideStringView pOld, WideStringView pNew) {
     return count;
   }
 
-  RetainPtr<StringData> pNewData(StringData::Create(nNewLength));
+  auto pNewData = pdfium::WrapRetain(StringData::Create(nNewLength));
   pStart = m_pData->m_String;
   wchar_t* pDest = pNewData->m_String;
+
+  // SAFETY: correctness of Create(nNewlLength) throughout.
   for (size_t i = 0; i < count; i++) {
     const wchar_t* pTarget =
-        FX_wcsstr(pStart, static_cast<size_t>(pEnd - pStart),
-                  pOld.unterminated_c_str(), nSourceLen);
+        UNSAFE_BUFFERS(FX_wcsstr(pStart, static_cast<size_t>(pEnd - pStart),
+                                 pOld.unterminated_c_str(), nSourceLen));
     FXSYS_wmemcpy(pDest, pStart, pTarget - pStart);
-    pDest += pTarget - pStart;
+    UNSAFE_BUFFERS(pDest += pTarget - pStart);
     FXSYS_wmemcpy(pDest, pNew.unterminated_c_str(), pNew.GetLength());
-    pDest += pNew.GetLength();
-    pStart = pTarget + nSourceLen;
+    UNSAFE_BUFFERS(pDest += pNew.GetLength());
+    pStart = UNSAFE_BUFFERS(pTarget + nSourceLen);
   }
-  FXSYS_wmemcpy(pDest, pStart, pEnd - pStart);
+  FXSYS_wmemcpy(pDest, pStart, UNSAFE_BUFFERS(pEnd - pStart));
   m_pData.Swap(pNewData);
   return count;
 }
@@ -1080,9 +1144,11 @@ WideString WideString::FromUTF16BE(pdfium::span<const uint8_t> data) {
 }
 
 void WideString::SetAt(size_t index, wchar_t c) {
-  DCHECK(IsValidIndex(index));
+  CHECK(IsValidIndex(index));
   ReallocBeforeWrite(m_pData->m_nDataLength);
-  m_pData->m_String[index] = c;
+
+  // SAFETY: previous CHECK().
+  UNSAFE_BUFFERS(m_pData->m_String[index]) = c;
 }
 
 int WideString::Compare(const wchar_t* str) const {
@@ -1116,9 +1182,13 @@ int WideString::CompareNoCase(const wchar_t* str) const {
 
 size_t WideString::WStringLength(const unsigned short* str) {
   size_t len = 0;
-  if (str)
-    while (str[len])
-      len++;
+  if (str) {
+    // SAFETY: non-NULL str must contain at least one NUL char.
+    while (UNSAFE_BUFFERS(str[len])) {
+      // SAFETY: non-NUL char in while condition, at least NUL to follow.
+      UNSAFE_BUFFERS(++len);
+    }
+  }
   return len;
 }
 
@@ -1158,20 +1228,25 @@ void WideString::TrimLeft(WideStringView targets) {
   size_t pos = 0;
   while (pos < len) {
     size_t i = 0;
+    // SAFETY: pos < len.
     while (i < targets.GetLength() &&
-           targets.CharAt(i) != m_pData->m_String[pos]) {
-      i++;
+           targets.CharAt(i) != UNSAFE_BUFFERS(m_pData->m_String[pos])) {
+      ++i;
     }
-    if (i == targets.GetLength())
+    if (i == targets.GetLength()) {
       break;
-    pos++;
+    }
+    ++pos;
   }
-  if (!pos)
+  if (!pos) {
     return;
+  }
 
   ReallocBeforeWrite(len);
   size_t nDataLength = len - pos;
-  memmove(m_pData->m_String, m_pData->m_String + pos,
+
+  // SAFETY: pos < len in while condition above/
+  memmove(m_pData->m_String, UNSAFE_BUFFERS(m_pData->m_String + pos),
           (nDataLength + 1) * sizeof(wchar_t));
   m_pData->m_nDataLength = nDataLength;
 }
@@ -1190,12 +1265,16 @@ void WideString::TrimRight(WideStringView targets) {
     return;
 
   size_t pos = GetLength();
-  while (pos && targets.Contains(m_pData->m_String[pos - 1]))
-    pos--;
+  // SAFETY: pos not zero.
+  while (pos && targets.Contains(UNSAFE_BUFFERS(m_pData->m_String[pos - 1]))) {
+    UNSAFE_BUFFERS(--pos);
+  }
 
   if (pos < m_pData->m_nDataLength) {
     ReallocBeforeWrite(m_pData->m_nDataLength);
-    m_pData->m_String[pos] = 0;
+
+    // SAFETY: pos < m_nDataLength and ReallocBeforWrite().
+    UNSAFE_BUFFERS(m_pData->m_String[pos]) = 0;
     m_pData->m_nDataLength = pos;
   }
 }
