@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b2abadf0_5d04f95c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-01T17:04:51Z",
+      "side": 1,
+      "message": "I haven\u0027t seen it behave too weird. In my tests I used it to wrap a single expression, and clang-format treats it like a function call.\n\nBut maybe https://clang.llvm.org/docs/ClangFormatStyleOptions.html#macros would help?\n\nIf it still does badly, maybe we can file bugs.\n\nCould you share a badly-formatted example?",
+      "parentUuid": "a4f6a2c0_528935bb",
+      "revId": "1d210ea0966bb38ad5fafb1ec80531b82f7dd394",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b3219c87_7b02def7",
         "filename": "core/fxcrt/bytestring.cpp",
         "patchSetId": 2
@@ -101,6 +119,24 @@
       "side": 1,
       "message": "Or alternativley, the UNSAFFE_BUFFER_USAGE keyword to propogate the effect to callers, right?",
       "parentUuid": "545cd89c_dee44d32",
+      "revId": "1d210ea0966bb38ad5fafb1ec80531b82f7dd394",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18e976e9_7e916d65",
+        "filename": "core/fxcrt/bytestring.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-01T17:04:51Z",
+      "side": 1,
+      "message": "Yeah, then `// SAFETY: This is guaranteed by the caller.` is appropriate on the UNSAFE_BUFFERS() macro",
+      "parentUuid": "fe4fd745_c303cfd0",
       "revId": "1d210ea0966bb38ad5fafb1ec80531b82f7dd394",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
