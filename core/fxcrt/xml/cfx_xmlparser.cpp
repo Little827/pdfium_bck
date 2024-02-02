@@ -26,6 +26,7 @@
 #include "core/fxcrt/xml/cfx_xmlnode.h"
 #include "core/fxcrt/xml/cfx_xmltext.h"
 #include "third_party/base/check.h"
+#include "third_party/base/compiler_specific.h"
 #include "third_party/base/notreached.h"
 
 namespace {
@@ -473,34 +474,43 @@ void CFX_XMLParser::ProcessTextChar(wchar_t character) {
     // Copy the entity out into a string and remove from the vector. When we
     // copy the entity we don't want to copy out the & or the ; so we start
     // shifted by one and want to copy 2 less characters in total.
-    WideString csEntity(current_text_.data() + entity_start_.value() + 1,
-                        current_text_.size() - entity_start_.value() - 2);
-    current_text_.erase(current_text_.begin() + entity_start_.value(),
-                        current_text_.end());
+    // TODO(tsepez): investigate safety, probably substr() useful.
+    WideString csEntity(
+        UNSAFE_BUFFERS(current_text_.data() + entity_start_.value() + 1),
+        current_text_.size() - entity_start_.value() - 2);
+    current_text_.erase(
+        UNSAFE_BUFFERS(current_text_.begin() + entity_start_.value()),
+        current_text_.end());
 
     size_t iLen = csEntity.GetLength();
     if (iLen > 0) {
       if (csEntity[0] == L'#') {
         uint32_t ch = 0;
-        if (iLen > 1 && csEntity[1] == L'x') {
+        // SAFETY: iLen > 1.
+        if (iLen > 1 && UNSAFE_BUFFERS(csEntity[1]) == L'x') {
           for (size_t i = 2; i < iLen; i++) {
-            if (!FXSYS_IsHexDigit(csEntity[i]))
+            // SAFETY: i < iLen.
+            if (!FXSYS_IsHexDigit(UNSAFE_BUFFERS(csEntity[i]))) {
               break;
-            ch = (ch << 4) + FXSYS_HexCharToInt(csEntity[i]);
+            }
+            ch = (ch << 4) + FXSYS_HexCharToInt(UNSAFE_BUFFERS(csEntity[i]));
           }
         } else {
+          // SAFETY: i < iLen.
           for (size_t i = 1; i < iLen; i++) {
-            if (!FXSYS_IsDecimalDigit(csEntity[i]))
+            if (!FXSYS_IsDecimalDigit(UNSAFE_BUFFERS(csEntity[i]))) {
               break;
-            ch = ch * 10 + FXSYS_DecimalCharToInt(csEntity[i]);
+            }
+            ch = ch * 10 + FXSYS_DecimalCharToInt(UNSAFE_BUFFERS(csEntity[i]));
           }
         }
-        if (ch > kMaxCharRange)
+        if (ch > kMaxCharRange) {
           ch = ' ';
-
+        }
         character = static_cast<wchar_t>(ch);
-        if (character != 0)
+        if (character != 0) {
           current_text_.push_back(character);
+        }
       } else {
         if (csEntity == L"amp") {
           current_text_.push_back(L'&');
