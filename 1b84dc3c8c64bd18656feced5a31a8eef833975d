@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "711ef291_0f254de2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-02T00:45:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c0aaddf_75c9fd5a",
+      "revId": "1b84dc3c8c64bd18656feced5a31a8eef833975d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "466ed847_e3cc2488",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-02-01T22:12:37Z",
       "side": 1,
       "message": "Do we want to reference a bug # in this CL?",
+      "revId": "1b84dc3c8c64bd18656feced5a31a8eef833975d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99c08622_36fb8467",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-02T00:45:09Z",
+      "side": 1,
+      "message": "Nah, the referenced bug is kinda chrome-specific.",
+      "parentUuid": "466ed847_e3cc2488",
       "revId": "1b84dc3c8c64bd18656feced5a31a8eef833975d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -69,6 +105,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9aee7493_2142e743",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-02T00:45:09Z",
+      "side": 1,
+      "message": "The exception is when you are implementing STL-like things which eventually have to fall back to C. Also for the fxge stuff where performance matters. Other places should be rarer and if not, spanification was missed.",
+      "parentUuid": "f74df69e_832d98d5",
+      "revId": "1b84dc3c8c64bd18656feced5a31a8eef833975d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9699b6c3_07a737e5",
@@ -82,6 +136,24 @@
       "writtenOn": "2024-02-01T22:29:59Z",
       "side": 1,
       "message": "auto?",
+      "revId": "1b84dc3c8c64bd18656feced5a31a8eef833975d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53a4afed_6ba1003d",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-02T00:45:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9699b6c3_07a737e5",
       "revId": "1b84dc3c8c64bd18656feced5a31a8eef833975d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -103,6 +175,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f2ff1aa_4e9d4b60",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-02T00:45:09Z",
+      "side": 1,
+      "message": "Artifact from wrapping larger blocks with UNSAFE. Done.",
+      "parentUuid": "f4c8ffe6_fd4042e7",
+      "revId": "1b84dc3c8c64bd18656feced5a31a8eef833975d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0402a705_322978c9",
@@ -116,6 +206,24 @@
       "writtenOn": "2024-02-01T22:29:59Z",
       "side": 1,
       "message": "Can we consistently use the \"CHECK() above\" comment?",
+      "revId": "1b84dc3c8c64bd18656feced5a31a8eef833975d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8c1ca60_daf82d0d",
+        "filename": "core/fxcrt/bytestring.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-02T00:45:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0402a705_322978c9",
       "revId": "1b84dc3c8c64bd18656feced5a31a8eef833975d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -137,6 +245,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cdcd1db_67b3a8ef",
+        "filename": "core/fxcrt/code_point_view.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-02T00:45:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "646d515f_c4b2b105",
+      "revId": "1b84dc3c8c64bd18656feced5a31a8eef833975d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4a1b9668_6978700b",
@@ -150,6 +276,24 @@
       "writtenOn": "2024-02-01T22:29:59Z",
       "side": 1,
       "message": "So if this was a for-loop like line 506, and not range-based for-loop, would this also need UNSAFE_BUFFERS?",
+      "revId": "1b84dc3c8c64bd18656feced5a31a8eef833975d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3327c366_35c211b9",
+        "filename": "core/fxcrt/fx_coordinates.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-02T00:45:09Z",
+      "side": 1,
+      "message": "Yes, and the reason is that iterator operator++() is somehow exempt. Similalry, if points were a std::array\u003c\u003e, then it is expected to do its own hardening and operator++() us exempt.\n\nEven better as this is now iterating over subspan(1).",
+      "parentUuid": "4a1b9668_6978700b",
       "revId": "1b84dc3c8c64bd18656feced5a31a8eef833975d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -171,6 +315,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e25d566_02258ac4",
+        "filename": "core/fxcrt/fx_random.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-02T00:45:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51cfc823_fcc223cf",
+      "revId": "1b84dc3c8c64bd18656feced5a31a8eef833975d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d88d8bfc_81cda360",
@@ -184,6 +346,24 @@
       "writtenOn": "2024-02-01T22:29:59Z",
       "side": 1,
       "message": "IWYU for compiler_specific.h",
+      "revId": "1b84dc3c8c64bd18656feced5a31a8eef833975d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1594e6af_0f6ca1c6",
+        "filename": "core/fxcrt/fx_unicode.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-02T00:45:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d88d8bfc_81cda360",
       "revId": "1b84dc3c8c64bd18656feced5a31a8eef833975d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -205,6 +385,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "93474c84_aa05c4e8",
+        "filename": "core/fxcrt/unowned_ptr.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-02T00:45:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46299473_11c37d80",
+      "revId": "1b84dc3c8c64bd18656feced5a31a8eef833975d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a666c4ab_3863fda0",
@@ -218,6 +416,24 @@
       "writtenOn": "2024-02-01T22:29:59Z",
       "side": 1,
       "message": "Is this effectively a TODO to copy the Chromium equivalent that needs to be fulfilled?",
+      "revId": "1b84dc3c8c64bd18656feced5a31a8eef833975d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e2ecac9_6d65ec1b",
+        "filename": "third_party/base/compiler_specific.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-02T00:45:09Z",
+      "side": 1,
+      "message": "Done, now says TODO().",
+      "parentUuid": "a666c4ab_3863fda0",
       "revId": "1b84dc3c8c64bd18656feced5a31a8eef833975d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
