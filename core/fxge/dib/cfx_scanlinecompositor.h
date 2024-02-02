@@ -78,10 +78,10 @@ class CFX_ScanlineCompositor {
   FXDIB_Format m_SrcFormat;
   FXDIB_Format m_DestFormat;
   Palette m_SrcPalette;
-  int m_MaskAlpha;
-  int m_MaskRed;
-  int m_MaskGreen;
-  int m_MaskBlue;
+  uint8_t m_MaskAlpha;
+  uint8_t m_MaskRed;
+  uint8_t m_MaskGreen;
+  uint8_t m_MaskBlue;
   BlendMode m_BlendType = BlendMode::kNormal;
   bool m_bRgbByteOrder = false;
   bool m_bClip = false;

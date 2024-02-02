@@ -7,12 +7,16 @@
 #ifndef CORE_FXGE_DIB_BLEND_H_
 #define CORE_FXGE_DIB_BLEND_H_
 
+#include "third_party/base/numerics/safe_conversions.h"
+
 enum class BlendMode;
 
 namespace fxge {
 
 // Note that Blend() only handles separable blend modes.
-int Blend(BlendMode blend_mode, int back_color, int src_color);
+int Blend(BlendMode blend_mode,
+          pdfium::base::StrictNumeric<uint8_t> strict_back_color,
+          pdfium::base::StrictNumeric<uint8_t> strict_src_color);
 
 }  // namespace fxge
 
