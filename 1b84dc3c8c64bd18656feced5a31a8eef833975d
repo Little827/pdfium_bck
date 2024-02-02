@@ -298,6 +298,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "82d46193_f1be5429",
+        "filename": "core/fxcrt/fx_coordinates.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "\u003e somehow exempt\n\nYeah ranged iterators stay in range unless you invalidate them, which is a separate problem not addressed through unsafe-buffers (and you can\u0027t invalidate iterators to an array like this since it can\u0027t move/resize).",
+      "parentUuid": "3327c366_35c211b9",
+      "revId": "1b84dc3c8c64bd18656feced5a31a8eef833975d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "51cfc823_fcc223cf",

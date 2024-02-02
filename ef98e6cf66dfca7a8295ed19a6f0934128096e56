@@ -1,0 +1,1919 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c8589d2_190ad344",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "unsafe reviewed (there\u0027s still some TODOs)",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56baf59a_5a0aeacc",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "Document what must be true of the parameters to not cause an OOB bug? It looks like haystack must point to an array of at least haystack_len elements, needle must point to an array of at least needle_len elements.\n\n(also this seems like it can be span\u0027d?)",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "468e8c0d_b1ee7e61",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "`0 \u003c needle_len \u003c haystack_len` is guaranteed by the the comparison above, which ensures the pointer stays in the range `[haystack, haystack + len)`.",
+      "range": {
+        "startLine": 45,
+        "startChar": 13,
+        "endLine": 45,
+        "endChar": 56
+      },
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e98b093_528c7060",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "I think the guarantee here is that `end_ptr` points inside the haystack array, at a distance that is the min of haystack\u0027s and needle\u0027s lengths by the construction of end_ptr above?",
+      "range": {
+        "startLine": 50,
+        "startChar": 17,
+        "endLine": 50,
+        "endChar": 38
+      },
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf2f31f0_75e537da",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "The end_ptr was constructed to point into (or one past) the haystack array, and we stop when haystack reaches end_ptr, so this increment is always inside the haystack array.",
+      "range": {
+        "startLine": 59,
+        "startChar": 15,
+        "endLine": 59,
+        "endChar": 36
+      },
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e47dbf00_2eb0e11d",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "Can we explain this in a way that someone can verify the condition is always true?\n\nm_pData-\u003em_String\u0027s length is the same as `str` as guaranteed by the condition above. pThis starts as pointing to the start of mString, and pThat starts as pointing to the start of `str`. We iterate at most the length of `m_String`, (and `str`), incrementing once each time, so the pointer is always in range of the strings, with the final iteration moving both pointers to the one-past-the-end position.",
+      "range": {
+        "startLine": 341,
+        "startChar": 41,
+        "endLine": 341,
+        "endChar": 66
+      },
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa7d64f1_d9091108",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "m_nDataLength is the size of the m_String buffer as an invariant of StringData.",
+      "range": {
+        "startLine": 370,
+        "startChar": 13,
+        "endLine": 370,
+        "endChar": 44
+      },
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfb973b2_8e8c048f",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "`nNewLength \u003c\u003d m_pData-\u003em_nAllocLength from construction via std::min()`\n\nHowever to write to it, we actually need it to be *less-than* m_nAllocLength. How do we prove that or is this code potentially writing out of bounds (to one-past-the-end)? Or is m_nAllocLength one less than the actual allocation size?",
+      "range": {
+        "startLine": 400,
+        "startChar": 13,
+        "endLine": 400,
+        "endChar": 30
+      },
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7356bcde_ee35e089",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "I think this is UNSAFE_BUFFER_USAGE based on `index + count` must not overflow. Or we should check for that in the body?",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0be0457f_95f3d68a",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "Let\u0027s explain why they are correct for the unsafe code below.\n\nFXSYS_memmove should be marked UNSAFE_BUFFER_USAGE, so the whole call is unsafe.\n\n// SAFETY: FXSYS_memmove requires both pointers point to an array of at least `chars_to_copy` many elements.\n// * m_String points to an array of at least m_nDataLength elements, which is an invariant of StringData.\n// * `0 \u003c\u003d index \u003c\u003d m_nDataLength` is guaranteed by comparing with std::clamp() above.\n// * `removal_length \u003c\u003d old_length` by the comparison above.\n// * `removal_length \u003e index` since `count` is positive, based on the comparison against 0 above, as long as `index + count` does not overflow.\n//\n// So, unless overflow occurred: `0 \u003c\u003d index \u003c removal_length \u003c\u003d m_nDataLength`.\n// \n// `chars_to_copy` is the distance from removal_length to one-past-the-end of m_String, plus one. `index` is strictly smaller, so there are at `removal_length + 1` elements at `m_String + index`. **So then how does m_String+removal_length point to `chars_to_copy` elements? It seems to point to one less?**",
+      "range": {
+        "startLine": 457,
+        "startChar": 13,
+        "endLine": 457,
+        "endChar": 63
+      },
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eac9e032_a503b224",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "`first + count` must not overflow",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28047c7b_8374d52e",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "validated to be what? It looks like\n\n// AllocCopy requires `first` to be an index into `this-\u003emString` and `first+count`\n// to be at most the one-past-the-end position of `this-\u003emString`. (I think?)\n//\n// The conditions above validate that:\n// * `first` is in range of `this-\u003em_String`\n// * `first + count - 1` is in range of `this-\u003emString`\u0027s allocation, so `first + count` is at most the one-past-the-end position of `this-\u003emString`.",
+      "range": {
+        "startLine": 516,
+        "startChar": 29,
+        "endLine": 516,
+        "endChar": 44
+      },
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "594c00a8_4fd5a3aa",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "Caller ensures mCopyIndex + nCopyLen is in range of the allocatoin",
+      "range": {
+        "startLine": 536,
+        "startChar": 13,
+        "endLine": 536,
+        "endChar": 34
+      },
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2354fd4_a74ea51e",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "ensures `index` is in range of `m_String`.",
+      "range": {
+        "startLine": 546,
+        "startChar": 26,
+        "endLine": 546,
+        "endChar": 27
+      },
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28a8eb20_f30078b7",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 574,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "ensures `start` is in range of mString. Then m_String + start is inside the allocation, and `m_nDataLength - start` is at most the distance to one-past-the-end of the allocation, which is the maximum valid value for FXSYS_memchr.",
+      "range": {
+        "startLine": 574,
+        "startChar": 33,
+        "endLine": 574,
+        "endChar": 34
+      },
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e39f286_5acdfe0d",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "looks like this should be UNSAFE_BUFFERS_USAGE, since a bad length param would read off the end and return an invalid pointer?",
+      "range": {
+        "startLine": 576,
+        "startChar": 6,
+        "endLine": 576,
+        "endChar": 18
+      },
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fb5d9a8_7453f9e3",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "// SAFETY: pStr points into (or one-past-the-end of) the m_String allocation, so subtraction is defined.",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50931f1b_ad33d899",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "ensures `start` is an index inside `m_String`, so `m_String + start` points inside the m_String allocation, and `m_nDataLength - start is at least 0 (does not underflow) and at most the one-past-the-end position of mString which is the largest valid value for FX_strstr.",
+      "range": {
+        "startLine": 592,
+        "startChar": 33,
+        "endLine": 592,
+        "endChar": 34
+      },
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "606d05ca_52263832",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "// SAFETY: pStr points into (or one-past-the-end of) the m_String allocation, so subtraction is defined.",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d4b6e9e_0dd6dd3d",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "is the length of mString. `nLength \u003c m_nDataLength` since we decrement before indexing, and break the loop when `nLength` underflows and wraps to its max value.",
+      "range": {
+        "startLine": 608,
+        "startChar": 29,
+        "endLine": 608,
+        "endChar": 55
+      },
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a1ef2eb_0b314366",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 632,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "It seems like this function could use spans and avoid a lot of complex unsafety logic.",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "072c05a1_7cf12ca2",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "is the length of m_String, so the addition points to one-past-the-end.",
+      "range": {
+        "startLine": 638,
+        "startChar": 27,
+        "endLine": 638,
+        "endChar": 54
+      },
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "535b0630_df94b5e1",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 644,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "The loop bounds check ensures `pstrSource` points inside `m_String`, the last increment will move it to one-past-the-end.",
+      "range": {
+        "startLine": 644,
+        "startChar": 15,
+        "endLine": 644,
+        "endChar": 33
+      },
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d60f642_549e51f9",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "`pstrSource` is at most one-past-the-end of m_String, as the loop above breaks at that point.",
+      "range": {
+        "startLine": 651,
+        "startChar": 13,
+        "endLine": 651,
+        "endChar": 40
+      },
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f5f1828_2f256634",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 655,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "What did ReallocBeforeWrite guarantee that makes copied in bounds of m_String?",
+      "range": {
+        "startLine": 655,
+        "startChar": 13,
+        "endLine": 655,
+        "endChar": 57
+      },
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "024f87c3_cde3a838",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 657,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "m_nDataLength is the length of m_String so the addition is one-past-the-end of m_String.",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2dca0f8_118b60f1",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 663,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "pstrDest and pstrSource start at the same place in bounds of the string. We increment `pstrDest` at most the same amount as pstrSource, so `pstrDest \u003c\u003d pstrSource`. Conditions above ensure that we find at least one `chRemove`, before reaching `pstrEnd`, so by the end of this loop, `pstrDest \u003c pstrSource`. The loop breaks when pstrSource goes past the end of m_String, so pstrDest is always inside m_String here.",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4f83f42_b0db85ee",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 665,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "The loop breaks when pstrSource goes past the end of m_String, so it\u0027s inside m_String here.",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "522f0bcc_79953b33",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 668,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "Note, `pstrDest \u003c pstrSource \u003c\u003d one-past-the-end of mString` from the loops above, as explained on the pointer arithmetic, so `pstrDest` is always inside the string.",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c5027a1_65453ba2",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 670,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "The above loops ensured `pstrDest \u003c pstrSource \u003c\u003d one-past-the-end of mString`, so the subtraction is defined.",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2b35b96_f6493e74",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 686,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "is the length of the string, so the result is one-past-the-end of m_String",
+      "range": {
+        "startLine": 686,
+        "startChar": 26,
+        "endLine": 686,
+        "endChar": 54
+      },
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92032c13_6c57157a",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 690,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "`pStart` begins at the start of m_String (or one-past-the-end if it\u0027s empty). If `FX_strstr` returns a pointer, it points to at least `nSourceLen` many elements. Then `pStart` is moved to `pTarget + nSourceLen` which FX_strstr has guaranteed is at most the one-past-the-end position.\n\n`pEnd` is one-past-the-end of m_String, so `pEnd - pStart` is the number if elements at `pStart`, which may be 0 or more. `FX_strstr` accepts a 0 as a valid input and will return null. (**please confirm**)",
+      "range": {
+        "startLine": 690,
+        "startChar": 15,
+        "endLine": 690,
+        "endChar": 48
+      },
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60ad31de_c62112bd",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 699,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "This is at most the one-past-the-end position since FX_strstr returns null or a pointer to at least nSourceLen many elements.",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d46d909_617386e0",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 718,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "There\u0027s no unsafe on the next line, so lets explain the actual unsafe things instead.",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03b751c5_d49363cd",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 721,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "// SAFETY: The loop repeats `nCount` times, which is the number of times `FX_strstr` returns non-null above. We are calling `FX_strstr` on the exact same pointer values as above in each call, so every call here is valid (by the same arguments as above) and will return non-null.\n//\n// We also are guaranteed by this construction that we will return a new non-null `pTarget` pointer exactly `nCount` times, which is required below.",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7b75ebd_901116fb",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 723,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "Maybe wrap all of these pointer movements and memcpys into one unsafe block, then we can discuss it as a whole:\n\n```\n// SAFETY: `nNewLength \u003e\u003d m_nDataLength` by construction, so pNewData\u0027s string\n// is at least as large as the string in `this`. It also holds additional space\n// for `(the length of pNew) * nCount - (nSourceLen * nCount)`.\n//\n// `pDest` points to mNewData\u0027s string, and we increment `pDest` and `pStart`\n// together. Here we move `pDest` ahead by the number of elements up to `pTarget`,\n// then ahead by the length of `pNew`.\n// \n// For each time we do this, we move `pStart` ahead by the number of elements up to\n// `pTarget` (by assigning `pTarget`) and then ahead by nSourceLen.\n//\n// Since `pStart` ends before passing the one-past-the-end position of its string,\n// by the size construction of `pNewData`, `pDest` also ends before passing the\n// one-past-the-end position of its string.\n//\n// As we move the pointer past each FXSYS_memcpy, it follows that the FXSYS_memcpy ranges are valid.\n```\n\nor so.",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebb34391_4404b15a",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 723,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "This function should be UNSAFE_BUFFERS_USAGE right?",
+      "range": {
+        "startLine": 723,
+        "startChar": 4,
+        "endLine": 723,
+        "endChar": 16
+      },
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93c46bd1_a0fc2781",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 729,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "The pDest pointer has been moved further than pStart `nCount` times by the difference in the length of `pNew` and `nSourceLen`. That is also the difference in their string lengths, so the remaining sizes are equal. Then `pEnd-pStart` is also the number of elements left at the position of `pDest` in its string.",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8adb42ec_80ce9009",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 787,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "// SAFETY: `i \u003c targets.GetLength()` by the condition above, so it\u0027s in range. The outer loop breaks as soon as `pos \u003d\u003d the length of m_String` so it\u0027s in range.",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "167df20d_d2848743",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 793,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "This is a size_t, not unsafe",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6dac1d4_e19c03f3",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 798,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "// SAFETY: pos is at most the one-past-the-end position of m_String so the addition is defined. FXSYS_memmove requires at least `nDataLength + 1` elements at both `m_String` and `m_String + pos`. Since `pos \u003e\u003d 0` (it\u0027s an unsigned type) and points at the same allocation, they are both implied if there are `m_String + pos + nDataLength + 1` \u003c\u003d the one-past-the-end position of `m_String`.\n//\n// nDataLength is the distance from pos to the length of the string after ReallocBeforeWrite(). Before ReallocBeforeWrite() `m_String + pos + nDataLength \u003d\u003d (the one-past-the-end position of m_String`. Afterward, **what does ReallocBeforeWrite guarantee so that the mString buffer grew by at least one?**",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a409306_e360d9b2",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 825,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "// SAFETY: i \u003c targets.GetLength() by the condition above, so it\u0027s in range. The outer loop breaks as soon as pos \u003d\u003d 0, so `0 \u003c pos \u003c\u003d length of m_String` and `pos - 1` is in range of `m_String`.",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbbd8a23_5998297a",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 831,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "This is a size_t, not unsafe",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1650f75_96658970",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 835,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "by the condition above.",
+      "range": {
+        "startLine": 835,
+        "startChar": 43,
+        "endLine": 835,
+        "endChar": 44
+      },
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87aca614_0920e029",
+        "filename": "core/fxcrt/bytestring.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "is the size of the m_String buffer as an invariant of StringData",
+      "range": {
+        "startLine": 105,
+        "startChar": 29,
+        "endLine": 105,
+        "endChar": 74
+      },
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93ee6db5_9c1a8ea5",
+        "filename": "core/fxcrt/bytestring.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "ensures `index` is in range of m_String",
+      "range": {
+        "startLine": 155,
+        "startChar": 28,
+        "endLine": 155,
+        "endChar": 29
+      },
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "684dbf93_cd3fdfa4",
+        "filename": "core/fxcrt/bytestring.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "Document what must be true for the parameters to not cause an OOB bug?",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "427c94aa_f3a3d7fb",
+        "filename": "core/fxcrt/cfx_seekablestreamproxy.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "Please document the requirements the caller must satisfy",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83503544_7c95a5d3",
+        "filename": "core/fxcrt/cfx_seekablestreamproxy.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "`i - 1` is in range, as guaranteed by the caller.",
+      "range": {
+        "startLine": 83,
+        "startChar": 15,
+        "endLine": 83,
+        "endChar": 36
+      },
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc12fcb0_75b870ff",
+        "filename": "core/fxcrt/cfx_seekablestreamproxy.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "Please document the requirements the caller must satisfy",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b74c3081_aa181fad",
+        "filename": "core/fxcrt/cfx_seekablestreamproxy.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "`pStr` is incremented `iLength` times, controlled by the loop, and `pStr` originally pointed to at least that many elements as guaranteed by the caller, so the increments end at most at the one-past-the-end position.",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c0fec73_4f317a80",
+        "filename": "core/fxcrt/cfx_seekablestreamproxy.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "Please document safety conditions in the header (and mark it as well there with the attribute)\n\nCould this function use span instead?",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e72aded8_1e031aba",
+        "filename": "core/fxcrt/cfx_seekablestreamproxy.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "This should be unsafe",
+      "range": {
+        "startLine": 197,
+        "startChar": 18,
+        "endLine": 197,
+        "endChar": 26
+      },
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "850d23dc_8e6e1cc7",
+        "filename": "core/fxcrt/cfx_seekablestreamproxy.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "(a different variable name would make explaining safety a bit more clear)",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b2aeae8_aed80400",
+        "filename": "core/fxcrt/cfx_seekablestreamproxy.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "// SAFETY: `pStr` points to at least `size` objects, as guaranteed by the caller. `uint16_t` (2 bytes) is a smaller type than `wchar_t` (4 bytes), so the resulting pointer/size is also in bounds of the original pointer. We read up to `size * 2` bytes into `pStr` above, and `size` is reset to the number of 16-bit (2-byte) words read, so the pointer/size covers only initialized memory.",
+      "range": {
+        "startLine": 200,
+        "startChar": 17,
+        "endLine": 200,
+        "endChar": 38
+      },
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ff9d611_718060f7",
+        "filename": "core/fxcrt/cfx_seekablestreamproxy.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "// SAFETY: `pStr` points to at least `(the original size) * 4` bytes as guaranteed by the caller, and `size` was reset to be at most the original size, so `pStr` points to at least `size * 4` bytes, or IOW can point to at least `size` many `wchar_t` objects.",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40e83080_fa7230ee",
+        "filename": "core/fxcrt/fx_coordinates.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "nit: 1u to avoid sign conversion?",
+      "range": {
+        "startLine": 504,
+        "startChar": 56,
+        "endLine": 504,
+        "endChar": 57
+      },
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c720b24_4efd7e60",
+        "filename": "core/fxcrt/fx_extension.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "This is an enormous unsafe block, pretty hard to explain its soundness...",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04aa05de_a3c8ef4e",
+        "filename": "core/fxcrt/fx_extension.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "I guess this file is one you\u0027re coming back to? All these functions also seem to be UNSAFE_BUFFER_USAGE as well?",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "710253a5_fbaa56d1",
+        "filename": "core/fxcrt/fx_random.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "`pBuf` points to the start of `MTContext::mt` which has a fixed size of `MT_N`. The loop ensures `0 \u003c i \u003c MT_N`, so `i` and `i-1` are both in range for `pBuf`.",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7c6ac0c_077e8d29",
+        "filename": "core/fxcrt/fx_random.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "pBuf points to the start of MTContext::mt which has a fixed size of MT_N. The loop ensures 0 \u003c kk \u003c MT_N - MT_M. Since MT_M \u003c MT_T, `kk`, `kk + 1` and `kk + (MT_N - MT_M)` are all in range of `pBuf`, and `kk + MT_M \u003c MT_N` is also in range of `pBuf`.",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9920416d_0f33fb0d",
+        "filename": "core/fxcrt/fx_random.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "pBuf points to the start of MTContext::mt which has a fixed size of MT_N. The loop ensures 0 \u003c kk \u003c MT_N - MT_M. Since MT_M \u003c MT_T, `kk`, `kk + 1` and `kk + (MT_N - MT_M)` are all in range of `pBuf`, and `kk + MT_M \u003c MT_N` is also in range of `pBuf`.\n\n`mag` has size 2, and `anything \u0026 1 \u003c 2`",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a105f8df_82d9eccc",
+        "filename": "core/fxcrt/fx_random.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "pBuf points to the start of MTContext::mt which has a fixed size of MT_N. The loop ensures 0 \u003c kk \u003c MT_N - MT_M. Since MT_M \u003c MT_T, `kk`, `kk + 1` and `kk + (MT_N - MT_M)` are all in range of `pBuf`, and `kk + MT_M \u003c MT_N` is also in range of `pBuf`.",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee7432fe_33e3b051",
+        "filename": "core/fxcrt/fx_random.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "pBuf points to the start of MTContext::mt which has a fixed size of MT_N. The loop ensures 0 \u003c kk \u003c MT_N - MT_M. Since MT_M \u003c MT_T, `kk`, `kk + 1` and `kk + (MT_N - MT_M)` are all in range of `pBuf`, and `kk + MT_M \u003c MT_N` is also in range of `pBuf`.\n\n`mag` has size 2, and `anything \u0026 1 \u003c 2`",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac55c839_84d9c81b",
+        "filename": "core/fxcrt/fx_random.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "pBuf points to the start of MTContext::mt which has a fixed size of MT_N that is non-zero, so `MT_N - 1` and `0` are both in range of pBuf.",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4f1d8bf_0696669e",
+        "filename": "core/fxcrt/fx_random.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "pBuf points to the start of MTContext::mt which has a fixed size of MT_N. MT_M \u003c MT_N and both MT_N and MT_M are non-zero. So `MT_N - 1` and `MT_M - 1` are both in range of `pBuf`.\n\n`mag` has size 2, and `anything \u0026 1 \u003c 2`",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15f36754_a852402a",
+        "filename": "core/fxcrt/fx_random.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "`pBuf` points to the start of `MTContext::mt` which has a fixed size of `MT_N`. pMTC-\u003emti was reset to 0 above if pMTC-\u003emti \u003e\u003d MT_N, so `mti` will be in range of `pBuf`.",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "486f59f6_2a199618",
+        "filename": "core/fxcrt/fx_random.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "Mark the function in the header too, and document what the caller must satisfy? (maybe this should be using span?)",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 19
+      },
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8db1f04_34774b93",
+        "filename": "core/fxcrt/fx_random.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "pBuffer points to at least iCount many elements as guaranteed by the caller. The loop runs `iCount` many times so `pBuffer` is always in range when incremented.",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c92b319_b466d32e",
+        "filename": "core/fxcrt/fx_string.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "kPrefix has size 3. `2 \u003c\u003d byte_size \u003c\u003d 4` by construction above. So `0 \u003c\u003d byte_size - 2 \u003c\u003d 2` which are all values in range of kPrefix.",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "102f8b91_b737e34a",
+        "filename": "core/fxcrt/fx_system.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "`str` points at the start of the string, which is a character or a terminating NUL. `*str` is non-NUL from the condition above, so `str` is pointing inside the string. Afterward, `str` may be pointing at the terminating NUL.",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e72f3da9_7a3cee11",
+        "filename": "core/fxcrt/fx_system.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "The loop terminates if `str` is ever pointing at the terminating NUL. `str` is only moved by one character at at time, so inside the loop `str` always points inside the string.",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18279752_7a1d3740",
+        "filename": "core/fxcrt/fx_system.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "agree, we don\u0027t know the length of str and we don\u0027t check it.",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e3e00a3_68a002dc",
+        "filename": "core/fxcrt/fx_system.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "The loop breaks when `*str1` is NUL, so `str1` is always inside its string.",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa676800_28dc9a2c",
+        "filename": "core/fxcrt/fx_system.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "The loop breaks when if `*str1` is non-NUL but `*str2` is NUL (as checked by `f !\u003d l`), so `str2` is always inside its string.",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0b39236_3f4db2cb",
+        "filename": "core/fxcrt/fx_system.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "The loop breaks when `*str1` is NUL, so `str1` is always inside its string.",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e5c765d_41970d8e",
+        "filename": "core/fxcrt/fx_system.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "The loop breaks when if `*str1` is non-NUL but `*str2` is NUL (as checked by `f !\u003d l`), so `str2` is always inside its string.",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3c49b9c_2d545330",
+        "filename": "core/fxcrt/fx_unicode.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "kTextLayoutCodePropertiesSize is the size of the kTextLayoutCodeProperties buffer, so the condition above verifies `idk` is in range.",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "716b2a6e_9495980a",
+        "filename": "core/fxcrt/fx_unicode.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "kExtendedTextLayoutCodePropertiesSize is the size of the kExtendedTextLayoutCodeProperties buffer, so the condition above verifies `idk` is in range.",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee32c587_ee67884c",
+        "filename": "core/fxcrt/fx_unicode.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "Maybe the above should be a CHECK, unless we can give an argument about the construction of all those bits. Or point to a test that verifies all those bits behave the way this requires?",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cf76bd7_f23240e4",
+        "filename": "core/fxcrt/string_data_template.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "This should be UNSAFE_BUFFER_USAGE, and have its requirements documented.",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bb5ee93_2f726d7f",
+        "filename": "core/fxcrt/string_data_template.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "this seems wrong, it seems to require nLen + 1, or DCHECK_LT?",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db805692_cf4b8734",
+        "filename": "core/fxcrt/string_data_template.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "The caller guarantees that pStr points to at least `nLen` elements and that m_String has at least `nLen + 1` elements.",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08ec659d_f164f593",
+        "filename": "core/fxcrt/string_data_template.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "This should be UNSAFE_BUFFER_USAGE, and have its requirements documented.",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4b04cde_d8f3a185",
+        "filename": "core/fxcrt/string_data_template.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "also seems off by one?",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd181765_42750185",
+        "filename": "core/fxcrt/string_data_template.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "The caller guarantees that pStr points to at least nLen elements, and that `m_String + offset` points to at least `nLen + 1` elements",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9dfd19e5_b312998b",
+        "filename": "core/fxcrt/string_data_template.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "This should be UNSAFE_BUFFER_USAGE, and have its requirements documented.",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74d3e8cb_3c71cf45",
+        "filename": "core/fxcrt/string_data_template.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "this seems like it should be DCHECK_LT?",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d51e2374_cb3fc6a2",
+        "filename": "core/fxcrt/string_data_template.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "The caller guarantees that m_String has at least dataLen + 1 elements.",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "693c98db_83fa2672",
+        "filename": "core/fxcrt/widestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "Document the guarantees the caller must satisfy?",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1d7b45f_99b5137e",
+        "filename": "core/fxcrt/widestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "It looks like this code is the same as bytestring.cpp, so the same comments can copy over (though verify they remain true here).\n\nIt could be nice to move the code to a shared templated or macrod implementation, and just have bytestring and widestring forward through to that.",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd9d8a63_bf632459",
+        "filename": "core/fxcrt/widestring.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "It is a ByteString invariant that m_nDataLength is the number of bytes in use in m_String, so the addition points at most to one-past-the-end of m_String\u0027s allocation.",
+      "range": {
+        "startLine": 100,
+        "startChar": 15,
+        "endLine": 100,
+        "endChar": 74
+      },
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21076914_81e8a577",
+        "filename": "core/fxcrt/widestring.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "The CHECK() ensures `index` is in range of m_String",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3458c658_5aa549d2",
+        "filename": "core/fxcrt/widestring.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "Document the guarantees the caller must satisfy?",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "943a4283_5f0105a3",
+        "filename": "core/fxcrt/xml/cfx_xmlparser.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "`iLen` is the length of `csEntity`, and the loops ensures `i \u003c iLen` so `i` is in range of `csEntity`.",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f81ca9a4_a20ee4a7",
+        "filename": "core/fxcrt/xml/cfx_xmlparser.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "`iLen` is the length of `csEntity`, and the loops ensures `i \u003c iLen` so `i` is in range of `csEntity`.",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adfb2211_4d930c9c",
+        "filename": "third_party/base/compiler_specific.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "We want each _Pragma to be on its own line (as recommended by gcc\u0027s documentation of _Pragma), and I think that applies to expansions to _Pragma as well.",
+      "range": {
+        "startLine": 90,
+        "startChar": 28,
+        "endLine": 90,
+        "endChar": 47
+      },
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78aa5826_89d7d7da",
+        "filename": "third_party/base/containers/span.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "ensures pos \u003c\u003d size_ so `data_ + pos` is at most the one-past-the-end position  since data_ points to at least size_ many elements (an invariant of span). `size_ - pos` will be the distance to the one-past-the-end position.\n\n(i guess we should copy these to base)",
+      "range": {
+        "startLine": 264,
+        "startChar": 28,
+        "endLine": 264,
+        "endChar": 29
+      },
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfae46e0_130a2486",
+        "filename": "third_party/base/containers/span.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "The CHECK() above ensures `index` is in range of `data_` since `data_` points to at least `size_` many elements when `size_ \u003e 0` (an invariant of span). If size is 0, index can not be smaller, so the CHECK would fail.",
+      "range": {
+        "startLine": 277,
+        "startChar": 15,
+        "endLine": 277,
+        "endChar": 29
+      },
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de146869_1cd7bb0c",
+        "filename": "third_party/base/containers/span.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "The CHECK() above ensures `data()` is non-null, in which case `data()` points to at least `size()` many elements (an invariant of span). So `data() + size() - 1` is in range of `data()`.",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf3442fa_66171745",
+        "filename": "third_party/base/containers/span.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-02T18:00:47Z",
+      "side": 1,
+      "message": "`data_` (and begin()) points to at least `size_` many elements when `size_ \u003e 0` (an invariant of span), so adding `size_` gives the pointer one-past-the-end of `data_`\u0027s range. If size_ is 0, then this is nullptr + 0 which is also defined to return nullptr.",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
