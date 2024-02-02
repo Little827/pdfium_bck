@@ -10,10 +10,12 @@
 
 #include <algorithm>
 
+#include "core/fxcrt/fx_safe_types.h"
 #include "core/fxge/dib/blend.h"
 #include "core/fxge/dib/fx_dib.h"
 #include "third_party/base/check.h"
 #include "third_party/base/check_op.h"
+#include "third_party/base/numerics/safe_conversions.h"
 
 using fxge::Blend;
 
@@ -311,7 +313,7 @@ void CompositeRow_Rgb2Argb_Blend_NoClip(pdfium::span<uint8_t> dest_span,
     if (bNonseparableBlend)
       RGB_Blend(blend_type, src_scan, dest_scan, blended_colors);
     for (int color = 0; color < 3; ++color) {
-      int src_color = *src_scan;
+      const uint8_t src_color = *src_scan;
       int blended = bNonseparableBlend
                         ? blended_colors[color]
                         : Blend(blend_type, *dest_scan, src_color);
@@ -357,7 +359,7 @@ void CompositeRow_Rgb2Argb_Blend_Clip(pdfium::span<uint8_t> dest_span,
     if (bNonseparableBlend)
       RGB_Blend(blend_type, src_scan, dest_scan, blended_colors);
     for (int color = 0; color < 3; color++) {
-      int src_color = *src_scan;
+      const uint8_t src_color = *src_scan;
       int blended = bNonseparableBlend
                         ? blended_colors[color]
                         : Blend(blend_type, *dest_scan, src_color);
@@ -454,7 +456,7 @@ void CompositeRow_Argb2Rgb_Blend(pdfium::span<uint8_t> dest_span,
       RGB_Blend(blend_type, src_scan, dest_scan, blended_colors);
     }
     for (int color = 0; color < 3; color++) {
-      int back_color = *dest_scan;
+      const uint8_t back_color = *dest_scan;
       int blended = bNonseparableBlend
                         ? blended_colors[color]
                         : Blend(blend_type, back_color, *src_scan);
@@ -521,8 +523,8 @@ void CompositeRow_Rgb2Rgb_Blend_NoClip(pdfium::span<uint8_t> dest_span,
       RGB_Blend(blend_type, src_scan, dest_scan, blended_colors);
     }
     for (int color = 0; color < 3; color++) {
-      int back_color = *dest_scan;
-      int src_color = *src_scan;
+      const uint8_t back_color = *dest_scan;
+      const uint8_t src_color = *src_scan;
       int blended = bNonseparableBlend
                         ? blended_colors[color]
                         : Blend(blend_type, back_color, src_color);
@@ -560,8 +562,8 @@ void CompositeRow_Rgb2Rgb_Blend_Clip(pdfium::span<uint8_t> dest_span,
       RGB_Blend(blend_type, src_scan, dest_scan, blended_colors);
     }
     for (int color = 0; color < 3; color++) {
-      int src_color = *src_scan;
-      int back_color = *dest_scan;
+      const uint8_t src_color = *src_scan;
+      const uint8_t back_color = *dest_scan;
       int blended = bNonseparableBlend
                         ? blended_colors[color]
                         : Blend(blend_type, back_color, src_color);
@@ -888,13 +890,17 @@ void CompositeRow_1bppRgb2Argb_NoBlend(pdfium::span<uint8_t> dest_span,
 
 void CompositeRow_ByteMask2Argb(pdfium::span<uint8_t> dest_span,
                                 pdfium::span<const uint8_t> src_span,
-                                int mask_alpha,
-                                int src_r,
-                                int src_g,
-                                int src_b,
+                                FX_STRICT_UINT8 strict_mask_alpha,
+                                FX_STRICT_UINT8 strict_src_r,
+                                FX_STRICT_UINT8 strict_src_g,
+                                FX_STRICT_UINT8 strict_src_b,
                                 int pixel_count,
                                 BlendMode blend_type,
                                 pdfium::span<const uint8_t> clip_span) {
+  const uint8_t mask_alpha = strict_mask_alpha;
+  const uint8_t src_r = strict_src_r;
+  const uint8_t src_g = strict_src_g;
+  const uint8_t src_b = strict_src_b;
   uint8_t* dest_scan = dest_span.data();
   const uint8_t* src_scan = src_span.data();
   const uint8_t* clip_scan = clip_span.data();
@@ -952,14 +958,18 @@ void CompositeRow_ByteMask2Argb(pdfium::span<uint8_t> dest_span,
 
 void CompositeRow_ByteMask2Rgb(pdfium::span<uint8_t> dest_span,
                                pdfium::span<const uint8_t> src_span,
-                               int mask_alpha,
-                               int src_r,
-                               int src_g,
-                               int src_b,
+                               FX_STRICT_UINT8 strict_mask_alpha,
+                               FX_STRICT_UINT8 strict_src_r,
+                               FX_STRICT_UINT8 strict_src_g,
+                               FX_STRICT_UINT8 strict_src_b,
                                int pixel_count,
                                BlendMode blend_type,
                                int Bpp,
                                pdfium::span<const uint8_t> clip_span) {
+  const uint8_t mask_alpha = strict_mask_alpha;
+  const uint8_t src_r = strict_src_r;
+  const uint8_t src_g = strict_src_g;
+  const uint8_t src_b = strict_src_b;
   uint8_t* dest_scan = dest_span.data();
   const uint8_t* src_scan = src_span.data();
   const uint8_t* clip_scan = clip_span.data();
@@ -1040,14 +1050,18 @@ void CompositeRow_ByteMask2Gray(pdfium::span<uint8_t> dest_span,
 
 void CompositeRow_BitMask2Argb(pdfium::span<uint8_t> dest_span,
                                pdfium::span<const uint8_t> src_span,
-                               int mask_alpha,
-                               int src_r,
-                               int src_g,
-                               int src_b,
+                               FX_STRICT_UINT8 strict_mask_alpha,
+                               FX_STRICT_UINT8 strict_src_r,
+                               FX_STRICT_UINT8 strict_src_g,
+                               FX_STRICT_UINT8 strict_src_b,
                                int src_left,
                                int pixel_count,
                                BlendMode blend_type,
                                pdfium::span<const uint8_t> clip_span) {
+  const uint8_t mask_alpha = strict_mask_alpha;
+  const uint8_t src_r = strict_src_r;
+  const uint8_t src_g = strict_src_g;
+  const uint8_t src_b = strict_src_b;
   uint8_t* dest_scan = dest_span.data();
   const uint8_t* src_scan = src_span.data();
   const uint8_t* clip_scan = clip_span.data();
@@ -1115,15 +1129,19 @@ void CompositeRow_BitMask2Argb(pdfium::span<uint8_t> dest_span,
 
 void CompositeRow_BitMask2Rgb(pdfium::span<uint8_t> dest_span,
                               pdfium::span<const uint8_t> src_span,
-                              int mask_alpha,
-                              int src_r,
-                              int src_g,
-                              int src_b,
+                              FX_STRICT_UINT8 strict_mask_alpha,
+                              FX_STRICT_UINT8 strict_src_r,
+                              FX_STRICT_UINT8 strict_src_g,
+                              FX_STRICT_UINT8 strict_src_b,
                               int src_left,
                               int pixel_count,
                               BlendMode blend_type,
                               int Bpp,
                               pdfium::span<const uint8_t> clip_span) {
+  const uint8_t mask_alpha = strict_mask_alpha;
+  const uint8_t src_r = strict_src_r;
+  const uint8_t src_g = strict_src_g;
+  const uint8_t src_b = strict_src_b;
   uint8_t* dest_scan = dest_span.data();
   const uint8_t* src_scan = src_span.data();
   const uint8_t* clip_scan = clip_span.data();
@@ -1318,7 +1336,7 @@ void CompositeRow_Rgb2Argb_Blend_NoClip_RgbByteOrder(
     }
     for (int color = 0; color < 3; color++) {
       int index = 2 - color;
-      int src_color = *src_scan;
+      const uint8_t src_color = *src_scan;
       int blended = bNonseparableBlend
                         ? blended_colors[color]
                         : Blend(blend_type, dest_scan[index], src_color);
@@ -1361,7 +1379,7 @@ void CompositeRow_Argb2Rgb_Blend_RgbByteOrder(
     }
     for (int color = 0; color < 3; color++) {
       int index = 2 - color;
-      int back_color = dest_scan[index];
+      const uint8_t back_color = dest_scan[index];
       int blended = bNonseparableBlend
                         ? blended_colors[color]
                         : Blend(blend_type, back_color, *src_scan);
@@ -1412,8 +1430,8 @@ void CompositeRow_Rgb2Rgb_Blend_NoClip_RgbByteOrder(
     }
     for (int color = 0; color < 3; color++) {
       int index = 2 - color;
-      int back_color = dest_scan[index];
-      int src_color = *src_scan;
+      const uint8_t back_color = dest_scan[index];
+      const uint8_t src_color = *src_scan;
       int blended = bNonseparableBlend
                         ? blended_colors[color]
                         : Blend(blend_type, back_color, src_color);
@@ -1515,7 +1533,7 @@ void CompositeRow_Rgb2Argb_Blend_Clip_RgbByteOrder(
     }
     for (int color = 0; color < 3; color++) {
       int index = 2 - color;
-      int src_color = *src_scan;
+      const uint8_t src_color = *src_scan;
       int blended = bNonseparableBlend
                         ? blended_colors[color]
                         : Blend(blend_type, dest_scan[index], src_color);
@@ -1557,8 +1575,8 @@ void CompositeRow_Rgb2Rgb_Blend_Clip_RgbByteOrder(
     }
     for (int color = 0; color < 3; color++) {
       int index = 2 - color;
-      int src_color = *src_scan;
-      int back_color = dest_scan[index];
+      const uint8_t src_color = *src_scan;
+      const uint8_t back_color = dest_scan[index];
       int blended = bNonseparableBlend
                         ? blended_colors[color]
                         : Blend(blend_type, back_color, src_color);
@@ -1837,13 +1855,17 @@ void CompositeRow_1bppRgb2Argb_NoBlend_RgbByteOrder(
 void CompositeRow_ByteMask2Argb_RgbByteOrder(
     pdfium::span<uint8_t> dest_span,
     pdfium::span<const uint8_t> src_span,
-    int mask_alpha,
-    int src_r,
-    int src_g,
-    int src_b,
+    FX_STRICT_UINT8 strict_mask_alpha,
+    FX_STRICT_UINT8 strict_src_r,
+    FX_STRICT_UINT8 strict_src_g,
+    FX_STRICT_UINT8 strict_src_b,
     int pixel_count,
     BlendMode blend_type,
     pdfium::span<const uint8_t> clip_span) {
+  const uint8_t mask_alpha = strict_mask_alpha;
+  const uint8_t src_r = strict_src_r;
+  const uint8_t src_g = strict_src_g;
+  const uint8_t src_b = strict_src_b;
   uint8_t* dest_scan = dest_span.data();
   const uint8_t* src_scan = src_span.data();
   const uint8_t* clip_scan = clip_span.data();
@@ -1899,14 +1921,18 @@ void CompositeRow_ByteMask2Argb_RgbByteOrder(
 void CompositeRow_ByteMask2Rgb_RgbByteOrder(
     pdfium::span<uint8_t> dest_span,
     pdfium::span<const uint8_t> src_span,
-    int mask_alpha,
-    int src_r,
-    int src_g,
-    int src_b,
+    FX_STRICT_UINT8 strict_mask_alpha,
+    FX_STRICT_UINT8 strict_src_r,
+    FX_STRICT_UINT8 strict_src_g,
+    FX_STRICT_UINT8 strict_src_b,
     int pixel_count,
     BlendMode blend_type,
     int Bpp,
     pdfium::span<const uint8_t> clip_span) {
+  const uint8_t mask_alpha = strict_mask_alpha;
+  const uint8_t src_r = strict_src_r;
+  const uint8_t src_g = strict_src_g;
+  const uint8_t src_b = strict_src_b;
   uint8_t* dest_scan = dest_span.data();
   const uint8_t* src_scan = src_span.data();
   const uint8_t* clip_scan = clip_span.data();
@@ -1949,14 +1975,18 @@ void CompositeRow_ByteMask2Rgb_RgbByteOrder(
 void CompositeRow_BitMask2Argb_RgbByteOrder(
     pdfium::span<uint8_t> dest_span,
     pdfium::span<const uint8_t> src_span,
-    int mask_alpha,
-    int src_r,
-    int src_g,
-    int src_b,
+    FX_STRICT_UINT8 strict_mask_alpha,
+    FX_STRICT_UINT8 strict_src_r,
+    FX_STRICT_UINT8 strict_src_g,
+    FX_STRICT_UINT8 strict_src_b,
     int src_left,
     int pixel_count,
     BlendMode blend_type,
     pdfium::span<const uint8_t> clip_span) {
+  const uint8_t mask_alpha = strict_mask_alpha;
+  const uint8_t src_r = strict_src_r;
+  const uint8_t src_g = strict_src_g;
+  const uint8_t src_b = strict_src_b;
   uint8_t* dest_scan = dest_span.data();
   const uint8_t* src_scan = src_span.data();
   const uint8_t* clip_scan = clip_span.data();
@@ -2022,15 +2052,19 @@ void CompositeRow_BitMask2Argb_RgbByteOrder(
 void CompositeRow_BitMask2Rgb_RgbByteOrder(
     pdfium::span<uint8_t> dest_span,
     pdfium::span<const uint8_t> src_span,
-    int mask_alpha,
-    int src_r,
-    int src_g,
-    int src_b,
+    FX_STRICT_UINT8 strict_mask_alpha,
+    FX_STRICT_UINT8 strict_src_r,
+    FX_STRICT_UINT8 strict_src_g,
+    FX_STRICT_UINT8 strict_src_b,
     int src_left,
     int pixel_count,
     BlendMode blend_type,
     int Bpp,
     pdfium::span<const uint8_t> clip_span) {
+  const uint8_t mask_alpha = strict_mask_alpha;
+  const uint8_t src_r = strict_src_r;
+  const uint8_t src_g = strict_src_g;
+  const uint8_t src_b = strict_src_b;
   uint8_t* dest_scan = dest_span.data();
   const uint8_t* src_scan = src_span.data();
   const uint8_t* clip_scan = clip_span.data();
@@ -2070,7 +2104,7 @@ void CompositeRow_BitMask2Rgb_RgbByteOrder(
       dest_scan[0] =
           FXDIB_ALPHA_MERGE(dest_scan[0], blended_colors[2], src_alpha);
     } else if (blend_type != BlendMode::kNormal) {
-      int back_color = dest_scan[2];
+      uint8_t back_color = dest_scan[2];
       int blended = Blend(blend_type, back_color, src_b);
       dest_scan[2] = FXDIB_ALPHA_MERGE(back_color, blended, src_alpha);
       back_color = dest_scan[1];
@@ -2130,15 +2164,18 @@ bool CFX_ScanlineCompositor::Init(FXDIB_Format dest_format,
 }
 
 void CFX_ScanlineCompositor::InitSourceMask(uint32_t mask_color) {
-  m_MaskAlpha = FXARGB_A(mask_color);
-  m_MaskRed = FXARGB_R(mask_color);
-  m_MaskGreen = FXARGB_G(mask_color);
-  m_MaskBlue = FXARGB_B(mask_color);
-  if (m_DestFormat == FXDIB_Format::k8bppMask)
+  m_MaskAlpha = pdfium::base::strict_cast<uint8_t>(FXARGB_A(mask_color));
+  m_MaskRed = pdfium::base::strict_cast<uint8_t>(FXARGB_R(mask_color));
+  m_MaskGreen = pdfium::base::strict_cast<uint8_t>(FXARGB_G(mask_color));
+  m_MaskBlue = pdfium::base::strict_cast<uint8_t>(FXARGB_B(mask_color));
+  if (m_DestFormat == FXDIB_Format::k8bppMask) {
     return;
+  }
 
-  if (m_DestFormat == FXDIB_Format::k8bppRgb)
-    m_MaskRed = FXRGB2GRAY(m_MaskRed, m_MaskGreen, m_MaskBlue);
+  if (m_DestFormat == FXDIB_Format::k8bppRgb) {
+    m_MaskRed = pdfium::base::saturated_cast<uint8_t>(
+        FXRGB2GRAY(m_MaskRed, m_MaskGreen, m_MaskBlue));
+  }
 }
 
 void CFX_ScanlineCompositor::InitSourcePalette(

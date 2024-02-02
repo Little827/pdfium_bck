@@ -42,14 +42,11 @@ constexpr uint8_t kColorSqrt[256] = {
 
 }  // namespace
 
-int Blend(BlendMode blend_mode, int back_color, int src_color) {
-  // Intentionally using DCHECKs, as Blend() is oftentimes called 3 times per
-  // pixel.
-  DCHECK_GE(back_color, 0);
-  DCHECK_LE(back_color, 255);
-  DCHECK_GE(src_color, 0);
-  DCHECK_LE(src_color, 255);
-
+int Blend(BlendMode blend_mode,
+          FX_STRICT_UINT8 strict_back_color,
+          FX_STRICT_UINT8 strict_src_color) {
+  const uint8_t back_color = strict_back_color;
+  const uint8_t src_color = strict_src_color;
   switch (blend_mode) {
     case BlendMode::kNormal:
       return src_color;
@@ -79,7 +76,8 @@ int Blend(BlendMode blend_mode, int back_color, int src_color) {
       if (src_color < 128) {
         return (src_color * back_color * 2) / 255;
       }
-      return Blend(BlendMode::kScreen, back_color, 2 * src_color - 255);
+      return Blend(BlendMode::kScreen, back_color,
+                   static_cast<uint8_t>(2 * src_color - 255));
     case BlendMode::kSoftLight: {
       if (src_color < 128) {
         return back_color - (255 - 2 * src_color) * back_color *

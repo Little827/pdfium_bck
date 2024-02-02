@@ -7,12 +7,16 @@
 #ifndef CORE_FXGE_DIB_BLEND_H_
 #define CORE_FXGE_DIB_BLEND_H_
 
+#include "core/fxcrt/fx_safe_types.h"
+
 enum class BlendMode;
 
 namespace fxge {
 
 // Note that Blend() only handles separable blend modes.
-int Blend(BlendMode blend_mode, int back_color, int src_color);
+int Blend(BlendMode blend_mode,
+          FX_STRICT_UINT8 strict_back_color,
+          FX_STRICT_UINT8 strict_src_color);
 
 }  // namespace fxge
 
