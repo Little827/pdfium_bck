@@ -188,9 +188,9 @@ CPDF_ContentParser::Stage CPDF_ContentParser::PrepareContent() {
   size_t pos = 0;
   auto data_span = buffer.span();
   for (const auto& stream : m_StreamArray) {
-    fxcrt::spancpy(data_span.subspan(pos), stream->GetSpan());
-    pos += stream->GetSize();
-    data_span[pos++] = ' ';
+    data_span = fxcrt::spancpy(data_span, stream->GetSpan());
+    data_span.front() = ' ';
+    data_span = data_span.subspan(1)
   }
   m_StreamArray.clear();
   m_Data = std::move(buffer);
