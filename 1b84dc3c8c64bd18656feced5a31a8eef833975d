@@ -454,6 +454,24 @@
       "parentUuid": "6e2ecac9_6d65ec1b",
       "revId": "1b84dc3c8c64bd18656feced5a31a8eef833975d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a5d5c6c_e66d86ce",
+        "filename": "third_party/base/compiler_specific.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-02T01:21:48Z",
+      "side": 1,
+      "message": "Can\u0027t quite, we\u0027re still having an argument about unsafe_headers macros ...",
+      "parentUuid": "73a197e3_4ee4f43e",
+      "revId": "1b84dc3c8c64bd18656feced5a31a8eef833975d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
