@@ -7,40 +7,61 @@
 
 #include <stdint.h>
 
+#include <type_traits>
+
 #include "core/fxcrt/fx_memcpy_wrappers.h"
 #include "third_party/base/check_op.h"
 #include "third_party/base/containers/span.h"
 
 namespace fxcrt {
 
-// Bounds-checked copies from spans into spans.
+// Bounds-checked byte-for-byte copies from spans into spans.
 template <typename T,
           typename U,
-          typename = pdfium::internal::EnableIfLegalSpanConversion<T, U>>
+          typename = pdfium::internal::EnableIfLegalSpanConversion<T, U>,
+          typename = std::enable_if_t<std::is_trivially_copyable_v<T> &&
+                                      std::is_trivially_copyable_v<U>>>
 void spancpy(pdfium::span<T> dst, pdfium::span<U> src) {
   CHECK_GE(dst.size_bytes(), src.size_bytes());
   FXSYS_memcpy(dst.data(), src.data(), src.size_bytes());
 }
 
-// Bounds-checked moves from spans into spans.
+// Bounds-checked byte-for-byte moves from spans into spans.
 template <typename T,
           typename U,
-          typename = pdfium::internal::EnableIfLegalSpanConversion<T, U>>
+          typename = pdfium::internal::EnableIfLegalSpanConversion<T, U>,
+          typename = std::enable_if_t<std::is_trivially_copyable_v<T> &&
+                                      std::is_trivially_copyable_v<U>>>
 void spanmove(pdfium::span<T> dst, pdfium::span<U> src) {
   CHECK_GE(dst.size_bytes(), src.size_bytes());
   FXSYS_memmove(dst.data(), src.data(), src.size_bytes());
 }
 
 // Bounds-checked sets into spans.
-template <typename T>
+template <typename T,
+          typename = std::enable_if_t<std::is_trivially_constructible_v<T> &&
+                                      std::is_trivially_destructible_v<T>>>
 void spanset(pdfium::span<T> dst, uint8_t val) {
   FXSYS_memset(dst.data(), val, dst.size_bytes());
 }
 
 // Bounds-checked zeroing of spans.
-template <typename T>
+template <typename T,
+          typename = std::enable_if_t<std::is_trivially_constructible_v<T> &&
+                                      std::is_trivially_destructible_v<T>>>
 void spanclr(pdfium::span<T> dst) {
   FXSYS_memset(dst.data(), 0, dst.size_bytes());
+}
+
+// Bounds-checked byte-for-byte equality of same-sized spans
+template <typename T,
+          typename U,
+          typename = pdfium::internal::EnableIfLegalSpanConversion<T, U>,
+          typename = std::enable_if_t<std::is_trivially_copyable_v<T> &&
+                                      std::is_trivially_copyable_v<U>>>
+bool span_equals(pdfium::span<T> s1, pdfium::span<U> s2) {
+  return s1.size_bytes() == s2.size_bytes() &&
+         memcmp(s1.data(), s2.data(), s1.size_bytes()) == 0;
 }
 
 template <typename T,

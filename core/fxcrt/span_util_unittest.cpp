@@ -82,6 +82,32 @@ TEST(Spanmove, FitsWithin) {
   EXPECT_EQ(dst[3], 'B');
 }
 
+TEST(SpanEquals, Empty) {
+  std::vector<int> vec = {1, 2};
+  std::vector<int> vec2 = {3, 4};
+  pdfium::span<int> empty;
+  pdfium::span<int> some = pdfium::make_span(vec);
+  pdfium::span<int> some2 = pdfium::make_span(vec2);
+  EXPECT_FALSE(fxcrt::span_equals(empty, some));
+  EXPECT_FALSE(fxcrt::span_equals(some, empty));
+  EXPECT_TRUE(fxcrt::span_equals(empty, empty));
+  EXPECT_TRUE(fxcrt::span_equals(empty, some.first(0)));
+  EXPECT_TRUE(fxcrt::span_equals(some.first(0), empty));
+  EXPECT_TRUE(fxcrt::span_equals(some2.first(0), some.first(0)));
+  EXPECT_TRUE(fxcrt::span_equals(some.first(0), some2.first(0)));
+}
+
+TEST(SpanEquals, NonEmpty) {
+  std::vector<int> vec = {1, 2, 3};
+  std::vector<int> vec2 = {1, 2, 4};
+  pdfium::span<int> some = pdfium::make_span(vec);
+  pdfium::span<int> some2 = pdfium::make_span(vec2);
+  EXPECT_FALSE(fxcrt::span_equals(some, some2));
+  EXPECT_FALSE(fxcrt::span_equals(some.first(2), some2));
+  EXPECT_FALSE(fxcrt::span_equals(some, some2.first(2)));
+  EXPECT_TRUE(fxcrt::span_equals(some.first(2), some2.first(2)));
+}
+
 TEST(Span, AssignOverOnePastEnd) {
   std::vector<char> src(2, 'A');
   pdfium::span<char> span = pdfium::make_span(src);
