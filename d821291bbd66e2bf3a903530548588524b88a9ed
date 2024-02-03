@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "315e9f6a_26c403c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-02-03T01:49:18Z",
+      "side": 1,
+      "message": "Without CI, the rust build is already broken for me locally without this CL. Oh well. Let\u0027s continue and figure out the issue closer to ToT.",
+      "revId": "d821291bbd66e2bf3a903530548588524b88a9ed",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
