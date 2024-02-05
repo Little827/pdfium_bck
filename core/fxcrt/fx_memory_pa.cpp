@@ -7,12 +7,16 @@
 #include "core/fxcrt/fx_memory.h"
 
 #include "core/fxcrt/fx_safe_types.h"
-#include "partition_alloc/partition_alloc.h"
+#include "third_party/base/compiler_specific.h"
 #include "third_party/base/no_destructor.h"
 
 #if !defined(PDF_USE_PARTITION_ALLOC)
 #error "File compiled under wrong build option."
 #endif
+
+UNSAFE_HEADERS_BEGIN()
+#include "partition_alloc/partition_alloc.h"
+UNSAFE_HEADERS_END()
 
 namespace {
 
