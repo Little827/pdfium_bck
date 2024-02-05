@@ -494,19 +494,18 @@ CFX_FloatRect CFX_Matrix::TransformRect(const CFX_FloatRect& rect) const {
                          {rect.left, rect.bottom},
                          {rect.right, rect.top},
                          {rect.right, rect.bottom}};
-  for (CFX_PointF& point : points)
+  for (CFX_PointF& point : points) {
     point = Transform(point);
-
+  }
   float new_right = points[0].x;
   float new_left = points[0].x;
   float new_top = points[0].y;
   float new_bottom = points[0].y;
-  for (size_t i = 1; i < std::size(points); i++) {
-    new_right = std::max(new_right, points[i].x);
-    new_left = std::min(new_left, points[i].x);
-    new_top = std::max(new_top, points[i].y);
-    new_bottom = std::min(new_bottom, points[i].y);
+  for (const auto& point : pdfium::span(points).subspan(1)) {
+    new_right = std::max(new_right, point.x);
+    new_left = std::min(new_left, point.x);
+    new_top = std::max(new_top, point.y);
+    new_bottom = std::min(new_bottom, point.y);
   }
-
   return CFX_FloatRect(new_left, new_bottom, new_right, new_top);
 }

@@ -22,6 +22,7 @@
 #include "core/fxcrt/string_pool_template.h"
 #include "third_party/base/check.h"
 #include "third_party/base/check_op.h"
+#include "third_party/base/compiler_specific.h"
 #include "third_party/base/containers/span.h"
 
 template class fxcrt::StringDataTemplate<char>;
@@ -33,25 +34,30 @@ namespace {
 
 constexpr char kTrimChars[] = "\x09\x0a\x0b\x0c\x0d\x20";
 
-const char* FX_strstr(const char* haystack,
-                      size_t haystack_len,
-                      const char* needle,
-                      size_t needle_len) {
-  if (needle_len > haystack_len || needle_len == 0)
+UNSAFE_BUFFER_USAGE const char* FX_strstr(const char* haystack,
+                                          size_t haystack_len,
+                                          const char* needle,
+                                          size_t needle_len) {
+  if (needle_len > haystack_len || needle_len == 0) {
     return nullptr;
+  }
 
-  const char* end_ptr = haystack + haystack_len - needle_len;
+  // SAFETY: needle_len > haystack_len comparison above.
+  const char* end_ptr = UNSAFE_BUFFERS(haystack + haystack_len - needle_len);
   while (haystack <= end_ptr) {
     size_t i = 0;
     while (true) {
-      if (haystack[i] != needle[i])
+      // SAFETY: required from caller.
+      if (UNSAFE_BUFFERS(haystack[i] != needle[i])) {
         break;
-
-      i++;
-      if (i == needle_len)
+      }
+      ++i;
+      if (i == needle_len) {
         return haystack;
+      }
     }
-    haystack++;
+    // SAFETY: required from caller.
+    UNSAFE_BUFFERS(++haystack);
   }
   return nullptr;
 }
@@ -325,15 +331,15 @@ bool ByteString::EqualNoCase(ByteStringView str) const {
   const uint8_t* pThis = (const uint8_t*)m_pData->m_String;
   const uint8_t* pThat = str.raw_str();
   for (size_t i = 0; i < len; i++) {
-    if ((*pThis) != (*pThat)) {
-      uint8_t this_char = tolower(*pThis);
-      uint8_t that_char = tolower(*pThat);
+    if (*pThis != *pThat) {
+      const uint8_t this_char = tolower(*pThis);
+      const uint8_t that_char = tolower(*pThat);
       if (this_char != that_char) {
         return false;
       }
     }
-    pThis++;
-    pThat++;
+    UNSAFE_BUFFERS(pThis++);  // SAFETY: m_nDataLength management.
+    UNSAFE_BUFFERS(pThat++);  // SAFETY: m_nDataLength != len early return.
   }
   return true;
 }
@@ -353,7 +359,7 @@ void ByteString::ReallocBeforeWrite(size_t nNewLength) {
     return;
   }
 
-  RetainPtr<StringData> pNewData(StringData::Create(nNewLength));
+  auto pNewData = pdfium::WrapRetain(StringData::Create(nNewLength));
   if (m_pData) {
     size_t nCopyLength = std::min(m_pData->m_nDataLength, nNewLength);
     pNewData->CopyContents(m_pData->m_String, nCopyLength);
@@ -361,7 +367,8 @@ void ByteString::ReallocBeforeWrite(size_t nNewLength) {
   } else {
     pNewData->m_nDataLength = 0;
   }
-  pNewData->m_String[pNewData->m_nDataLength] = 0;
+  // SAFETY: m_nDataLength management above.
+  UNSAFE_BUFFERS(pNewData->m_String[pNewData->m_nDataLength]) = 0;
   m_pData.Swap(pNewData);
 }
 
@@ -387,9 +394,13 @@ void ByteString::ReleaseBuffer(size_t nNewLength) {
     return;
   }
 
+  // TODO(tsepez): make this a CHECK().
   DCHECK_EQ(m_pData->m_nRefs, 1);
+
+  // SAFETY: std::min() above.
+  UNSAFE_BUFFERS(m_pData->m_String[nNewLength]) = 0;
   m_pData->m_nDataLength = nNewLength;
-  m_pData->m_String[nNewLength] = 0;
+
   if (m_pData->m_nAllocLength - nNewLength >= 32) {
     // Over arbitrary threshold, so pay the price to relocate.  Force copy to
     // always occur by holding a second reference to the string.
@@ -442,8 +453,12 @@ size_t ByteString::Delete(size_t index, size_t count) {
 
   ReallocBeforeWrite(old_length);
   size_t chars_to_copy = old_length - removal_length + 1;
-  FXSYS_memmove(m_pData->m_String + index, m_pData->m_String + removal_length,
+
+  // SAFETY: requires correctness of length computations above.
+  FXSYS_memmove(UNSAFE_BUFFERS(m_pData->m_String + index),
+                UNSAFE_BUFFERS(m_pData->m_String + removal_length),
                 chars_to_copy);
+
   m_pData->m_nDataLength = old_length - count;
   return m_pData->m_nDataLength;
 }
@@ -498,7 +513,8 @@ ByteString ByteString::Substr(size_t first, size_t count) const {
     return *this;
 
   ByteString dest;
-  AllocCopy(dest, count, first);
+  // SAFETY: count and first validated above.
+  UNSAFE_BUFFERS(AllocCopy(dest, count, first));
   return dest;
 }
 
@@ -511,75 +527,88 @@ ByteString ByteString::Last(size_t count) const {
   return Substr(GetLength() - count, count);
 }
 
-void ByteString::AllocCopy(ByteString& dest,
-                           size_t nCopyLen,
-                           size_t nCopyIndex) const {
-  if (nCopyLen == 0)
+UNSAFE_BUFFER_USAGE void ByteString::AllocCopy(ByteString& dest,
+                                               size_t nCopyLen,
+                                               size_t nCopyIndex) const {
+  if (nCopyLen == 0) {
     return;
-
-  RetainPtr<StringData> pNewData(
-      StringData::Create(m_pData->m_String + nCopyIndex, nCopyLen));
+  }
+  // SAFETY: required from caller.
+  auto pNewData = pdfium::WrapRetain(StringData::Create(
+      UNSAFE_BUFFERS(m_pData->m_String + nCopyIndex), nCopyLen));
   dest.m_pData.Swap(pNewData);
 }
 
 void ByteString::SetAt(size_t index, char c) {
-  DCHECK(IsValidIndex(index));
+  CHECK(IsValidIndex(index));
   ReallocBeforeWrite(m_pData->m_nDataLength);
-  m_pData->m_String[index] = c;
+
+  // SAFETY: CHECK() above.
+  UNSAFE_BUFFERS(m_pData->m_String[index]) = c;
 }
 
 size_t ByteString::Insert(size_t index, char ch) {
   const size_t cur_length = GetLength();
-  if (!IsValidLength(index))
+  if (!IsValidLength(index)) {
     return cur_length;
-
+  }
   const size_t new_length = cur_length + 1;
   ReallocBeforeWrite(new_length);
-  FXSYS_memmove(m_pData->m_String + index + 1, m_pData->m_String + index,
-                new_length - index);
-  m_pData->m_String[index] = ch;
+
+  // SAFETY: length checks above plus ReallocBeforeWrite().
+  FXSYS_memmove(UNSAFE_BUFFERS(m_pData->m_String + index + 1),
+                UNSAFE_BUFFERS(m_pData->m_String + index), new_length - index);
+  UNSAFE_BUFFERS(m_pData->m_String[index]) = ch;
   m_pData->m_nDataLength = new_length;
   return new_length;
 }
 
 absl::optional<size_t> ByteString::Find(char ch, size_t start) const {
-  if (!m_pData)
+  if (!m_pData) {
     return absl::nullopt;
-
-  if (!IsValidIndex(start))
+  }
+  if (!IsValidIndex(start)) {
     return absl::nullopt;
+  }
 
-  const char* pStr = static_cast<const char*>(FXSYS_memchr(
-      m_pData->m_String + start, ch, m_pData->m_nDataLength - start));
-  return pStr ? absl::optional<size_t>(
-                    static_cast<size_t>(pStr - m_pData->m_String))
+  // SAFETY: IsValidIndex() above.
+  const char* pStr = static_cast<const char*>(
+      FXSYS_memchr(UNSAFE_BUFFERS(m_pData->m_String + start), ch,
+                   m_pData->m_nDataLength - start));
+  return pStr ? absl::optional<size_t>(static_cast<size_t>(
+                    UNSAFE_BUFFERS(pStr - m_pData->m_String)))
               : absl::nullopt;
 }
 
 absl::optional<size_t> ByteString::Find(ByteStringView subStr,
                                         size_t start) const {
-  if (!m_pData)
+  if (!m_pData) {
     return absl::nullopt;
-
-  if (!IsValidIndex(start))
+  }
+  if (!IsValidIndex(start)) {
     return absl::nullopt;
+  }
 
-  const char* pStr =
+  // SAFETY: IsValidIndex() above.
+  const char* pStr = UNSAFE_BUFFERS(
       FX_strstr(m_pData->m_String + start, m_pData->m_nDataLength - start,
-                subStr.unterminated_c_str(), subStr.GetLength());
-  return pStr ? absl::optional<size_t>(
-                    static_cast<size_t>(pStr - m_pData->m_String))
+                subStr.unterminated_c_str(), subStr.GetLength()));
+  return pStr ? absl::optional<size_t>(static_cast<size_t>(
+                    UNSAFE_BUFFERS(pStr - m_pData->m_String)))
               : absl::nullopt;
 }
 
 absl::optional<size_t> ByteString::ReverseFind(char ch) const {
-  if (!m_pData)
+  if (!m_pData) {
     return absl::nullopt;
+  }
 
   size_t nLength = m_pData->m_nDataLength;
   while (nLength--) {
-    if (m_pData->m_String[nLength] == ch)
+    // SAFETY: m_nDataLength consistent with allocation.
+    if (UNSAFE_BUFFERS(m_pData->m_String[nLength]) == ch) {
       return nLength;
+    }
   }
   return absl::nullopt;
 }
@@ -601,36 +630,47 @@ void ByteString::MakeUpper() {
 }
 
 size_t ByteString::Remove(char chRemove) {
-  if (IsEmpty())
+  if (IsEmpty()) {
     return 0;
+  }
 
   char* pstrSource = m_pData->m_String;
-  char* pstrEnd = m_pData->m_String + m_pData->m_nDataLength;
+  // SAFETY: m_nDataLength consistent with allocation.
+  char* pstrEnd = UNSAFE_BUFFERS(m_pData->m_String + m_pData->m_nDataLength);
   while (pstrSource < pstrEnd) {
-    if (*pstrSource == chRemove)
+    if (*pstrSource == chRemove) {
       break;
-    pstrSource++;
+    }
+    // SAFETY: loop bounds check.
+    UNSAFE_BUFFERS(++pstrSource);
   }
-  if (pstrSource == pstrEnd)
+  if (pstrSource == pstrEnd) {
     return 0;
+  }
 
-  ptrdiff_t copied = pstrSource - m_pData->m_String;
+  // SAFETY: loop above stays in bounds.
+  ptrdiff_t copied = UNSAFE_BUFFERS(pstrSource - m_pData->m_String);
   ReallocBeforeWrite(m_pData->m_nDataLength);
-  pstrSource = m_pData->m_String + copied;
-  pstrEnd = m_pData->m_String + m_pData->m_nDataLength;
+
+  // SAFETY: depends on ReallocBeforeWrite() correctness.
+  pstrSource = UNSAFE_BUFFERS(m_pData->m_String + copied);
+  pstrEnd = UNSAFE_BUFFERS(m_pData->m_String + m_pData->m_nDataLength);
 
   char* pstrDest = pstrSource;
   while (pstrSource < pstrEnd) {
     if (*pstrSource != chRemove) {
       *pstrDest = *pstrSource;
-      pstrDest++;
+      UNSAFE_BUFFERS(++pstrDest);  // SAFETY: if dest sized correctly.
     }
-    pstrSource++;
+    UNSAFE_BUFFERS(pstrSource++);  // SAFETY: loop bounds.
   }
 
   *pstrDest = 0;
-  size_t nCount = static_cast<size_t>(pstrSource - pstrDest);
+
+  // SAFETY: bounds check from previous loop.
+  auto nCount = static_cast<size_t>(UNSAFE_BUFFERS(pstrSource - pstrDest));
   m_pData->m_nDataLength -= nCount;
+
   return nCount;
 }
 
@@ -642,18 +682,26 @@ size_t ByteString::Replace(ByteStringView pOld, ByteStringView pNew) {
   size_t nReplacementLen = pNew.GetLength();
   size_t nCount = 0;
   const char* pStart = m_pData->m_String;
-  char* pEnd = m_pData->m_String + m_pData->m_nDataLength;
+
+  // SAFETY: m_nDataLength consistent with allocation.
+  char* pEnd = UNSAFE_BUFFERS(m_pData->m_String + m_pData->m_nDataLength);
+
   while (true) {
-    const char* pTarget = FX_strstr(pStart, static_cast<int>(pEnd - pStart),
-                                    pOld.unterminated_c_str(), nSourceLen);
-    if (!pTarget)
+    // SAFETY: if pEnd correctly computed above.
+    const char* pTarget =
+        UNSAFE_BUFFERS(FX_strstr(pStart, static_cast<int>(pEnd - pStart),
+                                 pOld.unterminated_c_str(), nSourceLen));
+    if (!pTarget) {
       break;
+    }
 
     nCount++;
-    pStart = pTarget + nSourceLen;
+    // TODO(tsepez): double-check safety.
+    pStart = UNSAFE_BUFFERS(pTarget + nSourceLen);
   }
-  if (nCount == 0)
+  if (nCount == 0) {
     return 0;
+  }
 
   size_t nNewLength =
       m_pData->m_nDataLength + (nReplacementLen - nSourceLen) * nCount;
@@ -663,19 +711,22 @@ size_t ByteString::Replace(ByteStringView pOld, ByteStringView pNew) {
     return nCount;
   }
 
-  RetainPtr<StringData> pNewData(StringData::Create(nNewLength));
+  auto pNewData = pdfium::WrapRetain(StringData::Create(nNewLength));
   pStart = m_pData->m_String;
   char* pDest = pNewData->m_String;
+
+  // SAFETY: correctness of Create(nNewlLength) throughout.
   for (size_t i = 0; i < nCount; i++) {
-    const char* pTarget = FX_strstr(pStart, static_cast<int>(pEnd - pStart),
-                                    pOld.unterminated_c_str(), nSourceLen);
+    const char* pTarget =
+        UNSAFE_BUFFERS(FX_strstr(pStart, static_cast<int>(pEnd - pStart),
+                                 pOld.unterminated_c_str(), nSourceLen));
     FXSYS_memcpy(pDest, pStart, pTarget - pStart);
-    pDest += pTarget - pStart;
+    UNSAFE_BUFFERS(pDest += pTarget - pStart);
     FXSYS_memcpy(pDest, pNew.unterminated_c_str(), pNew.GetLength());
-    pDest += pNew.GetLength();
-    pStart = pTarget + nSourceLen;
+    UNSAFE_BUFFERS(pDest += pNew.GetLength());
+    pStart = UNSAFE_BUFFERS(pTarget + nSourceLen);
   }
-  FXSYS_memcpy(pDest, pStart, pEnd - pStart);
+  FXSYS_memcpy(pDest, pStart, UNSAFE_BUFFERS(pEnd - pStart));
   m_pData.Swap(pNewData);
   return nCount;
 }
@@ -721,26 +772,30 @@ void ByteString::TrimLeft(char target) {
 }
 
 void ByteString::TrimLeft(ByteStringView targets) {
-  if (!m_pData || targets.IsEmpty())
+  if (!m_pData || targets.IsEmpty()) {
     return;
-
+  }
   size_t len = GetLength();
-  if (len == 0)
+  if (len == 0) {
     return;
-
+  }
+  // SAFETY: correctness of len, pos < len throughout.
   size_t pos = 0;
   while (pos < len) {
     size_t i = 0;
-    while (i < targets.GetLength() && targets[i] != m_pData->m_String[pos])
+    while (i < targets.GetLength() &&
+           UNSAFE_BUFFERS(targets[i] != m_pData->m_String[pos])) {
       i++;
-    if (i == targets.GetLength())
+    }
+    if (i == targets.GetLength()) {
       break;
-    pos++;
+    }
+    UNSAFE_BUFFERS(pos++);
   }
   if (pos) {
     ReallocBeforeWrite(len);
     size_t nDataLength = len - pos;
-    FXSYS_memmove(m_pData->m_String, m_pData->m_String + pos,
+    FXSYS_memmove(m_pData->m_String, UNSAFE_BUFFERS(m_pData->m_String + pos),
                   (nDataLength + 1) * sizeof(char));
     m_pData->m_nDataLength = nDataLength;
   }
@@ -755,24 +810,30 @@ void ByteString::TrimRight(char target) {
 }
 
 void ByteString::TrimRight(ByteStringView targets) {
-  if (!m_pData || targets.IsEmpty())
+  if (!m_pData || targets.IsEmpty()) {
     return;
-
+  }
   size_t pos = GetLength();
-  if (pos == 0)
+  if (pos == 0) {
     return;
+  }
 
+  // TODO(tsepez): justify safety.
   while (pos) {
     size_t i = 0;
-    while (i < targets.GetLength() && targets[i] != m_pData->m_String[pos - 1])
+    while (i < targets.GetLength() &&
+           UNSAFE_BUFFERS(targets[i] != m_pData->m_String[pos - 1])) {
       i++;
-    if (i == targets.GetLength())
+    }
+    if (i == targets.GetLength()) {
       break;
-    pos--;
+    }
+    UNSAFE_BUFFERS(pos--);
   }
   if (pos < m_pData->m_nDataLength) {
     ReallocBeforeWrite(m_pData->m_nDataLength);
-    m_pData->m_String[pos] = 0;
+    // SAFETY: pos < m_pData->m_nDataLength.
+    UNSAFE_BUFFERS(m_pData->m_String[pos]) = 0;
     m_pData->m_nDataLength = pos;
   }
 }

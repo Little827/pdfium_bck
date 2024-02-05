@@ -23,6 +23,7 @@
 #include "core/fxcrt/string_view_template.h"
 #include "third_party/abseil-cpp/absl/types/optional.h"
 #include "third_party/base/check.h"
+#include "third_party/base/compiler_specific.h"
 #include "third_party/base/containers/span.h"
 
 namespace fxcrt {
@@ -101,7 +102,9 @@ class ByteString {
   // Note: Any subsequent modification of |this| will invalidate iterators.
   const_iterator begin() const { return m_pData ? m_pData->m_String : nullptr; }
   const_iterator end() const {
-    return m_pData ? m_pData->m_String + m_pData->m_nDataLength : nullptr;
+    // SAFETY: m_nDataLength must be managed correctly during allocations.
+    return m_pData ? UNSAFE_BUFFERS(m_pData->m_String + m_pData->m_nDataLength)
+                   : nullptr;
   }
 
   // Note: Any subsequent modification of |this| will invalidate iterators.
@@ -149,7 +152,8 @@ class ByteString {
 
   CharType operator[](const size_t index) const {
     CHECK(IsValidIndex(index));
-    return m_pData->m_String[index];
+    // SAFETY: CHECK() above.
+    return UNSAFE_BUFFERS(m_pData->m_String[index]);
   }
 
   CharType Front() const { return GetLength() ? (*this)[0] : 0; }
@@ -217,7 +221,9 @@ class ByteString {
 
   void ReallocBeforeWrite(size_t nNewLen);
   void AllocBeforeWrite(size_t nNewLen);
-  void AllocCopy(ByteString& dest, size_t nCopyLen, size_t nCopyIndex) const;
+  UNSAFE_BUFFER_USAGE void AllocCopy(ByteString& dest,
+                                     size_t nCopyLen,
+                                     size_t nCopyIndex) const;
   void AssignCopy(const char* pSrcData, size_t nSrcLen);
   void Concat(const char* pSrcData, size_t nSrcLen);
   intptr_t ReferenceCountForTesting() const;
