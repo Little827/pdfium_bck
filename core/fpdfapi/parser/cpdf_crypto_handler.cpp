@@ -68,7 +68,7 @@ void CPDF_CryptoHandler::EncryptContent(uint32_t objnum,
   }
   if (m_Cipher == Cipher::kAES) {
     CRYPT_AESSetKey(m_pAESContext.get(),
-                    m_KeyLen == 32 ? m_EncryptKey : realkey, m_KeyLen);
+                    {m_KeyLen == 32 ? m_EncryptKey : realkey, m_KeyLen});
     uint8_t iv[16];
     for (int i = 0; i < 16; i++) {
       iv[i] = (uint8_t)rand();
@@ -108,7 +108,7 @@ void* CPDF_CryptoHandler::DecryptStart(uint32_t objnum, uint32_t gennum) {
     AESCryptContext* pContext = FX_Alloc(AESCryptContext, 1);
     pContext->m_bIV = true;
     pContext->m_BlockOffset = 0;
-    CRYPT_AESSetKey(&pContext->m_Context, m_EncryptKey, 32);
+    CRYPT_AESSetKey(&pContext->m_Context, m_EncryptKey);
     return pContext;
   }
   uint8_t key1[48];
@@ -126,7 +126,7 @@ void* CPDF_CryptoHandler::DecryptStart(uint32_t objnum, uint32_t gennum) {
     AESCryptContext* pContext = FX_Alloc(AESCryptContext, 1);
     pContext->m_bIV = true;
     pContext->m_BlockOffset = 0;
-    CRYPT_AESSetKey(&pContext->m_Context, realkey, 16);
+    CRYPT_AESSetKey(&pContext->m_Context, realkey);
     return pContext;
   }
   CRYPT_rc4_context* pContext = FX_Alloc(CRYPT_rc4_context, 1);
