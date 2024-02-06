@@ -121,18 +121,17 @@ void Revision6_Hash(const ByteString& password,
   uint8_t digest[32];
   CRYPT_SHA256Finish(&sha, digest);
 
+  pdfium::span<uint8_t> input = pdfium::make_span(digest);
+  pdfium::span<uint8_t> key = input.first(16);
+  pdfium::span<uint8_t> iv = input.subspan(16);
   DataVector<uint8_t> buf;
-  uint8_t* input = digest;
-  uint8_t* key = input;
-  uint8_t* iv = input + 16;
   uint8_t* E = nullptr;
   int iBufLen = 0;
   DataVector<uint8_t> interDigest;
   int i = 0;
-  int iBlockSize = 32;
   CRYPT_aes_context aes = {};
   while (i < 64 || i < E[iBufLen - 1] + 32) {
-    int iRoundSize = password.GetLength() + iBlockSize;
+    int iRoundSize = password.GetLength() + input.size();
     if (vector) {
       iRoundSize += 48;
     }
@@ -143,15 +142,16 @@ void Revision6_Hash(const ByteString& password,
     for (int j = 0; j < 64; ++j) {
       content.insert(std::end(content), password.raw_str(),
                      password.raw_str() + password.GetLength());
-      content.insert(std::end(content), input, input + iBlockSize);
+      content.insert(std::end(content), input.begin(), input.end());
       if (vector) {
         content.insert(std::end(content), vector, vector + 48);
       }
     }
-    CRYPT_AESSetKey(&aes, key, 16);
+    CRYPT_AESSetKey(&aes, key);
     CRYPT_AESSetIV(&aes, iv);
     CRYPT_AESEncrypt(&aes, E, content.data(), iBufLen);
     int iHash = 0;
+    int iBlockSize = 0;
     switch (BigOrder64BitsMod3(E)) {
       case 0:
         iHash = 0;
@@ -167,20 +167,20 @@ void Revision6_Hash(const ByteString& password,
         break;
     }
     interDigest.resize(iBlockSize);
-    input = interDigest.data();
+    input = pdfium::make_span(interDigest);
     if (iHash == 0) {
-      CRYPT_SHA256Generate(E, iBufLen, input);
+      CRYPT_SHA256Generate(E, iBufLen, input.data());
     } else if (iHash == 1) {
-      CRYPT_SHA384Generate(E, iBufLen, input);
+      CRYPT_SHA384Generate(E, iBufLen, input.data());
     } else if (iHash == 2) {
-      CRYPT_SHA512Generate(E, iBufLen, input);
+      CRYPT_SHA512Generate(E, iBufLen, input.data());
     }
-    key = input;
-    iv = input + 16;
+    key = input.first(16);
+    iv = input.subspan(16);
     ++i;
   }
   if (hash) {
-    memcpy(hash, input, 32);
+    memcpy(hash, input.first(32).data(), 32);
   }
 }
 
@@ -369,11 +369,11 @@ bool CPDF_SecurityHandler::AES256_CheckPassword(const ByteString& password,
     return false;
 
   CRYPT_aes_context aes = {};
-  CRYPT_AESSetKey(&aes, digest, sizeof(digest));
+  CRYPT_AESSetKey(&aes, digest);
   uint8_t iv[16] = {};
   CRYPT_AESSetIV(&aes, iv);
   CRYPT_AESDecrypt(&aes, m_EncryptKey, ekey.raw_str(), 32);
-  CRYPT_AESSetKey(&aes, m_EncryptKey, sizeof(m_EncryptKey));
+  CRYPT_AESSetKey(&aes, m_EncryptKey);
   CRYPT_AESSetIV(&aes, iv);
   ByteString perms = m_pEncryptDict->GetByteStringFor("Perms");
   if (perms.IsEmpty())
@@ -629,7 +629,7 @@ void CPDF_SecurityHandler::AES256_SetPassword(CPDF_Dictionary* pEncryptDict,
     CRYPT_SHA256Finish(&sha2, digest1);
   }
   CRYPT_aes_context aes = {};
-  CRYPT_AESSetKey(&aes, digest1, 32);
+  CRYPT_AESSetKey(&aes, pdfium::make_span(digest1).first(32));
   uint8_t iv[16] = {};
   CRYPT_AESSetIV(&aes, iv);
   CRYPT_AESEncrypt(&aes, digest1, m_EncryptKey, sizeof(m_EncryptKey));
@@ -657,7 +657,7 @@ void CPDF_SecurityHandler::AES256_SetPerms(CPDF_Dictionary* pEncryptDict) {
   FX_Random_GenerateMT(buf_random, 1);
 
   CRYPT_aes_context aes = {};
-  CRYPT_AESSetKey(&aes, m_EncryptKey, sizeof(m_EncryptKey));
+  CRYPT_AESSetKey(&aes, m_EncryptKey);
 
   uint8_t iv[16] = {};
   CRYPT_AESSetIV(&aes, iv);

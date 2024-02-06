@@ -524,17 +524,15 @@ void aes_decrypt_nb_4(CRYPT_aes_context* ctx, unsigned int* block) {
 
 }  // namespace
 
-void CRYPT_AESSetKey(CRYPT_aes_context* ctx,
-                     const uint8_t* key,
-                     uint32_t keylen) {
-  DCHECK(keylen == 16 || keylen == 24 || keylen == 32);
-  int Nk = keylen / 4;
+void CRYPT_AESSetKey(CRYPT_aes_context* ctx, pdfium::span<const uint8_t> key) {
+  DCHECK(key.size() == 16 || key.size() == 24 || key.size() == 32);
+  int Nk = static_cast<int>(key.size() / 4);
   ctx->Nb = 4;
   ctx->Nr = 6 + (ctx->Nb > Nk ? ctx->Nb : Nk);
   int rconst = 1;
   for (int i = 0; i < (ctx->Nr + 1) * ctx->Nb; i++) {
     if (i < Nk) {
-      ctx->keysched[i] = FXSYS_UINT32_GET_MSBFIRST(key + 4 * i);
+      ctx->keysched[i] = FXSYS_UINT32_GET_MSBFIRST(key.subspan(4 * i));
     } else {
       unsigned int temp = ctx->keysched[i - 1];
       if (i % Nk == 0) {
@@ -579,9 +577,9 @@ void CRYPT_AESSetKey(CRYPT_aes_context* ctx,
   }
 }
 
-void CRYPT_AESSetIV(CRYPT_aes_context* ctx, const uint8_t* iv) {
+void CRYPT_AESSetIV(CRYPT_aes_context* ctx, pdfium::span<const uint8_t> iv) {
   for (int i = 0; i < ctx->Nb; i++) {
-    ctx->iv[i] = FXSYS_UINT32_GET_MSBFIRST(iv + 4 * i);
+    ctx->iv[i] = FXSYS_UINT32_GET_MSBFIRST(iv.subspan(4 * i));
   }
 }
 
