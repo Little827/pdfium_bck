@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "826aaf6f_9e789f9c",
+        "filename": "core/fdrm/fx_crypt_aes.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-06T17:17:19Z",
+      "side": 1,
+      "message": "Nah, the other ones were CHECK() because we might loop forever with unsigned underflow if not a multiple of 16. We make an int on the next line which has possibility of being too small, maybe, but not failing, say, a \u003c 0 comparison.",
+      "parentUuid": "ff0b6379_5415b8f4",
+      "range": {
+        "startLine": 530,
+        "startChar": 2,
+        "endLine": 530,
+        "endChar": 8
+      },
+      "revId": "811c05b1339abf1b3408dd7f92d65cc7541bfb0b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d81e5aaa_ab85e49f",
