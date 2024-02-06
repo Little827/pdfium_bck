@@ -80,6 +80,24 @@
       "message": "Maybe check `size % 16` instead here, and also above?",
       "revId": "811c05b1339abf1b3408dd7f92d65cc7541bfb0b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e32031b0_b459bb1a",
+        "filename": "core/fdrm/fx_crypt_aes.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 620,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-06T17:19:37Z",
+      "side": 1,
+      "message": "Gah, sorry, missed this one.  That would have been better.",
+      "parentUuid": "d81e5aaa_ab85e49f",
+      "revId": "811c05b1339abf1b3408dd7f92d65cc7541bfb0b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ],
   "submitRequirementResults": [
