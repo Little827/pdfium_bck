@@ -811,9 +811,7 @@ WideString WideString::Substr(size_t first, size_t count) const {
   if (first == 0 && count == GetLength())
     return *this;
 
-  WideString dest;
-  AllocCopy(dest, count, first);
-  return dest;
+  return AllocCopy(first, count);
 }
 
 WideString WideString::First(size_t count) const {
@@ -825,15 +823,18 @@ WideString WideString::Last(size_t count) const {
   return Substr(GetLength() - count, count);
 }
 
-void WideString::AllocCopy(WideString& dest,
-                           size_t nCopyLen,
-                           size_t nCopyIndex) const {
-  if (nCopyLen == 0)
-    return;
+WideString WideString::AllocCopy(size_t nCopyIndex, size_t nCopyLen) const {
+  if (nCopyLen == 0) {
+    return WideString();
+  }
 
-  RetainPtr<StringData> pNewData(
-      StringData::Create(m_pData->m_String + nCopyIndex, nCopyLen));
-  dest.m_pData.Swap(pNewData);
+  auto copy_span = m_pData->span().subspan(nCopyIndex, nCopyLen);
+  RetainPtr<StringData> pNewData = pdfium::WrapRetain(
+      StringData::Create(copy_span.data(), copy_span.size()));
+
+  WideString dest;
+  dest.m_pData = std::move(pNewData);
+  return dest;
 }
 
 size_t WideString::Insert(size_t index, wchar_t ch) {
