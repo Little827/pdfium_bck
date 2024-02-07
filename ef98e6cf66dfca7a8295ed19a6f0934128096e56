@@ -35,6 +35,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2690d783_1d604689",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-07T22:31:19Z",
+      "side": 1,
+      "message": "Yeah, very old code. Leaving for now.",
+      "parentUuid": "56baf59a_5a0aeacc",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "468e8c0d_b1ee7e61",
@@ -48,6 +66,30 @@
       "writtenOn": "2024-02-02T18:00:47Z",
       "side": 1,
       "message": "`0 \u003c needle_len \u003c haystack_len` is guaranteed by the the comparison above, which ensures the pointer stays in the range `[haystack, haystack + len)`.",
+      "range": {
+        "startLine": 45,
+        "startChar": 13,
+        "endLine": 45,
+        "endChar": 56
+      },
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3ca3ed2_20d691d6",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-07T22:31:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "468e8c0d_b1ee7e61",
       "range": {
         "startLine": 45,
         "startChar": 13,
@@ -81,6 +123,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e9838df_3cfe8a8c",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-07T22:31:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e98b093_528c7060",
+      "range": {
+        "startLine": 50,
+        "startChar": 17,
+        "endLine": 50,
+        "endChar": 38
+      },
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cf2f31f0_75e537da",
@@ -94,6 +160,30 @@
       "writtenOn": "2024-02-02T18:00:47Z",
       "side": 1,
       "message": "The end_ptr was constructed to point into (or one past) the haystack array, and we stop when haystack reaches end_ptr, so this increment is always inside the haystack array.",
+      "range": {
+        "startLine": 59,
+        "startChar": 15,
+        "endLine": 59,
+        "endChar": 36
+      },
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a374a02_0421b1c6",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-07T22:31:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf2f31f0_75e537da",
       "range": {
         "startLine": 59,
         "startChar": 15,
@@ -173,6 +263,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "403ee3d6_98cc9ea0",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-07T22:31:19Z",
+      "side": 1,
+      "message": "from string_data_template.h\n\n // These lengths are in terms of number of characters, not bytes, and do not\n  // include the terminating NUL character, but the underlying buffer is sized\n  // to be capable of holding it.",
+      "parentUuid": "cfb973b2_8e8c048f",
+      "range": {
+        "startLine": 400,
+        "startChar": 13,
+        "endLine": 400,
+        "endChar": 30
+      },
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7356bcde_ee35e089",
@@ -186,6 +300,24 @@
       "writtenOn": "2024-02-02T18:00:47Z",
       "side": 1,
       "message": "I think this is UNSAFE_BUFFER_USAGE based on `index + count` must not overflow. Or we should check for that in the body?",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8089fd28_70e7acfd",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-07T22:31:19Z",
+      "side": 1,
+      "message": "We should use safe math at line 450.",
+      "parentUuid": "7356bcde_ee35e089",
       "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -904,6 +1036,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "da9313fa_2d4b342f",
+        "filename": "core/fxcrt/bytestring.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-07T22:31:19Z",
+      "side": 1,
+      "message": "Done, this seems reasonable.",
+      "parentUuid": "87aca614_0920e029",
+      "range": {
+        "startLine": 105,
+        "startChar": 29,
+        "endLine": 105,
+        "endChar": 74
+      },
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93ee6db5_9c1a8ea5",
@@ -927,6 +1083,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "006066b4_60295d66",
+        "filename": "core/fxcrt/bytestring.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-07T22:31:19Z",
+      "side": 1,
+      "message": "Done, this seems reasonable.",
+      "parentUuid": "93ee6db5_9c1a8ea5",
+      "range": {
+        "startLine": 155,
+        "startChar": 28,
+        "endLine": 155,
+        "endChar": 29
+      },
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "684dbf93_cd3fdfa4",
@@ -940,6 +1120,24 @@
       "writtenOn": "2024-02-02T18:00:47Z",
       "side": 1,
       "message": "Document what must be true for the parameters to not cause an OOB bug?",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d74be597_a60d4fe2",
+        "filename": "core/fxcrt/bytestring.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-07T22:31:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "684dbf93_cd3fdfa4",
       "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -1718,6 +1916,24 @@
       "writtenOn": "2024-02-02T18:00:47Z",
       "side": 1,
       "message": "It looks like this code is the same as bytestring.cpp, so the same comments can copy over (though verify they remain true here).\n\nIt could be nice to move the code to a shared templated or macrod implementation, and just have bytestring and widestring forward through to that.",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbd917d8_151307a9",
+        "filename": "core/fxcrt/widestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-07T22:31:19Z",
+      "side": 1,
+      "message": "Yeah, there were some subtle differences the last time I tried that, not sure what they were.  But its been a goal for a while.",
+      "parentUuid": "c1d7b45f_99b5137e",
       "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
