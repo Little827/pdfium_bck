@@ -492,9 +492,7 @@ ByteString ByteString::Substr(size_t first, size_t count) const {
   if (first == 0 && count == m_pData->m_nDataLength)
     return *this;
 
-  ByteString dest;
-  AllocCopy(dest, count, first);
-  return dest;
+  return AllocCopy(first, count);
 }
 
 ByteString ByteString::First(size_t count) const {
@@ -506,15 +504,18 @@ ByteString ByteString::Last(size_t count) const {
   return Substr(GetLength() - count, count);
 }
 
-void ByteString::AllocCopy(ByteString& dest,
-                           size_t nCopyLen,
-                           size_t nCopyIndex) const {
-  if (nCopyLen == 0)
-    return;
+ByteString ByteString::AllocCopy(size_t nCopyIndex, size_t nCopyLen) const {
+  if (nCopyLen == 0) {
+    return ByteString();
+  }
 
-  RetainPtr<StringData> pNewData(
-      StringData::Create(m_pData->m_String + nCopyIndex, nCopyLen));
-  dest.m_pData.Swap(pNewData);
+  auto copy_span = m_pData->span().subspan(nCopyIndex, nCopyLen);
+  RetainPtr<StringData> pNewData = pdfium::WrapRetain(
+      StringData::Create(copy_span.data(), copy_span.size()));
+
+  ByteString dest;
+  dest.m_pData = std::move(pNewData);
+  return dest;
 }
 
 void ByteString::SetAt(size_t index, char c) {
