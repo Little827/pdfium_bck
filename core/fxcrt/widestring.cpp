@@ -17,6 +17,7 @@
 #include "core/fxcrt/fx_memcpy_wrappers.h"
 #include "core/fxcrt/fx_safe_types.h"
 #include "core/fxcrt/fx_system.h"
+#include "core/fxcrt/span_util.h"
 #include "core/fxcrt/string_pool_template.h"
 #include "core/fxcrt/utf16.h"
 #include "third_party/base/check.h"
@@ -53,27 +54,21 @@ size_t FuseSurrogates(pdfium::span<wchar_t> s) {
 
 constexpr wchar_t kWideTrimChars[] = L"\x09\x0a\x0b\x0c\x0d\x20";
 
-const wchar_t* FX_wcsstr(const wchar_t* haystack,
-                         size_t haystack_len,
-                         const wchar_t* needle,
-                         size_t needle_len) {
-  if (needle_len > haystack_len || needle_len == 0)
-    return nullptr;
-
-  const wchar_t* end_ptr = haystack + haystack_len - needle_len;
-  while (haystack <= end_ptr) {
-    size_t i = 0;
-    while (true) {
-      if (haystack[i] != needle[i])
-        break;
-
-      i++;
-      if (i == needle_len)
-        return haystack;
-    }
-    haystack++;
+absl::optional<size_t> FX_wcspos(pdfium::span<const wchar_t> haystack,
+                                 pdfium::span<const wchar_t> needle) {
+  if (needle.empty() || needle.size() > haystack.size()) {
+    return absl::nullopt;
   }
-  return nullptr;
+  // After this `end_pos`, not enough characters remain in `haystack` for
+  // a full match to occur.
+  size_t end_pos = haystack.size() - needle.size();
+  for (size_t haystack_pos = 0; haystack_pos <= end_pos; ++haystack_pos) {
+    auto candidate = haystack.subspan(haystack_pos, needle.size());
+    if (fxcrt::span_equals(candidate, needle)) {
+      return haystack_pos;
+    }
+  }
+  return absl::nullopt;
 }
 
 absl::optional<size_t> GuessSizeForVSWPrintf(const wchar_t* pFormat,
@@ -816,9 +811,7 @@ WideString WideString::Substr(size_t first, size_t count) const {
   if (first == 0 && count == GetLength())
     return *this;
 
-  WideString dest;
-  AllocCopy(dest, count, first);
-  return dest;
+  return AllocCopy(first, count);
 }
 
 WideString WideString::First(size_t count) const {
@@ -830,15 +823,18 @@ WideString WideString::Last(size_t count) const {
   return Substr(GetLength() - count, count);
 }
 
-void WideString::AllocCopy(WideString& dest,
-                           size_t nCopyLen,
-                           size_t nCopyIndex) const {
-  if (nCopyLen == 0)
-    return;
+WideString WideString::AllocCopy(size_t nCopyIndex, size_t nCopyLen) const {
+  if (nCopyLen == 0) {
+    return WideString();
+  }
 
-  RetainPtr<StringData> pNewData(
-      StringData::Create(m_pData->m_String + nCopyIndex, nCopyLen));
-  dest.m_pData.Swap(pNewData);
+  auto copy_span = m_pData->span().subspan(nCopyIndex, nCopyLen);
+  RetainPtr<StringData> pNewData = pdfium::WrapRetain(
+      StringData::Create(copy_span.data(), copy_span.size()));
+
+  WideString dest;
+  dest.m_pData = std::move(pNewData);
+  return dest;
 }
 
 size_t WideString::Insert(size_t index, wchar_t ch) {
@@ -871,18 +867,17 @@ absl::optional<size_t> WideString::Find(wchar_t ch, size_t start) const {
 
 absl::optional<size_t> WideString::Find(WideStringView subStr,
                                         size_t start) const {
-  if (!m_pData)
+  if (!m_pData) {
     return absl::nullopt;
-
-  if (!IsValidIndex(start))
+  }
+  if (!IsValidIndex(start)) {
     return absl::nullopt;
-
-  const wchar_t* pStr =
-      FX_wcsstr(m_pData->m_String + start, m_pData->m_nDataLength - start,
-                subStr.unterminated_c_str(), subStr.GetLength());
-  return pStr ? absl::optional<size_t>(
-                    static_cast<size_t>(pStr - m_pData->m_String))
-              : absl::nullopt;
+  }
+  auto result = FX_wcspos(m_pData->span().subspan(start), subStr.span());
+  if (!result.has_value()) {
+    return absl::nullopt;
+  }
+  return start + result.value();
 }
 
 absl::optional<size_t> WideString::ReverseFind(wchar_t ch) const {
@@ -951,26 +946,24 @@ size_t WideString::Replace(WideStringView pOld, WideStringView pNew) {
   if (!m_pData || pOld.IsEmpty())
     return 0;
 
-  size_t nSourceLen = pOld.GetLength();
-  size_t nReplacementLen = pNew.GetLength();
   size_t count = 0;
-  const wchar_t* pStart = m_pData->m_String;
-  wchar_t* pEnd = m_pData->m_String + m_pData->m_nDataLength;
-  while (true) {
-    const wchar_t* pTarget =
-        FX_wcsstr(pStart, static_cast<size_t>(pEnd - pStart),
-                  pOld.unterminated_c_str(), nSourceLen);
-    if (!pTarget)
-      break;
-
-    count++;
-    pStart = pTarget + nSourceLen;
+  {
+    // Limit span lifetime.
+    pdfium::span<const wchar_t> pStart = m_pData->span();
+    while (true) {
+      absl::optional<size_t> found = FX_wcspos(pStart, pOld.span());
+      if (!found.has_value()) {
+        break;
+      }
+      ++count;
+      pStart = pStart.subspan(found.value() + pOld.GetLength());
+    }
   }
   if (count == 0)
     return 0;
 
   size_t nNewLength =
-      m_pData->m_nDataLength + (nReplacementLen - nSourceLen) * count;
+      m_pData->m_nDataLength + count * (pNew.GetLength() - pOld.GetLength());
 
   if (nNewLength == 0) {
     clear();
@@ -978,20 +971,20 @@ size_t WideString::Replace(WideStringView pOld, WideStringView pNew) {
   }
 
   RetainPtr<StringData> pNewData(StringData::Create(nNewLength));
-  pStart = m_pData->m_String;
-  wchar_t* pDest = pNewData->m_String;
-  for (size_t i = 0; i < count; i++) {
-    const wchar_t* pTarget =
-        FX_wcsstr(pStart, static_cast<size_t>(pEnd - pStart),
-                  pOld.unterminated_c_str(), nSourceLen);
-    FXSYS_wmemcpy(pDest, pStart, pTarget - pStart);
-    pDest += pTarget - pStart;
-    FXSYS_wmemcpy(pDest, pNew.unterminated_c_str(), pNew.GetLength());
-    pDest += pNew.GetLength();
-    pStart = pTarget + nSourceLen;
+  {
+    // Spans can't outlive StrinData buffers.
+    pdfium::span<const wchar_t> pStart = m_pData->span();
+    pdfium::span<wchar_t> pDest = pNewData->span();
+    for (size_t i = 0; i < count; i++) {
+      size_t found = FX_wcspos(pStart, pOld.span()).value();
+      pDest = fxcrt::spancpy(pDest, pStart.first(found));
+      pDest = fxcrt::spancpy(pDest, pNew.span());
+      pStart = pStart.subspan(found + pOld.GetLength());
+    }
+    pDest = fxcrt::spancpy(pDest, pStart);
+    DCHECK(pDest.empty());
   }
-  FXSYS_wmemcpy(pDest, pStart, pEnd - pStart);
-  m_pData.Swap(pNewData);
+  m_pData = std::move(pNewData);
   return count;
 }
 

@@ -217,7 +217,7 @@ class ByteString {
 
   void ReallocBeforeWrite(size_t nNewLen);
   void AllocBeforeWrite(size_t nNewLen);
-  void AllocCopy(ByteString& dest, size_t nCopyLen, size_t nCopyIndex) const;
+  ByteString AllocCopy(size_t nCopyIndex, size_t nCopyLen) const;
   void AssignCopy(const char* pSrcData, size_t nSrcLen);
   void Concat(const char* pSrcData, size_t nSrcLen);
   intptr_t ReferenceCountForTesting() const;

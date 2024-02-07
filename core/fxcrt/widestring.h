@@ -238,7 +238,7 @@ class WideString {
 
   void ReallocBeforeWrite(size_t nNewLength);
   void AllocBeforeWrite(size_t nNewLength);
-  void AllocCopy(WideString& dest, size_t nCopyLen, size_t nCopyIndex) const;
+  WideString AllocCopy(size_t nCopyIndex, size_t nCopyLen) const;
   void AssignCopy(const wchar_t* pSrcData, size_t nSrcLen);
   void Concat(const wchar_t* pSrcData, size_t nSrcLen);
   intptr_t ReferenceCountForTesting() const;
