@@ -811,8 +811,12 @@ WideString WideString::Substr(size_t first, size_t count) const {
   if (first == 0 && count == GetLength())
     return *this;
 
+  auto copy_span = m_pData->span().subspan(first, count);
+  RetainPtr<StringData> pNewData = pdfium::WrapRetain(
+      StringData::Create(copy_span.data(), copy_span.size()));
+
   WideString dest;
-  AllocCopy(dest, count, first);
+  dest.m_pData = std::move(pNewData);
   return dest;
 }
 
@@ -823,17 +827,6 @@ WideString WideString::First(size_t count) const {
 WideString WideString::Last(size_t count) const {
   // Unsigned underflow is well-defined and out-of-range is handled by Substr().
   return Substr(GetLength() - count, count);
-}
-
-void WideString::AllocCopy(WideString& dest,
-                           size_t nCopyLen,
-                           size_t nCopyIndex) const {
-  if (nCopyLen == 0)
-    return;
-
-  RetainPtr<StringData> pNewData(
-      StringData::Create(m_pData->m_String + nCopyIndex, nCopyLen));
-  dest.m_pData.Swap(pNewData);
 }
 
 size_t WideString::Insert(size_t index, wchar_t ch) {

@@ -492,8 +492,12 @@ ByteString ByteString::Substr(size_t first, size_t count) const {
   if (first == 0 && count == m_pData->m_nDataLength)
     return *this;
 
+  auto copy_span = m_pData->span().subspan(first, count);
+  RetainPtr<StringData> pNewData = pdfium::WrapRetain(
+      StringData::Create(copy_span.data(), copy_span.size()));
+
   ByteString dest;
-  AllocCopy(dest, count, first);
+  dest.m_pData = std::move(pNewData);
   return dest;
 }
 
@@ -504,17 +508,6 @@ ByteString ByteString::First(size_t count) const {
 ByteString ByteString::Last(size_t count) const {
   // Unsigned underflow is well-defined and out-of-range is handled by Substr().
   return Substr(GetLength() - count, count);
-}
-
-void ByteString::AllocCopy(ByteString& dest,
-                           size_t nCopyLen,
-                           size_t nCopyIndex) const {
-  if (nCopyLen == 0)
-    return;
-
-  RetainPtr<StringData> pNewData(
-      StringData::Create(m_pData->m_String + nCopyIndex, nCopyLen));
-  dest.m_pData.Swap(pNewData);
 }
 
 void ByteString::SetAt(size_t index, char c) {
