@@ -811,9 +811,8 @@ WideString WideString::Substr(size_t first, size_t count) const {
   if (first == 0 && count == GetLength())
     return *this;
 
-  WideString dest;
-  AllocCopy(dest, count, first);
-  return dest;
+  auto copy_span = m_pData->span().subspan(first, count);
+  return WideString(copy_span.data(), copy_span.size());
 }
 
 WideString WideString::First(size_t count) const {
@@ -823,17 +822,6 @@ WideString WideString::First(size_t count) const {
 WideString WideString::Last(size_t count) const {
   // Unsigned underflow is well-defined and out-of-range is handled by Substr().
   return Substr(GetLength() - count, count);
-}
-
-void WideString::AllocCopy(WideString& dest,
-                           size_t nCopyLen,
-                           size_t nCopyIndex) const {
-  if (nCopyLen == 0)
-    return;
-
-  RetainPtr<StringData> pNewData(
-      StringData::Create(m_pData->m_String + nCopyIndex, nCopyLen));
-  dest.m_pData.Swap(pNewData);
 }
 
 size_t WideString::Insert(size_t index, wchar_t ch) {
