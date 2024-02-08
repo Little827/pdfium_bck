@@ -16,6 +16,24 @@
       "message": "WDYT about using one of the existing ctors to avoid writing this? e.g. `return ByteString(copy_span.data(), copy_span.size());`",
       "revId": "4d44a9bbc0b89dbfdf6fa0b559f3955ffe9e5475",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "266f0bb9_9eecdae8",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-08T18:29:20Z",
+      "side": 1,
+      "message": "SGTM.",
+      "parentUuid": "96292f18_feb56bf5",
+      "revId": "4d44a9bbc0b89dbfdf6fa0b559f3955ffe9e5475",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
