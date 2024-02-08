@@ -20,6 +20,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "a136c400_d1a4ca56",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5645
+      },
+      "writtenOn": "2024-02-08T17:30:46Z",
+      "side": 1,
+      "message": "Adding official G-approval stamp of approval.",
+      "revId": "9eac5b7339aeaab9c708c8645862130c24c350d8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "8e4ca3b8_21b20b4a",
         "filename": "DEPS",
         "patchSetId": 1
