@@ -76,7 +76,8 @@ class WideString {
 
   [[nodiscard]] static size_t WStringLength(const unsigned short* str);
 
-  // Explicit conversion to C-style wide string.
+  // Explicit conversion to C-style wide string.  The result is never nullptr,
+  // and is always NUL terminated.
   // Note: Any subsequent modification of |this| will invalidate the result.
   const wchar_t* c_str() const { return m_pData ? m_pData->m_String : L""; }
 
@@ -94,10 +95,8 @@ class WideString {
   }
 
   // Note: Any subsequent modification of |this| will invalidate iterators.
-  const_iterator begin() const { return m_pData ? m_pData->m_String : nullptr; }
-  const_iterator end() const {
-    return m_pData ? m_pData->m_String + m_pData->m_nDataLength : nullptr;
-  }
+  const_iterator begin() const { return m_pData ? m_pData->begin() : nullptr; }
+  const_iterator end() const { return m_pData ? m_pData->end() : nullptr; }
 
   // Note: Any subsequent modification of |this| will invalidate iterators.
   const_reverse_iterator rbegin() const {
@@ -143,12 +142,18 @@ class WideString {
   bool operator<(WideStringView str) const;
   bool operator<(const WideString& other) const;
 
+  // / CHECK() if index is out of range (via StringView's operator[]).
   CharType operator[](const size_t index) const {
-    CHECK(IsValidIndex(index));
-    return m_pData->m_String[index];
+    CHECK(m_pData);
+    return (*m_pData)[index];
   }
 
+  // Unlike std::wstring::front(), this is always safe and returns a
+  // NUL char when the string is empty.
   CharType Front() const { return GetLength() ? (*this)[0] : 0; }
+
+  // Unlike std::wstring::back(), this is always safe and returns a
+  // NUL char when the string is empty.
   CharType Back() const { return GetLength() ? (*this)[GetLength() - 1] : 0; }
 
   void SetAt(size_t index, wchar_t c);
