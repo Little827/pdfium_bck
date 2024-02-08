@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c7f8b3a_273ad947",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5645
+      },
+      "writtenOn": "2024-02-08T18:00:05Z",
+      "side": 1,
+      "message": "Adding official G-approval stamp of approval stamp.",
+      "revId": "89f32a514b8e0a1e635432355cc32e8ff09330f8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
