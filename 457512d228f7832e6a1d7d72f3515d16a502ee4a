@@ -41,6 +41,48 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c5e855d_d7369cef",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-08T00:12:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a2fc960_8f74b993",
+      "range": {
+        "startLine": 7,
+        "startChar": 24,
+        "endLine": 7,
+        "endChar": 34
+      },
+      "revId": "457512d228f7832e6a1d7d72f3515d16a502ee4a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbf5fad5_250d3555",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-08T00:12:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd3ba166_7bb6d7ad",
+      "revId": "457512d228f7832e6a1d7d72f3515d16a502ee4a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "47400cb1_64bf9d34",
@@ -54,6 +96,30 @@
       "writtenOn": "2024-02-07T23:04:23Z",
       "side": 1,
       "message": "Write out `absl::optional\u003csize_t\u003e` like line 640.",
+      "range": {
+        "startLine": 562,
+        "startChar": 2,
+        "endLine": 562,
+        "endChar": 6
+      },
+      "revId": "457512d228f7832e6a1d7d72f3515d16a502ee4a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe595731_8f835593",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-08T00:12:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47400cb1_64bf9d34",
       "range": {
         "startLine": 562,
         "startChar": 2,
@@ -87,6 +153,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3b6474b_b091536b",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-08T00:12:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d063e5c8_8ba8d532",
+      "range": {
+        "startLine": 638,
+        "startChar": 23,
+        "endLine": 638,
+        "endChar": 29
+      },
+      "revId": "457512d228f7832e6a1d7d72f3515d16a502ee4a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7097d2b9_a135cdfb",
@@ -110,6 +200,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "061bca74_503d59f0",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 671,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-08T00:12:19Z",
+      "side": 1,
+      "message": "sure.",
+      "parentUuid": "7097d2b9_a135cdfb",
+      "range": {
+        "startLine": 671,
+        "startChar": 4,
+        "endLine": 671,
+        "endChar": 10
+      },
+      "revId": "457512d228f7832e6a1d7d72f3515d16a502ee4a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2174be7d_407c1fd3",
@@ -123,6 +237,24 @@
       "writtenOn": "2024-02-07T23:04:23Z",
       "side": 1,
       "message": "Basically the same comments as bytestring.cpp.",
+      "revId": "457512d228f7832e6a1d7d72f3515d16a502ee4a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "471c47ce_febd839f",
+        "filename": "core/fxcrt/widestring.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-08T00:12:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2174be7d_407c1fd3",
       "revId": "457512d228f7832e6a1d7d72f3515d16a502ee4a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
