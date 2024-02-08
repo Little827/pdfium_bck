@@ -12,7 +12,7 @@
 #include <memory>
 
 #include "core/fxcrt/data_vector.h"
-#include "third_party/base/memory/ptr_util.h"
+#include "third_party/abseil-cpp/absl/memory/memory.h"
 #include "third_party/base/notreached.h"
 #include "third_party/base/numerics/safe_conversions.h"
 
@@ -108,7 +108,7 @@ std::unique_ptr<IccTransform> IccTransform::CreateTransformSRGB(
     return nullptr;
 
   // Private ctor.
-  return pdfium::WrapUnique(
+  return absl::WrapUnique(
       new IccTransform(hTransform, nSrcComponents, bLab, bNormal));
 }
 

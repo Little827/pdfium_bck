@@ -15,9 +15,9 @@
 #include "core/fxcrt/fx_safe_types.h"
 #include "core/fxge/dib/cfx_dibbase.h"
 #include "core/fxge/dib/fx_dib.h"
+#include "third_party/abseil-cpp/absl/memory/memory.h"
 #include "third_party/abseil-cpp/absl/types/optional.h"
 #include "third_party/base/check.h"
-#include "third_party/base/memory/ptr_util.h"
 
 class CJpegContext final : public ProgressiveDecoderIface::Context {
  public:
@@ -120,7 +120,7 @@ JpegProgressiveDecoder::Start() {
   jpeg_create_decompress(&pContext->m_Info);
   pContext->m_Info.src = &pContext->m_SrcMgr;
   pContext->m_SkipSize = 0;
-  return pdfium::WrapUnique(pContext);
+  return absl::WrapUnique(pContext);
 }
 
 // static

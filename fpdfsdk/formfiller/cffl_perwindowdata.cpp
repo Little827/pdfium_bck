@@ -7,7 +7,7 @@
 #include "fpdfsdk/formfiller/cffl_perwindowdata.h"
 
 #include "fpdfsdk/cpdfsdk_widget.h"
-#include "third_party/base/memory/ptr_util.h"
+#include "third_party/abseil-cpp/absl/memory/memory.h"
 
 CFFL_PerWindowData::CFFL_PerWindowData(CPDFSDK_Widget* pWidget,
                                        const CPDFSDK_PageView* pPageView,
@@ -26,5 +26,5 @@ CFFL_PerWindowData::~CFFL_PerWindowData() = default;
 std::unique_ptr<IPWL_FillerNotify::PerWindowData> CFFL_PerWindowData::Clone()
     const {
   // Private constructor.
-  return pdfium::WrapUnique(new CFFL_PerWindowData(*this));
+  return absl::WrapUnique(new CFFL_PerWindowData(*this));
 }

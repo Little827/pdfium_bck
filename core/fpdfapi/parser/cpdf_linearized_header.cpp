@@ -16,8 +16,8 @@
 #include "core/fpdfapi/parser/cpdf_parser.h"
 #include "core/fpdfapi/parser/cpdf_syntax_parser.h"
 #include "core/fxcrt/fx_safe_types.h"
+#include "third_party/abseil-cpp/absl/memory/memory.h"
 #include "third_party/base/check.h"
-#include "third_party/base/memory/ptr_util.h"
 
 namespace {
 
@@ -77,7 +77,7 @@ std::unique_ptr<CPDF_LinearizedHeader> CPDF_LinearizedHeader::Parse(
   if (parser->GetNextWord().word != "endobj")
     return nullptr;
 
-  auto result = pdfium::WrapUnique(
+  auto result = absl::WrapUnique(
       new CPDF_LinearizedHeader(pDict.Get(), parser->GetPos()));
 
   if (!IsLinearizedHeaderValid(result.get(), parser->GetDocumentSize()))

@@ -18,7 +18,7 @@
 #include "fxbarcode/cbc_pdf417i.h"
 #include "fxbarcode/cbc_qrcode.h"
 #include "fxbarcode/cbc_upca.h"
-#include "third_party/base/memory/ptr_util.h"
+#include "third_party/abseil-cpp/absl/memory/memory.h"
 #include "third_party/base/notreached.h"
 
 namespace {
@@ -60,7 +60,7 @@ CFX_Barcode::CFX_Barcode() = default;
 CFX_Barcode::~CFX_Barcode() = default;
 
 std::unique_ptr<CFX_Barcode> CFX_Barcode::Create(BC_TYPE type) {
-  auto barcode = pdfium::WrapUnique(new CFX_Barcode());  // Private ctor.
+  auto barcode = absl::WrapUnique(new CFX_Barcode());  // Private ctor.
   barcode->m_pBCEngine = CreateBarCodeEngineObject(type);
   return barcode;
 }
