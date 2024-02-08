@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "083c5374_b2253273",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-02-08T20:03:26Z",
+      "side": 1,
+      "message": "And V2 and V1? As a fun coincidence, Babylon 1, 2, and 3 were all sabataged and destroyed. Only Babylon 4 and 5 were built to completion.\u003c/decades_old_spoilers\u003e",
+      "range": {
+        "startLine": 10,
+        "startChar": 18,
+        "endLine": 10,
+        "endChar": 42
+      },
+      "revId": "38755b7ee10e1307cd07db2413cf0f8191271521",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
