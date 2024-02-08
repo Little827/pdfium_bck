@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d7e80e3_df7da571",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-02-08T05:19:57Z",
+      "side": 1,
+      "message": "https://crrev.com/1103511, ~1 year later.",
+      "revId": "9eac5b7339aeaab9c708c8645862130c24c350d8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e4ca3b8_21b20b4a",
+        "filename": "DEPS",
+        "patchSetId": 1
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-02-08T05:19:57Z",
+      "side": 1,
+      "message": "This effectively adds the following non-internal headers to the allow list:\n\nthird_party/abseil-cpp/absl/algorithm/algorithm.h\nthird_party/abseil-cpp/absl/base/attributes.h\nthird_party/abseil-cpp/absl/base/call_once.h\nthird_party/abseil-cpp/absl/base/casts.h\nthird_party/abseil-cpp/absl/base/config.h\nthird_party/abseil-cpp/absl/base/const_init.h\nthird_party/abseil-cpp/absl/base/dynamic_annotations.h\nthird_party/abseil-cpp/absl/base/log_severity.h\nthird_party/abseil-cpp/absl/base/macros.h\nthird_party/abseil-cpp/absl/base/optimization.h\nthird_party/abseil-cpp/absl/base/options.h\nthird_party/abseil-cpp/absl/base/policy_checks.h\nthird_party/abseil-cpp/absl/base/port.h\nthird_party/abseil-cpp/absl/base/prefetch.h\nthird_party/abseil-cpp/absl/base/thread_annotations.h\nthird_party/abseil-cpp/absl/cleanup/cleanup.h\nthird_party/abseil-cpp/absl/debugging/failure_signal_handler.h\nthird_party/abseil-cpp/absl/debugging/leak_check.h\nthird_party/abseil-cpp/absl/debugging/stacktrace.h\nthird_party/abseil-cpp/absl/debugging/symbolize.h\nthird_party/abseil-cpp/absl/memory/memory.h\nthird_party/abseil-cpp/absl/meta/type_traits.h\nthird_party/abseil-cpp/absl/numeric/bits.h\nthird_party/abseil-cpp/absl/numeric/int128.h\nthird_party/abseil-cpp/absl/status/status.h\nthird_party/abseil-cpp/absl/status/status_payload_printer.h\nthird_party/abseil-cpp/absl/strings/ascii.h\nthird_party/abseil-cpp/absl/strings/cord.h\nthird_party/abseil-cpp/absl/types/bad_any_cast.h\nthird_party/abseil-cpp/absl/types/bad_optional_access.h\nthird_party/abseil-cpp/absl/types/bad_variant_access.h\nthird_party/abseil-cpp/absl/types/compare.h\nthird_party/abseil-cpp/absl/types/optional.h\nthird_party/abseil-cpp/absl/types/variant.h\nthird_party/abseil-cpp/absl/utility/utility.h",
+      "revId": "9eac5b7339aeaab9c708c8645862130c24c350d8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
