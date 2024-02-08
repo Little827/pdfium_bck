@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f29ffb4_38b4ce80",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-02-08T18:41:59Z",
+      "side": 1,
+      "message": "Upstream issue: https://gitlab.com/libtiff/libtiff/-/issues/621",
+      "revId": "18ddcca851d8f1d114e14f4c940004b5eb3eee41",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
