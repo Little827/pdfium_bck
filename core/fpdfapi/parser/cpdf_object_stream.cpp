@@ -16,8 +16,8 @@
 #include "core/fpdfapi/parser/fpdf_parser_utility.h"
 #include "core/fxcrt/cfx_read_only_span_stream.h"
 #include "core/fxcrt/fx_safe_types.h"
+#include "third_party/abseil-cpp/absl/memory/memory.h"
 #include "third_party/base/check.h"
-#include "third_party/base/memory/ptr_util.h"
 
 namespace {
 
@@ -58,7 +58,7 @@ std::unique_ptr<CPDF_ObjectStream> CPDF_ObjectStream::Create(
     return nullptr;
 
   // Protected constructor.
-  return pdfium::WrapUnique(new CPDF_ObjectStream(std::move(stream)));
+  return absl::WrapUnique(new CPDF_ObjectStream(std::move(stream)));
 }
 
 CPDF_ObjectStream::CPDF_ObjectStream(RetainPtr<const CPDF_Stream> obj_stream)

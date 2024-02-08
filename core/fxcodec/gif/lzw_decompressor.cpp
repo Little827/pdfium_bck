@@ -13,7 +13,7 @@
 #include <utility>
 
 #include "core/fxcrt/fx_safe_types.h"
-#include "third_party/base/memory/ptr_util.h"
+#include "third_party/abseil-cpp/absl/memory/memory.h"
 
 namespace fxcodec {
 
@@ -25,7 +25,7 @@ std::unique_ptr<LZWDecompressor> LZWDecompressor::Create(uint8_t color_exp,
     return nullptr;
 
   // Private ctor.
-  return pdfium::WrapUnique(new LZWDecompressor(color_exp, code_exp));
+  return absl::WrapUnique(new LZWDecompressor(color_exp, code_exp));
 }
 
 LZWDecompressor::LZWDecompressor(uint8_t color_exp, uint8_t code_exp)

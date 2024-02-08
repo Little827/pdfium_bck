@@ -17,8 +17,8 @@
 #include "core/fpdfapi/parser/cpdf_string.h"
 #include "core/fpdfapi/parser/fpdf_parser_decode.h"
 #include "core/fxcrt/stl_util.h"
+#include "third_party/abseil-cpp/absl/memory/memory.h"
 #include "third_party/base/check.h"
-#include "third_party/base/memory/ptr_util.h"
 
 namespace {
 
@@ -429,8 +429,8 @@ std::unique_ptr<CPDF_NameTree> CPDF_NameTree::Create(
   if (!pCategory)
     return nullptr;
 
-  return pdfium::WrapUnique(
-      new CPDF_NameTree(std::move(pCategory)));  // Private ctor.
+  // Private ctor.
+  return absl::WrapUnique(new CPDF_NameTree(std::move(pCategory)));
 }
 
 // static
@@ -456,14 +456,14 @@ std::unique_ptr<CPDF_NameTree> CPDF_NameTree::CreateWithRootNameArray(
     pNames->SetNewFor<CPDF_Reference>(category, pDoc, pCategory->GetObjNum());
   }
 
-  return pdfium::WrapUnique(new CPDF_NameTree(pCategory));  // Private ctor.
+  return absl::WrapUnique(new CPDF_NameTree(pCategory));  // Private ctor.
 }
 
 // static
 std::unique_ptr<CPDF_NameTree> CPDF_NameTree::CreateForTesting(
     CPDF_Dictionary* pRoot) {
-  return pdfium::WrapUnique(
-      new CPDF_NameTree(pdfium::WrapRetain(pRoot)));  // Private ctor.
+  // Private ctor.
+  return absl::WrapUnique(new CPDF_NameTree(pdfium::WrapRetain(pRoot)));
 }
 
 // static

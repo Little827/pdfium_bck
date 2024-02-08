@@ -16,8 +16,8 @@
 #include "core/fxcrt/fx_system.h"
 #include "core/fxcrt/fx_unicode.h"
 #include "core/fxcrt/stl_util.h"
+#include "third_party/abseil-cpp/absl/memory/memory.h"
 #include "third_party/base/check.h"
-#include "third_party/base/memory/ptr_util.h"
 
 namespace {
 
@@ -179,7 +179,7 @@ std::unique_ptr<CPDF_TextPageFind> CPDF_TextPageFind::Create(
     absl::optional<size_t> startPos) {
   std::vector<WideString> findwhat_array =
       ExtractFindWhat(GetStringCase(findwhat, options.bMatchCase));
-  auto find = pdfium::WrapUnique(
+  auto find = absl::WrapUnique(
       new CPDF_TextPageFind(pTextPage, findwhat_array, options, startPos));
   find->FindFirst();
   return find;

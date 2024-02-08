@@ -9,7 +9,7 @@
 #include <memory>
 
 #include "build/build_config.h"
-#include "third_party/base/memory/ptr_util.h"
+#include "third_party/abseil-cpp/absl/memory/memory.h"
 
 #if !BUILDFLAG(IS_WIN)
 #error "built on wrong platform"
@@ -33,7 +33,7 @@ class FX_WindowsFolder : public FX_Folder {
 
 std::unique_ptr<FX_Folder> FX_Folder::OpenFolder(const ByteString& path) {
   // Private ctor.
-  auto handle = pdfium::WrapUnique(new FX_WindowsFolder());
+  auto handle = absl::WrapUnique(new FX_WindowsFolder());
   ByteString search_path = path + "/*.*";
   handle->m_Handle =
       FindFirstFileExA(search_path.c_str(), FindExInfoStandard,

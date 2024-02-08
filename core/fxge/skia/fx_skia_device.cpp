@@ -45,10 +45,10 @@
 #include "core/fxge/dib/cstretchengine.h"
 #include "core/fxge/dib/fx_dib.h"
 #include "core/fxge/text_char_pos.h"
+#include "third_party/abseil-cpp/absl/memory/memory.h"
 #include "third_party/base/check.h"
 #include "third_party/base/check_op.h"
 #include "third_party/base/containers/span.h"
-#include "third_party/base/memory/ptr_util.h"
 #include "third_party/base/notreached.h"
 #include "third_party/base/numerics/safe_conversions.h"
 #include "third_party/skia/include/core/SkBlendMode.h"
@@ -657,7 +657,7 @@ std::unique_ptr<CFX_SkiaDeviceDriver> CFX_SkiaDeviceDriver::Create(
     bool bRgbByteOrder,
     RetainPtr<CFX_DIBitmap> pBackdropBitmap,
     bool bGroupKnockout) {
-  auto driver = pdfium::WrapUnique(
+  auto driver = absl::WrapUnique(
       new CFX_SkiaDeviceDriver(std::move(pBitmap), bRgbByteOrder,
                                std::move(pBackdropBitmap), bGroupKnockout));
   if (!driver->m_pCanvas) {
@@ -674,7 +674,7 @@ std::unique_ptr<CFX_SkiaDeviceDriver> CFX_SkiaDeviceDriver::Create(
     return nullptr;
   }
 
-  auto driver = pdfium::WrapUnique(new CFX_SkiaDeviceDriver(canvas));
+  auto driver = absl::WrapUnique(new CFX_SkiaDeviceDriver(canvas));
   if (!driver->m_pBitmap || !driver->m_pBackdropBitmap) {
     return nullptr;
   }

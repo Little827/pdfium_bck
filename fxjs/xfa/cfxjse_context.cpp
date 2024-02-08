@@ -15,9 +15,9 @@
 #include "fxjs/xfa/cfxjse_runtimedata.h"
 #include "fxjs/xfa/cfxjse_value.h"
 #include "fxjs/xfa/cjx_object.h"
+#include "third_party/abseil-cpp/absl/memory/memory.h"
 #include "third_party/base/check.h"
 #include "third_party/base/check_op.h"
-#include "third_party/base/memory/ptr_util.h"
 #include "v8/include/v8-exception.h"
 #include "v8/include/v8-function.h"
 #include "v8/include/v8-message.h"
@@ -173,7 +173,7 @@ std::unique_ptr<CFXJSE_Context> CFXJSE_Context::Create(
   CFXJSE_ScopeUtil_IsolateHandle scope(pIsolate);
 
   // Private constructor.
-  auto pContext = pdfium::WrapUnique(new CFXJSE_Context(pIsolate, pProxy));
+  auto pContext = absl::WrapUnique(new CFXJSE_Context(pIsolate, pProxy));
   v8::Local<v8::ObjectTemplate> hObjectTemplate;
   if (pGlobalClass) {
     CFXJSE_Class* pGlobalClassObj =

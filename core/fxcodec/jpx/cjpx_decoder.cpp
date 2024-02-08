@@ -17,8 +17,8 @@
 #include "core/fxcrt/fx_safe_types.h"
 #include "core/fxcrt/span_util.h"
 #include "core/fxge/calculate_pitch.h"
+#include "third_party/abseil-cpp/absl/memory/memory.h"
 #include "third_party/abseil-cpp/absl/types/optional.h"
-#include "third_party/base/memory/ptr_util.h"
 
 #if !defined(USE_SYSTEM_LIBOPENJPEG2)
 #include "third_party/libopenjpeg/opj_malloc.h"
@@ -394,7 +394,7 @@ std::unique_ptr<CJPX_Decoder> CJPX_Decoder::Create(
     CJPX_Decoder::ColorSpaceOption option,
     uint8_t resolution_levels_to_skip) {
   // Private ctor.
-  auto decoder = pdfium::WrapUnique(new CJPX_Decoder(option));
+  auto decoder = absl::WrapUnique(new CJPX_Decoder(option));
   if (!decoder->Init(src_span, resolution_levels_to_skip))
     return nullptr;
   return decoder;

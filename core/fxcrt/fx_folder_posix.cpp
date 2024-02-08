@@ -10,7 +10,7 @@
 
 #include "build/build_config.h"
 #include "core/fxcrt/unowned_ptr.h"
-#include "third_party/base/memory/ptr_util.h"
+#include "third_party/abseil-cpp/absl/memory/memory.h"
 
 #if BUILDFLAG(IS_WIN)
 #error "built on wrong platform"
@@ -40,7 +40,7 @@ std::unique_ptr<FX_Folder> FX_Folder::OpenFolder(const ByteString& path) {
     return nullptr;
 
   // Private ctor.
-  return pdfium::WrapUnique(new FX_PosixFolder(path, dir));
+  return absl::WrapUnique(new FX_PosixFolder(path, dir));
 }
 
 FX_PosixFolder::FX_PosixFolder(const ByteString& path, DIR* dir)

@@ -25,8 +25,8 @@
 #include "core/fxcrt/fx_memory_wrappers.h"
 #include "core/fxcrt/fx_safe_types.h"
 #include "core/fxcrt/pauseindicator_iface.h"
+#include "third_party/abseil-cpp/absl/memory/memory.h"
 #include "third_party/base/check.h"
-#include "third_party/base/memory/ptr_util.h"
 
 namespace {
 
@@ -58,10 +58,10 @@ std::unique_ptr<CJBig2_Context> CJBig2_Context::Create(
     pdfium::span<const uint8_t> pSrcSpan,
     uint64_t src_key,
     std::list<CJBig2_CachePair>* pSymbolDictCache) {
-  auto result = pdfium::WrapUnique(
+  auto result = absl::WrapUnique(
       new CJBig2_Context(pSrcSpan, src_key, pSymbolDictCache, false));
   if (!pGlobalSpan.empty()) {
-    result->m_pGlobalContext = pdfium::WrapUnique(
+    result->m_pGlobalContext = absl::WrapUnique(
         new CJBig2_Context(pGlobalSpan, global_key, pSymbolDictCache, true));
   }
   return result;

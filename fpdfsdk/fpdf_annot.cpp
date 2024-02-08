@@ -37,9 +37,9 @@
 #include "fpdfsdk/cpdfsdk_formfillenvironment.h"
 #include "fpdfsdk/cpdfsdk_helpers.h"
 #include "fpdfsdk/cpdfsdk_interactiveform.h"
+#include "third_party/abseil-cpp/absl/memory/memory.h"
 #include "third_party/base/check.h"
 #include "third_party/base/containers/contains.h"
-#include "third_party/base/memory/ptr_util.h"
 #include "third_party/base/numerics/safe_conversions.h"
 
 namespace {
@@ -572,7 +572,7 @@ FPDFAnnot_AppendObject(FPDF_ANNOTATION annot, FPDF_PAGEOBJECT obj) {
     return false;
 
   // Append the object to the object list.
-  pForm->AppendPageObject(pdfium::WrapUnique(pObj));
+  pForm->AppendPageObject(absl::WrapUnique(pObj));
 
   // Set the content stream data in the annotation's AP stream.
   UpdateContentStream(pForm, pStream.Get());
