@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b6a735e_fd4a5465",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-02-08T18:51:33Z",
+      "side": 1,
+      "message": "And thus no C++17 vs. C++20 issues. https://en.cppreference.com/w/cpp/utility/optional says C++20 added `operator\u003c\u003d\u003e` and made `optional` fully constexpr, but nothing is taking advantage of those features right now.",
+      "revId": "aed4c5023bfe46c740f31a1cd5db357a23622f60",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
