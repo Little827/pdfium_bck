@@ -32,11 +32,9 @@ class StringDataTemplate {
   void CopyContents(pdfium::span<const CharType> str);
   void CopyContentsAt(size_t offset, pdfium::span<const CharType> str);
 
-  pdfium::span<CharType> span() {
-    return pdfium::make_span(m_String, m_nDataLength);
-  }
+  pdfium::span<CharType> span() { return capacity().first(m_nDataLength); }
   pdfium::span<const CharType> span() const {
-    return pdfium::make_span(m_String, m_nDataLength);
+    return capacity().first(m_nDataLength);
   }
 
   // Unlike std::string::front(), this is always safe and returns a
@@ -66,6 +64,13 @@ class StringDataTemplate {
  private:
   StringDataTemplate(size_t dataLen, size_t allocLen);
   ~StringDataTemplate() = delete;
+
+  pdfium::span<CharType> capacity() {
+    return pdfium::span(m_String, m_nAllocLength);
+  }
+  pdfium::span<const CharType> capacity() const {
+    return pdfium::span(m_String, m_nAllocLength);
+  }
 };
 
 extern template class StringDataTemplate<char>;
