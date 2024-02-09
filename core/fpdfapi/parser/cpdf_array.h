@@ -81,7 +81,9 @@ class CPDF_Array final : public CPDF_Object {
   // to Append()/SetAt()/InsertAt() since by creating a new object with no
   // previous references, they ensure cycles can not be introduced.
   template <typename T, typename... Args>
-  typename std::enable_if<!CanInternStrings<T>::value, RetainPtr<T>>::type
+  typename std::enable_if<!CanInternStrings<T>::value &&
+                              !std::is_same<T, CPDF_Stream>::value,
+                          RetainPtr<T>>::type
   AppendNew(Args&&... args) {
     return pdfium::WrapRetain(static_cast<T*>(
         AppendInternal(pdfium::MakeRetain<T>(std::forward<Args>(args)...))));
@@ -93,7 +95,9 @@ class CPDF_Array final : public CPDF_Object {
         pdfium::MakeRetain<T>(m_pPool, std::forward<Args>(args)...))));
   }
   template <typename T, typename... Args>
-  typename std::enable_if<!CanInternStrings<T>::value, RetainPtr<T>>::type
+  typename std::enable_if<!CanInternStrings<T>::value &&
+                              !std::is_same<T, CPDF_Stream>::value,
+                          RetainPtr<T>>::type
   SetNewAt(size_t index, Args&&... args) {
     return pdfium::WrapRetain(static_cast<T*>(SetAtInternal(
         index, pdfium::MakeRetain<T>(std::forward<Args>(args)...))));
@@ -105,7 +109,9 @@ class CPDF_Array final : public CPDF_Object {
         index, pdfium::MakeRetain<T>(m_pPool, std::forward<Args>(args)...))));
   }
   template <typename T, typename... Args>
-  typename std::enable_if<!CanInternStrings<T>::value, RetainPtr<T>>::type
+  typename std::enable_if<!CanInternStrings<T>::value &&
+                              !std::is_same<T, CPDF_Stream>::value,
+                          RetainPtr<T>>::type
   InsertNewAt(size_t index, Args&&... args) {
     return pdfium::WrapRetain(static_cast<T*>(InsertAtInternal(
         index, pdfium::MakeRetain<T>(std::forward<Args>(args)...))));
