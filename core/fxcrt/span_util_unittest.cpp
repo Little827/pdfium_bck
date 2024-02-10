@@ -153,3 +153,32 @@ TEST(ReinterpretSpan, BadAlignment) {
                    pdfium::make_span(abcabc).subspan(1, 4)),
                "");
 }
+
+TEST(Spanpos, Empty) {
+  pdfium::span<const uint32_t> kEmpty;
+  const uint32_t kHaystack[] = {0, 1, 2, 3, 4, 5};
+  const uint32_t kNeedle[] = {1, 2};
+  EXPECT_FALSE(fxcrt::spanpos(kEmpty, kEmpty));
+  EXPECT_FALSE(fxcrt::spanpos(pdfium::make_span(kHaystack), kEmpty));
+  EXPECT_FALSE(fxcrt::spanpos(kEmpty, pdfium::make_span(kNeedle)));
+}
+
+TEST(Spanpos, NotEmpty) {
+  const uint32_t kHaystack[] = {0, 1, 2, 3, 4, 5};
+  const uint32_t kStartMatch[] = {0, 1};
+  const uint32_t kEndMatch[] = {4, 5};
+  const uint32_t kNotFound[] = {3, 7, 8};
+  const uint32_t kTooLong[] = {0, 1, 2, 3, 4, 5, 6};
+  EXPECT_EQ(0u, fxcrt::spanpos(pdfium::make_span(kHaystack),
+                               pdfium::make_span(kStartMatch))
+                    .value());
+  EXPECT_EQ(4u, fxcrt::spanpos(pdfium::make_span(kHaystack),
+                               pdfium::make_span(kEndMatch))
+                    .value());
+  EXPECT_FALSE(
+      fxcrt::spanpos(pdfium::make_span(kHaystack), pdfium::make_span(kNotFound))
+          .has_value());
+  EXPECT_FALSE(
+      fxcrt::spanpos(pdfium::make_span(kHaystack), pdfium::make_span(kTooLong))
+          .has_value());
+}
