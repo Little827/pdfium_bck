@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd0b7734_29ce8f79",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-02-10T01:53:50Z",
+      "side": 1,
+      "message": "Already inside namespace fxcrt?",
+      "revId": "a44224ad6432264a722851e6cfb8e9ecd9741aca",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "725149b0_3e85231d",
+        "filename": "core/fxcrt/span_util_unittest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-02-10T01:53:50Z",
+      "side": 1,
+      "message": "I think EXPECT_THAT() has a helper that can compare an Optional without having to check has_value(). As is, if spanpos() returns nullopt, the test crashes.",
+      "revId": "a44224ad6432264a722851e6cfb8e9ecd9741aca",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
