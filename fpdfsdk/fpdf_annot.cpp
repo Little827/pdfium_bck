@@ -352,6 +352,7 @@ FPDFAnnot_IsSupportedSubtype(FPDF_ANNOTATION_SUBTYPE subtype) {
     case FPDF_ANNOT_STRIKEOUT:
     case FPDF_ANNOT_TEXT:
     case FPDF_ANNOT_UNDERLINE:
+    case FPDF_ANNOT_FILEATTACHMENT:
       return true;
     default:
       return false;
@@ -1472,4 +1473,62 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFAnnot_SetURI(FPDF_ANNOTATION annot,
   action->SetNewFor<CPDF_Name>("S", "URI");
   action->SetNewFor<CPDF_String>("URI", uri, /*bHex=*/false);
   return true;
+}
+
+FPDF_EXPORT FPDF_ATTACHMENT FPDF_CALLCONV
+FPDFAnnot_GetFileAttachment(FPDF_ANNOTATION annot) {
+  if (FPDFAnnot_GetSubtype(annot) != FPDF_ANNOT_FILEATTACHMENT)
+    return nullptr;
+
+  if (!FPDFAnnot_HasKey(annot, "FS")) {
+    return nullptr;
+  }
+
+  RetainPtr<CPDF_Dictionary> pAnnotDict =
+      GetMutableAnnotDictFromFPDFAnnotation(annot);
+  if (!pAnnotDict) {
+    return nullptr;
+  }
+
+  RetainPtr<CPDF_Object> pObj = pAnnotDict->GetMutableDirectObjectFor("FS");
+  if (!pObj) {
+    return nullptr;
+  }
+
+  return FPDFAttachmentFromCPDFObject(pObj);
+}
+
+FPDF_EXPORT FPDF_ATTACHMENT FPDF_CALLCONV
+FPDFAnnot_AddFileAttachment(FPDF_ANNOTATION annot, FPDF_WIDESTRING name) {
+  if (FPDFAnnot_GetSubtype(annot) != FPDF_ANNOT_FILEATTACHMENT)
+    return nullptr;
+    
+  if (FPDFAnnot_HasKey(annot, "FS")) {
+    return nullptr;
+  }
+
+  CPDF_AnnotContext* context = CPDFAnnotContextFromFPDFAnnotation(annot);
+  if (!context) {
+    return nullptr;
+  }
+
+  RetainPtr<CPDF_Dictionary> pAnnotDict = context->GetMutableAnnotDict();
+  if (!pAnnotDict) {
+    return nullptr;
+  }
+
+  WideString wsName = WideStringFromFPDFWideString(name);
+  if (wsName.IsEmpty()) {
+    return nullptr;
+  }
+
+  CPDF_Document* pDoc = context->GetPage()->GetDocument();
+  auto pFile = pDoc->NewIndirect<CPDF_Dictionary>();
+
+  pFile->SetNewFor<CPDF_Name>("Type", "Filespec");
+  pFile->SetNewFor<CPDF_String>("UF", wsName.AsStringView());
+  pFile->SetNewFor<CPDF_String>("F", wsName.AsStringView());
+
+  pAnnotDict->SetNewFor<CPDF_Reference>("FS", pDoc, pFile->GetObjNum());
+  return FPDFAttachmentFromCPDFObject(pFile);
 }
