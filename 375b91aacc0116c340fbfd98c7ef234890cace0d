@@ -16,6 +16,74 @@
       "message": "Thanks for creating this change list.\n\n1) Please file a feature request at crbug.com/pdfium, and briefly explain why this new API is helpful.\n1a) Then add `Bug: pdfium:NNNN` to the CL description here.\n2) Please add yourself to the AUTHORS file, as this is your first time contributing to PDFium.\n3) Please sign the Google CLA if you haven\u0027t already. https://cla.developers.google.com/about/google-individual",
       "revId": "375b91aacc0116c340fbfd98c7ef234890cace0d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d09277b_33660dc4",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-02-12T23:12:08Z",
+      "side": 1,
+      "message": "Keep the list sorted.",
+      "revId": "375b91aacc0116c340fbfd98c7ef234890cace0d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1ebaa33_35eb8328",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1505,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-02-12T23:12:08Z",
+      "side": 1,
+      "message": "No tabs please. Consider running `git cl format` AKA `clang-format` on this code.",
+      "revId": "375b91aacc0116c340fbfd98c7ef234890cace0d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d9beda1_8b3042f5",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-02-12T23:12:08Z",
+      "side": 1,
+      "message": "Same here. Keep the list sorted.",
+      "revId": "375b91aacc0116c340fbfd98c7ef234890cace0d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2aca62a_b551d334",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 972,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-02-12T23:12:08Z",
+      "side": 1,
+      "message": "Would it be possible to add tests for the new APIs in pdfium_embeddertests?",
+      "revId": "375b91aacc0116c340fbfd98c7ef234890cace0d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
