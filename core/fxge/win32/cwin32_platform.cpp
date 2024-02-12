@@ -161,7 +161,7 @@ bool CFX_Win32FontInfo::IsSupportedFont(const LOGFONTA* plf) {
     uint32_t header;
     auto span = pdfium::as_writable_bytes(pdfium::span_from_ref(header));
     GetFontData(hFont, 0, span);
-    header = FXSYS_UINT32_GET_MSBFIRST(span);
+    header = fxcrt::GetUInt32MSBFirst(span);
     ret = header == FXBSTR_ID('O', 'T', 'T', 'O') ||
           header == FXBSTR_ID('t', 't', 'c', 'f') ||
           header == FXBSTR_ID('t', 'r', 'u', 'e') || header == 0x00010000 ||
@@ -419,7 +419,7 @@ size_t CFX_Win32FontInfo::GetFontData(void* hFont,
                                       uint32_t table,
                                       pdfium::span<uint8_t> buffer) {
   ScopedSelectObject select_object(m_hDC, static_cast<HFONT>(hFont));
-  table = FXSYS_UINT32_GET_MSBFIRST(reinterpret_cast<uint8_t*>(&table));
+  table = fxcrt::GetUInt32MSBFirst(reinterpret_cast<uint8_t*>(&table));
   size_t size = ::GetFontData(m_hDC, table, 0, buffer.data(),
                               pdfium::base::checked_cast<DWORD>(buffer.size()));
   return size != GDI_ERROR ? size : 0;
