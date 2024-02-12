@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b49dec64_7f9f51ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-02-12T23:09:42Z",
+      "side": 1,
+      "message": "Thanks for creating this change list.\n\n1) Please file a feature request at crbug.com/pdfium, and briefly explain why this new API is helpful.\n1a) Then add `Bug: pdfium:NNNN` to the CL description here.\n2) Please add yourself to the AUTHORS file, as this is your first time contributing to PDFium.\n3) Please sign the Google CLA if you haven\u0027t already. https://cla.developers.google.com/about/google-individual",
+      "revId": "375b91aacc0116c340fbfd98c7ef234890cace0d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
