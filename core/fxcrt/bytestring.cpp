@@ -90,59 +90,8 @@ ByteString ByteString::Format(const char* pFormat, ...) {
   return ret;
 }
 
-ByteString::ByteString(const char* pStr, size_t nLen) {
-  if (nLen) {
-    m_pData = StringData::Create({pStr, nLen});
-  }
-}
-
-ByteString::ByteString(const uint8_t* pStr, size_t nLen)
-    : ByteString(reinterpret_cast<const char*>(pStr), nLen) {}
-
-ByteString::ByteString(char ch) {
-  m_pData = StringData::Create(1);
-  m_pData->m_String[0] = ch;
-}
-
 ByteString::ByteString(const char* ptr)
     : ByteString(ptr, ptr ? strlen(ptr) : 0) {}
-
-ByteString::ByteString(ByteStringView bstrc) {
-  if (!bstrc.IsEmpty()) {
-    m_pData = StringData::Create(bstrc.span());
-  }
-}
-
-ByteString::ByteString(ByteStringView str1, ByteStringView str2) {
-  FX_SAFE_SIZE_T nSafeLen = str1.GetLength();
-  nSafeLen += str2.GetLength();
-
-  size_t nNewLen = nSafeLen.ValueOrDie();
-  if (nNewLen == 0)
-    return;
-
-  m_pData = StringData::Create(nNewLen);
-  m_pData->CopyContents(str1.span());
-  m_pData->CopyContentsAt(str1.GetLength(), str2.span());
-}
-
-ByteString::ByteString(const std::initializer_list<ByteStringView>& list) {
-  FX_SAFE_SIZE_T nSafeLen = 0;
-  for (const auto& item : list)
-    nSafeLen += item.GetLength();
-
-  size_t nNewLen = nSafeLen.ValueOrDie();
-  if (nNewLen == 0)
-    return;
-
-  m_pData = StringData::Create(nNewLen);
-
-  size_t nOffset = 0;
-  for (const auto& item : list) {
-    m_pData->CopyContentsAt(nOffset, item.span());
-    nOffset += item.GetLength();
-  }
-}
 
 ByteString::ByteString(const fxcrt::ostringstream& outStream) {
   auto str = outStream.str();
