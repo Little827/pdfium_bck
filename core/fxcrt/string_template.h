@@ -23,8 +23,27 @@ class StringTemplate {
  public:
   using CharType = T;
   using UnsignedType = typename std::make_unsigned<CharType>::type;
+  using StringView = StringViewTemplate<T>;
   using const_iterator = T*;
   using const_reverse_iterator = std::reverse_iterator<const_iterator>;
+
+  StringTemplate() = default;
+  StringTemplate(const StringTemplate& other) = default;
+
+  // Move-construct a StringTemplate. After construction, |other| is empty.
+  StringTemplate(StringTemplate&& other) noexcept = default;
+
+  // Make a one-character string from a char.
+  explicit StringTemplate(CharType ch);
+
+  StringTemplate(const CharType* pStr, size_t len);
+  StringTemplate(const UnsignedType* pStr, size_t len)
+    requires(!std::is_same_v<CharType, UnsignedType>)
+      : StringTemplate(reinterpret_cast<const CharType*>(pStr), len) {}
+
+  explicit StringTemplate(StringView bstrc);
+  StringTemplate(StringView str1, StringView str2);
+  StringTemplate(const std::initializer_list<StringView>& list);
 
   bool IsEmpty() const { return !GetLength(); }
   size_t GetLength() const { return m_pData ? m_pData->m_nDataLength : 0; }
@@ -157,14 +176,6 @@ class StringTemplate {
     StringData(size_t dataLen, size_t allocLen);
     ~StringData() = delete;
   };
-
-  using StringView = StringViewTemplate<T>;
-
-  StringTemplate() = default;
-  StringTemplate(const StringTemplate& other) = default;
-
-  // Move-construct a StringTemplate. After construction, |other| is empty.
-  StringTemplate(StringTemplate&& other) noexcept = default;
 
   ~StringTemplate() = default;
 

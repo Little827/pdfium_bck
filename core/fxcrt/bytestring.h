@@ -45,7 +45,7 @@ class ByteString : public StringTemplate<char> {
   ~ByteString() = default;
 
   // Make a one-character string from a char.
-  explicit ByteString(char ch);
+  explicit ByteString(char ch) : StringTemplate(ch) {}
 
   // Deliberately implicit to avoid calling on every string literal.
   // NOLINTNEXTLINE(runtime/explicit)
@@ -55,12 +55,14 @@ class ByteString : public StringTemplate<char> {
   // NOLINTNEXTLINE(runtime/explicit)
   ByteString(wchar_t) = delete;
 
-  ByteString(const char* pStr, size_t len);
-  ByteString(const uint8_t* pStr, size_t len);
+  ByteString(const char* pStr, size_t len) : StringTemplate(pStr, len) {}
+  ByteString(const uint8_t* pStr, size_t len) : StringTemplate(pStr, len) {}
 
-  explicit ByteString(ByteStringView bstrc);
-  ByteString(ByteStringView str1, ByteStringView str2);
-  ByteString(const std::initializer_list<ByteStringView>& list);
+  explicit ByteString(ByteStringView bstrc) : StringTemplate(bstrc) {}
+  ByteString(ByteStringView str1, ByteStringView str2)
+      : StringTemplate(str1, str2) {}
+  ByteString(const std::initializer_list<ByteStringView>& list)
+      : StringTemplate(list) {}
   explicit ByteString(const fxcrt::ostringstream& outStream);
 
   // Explicit conversion to C-style string. The result is never nullptr,

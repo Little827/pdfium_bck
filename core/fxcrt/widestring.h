@@ -47,21 +47,24 @@ class WideString : public StringTemplate<wchar_t> {
   ~WideString() = default;
 
   // Make a one-character string from one wide char.
-  explicit WideString(wchar_t ch);
+  explicit WideString(wchar_t ch) : StringTemplate(ch) {}
 
   // Deliberately implicit to avoid calling on every string literal.
   // NOLINTNEXTLINE(runtime/explicit)
   WideString(const wchar_t* ptr);
 
-  // No implicit conversions from byte strings.
+  // No implicit conversions from byte chars.
   // NOLINTNEXTLINE(runtime/explicit)
   WideString(char) = delete;
 
-  WideString(const wchar_t* pStr, size_t len);
+  WideString(const wchar_t* pStr, size_t len) : StringTemplate(pStr, len) {}
 
-  explicit WideString(WideStringView str);
-  WideString(WideStringView str1, WideStringView str2);
-  WideString(const std::initializer_list<WideStringView>& list);
+  explicit WideString(WideStringView str) : StringTemplate(str) {}
+  WideString(WideStringView str1, WideStringView str2)
+      : StringTemplate(str1, str2) {}
+
+  WideString(const std::initializer_list<WideStringView>& list)
+      : StringTemplate(list) {}
 
   [[nodiscard]] static WideString FromASCII(ByteStringView str);
   [[nodiscard]] static WideString FromLatin1(ByteStringView str);

@@ -22,33 +22,92 @@
 
 namespace fxcrt {
 
-template <typename T>
-pdfium::span<T> StringTemplate<T>::GetBuffer(size_t nMinBufLength) {
+template <typename CharType>
+StringTemplate<CharType>::StringTemplate(const CharType* pStr, size_t nLen) {
+  if (nLen) {
+    m_pData = StringData::Create({pStr, nLen});
+  }
+}
+
+template <typename CharType>
+StringTemplate<CharType>::StringTemplate(CharType ch) {
+  m_pData = StringData::Create(1);
+  m_pData->m_String[0] = ch;
+}
+
+template <typename CharType>
+StringTemplate<CharType>::StringTemplate(StringViewTemplate<CharType> bstrc) {
+  if (!bstrc.IsEmpty()) {
+    m_pData = StringData::Create(bstrc.span());
+  }
+}
+
+template <typename CharType>
+StringTemplate<CharType>::StringTemplate(StringViewTemplate<CharType> str1,
+                                         StringViewTemplate<CharType> str2) {
+  FX_SAFE_SIZE_T nSafeLen = str1.GetLength();
+  nSafeLen += str2.GetLength();
+
+  size_t nNewLen = nSafeLen.ValueOrDie();
+  if (nNewLen == 0) {
+    return;
+  }
+
+  m_pData = StringData::Create(nNewLen);
+  m_pData->CopyContents(str1.span());
+  m_pData->CopyContentsAt(str1.GetLength(), str2.span());
+}
+
+template <typename CharType>
+StringTemplate<CharType>::StringTemplate(
+    const std::initializer_list<StringViewTemplate<CharType>>& list) {
+  FX_SAFE_SIZE_T nSafeLen = 0;
+  for (const auto& item : list) {
+    nSafeLen += item.GetLength();
+  }
+
+  size_t nNewLen = nSafeLen.ValueOrDie();
+  if (nNewLen == 0) {
+    return;
+  }
+
+  m_pData = StringData::Create(nNewLen);
+
+  size_t nOffset = 0;
+  for (const auto& item : list) {
+    m_pData->CopyContentsAt(nOffset, item.span());
+    nOffset += item.GetLength();
+  }
+}
+
+template <typename CharType>
+pdfium::span<CharType> StringTemplate<CharType>::GetBuffer(
+    size_t nMinBufLength) {
   if (!m_pData) {
     if (nMinBufLength == 0) {
-      return pdfium::span<T>();
+      return pdfium::span<CharType>();
     }
     m_pData = StringData::Create(nMinBufLength);
     m_pData->m_nDataLength = 0;
     m_pData->m_String[0] = 0;
-    return pdfium::span<T>(m_pData->m_String, m_pData->m_nAllocLength);
+    return pdfium::span<CharType>(m_pData->m_String, m_pData->m_nAllocLength);
   }
   if (m_pData->CanOperateInPlace(nMinBufLength)) {
-    return pdfium::span<T>(m_pData->m_String, m_pData->m_nAllocLength);
+    return pdfium::span<CharType>(m_pData->m_String, m_pData->m_nAllocLength);
   }
   nMinBufLength = std::max(nMinBufLength, m_pData->m_nDataLength);
   if (nMinBufLength == 0) {
-    return pdfium::span<T>();
+    return pdfium::span<CharType>();
   }
   RetainPtr<StringData> pNewData = StringData::Create(nMinBufLength);
   pNewData->CopyContents(*m_pData);
   pNewData->m_nDataLength = m_pData->m_nDataLength;
   m_pData = std::move(pNewData);
-  return pdfium::span<T>(m_pData->m_String, m_pData->m_nAllocLength);
+  return pdfium::span<CharType>(m_pData->m_String, m_pData->m_nAllocLength);
 }
 
-template <typename T>
-void StringTemplate<T>::ReleaseBuffer(size_t nNewLength) {
+template <typename CharType>
+void StringTemplate<CharType>::ReleaseBuffer(size_t nNewLength) {
   if (!m_pData) {
     return;
   }
@@ -68,14 +127,14 @@ void StringTemplate<T>::ReleaseBuffer(size_t nNewLength) {
   }
 }
 
-template <typename T>
-size_t StringTemplate<T>::Remove(T chRemove) {
+template <typename CharType>
+size_t StringTemplate<CharType>::Remove(CharType chRemove) {
   if (IsEmpty()) {
     return 0;
   }
 
-  T* pstrSource = m_pData->m_String;
-  T* pstrEnd = m_pData->m_String + m_pData->m_nDataLength;
+  CharType* pstrSource = m_pData->m_String;
+  CharType* pstrEnd = m_pData->m_String + m_pData->m_nDataLength;
   while (pstrSource < pstrEnd) {
     if (*pstrSource == chRemove) {
       break;
@@ -91,7 +150,7 @@ size_t StringTemplate<T>::Remove(T chRemove) {
   pstrSource = m_pData->m_String + copied;
   pstrEnd = m_pData->m_String + m_pData->m_nDataLength;
 
-  T* pstrDest = pstrSource;
+  CharType* pstrDest = pstrSource;
   while (pstrSource < pstrEnd) {
     if (*pstrSource != chRemove) {
       *pstrDest = *pstrSource;
@@ -106,8 +165,8 @@ size_t StringTemplate<T>::Remove(T chRemove) {
   return nCount;
 }
 
-template <typename T>
-void StringTemplate<T>::ReallocBeforeWrite(size_t nNewLength) {
+template <typename CharType>
+void StringTemplate<CharType>::ReallocBeforeWrite(size_t nNewLength) {
   if (m_pData && m_pData->CanOperateInPlace(nNewLength)) {
     return;
   }
@@ -128,8 +187,8 @@ void StringTemplate<T>::ReallocBeforeWrite(size_t nNewLength) {
   m_pData = std::move(pNewData);
 }
 
-template <typename T>
-void StringTemplate<T>::AllocBeforeWrite(size_t nNewLength) {
+template <typename CharType>
+void StringTemplate<CharType>::AllocBeforeWrite(size_t nNewLength) {
   if (m_pData && m_pData->CanOperateInPlace(nNewLength)) {
     return;
   }
@@ -140,15 +199,17 @@ void StringTemplate<T>::AllocBeforeWrite(size_t nNewLength) {
   m_pData = StringData::Create(nNewLength);
 }
 
-template <typename T>
-void StringTemplate<T>::AssignCopy(const T* pSrcData, size_t nSrcLen) {
+template <typename CharType>
+void StringTemplate<CharType>::AssignCopy(const CharType* pSrcData,
+                                          size_t nSrcLen) {
   AllocBeforeWrite(nSrcLen);
   m_pData->CopyContents({pSrcData, nSrcLen});
   m_pData->m_nDataLength = nSrcLen;
 }
 
-template <typename T>
-void StringTemplate<T>::Concat(const T* pSrcData, size_t nSrcLen) {
+template <typename CharType>
+void StringTemplate<CharType>::Concat(const CharType* pSrcData,
+                                      size_t nSrcLen) {
   if (!pSrcData || nSrcLen == 0) {
     return;
   }
@@ -173,8 +234,8 @@ void StringTemplate<T>::Concat(const T* pSrcData, size_t nSrcLen) {
   m_pData = std::move(pNewData);
 }
 
-template <typename T>
-void StringTemplate<T>::clear() {
+template <typename CharType>
+void StringTemplate<CharType>::clear() {
   if (m_pData && m_pData->CanOperateInPlace(0)) {
     m_pData->m_nDataLength = 0;
     return;
