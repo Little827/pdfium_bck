@@ -269,7 +269,6 @@ component("skia") {
     sources += [
       "//third_party/skia/include/ports/SkFontMgr_mac_ct.h",
       "//third_party/skia/src/ports/SkFontMgr_mac_ct.cpp",
-      "//third_party/skia/src/ports/SkFontMgr_mac_ct_factory.cpp",
       "//third_party/skia/src/ports/SkScalerContext_mac_ct.cpp",
       "//third_party/skia/src/ports/SkScalerContext_mac_ct.h",
       "//third_party/skia/src/ports/SkTypeface_mac_ct.cpp",
@@ -290,7 +289,6 @@ component("skia") {
       "//third_party/skia/src/ports/SkFontMgr_FontConfigInterface.cpp",
       "//third_party/skia/src/ports/SkFontMgr_custom.cpp",
       "//third_party/skia/src/ports/SkFontMgr_custom_empty.cpp",
-      "//third_party/skia/src/ports/SkFontMgr_custom_empty_factory.cpp",
     ]
   }
 
@@ -311,7 +309,6 @@ component("skia") {
       # instead of SkFontMgr_custom_empty.cpp.
       "//third_party/skia/src/ports/SkFontMgr_custom.cpp",
       "//third_party/skia/src/ports/SkFontMgr_custom_empty.cpp",
-      "//third_party/skia/src/ports/SkFontMgr_custom_empty_factory.cpp",
     ]
     deps += [
       "//third_party/fuchsia-sdk/sdk/fidl/fuchsia.fonts:fuchsia.fonts_hlcpp",
