@@ -47,21 +47,23 @@ class WideString : public StringTemplate<wchar_t> {
   ~WideString() = default;
 
   // Make a one-character string from one wide char.
-  explicit WideString(wchar_t ch);
+  explicit WideString(wchar_t ch) : StringTemplate(ch) {}
 
   // Deliberately implicit to avoid calling on every string literal.
   // NOLINTNEXTLINE(runtime/explicit)
   WideString(const wchar_t* ptr);
 
-  // No implicit conversions from byte strings.
+  // No implicit conversions from byte chars.
   // NOLINTNEXTLINE(runtime/explicit)
   WideString(char) = delete;
 
-  WideString(const wchar_t* pStr, size_t len);
+  WideString(const wchar_t* pStr, size_t len) : StringTemplate(pStr, len) {}
+  explicit WideString(WideStringView str) : StringTemplate(str) {}
+  WideString(WideStringView str1, WideStringView str2)
+      : StringTemplate(str1, str2) {}
 
-  explicit WideString(WideStringView str);
-  WideString(WideStringView str1, WideStringView str2);
-  WideString(const std::initializer_list<WideStringView>& list);
+  WideString(const std::initializer_list<WideStringView>& list)
+      : StringTemplate(list) {}
 
   [[nodiscard]] static WideString FromASCII(ByteStringView str);
   [[nodiscard]] static WideString FromLatin1(ByteStringView str);
@@ -74,7 +76,6 @@ class WideString : public StringTemplate<wchar_t> {
   // and is always NUL terminated.
   // Note: Any subsequent modification of |this| will invalidate the result.
   const wchar_t* c_str() const { return m_pData ? m_pData->m_String : L""; }
-
 
   size_t GetStringLength() const {
     return m_pData ? wcslen(m_pData->m_String) : 0;

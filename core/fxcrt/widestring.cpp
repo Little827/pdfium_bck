@@ -384,56 +384,8 @@ WideString WideString::Format(const wchar_t* pFormat, ...) {
   return ret;
 }
 
-WideString::WideString(const wchar_t* pStr, size_t nLen) {
-  if (nLen) {
-    m_pData = StringData::Create({pStr, nLen});
-  }
-}
-
-WideString::WideString(wchar_t ch) {
-  m_pData = StringData::Create(1);
-  m_pData->m_String[0] = ch;
-}
-
 WideString::WideString(const wchar_t* ptr)
     : WideString(ptr, ptr ? wcslen(ptr) : 0) {}
-
-WideString::WideString(WideStringView stringSrc) {
-  if (!stringSrc.IsEmpty()) {
-    m_pData = StringData::Create(stringSrc.span());
-  }
-}
-
-WideString::WideString(WideStringView str1, WideStringView str2) {
-  FX_SAFE_SIZE_T nSafeLen = str1.GetLength();
-  nSafeLen += str2.GetLength();
-
-  size_t nNewLen = nSafeLen.ValueOrDie();
-  if (nNewLen == 0)
-    return;
-
-  m_pData = StringData::Create(nNewLen);
-  m_pData->CopyContents(str1.span());
-  m_pData->CopyContentsAt(str1.GetLength(), str2.span());
-}
-
-WideString::WideString(const std::initializer_list<WideStringView>& list) {
-  FX_SAFE_SIZE_T nSafeLen = 0;
-  for (const auto& item : list)
-    nSafeLen += item.GetLength();
-
-  size_t nNewLen = nSafeLen.ValueOrDie();
-  if (nNewLen == 0)
-    return;
-
-  m_pData = StringData::Create(nNewLen);
-
-  size_t nOffset = 0;
-  for (const auto& item : list) {
-    m_pData->CopyContentsAt(nOffset, item.span());
-    nOffset += item.GetLength();
-  }
-}
 
 WideString& WideString::operator=(const wchar_t* str) {
   if (!str || !str[0])
