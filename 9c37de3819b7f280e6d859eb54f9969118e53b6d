@@ -135,6 +135,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "143f2fb5_ac71eca7",
+        "filename": "core/fxcrt/byteorder.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-02-13T22:44:31Z",
+      "side": 1,
+      "message": "Ah, right. I missed the fact that third_party/base/sys_byteorder.h is missing the \"BE\" functions. Anyway, I can send a follow-up CL or two.",
+      "parentUuid": "0366e085_9c1f73e5",
+      "revId": "9c37de3819b7f280e6d859eb54f9969118e53b6d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cec14a7c_4518a745",
