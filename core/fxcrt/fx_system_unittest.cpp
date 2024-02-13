@@ -4,8 +4,10 @@
 
 #include <math.h>
 
+#include <array>
 #include <iterator>
 #include <limits>
+#include <type_traits>
 
 #include "build/build_config.h"
 #include "core/fxcrt/fx_string.h"
@@ -395,4 +397,12 @@ TEST(fxcrt, FXSYS_atoui) {
   EXPECT_EQ(4294967295, FXSYS_atoui("2147483623423412348"));
   EXPECT_EQ(4294967295, FXSYS_atoui("4294967296"));
   EXPECT_EQ(4294967295, FXSYS_atoui("-4294967345"));
+}
+
+TEST(fxcrt, StdExtentIsForTheBirds) {
+  int old_array[6];
+  EXPECT_EQ(std::extent_v<decltype(old_array)>, 6u);
+
+  std::array<int, 6> new_array;
+  EXPECT_EQ(std::extent_v<decltype(new_array)>, 0u);
 }
