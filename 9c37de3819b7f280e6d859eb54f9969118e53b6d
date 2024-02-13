@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "065b3dc6_e0f8c958",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-13T16:30:30Z",
+      "side": 1,
+      "message": "Gah. Done.",
+      "parentUuid": "8cdbd8dc_26d66781",
+      "range": {
+        "startLine": 7,
+        "startChar": 34,
+        "endLine": 7,
+        "endChar": 42
+      },
+      "revId": "9c37de3819b7f280e6d859eb54f9969118e53b6d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "8d9b5a1f_e8eebf3c",
         "filename": "core/fpdfapi/parser/cpdf_security_handler.cpp",
         "patchSetId": 4
@@ -58,6 +82,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8b5c9af_dc6a4a03",
+        "filename": "core/fxcodec/bmp/cfx_bmpdecompressor.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-13T16:30:30Z",
+      "side": 1,
+      "message": "Done, re-arranged to move both locals closer to where actually used.",
+      "parentUuid": "532aec73_ea25fe2c",
+      "revId": "9c37de3819b7f280e6d859eb54f9969118e53b6d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "af76373f_01132996",
@@ -71,6 +113,24 @@
       "writtenOn": "2024-02-13T04:12:49Z",
       "side": 1,
       "message": "Wasn\u0027t pdfium::base::ByteSwapToLE16() doing this internally? Do you want to just get rid of third_party/base/sys_byteorder.h and implement everything here directly?",
+      "revId": "9c37de3819b7f280e6d859eb54f9969118e53b6d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0366e085_9c1f73e5",
+        "filename": "core/fxcrt/byteorder.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-13T16:30:30Z",
+      "side": 1,
+      "message": "I wanted this implementation to look like the BE impl, but in the other direction. Follow-up ideas are welcome.",
+      "parentUuid": "af76373f_01132996",
       "revId": "9c37de3819b7f280e6d859eb54f9969118e53b6d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -92,6 +152,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "21c5fb15_4d172f9c",
+        "filename": "core/fxcrt/byteorder.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-13T16:30:30Z",
+      "side": 1,
+      "message": "It was less clear to me that `x \u003d ByteSwapToLE16(y)` would make X the native representation of Y, so I wanted the word From. Updated comment.",
+      "parentUuid": "cec14a7c_4518a745",
+      "revId": "9c37de3819b7f280e6d859eb54f9969118e53b6d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "48bb4869_35e0feca",
@@ -105,6 +183,24 @@
       "writtenOn": "2024-02-13T04:12:49Z",
       "side": 1,
       "message": "Also add a TODO here? Or get it in the next CL, if the next CL is the TODO follow-up.",
+      "revId": "9c37de3819b7f280e6d859eb54f9969118e53b6d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0384c2d_fca76fc6",
+        "filename": "core/fxge/cfx_folderfontinfo.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-13T16:30:30Z",
+      "side": 1,
+      "message": "Done, Follow-up may take a while. Motivation here is UNSAFE_BUFFERS warnings inherent in the old macros.",
+      "parentUuid": "48bb4869_35e0feca",
       "revId": "9c37de3819b7f280e6d859eb54f9969118e53b6d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
