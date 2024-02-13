@@ -87,8 +87,6 @@ source_set("fxcrt") {
     "shared_copy_on_write.h",
     "span_util.h",
     "stl_util.h",
-    "string_data_template.cpp",
-    "string_data_template.h",
     "string_pool_template.h",
     "string_template.cpp",
     "string_template.h",

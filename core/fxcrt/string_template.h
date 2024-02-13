@@ -12,7 +12,6 @@
 #include <type_traits>
 
 #include "core/fxcrt/retain_ptr.h"
-#include "core/fxcrt/string_data_template.h"
 #include "core/fxcrt/string_view_template.h"
 
 namespace fxcrt {
@@ -107,8 +106,59 @@ class StringTemplate {
   size_t Remove(T ch);
 
  protected:
+  class StringData {
+   public:
+    static RetainPtr<StringData> Create(size_t nLen);
+    static RetainPtr<StringData> Create(pdfium::span<const CharType> str);
+
+    void Retain() { ++m_nRefs; }
+    void Release();
+
+    bool CanOperateInPlace(size_t nTotalLen) const {
+      return m_nRefs <= 1 && nTotalLen <= m_nAllocLength;
+    }
+
+    void CopyContents(const StringData& other);
+    void CopyContents(pdfium::span<const CharType> str);
+    void CopyContentsAt(size_t offset, pdfium::span<const CharType> str);
+
+    pdfium::span<CharType> span() {
+      return pdfium::make_span(m_String, m_nDataLength);
+    }
+    pdfium::span<const CharType> span() const {
+      return pdfium::make_span(m_String, m_nDataLength);
+    }
+
+    // Unlike std::string::front(), this is always safe and returns a
+    // NUL char when the string is empty.
+    CharType Front() const { return !span().empty() ? span().front() : 0; }
+
+    // Unlike std::string::back(), this is always safe and returns a
+    // NUL char when the string is empty.
+    CharType Back() const { return !span().empty() ? span().back() : 0; }
+
+    // To ensure ref counts do not overflow, consider the worst possible case:
+    // the entire address space contains nothing but pointers to this object.
+    // Since the count increments with each new pointer, the largest value is
+    // the number of pointers that can fit into the address space. The size of
+    // the address space itself is a good upper bound on it.
+    intptr_t m_nRefs = 0;
+
+    // These lengths are in terms of number of characters, not bytes, and do not
+    // include the terminating NUL character, but the underlying buffer is sized
+    // to be capable of holding it.
+    size_t m_nDataLength;
+    const size_t m_nAllocLength;
+
+    // Not really 1, variable size.
+    CharType m_String[1];
+
+   private:
+    StringData(size_t dataLen, size_t allocLen);
+    ~StringData() = delete;
+  };
+
   using StringView = StringViewTemplate<T>;
-  using StringData = StringDataTemplate<T>;
 
   StringTemplate() = default;
   StringTemplate(const StringTemplate& other) = default;
