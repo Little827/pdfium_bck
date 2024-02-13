@@ -24,6 +24,23 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d9b5a1f_e8eebf3c",
+        "filename": "core/fpdfapi/parser/cpdf_security_handler.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-02-13T05:43:31Z",
+      "side": 1,
+      "message": "BTW, I can modernize https://pdfium-review.googlesource.com/64133 after this CL lands and finally get rid of this.",
+      "revId": "9c37de3819b7f280e6d859eb54f9969118e53b6d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "532aec73_ea25fe2c",
