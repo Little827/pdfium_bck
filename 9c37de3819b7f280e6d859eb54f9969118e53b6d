@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cdbd8dc_26d66781",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-02-13T04:12:49Z",
+      "side": 1,
+      "message": "\"FIRST\"",
+      "range": {
+        "startLine": 7,
+        "startChar": 34,
+        "endLine": 7,
+        "endChar": 42
+      },
+      "revId": "9c37de3819b7f280e6d859eb54f9969118e53b6d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "532aec73_ea25fe2c",
+        "filename": "core/fxcodec/bmp/cfx_bmpdecompressor.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-02-13T04:12:49Z",
+      "side": 1,
+      "message": "Existing: merge with line 183?",
+      "revId": "9c37de3819b7f280e6d859eb54f9969118e53b6d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af76373f_01132996",
+        "filename": "core/fxcrt/byteorder.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-02-13T04:12:49Z",
+      "side": 1,
+      "message": "Wasn\u0027t pdfium::base::ByteSwapToLE16() doing this internally? Do you want to just get rid of third_party/base/sys_byteorder.h and implement everything here directly?",
+      "revId": "9c37de3819b7f280e6d859eb54f9969118e53b6d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cec14a7c_4518a745",
+        "filename": "core/fxcrt/byteorder.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-02-13T04:12:49Z",
+      "side": 1,
+      "message": "How about (eventually) just having 1 way to do each operation?",
+      "revId": "9c37de3819b7f280e6d859eb54f9969118e53b6d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48bb4869_35e0feca",
+        "filename": "core/fxge/cfx_folderfontinfo.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-02-13T04:12:49Z",
+      "side": 1,
+      "message": "Also add a TODO here? Or get it in the next CL, if the next CL is the TODO follow-up.",
+      "revId": "9c37de3819b7f280e6d859eb54f9969118e53b6d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
