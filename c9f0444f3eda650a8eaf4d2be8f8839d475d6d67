@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b332044_12f9b86a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5645
+      },
+      "writtenOn": "2024-02-14T00:11:56Z",
+      "side": 1,
+      "message": "Adding G-account approval stamp.",
+      "revId": "c9f0444f3eda650a8eaf4d2be8f8839d475d6d67",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
