@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "608a1919_ad14c447",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-02-14T00:19:31Z",
+      "side": 0,
+      "message": "Why move the ctors into the header?",
+      "revId": "df0228d9bb32997fc894190b7a6a6f1a753baf2f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
