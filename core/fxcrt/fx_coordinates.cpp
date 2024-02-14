@@ -9,6 +9,7 @@
 #include <math.h>
 
 #include <algorithm>
+#include <array>
 #include <iterator>
 #include <utility>
 
@@ -490,13 +491,13 @@ CFX_RectF CFX_Matrix::TransformRect(const CFX_RectF& rect) const {
 }
 
 CFX_FloatRect CFX_Matrix::TransformRect(const CFX_FloatRect& rect) const {
-  CFX_PointF points[] = {{rect.left, rect.top},
-                         {rect.left, rect.bottom},
-                         {rect.right, rect.top},
-                         {rect.right, rect.bottom}};
-  for (CFX_PointF& point : points)
+  std::array<CFX_PointF, 4> points = {{rect.left, rect.top},
+                                      {rect.left, rect.bottom},
+                                      {rect.right, rect.top},
+                                      {rect.right, rect.bottom}};
+  for (CFX_PointF& point : points) {
     point = Transform(point);
-
+  }
   float new_right = points[0].x;
   float new_left = points[0].x;
   float new_top = points[0].y;
