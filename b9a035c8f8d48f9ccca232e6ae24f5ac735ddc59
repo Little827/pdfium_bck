@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d46d296d_baef0678",
+        "filename": "core/fpdfapi/parser/cpdf_security_handler.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-02-14T23:53:23Z",
+      "side": 1,
+      "message": "Convert to span later?",
+      "revId": "b9a035c8f8d48f9ccca232e6ae24f5ac735ddc59",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b2a8069_04772179",
+        "filename": "core/fxcrt/fx_random.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-02-14T23:53:23Z",
+      "side": 1,
+      "message": "For later? Change to constexpr and move into anonymous namespace,",
+      "revId": "b9a035c8f8d48f9ccca232e6ae24f5ac735ddc59",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "037ee7eb_a769c7ef",
+        "filename": "core/fxcrt/fx_random.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-02-14T23:53:23Z",
+      "side": 1,
+      "message": "constexpr? leave at previous scope?",
+      "revId": "b9a035c8f8d48f9ccca232e6ae24f5ac735ddc59",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
