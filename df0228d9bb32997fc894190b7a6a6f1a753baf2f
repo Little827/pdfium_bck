@@ -34,6 +34,24 @@
       "parentUuid": "608a1919_ad14c447",
       "revId": "df0228d9bb32997fc894190b7a6a6f1a753baf2f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3528f0b_a712de60",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-14T00:49:46Z",
+      "side": 0,
+      "message": "In other words, do all the work in the common template class without calling the bytestring.cpp code first.",
+      "parentUuid": "0e2f9ff6_d758dd99",
+      "revId": "df0228d9bb32997fc894190b7a6a6f1a753baf2f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
