@@ -16,6 +16,24 @@
       "message": "Why move the ctors into the header?",
       "revId": "df0228d9bb32997fc894190b7a6a6f1a753baf2f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e2f9ff6_d758dd99",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-14T00:47:45Z",
+      "side": 0,
+      "message": "These are kinda small, so I\u0027ve expected allowing some inlining would help.",
+      "parentUuid": "608a1919_ad14c447",
+      "revId": "df0228d9bb32997fc894190b7a6a6f1a753baf2f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
