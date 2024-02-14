@@ -52,6 +52,24 @@
       "parentUuid": "0e2f9ff6_d758dd99",
       "revId": "df0228d9bb32997fc894190b7a6a6f1a753baf2f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d46dcb59_de928aca",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-02-14T00:50:35Z",
+      "side": 0,
+      "message": "I\u0027m mostly just echoing the guidance here: https://chromium.googlesource.com/chromium/src/+/main/styleguide/c++/c++-dos-and-donts.md#minimize-code-in-headers",
+      "parentUuid": "0e2f9ff6_d758dd99",
+      "revId": "df0228d9bb32997fc894190b7a6a6f1a753baf2f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
