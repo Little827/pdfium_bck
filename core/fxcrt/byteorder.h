@@ -6,7 +6,7 @@
 #define CORE_FXCRT_BYTEORDER_H_
 
 #include "build/build_config.h"
-#include "third_party/base/containers/span.h"
+#include "core/fxcrt/span.h"
 #include "third_party/base/sys_byteorder.h"
 
 namespace fxcrt {
