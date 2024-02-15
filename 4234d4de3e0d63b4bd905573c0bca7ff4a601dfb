@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "14e09e73_c654133d",
+        "filename": "core/fpdfapi/parser/cpdf_security_handler.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-02-15T23:34:38Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "9dc9bd03_c94ce3bf",
+      "range": {
+        "startLine": 134,
+        "startChar": 25,
+        "endLine": 134,
+        "endChar": 30
+      },
+      "revId": "4234d4de3e0d63b4bd905573c0bca7ff4a601dfb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bfc3fa7c_b6f9adf2",
@@ -61,6 +85,30 @@
       "side": 1,
       "message": "at which point, this becomes a do .. while loop. eh?",
       "parentUuid": "bfc3fa7c_b6f9adf2",
+      "range": {
+        "startLine": 185,
+        "startChar": 22,
+        "endLine": 185,
+        "endChar": 29
+      },
+      "revId": "4234d4de3e0d63b4bd905573c0bca7ff4a601dfb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2983e54a_694d2c3e",
+        "filename": "core/fpdfapi/parser/cpdf_security_handler.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-02-15T23:34:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8fb8f89_a8027f9a",
       "range": {
         "startLine": 185,
         "startChar": 22,
