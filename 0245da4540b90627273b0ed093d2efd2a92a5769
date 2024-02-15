@@ -16,6 +16,24 @@
       "message": "Can this be capacity_span() or something like that? Given std::string::capacity() returns a size_t, I find the name overload confusing.",
       "revId": "0245da4540b90627273b0ed093d2efd2a92a5769",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16dfc012_e6ebcd72",
+        "filename": "core/fxcrt/string_data_template.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-15T20:35:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b573ddbc_4e674c8e",
+      "revId": "0245da4540b90627273b0ed093d2efd2a92a5769",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
