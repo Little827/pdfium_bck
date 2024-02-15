@@ -16,6 +16,23 @@
       "message": "Argh, and I looked for this sort of thing when we were making those changes.  Darned \"if\"s.",
       "revId": "30caa3b10226a4a4bbb4df98d73caf4fdc8b8aa2",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bb28e9f_ebf1a78a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5645
+      },
+      "writtenOn": "2024-02-15T17:51:54Z",
+      "side": 1,
+      "message": "Adding G-account approval stamp.",
+      "revId": "30caa3b10226a4a4bbb4df98d73caf4fdc8b8aa2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
