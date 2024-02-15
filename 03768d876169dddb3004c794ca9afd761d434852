@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fda00bc6_0b8ca51f",
+        "filename": "core/fxcrt/byteorder.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-15T18:16:28Z",
+      "side": 1,
+      "message": "I\u0027d be tempted to add To*() methods just that are identical to the From() ones, just for readability, eg.\n\n```\nuint16_t x \u003d fxcrt::FromBE16(funky_network_header.size);\nfunky_network_header.size \u003d fxcrt::ToBE16(x + 2);\n```",
+      "range": {
+        "startLine": 52,
+        "startChar": 16,
+        "endLine": 52,
+        "endChar": 20
+      },
+      "revId": "03768d876169dddb3004c794ca9afd761d434852",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
