@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9dc9bd03_c94ce3bf",
+        "filename": "core/fpdfapi/parser/cpdf_security_handler.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-15T18:05:13Z",
+      "side": 1,
+      "message": "initial value unimportant?.  Maybe set to true and pull i \u003c 64 test, just write while(should_continue) {",
+      "range": {
+        "startLine": 134,
+        "startChar": 25,
+        "endLine": 134,
+        "endChar": 30
+      },
+      "revId": "4234d4de3e0d63b4bd905573c0bca7ff4a601dfb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfc3fa7c_b6f9adf2",
+        "filename": "core/fpdfapi/parser/cpdf_security_handler.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-15T18:05:13Z",
+      "side": 1,
+      "message": "redundant with \u003c 64 test in || expression at line 135?\nAlternatively, if the loop above is written as suggested above, this becomes the i \u003c 64 || ... expression.",
+      "range": {
+        "startLine": 185,
+        "startChar": 22,
+        "endLine": 185,
+        "endChar": 29
+      },
+      "revId": "4234d4de3e0d63b4bd905573c0bca7ff4a601dfb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
