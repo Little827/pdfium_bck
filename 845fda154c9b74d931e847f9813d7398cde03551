@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07e60ef9_694eac9a",
+        "filename": "core/fxcrt/string_template.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-02-15T22:57:14Z",
+      "side": 1,
+      "message": "Rename to \"str\" for consistency with the parameter name in the header.",
+      "range": {
+        "startLine": 147,
+        "startChar": 57,
+        "endLine": 147,
+        "endChar": 63
+      },
+      "revId": "845fda154c9b74d931e847f9813d7398cde03551",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d35d117e_e8cf2873",
+        "filename": "core/fxcrt/string_template.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-02-15T22:57:14Z",
+      "side": 1,
+      "message": "Want to use StringView here?",
+      "range": {
+        "startLine": 43,
+        "startChar": 2,
+        "endLine": 43,
+        "endChar": 30
+      },
+      "revId": "845fda154c9b74d931e847f9813d7398cde03551",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
