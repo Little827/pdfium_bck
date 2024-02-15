@@ -560,7 +560,6 @@ source_set("pdfium_base") {
     "base/memory/aligned_memory.cc",
     "base/memory/aligned_memory.h",
     "base/memory/ptr_util.h",
-    "base/no_destructor.h",
     "base/notreached.h",
     "base/template_util.h",
   ]

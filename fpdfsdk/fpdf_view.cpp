@@ -57,7 +57,6 @@
 
 #ifdef PDF_ENABLE_V8
 #include "fxjs/cfx_v8_array_buffer_allocator.h"
-#include "third_party/base/no_destructor.h"
 #endif
 
 #ifdef PDF_ENABLE_XFA
@@ -117,6 +116,10 @@ static_assert(static_cast<int>(CFX_DefaultRenderDevice::RendererType::kSkia) ==
 namespace {
 
 bool g_bLibraryInitialized = false;
+
+#ifdef PDF_ENABLE_V8
+CFX_V8ArrayBufferAllocator* g_v8_array_buffer_allocator = nullptr;
+#endif
 
 void SetRendererType(FPDF_RENDERER_TYPE public_type) {
   // Internal definition of renderer types must stay updated with respect to
@@ -239,6 +242,10 @@ FPDF_InitLibraryWithConfig(const FPDF_LIBRARY_CONFIG* config) {
   CFX_GlyphCache::InitializeGlobals();
 #endif
 
+#ifdef PDF_ENABLE_V8
+  g_v8_array_buffer_allocator = new CFX_V8ArrayBufferAllocator();
+#endif
+
 #ifdef PDF_ENABLE_XFA
   CPDFXFA_ModuleInit();
 #endif  // PDF_ENABLE_XFA
@@ -267,6 +274,11 @@ FPDF_EXPORT void FPDF_CALLCONV FPDF_DestroyLibrary() {
   CPDFXFA_ModuleDestroy();
 #endif  // PDF_ENABLE_XFA
 
+#ifdef PDF_ENABLE_V8
+  delete g_v8_array_buffer_allocator;
+  g_v8_array_buffer_allocator = nullptr;
+#endif
+
 #if defined(PDF_USE_SKIA)
   CFX_GlyphCache::DestroyGlobals();
 #endif
@@ -274,6 +286,7 @@ FPDF_EXPORT void FPDF_CALLCONV FPDF_DestroyLibrary() {
   CPDF_PageModule::Destroy();
   CFX_GEModule::Destroy();
   CFX_Timer::DestroyGlobals();
+  FX_DestroyMemoryAllocators();
 
   g_bLibraryInitialized = false;
 }
@@ -1151,8 +1164,7 @@ FPDF_EXPORT const char* FPDF_CALLCONV FPDF_GetRecommendedV8Flags() {
 }
 
 FPDF_EXPORT void* FPDF_CALLCONV FPDF_GetArrayBufferAllocatorSharedInstance() {
-  static pdfium::base::NoDestructor<CFX_V8ArrayBufferAllocator> allocator;
-  return allocator.get();
+  return g_v8_array_buffer_allocator;
 }
 #endif  // PDF_ENABLE_V8
 

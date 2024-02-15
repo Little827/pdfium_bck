@@ -8,7 +8,6 @@
 
 #include "core/fxcrt/fx_safe_types.h"
 #include "partition_alloc/partition_alloc.h"
-#include "third_party/base/no_destructor.h"
 
 #if !defined(PDF_USE_PARTITION_ALLOC)
 #error "File compiled under wrong build option."
@@ -19,23 +18,24 @@ namespace {
 constexpr partition_alloc::PartitionOptions kOptions = {};
 
 #ifndef V8_ENABLE_SANDBOX
+partition_alloc::PartitionAllocator* g_array_buffer_allocator = nullptr;
+#endif
+
+partition_alloc::PartitionAllocator* g_general_allocator = nullptr;
+partition_alloc::PartitionAllocator* g_string_allocator = nullptr;
+
+#ifndef V8_ENABLE_SANDBOX
 partition_alloc::PartitionAllocator& GetArrayBufferPartitionAllocator() {
-  static pdfium::base::NoDestructor<partition_alloc::PartitionAllocator>
-      s_array_buffer_allocator(kOptions);
-  return *s_array_buffer_allocator;
+  return *g_array_buffer_allocator;
 }
-#endif  //  V8_ENABLE_SANDBOX
+#endif
 
 partition_alloc::PartitionAllocator& GetGeneralPartitionAllocator() {
-  static pdfium::base::NoDestructor<partition_alloc::PartitionAllocator>
-      s_general_allocator(kOptions);
-  return *s_general_allocator;
+  return *g_general_allocator;
 }
 
 partition_alloc::PartitionAllocator& GetStringPartitionAllocator() {
-  static pdfium::base::NoDestructor<partition_alloc::PartitionAllocator>
-      s_string_allocator(kOptions);
-  return *s_string_allocator;
+  return *g_string_allocator;
 }
 
 }  // namespace
@@ -125,15 +125,25 @@ void FX_InitializeMemoryAllocators() {
   static bool s_partition_allocators_initialized = false;
   if (!s_partition_allocators_initialized) {
     partition_alloc::PartitionAllocGlobalInit(FX_OutOfMemoryTerminate);
-    // These calls force the allocators to be created and initialized (via magic
-    // of static local variables).
 #ifndef V8_ENABLE_SANDBOX
-    GetArrayBufferPartitionAllocator();
+    g_array_buffer_allocator =
+        new partition_alloc::PartitionAllocator(kOptions);
 #endif  // V8_ENABLE_SANDBOX
-    GetGeneralPartitionAllocator();
-    GetStringPartitionAllocator();
+    g_general_allocator = new partition_alloc::PartitionAllocator(kOptions);
+    g_string_allocator = new partition_alloc::PartitionAllocator(kOptions);
     s_partition_allocators_initialized = true;
   }
+}
+
+void FX_DestroyMemoryAllocators() {
+#ifndef V8_ENABLE_SANDBOX
+  delete g_array_buffer_allocator;
+  g_array_buffer_allocator = nullptr;
+#endif  // V8_ENABLE_SANDBOX
+  delete g_general_allocator;
+  g_general_allocator = nullptr;
+  delete g_string_allocator;
+  g_string_allocator = nullptr;
 }
 
 #ifndef V8_ENABLE_SANDBOX
