@@ -24,7 +24,8 @@
 #include "third_party/skia/include/core/SkStream.h"  // nogncheck
 #include "third_party/skia/include/core/SkTypeface.h"  // nogncheck
 #include "third_party/skia/include/core/SkFontMgr.h"  // nogncheck
-#include "third_party/skia/include/ports/SkFontMgr_empty.h"  // nogncheck
+
+#include "include/ports/SkFontMgr_empty.h"  // nogncheck
 
 #if BUILDFLAG(IS_WIN)
 #include "include/ports/SkTypeface_win.h"  // nogncheck
