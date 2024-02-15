@@ -24,6 +24,8 @@ source_set("fxcrt") {
   ]
   sources = [
     "adapters.h",
+    "alias.cc",
+    "alias.h",
     "autonuller.h",
     "autorestorer.h",
     "binary_buffer.cpp",
@@ -159,6 +161,9 @@ source_set("fxcrt") {
       "cfx_fileaccess_windows.cpp",
       "cfx_fileaccess_windows.h",
       "fx_folder_windows.cpp",
+      "scoped_select_object_win.h",
+      "win_util.cc",
+      "win_util.h",
     ]
   }
   if (pdf_enable_xfa) {
