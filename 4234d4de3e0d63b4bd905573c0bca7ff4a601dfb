@@ -45,6 +45,30 @@
       },
       "revId": "4234d4de3e0d63b4bd905573c0bca7ff4a601dfb",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8fb8f89_a8027f9a",
+        "filename": "core/fpdfapi/parser/cpdf_security_handler.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-15T18:06:00Z",
+      "side": 1,
+      "message": "at which point, this becomes a do .. while loop. eh?",
+      "parentUuid": "bfc3fa7c_b6f9adf2",
+      "range": {
+        "startLine": 185,
+        "startChar": 22,
+        "endLine": 185,
+        "endChar": 29
+      },
+      "revId": "4234d4de3e0d63b4bd905573c0bca7ff4a601dfb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
