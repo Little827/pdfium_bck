@@ -171,7 +171,7 @@ CXFA_Node* ResolveBreakTarget(CXFA_Node* pPageSetRoot,
   if (pTargetAll->IsEmpty())
     return nullptr;
 
-  pTargetAll->Trim();
+  pTargetAll->TrimUsual();
   size_t iSplitIndex = 0;
   bool bTargetAllFind = true;
   while (true) {
