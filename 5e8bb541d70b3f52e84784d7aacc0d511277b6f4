@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c2addcd_3513d636",
+        "filename": "core/fxcrt/bytestring.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-02-16T18:26:47Z",
+      "side": 1,
+      "message": "Would TrimWhitespace(), which is similar to what Chromium has in base/strings/string_util.h, be a more descriptive name?",
+      "revId": "5e8bb541d70b3f52e84784d7aacc0d511277b6f4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
