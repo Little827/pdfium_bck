@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7498eb47_d440d2c4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T17:08:16Z",
+      "side": 1,
+      "message": "LG/ but see the larger questions for these CLs.",
+      "revId": "705af90bd732b8bbce0d798898bf5a772e239afa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ed36319_ec704154",
+        "filename": "testing/scoped_locale.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T17:08:16Z",
+      "side": 1,
+      "message": "Needs a line below saying original license from chromium authors?",
+      "revId": "705af90bd732b8bbce0d798898bf5a772e239afa",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
