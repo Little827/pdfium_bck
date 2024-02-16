@@ -56,6 +56,30 @@
       },
       "revId": "d163a1ace1b167dccf7eb7c18586672c3a7f4446",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c31ed3eb_5b523c0c",
+        "filename": "third_party/agg23/0003-ubsan-render-line-error.patch",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-02-16T22:40:07Z",
+      "side": 1,
+      "message": "third_party/agg23 already has dependencies on core/fxcrt. See pre-existing \"FXSYS_\"  usage, for example. Maybe we can / will need to untangle some that later.",
+      "parentUuid": "a65107d3_2f3b48de",
+      "range": {
+        "startLine": 9,
+        "startChar": 16,
+        "endLine": 9,
+        "endChar": 21
+      },
+      "revId": "d163a1ace1b167dccf7eb7c18586672c3a7f4446",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
