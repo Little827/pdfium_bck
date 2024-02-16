@@ -217,6 +217,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "99f8c80b_853facda",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "e47dbf00_2eb0e11d",
+      "range": {
+        "startLine": 341,
+        "startChar": 41,
+        "endLine": 341,
+        "endChar": 66
+      },
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aa7d64f1_d9091108",
@@ -230,6 +254,30 @@
       "writtenOn": "2024-02-02T18:00:47Z",
       "side": 1,
       "message": "m_nDataLength is the size of the m_String buffer as an invariant of StringData.",
+      "range": {
+        "startLine": 370,
+        "startChar": 13,
+        "endLine": 370,
+        "endChar": 44
+      },
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b70a4fc_37b72efb",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "aa7d64f1_d9091108",
       "range": {
         "startLine": 370,
         "startChar": 13,
@@ -322,6 +370,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "04e3c8e9_7a294a66",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "8089fd28_70e7acfd",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0be0457f_95f3d68a",
@@ -335,6 +401,30 @@
       "writtenOn": "2024-02-02T18:00:47Z",
       "side": 1,
       "message": "Let\u0027s explain why they are correct for the unsafe code below.\n\nFXSYS_memmove should be marked UNSAFE_BUFFER_USAGE, so the whole call is unsafe.\n\n// SAFETY: FXSYS_memmove requires both pointers point to an array of at least `chars_to_copy` many elements.\n// * m_String points to an array of at least m_nDataLength elements, which is an invariant of StringData.\n// * `0 \u003c\u003d index \u003c\u003d m_nDataLength` is guaranteed by comparing with std::clamp() above.\n// * `removal_length \u003c\u003d old_length` by the comparison above.\n// * `removal_length \u003e index` since `count` is positive, based on the comparison against 0 above, as long as `index + count` does not overflow.\n//\n// So, unless overflow occurred: `0 \u003c\u003d index \u003c removal_length \u003c\u003d m_nDataLength`.\n// \n// `chars_to_copy` is the distance from removal_length to one-past-the-end of m_String, plus one. `index` is strictly smaller, so there are at `removal_length + 1` elements at `m_String + index`. **So then how does m_String+removal_length point to `chars_to_copy` elements? It seems to point to one less?**",
+      "range": {
+        "startLine": 457,
+        "startChar": 13,
+        "endLine": 457,
+        "endChar": 63
+      },
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6c4472a_4767b544",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "0be0457f_95f3d68a",
       "range": {
         "startLine": 457,
         "startChar": 13,
@@ -362,6 +452,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "44896afe_71a4c768",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "eac9e032_a503b224",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "28047c7b_8374d52e",
@@ -375,6 +483,30 @@
       "writtenOn": "2024-02-02T18:00:47Z",
       "side": 1,
       "message": "validated to be what? It looks like\n\n// AllocCopy requires `first` to be an index into `this-\u003emString` and `first+count`\n// to be at most the one-past-the-end position of `this-\u003emString`. (I think?)\n//\n// The conditions above validate that:\n// * `first` is in range of `this-\u003em_String`\n// * `first + count - 1` is in range of `this-\u003emString`\u0027s allocation, so `first + count` is at most the one-past-the-end position of `this-\u003emString`.",
+      "range": {
+        "startLine": 516,
+        "startChar": 29,
+        "endLine": 516,
+        "endChar": 44
+      },
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08f7ec66_f4a15819",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "28047c7b_8374d52e",
       "range": {
         "startLine": 516,
         "startChar": 29,
@@ -408,6 +540,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "639ff41a_1d8f6d48",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "594c00a8_4fd5a3aa",
+      "range": {
+        "startLine": 536,
+        "startChar": 13,
+        "endLine": 536,
+        "endChar": 34
+      },
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e2354fd4_a74ea51e",
@@ -421,6 +577,30 @@
       "writtenOn": "2024-02-02T18:00:47Z",
       "side": 1,
       "message": "ensures `index` is in range of `m_String`.",
+      "range": {
+        "startLine": 546,
+        "startChar": 26,
+        "endLine": 546,
+        "endChar": 27
+      },
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a67f72a9_9db84e59",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "e2354fd4_a74ea51e",
       "range": {
         "startLine": 546,
         "startChar": 26,
@@ -454,6 +634,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0bdf7cbb_ea1ed69e",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 574,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "28a8eb20_f30078b7",
+      "range": {
+        "startLine": 574,
+        "startChar": 33,
+        "endLine": 574,
+        "endChar": 34
+      },
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2e39f286_5acdfe0d",
@@ -467,6 +671,30 @@
       "writtenOn": "2024-02-02T18:00:47Z",
       "side": 1,
       "message": "looks like this should be UNSAFE_BUFFERS_USAGE, since a bad length param would read off the end and return an invalid pointer?",
+      "range": {
+        "startLine": 576,
+        "startChar": 6,
+        "endLine": 576,
+        "endChar": 18
+      },
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0bb4472a_f152f89c",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "2e39f286_5acdfe0d",
       "range": {
         "startLine": 576,
         "startChar": 6,
@@ -494,6 +722,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0831bcd9_4ea8afae",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "4fb5d9a8_7453f9e3",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "50931f1b_ad33d899",
@@ -507,6 +753,30 @@
       "writtenOn": "2024-02-02T18:00:47Z",
       "side": 1,
       "message": "ensures `start` is an index inside `m_String`, so `m_String + start` points inside the m_String allocation, and `m_nDataLength - start is at least 0 (does not underflow) and at most the one-past-the-end position of mString which is the largest valid value for FX_strstr.",
+      "range": {
+        "startLine": 592,
+        "startChar": 33,
+        "endLine": 592,
+        "endChar": 34
+      },
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b5d901b_21c928a5",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "50931f1b_ad33d899",
       "range": {
         "startLine": 592,
         "startChar": 33,
@@ -534,6 +804,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab81279b_8365b0b8",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "606d05ca_52263832",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d4b6e9e_0dd6dd3d",
@@ -547,6 +835,30 @@
       "writtenOn": "2024-02-02T18:00:47Z",
       "side": 1,
       "message": "is the length of mString. `nLength \u003c m_nDataLength` since we decrement before indexing, and break the loop when `nLength` underflows and wraps to its max value.",
+      "range": {
+        "startLine": 608,
+        "startChar": 29,
+        "endLine": 608,
+        "endChar": 55
+      },
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c99f664_6be4f6c3",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "4d4b6e9e_0dd6dd3d",
       "range": {
         "startLine": 608,
         "startChar": 29,
@@ -574,6 +886,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0f79b62_ca9b2919",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 632,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "0a1ef2eb_0b314366",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "072c05a1_7cf12ca2",
@@ -587,6 +917,30 @@
       "writtenOn": "2024-02-02T18:00:47Z",
       "side": 1,
       "message": "is the length of m_String, so the addition points to one-past-the-end.",
+      "range": {
+        "startLine": 638,
+        "startChar": 27,
+        "endLine": 638,
+        "endChar": 54
+      },
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8a770c5_139dd487",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "072c05a1_7cf12ca2",
       "range": {
         "startLine": 638,
         "startChar": 27,
@@ -620,6 +974,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "439e1f7f_cc413769",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 644,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "535b0630_df94b5e1",
+      "range": {
+        "startLine": 644,
+        "startChar": 15,
+        "endLine": 644,
+        "endChar": 33
+      },
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7d60f642_549e51f9",
@@ -633,6 +1011,30 @@
       "writtenOn": "2024-02-02T18:00:47Z",
       "side": 1,
       "message": "`pstrSource` is at most one-past-the-end of m_String, as the loop above breaks at that point.",
+      "range": {
+        "startLine": 651,
+        "startChar": 13,
+        "endLine": 651,
+        "endChar": 40
+      },
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34615226_75560c74",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "7d60f642_549e51f9",
       "range": {
         "startLine": 651,
         "startChar": 13,
@@ -666,6 +1068,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65f1d5b7_cafa66ae",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 655,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "6f5f1828_2f256634",
+      "range": {
+        "startLine": 655,
+        "startChar": 13,
+        "endLine": 655,
+        "endChar": 57
+      },
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "024f87c3_cde3a838",
@@ -679,6 +1105,24 @@
       "writtenOn": "2024-02-02T18:00:47Z",
       "side": 1,
       "message": "m_nDataLength is the length of m_String so the addition is one-past-the-end of m_String.",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c06a4ac_d1795e7f",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 657,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "024f87c3_cde3a838",
       "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -700,6 +1144,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ead24da4_36ab2082",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 663,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "d2dca0f8_118b60f1",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a4f83f42_b0db85ee",
@@ -713,6 +1175,24 @@
       "writtenOn": "2024-02-02T18:00:47Z",
       "side": 1,
       "message": "The loop breaks when pstrSource goes past the end of m_String, so it\u0027s inside m_String here.",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a5170ea_aaab14ca",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 665,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "a4f83f42_b0db85ee",
       "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -734,6 +1214,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c57fdd9_e2f95c2b",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 668,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "522f0bcc_79953b33",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1c5027a1_65453ba2",
@@ -751,6 +1249,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3397781c_71082479",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 670,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "1c5027a1_65453ba2",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a2b35b96_f6493e74",
@@ -764,6 +1280,30 @@
       "writtenOn": "2024-02-02T18:00:47Z",
       "side": 1,
       "message": "is the length of the string, so the result is one-past-the-end of m_String",
+      "range": {
+        "startLine": 686,
+        "startChar": 26,
+        "endLine": 686,
+        "endChar": 54
+      },
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81b75c34_359800d9",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 686,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "a2b35b96_f6493e74",
       "range": {
         "startLine": 686,
         "startChar": 26,
@@ -797,6 +1337,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "17ff4e45_1bcfed0b",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 690,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "92032c13_6c57157a",
+      "range": {
+        "startLine": 690,
+        "startChar": 15,
+        "endLine": 690,
+        "endChar": 48
+      },
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "60ad31de_c62112bd",
@@ -810,6 +1374,24 @@
       "writtenOn": "2024-02-02T18:00:47Z",
       "side": 1,
       "message": "This is at most the one-past-the-end position since FX_strstr returns null or a pointer to at least nSourceLen many elements.",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21b3881a_f452a0af",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 699,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "60ad31de_c62112bd",
       "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -831,6 +1413,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c8e8597_cb277aa0",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 718,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "5d46d909_617386e0",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "03b751c5_d49363cd",
@@ -844,6 +1444,24 @@
       "writtenOn": "2024-02-02T18:00:47Z",
       "side": 1,
       "message": "// SAFETY: The loop repeats `nCount` times, which is the number of times `FX_strstr` returns non-null above. We are calling `FX_strstr` on the exact same pointer values as above in each call, so every call here is valid (by the same arguments as above) and will return non-null.\n//\n// We also are guaranteed by this construction that we will return a new non-null `pTarget` pointer exactly `nCount` times, which is required below.",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b929cb1e_41f8af61",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 721,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "03b751c5_d49363cd",
       "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -888,6 +1506,48 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f5ac99a_e2ed15ce",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 723,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "c7b75ebd_901116fb",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d568abc_ddf4dd74",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 723,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "ebb34391_4404b15a",
+      "range": {
+        "startLine": 723,
+        "startChar": 4,
+        "endLine": 723,
+        "endChar": 16
+      },
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93c46bd1_a0fc2781",
@@ -901,6 +1561,24 @@
       "writtenOn": "2024-02-02T18:00:47Z",
       "side": 1,
       "message": "The pDest pointer has been moved further than pStart `nCount` times by the difference in the length of `pNew` and `nSourceLen`. That is also the difference in their string lengths, so the remaining sizes are equal. Then `pEnd-pStart` is also the number of elements left at the position of `pDest` in its string.",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3134949_44afa437",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 729,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "93c46bd1_a0fc2781",
       "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -922,6 +1600,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "401998b4_4f787984",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 787,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "8adb42ec_80ce9009",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "167df20d_d2848743",
@@ -935,6 +1631,24 @@
       "writtenOn": "2024-02-02T18:00:47Z",
       "side": 1,
       "message": "This is a size_t, not unsafe",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "987f3cc6_2690e9a8",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 793,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "167df20d_d2848743",
       "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -956,6 +1670,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c655a52f_7a6145a3",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 798,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "a6dac1d4_e19c03f3",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3a409306_e360d9b2",
@@ -969,6 +1701,24 @@
       "writtenOn": "2024-02-02T18:00:47Z",
       "side": 1,
       "message": "// SAFETY: i \u003c targets.GetLength() by the condition above, so it\u0027s in range. The outer loop breaks as soon as pos \u003d\u003d 0, so `0 \u003c pos \u003c\u003d length of m_String` and `pos - 1` is in range of `m_String`.",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2e7a48e_5c5940b9",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 825,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "3a409306_e360d9b2",
       "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -990,6 +1740,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8cb4324_64edd022",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 831,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "cbbd8a23_5998297a",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c1650f75_96658970",
@@ -1003,6 +1771,30 @@
       "writtenOn": "2024-02-02T18:00:47Z",
       "side": 1,
       "message": "by the condition above.",
+      "range": {
+        "startLine": 835,
+        "startChar": 43,
+        "endLine": 835,
+        "endChar": 44
+      },
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f64a225_dc3b1ce3",
+        "filename": "core/fxcrt/bytestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 835,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "c1650f75_96658970",
       "range": {
         "startLine": 835,
         "startChar": 43,
@@ -1159,6 +1951,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "59e600f1_7f84020d",
+        "filename": "core/fxcrt/cfx_seekablestreamproxy.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "427c94aa_f3a3d7fb",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "83503544_7c95a5d3",
@@ -1172,6 +1982,30 @@
       "writtenOn": "2024-02-02T18:00:47Z",
       "side": 1,
       "message": "`i - 1` is in range, as guaranteed by the caller.",
+      "range": {
+        "startLine": 83,
+        "startChar": 15,
+        "endLine": 83,
+        "endChar": 36
+      },
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "834a5aa7_996d7ce0",
+        "filename": "core/fxcrt/cfx_seekablestreamproxy.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83503544_7c95a5d3",
       "range": {
         "startLine": 83,
         "startChar": 15,
@@ -1199,6 +2033,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "617be65f_dee958be",
+        "filename": "core/fxcrt/cfx_seekablestreamproxy.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "spanified.",
+      "parentUuid": "dc12fcb0_75b870ff",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b74c3081_aa181fad",
@@ -1216,6 +2068,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ac6dd52_2b61ad08",
+        "filename": "core/fxcrt/cfx_seekablestreamproxy.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b74c3081_aa181fad",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c0fec73_4f317a80",
@@ -1229,6 +2099,24 @@
       "writtenOn": "2024-02-02T18:00:47Z",
       "side": 1,
       "message": "Please document safety conditions in the header (and mark it as well there with the attribute)\n\nCould this function use span instead?",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "308b322e_506a424e",
+        "filename": "core/fxcrt/cfx_seekablestreamproxy.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "2c0fec73_4f317a80",
       "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -1256,6 +2144,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01f26442_0cd0498c",
+        "filename": "core/fxcrt/cfx_seekablestreamproxy.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "e72aded8_1e031aba",
+      "range": {
+        "startLine": 197,
+        "startChar": 18,
+        "endLine": 197,
+        "endChar": 26
+      },
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "850d23dc_8e6e1cc7",
@@ -1269,6 +2181,24 @@
       "writtenOn": "2024-02-02T18:00:47Z",
       "side": 1,
       "message": "(a different variable name would make explaining safety a bit more clear)",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f2a5784_c4482751",
+        "filename": "core/fxcrt/cfx_seekablestreamproxy.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "850d23dc_8e6e1cc7",
       "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -1296,6 +2226,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8dfc57b0_53b9a6ae",
+        "filename": "core/fxcrt/cfx_seekablestreamproxy.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "0b2aeae8_aed80400",
+      "range": {
+        "startLine": 200,
+        "startChar": 17,
+        "endLine": 200,
+        "endChar": 38
+      },
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2ff9d611_718060f7",
@@ -1309,6 +2263,24 @@
       "writtenOn": "2024-02-02T18:00:47Z",
       "side": 1,
       "message": "// SAFETY: `pStr` points to at least `(the original size) * 4` bytes as guaranteed by the caller, and `size` was reset to be at most the original size, so `pStr` points to at least `size * 4` bytes, or IOW can point to at least `size` many `wchar_t` objects.",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b429c655_659782d0",
+        "filename": "core/fxcrt/cfx_seekablestreamproxy.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "2ff9d611_718060f7",
       "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -1353,6 +2325,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb3d2cf6_413466d9",
+        "filename": "core/fxcrt/fx_extension.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "TODO\u0027d.",
+      "parentUuid": "8c720b24_4efd7e60",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "04aa05de_a3c8ef4e",
@@ -1366,6 +2356,24 @@
       "writtenOn": "2024-02-02T18:00:47Z",
       "side": 1,
       "message": "I guess this file is one you\u0027re coming back to? All these functions also seem to be UNSAFE_BUFFER_USAGE as well?",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2129a5e3_6871af2a",
+        "filename": "core/fxcrt/fx_extension.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "Indeed. TODOs added.",
+      "parentUuid": "04aa05de_a3c8ef4e",
       "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -1387,6 +2395,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "39fe57ca_c5bd3d5b",
+        "filename": "core/fxcrt/fx_random.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "710253a5_fbaa56d1",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a7c6ac0c_077e8d29",
@@ -1404,6 +2430,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff0fc422_605932d9",
+        "filename": "core/fxcrt/fx_random.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7c6ac0c_077e8d29",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9920416d_0f33fb0d",
@@ -1417,6 +2461,24 @@
       "writtenOn": "2024-02-02T18:00:47Z",
       "side": 1,
       "message": "pBuf points to the start of MTContext::mt which has a fixed size of MT_N. The loop ensures 0 \u003c kk \u003c MT_N - MT_M. Since MT_M \u003c MT_T, `kk`, `kk + 1` and `kk + (MT_N - MT_M)` are all in range of `pBuf`, and `kk + MT_M \u003c MT_N` is also in range of `pBuf`.\n\n`mag` has size 2, and `anything \u0026 1 \u003c 2`",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b008c103_5210612e",
+        "filename": "core/fxcrt/fx_random.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9920416d_0f33fb0d",
       "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -1563,6 +2625,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eddb0812_4caced73",
+        "filename": "core/fxcrt/fx_string.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "avoided via std::array. woo.",
+      "parentUuid": "5c92b319_b466d32e",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "102f8b91_b737e34a",
@@ -1576,6 +2656,24 @@
       "writtenOn": "2024-02-02T18:00:47Z",
       "side": 1,
       "message": "`str` points at the start of the string, which is a character or a terminating NUL. `*str` is non-NUL from the condition above, so `str` is pointing inside the string. Afterward, `str` may be pointing at the terminating NUL.",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ac23f71_e2f79eab",
+        "filename": "core/fxcrt/fx_system.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "102f8b91_b737e34a",
       "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -1597,6 +2695,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cde7e228_c9721c82",
+        "filename": "core/fxcrt/fx_system.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e72f3da9_7a3cee11",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "18279752_7a1d3740",
@@ -1610,6 +2726,24 @@
       "writtenOn": "2024-02-02T18:00:47Z",
       "side": 1,
       "message": "agree, we don\u0027t know the length of str and we don\u0027t check it.",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d6d2ddd_882db0fd",
+        "filename": "core/fxcrt/fx_system.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18279752_7a1d3740",
       "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -1631,6 +2765,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "894c206e_57b411b5",
+        "filename": "core/fxcrt/fx_system.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e3e00a3_68a002dc",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa676800_28dc9a2c",
@@ -1644,6 +2796,24 @@
       "writtenOn": "2024-02-02T18:00:47Z",
       "side": 1,
       "message": "The loop breaks when if `*str1` is non-NUL but `*str2` is NUL (as checked by `f !\u003d l`), so `str2` is always inside its string.",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7459668a_b87b00c8",
+        "filename": "core/fxcrt/fx_system.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa676800_28dc9a2c",
       "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -1665,6 +2835,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e889a79_d5b972b2",
+        "filename": "core/fxcrt/fx_system.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0b39236_3f4db2cb",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7e5c765d_41970d8e",
@@ -1678,6 +2866,24 @@
       "writtenOn": "2024-02-02T18:00:47Z",
       "side": 1,
       "message": "The loop breaks when if `*str1` is non-NUL but `*str2` is NUL (as checked by `f !\u003d l`), so `str2` is always inside its string.",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1949bf3e_41b9013b",
+        "filename": "core/fxcrt/fx_system.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e5c765d_41970d8e",
       "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -1699,6 +2905,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "53a29e6b_2713f3a9",
+        "filename": "core/fxcrt/fx_unicode.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3c49b9c_2d545330",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "716b2a6e_9495980a",
@@ -1712,6 +2936,24 @@
       "writtenOn": "2024-02-02T18:00:47Z",
       "side": 1,
       "message": "kExtendedTextLayoutCodePropertiesSize is the size of the kExtendedTextLayoutCodeProperties buffer, so the condition above verifies `idk` is in range.",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56ff9cf1_2f22c807",
+        "filename": "core/fxcrt/fx_unicode.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "716b2a6e_9495980a",
       "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -1733,6 +2975,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "319b6a37_7e8ab2d8",
+        "filename": "core/fxcrt/fx_unicode.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee32c587_ee67884c",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2cf76bd7_f23240e4",
@@ -1746,6 +3006,24 @@
       "writtenOn": "2024-02-02T18:00:47Z",
       "side": 1,
       "message": "This should be UNSAFE_BUFFER_USAGE, and have its requirements documented.",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8d253e3_a34282ec",
+        "filename": "core/fxcrt/string_data_template.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2cf76bd7_f23240e4",
       "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -1767,6 +3045,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d091b951_92e78f9f",
+        "filename": "core/fxcrt/string_data_template.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "Length calculations in this class always exclude the terminating NUL, but the allocation is always made so as to accomodate it.",
+      "parentUuid": "1bb5ee93_2f726d7f",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "db805692_cf4b8734",
@@ -1780,6 +3076,24 @@
       "writtenOn": "2024-02-02T18:00:47Z",
       "side": 1,
       "message": "The caller guarantees that pStr points to at least `nLen` elements and that m_String has at least `nLen + 1` elements.",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "292c5cb8_c810af2d",
+        "filename": "core/fxcrt/string_data_template.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db805692_cf4b8734",
       "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -1801,6 +3115,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a178ad0_b34f47f3",
+        "filename": "core/fxcrt/string_data_template.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08ec659d_f164f593",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b4b04cde_d8f3a185",
@@ -1814,6 +3146,24 @@
       "writtenOn": "2024-02-02T18:00:47Z",
       "side": 1,
       "message": "also seems off by one?",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09261013_66a99193",
+        "filename": "core/fxcrt/string_data_template.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4b04cde_d8f3a185",
       "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -1835,6 +3185,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "38c2d28d_520cff33",
+        "filename": "core/fxcrt/string_data_template.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd181765_42750185",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9dfd19e5_b312998b",
@@ -1848,6 +3216,24 @@
       "writtenOn": "2024-02-02T18:00:47Z",
       "side": 1,
       "message": "This should be UNSAFE_BUFFER_USAGE, and have its requirements documented.",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fba5c4c5_ecbf8917",
+        "filename": "core/fxcrt/string_data_template.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9dfd19e5_b312998b",
       "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -1869,6 +3255,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e9ab182_51263e5a",
+        "filename": "core/fxcrt/string_data_template.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74d3e8cb_3c71cf45",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d51e2374_cb3fc6a2",
@@ -1886,6 +3290,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "45ce750d_e41627fd",
+        "filename": "core/fxcrt/string_data_template.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d51e2374_cb3fc6a2",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "693c98db_83fa2672",
@@ -1899,6 +3321,24 @@
       "writtenOn": "2024-02-02T18:00:47Z",
       "side": 1,
       "message": "Document the guarantees the caller must satisfy?",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fc1bbd0_05924cd8",
+        "filename": "core/fxcrt/widestring.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "Now TODOs().",
+      "parentUuid": "693c98db_83fa2672",
       "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -2099,6 +3539,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "db5c40ed_00961044",
+        "filename": "third_party/base/containers/span.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "Marked this entire file as \"TODO(): take the annotated version from base\".",
+      "parentUuid": "6c2e02dd_49bf7494",
+      "range": {
+        "startLine": 264,
+        "startChar": 28,
+        "endLine": 264,
+        "endChar": 29
+      },
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dfae46e0_130a2486",
@@ -2112,6 +3576,30 @@
       "writtenOn": "2024-02-02T18:00:47Z",
       "side": 1,
       "message": "The CHECK() above ensures `index` is in range of `data_` since `data_` points to at least `size_` many elements when `size_ \u003e 0` (an invariant of span). If size is 0, index can not be smaller, so the CHECK would fail.",
+      "range": {
+        "startLine": 277,
+        "startChar": 15,
+        "endLine": 277,
+        "endChar": 29
+      },
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f625b2ca_f7bcbbb2",
+        "filename": "third_party/base/containers/span.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "dfae46e0_130a2486",
       "range": {
         "startLine": 277,
         "startChar": 15,
@@ -2139,6 +3627,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "946b8d19_79a1a472",
+        "filename": "third_party/base/containers/span.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "de146869_1cd7bb0c",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bf3442fa_66171745",
@@ -2152,6 +3658,24 @@
       "writtenOn": "2024-02-02T18:00:47Z",
       "side": 1,
       "message": "`data_` (and begin()) points to at least `size_` many elements when `size_ \u003e 0` (an invariant of span), so adding `size_` gives the pointer one-past-the-end of `data_`\u0027s range. If size_ is 0, then this is nullptr + 0 which is also defined to return nullptr.",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f67a934_4b566381",
+        "filename": "third_party/base/containers/span.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:34:00Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "bf3442fa_66171745",
       "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
