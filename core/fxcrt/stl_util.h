@@ -7,6 +7,8 @@
 
 #include <memory>
 
+#include "third_party/base/check_op.h"
+#include "third_party/base/compiler_specific.h"
 #include "third_party/base/numerics/safe_conversions.h"
 
 namespace fxcrt {
@@ -38,6 +40,23 @@ ResultType CollectionSize(const Collection& collection) {
 template <typename IndexType, typename Collection>
 bool IndexInBounds(const Collection& collection, IndexType index) {
   return index >= 0 && index < CollectionSize<IndexType>(collection);
+}
+
+// Convenience routines to get bounds-checked iterators from indicies.
+template <typename T>
+T::iterator IterAfterBegin(T& container, size_t index) {
+  CHECK_LT(index, container.size());
+  // SAFTEY: CHECK() above ensures index is in bounds, so begin + index
+  // is also in bouns.
+  return UNSAFE_BUFFERS(container.begin() + index);
+}
+
+template <typename T>
+T::iterator IterBeforeEnd(T& container, size_t index) {
+  CHECK_LT(index, container.size());
+  // SAFTEY: CHECK() above ensures index is in bounds, so end - index
+  // is also in bounds.
+  return UNSAFE_BUFFERS(container.end() - index);
 }
 
 }  // namespace fxcrt

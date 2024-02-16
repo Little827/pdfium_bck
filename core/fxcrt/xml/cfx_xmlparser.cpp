@@ -19,6 +19,7 @@
 #include "core/fxcrt/fx_codepage.h"
 #include "core/fxcrt/fx_extension.h"
 #include "core/fxcrt/fx_safe_types.h"
+#include "core/fxcrt/stl_util.h"
 #include "core/fxcrt/xml/cfx_xmlchardata.h"
 #include "core/fxcrt/xml/cfx_xmldocument.h"
 #include "core/fxcrt/xml/cfx_xmlelement.h"
@@ -473,9 +474,13 @@ void CFX_XMLParser::ProcessTextChar(wchar_t character) {
     // Copy the entity out into a string and remove from the vector. When we
     // copy the entity we don't want to copy out the & or the ; so we start
     // shifted by one and want to copy 2 less characters in total.
-    WideString csEntity(current_text_.data() + entity_start_.value() + 1,
-                        current_text_.size() - entity_start_.value() - 2);
-    current_text_.erase(current_text_.begin() + entity_start_.value(),
+    WideString csEntity;
+    {
+      auto span = pdfium::make_span(current_text_).subspan(entity_start_.value());
+      auto view = WideStringView(span.subspan(1, span.size() - 2));
+      csEntity = WideString(view);
+    }
+    current_text_.erase(fxcrt::IterAfterBegin(current_text_, entity_start_.value()),
                         current_text_.end());
 
     size_t iLen = csEntity.GetLength();
