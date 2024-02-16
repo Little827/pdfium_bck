@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7212ab95_f2ca9fd9",
+        "filename": "core/fxcrt/string_template.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T00:00:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07e60ef9_694eac9a",
+      "range": {
+        "startLine": 147,
+        "startChar": 57,
+        "endLine": 147,
+        "endChar": 63
+      },
+      "revId": "845fda154c9b74d931e847f9813d7398cde03551",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d35d117e_e8cf2873",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-02-15T22:57:14Z",
       "side": 1,
       "message": "Want to use StringView here?",
+      "range": {
+        "startLine": 43,
+        "startChar": 2,
+        "endLine": 43,
+        "endChar": 30
+      },
+      "revId": "845fda154c9b74d931e847f9813d7398cde03551",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0bfe837_7a48ec8f",
+        "filename": "core/fxcrt/string_template.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T00:00:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d35d117e_e8cf2873",
       "range": {
         "startLine": 43,
         "startChar": 2,
