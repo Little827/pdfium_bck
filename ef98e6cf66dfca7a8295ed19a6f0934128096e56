@@ -3401,6 +3401,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a14b51a9_159abf7a",
+        "filename": "core/fxcrt/widestring.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:35:28Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "fd9d8a63_bf632459",
+      "range": {
+        "startLine": 100,
+        "startChar": 15,
+        "endLine": 100,
+        "endChar": 74
+      },
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21076914_81e8a577",
@@ -3414,6 +3438,24 @@
       "writtenOn": "2024-02-02T18:00:47Z",
       "side": 1,
       "message": "The CHECK() ensures `index` is in range of m_String",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86bd18e4_50158742",
+        "filename": "core/fxcrt/widestring.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:35:28Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "21076914_81e8a577",
       "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -3435,6 +3477,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5905cf9e_86ef268b",
+        "filename": "core/fxcrt/widestring.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:35:28Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "3458c658_5aa549d2",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "943a4283_5f0105a3",
@@ -3448,6 +3508,24 @@
       "writtenOn": "2024-02-02T18:00:47Z",
       "side": 1,
       "message": "`iLen` is the length of `csEntity`, and the loops ensures `i \u003c iLen` so `i` is in range of `csEntity`.",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81d7be9d_2d3a53c1",
+        "filename": "core/fxcrt/xml/cfx_xmlparser.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:35:28Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "943a4283_5f0105a3",
       "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -3469,6 +3547,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3975c431_a53aba21",
+        "filename": "core/fxcrt/xml/cfx_xmlparser.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:35:28Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "f81ca9a4_a20ee4a7",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "adfb2211_4d930c9c",
@@ -3482,6 +3578,30 @@
       "writtenOn": "2024-02-02T18:00:47Z",
       "side": 1,
       "message": "We want each _Pragma to be on its own line (as recommended by gcc\u0027s documentation of _Pragma), and I think that applies to expansions to _Pragma as well.",
+      "range": {
+        "startLine": 90,
+        "startChar": 28,
+        "endLine": 90,
+        "endChar": 47
+      },
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d38e592_f7339ad7",
+        "filename": "third_party/base/compiler_specific.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:35:28Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "adfb2211_4d930c9c",
       "range": {
         "startLine": 90,
         "startChar": 28,
