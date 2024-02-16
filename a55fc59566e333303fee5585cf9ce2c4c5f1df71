@@ -16,6 +16,23 @@
       "message": "Nice.",
       "revId": "a55fc59566e333303fee5585cf9ce2c4c5f1df71",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8958b960_1b4797d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5645
+      },
+      "writtenOn": "2024-02-16T16:56:17Z",
+      "side": 1,
+      "message": "G-account approval stamp.",
+      "revId": "a55fc59566e333303fee5585cf9ce2c4c5f1df71",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
