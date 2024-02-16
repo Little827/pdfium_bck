@@ -2500,6 +2500,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d4c4eaa_c34c1a14",
+        "filename": "core/fxcrt/fx_random.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:38:41Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "a105f8df_82d9eccc",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ee7432fe_33e3b051",
@@ -2513,6 +2531,24 @@
       "writtenOn": "2024-02-02T18:00:47Z",
       "side": 1,
       "message": "pBuf points to the start of MTContext::mt which has a fixed size of MT_N. The loop ensures 0 \u003c kk \u003c MT_N - MT_M. Since MT_M \u003c MT_T, `kk`, `kk + 1` and `kk + (MT_N - MT_M)` are all in range of `pBuf`, and `kk + MT_M \u003c MT_N` is also in range of `pBuf`.\n\n`mag` has size 2, and `anything \u0026 1 \u003c 2`",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6940a1e_0ce92e8b",
+        "filename": "core/fxcrt/fx_random.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:38:41Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "ee7432fe_33e3b051",
       "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -2534,6 +2570,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8e09a1d_9e2df6ba",
+        "filename": "core/fxcrt/fx_random.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:38:41Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "ac55c839_84d9c81b",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4f1d8bf_0696669e",
@@ -2551,6 +2605,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "465b6bfb_d9e2a2f5",
+        "filename": "core/fxcrt/fx_random.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:38:41Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "f4f1d8bf_0696669e",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "15f36754_a852402a",
@@ -2564,6 +2636,24 @@
       "writtenOn": "2024-02-02T18:00:47Z",
       "side": 1,
       "message": "`pBuf` points to the start of `MTContext::mt` which has a fixed size of `MT_N`. pMTC-\u003emti was reset to 0 above if pMTC-\u003emti \u003e\u003d MT_N, so `mti` will be in range of `pBuf`.",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "761cfef9_03669eb5",
+        "filename": "core/fxcrt/fx_random.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:38:41Z",
+      "side": 1,
+      "message": "Coded out of existence.",
+      "parentUuid": "15f36754_a852402a",
       "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -2591,6 +2681,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ebc9d3a_8f037cb2",
+        "filename": "core/fxcrt/fx_random.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:38:41Z",
+      "side": 1,
+      "message": "Coded around issue.",
+      "parentUuid": "486f59f6_2a199618",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 19
+      },
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d8db1f04_34774b93",
@@ -2604,6 +2718,24 @@
       "writtenOn": "2024-02-02T18:00:47Z",
       "side": 1,
       "message": "pBuffer points to at least iCount many elements as guaranteed by the caller. The loop runs `iCount` many times so `pBuffer` is always in range when incremented.",
+      "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81301228_4daa1b60",
+        "filename": "core/fxcrt/fx_random.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:38:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8db1f04_34774b93",
       "revId": "ef98e6cf66dfca7a8295ed19a6f0934128096e56",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
