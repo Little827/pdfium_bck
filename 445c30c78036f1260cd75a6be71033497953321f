@@ -22,6 +22,30 @@
       },
       "revId": "445c30c78036f1260cd75a6be71033497953321f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cf8fb5a_7b88a2db",
+        "filename": "core/fxcrt/span.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T00:12:15Z",
+      "side": 1,
+      "message": "Or did we decide that namespace fxcrt was in violation of some guideline and we were moving to pdfium:: ?",
+      "parentUuid": "ba541ec6_f2988c4f",
+      "range": {
+        "startLine": 24,
+        "startChar": 10,
+        "endLine": 24,
+        "endChar": 16
+      },
+      "revId": "445c30c78036f1260cd75a6be71033497953321f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
