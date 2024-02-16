@@ -35,6 +35,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f7f209d_c997b2d9",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-02-16T07:38:22Z",
+      "side": 1,
+      "message": "The Gerrit web interface also lets the CL author and reviewers interact via comments. Usually one would use the \"done\" button to mark comments as resolved. Then use the \"reply\" button at the top of the page to public all the draft replies.",
+      "parentUuid": "7d09277b_33660dc4",
+      "revId": "375b91aacc0116c340fbfd98c7ef234890cace0d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f1ebaa33_35eb8328",
@@ -54,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0f95f98d_d29b8c69",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1505,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-02-16T07:38:22Z",
+      "side": 1,
+      "message": "`git cl format` would also add a couple sets of missing curly braces.",
+      "parentUuid": "f1ebaa33_35eb8328",
+      "revId": "375b91aacc0116c340fbfd98c7ef234890cace0d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0d9beda1_8b3042f5",
         "filename": "public/fpdf_annot.h",
         "patchSetId": 1
@@ -65,6 +101,24 @@
       "writtenOn": "2024-02-12T23:12:08Z",
       "side": 1,
       "message": "Same here. Keep the list sorted.",
+      "revId": "375b91aacc0116c340fbfd98c7ef234890cace0d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b0729bb_9540414c",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-02-16T07:38:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d9beda1_8b3042f5",
       "revId": "375b91aacc0116c340fbfd98c7ef234890cace0d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },

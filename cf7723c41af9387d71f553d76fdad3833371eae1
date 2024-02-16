@@ -1,0 +1,141 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f29ee4a1_97173867",
+        "filename": "AUTHORS",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-02-16T07:38:22Z",
+      "side": 1,
+      "message": "Please avoid changing the line ending on the file. Notice how every line has changed in the Gerrit web interface.",
+      "revId": "cf7723c41af9387d71f553d76fdad3833371eae1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12f73a07_4f53b9cd",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1483,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-02-16T07:38:22Z",
+      "side": 1,
+      "message": "Is this check necessary? Isn\u0027t line 1494 going to do the same check?",
+      "revId": "cf7723c41af9387d71f553d76fdad3833371eae1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bad0964e_862f094d",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1487,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-02-16T07:38:22Z",
+      "side": 1,
+      "message": "While the code base has many pre-existing variables that use Hungarian Notation, for new code, it is preferable to use Google C++ style. e.g. This can be \"annot_dict\", like on line 1469.",
+      "range": {
+        "startLine": 1487,
+        "startChar": 29,
+        "endLine": 1487,
+        "endChar": 39
+      },
+      "revId": "cf7723c41af9387d71f553d76fdad3833371eae1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1411798f_ca5699bb",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1498,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-02-16T07:38:22Z",
+      "side": 1,
+      "message": "Should lines 1493-1498 be combined into one? If GetMutableDirectObjectFor() returns a null RetainPtr, the function as a whole would still return nullptr, right?",
+      "revId": "cf7723c41af9387d71f553d76fdad3833371eae1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f56731d6_83164803",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 3835,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-02-16T07:38:22Z",
+      "side": 1,
+      "message": "Please add another test case and make sure the new APIs handle bad inputs correctly. By which, I mean nullptrs and empty strings, not malformed PDFs.",
+      "revId": "cf7723c41af9387d71f553d76fdad3833371eae1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4881f96_a3eb0bc7",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 973,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-02-16T07:38:22Z",
+      "side": 1,
+      "message": "\"from\"",
+      "range": {
+        "startLine": 973,
+        "startChar": 22,
+        "endLine": 973,
+        "endChar": 24
+      },
+      "revId": "cf7723c41af9387d71f553d76fdad3833371eae1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef433b39_9b410545",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 982,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-02-16T07:38:22Z",
+      "side": 1,
+      "message": "\"to\"",
+      "range": {
+        "startLine": 982,
+        "startChar": 38,
+        "endLine": 982,
+        "endChar": 39
+      },
+      "revId": "cf7723c41af9387d71f553d76fdad3833371eae1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
