@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75cb0877_42be67d4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T17:10:21Z",
+      "side": 1,
+      "message": "Would suggest keeping the /debug and /win sub-directories.",
+      "revId": "395e111fcbbc9ba2986c977215d37a26b58b73a3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
