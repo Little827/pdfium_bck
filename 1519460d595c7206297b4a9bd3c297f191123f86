@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66fd6d4e_a56241ee",
+        "filename": "core/fxcrt/xml/cfx_xmlparser.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T18:17:08Z",
+      "side": 1,
+      "message": "NOTE: FWIW, I introduced some deliberate botches in the indexing here, and confirmed that test CFX_XMLParserTest.Entities fails after doing so.",
+      "range": {
+        "startLine": 479,
+        "startChar": 8,
+        "endLine": 479,
+        "endChar": 21
+      },
+      "revId": "1519460d595c7206297b4a9bd3c297f191123f86",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
