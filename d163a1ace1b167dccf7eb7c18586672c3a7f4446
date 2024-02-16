@@ -80,6 +80,30 @@
       },
       "revId": "d163a1ace1b167dccf7eb7c18586672c3a7f4446",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25550949_8e975276",
+        "filename": "third_party/agg23/0003-ubsan-render-line-error.patch",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T23:09:19Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "c31ed3eb_5b523c0c",
+      "range": {
+        "startLine": 9,
+        "startChar": 16,
+        "endLine": 9,
+        "endChar": 21
+      },
+      "revId": "d163a1ace1b167dccf7eb7c18586672c3a7f4446",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
