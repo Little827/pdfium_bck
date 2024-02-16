@@ -56,7 +56,7 @@ class CFX_XMLParser final {
 
   UnownedPtr<CFX_XMLNode> current_node_;
   RetainPtr<CFX_SeekableStreamProxy> stream_;
-  DataVector<wchar_t> current_text_;
+  WideString current_text_;
   size_t xml_plane_size_ = 1024;
   std::optional<size_t> entity_start_;
 };
