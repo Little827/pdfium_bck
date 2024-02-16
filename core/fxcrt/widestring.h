@@ -119,8 +119,8 @@ class WideString : public StringTemplate<wchar_t> {
 
   // Trim a canonical set of characters from the widestring.
   void TrimUsual();
-  void TrimUsualLeft();
-  void TrimUsualRight();
+  void TrimUsualFront();
+  void TrimUsualBack();
 
   int GetInteger() const;
 

@@ -110,8 +110,8 @@ class ByteString : public StringTemplate<char> {
 
   // Remove a canonical set of characters from the string.
   void TrimUsual();
-  void TrimUsualRight();
-  void TrimUsualLeft();
+  void TrimUsualBack();
+  void TrimUsualFront();
 
   uint32_t GetID() const { return AsStringView().GetID(); }
 

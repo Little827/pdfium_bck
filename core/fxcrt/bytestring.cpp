@@ -355,16 +355,16 @@ int ByteString::Compare(ByteStringView str) const {
 }
 
 void ByteString::TrimUsual() {
-  TrimUsualRight();
-  TrimUsualLeft();
+  TrimUsualBack();
+  TrimUsualFront();
 }
 
-void ByteString::TrimUsualLeft() {
-  TrimLeft(kTrimChars);
+void ByteString::TrimUsualFront() {
+  TrimFront(kTrimChars);
 }
 
-void ByteString::TrimUsualRight() {
-  TrimRight(kTrimChars);
+void ByteString::TrimUsualBack() {
+  TrimBack(kTrimChars);
 }
 std::ostream& operator<<(std::ostream& os, const ByteString& str) {
   return os.write(str.c_str(), str.GetLength());
