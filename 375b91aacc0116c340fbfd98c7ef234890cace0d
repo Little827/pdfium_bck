@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c7cd91d_c59832e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3284391
+      },
+      "writtenOn": "2024-02-16T12:53:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b49dec64_7f9f51ed",
+      "revId": "375b91aacc0116c340fbfd98c7ef234890cace0d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7d09277b_33660dc4",
@@ -48,6 +66,24 @@
       "writtenOn": "2024-02-16T07:38:22Z",
       "side": 1,
       "message": "The Gerrit web interface also lets the CL author and reviewers interact via comments. Usually one would use the \"done\" button to mark comments as resolved. Then use the \"reply\" button at the top of the page to public all the draft replies.",
+      "parentUuid": "7d09277b_33660dc4",
+      "revId": "375b91aacc0116c340fbfd98c7ef234890cace0d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9dc625a_d6e2c5f7",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 3284391
+      },
+      "writtenOn": "2024-02-16T12:53:05Z",
+      "side": 1,
+      "message": "Done",
       "parentUuid": "7d09277b_33660dc4",
       "revId": "375b91aacc0116c340fbfd98c7ef234890cace0d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
@@ -88,6 +124,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "96500c1f_ae2982f8",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1505,
+      "author": {
+        "id": 3284391
+      },
+      "writtenOn": "2024-02-16T12:53:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1ebaa33_35eb8328",
+      "revId": "375b91aacc0116c340fbfd98c7ef234890cace0d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d9beda1_8b3042f5",
@@ -123,6 +177,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8872c6b6_b9571828",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 3284391
+      },
+      "writtenOn": "2024-02-16T12:53:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d9beda1_8b3042f5",
+      "revId": "375b91aacc0116c340fbfd98c7ef234890cace0d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2aca62a_b551d334",
@@ -136,6 +208,24 @@
       "writtenOn": "2024-02-12T23:12:08Z",
       "side": 1,
       "message": "Would it be possible to add tests for the new APIs in pdfium_embeddertests?",
+      "revId": "375b91aacc0116c340fbfd98c7ef234890cace0d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91b9e8f6_e51dfd80",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 972,
+      "author": {
+        "id": 3284391
+      },
+      "writtenOn": "2024-02-16T12:53:05Z",
+      "side": 1,
+      "message": "To be honest, I am not good at writing tests, as well as in the C++ language. So mistakes are possible.\n\nIn theory, it is enough to check that FileSpec is created and read from the annotation.",
+      "parentUuid": "c2aca62a_b551d334",
       "revId": "375b91aacc0116c340fbfd98c7ef234890cace0d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }

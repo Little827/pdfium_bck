@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dad64b95_0dfb3414",
+        "filename": "AUTHORS",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3284391
+      },
+      "writtenOn": "2024-02-16T12:53:05Z",
+      "side": 1,
+      "message": "It\u0027s weird. I did not change the line ending. It\u0027s still 0X0D 0x0A. And I have now compared the files in the HEX editor and the only change is my name|email.",
+      "parentUuid": "f29ee4a1_97173867",
+      "revId": "cf7723c41af9387d71f553d76fdad3833371eae1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "12f73a07_4f53b9cd",
         "filename": "fpdfsdk/fpdf_annot.cpp",
         "patchSetId": 5
@@ -31,6 +49,24 @@
       "writtenOn": "2024-02-16T07:38:22Z",
       "side": 1,
       "message": "Is this check necessary? Isn\u0027t line 1494 going to do the same check?",
+      "revId": "cf7723c41af9387d71f553d76fdad3833371eae1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbb7090a_f837a834",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1483,
+      "author": {
+        "id": 3284391
+      },
+      "writtenOn": "2024-02-16T12:53:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12f73a07_4f53b9cd",
       "revId": "cf7723c41af9387d71f553d76fdad3833371eae1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -58,6 +94,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "51922430_6a04d105",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1487,
+      "author": {
+        "id": 3284391
+      },
+      "writtenOn": "2024-02-16T12:53:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bad0964e_862f094d",
+      "range": {
+        "startLine": 1487,
+        "startChar": 29,
+        "endLine": 1487,
+        "endChar": 39
+      },
+      "revId": "cf7723c41af9387d71f553d76fdad3833371eae1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1411798f_ca5699bb",
@@ -75,6 +135,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e203cda2_0739be21",
+        "filename": "fpdfsdk/fpdf_annot.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1498,
+      "author": {
+        "id": 3284391
+      },
+      "writtenOn": "2024-02-16T12:53:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1411798f_ca5699bb",
+      "revId": "cf7723c41af9387d71f553d76fdad3833371eae1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f56731d6_83164803",
@@ -88,6 +166,24 @@
       "writtenOn": "2024-02-16T07:38:22Z",
       "side": 1,
       "message": "Please add another test case and make sure the new APIs handle bad inputs correctly. By which, I mean nullptrs and empty strings, not malformed PDFs.",
+      "revId": "cf7723c41af9387d71f553d76fdad3833371eae1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "739608a2_1f1c4d5f",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 3835,
+      "author": {
+        "id": 3284391
+      },
+      "writtenOn": "2024-02-16T12:53:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f56731d6_83164803",
       "revId": "cf7723c41af9387d71f553d76fdad3833371eae1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -115,6 +211,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "205cc346_26a1cee3",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 973,
+      "author": {
+        "id": 3284391
+      },
+      "writtenOn": "2024-02-16T12:53:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4881f96_a3eb0bc7",
+      "range": {
+        "startLine": 973,
+        "startChar": 22,
+        "endLine": 973,
+        "endChar": 24
+      },
+      "revId": "cf7723c41af9387d71f553d76fdad3833371eae1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef433b39_9b410545",
@@ -128,6 +248,30 @@
       "writtenOn": "2024-02-16T07:38:22Z",
       "side": 1,
       "message": "\"to\"",
+      "range": {
+        "startLine": 982,
+        "startChar": 38,
+        "endLine": 982,
+        "endChar": 39
+      },
+      "revId": "cf7723c41af9387d71f553d76fdad3833371eae1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "894bfc66_d77aaf77",
+        "filename": "public/fpdf_annot.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 982,
+      "author": {
+        "id": 3284391
+      },
+      "writtenOn": "2024-02-16T12:53:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef433b39_9b410545",
       "range": {
         "startLine": 982,
         "startChar": 38,
