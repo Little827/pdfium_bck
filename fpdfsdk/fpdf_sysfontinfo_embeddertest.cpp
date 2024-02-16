@@ -103,13 +103,14 @@ class FPDFSysFontInfoEmbedderTest : public EmbedderTest {
   void TearDown() override {
     EmbedderTest::TearDown();
 
+    EmbedderTestEnvironment::GetInstance()->ReleaseFontInfo();
+
+    // After releasing the font info from its user, it is safe to free it.
+    FPDF_FreeDefaultSystemFontInfo(font_info_);
+
     // Bouncing the library is the only reliable way to undo the
     // FPDF_SetSystemFontInfo() call at the moment.
     EmbedderTestEnvironment::GetInstance()->TearDown();
-
-    // After shutdown, it is safe to release the font info.
-    FPDF_FreeDefaultSystemFontInfo(font_info_);
-
     EmbedderTestEnvironment::GetInstance()->SetUp();
   }
 

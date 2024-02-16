@@ -14,7 +14,10 @@ class TestFonts {
   ~TestFonts();
 
   const char** font_paths() { return font_paths_.data(); }
+
   void InstallFontMapper();
+
+  void ReleaseFontInfo();
 
   static std::string RenameFont(const char* face);
 

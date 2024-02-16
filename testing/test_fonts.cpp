@@ -108,6 +108,12 @@ void TestFonts::InstallFontMapper() {
       font_mapper->TakeSystemFontInfo()));
 }
 
+void TestFonts::ReleaseFontInfo() {
+  auto* font_mapper = CFX_GEModule::Get()->GetFontMgr()->GetBuiltinMapper();
+  std::unique_ptr<SystemFontInfoIface> info = font_mapper->TakeSystemFontInfo();
+  // Delete `info` when it goes out of scope here.
+}
+
 // static
 std::string TestFonts::RenameFont(const char* face) {
   ByteString renamed_face = RenameFontForTesting(face);

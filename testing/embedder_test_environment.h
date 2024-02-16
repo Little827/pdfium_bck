@@ -26,6 +26,8 @@ class EmbedderTestEnvironment : public testing::Environment {
 
   void AddFlags(int argc, char** argv);
 
+  void ReleaseFontInfo();
+
   bool write_pngs() const { return write_pngs_; }
 
  private:

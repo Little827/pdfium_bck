@@ -69,6 +69,10 @@ void EmbedderTestEnvironment::AddFlags(int argc, char** argv) {
     AddFlag(argv[i]);
 }
 
+void EmbedderTestEnvironment::ReleaseFontInfo() {
+  test_fonts_.ReleaseFontInfo();
+}
+
 void EmbedderTestEnvironment::AddFlag(const std::string& flag) {
   if (flag == "--write-pngs") {
     write_pngs_ = true;
