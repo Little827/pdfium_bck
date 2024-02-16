@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa7c9e8f_313b7887",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-16T17:01:46Z",
+      "side": 1,
+      "message": "I like that prt_util and stl_util are now in the same directory",
+      "revId": "568aafc9a73ff4f2c8ec3b22332e6cdb74e904fe",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
