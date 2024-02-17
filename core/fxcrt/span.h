@@ -18,8 +18,13 @@
 #include "third_party/base/compiler_specific.h"
 
 #if defined(PDF_USE_PARTITION_ALLOC)
+UNSAFE_HEADERS_BEGIN()
 #include "partition_alloc/pointers/raw_ptr.h"
-#endif
+UNSAFE_HEADERS_END()
+#endif  // defined(PDF_USE_PARTITION_ALLOC)
+
+// SAFETY: TODO(tsepez): this entire file is to be replaced with the fully
+// annotated on that is being prepared in base/.
 
 namespace pdfium {
 
@@ -259,7 +264,7 @@ class TRIVIAL_ABI GSL_POINTER span {
   const span subspan(size_t pos, size_t count = dynamic_extent) const {
     CHECK(pos <= size_);
     CHECK(count == dynamic_extent || count <= size_ - pos);
-    return span(static_cast<T*>(data_) + pos,
+    return span(UNSAFE_BUFFERS(static_cast<T*>(data_) + pos),
                 count == dynamic_extent ? size_ - pos : count);
   }
 
@@ -271,7 +276,7 @@ class TRIVIAL_ABI GSL_POINTER span {
   // [span.elem], span element access
   T& operator[](size_t index) const noexcept {
     CHECK(index < size_);
-    return static_cast<T*>(data_)[index];
+    return UNSAFE_BUFFERS(static_cast<T*>(data_)[index]);
   }
 
   constexpr T& front() const noexcept {
@@ -281,14 +286,16 @@ class TRIVIAL_ABI GSL_POINTER span {
 
   constexpr T& back() const noexcept {
     CHECK(!empty());
-    return *(data() + size() - 1);
+    return UNSAFE_BUFFERS(*(data() + size() - 1));
   }
 
   constexpr T* data() const noexcept { return static_cast<T*>(data_); }
 
   // [span.iter], span iterator support
   constexpr iterator begin() const noexcept { return static_cast<T*>(data_); }
-  constexpr iterator end() const noexcept { return begin() + size_; }
+  constexpr iterator end() const noexcept {
+    return UNSAFE_BUFFERS(begin() + size_);
+  }
 
   constexpr const_iterator cbegin() const noexcept { return begin(); }
   constexpr const_iterator cend() const noexcept { return end(); }
