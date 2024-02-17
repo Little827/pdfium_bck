@@ -104,6 +104,24 @@
       "parentUuid": "54af75a3_5e704501",
       "revId": "c493d61e9a942524f5736f29aeb1fd886134daa5",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf141efd_be8e38c2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-02-17T00:28:00Z",
+      "side": 1,
+      "message": "The issue is well-understood now. No need to keep this CL open. A re-upload cleared the problem anyhow.",
+      "parentUuid": "02529f1e_57b38386",
+      "revId": "c493d61e9a942524f5736f29aeb1fd886134daa5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
