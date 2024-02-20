@@ -28,8 +28,7 @@ class CodePointView final {
     }
 
     Iterator& operator++() {
-      DCHECK_LT(current_, end_);
-      current_ += IsSupplementary(code_point_) ? 2 : 1;
+      current_ = next_;
       code_point_ = Decode();
       return *this;
     }
@@ -44,43 +43,36 @@ class CodePointView final {
 
     static constexpr char32_t kSentinel = -1;
 
-    Iterator(const wchar_t* begin, const wchar_t* end)
-        : current_(begin), end_(end), code_point_(Decode()) {}
+    explicit Iterator(WideStringView str_view)
+        : current_(str_view), code_point_(Decode()) {}
 
     char32_t Decode() {
-      if (current_ >= end_) {
+      if (current_.IsEmpty()) {
         return kSentinel;
       }
-
-      char32_t code_point = *current_;
+      char32_t code_point = current_.Front();
+      next_ = current_.Substr(1);
       if (IsHighSurrogate(code_point)) {
-        const wchar_t* next = current_ + 1;
-        if (next < end_ && IsLowSurrogate(*next)) {
-          code_point = SurrogatePair(code_point, *next).ToCodePoint();
+        if (!next_.IsEmpty() && IsLowSurrogate(next_.Front())) {
+          code_point = SurrogatePair(code_point, next_.Front()).ToCodePoint();
+          next_ = next_.Substr(1);
         }
       }
-
       return code_point;
     }
 
-    const wchar_t* current_;
-    const wchar_t* end_;
+    WideStringView current_;
+    WideStringView next_;
     char32_t code_point_;
   };
 
-  explicit CodePointView(WideStringView backing)
-      : begin_(backing.begin()), end_(backing.end()) {
-    DCHECK_LE(begin_, end_);
-  }
+  explicit CodePointView(WideStringView backing) : backing_(backing) {}
 
-  Iterator begin() const { return Iterator(begin_, end_); }
-
-  Iterator end() const { return Iterator(end_, end_); }
+  Iterator begin() const { return Iterator(backing_); }
+  Iterator end() const { return Iterator(WideStringView()); }
 
  private:
-  // Note that a `WideStringView` member would make the constructor too complex.
-  const wchar_t* begin_;
-  const wchar_t* end_;
+  WideStringView backing_;
 };
 #else
 using CodePointView = WideStringView;
