@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2133e7cd_b7e1a03a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-02-20T22:52:57Z",
+      "side": 1,
+      "message": "In build/build_config.h, in theory WCHAR_T_IS_16_BIT could be defined on some non-Windows platforms. But we can worry about that when someone complains.",
+      "revId": "ab24673255e59ae9088e5a3cd0b6849bf91d971f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
