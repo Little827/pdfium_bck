@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b59a4c2_a07dc3ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-20T20:57:31Z",
+      "side": 1,
+      "message": "Will be smaller after precursor CL land ...",
+      "revId": "d63a4c9ae3d8db32b46ca604d77b2ff361b62db3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
