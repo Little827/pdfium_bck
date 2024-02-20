@@ -15,6 +15,7 @@
 #include "core/fxcrt/fx_safe_types.h"
 #include "third_party/base/check.h"
 #include "third_party/base/check_op.h"
+#include "third_party/base/compiler_specific.h"
 
 namespace fxcrt {
 
@@ -68,27 +69,37 @@ void StringDataTemplate<CharType>::CopyContents(
          (other.m_nDataLength + 1) * sizeof(CharType));
 }
 
+// SAFETY: Caller guarantees m_String was allocated to hold `str.size()`
+// characters plus a terminating NUL.
 template <typename CharType>
-void StringDataTemplate<CharType>::CopyContents(
+UNSAFE_BUFFER_USAGE void StringDataTemplate<CharType>::CopyContents(
     pdfium::span<const CharType> str) {
-  FXSYS_memcpy(m_String, str.data(), str.size_bytes());
-  m_String[str.size()] = 0;
+  UNSAFE_BUFFERS({
+    FXSYS_memcpy(m_String, str.data(), str.size_bytes());
+    m_String[str.size()] = 0;
+  });
 }
 
+// SAFETY: Caller guarantees m_String was allocated to hold `str.size()`
+// characters stating at `offset` plus a terminating NUL.
 template <typename CharType>
-void StringDataTemplate<CharType>::CopyContentsAt(
+UNSAFE_BUFFER_USAGE void StringDataTemplate<CharType>::CopyContentsAt(
     size_t offset,
     pdfium::span<const CharType> str) {
-  FXSYS_memcpy(m_String + offset, str.data(), str.size_bytes());
-  m_String[offset + str.size()] = 0;
+  UNSAFE_BUFFERS({
+    FXSYS_memcpy(m_String + offset, str.data(), str.size_bytes());
+    m_String[offset + str.size()] = 0;
+  });
 }
 
+// SAFETY: Caller guarantees that m_String has at least dataLen + 1 characters.
 template <typename CharType>
-StringDataTemplate<CharType>::StringDataTemplate(size_t dataLen,
-                                                 size_t allocLen)
+UNSAFE_BUFFER_USAGE StringDataTemplate<CharType>::StringDataTemplate(
+    size_t dataLen,
+    size_t allocLen)
     : m_nDataLength(dataLen), m_nAllocLength(allocLen) {
-  DCHECK_LE(dataLen, allocLen);
-  m_String[dataLen] = 0;
+  CHECK_LE(dataLen, allocLen);
+  UNSAFE_BUFFERS(m_String[dataLen] = 0);
 }
 
 // Instantiate.
