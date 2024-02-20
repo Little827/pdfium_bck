@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9183d8a6_42f30750",
+        "filename": "core/fxcrt/string_template.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-02-20T23:18:00Z",
+      "side": 1,
+      "message": "Why not just iterate through `find_span` instead?",
+      "revId": "7a94b9bbc154c16594b5e09cbdea75220a46608b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
