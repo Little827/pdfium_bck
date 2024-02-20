@@ -9,6 +9,7 @@
 #include "core/fxcrt/string_view_template.h"
 #include "core/fxcrt/utf16.h"
 #include "third_party/base/check_op.h"
+#include "third_party/base/compiler_specific.h"
 
 namespace pdfium {
 
