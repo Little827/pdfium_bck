@@ -15,6 +15,7 @@
 #include "core/fxcrt/span_util.h"
 #include "third_party/base/check.h"
 #include "third_party/base/check_op.h"
+#include "third_party/base/compiler_specific.h"
 
 namespace fxcrt {
 
