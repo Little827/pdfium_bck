@@ -87,6 +87,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8ae182e_c61fdc6b",
+        "filename": "core/fxcrt/fx_system.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-21T21:28:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d8a4625_275ed6cc",
+      "revId": "048ce86e531ad700bcf06409150753d718140b38",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3094f8c0_7b7d2570",
@@ -104,6 +122,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6ba5d22_78e42104",
+        "filename": "core/fxcrt/fx_unicode.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-21T21:28:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3094f8c0_7b7d2570",
+      "revId": "048ce86e531ad700bcf06409150753d718140b38",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "15c2b966_be65da16",
@@ -117,6 +153,30 @@
       "writtenOn": "2024-02-21T18:27:11Z",
       "side": 1,
       "message": "nitto",
+      "range": {
+        "startLine": 81,
+        "startChar": 12,
+        "endLine": 81,
+        "endChar": 49
+      },
+      "revId": "048ce86e531ad700bcf06409150753d718140b38",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d742b773_34e0db86",
+        "filename": "core/fxcrt/fx_unicode.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-21T21:28:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15c2b966_be65da16",
       "range": {
         "startLine": 81,
         "startChar": 12,
@@ -150,6 +210,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "38525fd6_c86eec52",
+        "filename": "core/fxcrt/fx_unicode.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-21T21:28:18Z",
+      "side": 1,
+      "message": "Done (the k-constants are indeed just legacy from the original C-like code).",
+      "parentUuid": "d1467dcb_ad8bc8a1",
+      "range": {
+        "startLine": 156,
+        "startChar": 14,
+        "endLine": 156,
+        "endChar": 41
+      },
+      "revId": "048ce86e531ad700bcf06409150753d718140b38",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0e72c8be_0b077ae6",
@@ -163,6 +247,30 @@
       "writtenOn": "2024-02-21T18:27:11Z",
       "side": 1,
       "message": "one",
+      "range": {
+        "startLine": 21,
+        "startChar": 13,
+        "endLine": 21,
+        "endChar": 15
+      },
+      "revId": "048ce86e531ad700bcf06409150753d718140b38",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f065898_7d94d804",
+        "filename": "core/fxcrt/span.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-21T21:28:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e72c8be_0b077ae6",
       "range": {
         "startLine": 21,
         "startChar": 13,
@@ -244,6 +352,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "20878a28_3d64468c",
+        "filename": "core/fxcrt/string_data_template.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-21T21:28:18Z",
+      "side": 1,
+      "message": "Tho I think these can be made safe via other primitives. See https://pdfium-review.googlesource.com/c/pdfium/+/116890?forceReload\u003dtrue",
+      "parentUuid": "51466d69_83311159",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 19
+      },
+      "revId": "048ce86e531ad700bcf06409150753d718140b38",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "23825ac7_9c97f004",
@@ -257,6 +389,24 @@
       "writtenOn": "2024-02-21T18:27:11Z",
       "side": 1,
       "message": "use std::ranges::count\n```suggestion\n  size_t count \u003d std::ranges::count(span(), chRemove);\n```",
+      "revId": "048ce86e531ad700bcf06409150753d718140b38",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53225f68_a6777a14",
+        "filename": "core/fxcrt/string_template.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-21T21:28:18Z",
+      "side": 1,
+      "message": "Nope.  Not fully C++20 in all embedders.",
+      "parentUuid": "23825ac7_9c97f004",
       "revId": "048ce86e531ad700bcf06409150753d718140b38",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
