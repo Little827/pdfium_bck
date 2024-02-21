@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b9e004e_9cfb3595",
+        "filename": "fpdfsdk/fpdf_view.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1154,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-21T18:42:00Z",
+      "side": 1,
+      "message": "Need comment about how this is a leak?",
+      "range": {
+        "startLine": 1154,
+        "startChar": 0,
+        "endLine": 1154,
+        "endChar": 62
+      },
+      "revId": "5dce682d9154f87301666058d6909883d1b7c14b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
