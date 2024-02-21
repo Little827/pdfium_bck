@@ -16,6 +16,149 @@
       "message": "Ok, let\u0027s take another look. thanks!",
       "revId": "048ce86e531ad700bcf06409150753d718140b38",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d53fc4b_36351c71",
+        "filename": "core/fxcrt/fx_system.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-21T18:27:11Z",
+      "side": 1,
+      "message": "I wonder if we can have some sort of CString primitive that encapsulates the unsafety by watching for the terminating null, and is just unsafe to construct (promise there\u0027s a null in bounds!!)",
+      "revId": "048ce86e531ad700bcf06409150753d718140b38",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3094f8c0_7b7d2570",
+        "filename": "core/fxcrt/fx_unicode.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-21T18:27:11Z",
+      "side": 1,
+      "message": "nit: `idx \u003c std::size(kTextLayoutCodeProperties)` would be even more clear, maybe the constant doesn\u0027t need to exist anymore.",
+      "revId": "048ce86e531ad700bcf06409150753d718140b38",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15c2b966_be65da16",
+        "filename": "core/fxcrt/fx_unicode.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-21T18:27:11Z",
+      "side": 1,
+      "message": "nitto",
+      "range": {
+        "startLine": 81,
+        "startChar": 12,
+        "endLine": 81,
+        "endChar": 49
+      },
+      "revId": "048ce86e531ad700bcf06409150753d718140b38",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1467dcb_ad8bc8a1",
+        "filename": "core/fxcrt/fx_unicode.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-21T18:27:11Z",
+      "side": 1,
+      "message": "nitto",
+      "range": {
+        "startLine": 156,
+        "startChar": 14,
+        "endLine": 156,
+        "endChar": 41
+      },
+      "revId": "048ce86e531ad700bcf06409150753d718140b38",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e72c8be_0b077ae6",
+        "filename": "core/fxcrt/span.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-21T18:27:11Z",
+      "side": 1,
+      "message": "one",
+      "range": {
+        "startLine": 21,
+        "startChar": 13,
+        "endLine": 21,
+        "endChar": 15
+      },
+      "revId": "048ce86e531ad700bcf06409150753d718140b38",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ccec83f2_c38a0a6f",
+        "filename": "core/fxcrt/string_data_template.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-21T18:27:11Z",
+      "side": 1,
+      "message": "Shouldn\u0027t these go in the header too? Otherwise callers won\u0027t know about it",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 19
+      },
+      "revId": "048ce86e531ad700bcf06409150753d718140b38",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23825ac7_9c97f004",
+        "filename": "core/fxcrt/string_template.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-21T18:27:11Z",
+      "side": 1,
+      "message": "use std::ranges::count\n```suggestion\n  size_t count \u003d std::ranges::count(span(), chRemove);\n```",
+      "revId": "048ce86e531ad700bcf06409150753d718140b38",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
