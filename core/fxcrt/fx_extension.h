@@ -13,6 +13,8 @@
 #include <wctype.h>
 
 #include "build/build_config.h"
+#include "third_party/base/check_op.h"
+#include "third_party/base/compiler_specific.h"
 
 #if defined(USE_SYSTEM_ICUUC)
 #include <unicode/uchar.h>
@@ -114,6 +116,17 @@ void FXSYS_IntToTwoHexChars(uint8_t n, char* buf);
 void FXSYS_IntToFourHexChars(uint16_t n, char* buf);
 
 size_t FXSYS_ToUTF16BE(uint32_t unicode, char* buf);
+
+// Safe ways to advance a C-style string pointer ensuring the terminating
+// NUL character is never skipped, returning a NULL ptr should an attempt
+// be made to advace the pointer past the NUL. This helps avoid the use of
+// UNSAFE_BUFFERS and its corresponding safety justification.
+template <typename T>
+inline T* FXSYS_CStringAdvance(T* ptr) {
+  // SAFETY: Caller promises there is a NUL char in-bounds, and NUL-check
+  // is performed in question-mark operator.
+  return *ptr ? UNSAFE_BUFFERS(ptr + 1) : nullptr;
+}
 
 // Strict order over floating types where NaNs may be present.
 // All NaNs are treated as equal to each other and greater than infinity.
