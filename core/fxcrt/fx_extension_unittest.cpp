@@ -244,3 +244,25 @@ TEST(fxcrt, FXSYS_SafeOps) {
     }
   }
 }
+
+TEST(fxcrt, CStringAdvance) {
+  const char* empty = "";
+  EXPECT_EQ(nullptr, FXSYS_CStringAdvance(empty));
+
+  const char* fred = "fred";
+  EXPECT_EQ('f', *fred);
+  fred = FXSYS_CStringAdvance(fred);
+  ASSERT_NE(nullptr, fred);
+  EXPECT_EQ('r', *fred);
+  fred = FXSYS_CStringAdvance(fred);
+  ASSERT_NE(nullptr, fred);
+  EXPECT_EQ('e', *fred);
+  fred = FXSYS_CStringAdvance(fred);
+  ASSERT_NE(nullptr, fred);
+  EXPECT_EQ('d', *fred);
+  fred = FXSYS_CStringAdvance(fred);
+  ASSERT_NE(nullptr, fred);
+  EXPECT_EQ('\0', *fred);
+  fred = FXSYS_CStringAdvance(fred);
+  EXPECT_EQ(nullptr, fred);
+}
