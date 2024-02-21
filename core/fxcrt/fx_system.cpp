@@ -26,9 +26,9 @@ IntType FXSYS_StrToInt(const CharType* str) {
 
   // Process the sign.
   bool neg = *str == '-';
-  if (neg || *str == '+')
-    str++;
-
+  if (neg || *str == '+') {
+    str = FXSYS_CStringAdvance(str);
+  }
   IntType num = 0;
   while (*str && FXSYS_IsDecimalDigit(*str)) {
     IntType val = FXSYS_DecimalCharToInt(*str);
@@ -37,15 +37,13 @@ IntType FXSYS_StrToInt(const CharType* str) {
         // Return MIN when the represented number is signed type and is smaller
         // than the min value.
         return std::numeric_limits<IntType>::min();
-      } else {
-        // Return MAX when the represented number is signed type and is larger
-        // than the max value, or the number is unsigned type and out of range.
-        return std::numeric_limits<IntType>::max();
       }
+      // Return MAX when the represented number is signed type and is larger
+      // than the max value, or the number is unsigned type and out of range.
+      return std::numeric_limits<IntType>::max();
     }
-
     num = num * 10 + val;
-    str++;
+    str = FXSYS_CStringAdvance(str);
   }
   // When it is a negative value, -num should be returned. Since num may be of
   // unsigned type, use ~num + 1 to avoid the warning of applying unary minus
