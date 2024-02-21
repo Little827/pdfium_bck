@@ -15,6 +15,7 @@
 #include "core/fxcrt/span_util.h"
 #include "third_party/base/check.h"
 #include "third_party/base/check_op.h"
+#include "third_party/base/compiler_specific.h"
 
 namespace fxcrt {
 
@@ -83,8 +84,9 @@ void StringDataTemplate<CharType>::CopyContentsAt(
 }
 
 template <typename CharType>
-StringDataTemplate<CharType>::StringDataTemplate(size_t dataLen,
-                                                 size_t allocLen)
+StringDataTemplate<CharType>::StringDataTemplate(
+    size_t dataLen,
+    size_t allocLen)
     : m_nDataLength(dataLen), m_nAllocLength(allocLen) {
   capacity_span()[dataLen] = 0;
 }
