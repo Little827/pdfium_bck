@@ -51,6 +51,24 @@
       "parentUuid": "c4656681_56f6ac87",
       "revId": "62ed2fd72b18df8b0b6fb1a6252648ee4e0d92b8",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8ba84b4_0625a3e4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-02-22T21:55:46Z",
+      "side": 1,
+      "message": "Thanks for the ping. This kept getting buried as there were a lot of things going on with the recent Buganizer migration and what not.\n\ntsepez@ has done a lot of work recently to make PDFium string classes more templated, so we can always add a new UTF-16 CoW string type later, if it turns out to be significantly useful. Let\u0027s stick with std::u16string for now.",
+      "parentUuid": "2a26efea_cadf01ce",
+      "revId": "62ed2fd72b18df8b0b6fb1a6252648ee4e0d92b8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
