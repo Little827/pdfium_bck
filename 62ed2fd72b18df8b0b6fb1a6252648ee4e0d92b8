@@ -69,6 +69,23 @@
       "parentUuid": "2a26efea_cadf01ce",
       "revId": "62ed2fd72b18df8b0b6fb1a6252648ee4e0d92b8",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c84d986a_e302cc18",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-02-22T21:56:18Z",
+      "side": 1,
+      "message": "Someone else needs to their G-stamp of approval.",
+      "revId": "62ed2fd72b18df8b0b6fb1a6252648ee4e0d92b8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
