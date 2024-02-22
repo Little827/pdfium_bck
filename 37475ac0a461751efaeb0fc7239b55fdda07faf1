@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d008424_90bc71f4",
+        "filename": "core/fxcrt/fx_extension.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-22T00:17:09Z",
+      "side": 1,
+      "message": "Alas, this seems like it needs to be a check, playing around on compiler explorer, the ?:nullptr code gets optimized out due to UB on subsequent deref.  Kinda want to return badptr (e.g. (char*)~(uintptr_t)15) instead of nullptr :).",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 14
+      },
+      "revId": "37475ac0a461751efaeb0fc7239b55fdda07faf1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}

@@ -70,6 +70,30 @@
       },
       "revId": "0cab3d50c01e6fefb63412879a0233fb1de39670",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "436ee270_06e7fd1c",
+        "filename": "core/fxcrt/fx_extension.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-22T00:17:09Z",
+      "side": 1,
+      "message": "Problem is that we\u0027d have to implement all the other kinds of operators for this type as well and make sure they interop cleanly with all the other string representations.  I\u0027m reluctant to introduce yet another kind of string.",
+      "parentUuid": "9afd5a1b_02d2598f",
+      "range": {
+        "startLine": 125,
+        "startChar": 10,
+        "endLine": 125,
+        "endChar": 30
+      },
+      "revId": "0cab3d50c01e6fefb63412879a0233fb1de39670",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
