@@ -1,6 +1,40 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "beba63bc_6447c416",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-22T14:31:09Z",
+      "side": 1,
+      "message": "It does look useful, I agree",
+      "revId": "37475ac0a461751efaeb0fc7239b55fdda07faf1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50957143_f0a9f52f",
+        "filename": "core/fxcrt/fx_extension.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-22T14:31:09Z",
+      "side": 1,
+      "message": "nit: move the SAFETY comment on top of the UNSAFE_BUFFERS() directly",
+      "revId": "37475ac0a461751efaeb0fc7239b55fdda07faf1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9d008424_90bc71f4",
@@ -44,6 +78,57 @@
         "endLine": 128,
         "endChar": 14
       },
+      "revId": "37475ac0a461751efaeb0fc7239b55fdda07faf1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2817e259_f8d51a82",
+        "filename": "core/fxcrt/fx_extension_unittest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-22T14:31:09Z",
+      "side": 1,
+      "message": "EXPECT_DEATH then?",
+      "revId": "37475ac0a461751efaeb0fc7239b55fdda07faf1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85df7520_a8f2433a",
+        "filename": "core/fxcrt/fx_system.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-22T14:31:09Z",
+      "side": 1,
+      "message": "I think technically FXSYS_CStringAdvance is still UNSAFE_BUFFER_USAGE because you can hand it an incorrect buffer and it will walk off the end of it. The precondition is much easier to state than arithmetic that doesn\u0027t check for null though.",
+      "revId": "37475ac0a461751efaeb0fc7239b55fdda07faf1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c593c7f_f3af4b76",
+        "filename": "core/fxcrt/widestring.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-22T14:31:09Z",
+      "side": 1,
+      "message": "// SAFETY: pStr[0..3] have been examined above and are non-NUL. Since pStr is a NUL-terminated string, advancing past them will remain inside the string\u0027s allocation.",
       "revId": "37475ac0a461751efaeb0fc7239b55fdda07faf1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
