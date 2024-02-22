@@ -36,7 +36,7 @@ WideString ChangeSlashToPlatform(const wchar_t* str) {
     } else {
       result += *str;
     }
-    str++;
+    str = FXSYS_CStringAdvance(str);
   }
   return result;
 }
@@ -44,12 +44,12 @@ WideString ChangeSlashToPlatform(const wchar_t* str) {
 WideString ChangeSlashToPDF(const wchar_t* str) {
   WideString result;
   while (*str) {
-    if (*str == '\\' || *str == ':')
+    if (*str == '\\' || *str == ':') {
       result += L'/';
-    else
+    } else {
       result += *str;
-
-    str++;
+    }
+    str = FXSYS_CStringAdvance(str);
   }
   return result;
 }
