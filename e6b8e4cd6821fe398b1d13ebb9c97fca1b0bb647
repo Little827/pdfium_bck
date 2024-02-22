@@ -16,6 +16,86 @@
       "message": "CL is ready (for discussion).",
       "revId": "e6b8e4cd6821fe398b1d13ebb9c97fca1b0bb647",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ebf19a9_99c37b39",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-22T20:59:55Z",
+      "side": 1,
+      "message": "I like it",
+      "revId": "e6b8e4cd6821fe398b1d13ebb9c97fca1b0bb647",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb934199_166bbdbe",
+        "filename": "core/fxcrt/c_string_template.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-22T20:59:55Z",
+      "side": 1,
+      "message": "Do we need default construct?",
+      "revId": "e6b8e4cd6821fe398b1d13ebb9c97fca1b0bb647",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6751adf5_9072209c",
+        "filename": "core/fxcrt/c_string_template.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-22T20:59:55Z",
+      "side": 1,
+      "message": "\u003d default.\n\nYou can omit all copy/move/dtor and get them all for free too.",
+      "range": {
+        "startLine": 45,
+        "startChar": 63,
+        "endLine": 48,
+        "endChar": 3
+      },
+      "revId": "e6b8e4cd6821fe398b1d13ebb9c97fca1b0bb647",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7e13da5_c45f71f9",
+        "filename": "core/fxcrt/widestring.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-22T20:59:55Z",
+      "side": 1,
+      "message": "`UNSAFE_BUFFERS(WCString(format))` is how it\u0027ll need to be spelt once the compiler checks ctors",
+      "range": {
+        "startLine": 367,
+        "startChar": 28,
+        "endLine": 367,
+        "endChar": 60
+      },
+      "revId": "e6b8e4cd6821fe398b1d13ebb9c97fca1b0bb647",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
