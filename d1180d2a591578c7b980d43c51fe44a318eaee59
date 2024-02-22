@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac6f9a45_5c28abab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5645
+      },
+      "writtenOn": "2024-02-22T00:16:44Z",
+      "side": 1,
+      "message": "G-account stamp.\n\nLet me know when this lands as all existing CLs will need to rebase past it.",
+      "revId": "d1180d2a591578c7b980d43c51fe44a318eaee59",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
