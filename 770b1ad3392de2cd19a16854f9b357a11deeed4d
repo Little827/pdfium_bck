@@ -39,6 +39,23 @@
       "message": "LG otherwise.",
       "revId": "770b1ad3392de2cd19a16854f9b357a11deeed4d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8356ae03_c4f8c0da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5645
+      },
+      "writtenOn": "2024-02-22T18:44:45Z",
+      "side": 1,
+      "message": "G-stamp approval (modulo change description saying CPDF_Font).",
+      "revId": "770b1ad3392de2cd19a16854f9b357a11deeed4d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
