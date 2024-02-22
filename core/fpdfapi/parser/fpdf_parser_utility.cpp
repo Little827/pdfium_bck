@@ -111,7 +111,7 @@ ByteString PDF_NameDecode(ByteStringView orig) {
 }
 
 ByteString PDF_NameEncode(const ByteString& orig) {
-  const uint8_t* src_buf = reinterpret_cast<const uint8_t*>(orig.c_str());
+  const uint8_t* src_buf = reinterpret_cast<const uint8_t*>(orig.c_str().get());
   int src_len = orig.GetLength();
   int dest_len = 0;
   int i;

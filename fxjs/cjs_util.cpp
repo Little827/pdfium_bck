@@ -213,7 +213,7 @@ CJS_Result CJS_Util::printd(CJS_Runtime* pRuntime,
 
   // Convert PDF-style format specifiers to wcsftime specifiers. Remove any
   // pre-existing %-directives before inserting our own.
-  std::wstring cFormat = pRuntime->ToWideString(params[0]).c_str();
+  std::wstring cFormat = pRuntime->ToWideString(params[0]).c_str().get();
   cFormat.erase(std::remove(cFormat.begin(), cFormat.end(), '%'),
                 cFormat.end());
 

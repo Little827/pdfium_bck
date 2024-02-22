@@ -2214,4 +2214,24 @@ TEST(WideString, FX_HashCode_Wide) {
             FX_HashCode_GetLoweredW(L"AB\xff"));
 }
 
+TEST(WCString, Normal) {
+  WCString empty;
+  EXPECT_EQ(nullptr, empty.get());
+
+  UNSAFE_BUFFERS(WCString blank(L""));
+  EXPECT_NE(nullptr, blank.get());
+  EXPECT_DEATH((++blank), "");
+
+  blank = L"";
+  EXPECT_NE(nullptr, blank.get());
+  EXPECT_DEATH((++blank), "");
+
+  UNSAFE_BUFFERS(WCString boo(L"boo"));
+  EXPECT_EQ(L'b', *boo++);
+  EXPECT_EQ(L'o', *boo++);
+  EXPECT_EQ(L'o', *boo++);
+  EXPECT_EQ(L'\0', *boo);
+  EXPECT_DEATH((boo++), "");
+}
+
 }  // namespace fxcrt
