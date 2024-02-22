@@ -28,13 +28,8 @@ IntType FXSYS_StrToInt(const CharType* str) {
   // Process the sign.
   bool neg = *str == '-';
   if (neg || *str == '+') {
-    // SAFETY: `str` points at the start of the string, which is a character or
-    // a terminating NUL. `*str` is non-NUL from the condition above, so str is
-    // pointing inside the string. Afterward, str may be pointing at the
-    // terminating NUL.
-    UNSAFE_BUFFERS(str++);
+    str = FXSYS_CStringAdvance(str);
   }
-
   IntType num = 0;
   while (*str && FXSYS_IsDecimalDigit(*str)) {
     IntType val = FXSYS_DecimalCharToInt(*str);
@@ -49,11 +44,7 @@ IntType FXSYS_StrToInt(const CharType* str) {
       return std::numeric_limits<IntType>::max();
     }
     num = num * 10 + val;
-
-    // SAFETY: The loop terminates if `str` is ever pointing at the terminating
-    // NUL. `str` is only moved by one character at at time, so inside the loop
-    // `str` always points inside the string.
-    UNSAFE_BUFFERS(str++);
+    str = FXSYS_CStringAdvance(str);
   }
   // When it is a negative value, -num should be returned. Since num may be of
   // unsigned type, use ~num + 1 to avoid the warning of applying unary minus
@@ -163,7 +154,7 @@ char* FXSYS_strlwr(char* str) {
   char* s = str;
   while (*str) {
     *str = tolower(*str);
-    UNSAFE_BUFFERS(str++);  // SAFETY: NUL check in while condition.
+    str = FXSYS_CStringAdvance(str);
   }
   return s;
 }
@@ -175,7 +166,7 @@ char* FXSYS_strupr(char* str) {
   char* s = str;
   while (*str) {
     *str = toupper(*str);
-    UNSAFE_BUFFERS(str++);  // SAFETY: NUL check in while condition.
+    str = FXSYS_CStringAdvance(str);
   }
   return s;
 }
@@ -187,7 +178,7 @@ wchar_t* FXSYS_wcslwr(wchar_t* str) {
   wchar_t* s = str;
   while (*str) {
     *str = FXSYS_towlower(*str);
-    UNSAFE_BUFFERS(str++);  // SAFETY: NUL check in while condition.
+    str = FXSYS_CStringAdvance(str);
   }
   return s;
 }
@@ -199,7 +190,7 @@ wchar_t* FXSYS_wcsupr(wchar_t* str) {
   wchar_t* s = str;
   while (*str) {
     *str = FXSYS_towupper(*str);
-    UNSAFE_BUFFERS(str++);  // SAFETY: NUL check in while condition.
+    str = FXSYS_CStringAdvance(str);
   }
   return s;
 }
