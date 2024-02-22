@@ -52,6 +52,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5df3b287_6ae06ec6",
+        "filename": "core/fxcrt/c_string_template.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-22T21:36:42Z",
+      "side": 1,
+      "message": "Probably not, but me no like uninit smart pointers under any possibility.",
+      "parentUuid": "eb934199_166bbdbe",
+      "revId": "e6b8e4cd6821fe398b1d13ebb9c97fca1b0bb647",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6751adf5_9072209c",
@@ -75,6 +93,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "57bedd40_d9742b26",
+        "filename": "core/fxcrt/c_string_template.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-22T21:36:42Z",
+      "side": 1,
+      "message": "Really? It knows how to pick the member to assign the pointer? Even without implicit construction from T* ? Anyways, didn\u0027t get this to work.",
+      "parentUuid": "6751adf5_9072209c",
+      "range": {
+        "startLine": 45,
+        "startChar": 63,
+        "endLine": 48,
+        "endChar": 3
+      },
+      "revId": "e6b8e4cd6821fe398b1d13ebb9c97fca1b0bb647",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e7e13da5_c45f71f9",
@@ -88,6 +130,30 @@
       "writtenOn": "2024-02-22T20:59:55Z",
       "side": 1,
       "message": "`UNSAFE_BUFFERS(WCString(format))` is how it\u0027ll need to be spelt once the compiler checks ctors",
+      "range": {
+        "startLine": 367,
+        "startChar": 28,
+        "endLine": 367,
+        "endChar": 60
+      },
+      "revId": "e6b8e4cd6821fe398b1d13ebb9c97fca1b0bb647",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39144979_510efdb6",
+        "filename": "core/fxcrt/widestring.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-22T21:36:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7e13da5_c45f71f9",
       "range": {
         "startLine": 367,
         "startChar": 28,
