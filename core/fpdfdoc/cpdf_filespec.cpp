@@ -18,6 +18,7 @@
 #include "core/fpdfapi/parser/cpdf_string.h"
 #include "core/fpdfapi/parser/fpdf_parser_decode.h"
 #include "core/fxcrt/check.h"
+#include "core/fxcrt/compiler_specific.h"
 #include "core/fxcrt/fx_system.h"
 #include "core/fxcrt/notreached.h"
 
@@ -36,7 +37,7 @@ WideString ChangeSlashToPlatform(const wchar_t* str) {
     } else {
       result += *str;
     }
-    str++;
+    str = FXSYS_CStringAdvance(str);
   }
   return result;
 }
@@ -44,12 +45,12 @@ WideString ChangeSlashToPlatform(const wchar_t* str) {
 WideString ChangeSlashToPDF(const wchar_t* str) {
   WideString result;
   while (*str) {
-    if (*str == '\\' || *str == ':')
+    if (*str == '\\' || *str == ':') {
       result += L'/';
-    else
+    } else {
       result += *str;
-
-    str++;
+    }
+    str = FXSYS_CStringAdvance(str);
   }
   return result;
 }
