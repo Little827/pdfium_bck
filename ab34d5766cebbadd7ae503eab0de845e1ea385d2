@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f65131c_fc005933",
+        "filename": "core/fpdfapi/page/cpdf_iccprofile.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-22T18:43:26Z",
+      "side": 1,
+      "message": "nit: maybe move scalars after pointers?",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 21
+      },
+      "revId": "ab34d5766cebbadd7ae503eab0de845e1ea385d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
