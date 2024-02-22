@@ -8,10 +8,12 @@
 #define CORE_FPDFAPI_PARSER_FPDF_PARSER_UTILITY_H_
 
 #include <iosfwd>
+#include <limits>
 #include <optional>
 #include <vector>
 
 #include "core/fxcrt/bytestring.h"
+#include "core/fxcrt/compiler_specific.h"
 #include "core/fxcrt/retain_ptr.h"
 
 class CPDF_Array;
@@ -23,16 +25,39 @@ class IFX_SeekableReadStream;
 extern const char kPDFCharTypes[256];
 
 inline bool PDFCharIsWhitespace(uint8_t c) {
-  return kPDFCharTypes[c] == 'W';
+  static_assert(std::numeric_limits<decltype(c)>::min() == 0);
+  static_assert(std::numeric_limits<decltype(c)>::max() <
+                std::size(kPDFCharTypes));
+
+  // SAFETY: previous static_asserts show table covers entire range.
+  return UNSAFE_BUFFERS(kPDFCharTypes[c]) == 'W';
 }
+
 inline bool PDFCharIsNumeric(uint8_t c) {
-  return kPDFCharTypes[c] == 'N';
+  static_assert(std::numeric_limits<decltype(c)>::min() == 0);
+  static_assert(std::numeric_limits<decltype(c)>::max() <
+                std::size(kPDFCharTypes));
+
+  // SAFETY: previous static_asserts show table covers entire range.
+  return UNSAFE_BUFFERS(kPDFCharTypes[c]) == 'N';
 }
+
 inline bool PDFCharIsDelimiter(uint8_t c) {
-  return kPDFCharTypes[c] == 'D';
+  static_assert(std::numeric_limits<decltype(c)>::min() == 0);
+  static_assert(std::numeric_limits<decltype(c)>::max() <
+                std::size(kPDFCharTypes));
+
+  // SAFETY: previous static_asserts show table covers entire range.
+  return UNSAFE_BUFFERS(kPDFCharTypes[c]) == 'D';
 }
+
 inline bool PDFCharIsOther(uint8_t c) {
-  return kPDFCharTypes[c] == 'R';
+  static_assert(std::numeric_limits<decltype(c)>::min() == 0);
+  static_assert(std::numeric_limits<decltype(c)>::max() <
+                std::size(kPDFCharTypes));
+
+  // SAFETY: previous static_asserts show table covers entire range.
+  return UNSAFE_BUFFERS(kPDFCharTypes[c]) == 'R';
 }
 
 inline bool PDFCharIsLineEnding(uint8_t c) {
