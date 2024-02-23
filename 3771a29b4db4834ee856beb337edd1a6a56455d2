@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5a07858_29f3fab4",
+        "filename": "core/fpdfapi/page/cpdf_pageobject.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-23T17:27:22Z",
+      "side": 0,
+      "message": "Shouldn\u0027t need to happen since nothing has changed.",
+      "parentUuid": "47531b51_8a51fc6a",
+      "revId": "3771a29b4db4834ee856beb337edd1a6a56455d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3264508d_87fbd46c",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-02-23T05:08:42Z",
       "side": 0,
       "message": "I suspect this API is at least slightly broken. It has no tests and it is not clear if it has any callers.",
+      "revId": "3771a29b4db4834ee856beb337edd1a6a56455d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43a0fd92_202a076e",
+        "filename": "fpdfsdk/fpdf_transformpage.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-23T17:27:22Z",
+      "side": 0,
+      "message": "Acknowledged.  Follow-up bug to add tests?",
+      "parentUuid": "3264508d_87fbd46c",
       "revId": "3771a29b4db4834ee856beb337edd1a6a56455d2",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
