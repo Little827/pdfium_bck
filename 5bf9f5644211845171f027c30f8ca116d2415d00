@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e6249fe_ab87b14f",
+        "filename": "core/fxcrt/c_string_template.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-23T14:52:15Z",
+      "side": 1,
+      "message": "I think we don\u0027t think we want to force it to convert to const, do we? The basic one would be `operator T*() { return ptr_; }`\n\nThis type isn\u0027t even going to be used in a const way really probably?",
+      "revId": "5bf9f5644211845171f027c30f8ca116d2415d00",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}

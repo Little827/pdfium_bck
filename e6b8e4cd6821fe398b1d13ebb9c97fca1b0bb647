@@ -70,6 +70,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "291cd67c_00fd643e",
+        "filename": "core/fxcrt/c_string_template.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-23T14:52:15Z",
+      "side": 1,
+      "message": "if there\u0027s no default ctor then it can\u0027t be left uninit either, it will need to be constructed from a char* (or a nullptr). keeping default is okay though",
+      "parentUuid": "5df3b287_6ae06ec6",
+      "revId": "e6b8e4cd6821fe398b1d13ebb9c97fca1b0bb647",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6751adf5_9072209c",
@@ -107,6 +125,30 @@
       "side": 1,
       "message": "Really? It knows how to pick the member to assign the pointer? Even without implicit construction from T* ? Anyways, didn\u0027t get this to work.",
       "parentUuid": "6751adf5_9072209c",
+      "range": {
+        "startLine": 45,
+        "startChar": 63,
+        "endLine": 48,
+        "endChar": 3
+      },
+      "revId": "e6b8e4cd6821fe398b1d13ebb9c97fca1b0bb647",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a96576b_6dfcecad",
+        "filename": "core/fxcrt/c_string_template.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-02-23T14:52:15Z",
+      "side": 1,
+      "message": "oh no i was sleepy i thought this was a copy ctor, sorry, ignore!",
+      "parentUuid": "57bedd40_d9742b26",
       "range": {
         "startLine": 45,
         "startChar": 63,
