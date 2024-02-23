@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "94c79e92_545337bb",
+        "filename": "DEPS",
+        "patchSetId": 12
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2024-02-23T23:50:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29543976_be874f63",
+      "revId": "e32c4b2e10ae28198cf429884d935150bfd6339c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be1c9e70_900ea0d9",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-02-23T22:07:36Z",
       "side": 1,
       "message": "Isn\u0027t this now the same checksum as line 1007?",
+      "revId": "e32c4b2e10ae28198cf429884d935150bfd6339c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20cc1c67_392735ea",
+        "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 1005,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2024-02-23T23:50:54Z",
+      "side": 1,
+      "message": "Yes - updated.",
+      "parentUuid": "be1c9e70_900ea0d9",
       "revId": "e32c4b2e10ae28198cf429884d935150bfd6339c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
