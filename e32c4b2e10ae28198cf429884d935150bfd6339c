@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29543976_be874f63",
+        "filename": "DEPS",
+        "patchSetId": 12
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-02-23T22:07:36Z",
+      "side": 1,
+      "message": "Please update before landing.",
+      "revId": "e32c4b2e10ae28198cf429884d935150bfd6339c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be1c9e70_900ea0d9",
+        "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 1005,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-02-23T22:07:36Z",
+      "side": 1,
+      "message": "Isn\u0027t this now the same checksum as line 1007?",
+      "revId": "e32c4b2e10ae28198cf429884d935150bfd6339c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
