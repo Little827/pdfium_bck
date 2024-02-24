@@ -98,8 +98,7 @@ class CFXJSE_FormCalcContextEmbedderTest : public XFAJSEmbedderTest {
     CFXJSE_ScopeUtil_IsolateHandleContext scope(GetJseContext());
     v8::Local<v8::Value> value = GetValue();
     EXPECT_TRUE(fxv8::IsString(value));
-    EXPECT_STREQ(expected,
-                 fxv8::ReentrantToByteStringHelper(isolate(), value).c_str())
+    EXPECT_EQ(expected, fxv8::ReentrantToByteStringHelper(isolate(), value))
         << "Program: " << input;
   }
 };
@@ -694,8 +693,9 @@ TEST_F(CFXJSE_FormCalcContextEmbedderTest, Decode) {
   ExecuteExpectString(R"(Decode("~%26^&*()_+|`{", "mbogo"))", "~&^&*()_+|`{");
   ExecuteExpectString(R"(Decode("~%26^&*()_+|`{"))", "~&^&*()_+|`{");
   ExecuteExpectString(R"(Decode("~%~~"))", "");
+  ExecuteExpectString(R"(Decode("?%f~"))", "");
   ExecuteExpectString(R"(Decode("?%~"))", "");
-  ExecuteExpectString(R"(Decode("?%"))", "?");
+  ExecuteExpectString(R"(Decode("?%"))", "");
 }
 
 TEST_F(CFXJSE_FormCalcContextEmbedderTest, Encode) {

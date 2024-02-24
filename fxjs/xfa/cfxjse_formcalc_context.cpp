@@ -566,16 +566,17 @@ WideString DecodeURL(const WideString& wsURL) {
       wsResultBuf.AppendChar(ch);
       continue;
     }
-
     wchar_t chTemp = 0;
     int32_t iCount = 0;
     while (iCount < 2) {
-      if (++i >= iLen)
-        break;
+      if (++i >= iLen) {
+        return WideString();
+      }
       chTemp *= 16;
       ch = pData[i];
-      if (!FXSYS_IsWideHexDigit(ch))
+      if (!FXSYS_IsWideHexDigit(ch)) {
         return WideString();
+      }
       chTemp += FXSYS_WideHexCharToInt(ch);
       ++iCount;
     }
