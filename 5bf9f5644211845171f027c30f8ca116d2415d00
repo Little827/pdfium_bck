@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4b45cf0a_325fe25c",
+        "filename": "core/fxcrt/c_string_template.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-24T02:04:39Z",
+      "side": 1,
+      "message": "e.g. I\u0027d like to be able to write:\n\nstatic constexpr CString kResourceKeys[] \u003d {\"ExtGState\", \"Font\", \"XObject\"};\n\nso that there\u0027s no question about UNSAFE_BUFFERS right from the beginning ..\n\nNot sure if there is a way to do this.",
+      "parentUuid": "a5e685e1_15060ee8",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 54
+      },
+      "revId": "5bf9f5644211845171f027c30f8ca116d2415d00",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5e6249fe_ab87b14f",
         "filename": "core/fxcrt/c_string_template.h",
         "patchSetId": 6
