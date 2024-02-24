@@ -76,7 +76,7 @@ TEST(cpdf_filespec, GetFileName) {
     };
     auto str_obj = pdfium::MakeRetain<CPDF_String>(nullptr, test_data.input);
     CPDF_FileSpec file_spec(str_obj);
-    EXPECT_STREQ(test_data.expected, file_spec.GetFileName().c_str());
+    EXPECT_EQ(test_data.expected, file_spec.GetFileName());
   }
   {
     // Dictionary object.
@@ -109,13 +109,13 @@ TEST(cpdf_filespec, GetFileName) {
     EXPECT_TRUE(file_spec.GetFileName().IsEmpty());
     for (size_t i = 0; i < std::size(keywords); ++i) {
       dict_obj->SetNewFor<CPDF_String>(keywords[i], test_data[i].input);
-      EXPECT_STREQ(test_data[i].expected, file_spec.GetFileName().c_str());
+      EXPECT_EQ(test_data[i].expected, file_spec.GetFileName());
     }
 
     // With all the former fields and 'FS' field suggests 'URL' type.
     dict_obj->SetNewFor<CPDF_String>("FS", "URL", false);
     // Url string is not decoded.
-    EXPECT_STREQ(test_data[4].input, file_spec.GetFileName().c_str());
+    EXPECT_EQ(test_data[4].input, file_spec.GetFileName());
   }
   {
     // Invalid object.
