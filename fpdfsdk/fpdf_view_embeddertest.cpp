@@ -1314,8 +1314,8 @@ TEST_F(FPDFViewEmbedderTest, GetXFAArrayData) {
     EXPECT_TRUE(FPDF_GetXFAPacketContent(document(), i, data_buffer.data(),
                                          data_buffer.size(), &buflen));
     EXPECT_EQ(kExpectedResults[i].content_length, buflen);
-    EXPECT_STREQ(kExpectedResults[i].content_checksum,
-                 GenerateMD5Base16(data_buffer).c_str());
+    EXPECT_EQ(kExpectedResults[i].content_checksum,
+              GenerateMD5Base16(data_buffer));
   }
 
   // Test bad parameters.
@@ -1355,8 +1355,7 @@ TEST_F(FPDFViewEmbedderTest, GetXFAStreamData) {
   EXPECT_TRUE(FPDF_GetXFAPacketContent(document(), 0, data_buffer.data(),
                                        data_buffer.size(), &buflen));
   EXPECT_EQ(121u, buflen);
-  EXPECT_STREQ("8f912eaa1e66c9341cb3032ede71e147",
-               GenerateMD5Base16(data_buffer).c_str());
+  EXPECT_EQ("8f912eaa1e66c9341cb3032ede71e147", GenerateMD5Base16(data_buffer));
 }
 
 TEST_F(FPDFViewEmbedderTest, GetXFADataForNoForm) {
@@ -1795,7 +1794,7 @@ TEST_F(PostScriptLevel2EmbedderTest, Rectangles) {
 
   std::vector<uint8_t> emf_normal = RenderPageWithFlagsToEmf(page, 0);
   std::string ps_data = GetPostScriptFromEmf(emf_normal);
-  EXPECT_STREQ(kExpectedRectanglePostScript, ps_data.c_str());
+  EXPECT_EQ(kExpectedRectanglePostScript, ps_data);
 
   // FPDF_REVERSE_BYTE_ORDER is ignored since PostScript is not bitmap-based.
   std::vector<uint8_t> emf_reverse_byte_order =
@@ -1812,7 +1811,7 @@ TEST_F(PostScriptLevel3EmbedderTest, Rectangles) {
 
   std::vector<uint8_t> emf_normal = RenderPageWithFlagsToEmf(page, 0);
   std::string ps_data = GetPostScriptFromEmf(emf_normal);
-  EXPECT_STREQ(kExpectedRectanglePostScript, ps_data.c_str());
+  EXPECT_EQ(kExpectedRectanglePostScript, ps_data);
 
   // FPDF_REVERSE_BYTE_ORDER is ignored since PostScript is not bitmap-based.
   std::vector<uint8_t> emf_reverse_byte_order =
@@ -1890,7 +1889,7 @@ TEST_F(PostScriptLevel2EmbedderTest, Image) {
 
   std::vector<uint8_t> emf = RenderPageWithFlagsToEmf(page, 0);
   std::string ps_data = GetPostScriptFromEmf(emf);
-  EXPECT_STREQ(kExpected, ps_data.c_str());
+  EXPECT_EQ(kExpected, ps_data);
 
   UnloadPage(page);
 }
@@ -1934,7 +1933,7 @@ restore
 
   std::vector<uint8_t> emf = RenderPageWithFlagsToEmf(page, 0);
   std::string ps_data = GetPostScriptFromEmf(emf);
-  EXPECT_STREQ(kExpected, ps_data.c_str());
+  EXPECT_EQ(kExpected, ps_data);
 
   UnloadPage(page);
 }
