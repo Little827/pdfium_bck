@@ -1795,7 +1795,7 @@ TEST_F(PostScriptLevel2EmbedderTest, Rectangles) {
 
   std::vector<uint8_t> emf_normal = RenderPageWithFlagsToEmf(page, 0);
   std::string ps_data = GetPostScriptFromEmf(emf_normal);
-  EXPECT_STREQ(kExpectedRectanglePostScript, ps_data.c_str());
+  EXPECT_EQ(kExpectedRectanglePostScript, ps_data);
 
   // FPDF_REVERSE_BYTE_ORDER is ignored since PostScript is not bitmap-based.
   std::vector<uint8_t> emf_reverse_byte_order =
@@ -1812,7 +1812,7 @@ TEST_F(PostScriptLevel3EmbedderTest, Rectangles) {
 
   std::vector<uint8_t> emf_normal = RenderPageWithFlagsToEmf(page, 0);
   std::string ps_data = GetPostScriptFromEmf(emf_normal);
-  EXPECT_STREQ(kExpectedRectanglePostScript, ps_data.c_str());
+  EXPECT_EQ(kExpectedRectanglePostScript, ps_data);
 
   // FPDF_REVERSE_BYTE_ORDER is ignored since PostScript is not bitmap-based.
   std::vector<uint8_t> emf_reverse_byte_order =
@@ -1890,7 +1890,7 @@ TEST_F(PostScriptLevel2EmbedderTest, Image) {
 
   std::vector<uint8_t> emf = RenderPageWithFlagsToEmf(page, 0);
   std::string ps_data = GetPostScriptFromEmf(emf);
-  EXPECT_STREQ(kExpected, ps_data.c_str());
+  EXPECT_EQ(kExpected, ps_data);
 
   UnloadPage(page);
 }
@@ -1934,7 +1934,7 @@ restore
 
   std::vector<uint8_t> emf = RenderPageWithFlagsToEmf(page, 0);
   std::string ps_data = GetPostScriptFromEmf(emf);
-  EXPECT_STREQ(kExpected, ps_data.c_str());
+  EXPECT_EQ(kExpected, ps_data);
 
   UnloadPage(page);
 }
