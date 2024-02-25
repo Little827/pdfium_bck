@@ -246,7 +246,7 @@ constexpr size_t kPDFDocEncodingTableFirstChar = 24;
 constexpr size_t kPDFDocEncodingNamesTableSize =
     CPDF_FontEncoding::kEncodingTableSize - kPDFDocEncodingTableFirstChar;
 
-const char* const kStandardEncodingNames[kEncodingNamesTableSize] = {
+const CString kStandardEncodingNames[kEncodingNamesTableSize] = {
     "space",
     "exclam",
     "quotedbl",
@@ -473,7 +473,7 @@ const char* const kStandardEncodingNames[kEncodingNamesTableSize] = {
     nullptr,
 };
 
-const char* const kAdobeWinAnsiEncodingNames[kEncodingNamesTableSize] = {
+const CString kAdobeWinAnsiEncodingNames[kEncodingNamesTableSize] = {
     "space",
     "exclam",
     "quotedbl",

@@ -93,8 +93,7 @@ void RemoveUnusedResources(RetainPtr<CPDF_Dictionary> resources_dict,
   // - ColorSpace
   // - Pattern
   // - Shading
-  static constexpr const char* kResourceKeys[] = {"ExtGState", "Font",
-                                                  "XObject"};
+  static constexpr CString kResourceKeys[] = {"ExtGState", "Font", "XObject"};
   for (const char* resource_key : kResourceKeys) {
     RetainPtr<CPDF_Dictionary> resource_dict =
         resources_dict->GetMutableDictFor(resource_key);

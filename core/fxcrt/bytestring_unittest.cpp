@@ -1991,4 +1991,33 @@ TEST(ByteString, FX_HashCode_Wide) {
   EXPECT_EQ(1313u * 97u + 255u, FX_HashCode_GetLoweredAsIfW("A\xff"));
 }
 
+TEST(CString, Normal) {
+  CString empty;
+  EXPECT_EQ(nullptr, empty.get());
+
+  CString blank = "";
+  EXPECT_NE(nullptr, blank.get());
+  EXPECT_DEATH((++blank), "");
+
+  blank = "blerf";
+  EXPECT_NE(nullptr, blank.get());
+  EXPECT_DEATH((++blank), "");
+
+  CString boo = "boo";
+  EXPECT_EQ('b', *boo++);
+  EXPECT_EQ('o', *boo++);
+  EXPECT_EQ('o', *boo++);
+  EXPECT_EQ('\0', *boo);
+  EXPECT_DEATH((boo++), "");
+
+  const wchar_t* ptr = L"that";
+  auto that = UNSAFE_BUFFERS(WCString::Create(ptr));
+  that = UNSAFE_BUFFERS(WCString::Create(ptr));
+
+  // GRRR.
+  const char bacon[4] = {0x41, 0x42, 0x43, 0x44};
+  CString bacos = bacon;
+  bacos = bacon;
+}
+
 }  // namespace fxcrt
