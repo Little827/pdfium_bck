@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a202b8c_2b8b2f34",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-02-26T18:19:45Z",
+      "side": 1,
+      "message": "FWIW, https://pdfium-review.googlesource.com/107135 added ByteString comparisons.",
+      "revId": "86a75fbc84bd9ae4d824e80df7b69372a7ec28d5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73a1ff98_b5d9a39c",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-02-26T18:19:45Z",
+      "side": 1,
+      "message": "Can this be in a separate CL?",
+      "revId": "86a75fbc84bd9ae4d824e80df7b69372a7ec28d5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
