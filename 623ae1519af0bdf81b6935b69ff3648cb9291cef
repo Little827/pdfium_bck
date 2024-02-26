@@ -16,6 +16,23 @@
       "message": "Needs new +1s after removing file.",
       "revId": "623ae1519af0bdf81b6935b69ff3648cb9291cef",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0698bcf_3d5e26b2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-26T20:49:10Z",
+      "side": 1,
+      "message": "Argh, this will need a prequel CL or a re-write to ExecuteExpectString() to handle the NUL.",
+      "revId": "623ae1519af0bdf81b6935b69ff3648cb9291cef",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
