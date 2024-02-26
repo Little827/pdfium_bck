@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "afe0e99a_152a70d9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-26T20:33:16Z",
+      "side": 1,
+      "message": "Turns out this needs to be a prequel CL, because there isn\u0027t a way to test the current behaviour using expect_eq.",
+      "revId": "056d991ea3f3c7e1a3383126b90db9e51fa31b3f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
