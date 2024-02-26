@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5cd8047_97828f7c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-26T21:08:25Z",
+      "side": 1,
+      "message": "Prequel uploaded into CL chain.",
+      "revId": "e4740757c1a254e23a7c37bf14bf6b894e43bdf5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
