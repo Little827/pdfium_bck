@@ -93,7 +93,7 @@ bool XFAJSEmbedderTest::Execute(ByteStringView input) {
 
   WideString str = fxv8::ReentrantToWideStringHelper(isolate(), msg);
   if (!str.IsEmpty())
-    fprintf(stderr, "JS ERROR: %ls\n", str.c_str());
+    fprintf(stderr, "JS ERROR: %ls\n", str.c_str().get());
   return false;
 }
 

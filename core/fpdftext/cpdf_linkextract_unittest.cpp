@@ -56,7 +56,7 @@ TEST(CPDF_LinkExtractTest, CheckMailLink) {
     WideString expected_str(L"mailto:");
     expected_str += it[1];
     EXPECT_TRUE(extractor.CheckMailLink(&text_str)) << input;
-    EXPECT_EQ(expected_str.c_str(), text_str);
+    EXPECT_EQ(expected_str, text_str);
   }
 }
 
