@@ -18,7 +18,9 @@
 #include <optional>
 #include <utility>
 
+#include "core/fxcrt/c_string_template.h"
 #include "core/fxcrt/check.h"
+#include "core/fxcrt/compiler_specific.h"
 #include "core/fxcrt/retain_ptr.h"
 #include "core/fxcrt/span.h"
 #include "core/fxcrt/string_data_template.h"
@@ -71,11 +73,13 @@ class WideString : public StringTemplate<wchar_t> {
   [[nodiscard]] static WideString FromUTF16LE(pdfium::span<const uint8_t> data);
   [[nodiscard]] static WideString FromUTF16BE(pdfium::span<const uint8_t> data);
 
-  // Explicit conversion to C-style wide string.  The result is never nullptr,
-  // and is always NUL terminated.
+  // Explicit conversion to C-style wide string (const wchar_t* equivalent).
+  // The result is never nullptr, and is always NUL terminated.
   // Note: Any subsequent modification of |this| will invalidate the result.
-  const wchar_t* c_str() const { return m_pData ? m_pData->m_String : L""; }
-
+  const WCString c_str() const {
+    // SAFETY: m_String always includes a NUL.
+    return UNSAFE_BUFFERS(WCString::Create(m_pData ? m_pData->m_String : L""));
+  }
 
   size_t GetStringLength() const {
     return m_pData ? wcslen(m_pData->m_String) : 0;

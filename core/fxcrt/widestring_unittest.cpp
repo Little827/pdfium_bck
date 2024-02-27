@@ -2214,4 +2214,28 @@ TEST(WideString, FX_HashCode_Wide) {
             FX_HashCode_GetLoweredW(L"AB\xff"));
 }
 
+TEST(WCString, Normal) {
+  WCString empty;
+  EXPECT_EQ(nullptr, empty.get());
+
+  WCString blank = WCString::Create(L"");
+  EXPECT_NE(nullptr, blank.get());
+  EXPECT_DEATH((++blank), "");
+
+  blank = WCString::Create(L"");
+  EXPECT_NE(nullptr, blank.get());
+  EXPECT_DEATH((++blank), "");
+
+  WCString boo = WCString::Create(L"boo");
+  EXPECT_EQ(L'b', *boo++);
+  EXPECT_EQ(L'o', *boo++);
+  EXPECT_EQ(L'o', *boo++);
+  EXPECT_EQ(L'\0', *boo);
+  EXPECT_DEATH((boo++), "");
+
+  const wchar_t* ptr = L"that";
+  auto that = UNSAFE_BUFFERS(WCString::Create(ptr));
+  that = UNSAFE_BUFFERS(WCString::Create(ptr));
+}
+
 }  // namespace fxcrt
