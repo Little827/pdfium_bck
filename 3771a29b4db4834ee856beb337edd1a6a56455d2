@@ -69,6 +69,24 @@
       "parentUuid": "3264508d_87fbd46c",
       "revId": "3771a29b4db4834ee856beb337edd1a6a56455d2",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ed862c3_22deec49",
+        "filename": "fpdfsdk/fpdf_transformpage.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-02-27T23:44:25Z",
+      "side": 0,
+      "message": "Apparently that\u0027s crbug.com/pdfium/1241.",
+      "parentUuid": "43a0fd92_202a076e",
+      "revId": "3771a29b4db4834ee856beb337edd1a6a56455d2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
