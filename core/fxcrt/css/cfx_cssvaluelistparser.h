@@ -9,15 +9,16 @@
 
 #include <stdint.h>
 
+#include <optional>
+
 #include "core/fxcrt/css/cfx_cssvalue.h"
+#include "core/fxcrt/widestring.h"
 
 class CFX_CSSValueListParser {
  public:
-  CFX_CSSValueListParser(const wchar_t* psz, size_t nLen, wchar_t separator);
+  CFX_CSSValueListParser(WideStringView list, wchar_t separator);
 
-  bool NextValue(CFX_CSSValue::PrimitiveType* eType,
-                 const wchar_t** pStart,
-                 size_t* nLength);
+  std::optional<WideStringView> NextValue(CFX_CSSValue::PrimitiveType* eType);
   void UseCommaSeparator() { m_Separator = ','; }
 
  private:
