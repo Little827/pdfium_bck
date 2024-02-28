@@ -17,17 +17,25 @@
 class CFX_CSSValueListParser {
  public:
   CFX_CSSValueListParser(WideStringView list, wchar_t separator);
+  ~CFX_CSSValueListParser();
 
   std::optional<WideStringView> NextValue(CFX_CSSValue::PrimitiveType* eType);
   void UseCommaSeparator() { m_Separator = ','; }
 
  private:
+  bool CharsRemain() const { return !m_Cur.IsEmpty(); }
+
+  // Safe to call even when input exhausted, stays unchanged.
+  void Advance() { m_Cur = m_Cur.Substr(1); }
+
+  // Safe to call even when input exhausted, returns NUL.
+  wchar_t CurrentChar() const { return static_cast<wchar_t>(m_Cur.Front()); }
+
   size_t SkipToChar(wchar_t wch);
   size_t SkipToCharMatchingParens(wchar_t wch);
 
+  WideStringView m_Cur;
   wchar_t m_Separator;
-  const wchar_t* m_pCur;
-  const wchar_t* m_pEnd;
 };
 
 #endif  // CORE_FXCRT_CSS_CFX_CSSVALUELISTPARSER_H_

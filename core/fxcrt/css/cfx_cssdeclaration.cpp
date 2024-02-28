@@ -8,6 +8,7 @@
 
 #include <math.h>
 
+#include <array>
 #include <utility>
 
 #include "core/fxcrt/check.h"
@@ -100,10 +101,10 @@ std::optional<FX_ARGB> CFX_CSSDeclaration::ParseCSSColor(WideStringView value) {
         value.Back() != ')') {
       return std::nullopt;
     }
-    uint8_t rgb[3] = {0};
+    std::array<uint8_t, 3> rgb = {};
     float fValue;
     CFX_CSSValueListParser list(value.Substr(4, value.GetLength() - 5), ',');
-    for (int32_t i = 0; i < 3; ++i) {
+    for (auto& component : rgb) {
       CFX_CSSValue::PrimitiveType eType;
       auto maybe_value = list.NextValue(&eType);
       if (!maybe_value.has_value() ||
@@ -114,9 +115,9 @@ std::optional<FX_ARGB> CFX_CSSDeclaration::ParseCSSColor(WideStringView value) {
       if (!ParseCSSNumber(maybe_value.value(), &fValue, &eNumType)) {
         return std::nullopt;
       }
-      rgb[i] = eNumType == CFX_CSSNumberValue::Unit::kPercent
-                   ? FXSYS_roundf(fValue * 2.55f)
-                   : FXSYS_roundf(fValue);
+      component = eNumType == CFX_CSSNumberValue::Unit::kPercent
+                      ? FXSYS_roundf(fValue * 2.55f)
+                      : FXSYS_roundf(fValue);
     }
     return ArgbEncode(255, rgb[0], rgb[1], rgb[2]);
   }
