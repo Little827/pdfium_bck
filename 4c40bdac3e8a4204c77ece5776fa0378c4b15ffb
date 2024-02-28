@@ -16,6 +16,24 @@
       "message": "Some bots are red, but I think I just need to update some hashes. The failing tests will go green in a few CLs down the chain anyway.",
       "revId": "4c40bdac3e8a4204c77ece5776fa0378c4b15ffb",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7fd1b79_11e1ee9b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-02-28T18:53:20Z",
+      "side": 1,
+      "message": "Red bots should go away.",
+      "parentUuid": "e8e0191e_dba4fd4c",
+      "revId": "4c40bdac3e8a4204c77ece5776fa0378c4b15ffb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
