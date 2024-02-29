@@ -1,0 +1,21 @@
+diff --git a/core/fxcrt/types/to_address.h b/core/fxcrt/types/to_address.h
+index f03fa84bb..8143bbebd 100644
+--- a/core/fxcrt/types/to_address.h
++++ b/core/fxcrt/types/to_address.h
+@@ -16,7 +16,7 @@
+ // unified handling, Chromium instead uses this wrapper, which provides that
+ // guarantee. This allows code to use "`to_address()` would be valid here" as a
+ // constraint to detect pointer-like types.
+-namespace base {
++namespace pdfium {
+ 
+ // Note that calling `std::to_address()` with a function pointer renders the
+ // program ill-formed.
+@@ -35,6 +35,6 @@ constexpr auto to_address(const P& p) noexcept {
+   return std::to_address(p);
+ }
+ 
+-}  // namespace base
++}  // namespace pdfium
+ 
+ #endif  // CORE_FXCRT_TYPES_TO_ADDRESS_H_

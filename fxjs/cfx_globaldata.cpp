@@ -10,6 +10,7 @@
 
 #include "core/fdrm/fx_crypt.h"
 #include "core/fxcrt/numerics/safe_conversions.h"
+#include "core/fxcrt/types/to_address.h"
 #include "core/fxcrt/stl_util.h"
 
 namespace {
@@ -271,21 +272,21 @@ bool CFX_GlobalData::LoadGlobalPersistentVariablesFromBuffer(
 
   CRYPT_ArcFourCryptBlock(buffer, kRC4KEY);
 
-  uint8_t* p = buffer.data();
-  uint16_t wType = *((uint16_t*)p);
+  uint8_t* p = buffer.begin();
+  uint16_t wType = *reinterpret_cast<uint16_t*>(pdfium::to_address(p));
   p += sizeof(uint16_t);
   if (wType != kMagic)
     return false;
 
-  uint16_t wVersion = *((uint16_t*)p);
+  uint16_t wVersion = *reinterpret_cast<uint16_t*>(pdfium::to_address(p));
   p += sizeof(uint16_t);
   if (wVersion > kMaxVersion)
     return false;
 
-  uint32_t dwCount = *((uint32_t*)p);
+  uint32_t dwCount = *reinterpret_cast<uint32_t*>(pdfium::to_address(p));
   p += sizeof(uint32_t);
 
-  uint32_t dwSize = *((uint32_t*)p);
+  uint32_t dwSize = *reinterpret_cast<uint32_t*>(pdfium::to_address(p));
   p += sizeof(uint32_t);
 
   if (dwSize != buffer.size() - sizeof(uint16_t) * 2 - sizeof(uint32_t) * 2)
@@ -297,16 +298,16 @@ bool CFX_GlobalData::LoadGlobalPersistentVariablesFromBuffer(
     }
 
     uint32_t dwNameLen = 0;
-    memcpy(&dwNameLen, p, sizeof(uint32_t));
+    memcpy(&dwNameLen, pdfium::to_address(p), sizeof(uint32_t));
     p += sizeof(uint32_t);
     if (p + dwNameLen > buffer.end())
       break;
 
-    ByteString sEntry = ByteString(p, dwNameLen);
+    ByteString sEntry = ByteString(pdfium::to_address(p), dwNameLen);
     p += sizeof(char) * dwNameLen;
 
     uint16_t wDataType = 0;
-    memcpy(&wDataType, p, sizeof(uint16_t));
+    memcpy(&wDataType, pdfium::to_address(p), sizeof(uint16_t));
     p += sizeof(uint16_t);
 
     CFX_Value::DataType eDataType = static_cast<CFX_Value::DataType>(wDataType);
@@ -317,13 +318,13 @@ bool CFX_GlobalData::LoadGlobalPersistentVariablesFromBuffer(
         switch (wVersion) {
           case 1: {
             uint32_t dwData = 0;
-            memcpy(&dwData, p, sizeof(uint32_t));
+            memcpy(&dwData, pdfium::to_address(p), sizeof(uint32_t));
             p += sizeof(uint32_t);
             dData = dwData;
           } break;
           case 2: {
             dData = 0;
-            memcpy(&dData, p, sizeof(double));
+            memcpy(&dData, pdfium::to_address(p), sizeof(double));
             p += sizeof(double);
           } break;
         }
@@ -332,19 +333,19 @@ bool CFX_GlobalData::LoadGlobalPersistentVariablesFromBuffer(
       } break;
       case CFX_Value::DataType::kBoolean: {
         uint16_t wData = 0;
-        memcpy(&wData, p, sizeof(uint16_t));
+        memcpy(&wData, pdfium::to_address(p), sizeof(uint16_t));
         p += sizeof(uint16_t);
         SetGlobalVariableBoolean(sEntry, (bool)(wData == 1));
         SetGlobalVariablePersistent(sEntry, true);
       } break;
       case CFX_Value::DataType::kString: {
         uint32_t dwLength = 0;
-        memcpy(&dwLength, p, sizeof(uint32_t));
+        memcpy(&dwLength, pdfium::to_address(p), sizeof(uint32_t));
         p += sizeof(uint32_t);
         if (p + dwLength > buffer.end())
           break;
 
-        SetGlobalVariableString(sEntry, ByteString(p, dwLength));
+        SetGlobalVariableString(sEntry, ByteString(pdfium::to_address(p), dwLength));
         SetGlobalVariablePersistent(sEntry, true);
         p += sizeof(char) * dwLength;
       } break;

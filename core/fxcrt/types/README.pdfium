@@ -1,0 +1,5 @@
+Files taken from chromium's base/types directory.
+
+to_address.h: 4117634c7c90c9885d292b52d302874856d8a595
+ta-0000-includes.patch - fix include guards.
+ta-0001-namespace.patch - change namespace base to namespace pdfium.

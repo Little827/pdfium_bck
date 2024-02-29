@@ -118,6 +118,7 @@ source_set("fxcrt") {
     "string_view_template.h",
     "template_util.h",
     "tree_node.h",
+    "types/to_address.h",
     "unowned_ptr.h",
     "utf16.h",
     "weak_ptr.h",
