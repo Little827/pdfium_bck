@@ -11,6 +11,7 @@
 
 #include "core/fpdfapi/page/cpdf_basedcs.h"
 #include "core/fxcrt/retain_ptr.h"
+#include "core/fxge/dib/fx_dib.h"
 
 class CPDF_Document;
 
@@ -33,10 +34,7 @@ class CPDF_PatternCS final : public CPDF_BasedCS {
                   const CPDF_Array* pArray,
                   std::set<const CPDF_Object*>* pVisited) override;
 
-  bool GetPatternRGB(const PatternValue& value,
-                     float* R,
-                     float* G,
-                     float* B) const;
+  std::optional<FX_COLORREF> GetPatternRGB(const PatternValue& value) const;
 
  private:
   CPDF_PatternCS();
