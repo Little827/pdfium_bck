@@ -39,6 +39,30 @@
       },
       "revId": "0cb2ea92f0992e36851e6e4c069d82cc28f41572",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00dae437_1692c7f9",
+        "filename": "fpdfsdk/fpdf_editpath_embeddertest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-02-29T18:23:29Z",
+      "side": 1,
+      "message": "... and replace with a ternary operator? We\u0027ve been doing this throughout the code base, especially if the conditionals get a bit hairy, like in https://pdfium-review.googlesource.com/c/pdfium/+/117051/3/fpdfsdk/fpdf_edit_embeddertest.cpp for example.\n\nIf the const gets removed, then one can write `kWrongChecksum \u003d nullptr;`, and that\u0027s not very const. Or I can remove the const and rename the variable to just `wrong_checksum`.",
+      "parentUuid": "87af70c6_91e052cb",
+      "range": {
+        "startLine": 190,
+        "startChar": 14,
+        "endLine": 190,
+        "endChar": 19
+      },
+      "revId": "0cb2ea92f0992e36851e6e4c069d82cc28f41572",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
