@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9fd664b8_c375964b",
+        "filename": "core/fxcrt/types/README.pdfium",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-02-29T01:51:16Z",
+      "side": 1,
+      "message": "It\u0027s quite a bit of overhead, and we\u0027ve not done it before.\n\nSince these files are not modified frequently, as long as we indicate what Chromium revision this forked from, it should be not too hard to checkout that revision and diff the 2 files.\n\nIf there\u0027s concern about getting this wrong, maybe add unit tests?",
+      "parentUuid": "24ede06d_012611bf",
+      "revId": "a3c44a3f45bb5f4dd5de9a757e0a7bc82821fde1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "25898c62_aaa6a81e",
         "filename": "core/fxcrt/types/to_address.h",
         "patchSetId": 1
