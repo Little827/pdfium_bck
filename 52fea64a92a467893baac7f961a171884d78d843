@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "55817977_494fc143",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5645
+      },
+      "writtenOn": "2024-02-29T17:33:57Z",
+      "side": 1,
+      "message": "G-account approval either with or without addressing proposal.",
+      "revId": "52fea64a92a467893baac7f961a171884d78d843",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "58a0fa0c_ee141d91",
