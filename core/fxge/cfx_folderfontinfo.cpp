@@ -255,11 +255,11 @@ void CFX_FolderFontInfo::ReportFace(const ByteString& path,
   if (names.IsEmpty())
     return;
 
-  ByteString facename = GetNameFromTT(names.raw_span(), 1);
+  ByteString facename = GetNameFromTT(names.unsigned_span(), 1);
   if (facename.IsEmpty())
     return;
 
-  ByteString style = GetNameFromTT(names.raw_span(), 2);
+  ByteString style = GetNameFromTT(names.unsigned_span(), 2);
   if (style != "Regular")
     facename += " " + style;
 
@@ -273,7 +273,7 @@ void CFX_FolderFontInfo::ReportFace(const ByteString& path,
   ByteString os2 =
       LoadTableFromTT(pFile, tables.raw_str(), nTables, kOs2Tag, filesize);
   if (os2.GetLength() >= 86) {
-    pdfium::span<const uint8_t> p = os2.raw_span().subspan(78);
+    pdfium::span<const uint8_t> p = os2.unsigned_span().subspan(78);
     uint32_t codepages = fxcrt::GetUInt32MSBFirst(p);
     if (codepages & (1U << 17)) {
       m_pMapper->AddInstalledFont(facename, FX_Charset::kShiftJIS);
@@ -390,7 +390,7 @@ size_t CFX_FolderFontInfo::GetFontData(void* hFont,
     for (size_t i = 0; i < nTables; i++) {
       // TODO(tsepez): iterate over span.
       pdfium::span<const uint8_t> p =
-          pFont->m_FontTables.raw_span().subspan(i * 16);
+          pFont->m_FontTables.unsigned_span().subspan(i * 16);
       if (fxcrt::GetUInt32MSBFirst(p) == table) {
         offset = fxcrt::GetUInt32MSBFirst(p.subspan(8));
         datasize = fxcrt::GetUInt32MSBFirst(p.subspan(12));

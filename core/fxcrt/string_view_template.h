@@ -159,7 +159,7 @@ class StringViewTemplate {
     return strid << ((4 - size) * 8);
   }
 
-  pdfium::span<const UnsignedType> raw_span() const { return m_Span; }
+  pdfium::span<const UnsignedType> unsigned_span() const { return m_Span; }
   pdfium::span<const CharType> span() const {
     return pdfium::make_span(reinterpret_cast<const CharType*>(m_Span.data()),
                              m_Span.size());

@@ -32,7 +32,7 @@ TEST(ByteString, ElementAccess) {
   EXPECT_EQ(3u, abc_span.size());
   EXPECT_EQ(0, memcmp(abc_span.data(), "abc", 3));
 
-  pdfium::span<const uint8_t> abc_raw_span = abc.raw_span();
+  pdfium::span<const uint8_t> abc_raw_span = abc.unsigned_span();
   EXPECT_EQ(3u, abc_raw_span.size());
   EXPECT_EQ(0, memcmp(abc_raw_span.data(), "abc", 3));
 
@@ -1520,7 +1520,7 @@ TEST(ByteStringView, OperatorEQ) {
 
   pdfium::span<const uint8_t> span5(
       pdfium::as_bytes(pdfium::make_span("hello", 5u)));
-  auto raw_span = byte_string_c.raw_span();
+  auto raw_span = byte_string_c.unsigned_span();
   EXPECT_TRUE(
       std::equal(raw_span.begin(), raw_span.end(), span5.begin(), span5.end()));
 }
@@ -1740,7 +1740,7 @@ TEST(ByteString, Empty) {
   EXPECT_TRUE(cspan.empty());
   EXPECT_FALSE(cspan.data());
 
-  pdfium::span<const uint8_t> rspan = empty_str.raw_span();
+  pdfium::span<const uint8_t> rspan = empty_str.unsigned_span();
   EXPECT_TRUE(rspan.empty());
   EXPECT_FALSE(rspan.data());
 }

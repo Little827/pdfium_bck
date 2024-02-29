@@ -55,11 +55,11 @@ void CalcEncryptKey(const CPDF_Dictionary* pEncrypt,
   CRYPT_md5_context md5 = CRYPT_MD5Start();
   CRYPT_MD5Update(&md5, passcode);
   ByteString okey = pEncrypt->GetByteStringFor("O");
-  CRYPT_MD5Update(&md5, okey.raw_span());
+  CRYPT_MD5Update(&md5, okey.unsigned_span());
   uint32_t perm = pEncrypt->GetIntegerFor("P");
   CRYPT_MD5Update(&md5, pdfium::as_bytes(pdfium::span_from_ref(perm)));
   if (!file_id.IsEmpty())
-    CRYPT_MD5Update(&md5, file_id.raw_span());
+    CRYPT_MD5Update(&md5, file_id.unsigned_span());
   const bool is_revision_3_or_greater = pEncrypt->GetIntegerFor("R") >= 3;
   if (!ignore_metadata && is_revision_3_or_greater &&
       !pEncrypt->GetBooleanFor("EncryptMetadata", true)) {
@@ -467,7 +467,7 @@ bool CPDF_SecurityHandler::CheckUserPassword(const ByteString& password,
   CRYPT_md5_context md5 = CRYPT_MD5Start();
   CRYPT_MD5Update(&md5, kDefaultPasscode);
   if (!m_FileId.IsEmpty())
-    CRYPT_MD5Update(&md5, m_FileId.raw_span());
+    CRYPT_MD5Update(&md5, m_FileId.unsigned_span());
   CRYPT_MD5Finish(&md5, ukeybuf);
   return memcmp(test, ukeybuf, 16) == 0;
 }
@@ -578,7 +578,7 @@ void CPDF_SecurityHandler::OnCreate(CPDF_Dictionary* pEncryptDict,
     CRYPT_md5_context md5 = CRYPT_MD5Start();
     CRYPT_MD5Update(&md5, kDefaultPasscode);
     if (!file_id.IsEmpty())
-      CRYPT_MD5Update(&md5, file_id.raw_span());
+      CRYPT_MD5Update(&md5, file_id.unsigned_span());
 
     uint8_t digest[32];
     CRYPT_MD5Finish(&md5, digest);

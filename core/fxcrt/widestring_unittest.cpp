@@ -1243,8 +1243,9 @@ TEST(WideString, FromUTF16BE) {
   };
 
   for (size_t i = 0; i < std::size(utf16be_decode_cases); ++i) {
-    EXPECT_EQ(WideString::FromUTF16BE(utf16be_decode_cases[i].in.raw_span()),
-              utf16be_decode_cases[i].out)
+    EXPECT_EQ(
+        WideString::FromUTF16BE(utf16be_decode_cases[i].in.unsigned_span()),
+        utf16be_decode_cases[i].out)
         << " for case number " << i;
   }
 }
@@ -1262,8 +1263,9 @@ TEST(WideString, FromUTF16LE) {
   };
 
   for (size_t i = 0; i < std::size(utf16le_decode_cases); ++i) {
-    EXPECT_EQ(WideString::FromUTF16LE(utf16le_decode_cases[i].in.raw_span()),
-              utf16le_decode_cases[i].out)
+    EXPECT_EQ(
+        WideString::FromUTF16LE(utf16le_decode_cases[i].in.unsigned_span()),
+        utf16le_decode_cases[i].out)
         << " for case number " << i;
   }
 }
