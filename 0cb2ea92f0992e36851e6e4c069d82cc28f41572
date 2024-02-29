@@ -63,6 +63,30 @@
       },
       "revId": "0cb2ea92f0992e36851e6e4c069d82cc28f41572",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c8b095c_6e1536cb",
+        "filename": "fpdfsdk/fpdf_editpath_embeddertest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-02-29T18:24:09Z",
+      "side": 1,
+      "message": "\"We\u0027ve been doing this\", where \"this\" refers to using lambdas.",
+      "parentUuid": "00dae437_1692c7f9",
+      "range": {
+        "startLine": 190,
+        "startChar": 14,
+        "endLine": 190,
+        "endChar": 19
+      },
+      "revId": "0cb2ea92f0992e36851e6e4c069d82cc28f41572",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
