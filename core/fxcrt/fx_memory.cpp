@@ -8,6 +8,7 @@
 
 #include <stdlib.h>  // For abort().
 
+#include <cstdint>  // For uintptr_t.
 #include <iterator>
 #include <limits>
 #include <type_traits>
