@@ -22,6 +22,30 @@
       },
       "revId": "271e13b382d0b15d4961b6957c3e7e093f4abc2a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d764d3d7_4a390cd4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-02-29T19:08:41Z",
+      "side": 1,
+      "message": "- It\u0027s certainly not an in-out parameter, as it is only written to, and never read from.\n- The code existed since the initial commit, so the intentions for the early return without writing to the out-parameter is unknown.\n- There\u0027s no test coverage for this case.\n\nI guess I can make the return type optional and keep the existing behavior, so this CL can be purely a refactoring CL. Having a valid colorref, nullopt, and 0xFFFFFFFF all as possible return values is not pretty, but that\u0027s how it was.",
+      "parentUuid": "6553b03b_1aa7600e",
+      "range": {
+        "startLine": 10,
+        "startChar": 19,
+        "endLine": 11,
+        "endChar": 26
+      },
+      "revId": "271e13b382d0b15d4961b6957c3e7e093f4abc2a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
