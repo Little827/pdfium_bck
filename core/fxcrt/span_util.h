@@ -18,12 +18,17 @@ namespace fxcrt {
 
 // Bounds-checked byte-for-byte copies from spans into spans. Returns a
 // span describing the remaining portion of the destination span.
-template <typename T,
-          typename U,
-          typename = std::enable_if_t<sizeof(T) == sizeof(U) &&
-                                      std::is_trivially_copyable_v<T> &&
-                                      std::is_trivially_copyable_v<U>>>
-pdfium::span<T> spancpy(pdfium::span<T> dst, pdfium::span<U> src) {
+template <typename T1,
+          typename T2,
+          size_t N1,
+          size_t N2,
+          typename P1,
+          typename P2,
+          typename = std::enable_if_t<sizeof(T1) == sizeof(T2) &&
+                                      std::is_trivially_copyable_v<T1> &&
+                                      std::is_trivially_copyable_v<T2>>>
+inline pdfium::span<T1> spancpy(pdfium::span<T1, N1, P1> dst,
+                                pdfium::span<T2, N2, P2> src) {
   CHECK_GE(dst.size(), src.size());
   FXSYS_memcpy(dst.data(), src.data(), src.size_bytes());
   return dst.subspan(src.size());
