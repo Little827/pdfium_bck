@@ -66,6 +66,8 @@ bool FindFamilyNameMatch(ByteStringView family_name,
     return false;
   }
 
+  // Experiment: can we change a "Find" to a "StartsWith"?
+  CHECK_EQ(result.value(), 0u);
   return true;
 }
 
