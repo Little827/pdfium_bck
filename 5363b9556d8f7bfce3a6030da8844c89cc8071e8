@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4398a969_36c56e33",
+        "filename": "core/fxcrt/fx_memory.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-29T17:22:39Z",
+      "side": 1,
+      "message": "nit: I\u0027m still a fan of \u003cstdint.h\u003e so long as we aren\u0027t referring to this as std::uintptr_t because there is less std namespace pollution, and if someone were to write std::uintptr_t it would break \u0027til they just wrote uintptr_t (which seems a good thing to avoid needless std:: usage).\n\nBut I can\u0027t remember what the official policy is, and whether we conform to it. Plus \u003cstdlib.h\u003e looks lonely all by itself up there, and this could be its buddy.",
+      "range": {
+        "startLine": 11,
+        "startChar": 10,
+        "endLine": 11,
+        "endChar": 17
+      },
+      "revId": "5363b9556d8f7bfce3a6030da8844c89cc8071e8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
