@@ -12,6 +12,7 @@
 
 #include "build/build_config.h"
 #include "core/fxcrt/byteorder.h"
+#include "core/fxcrt/check_op.h"
 #include "core/fxcrt/containers/contains.h"
 #include "core/fxcrt/fx_codepage.h"
 #include "core/fxcrt/fx_extension.h"
@@ -66,6 +67,8 @@ bool FindFamilyNameMatch(ByteStringView family_name,
     return false;
   }
 
+  // Experiment: can we change a "Find" to a "StartsWith"?
+  CHECK_EQ(result.value(), 0u);
   return true;
 }
 
