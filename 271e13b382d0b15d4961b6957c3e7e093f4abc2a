@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6553b03b_1aa7600e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-29T18:01:22Z",
+      "side": 1,
+      "message": "Maybe it is an in-out parameter and is left unchanged?  Or is it always expected to be set and uninit otherwise?  For the former, optional\u003cFX_COLORREF\u003e return values?",
+      "range": {
+        "startLine": 10,
+        "startChar": 19,
+        "endLine": 11,
+        "endChar": 26
+      },
+      "revId": "271e13b382d0b15d4961b6957c3e7e093f4abc2a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
