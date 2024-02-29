@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58a0fa0c_ee141d91",
+        "filename": "core/fpdfapi/page/cpdf_pageobject.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-02-29T17:32:16Z",
+      "side": 1,
+      "message": "Maybe use \"positive logic\" - since we\u0027re always writing if (!Ignore()), though the antonyms of Ignore() aren\u0027t great - m_bRespectsCTM, m_bUsesTM, m_bRequiresCTM, m_IsAffectedByCTM() - let me know what you think.\n\nEither way.",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 28
+      },
+      "revId": "52fea64a92a467893baac7f961a171884d78d843",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
