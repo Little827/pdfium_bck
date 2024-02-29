@@ -847,12 +847,10 @@ CPDF_DIB::LoadState CPDF_DIB::StartLoadMask() {
     std::vector<float> colors =
         ReadArrayElementsToVector(pMatte.Get(), m_nComponents);
 
-    float R;
-    float G;
-    float B;
-    m_pColorSpace->GetRGB(colors, &R, &G, &B);
-    m_MatteColor = ArgbEncode(0, FXSYS_roundf(R * 255), FXSYS_roundf(G * 255),
-                              FXSYS_roundf(B * 255));
+    std::optional<FX_COLORREF> colorref = m_pColorSpace->GetColorRef(colors);
+    if (colorref.has_value()) {
+      m_MatteColor = AlphaAndColorRefToArgb(0, colorref.value());
+    }
   }
   return StartLoadMaskDIB(std::move(mask));
 }
@@ -926,13 +924,8 @@ void CPDF_DIB::LoadPalette() {
     std::fill(std::begin(color_values), std::end(color_values),
               m_CompData[0].m_DecodeMin);
 
-    float R = 0.0f;
-    float G = 0.0f;
-    float B = 0.0f;
-    m_pColorSpace->GetRGB(color_values, &R, &G, &B);
-
-    FX_ARGB argb0 = ArgbEncode(255, FXSYS_roundf(R * 255),
-                               FXSYS_roundf(G * 255), FXSYS_roundf(B * 255));
+    FX_ARGB argb0 = AlphaAndColorRefToArgb(
+        255, m_pColorSpace->GetColorRef(color_values).value_or(0));
     FX_ARGB argb1;
     const CPDF_IndexedCS* indexed_cs = m_pColorSpace->AsIndexedCS();
     if (indexed_cs && indexed_cs->GetMaxIndex() == 0) {
@@ -944,9 +937,11 @@ void CPDF_DIB::LoadPalette() {
       color_values[0] += m_CompData[0].m_DecodeStep;
       color_values[1] += m_CompData[0].m_DecodeStep;
       color_values[2] += m_CompData[0].m_DecodeStep;
-      m_pColorSpace->GetRGB(color_values, &R, &G, &B);
-      argb1 = ArgbEncode(255, FXSYS_roundf(R * 255), FXSYS_roundf(G * 255),
-                         FXSYS_roundf(B * 255));
+      std::optional<FX_COLORREF> colorref1 =
+          m_pColorSpace->GetColorRef(color_values);
+      argb1 = colorref1.has_value()
+                  ? AlphaAndColorRefToArgb(255, colorref1.value())
+                  : argb0;
     }
 
     if (argb0 != 0xFF000000 || argb1 != 0xFFFFFFFF) {
@@ -972,21 +967,19 @@ void CPDF_DIB::LoadPalette() {
       color_values[j] = m_CompData[j].m_DecodeMin +
                         m_CompData[j].m_DecodeStep * encoded_component;
     }
-    float R = 0;
-    float G = 0;
-    float B = 0;
+    std::optional<FX_COLORREF> colorref;
     if (m_nComponents == 1 && m_Family == CPDF_ColorSpace::Family::kICCBased &&
         m_pColorSpace->ComponentCount() > 1) {
-      int nComponents = m_pColorSpace->ComponentCount();
+      uint32_t nComponents = m_pColorSpace->ComponentCount();
       std::vector<float> temp_buf(nComponents);
-      for (int k = 0; k < nComponents; ++k)
+      for (uint32_t k = 0; k < nComponents; ++k) {
         temp_buf[k] = color_values[0];
-      m_pColorSpace->GetRGB(temp_buf, &R, &G, &B);
+      }
+      colorref = m_pColorSpace->GetColorRef(temp_buf);
     } else {
-      m_pColorSpace->GetRGB(color_values, &R, &G, &B);
+      colorref = m_pColorSpace->GetColorRef(color_values);
     }
-    SetPaletteArgb(i, ArgbEncode(255, FXSYS_roundf(R * 255),
-                                 FXSYS_roundf(G * 255), FXSYS_roundf(B * 255)));
+    SetPaletteArgb(i, AlphaAndColorRefToArgb(255, colorref.value_or(0)));
   }
 }
 

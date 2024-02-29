@@ -81,12 +81,8 @@ std::array<FX_ARGB, kShadingSteps> GetShadingSteps(
       if (nresults.has_value())
         result_span = result_span.subspan(nresults.value());
     }
-    float R = 0.0f;
-    float G = 0.0f;
-    float B = 0.0f;
-    pCS->GetRGB(result_array, &R, &G, &B);
-    shading_steps[i] = ArgbEncode(alpha, FXSYS_roundf(R * 255),
-                                  FXSYS_roundf(G * 255), FXSYS_roundf(B * 255));
+    shading_steps[i] = AlphaAndColorRefToArgb(
+        alpha, pCS->GetColorRef(result_array).value_or(0));
   }
   return shading_steps;
 }
@@ -307,13 +303,8 @@ void DrawFuncShading(const RetainPtr<CFX_DIBitmap>& pBitmap,
         if (nresults.has_value())
           result_span = result_span.subspan(nresults.value());
       }
-      float R = 0.0f;
-      float G = 0.0f;
-      float B = 0.0f;
-      pCS->GetRGB(result_array, &R, &G, &B);
-      dib_buf[column] = ArgbEncode(alpha, static_cast<int32_t>(R * 255),
-                                   static_cast<int32_t>(G * 255),
-                                   static_cast<int32_t>(B * 255));
+      dib_buf[column] = AlphaAndColorRefToArgb(
+          alpha, pCS->GetColorRef(result_array).value_or(0));
     }
   }
 }
@@ -897,13 +888,8 @@ void CPDF_RenderShading::Draw(CFX_RenderDevice* pDevice,
       std::vector<float> comps = ReadArrayElementsToVector(
           pBackColor.Get(), pColorSpace->ComponentCount());
 
-      float R = 0.0f;
-      float G = 0.0f;
-      float B = 0.0f;
-      pColorSpace->GetRGB(comps, &R, &G, &B);
-      background = ArgbEncode(255, static_cast<int32_t>(R * 255),
-                              static_cast<int32_t>(G * 255),
-                              static_cast<int32_t>(B * 255));
+      background = AlphaAndColorRefToArgb(
+          255, pColorSpace->GetColorRef(comps).value_or(0));
     }
   }
   FX_RECT clip_rect_bbox = clip_rect;
