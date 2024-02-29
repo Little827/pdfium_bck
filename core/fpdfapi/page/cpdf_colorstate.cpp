@@ -119,22 +119,18 @@ FX_COLORREF CPDF_ColorState::SetColor(RetainPtr<CPDF_ColorSpace> colorspace,
   if (!color.IsPattern()) {
     color.SetValueForNonPattern(std::move(values));
   }
-  int R;
-  int G;
-  int B;
-  return color.GetRGB(&R, &G, &B) ? FXSYS_BGR(B, G, R) : 0xFFFFFFFF;
+  return color.GetRGB().value_or(0xFFFFFFFF);
 }
 
 FX_COLORREF CPDF_ColorState::SetPattern(RetainPtr<CPDF_Pattern> pattern,
                                         pdfium::span<float> values,
                                         CPDF_Color& color) {
   color.SetValueForPattern(pattern, values);
-  int R;
-  int G;
-  int B;
-  if (color.GetRGB(&R, &G, &B)) {
-    return FXSYS_BGR(B, G, R);
+  std::optional<FX_COLORREF> colorref = color.GetRGB();
+  if (colorref.has_value()) {
+    return colorref.value();
   }
+
   CPDF_TilingPattern* tiling = pattern->AsTilingPattern();
   return tiling && tiling->colored() ? 0x00BFBFBF : 0xFFFFFFFF;
 }
