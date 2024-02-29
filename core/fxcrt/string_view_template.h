@@ -16,6 +16,7 @@
 
 #include "core/fxcrt/fx_memcpy_wrappers.h"
 #include "core/fxcrt/fx_system.h"
+#include "core/fxcrt/raw_span.h"
 #include "core/fxcrt/span.h"
 
 namespace fxcrt {
@@ -264,7 +265,7 @@ class StringViewTemplate {
   }
 
  protected:
-  pdfium::span<const UnsignedType> m_Span;
+  pdfium::raw_span<const UnsignedType> m_Span;
 
  private:
   void* operator new(size_t) throw() { return nullptr; }
