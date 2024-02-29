@@ -72,14 +72,12 @@ class CPDF_ColorState {
     ~ColorData() override;
   };
 
-  void SetColor(RetainPtr<CPDF_ColorSpace> colorspace,
-                std::vector<float> values,
-                CPDF_Color* color,
-                FX_COLORREF* colorref);
-  void SetPattern(RetainPtr<CPDF_Pattern> pattern,
-                  pdfium::span<float> values,
-                  CPDF_Color* color,
-                  FX_COLORREF* colorref);
+  FX_COLORREF SetColor(RetainPtr<CPDF_ColorSpace> colorspace,
+                       std::vector<float> values,
+                       CPDF_Color& color);
+  FX_COLORREF SetPattern(RetainPtr<CPDF_Pattern> pattern,
+                         pdfium::span<float> values,
+                         CPDF_Color& color);
 
   SharedCopyOnWrite<ColorData> m_Ref;
 };
