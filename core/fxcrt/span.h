@@ -16,23 +16,21 @@
 
 #include "core/fxcrt/check.h"
 #include "core/fxcrt/compiler_specific.h"
+#include "core/fxcrt/unowned_ptr_exclusion.h"
 
 // SAFETY: TODO(crbug.com/pdfium/2085): this entire file is to be replaced
 // with the fully annotated one that is being prepared in base/.
-
-#if defined(PDF_USE_PARTITION_ALLOC)
-UNSAFE_BUFFERS_INCLUDE_BEGIN
-#include "partition_alloc/pointers/raw_ptr.h"
-UNSAFE_BUFFERS_INCLUDE_END
-#else
-#include "core/fxcrt/unowned_ptr_exclusion.h"
-#endif
 
 namespace pdfium {
 
 constexpr size_t dynamic_extent = static_cast<size_t>(-1);
 
 template <typename T>
+using DefaultSpanInternalPtr = UNOWNED_PTR_EXCLUSION T*;
+
+template <typename T,
+          size_t Extent = dynamic_extent,
+          typename InternalPtr = DefaultSpanInternalPtr<T>>
 class span;
 
 namespace internal {
@@ -194,7 +192,7 @@ using EnableIfConstSpanCompatibleContainer =
 // - byte_span_from_ref() function.
 
 // [span], class template span
-template <typename T>
+template <typename T, size_t Extent, typename InternalPtr>
 class TRIVIAL_ABI GSL_POINTER span {
  public:
   using value_type = typename std::remove_cv<T>::type;
@@ -247,8 +245,13 @@ class TRIVIAL_ABI GSL_POINTER span {
 
   // Conversions from spans of compatible types: this allows a span<T> to be
   // seamlessly used as a span<const T>, but not the other way around.
-  template <typename U, typename = internal::EnableIfLegalSpanConversion<U, T>>
-  constexpr span(const span<U>& other) : span(other.data(), other.size()) {}
+  template <typename U,
+            size_t M,
+            typename R,
+            typename = internal::EnableIfLegalSpanConversion<U, T>>
+  constexpr span(const span<U, M, R>& other)
+      : span(other.data(), other.size()) {}
+
   span& operator=(const span& other) noexcept {
     if (this != &other) {
       data_ = other.data_;
@@ -323,11 +326,7 @@ class TRIVIAL_ABI GSL_POINTER span {
   }
 
  private:
-#if defined(PDF_USE_PARTITION_ALLOC)
-  raw_ptr<T, AllowPtrArithmetic> data_ = nullptr;
-#else
-  UNOWNED_PTR_EXCLUSION T* data_ = nullptr;
-#endif
+  InternalPtr data_ = nullptr;
   size_t size_ = 0;
 };
 
