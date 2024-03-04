@@ -39,6 +39,30 @@
       },
       "revId": "33086c66dfdc3a75b2ceb5a5f492f2da6dcfa0b3",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85eb7e1f_712d69ce",
+        "filename": "testing/resources/pixel/icc_profile_bad_value.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-03-04T17:30:30Z",
+      "side": 1,
+      "message": "ASCII85Decode uses fewer bytes. It\u0027s flate encoded as well, so it\u0027s not really human readable.",
+      "parentUuid": "5f76cff8_f329a6ce",
+      "range": {
+        "startLine": 40,
+        "startChar": 11,
+        "endLine": 40,
+        "endChar": 25
+      },
+      "revId": "33086c66dfdc3a75b2ceb5a5f492f2da6dcfa0b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
