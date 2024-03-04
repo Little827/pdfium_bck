@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b02fe0b_ae912d64",
+        "filename": "xfa/fgas/crt/cfgas_stringformatter.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-03-04T21:47:47Z",
+      "side": 1,
+      "message": "Maybe reformat to:\n\n```\n// span into `m_wsPattern`\nconst pdfium::raw_span\u003cconst wchar_t\u003e m_spPattern;\n```",
+      "revId": "7c7a32390d8cefe64f092d2113e3af66fc1b801a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
