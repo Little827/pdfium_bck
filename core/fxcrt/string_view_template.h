@@ -16,7 +16,6 @@
 
 #include "core/fxcrt/fx_memcpy_wrappers.h"
 #include "core/fxcrt/fx_system.h"
-#include "core/fxcrt/raw_span.h"
 #include "core/fxcrt/span.h"
 
 namespace fxcrt {
@@ -267,7 +266,10 @@ class StringViewTemplate {
   }
 
  protected:
-  pdfium::raw_span<const UnsignedType> m_Span;
+  // This is not a raw span because StringViewTemplates must be passed by
+  // value without introducing ref-count churn. Also, repeated re-assignment
+  // of subspans of a span to itself must avoid the same issue.
+  pdfium::span<const UnsignedType> m_Span;
 
  private:
   void* operator new(size_t) throw() { return nullptr; }
