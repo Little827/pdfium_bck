@@ -18,6 +18,42 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "18526f84_9e12e123",
+        "filename": "core/fxcrt/css/cfx_cssdata.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-03-06T19:25:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b96dd1c_5856396f",
+      "revId": "cbf041b9a44dd9b249acc73f89d15c211e22019a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8541de27_4e5f3d2b",
+        "filename": "core/fxcrt/css/cfx_cssdata.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-03-06T19:25:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b96dd1c_5856396f",
+      "revId": "cbf041b9a44dd9b249acc73f89d15c211e22019a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cbea8835_439f8e99",
@@ -35,6 +71,42 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "20ea5cee_cde974db",
+        "filename": "core/fxcrt/css/cfx_cssvaluelistparser.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-03-06T19:25:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbea8835_439f8e99",
+      "revId": "cbf041b9a44dd9b249acc73f89d15c211e22019a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98d46053_06b3a084",
+        "filename": "core/fxcrt/css/cfx_cssvaluelistparser.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-03-06T19:25:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbea8835_439f8e99",
+      "revId": "cbf041b9a44dd9b249acc73f89d15c211e22019a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c87217b_a58483bd",
@@ -48,6 +120,24 @@
       "writtenOn": "2024-03-06T18:25:23Z",
       "side": 1,
       "message": "Would a Find() call be more straight forward?",
+      "revId": "cbf041b9a44dd9b249acc73f89d15c211e22019a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0b5391b_e615f9c0",
+        "filename": "core/fxcrt/css/cfx_cssvaluelistparser.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-03-06T19:25:22Z",
+      "side": 1,
+      "message": "Yes, but marching char by char ensures that we don\u0027t botch some arithmetic and advance outside the buffer.",
+      "parentUuid": "6c87217b_a58483bd",
       "revId": "cbf041b9a44dd9b249acc73f89d15c211e22019a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }

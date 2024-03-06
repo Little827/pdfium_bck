@@ -16,6 +16,24 @@
       "message": "Can you explain why this is safe to remove?",
       "revId": "17c556ac516e96dd6a4afe90215a954f4ce6a4ae",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c085e9ef_01e5036a",
+        "filename": "core/fxcrt/css/cfx_cssvaluelistparser.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-03-06T19:25:22Z",
+      "side": 0,
+      "message": "Looks to be an issue. m_pCur could never be greater then m_pEnd unless we blundered, and using a string view avoids that entirely, but if length is 0 we used to return nullopt instead of a 0-length string.  Restored.",
+      "parentUuid": "e9baec0c_993e558f",
+      "revId": "17c556ac516e96dd6a4afe90215a954f4ce6a4ae",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
