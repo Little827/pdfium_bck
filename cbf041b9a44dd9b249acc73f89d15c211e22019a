@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b96dd1c_5856396f",
+        "filename": "core/fxcrt/css/cfx_cssdata.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-03-06T18:25:23Z",
+      "side": 1,
+      "message": "CHECK_LT() + IWYU.",
+      "revId": "cbf041b9a44dd9b249acc73f89d15c211e22019a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbea8835_439f8e99",
+        "filename": "core/fxcrt/css/cfx_cssvaluelistparser.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-03-06T18:25:23Z",
+      "side": 1,
+      "message": "Also a CharsRemain() call?",
+      "revId": "cbf041b9a44dd9b249acc73f89d15c211e22019a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c87217b_a58483bd",
+        "filename": "core/fxcrt/css/cfx_cssvaluelistparser.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-03-06T18:25:23Z",
+      "side": 1,
+      "message": "Would a Find() call be more straight forward?",
+      "revId": "cbf041b9a44dd9b249acc73f89d15c211e22019a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}

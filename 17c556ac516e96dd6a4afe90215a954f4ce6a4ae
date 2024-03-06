@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9baec0c_993e558f",
+        "filename": "core/fxcrt/css/cfx_cssvaluelistparser.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-03-06T18:25:23Z",
+      "side": 0,
+      "message": "Can you explain why this is safe to remove?",
+      "revId": "17c556ac516e96dd6a4afe90215a954f4ce6a4ae",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
