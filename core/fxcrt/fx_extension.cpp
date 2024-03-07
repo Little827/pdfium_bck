@@ -31,19 +31,6 @@ struct tm* (*g_localtime_func)(const time_t*) = DefaultLocaltimeFunction;
 
 }  // namespace
 
-float FXSYS_wcstof(const wchar_t* pwsStr, size_t nLength, size_t* pUsedLen) {
-  WideString copy(pwsStr, nLength);
-  wchar_t* endptr = nullptr;
-  float result = wcstof(copy.c_str(), &endptr);
-  if (result != result) {
-    result = 0.0f;  // Convert NAN to 0.0f;
-  }
-  if (pUsedLen) {
-    *pUsedLen = endptr - copy.c_str();
-  }
-  return result;
-}
-
 wchar_t* FXSYS_wcsncpy(wchar_t* dstStr, const wchar_t* srcStr, size_t count) {
   DCHECK(dstStr);
   DCHECK(srcStr);

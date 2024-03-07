@@ -2216,4 +2216,98 @@ TEST(WideString, FX_HashCode_Wide) {
             FX_HashCode_GetLoweredW(L"AB\xff"));
 }
 
+TEST(WideString, ToFloat) {
+  size_t used_len = 0;
+  EXPECT_FLOAT_EQ(-12.0f, WideString(L"-12").ToFloat(&used_len));
+  EXPECT_EQ(3u, used_len);
+
+  used_len = 0;
+  EXPECT_FLOAT_EQ(12.0f, WideString(L"+12").ToFloat(&used_len));
+  EXPECT_EQ(3u, used_len);
+
+  used_len = 0;
+  EXPECT_FLOAT_EQ(123.0f, WideString(L" 123").ToFloat(&used_len));
+  EXPECT_EQ(4u, used_len);
+
+  used_len = 0;
+  EXPECT_FLOAT_EQ(123.0f, WideString(L" 123 ").ToFloat(&used_len));
+  EXPECT_EQ(4u, used_len);
+
+  used_len = 0;
+  EXPECT_FLOAT_EQ(1.0f, WideString(L" 1 2 3 ").ToFloat(&used_len));
+  EXPECT_EQ(2u, used_len);
+
+  used_len = 0;
+  EXPECT_FLOAT_EQ(1.5362f, WideString(L"1.5362").ToFloat(&used_len));
+  EXPECT_EQ(6u, used_len);
+
+  used_len = 0;
+  EXPECT_FLOAT_EQ(1.0f, WideString(L"1 .5362").ToFloat(&used_len));
+  EXPECT_EQ(1u, used_len);
+
+  used_len = 0;
+  EXPECT_FLOAT_EQ(1.0f, WideString(L"1. 5362").ToFloat(&used_len));
+  EXPECT_EQ(2u, used_len);
+
+  used_len = 0;
+  EXPECT_FLOAT_EQ(1.5f, WideString(L"1.5.3.6.2").ToFloat(&used_len));
+  EXPECT_EQ(3u, used_len);
+
+  used_len = 0;
+  EXPECT_FLOAT_EQ(0.875f, WideString(L"0.875").ToFloat(&used_len));
+  EXPECT_EQ(5u, used_len);
+
+  used_len = 0;
+  EXPECT_FLOAT_EQ(5.56e-2f, WideString(L"5.56e-2").ToFloat(&used_len));
+  EXPECT_EQ(7u, used_len);
+
+  used_len = 0;
+  EXPECT_FLOAT_EQ(1.234e10f, WideString(L"1.234E10").ToFloat(&used_len));
+  EXPECT_EQ(8u, used_len);
+
+  used_len = 0;
+  EXPECT_TRUE(isinf(WideString(L"1.234E100000000000000").ToFloat(&used_len)));
+  EXPECT_EQ(21u, used_len);
+
+  used_len = 0;
+  EXPECT_FLOAT_EQ(0.0f, WideString(L"1.234E-128").ToFloat(&used_len));
+  EXPECT_EQ(10u, used_len);
+
+  // TODO(dsinclair): This should round as per IEEE 64-bit values.
+  // EXPECT_EQ(L"123456789.01234567", WideString(L"123456789.012345678"));
+  used_len = 0;
+  EXPECT_FLOAT_EQ(123456789.012345678f,
+                  WideString(L"123456789.012345678").ToFloat(&used_len));
+  EXPECT_EQ(19u, used_len);
+
+  // TODO(dsinclair): This is spec'd as rounding when > 16 significant digits
+  // prior to the exponent.
+  // EXPECT_EQ(100000000000000000, WideString(L"99999999999999999"));
+  used_len = 0;
+  EXPECT_FLOAT_EQ(99999999999999999.0f,
+                  WideString(L"99999999999999999").ToFloat(&used_len));
+  EXPECT_EQ(17u, used_len);
+
+  // For https://crbug.com/pdfium/1217
+  EXPECT_FLOAT_EQ(0.0f, WideString(L"e76").ToFloat(nullptr));
+
+  // Overflow to infinity.
+  used_len = 0;
+  EXPECT_TRUE(isinf(
+      WideString(L"888888888888888888888888888888888888888888888888888888888888"
+                 L"88888888888"
+                 L"88888888888888888888888888888888888888888888888888888888888")
+          .ToFloat(&used_len)));
+  EXPECT_EQ(130u, used_len);
+
+  used_len = 0;
+  EXPECT_TRUE(
+      isinf(WideString(
+                L"-888888888888888888888888888888888888888888888888888888888888"
+                L"8888888888"
+                L"888888888888888888888888888888888888888888888888888888888888")
+                .ToFloat(&used_len)));
+  EXPECT_EQ(131u, used_len);
+}
+
 }  // namespace fxcrt

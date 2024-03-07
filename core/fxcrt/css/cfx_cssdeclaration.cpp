@@ -34,9 +34,9 @@ uint8_t Hex2Dec(uint8_t hexHigh, uint8_t hexLow) {
 std::optional<CFX_CSSNumber> ParseCSSNumber(WideStringView view) {
   DCHECK(!view.IsEmpty());
 
+  // TODO(tsepez): avoid copying into widestring.
   size_t nUsedLen = 0;
-  float value =
-      FXSYS_wcstof(view.unterminated_c_str(), view.GetLength(), &nUsedLen);
+  float value = WideString(view).ToFloat(&nUsedLen);
   if (nUsedLen == 0 || !isfinite(value)) {
     return std::nullopt;
   }

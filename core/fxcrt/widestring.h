@@ -145,6 +145,11 @@ class WideString : public StringTemplate<wchar_t> {
   // Replace the characters &<>'" with HTML entities.
   WideString EncodeEntities() const;
 
+  // Convert to a floating point number, returning 0.0f on error, and setting
+  // `*optional_outlen` to the number of characters consumend, if present.
+  // Will not return NAN, but may return INFs.
+  float ToFloat(size_t* optional_outlen) const;
+
  protected:
   intptr_t ReferenceCountForTesting() const;
 

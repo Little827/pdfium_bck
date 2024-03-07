@@ -233,10 +233,7 @@ void CJX_Object::SetAttributeByEnum(XFA_Attribute eAttr,
       SetBoolean(eAttr, !wsValue.EqualsASCII("0"), bNotify);
       break;
     case XFA_AttributeType::Integer:
-      SetInteger(eAttr,
-                 FXSYS_roundf(FXSYS_wcstof(wsValue.c_str(), wsValue.GetLength(),
-                                           nullptr)),
-                 bNotify);
+      SetInteger(eAttr, FXSYS_roundf(wsValue.ToFloat(nullptr)), bNotify);
       break;
     case XFA_AttributeType::Measure:
       SetMeasure(eAttr, CXFA_Measurement(wsValue.AsStringView()), bNotify);

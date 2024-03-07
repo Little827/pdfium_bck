@@ -626,6 +626,18 @@ WideString WideString::EncodeEntities() const {
   return ret;
 }
 
+float WideString::ToFloat(size_t* optional_outlen) const {
+  wchar_t* endptr = nullptr;
+  float result = wcstof(c_str(), &endptr);
+  if (result != result) {
+    result = 0.0f;  // Convert NAN to 0.0f;
+  }
+  if (optional_outlen) {
+    *optional_outlen = endptr - c_str();
+  }
+  return result;
+}
+
 WideString WideString::Substr(size_t offset) const {
   // Unsigned underflow is well-defined and out-of-range is handled by Substr().
   return Substr(offset, GetLength() - offset);

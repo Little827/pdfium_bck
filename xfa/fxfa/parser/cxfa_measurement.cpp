@@ -34,20 +34,19 @@ CXFA_Measurement::CXFA_Measurement(float fValue, XFA_Unit eUnit) {
 }
 
 void CXFA_Measurement::SetString(WideStringView wsMeasure) {
-  if (wsMeasure.Front() == L'=')
+  if (wsMeasure.Front() == L'=') {
     wsMeasure = wsMeasure.Substr(1);
-
+  }
   if (wsMeasure.IsEmpty()) {
     Set(0, XFA_Unit::Unknown);
     return;
   }
-
+  // TODO(tsepez): avoid the copy into wide string.
   size_t nUsedLen = 0;
-  float fValue = FXSYS_wcstof(wsMeasure.unterminated_c_str(),
-                              wsMeasure.GetLength(), &nUsedLen);
-  if (!isfinite(fValue))
+  float fValue = WideString(wsMeasure).ToFloat(&nUsedLen);
+  if (!isfinite(fValue)) {
     fValue = 0.0f;
-
+  }
   Set(fValue, GetUnitFromString(wsMeasure.Substr(nUsedLen)));
 }
 
