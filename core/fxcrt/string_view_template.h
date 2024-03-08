@@ -12,11 +12,12 @@
 #include <algorithm>
 #include <iterator>
 #include <optional>
-#include <type_traits>
+#include <utility>
 
 #include "core/fxcrt/fx_memcpy_wrappers.h"
 #include "core/fxcrt/fx_system.h"
 #include "core/fxcrt/span.h"
+#include "core/fxcrt/span_util.h"
 
 namespace fxcrt {
 
@@ -31,7 +32,7 @@ namespace fxcrt {
 // cases. Substr(), First(), and Last() tolerate out-of-range indices and
 // must return an empty string view in those cases. The aim here is allowing
 // callers to avoid range-checking first.
-template <typename T>
+template <typename T, bool HasNulTerm = false>
 class StringViewTemplate {
  public:
   using CharType = T;
@@ -39,9 +40,25 @@ class StringViewTemplate {
   using const_iterator = const CharType*;
   using const_reverse_iterator = std::reverse_iterator<const_iterator>;
 
+  template <typename OtherType, bool OtherHasNulTerm>
+  friend class StringViewTemplate;
+
+  // Escape hatch when creating from other string classes (not for you to use).
+  enum ExceptFlag { kIPromiseThisIsNulTerminated };
+
   constexpr StringViewTemplate() noexcept = default;
-  constexpr StringViewTemplate(const StringViewTemplate& src) noexcept =
-      default;
+
+  template <bool OtherHasNulTerm>
+  constexpr StringViewTemplate(
+      const StringViewTemplate<CharType, OtherHasNulTerm>& other) noexcept
+    requires(!HasNulTerm || OtherHasNulTerm)
+      : m_Span(other.m_Span) {}
+
+  template <bool OtherHasNulTerm>
+  constexpr StringViewTemplate(
+      StringViewTemplate<CharType, OtherHasNulTerm>&& other) noexcept
+    requires(!HasNulTerm || OtherHasNulTerm)
+      : m_Span(std::move(other.m_Span)) {}
 
   // Deliberately implicit to avoid calling on every string literal.
   // NOLINTNEXTLINE(runtime/explicit)
@@ -50,30 +67,43 @@ class StringViewTemplate {
                ptr ? FXSYS_len(ptr) : 0) {}
 
   constexpr StringViewTemplate(const CharType* ptr, size_t size) noexcept
+    requires(!HasNulTerm)
       : m_Span(reinterpret_cast<const UnsignedType*>(ptr), size) {}
 
-  template <typename E = typename std::enable_if<
-                !std::is_same<UnsignedType, CharType>::value>::type>
   constexpr StringViewTemplate(const UnsignedType* ptr, size_t size) noexcept
+    requires(!HasNulTerm && !std::is_same<UnsignedType, CharType>::value)
+      : m_Span(ptr, size) {}
+
+  // Overrides for when the caller knows there is a NULL at ptr[size].
+  constexpr StringViewTemplate(const CharType* ptr,
+                               size_t size,
+                               ExceptFlag flag) noexcept
+      : m_Span(reinterpret_cast<const UnsignedType*>(ptr), size) {}
+
+  constexpr StringViewTemplate(const UnsignedType* ptr,
+                               size_t size,
+                               ExceptFlag flag) noexcept
+    requires(HasNulTerm && !std::is_same<UnsignedType, CharType>::value)
       : m_Span(ptr, size) {}
 
   explicit constexpr StringViewTemplate(
       const pdfium::span<const CharType>& other) noexcept
+    requires(!HasNulTerm)
       : m_Span(!other.empty()
                    ? reinterpret_cast<const UnsignedType*>(other.data())
                    : nullptr,
                other.size()) {}
 
-  template <typename E = typename std::enable_if<
-                !std::is_same<UnsignedType, CharType>::value>::type>
   constexpr StringViewTemplate(
       const pdfium::span<const UnsignedType>& other) noexcept
+    requires(!HasNulTerm && !std::is_same<UnsignedType, CharType>::value)
       : m_Span(!other.empty() ? other.data() : nullptr, other.size()) {}
 
   // Deliberately implicit to avoid calling on every char literal.
   // |ch| must be an lvalue that outlives the StringViewTemplate.
   // NOLINTNEXTLINE(runtime/explicit)
   constexpr StringViewTemplate(const CharType& ch) noexcept
+    requires(!HasNulTerm)
       : m_Span(reinterpret_cast<const UnsignedType*>(&ch), 1u) {}
 
   StringViewTemplate& operator=(const CharType* src) {
@@ -82,7 +112,11 @@ class StringViewTemplate {
     return *this;
   }
 
-  StringViewTemplate& operator=(const StringViewTemplate& src) {
+  template <bool OtherHasNulTerm>
+  StringViewTemplate& operator=(
+      const StringViewTemplate<CharType, OtherHasNulTerm>& src)
+    requires(!HasNulTerm || OtherHasNulTerm)
+  {
     m_Span = src.m_Span;
     return *this;
   }
@@ -100,7 +134,9 @@ class StringViewTemplate {
     return const_reverse_iterator(begin());
   }
 
-  bool operator==(const StringViewTemplate& other) const {
+  template <bool OtherHasNulTerm>
+  bool operator==(
+      const StringViewTemplate<CharType, OtherHasNulTerm>& other) const {
     return std::equal(m_Span.begin(), m_Span.end(), other.m_Span.begin(),
                       other.m_Span.end());
   }
@@ -108,10 +144,12 @@ class StringViewTemplate {
     StringViewTemplate other(ptr);
     return *this == other;
   }
-  bool operator!=(const CharType* ptr) const { return !(*this == ptr); }
-  bool operator!=(const StringViewTemplate& other) const {
+  template <bool OtherHasNulTerm>
+  bool operator!=(
+      const StringViewTemplate<CharType, OtherHasNulTerm>& other) const {
     return !(*this == other);
   }
+  bool operator!=(const CharType* ptr) const { return !(*this == ptr); }
 
   bool IsASCII() const {
     for (auto c : *this) {
@@ -121,11 +159,11 @@ class StringViewTemplate {
     return true;
   }
 
-  bool EqualsASCII(const StringViewTemplate<char>& that) const {
+  bool EqualsASCII(const StringViewTemplate<char, false>& that) const {
     size_t length = GetLength();
-    if (length != that.GetLength())
+    if (length != that.GetLength()) {
       return false;
-
+    }
     for (size_t i = 0; i < length; ++i) {
       auto c = (*this)[i];
       if (c <= 0 || c > 127 || c != that[i])  // Questionable signedness of |c|.
@@ -134,7 +172,7 @@ class StringViewTemplate {
     return true;
   }
 
-  bool EqualsASCIINoCase(const StringViewTemplate<char>& that) const {
+  bool EqualsASCIINoCase(const StringViewTemplate<char, false>& that) const {
     size_t length = GetLength();
     if (length != that.GetLength())
       return false;
@@ -164,10 +202,26 @@ class StringViewTemplate {
     return pdfium::make_span(reinterpret_cast<const CharType*>(m_Span.data()),
                              m_Span.size());
   }
-  const UnsignedType* unterminated_unsigned_str() const {
+
+  const UnsignedType* unsigned_str() const
+    requires(HasNulTerm)
+  {
     return m_Span.data();
   }
-  const CharType* unterminated_c_str() const {
+  const CharType* c_str() const
+    requires(HasNulTerm)
+  {
+    return reinterpret_cast<const CharType*>(m_Span.data());
+  }
+
+  const UnsignedType* unterminated_unsigned_str() const
+    requires(!HasNulTerm)
+  {
+    return m_Span.data();
+  }
+  const CharType* unterminated_c_str() const
+    requires(!HasNulTerm)
+  {
     return reinterpret_cast<const CharType*>(m_Span.data());
   }
 
@@ -203,53 +257,69 @@ class StringViewTemplate {
 
   bool Contains(CharType ch) const { return Find(ch).has_value(); }
 
-  StringViewTemplate Substr(size_t offset) const {
-    // Unsigned underflow is well-defined and out-of-range is handled by
-    // Substr().
-    return Substr(offset, GetLength() - offset);
+  // NOTE: The end of a NUL terminated StringView is NUL terminated.
+  StringViewTemplate<CharType, HasNulTerm> Substr(size_t offset) const {
+    if (!m_Span.data()) {
+      return StringViewTemplate<CharType, HasNulTerm>();
+    }
+    if (!IsValidIndex(offset)) {
+      return StringViewTemplate<CharType, HasNulTerm>();
+    }
+    // NOTE: Can't construct direclty from subspan() since that is only allowed
+    // for the non-NUL terminated case.
+    auto span = reinterpret_span<const CharType>(m_Span.subspan(offset));
+    return StringViewTemplate<CharType, HasNulTerm>(
+        span.data(), span.size(), kIPromiseThisIsNulTerminated);
   }
 
-  StringViewTemplate Substr(size_t first, size_t count) const {
-    if (!m_Span.data())
-      return StringViewTemplate();
-
-    if (!IsValidIndex(first))
-      return StringViewTemplate();
-
-    if (count == 0 || !IsValidLength(count))
-      return StringViewTemplate();
-
-    if (!IsValidIndex(first + count - 1))
-      return StringViewTemplate();
-
-    return StringViewTemplate(m_Span.subspan(first, count));
+  // NOTE: The middle of a NUL terminated StringView is not NUL terminated.
+  StringViewTemplate<CharType, false> Substr(size_t offset,
+                                             size_t count) const {
+    if (!m_Span.data()) {
+      return StringViewTemplate<CharType, false>();
+    }
+    if (!IsValidIndex(offset)) {
+      return StringViewTemplate<CharType, false>();
+    }
+    if (count == 0 || !IsValidLength(count)) {
+      return StringViewTemplate<CharType, false>();
+    }
+    if (!IsValidIndex(offset + count - 1)) {
+      return StringViewTemplate<CharType, false>();
+    }
+    return StringViewTemplate<CharType, false>(m_Span.subspan(offset, count));
   }
 
-  StringViewTemplate First(size_t count) const {
+  // NOTE: The start of a NUL terminated StringView is not NUL terminated.
+  StringViewTemplate<CharType, false> First(size_t count) const {
     return Substr(0, count);
   }
 
-  StringViewTemplate Last(size_t count) const {
+  // NOTE: The end of a NUL terminated StringView is NUL terminated.
+  StringViewTemplate<CharType, HasNulTerm> Last(size_t count) const {
     // Unsigned underflow is well-defined and out-of-range is handled by
     // Substr().
-    return Substr(GetLength() - count, count);
+    return Substr(GetLength() - count);
   }
 
-  StringViewTemplate TrimmedRight(CharType ch) const {
-    if (IsEmpty())
-      return StringViewTemplate();
-
+  // NOTE: The start of a NUL terminated StringView is not NUL terminated.
+  // TODO(tsepez): rename this to TrimmedBack().
+  StringViewTemplate<CharType, false> TrimmedRight(CharType ch) const {
+    if (IsEmpty()) {
+      return StringViewTemplate<CharType, false>();
+    }
     size_t pos = GetLength();
-    while (pos && CharAt(pos - 1) == ch)
+    while (pos && CharAt(pos - 1) == ch) {
       pos--;
-
-    if (pos == 0)
-      return StringViewTemplate();
-
-    return StringViewTemplate(m_Span.data(), pos);
+    }
+    // Not strictly needed, but may avoid dangling ptrs.
+    if (pos == 0) {
+      return StringViewTemplate<CharType, false>();
+    }
+    return StringViewTemplate<CharType, false>(m_Span.data(), pos);
   }
 
-  bool operator<(const StringViewTemplate& that) const {
+  bool operator<(const StringViewTemplate<CharType, false>& that) const {
     int result =
         FXSYS_cmp(reinterpret_cast<const CharType*>(m_Span.data()),
                   reinterpret_cast<const CharType*>(that.m_Span.data()),
@@ -257,7 +327,7 @@ class StringViewTemplate {
     return result < 0 || (result == 0 && m_Span.size() < that.m_Span.size());
   }
 
-  bool operator>(const StringViewTemplate& that) const {
+  bool operator>(const StringViewTemplate<CharType, false>& that) const {
     int result =
         FXSYS_cmp(reinterpret_cast<const CharType*>(m_Span.data()),
                   reinterpret_cast<const CharType*>(that.m_Span.data()),
@@ -275,16 +345,16 @@ class StringViewTemplate {
   void* operator new(size_t) throw() { return nullptr; }
 };
 
-template <typename T>
-inline bool operator==(const T* lhs, const StringViewTemplate<T>& rhs) {
+template <typename T, bool B>
+inline bool operator==(const T* lhs, const StringViewTemplate<T, B>& rhs) {
   return rhs == lhs;
 }
-template <typename T>
-inline bool operator!=(const T* lhs, const StringViewTemplate<T>& rhs) {
+template <typename T, bool B>
+inline bool operator!=(const T* lhs, const StringViewTemplate<T, B>& rhs) {
   return rhs != lhs;
 }
-template <typename T>
-inline bool operator<(const T* lhs, const StringViewTemplate<T>& rhs) {
+template <typename T, bool B>
+inline bool operator<(const T* lhs, const StringViewTemplate<T, B>& rhs) {
   return rhs > lhs;
 }
 
