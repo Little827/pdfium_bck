@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c59bab32_4b250a09",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-03-08T17:59:52Z",
+      "side": 1,
+      "message": "It\u0027s always a bit of a pain to get the image-based tests green due to all the different variations. One can look through the logs and use the hashes to get the new images instead of running the build locally.\n\ne.g. For PagePosition_any_rest.pdf.0, the image is https://pdfium-gold.skia.org/img/images/672311a8b43610b804fab1a7ccfe1474.png.",
+      "revId": "e62421f7d709279da7d2fbb1f9f2087a172d512e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
