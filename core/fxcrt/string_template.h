@@ -24,7 +24,6 @@ class StringTemplate {
  public:
   using CharType = T;
   using UnsignedType = typename std::make_unsigned<CharType>::type;
-  using StringView = StringViewTemplate<T>;
   using const_iterator = T*;
   using const_reverse_iterator = std::reverse_iterator<const_iterator>;
 
@@ -38,10 +37,13 @@ class StringTemplate {
                    : nullptr;
   }
 
-  // Explicit conversion to StringView.
+  // Explicit conversion to StringView. Since StringTemplate always contains
+  // a terminating NUL, so will the StringView.
   // Note: Any subsequent modification of |this| will invalidate the result.
-  StringView AsStringView() const {
-    return StringView(unsigned_str(), GetLength());
+  StringViewTemplate<CharType, true> AsStringView() const {
+    return StringViewTemplate<CharType, true>(
+        unsigned_str(), GetLength(),
+        StringViewTemplate<CharType, true>::kIPromiseThisIsNulTerminated);
   }
 
   // Explicit conversion to span.
@@ -117,11 +119,15 @@ class StringTemplate {
   size_t Delete(size_t index, size_t count = 1);
 
   // Returns the index within the string when found.
-  std::optional<size_t> Find(StringView str, size_t start = 0) const;
+  // TODO(tsepez): accept either kind of StringTemplate termination.
+  std::optional<size_t> Find(StringViewTemplate<CharType, false> str,
+                             size_t start = 0) const;
   std::optional<size_t> Find(T ch, size_t start = 0) const;
   std::optional<size_t> ReverseFind(T ch) const;
 
-  bool Contains(StringView str, size_t start = 0) const {
+  // TODO(tsepez): accept either kind of StringTemplate
+  bool Contains(StringViewTemplate<CharType, false> str,
+                size_t start = 0) const {
     return Find(str, start).has_value();
   }
   bool Contains(T ch, size_t start = 0) const {
@@ -129,7 +135,9 @@ class StringTemplate {
   }
 
   // Replace all occurences of `oldstr' with `newstr'.
-  size_t Replace(StringView oldstr, StringView newstr);
+  // TODO(tsepez): accept either kind of StringTemplate
+  size_t Replace(StringViewTemplate<CharType, false> oldstr,
+                 StringViewTemplate<CharType, false> newstr);
 
   // Overwrite character at `index`.
   void SetAt(size_t index, T ch);
@@ -142,9 +150,10 @@ class StringTemplate {
   void TrimBack(T ch);
 
   // Remove all characters in `targets` from both/front/back of string.
-  void Trim(StringView targets);
-  void TrimFront(StringView targets);
-  void TrimBack(StringView targets);
+  // TODO(tsepez): accept either kind of StringTemplate
+  void Trim(StringViewTemplate<CharType, false> targets);
+  void TrimFront(StringViewTemplate<CharType, false> targets);
+  void TrimBack(StringViewTemplate<CharType, false> targets);
 
  protected:
   using StringData = StringDataTemplate<T>;

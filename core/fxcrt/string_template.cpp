@@ -131,11 +131,11 @@ void StringTemplate<T>::SetAt(size_t index, T ch) {
 
 template <typename T>
 std::optional<size_t> StringTemplate<T>::Find(T ch, size_t start) const {
-  return Find(StringView(ch), start);
+  return Find(StringViewTemplate<T>(ch), start);
 }
 
 template <typename T>
-std::optional<size_t> StringTemplate<T>::Find(StringView str,
+std::optional<size_t> StringTemplate<T>::Find(StringViewTemplate<T, false> str,
                                               size_t start) const {
   if (!m_pData) {
     return std::nullopt;
@@ -166,7 +166,8 @@ std::optional<size_t> StringTemplate<T>::ReverseFind(T ch) const {
 }
 
 template <typename T>
-size_t StringTemplate<T>::Replace(StringView oldstr, StringView newstr) {
+size_t StringTemplate<T>::Replace(StringViewTemplate<T, false> oldstr,
+                                  StringViewTemplate<T, false> newstr) {
   if (!m_pData || oldstr.IsEmpty()) {
     return 0;
   }
@@ -218,31 +219,29 @@ void StringTemplate<T>::Trim(T ch) {
 
 template <typename T>
 void StringTemplate<T>::TrimFront(T ch) {
-  TrimFront(StringView(ch));
+  TrimFront(StringViewTemplate<T>(ch));
 }
 
 template <typename T>
 void StringTemplate<T>::TrimBack(T ch) {
-  TrimBack(StringView(ch));
+  TrimBack(StringViewTemplate<T>(ch));
 }
 
 template <typename T>
-void StringTemplate<T>::Trim(StringView targets) {
+void StringTemplate<T>::Trim(StringViewTemplate<T, false> targets) {
   TrimFront(targets);
   TrimBack(targets);
 }
 
 template <typename T>
-void StringTemplate<T>::TrimFront(StringView targets) {
+void StringTemplate<T>::TrimFront(StringViewTemplate<T, false> targets) {
   if (!m_pData || targets.IsEmpty()) {
     return;
   }
-
   size_t len = GetLength();
   if (len == 0) {
     return;
   }
-
   size_t pos = 0;
   while (pos < len) {
     size_t i = 0;
@@ -258,7 +257,6 @@ void StringTemplate<T>::TrimFront(StringView targets) {
   if (!pos) {
     return;
   }
-
   ReallocBeforeWrite(len);
   size_t nDataLength = len - pos;
   // Move the terminating NUL as well.
@@ -268,7 +266,7 @@ void StringTemplate<T>::TrimFront(StringView targets) {
 }
 
 template <typename T>
-void StringTemplate<T>::TrimBack(StringView targets) {
+void StringTemplate<T>::TrimBack(StringViewTemplate<T, false> targets) {
   if (!m_pData || targets.IsEmpty()) {
     return;
   }
