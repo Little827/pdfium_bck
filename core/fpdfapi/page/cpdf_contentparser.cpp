@@ -118,6 +118,11 @@ CPDF_ContentParser::CPDF_ContentParser(
 
 CPDF_ContentParser::~CPDF_ContentParser() = default;
 
+CPDF_StreamContentParser::CTMMap CPDF_ContentParser::TakeAllCTMs() {
+  return m_pParser ? m_pParser->TakeAllCTMs()
+                   : CPDF_StreamContentParser::CTMMap();
+}
+
 // Returning |true| means that there is more content to be processed and
 // Continue() should be called again. Returning |false| means that we've
 // completed the parse and Continue() is complete.
