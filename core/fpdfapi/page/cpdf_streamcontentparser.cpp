@@ -404,6 +404,10 @@ CPDF_StreamContentParser::CPDF_StreamContentParser(
 
   // Add the sentinel.
   m_ContentMarksStack.push(std::make_unique<CPDF_ContentMarks>());
+
+  // Initialize `m_AllCTMs`, as there is a CTM, even if the stream contains no
+  // cm operators.
+  m_AllCTMs[0] = m_pCurStates->current_transformation_matrix();
 }
 
 CPDF_StreamContentParser::~CPDF_StreamContentParser() {
@@ -685,6 +689,8 @@ void CPDF_StreamContentParser::Handle_CurveTo_123() {
 
 void CPDF_StreamContentParser::Handle_ConcatMatrix() {
   m_pCurStates->prepend_to_current_transformation_matrix(GetMatrix());
+  m_AllCTMs[GetCurrentStreamIndex()] =
+      m_pCurStates->current_transformation_matrix();
   OnChangeTextMatrix();
 }
 
@@ -987,10 +993,14 @@ void CPDF_StreamContentParser::Handle_SaveGraphState() {
 }
 
 void CPDF_StreamContentParser::Handle_RestoreGraphState() {
-  if (m_StateStack.empty())
+  if (m_StateStack.empty()) {
     return;
+  }
+
   *m_pCurStates = *m_StateStack.back();
   m_StateStack.pop_back();
+  m_AllCTMs[GetCurrentStreamIndex()] =
+      m_pCurStates->current_transformation_matrix();
 }
 
 void CPDF_StreamContentParser::Handle_Rectangle() {
@@ -1173,6 +1183,10 @@ RetainPtr<CPDF_Font> CPDF_StreamContentParser::FindFont(
     }
   }
   return pFont;
+}
+
+std::map<int32_t, CFX_Matrix> CPDF_StreamContentParser::TakeAllCTMs() {
+  return std::move(m_AllCTMs);
 }
 
 RetainPtr<CPDF_ColorSpace> CPDF_StreamContentParser::FindColorSpace(

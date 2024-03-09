@@ -8,6 +8,7 @@
 #define CORE_FPDFAPI_PAGE_CPDF_STREAMCONTENTPARSER_H_
 
 #include <array>
+#include <map>
 #include <memory>
 #include <stack>
 #include <vector>
@@ -41,6 +42,10 @@ class CPDF_TextObject;
 
 class CPDF_StreamContentParser {
  public:
+  // Key: The stream index.
+  // Value: The current transformation matrix at the end of the stream.
+  using CTMMap = std::map<int32_t, CFX_Matrix>;
+
   static void InitializeGlobals();
   static void DestroyGlobals();
 
@@ -64,6 +69,7 @@ class CPDF_StreamContentParser {
   bool IsColored() const { return m_bColored; }
   pdfium::span<const float> GetType3Data() const { return m_Type3Data; }
   RetainPtr<CPDF_Font> FindFont(const ByteString& name);
+  CTMMap TakeAllCTMs();
 
   static ByteStringView FindKeyAbbreviationForTesting(ByteStringView abbr);
   static ByteStringView FindValueAbbreviationForTesting(ByteStringView abbr);
@@ -242,6 +248,7 @@ class CPDF_StreamContentParser {
   std::vector<std::unique_ptr<CPDF_AllStates>> m_StateStack;
   std::array<float, 6> m_Type3Data = {};
   std::array<ContentParam, kParamBufSize> m_ParamBuf;
+  CTMMap m_AllCTMs;
 
   // The merged stream offsets at which a content stream ends and another
   // begins.
