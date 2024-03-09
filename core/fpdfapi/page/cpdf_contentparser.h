@@ -40,9 +40,8 @@ class CPDF_ContentParser {
                      CPDF_Form::RecursionState* recursion_state);
   ~CPDF_ContentParser();
 
-  const CPDF_AllStates* GetCurStates() const {
-    return m_pParser ? m_pParser->GetCurStates() : nullptr;
-  }
+  CPDF_StreamContentParser::CTMMap TakeAllCTMs();
+
   // Returns whether to continue or not.
   bool Continue(PauseIndicatorIface* pPause);
 
