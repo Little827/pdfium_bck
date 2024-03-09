@@ -210,10 +210,8 @@ std::array<float, 3> CPDF_MeshStream::ReadColor() const {
                                          m_ComponentMax;
   }
 
-  std::array<float, 3> rgb;
   if (m_funcs.empty()) {
-    m_pCS->GetRGB(color_value, &rgb[0], &rgb[1], &rgb[2]);
-    return rgb;
+    return m_pCS->GetRGB(color_value).value_or(std::array<float, 3>());
   }
 
   float result[kMaxComponents] = {};
@@ -223,8 +221,7 @@ std::array<float, 3> CPDF_MeshStream::ReadColor() const {
     }
   }
 
-  m_pCS->GetRGB(result, &rgb[0], &rgb[1], &rgb[2]);
-  return rgb;
+  return m_pCS->GetRGB(result).value_or(std::array<float, 3>());
 }
 
 bool CPDF_MeshStream::ReadVertex(const CFX_Matrix& pObject2Bitmap,

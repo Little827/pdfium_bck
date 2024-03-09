@@ -1046,7 +1046,13 @@ void CPDF_DIB::TranslateScanline24bpp(
       G = (1.0f - color_values[1]) * k;
       B = (1.0f - color_values[2]) * k;
     } else if (m_Family != CPDF_ColorSpace::Family::kPattern) {
-      m_pColorSpace->GetRGB(color_values, &R, &G, &B);
+      std::optional<std::array<float, 3>> results =
+          m_pColorSpace->GetRGB(color_values);
+      if (results.has_value()) {
+        R = results.value()[0];
+        G = results.value()[1];
+        B = results.value()[2];
+      }
     }
     R = std::clamp(R, 0.0f, 1.0f);
     G = std::clamp(G, 0.0f, 1.0f);

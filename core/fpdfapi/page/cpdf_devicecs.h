@@ -18,10 +18,8 @@ class CPDF_DeviceCS final : public CPDF_ColorSpace {
   ~CPDF_DeviceCS() override;
 
   // CPDF_ColorSpace:
-  bool GetRGB(pdfium::span<const float> pBuf,
-              float* R,
-              float* G,
-              float* B) const override;
+  std::optional<std::array<float, 3>> GetRGB(
+      pdfium::span<const float> buffer) const override;
   void TranslateImageLine(pdfium::span<uint8_t> dest_span,
                           pdfium::span<const uint8_t> src_span,
                           int pixels,

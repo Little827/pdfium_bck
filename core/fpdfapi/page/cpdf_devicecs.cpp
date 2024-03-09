@@ -42,35 +42,32 @@ uint32_t CPDF_DeviceCS::v_Load(CPDF_Document* pDoc,
   NOTREACHED_NORETURN();
 }
 
-bool CPDF_DeviceCS::GetRGB(pdfium::span<const float> pBuf,
-                           float* R,
-                           float* G,
-                           float* B) const {
+std::optional<std::array<float, 3>> CPDF_DeviceCS::GetRGB(
+    pdfium::span<const float> buffer) const {
   switch (GetFamily()) {
-    case Family::kDeviceGray:
-      *R = NormalizeChannel(pBuf[0]);
-      *G = *R;
-      *B = *R;
-      return true;
-    case Family::kDeviceRGB:
-      *R = NormalizeChannel(pBuf[0]);
-      *G = NormalizeChannel(pBuf[1]);
-      *B = NormalizeChannel(pBuf[2]);
-      return true;
-    case Family::kDeviceCMYK:
+    case Family::kDeviceGray: {
+      const float v = NormalizeChannel(buffer[0]);
+      return std::array<float, 3>{v, v, v};
+    }
+    case Family::kDeviceRGB: {
+      return std::array<float, 3>{NormalizeChannel(buffer[0]),
+                                  NormalizeChannel(buffer[1]),
+                                  NormalizeChannel(buffer[2])};
+    }
+    case Family::kDeviceCMYK: {
       if (IsStdConversionEnabled()) {
-        float k = pBuf[3];
-        *R = 1.0f - std::min(1.0f, pBuf[0] + k);
-        *G = 1.0f - std::min(1.0f, pBuf[1] + k);
-        *B = 1.0f - std::min(1.0f, pBuf[2] + k);
-      } else {
-        std::tie(*R, *G, *B) = AdobeCMYK_to_sRGB(
-            NormalizeChannel(pBuf[0]), NormalizeChannel(pBuf[1]),
-            NormalizeChannel(pBuf[2]), NormalizeChannel(pBuf[3]));
+        const float k = buffer[3];
+        return std::array<float, 3>{1.0f - std::min(1.0f, buffer[0] + k),
+                                    1.0f - std::min(1.0f, buffer[1] + k),
+                                    1.0f - std::min(1.0f, buffer[2] + k)};
       }
-      return true;
-    default:
+      return AdobeCMYK_to_sRGB(
+          NormalizeChannel(buffer[0]), NormalizeChannel(buffer[1]),
+          NormalizeChannel(buffer[2]), NormalizeChannel(buffer[3]));
+    }
+    default: {
       NOTREACHED_NORETURN();
+    }
   }
 }
 

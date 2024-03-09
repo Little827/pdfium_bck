@@ -1759,15 +1759,12 @@ void ProgressiveDecoder::ResampleScanline(
           uint32_t pixel_weight =
               pPixelWeights->m_Weights[j - pPixelWeights->m_SrcStart];
           const uint8_t* src_pixel = src_scan + j * src_bytes_per_pixel;
-          uint8_t src_b = 0;
-          uint8_t src_g = 0;
-          uint8_t src_r = 0;
-          std::tie(src_r, src_g, src_b) =
+          std::array<uint8_t, 3> src =
               AdobeCMYK_to_sRGB1(255 - src_pixel[0], 255 - src_pixel[1],
                                  255 - src_pixel[2], 255 - src_pixel[3]);
-          dest_b += pixel_weight * src_b;
-          dest_g += pixel_weight * src_g;
-          dest_r += pixel_weight * src_r;
+          dest_b += pixel_weight * src[2];
+          dest_g += pixel_weight * src[1];
+          dest_r += pixel_weight * src[0];
         }
         *dest_scan++ = static_cast<uint8_t>(
             FXRGB2GRAY(CStretchEngine::PixelFromFixed(dest_r),
@@ -1873,15 +1870,12 @@ void ProgressiveDecoder::ResampleScanline(
           uint32_t pixel_weight =
               pPixelWeights->m_Weights[j - pPixelWeights->m_SrcStart];
           const uint8_t* src_pixel = src_scan + j * src_bytes_per_pixel;
-          uint8_t src_b = 0;
-          uint8_t src_g = 0;
-          uint8_t src_r = 0;
-          std::tie(src_r, src_g, src_b) =
+          std::array<uint8_t, 3> src =
               AdobeCMYK_to_sRGB1(255 - src_pixel[0], 255 - src_pixel[1],
                                  255 - src_pixel[2], 255 - src_pixel[3]);
-          dest_b += pixel_weight * src_b;
-          dest_g += pixel_weight * src_g;
-          dest_r += pixel_weight * src_r;
+          dest_b += pixel_weight * src[2];
+          dest_g += pixel_weight * src[1];
+          dest_r += pixel_weight * src[0];
         }
         *dest_scan++ = CStretchEngine::PixelFromFixed(dest_b);
         *dest_scan++ = CStretchEngine::PixelFromFixed(dest_g);
