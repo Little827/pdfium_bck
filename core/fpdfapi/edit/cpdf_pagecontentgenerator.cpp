@@ -63,7 +63,9 @@ bool WriteColorToStream(fxcrt::ostringstream& buf, const CPDF_Color* color) {
     return false;
   }
 
-  buf << rgb[0] << " " << rgb[1] << " " << rgb[2];
+  WriteFloat(buf, rgb.value()[0]) << " ";
+  WriteFloat(buf, rgb.value()[1]) << " ";
+  WriteFloat(buf, rgb.value()[2]);
   return true;
 }
 
