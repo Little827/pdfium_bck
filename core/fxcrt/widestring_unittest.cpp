@@ -31,17 +31,19 @@ TEST(WideString, ElementAccess) {
   EXPECT_EQ(0, wmemcmp(abc_span.data(), L"abc", 3));
 
   WideString mutable_abc = abc;
-  EXPECT_EQ(abc.c_str(), mutable_abc.c_str());
+  EXPECT_EQ(abc.c_str().get(),
+            mutable_abc.c_str().get());  // Test ptr equality.
   EXPECT_EQ(L'a', mutable_abc[0]);
   EXPECT_EQ(L'b', mutable_abc[1]);
   EXPECT_EQ(L'c', mutable_abc[2]);
-  EXPECT_EQ(abc.c_str(), mutable_abc.c_str());
+  EXPECT_EQ(abc.c_str().get(),
+            mutable_abc.c_str().get());  // Test ptr equality.
   EXPECT_EQ(L"abc", abc);
 
   const wchar_t* c_str = abc.c_str();
   mutable_abc.SetAt(0, L'd');
-  EXPECT_EQ(c_str, abc.c_str());
-  EXPECT_NE(c_str, mutable_abc.c_str());
+  EXPECT_EQ(c_str, abc.c_str().get());          // Test ptr equality.
+  EXPECT_NE(c_str, mutable_abc.c_str().get());  // Test ptr equality.
   EXPECT_EQ(L"abc", abc);
   EXPECT_EQ(L"dbc", mutable_abc);
 
@@ -512,26 +514,26 @@ TEST(WideString, RemoveCopies) {
   // No change with single reference - no copy.
   freed.Remove(L'Q');
   EXPECT_EQ(L"FREED", freed);
-  EXPECT_EQ(old_buffer, freed.c_str());
+  EXPECT_EQ(old_buffer, freed.c_str().get());  // Test ptr equality.
 
   // Change with single reference - no copy.
   freed.Remove(L'E');
   EXPECT_EQ(L"FRD", freed);
-  EXPECT_EQ(old_buffer, freed.c_str());
+  EXPECT_EQ(old_buffer, freed.c_str().get());  // Test ptr equality.
 
   // No change with multiple references - no copy.
   WideString shared(freed);
   freed.Remove(L'Q');
   EXPECT_EQ(L"FRD", freed);
-  EXPECT_EQ(old_buffer, freed.c_str());
-  EXPECT_EQ(old_buffer, shared.c_str());
+  EXPECT_EQ(old_buffer, freed.c_str().get());   // Test ptr equality.
+  EXPECT_EQ(old_buffer, shared.c_str().get());  // Test ptr equality.
 
   // Change with multiple references -- must copy.
   freed.Remove(L'D');
   EXPECT_EQ(L"FR", freed);
-  EXPECT_NE(old_buffer, freed.c_str());
+  EXPECT_NE(old_buffer, freed.c_str().get());  // Test ptr equality.
   EXPECT_EQ(L"FRD", shared);
-  EXPECT_EQ(old_buffer, shared.c_str());
+  EXPECT_EQ(old_buffer, shared.c_str().get());  // Test ptr equality.
 }
 
 TEST(WideString, Replace) {
@@ -891,7 +893,7 @@ TEST(WideString, TrimFrontCopies) {
     const wchar_t* old_buffer = fred.c_str();
     fred.TrimWhitespaceFront();
     EXPECT_EQ(L"FRED  ", fred);
-    EXPECT_EQ(old_buffer, fred.c_str());
+    EXPECT_EQ(old_buffer, fred.c_str().get());  // Test ptr equality.
   }
   {
     // With multiple references, we must copy.
@@ -901,7 +903,7 @@ TEST(WideString, TrimFrontCopies) {
     fred.TrimWhitespaceFront();
     EXPECT_EQ(L"FRED  ", fred);
     EXPECT_EQ(L"  FRED  ", other_fred);
-    EXPECT_NE(old_buffer, fred.c_str());
+    EXPECT_NE(old_buffer, fred.c_str().get());  // Test ptr equality.
   }
   {
     // With multiple references, but no modifications, no copy.
@@ -911,7 +913,7 @@ TEST(WideString, TrimFrontCopies) {
     fred.TrimWhitespaceFront();
     EXPECT_EQ(L"FRED", fred);
     EXPECT_EQ(L"FRED", other_fred);
-    EXPECT_EQ(old_buffer, fred.c_str());
+    EXPECT_EQ(old_buffer, fred.c_str().get());  // Test ptr equality.
   }
 }
 
@@ -950,7 +952,7 @@ TEST(WideString, TrimBackCopies) {
     const wchar_t* old_buffer = fred.c_str();
     fred.TrimWhitespaceBack();
     EXPECT_EQ(L"  FRED", fred);
-    EXPECT_EQ(old_buffer, fred.c_str());
+    EXPECT_EQ(old_buffer, fred.c_str().get());  // Test ptr equality.
   }
   {
     // With multiple references, we must copy.
@@ -960,7 +962,7 @@ TEST(WideString, TrimBackCopies) {
     fred.TrimWhitespaceBack();
     EXPECT_EQ(L"  FRED", fred);
     EXPECT_EQ(L"  FRED  ", other_fred);
-    EXPECT_NE(old_buffer, fred.c_str());
+    EXPECT_NE(old_buffer, fred.c_str().get());  // Test ptr equality.
   }
   {
     // With multiple references, but no modifications, no copy.
@@ -970,7 +972,7 @@ TEST(WideString, TrimBackCopies) {
     fred.TrimWhitespaceBack();
     EXPECT_EQ(L"FRED", fred);
     EXPECT_EQ(L"FRED", other_fred);
-    EXPECT_EQ(old_buffer, fred.c_str());
+    EXPECT_EQ(old_buffer, fred.c_str().get());  // Test ptr equality.
   }
 }
 
@@ -980,18 +982,18 @@ TEST(WideString, Reserve) {
     str.Reserve(6);
     const wchar_t* old_buffer = str.c_str();
     str += L"ABCDEF";
-    EXPECT_EQ(old_buffer, str.c_str());
+    EXPECT_EQ(old_buffer, str.c_str().get());  // Test ptr equality.
     str += L"Blah Blah Blah Blah Blah Blah";
-    EXPECT_NE(old_buffer, str.c_str());
+    EXPECT_NE(old_buffer, str.c_str().get());  // Test ptr equality.
   }
   {
     WideString str(L"A");
     str.Reserve(6);
     const wchar_t* old_buffer = str.c_str();
     str += L"BCDEF";
-    EXPECT_EQ(old_buffer, str.c_str());
+    EXPECT_EQ(old_buffer, str.c_str().get());  // Test ptr equality.
     str += L"Blah Blah Blah Blah Blah Blah";
-    EXPECT_NE(old_buffer, str.c_str());
+    EXPECT_NE(old_buffer, str.c_str().get());  // Test ptr equality.
   }
 }
 
@@ -1020,7 +1022,7 @@ TEST(WideString, ReleaseBuffer) {
     str += L"clams";
     const wchar_t* old_buffer = str.c_str();
     str.ReleaseBuffer(4);
-    EXPECT_EQ(old_buffer, str.c_str());
+    EXPECT_EQ(old_buffer, str.c_str().get());  // Test ptr equality.
     EXPECT_EQ(L"clam", str);
   }
   {
@@ -1029,7 +1031,7 @@ TEST(WideString, ReleaseBuffer) {
     str += L"lams";
     const wchar_t* old_buffer = str.c_str();
     str.ReleaseBuffer(4);
-    EXPECT_EQ(old_buffer, str.c_str());
+    EXPECT_EQ(old_buffer, str.c_str().get());  // Test ptr equality.
     EXPECT_EQ(L"clam", str);
   }
   {
@@ -1038,7 +1040,7 @@ TEST(WideString, ReleaseBuffer) {
     str += L"clams";
     const wchar_t* old_buffer = str.c_str();
     str.ReleaseBuffer(4);
-    EXPECT_NE(old_buffer, str.c_str());
+    EXPECT_NE(old_buffer, str.c_str().get());  // Test ptr equality.
     EXPECT_EQ(L"clam", str);
   }
   {
@@ -1047,7 +1049,7 @@ TEST(WideString, ReleaseBuffer) {
     str += L"lams";
     const wchar_t* old_buffer = str.c_str();
     str.ReleaseBuffer(4);
-    EXPECT_NE(old_buffer, str.c_str());
+    EXPECT_NE(old_buffer, str.c_str().get());  // Test ptr equality.
     EXPECT_EQ(L"clam", str);
   }
 }
@@ -2214,6 +2216,34 @@ TEST(WideString, FX_HashCode_Wide) {
   EXPECT_EQ(FX_HashCode_GetAsIfW("AB\xff"), FX_HashCode_GetW(L"AB\xff"));
   EXPECT_EQ(FX_HashCode_GetLoweredAsIfW("AB\xff"),
             FX_HashCode_GetLoweredW(L"AB\xff"));
+}
+
+TEST(WCString, Normal) {
+  TerminatedPtr<wchar_t> empty;
+  EXPECT_EQ(nullptr, empty.get());
+
+  TerminatedPtr<wchar_t> blank = TerminatedPtr<wchar_t>::Create(L"");
+  EXPECT_NE(nullptr, blank.get());
+  EXPECT_DEATH((++blank), "");
+
+  blank = TerminatedPtr<wchar_t>::Create(L"");
+  EXPECT_NE(nullptr, blank.get());
+  EXPECT_DEATH((++blank), "");
+
+  TerminatedPtr<wchar_t> boo = TerminatedPtr<wchar_t>::Create(L"boo");
+  EXPECT_EQ(L'b', *boo++);
+  EXPECT_EQ(L'o', *boo++);
+  EXPECT_EQ(L'o', *boo++);
+  EXPECT_EQ(L'\0', *boo);
+  EXPECT_DEATH((boo++), "");
+
+  const wchar_t* ptr = L"that";
+  auto that = UNSAFE_BUFFERS(TerminatedPtr<wchar_t>::Create(ptr));
+  that = UNSAFE_BUFFERS(TerminatedPtr<wchar_t>::Create(ptr));
+
+  // Test implicit conversion to better string types.
+  [[maybe_unused]] WideStringView wsv = boo;
+  [[maybe_unused]] WideString ws = boo;
 }
 
 }  // namespace fxcrt
