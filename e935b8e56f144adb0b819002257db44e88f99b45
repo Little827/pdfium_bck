@@ -47,6 +47,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c858575_242c82ba",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentgenerator.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-03-11T21:45:29Z",
+      "side": 1,
+      "message": "Added a CHECK() to make sure that doesn\u0027t happen.",
+      "parentUuid": "04a05bb8_abbae366",
+      "range": {
+        "startLine": 164,
+        "startChar": 40,
+        "endLine": 164,
+        "endChar": 48
+      },
+      "revId": "e935b8e56f144adb0b819002257db44e88f99b45",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5772790b_c35f483a",
@@ -60,6 +84,30 @@
       "writtenOn": "2024-03-11T18:52:37Z",
       "side": 1,
       "message": "Should this be a method of m_pObjHolder to avoid returning a reference to internal state?",
+      "range": {
+        "startLine": 219,
+        "startChar": 28,
+        "endLine": 219,
+        "endChar": 52
+      },
+      "revId": "e935b8e56f144adb0b819002257db44e88f99b45",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e0bcc53_6982c6e5",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentgenerator.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-03-11T21:45:29Z",
+      "side": 1,
+      "message": "Sure. Done.",
+      "parentUuid": "5772790b_c35f483a",
       "range": {
         "startLine": 219,
         "startChar": 28,
@@ -93,6 +141,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e4c4aaa_b340bf55",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentgenerator.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-03-11T21:45:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eaf0ec53_0276dcc8",
+      "range": {
+        "startLine": 251,
+        "startChar": 0,
+        "endLine": 251,
+        "endChar": 56
+      },
+      "revId": "e935b8e56f144adb0b819002257db44e88f99b45",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "76fb4038_f161ce91",
@@ -106,6 +178,30 @@
       "writtenOn": "2024-03-11T18:52:37Z",
       "side": 1,
       "message": "Do we have to re-assign a std::map\u003c\u003e() to get around the \"valid but unspecified\" STL gotcha?",
+      "range": {
+        "startLine": 1189,
+        "startChar": 19,
+        "endLine": 1189,
+        "endChar": 28
+      },
+      "revId": "e935b8e56f144adb0b819002257db44e88f99b45",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3346462f_04277f31",
+        "filename": "core/fpdfapi/page/cpdf_streamcontentparser.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1189,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-03-11T21:45:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76fb4038_f161ce91",
       "range": {
         "startLine": 1189,
         "startChar": 19,
