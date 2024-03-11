@@ -89,6 +89,7 @@ source_set("fxcrt") {
     "mask.h",
     "maybe_owned.h",
     "notreached.h",
+    "nul_term_ptr.h",
     "numerics/checked_math.h",
     "numerics/checked_math_impl.h",
     "numerics/clamped_math.h",
