@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7ee0eb1_5dc7b730",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5645
+      },
+      "writtenOn": "2024-03-12T16:15:31Z",
+      "side": 1,
+      "message": "G-account stamp.",
+      "revId": "e8053b40651f953a81f2d9e6a1d6513e2cbe8cb6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
