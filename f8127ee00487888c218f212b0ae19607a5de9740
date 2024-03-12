@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3de6f594_0d2d62c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-03-12T16:27:01Z",
+      "side": 1,
+      "message": "Seems reasonable, but can we split out an initial version that saves the page ptr in the annotlist, and then asserts that the passed value always matches it?",
+      "revId": "f8127ee00487888c218f212b0ae19607a5de9740",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
