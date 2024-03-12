@@ -401,7 +401,7 @@ bool CGdiDeviceDriver::GDI_SetDIBits(RetainPtr<const CFX_DIBBase> source,
 
     CHECK(!flipped_source->GetBuffer().empty());
     ByteString info = GetBitmapInfo(flipped_source);
-    ((BITMAPINFOHEADER*)info.c_str())->biHeight *= -1;
+    ((BITMAPINFOHEADER*)info.c_str().get())->biHeight *= -1;
     FX_RECT dst_rect(0, 0, src_rect.Width(), src_rect.Height());
     dst_rect.Intersect(0, 0, flipped_source->GetWidth(),
                        flipped_source->GetHeight());
@@ -409,7 +409,7 @@ bool CGdiDeviceDriver::GDI_SetDIBits(RetainPtr<const CFX_DIBBase> source,
     int dst_height = dst_rect.Height();
     ::StretchDIBits(m_hDC, left, top, dst_width, dst_height, 0, 0, dst_width,
                     dst_height, flipped_source->GetBuffer().data(),
-                    (BITMAPINFO*)info.c_str(), DIB_RGB_COLORS, SRCCOPY);
+                    (BITMAPINFO*)info.c_str().get(), DIB_RGB_COLORS, SRCCOPY);
     return true;
   }
 
@@ -422,7 +422,7 @@ bool CGdiDeviceDriver::GDI_SetDIBits(RetainPtr<const CFX_DIBBase> source,
       m_hDC, left, top, src_rect.Width(), src_rect.Height(), src_rect.left,
       realized_source->GetHeight() - src_rect.bottom, 0,
       realized_source->GetHeight(), realized_source->GetBuffer().data(),
-      (BITMAPINFO*)info.c_str(), DIB_RGB_COLORS);
+      (BITMAPINFO*)info.c_str.get()(), DIB_RGB_COLORS);
   return true;
 }
 
@@ -462,7 +462,7 @@ bool CGdiDeviceDriver::GDI_StretchDIBits(RetainPtr<const CFX_DIBBase> source,
   ::StretchDIBits(m_hDC, dest_left, dest_top, dest_width, dest_height, 0, 0,
                   realized_source->GetWidth(), realized_source->GetHeight(),
                   realized_source->GetBuffer().data(),
-                  (BITMAPINFO*)info.c_str(), DIB_RGB_COLORS, SRCCOPY);
+                  (BITMAPINFO*)info.c_str().get(), DIB_RGB_COLORS, SRCCOPY);
   return true;
 }
 

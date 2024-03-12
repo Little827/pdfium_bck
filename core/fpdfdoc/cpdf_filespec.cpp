@@ -70,19 +70,19 @@ WideString CPDF_FileSpec::DecodeFileName(const WideString& filepath) {
 
 #if BUILDFLAG(IS_APPLE)
   if (filepath.First(sizeof("/Mac") - 1) == WideStringView(L"/Mac"))
-    return ChangeSlashToPlatform(filepath.c_str() + 1);
+    return ChangeSlashToPlatform(filepath.c_str().get() + 1);
   return ChangeSlashToPlatform(filepath.c_str());
 #elif BUILDFLAG(IS_WIN)
 
   if (filepath[0] != L'/')
     return ChangeSlashToPlatform(filepath.c_str());
   if (filepath[1] == L'/')
-    return ChangeSlashToPlatform(filepath.c_str() + 1);
+    return ChangeSlashToPlatform(filepath.c_str().get() + 1);
   if (filepath[2] == L'/') {
     WideString result;
     result += filepath[1];
     result += L':';
-    result += ChangeSlashToPlatform(filepath.c_str() + 2);
+    result += ChangeSlashToPlatform(filepath.c_str().get() + 2);
     return result;
   }
   WideString result;
