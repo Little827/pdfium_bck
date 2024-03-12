@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0a4239c_bd00db5d",
+        "filename": "core/fxcrt/fx_system.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-03-12T20:39:40Z",
+      "side": 1,
+      "message": "In the future, these may need to call str1.get(), hence function not macro.",
+      "range": {
+        "startLine": 158,
+        "startChar": 18,
+        "endLine": 158,
+        "endChar": 22
+      },
+      "revId": "b5c40ddd081ca89b5f01b302ba8a16b308d05511",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6843e9cb_3f638881",
+        "filename": "core/fxcrt/fx_system.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-03-12T20:39:40Z",
+      "side": 1,
+      "message": "Moved to keep all defines together / functions together below.",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 7
+      },
+      "revId": "b5c40ddd081ca89b5f01b302ba8a16b308d05511",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
