@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fed3d16d_1be27a07",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-03-12T15:09:20Z",
+      "side": 1,
+      "message": "Otherwise, next CL in the chain, and any other CL that modifies content stream generation may require a file size update.",
+      "revId": "5a9abd62aa7e63e424d07c4ec9fbd4d069f9cb40",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
