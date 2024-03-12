@@ -58,6 +58,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7b7c6bd_cae848a7",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2213,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-03-12T21:38:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9dd7516_1aaccb2b",
+      "range": {
+        "startLine": 2213,
+        "startChar": 15,
+        "endLine": 2213,
+        "endChar": 28
+      },
+      "revId": "5a9abd62aa7e63e424d07c4ec9fbd4d069f9cb40",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "66a84341_c6527f60",
@@ -71,6 +95,30 @@
       "writtenOn": "2024-03-12T16:20:15Z",
       "side": 1,
       "message": "nit: swap args and use _GT (_GE if you take the left-hand side suggestion).",
+      "range": {
+        "startLine": 2214,
+        "startChar": 2,
+        "endLine": 2214,
+        "endChar": 11
+      },
+      "revId": "5a9abd62aa7e63e424d07c4ec9fbd4d069f9cb40",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b357d20_0d22fca4",
+        "filename": "fpdfsdk/fpdf_annot_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2214,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-03-12T21:38:37Z",
+      "side": 1,
+      "message": "Using _GT, since it currently grows the size on every iteration.",
+      "parentUuid": "66a84341_c6527f60",
       "range": {
         "startLine": 2214,
         "startChar": 2,
