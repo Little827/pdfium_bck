@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3390a444_17e6ac8f",
+        "filename": "testing/tools/golden_fetch.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-03-12T18:41:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47ef6f86_1c721b49",
+      "revId": "6bde3fddeddde52d79ecbf3c43be55798ce6579b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8637b81a_b78dd149",
@@ -35,6 +53,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d8187b5_89d81ac2",
+        "filename": "testing/tools/golden_fetch.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-03-12T18:41:00Z",
+      "side": 1,
+      "message": "Added comment about keeping it for the paranoid.",
+      "parentUuid": "8637b81a_b78dd149",
+      "revId": "6bde3fddeddde52d79ecbf3c43be55798ce6579b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be0e0985_8005db78",
@@ -48,6 +84,24 @@
       "writtenOn": "2024-03-12T00:58:48Z",
       "side": 1,
       "message": "Keep this from going over 80 columns?",
+      "revId": "6bde3fddeddde52d79ecbf3c43be55798ce6579b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6ef0735_790b2ce0",
+        "filename": "testing/tools/golden_fetch.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-03-12T18:41:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be0e0985_8005db78",
       "revId": "6bde3fddeddde52d79ecbf3c43be55798ce6579b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
