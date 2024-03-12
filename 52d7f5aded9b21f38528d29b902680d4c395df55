@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "61de5d6d_bdee9a10",
+        "filename": "testing/tools/golden_fetch.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-03-12T21:26:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30c2388b_d315a5ed",
+      "range": {
+        "startLine": 17,
+        "startChar": 16,
+        "endLine": 17,
+        "endChar": 23
+      },
+      "revId": "52d7f5aded9b21f38528d29b902680d4c395df55",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4847003a_1c4376a1",
@@ -47,6 +71,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f600b931_05fae5e3",
+        "filename": "testing/tools/golden_fetch.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-03-12T21:26:07Z",
+      "side": 1,
+      "message": "Sure",
+      "parentUuid": "4847003a_1c4376a1",
+      "range": {
+        "startLine": 25,
+        "startChar": 12,
+        "endLine": 26,
+        "endChar": 9
+      },
+      "revId": "52d7f5aded9b21f38528d29b902680d4c395df55",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8d05de66_e2bd3e5c",
@@ -60,6 +108,30 @@
       "writtenOn": "2024-03-12T20:48:05Z",
       "side": 1,
       "message": "Use `$0` here?",
+      "range": {
+        "startLine": 30,
+        "startChar": 17,
+        "endLine": 30,
+        "endChar": 29
+      },
+      "revId": "52d7f5aded9b21f38528d29b902680d4c395df55",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fe09f64_019f71b6",
+        "filename": "testing/tools/golden_fetch.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-03-12T21:26:07Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "8d05de66_e2bd3e5c",
       "range": {
         "startLine": 30,
         "startChar": 17,
