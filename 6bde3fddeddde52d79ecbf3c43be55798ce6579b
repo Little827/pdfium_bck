@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47ef6f86_1c721b49",
+        "filename": "testing/tools/golden_fetch.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-03-12T00:58:48Z",
+      "side": 1,
+      "message": "Set `-e` so the script stops on error?",
+      "revId": "6bde3fddeddde52d79ecbf3c43be55798ce6579b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8637b81a_b78dd149",
+        "filename": "testing/tools/golden_fetch.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-03-12T00:58:48Z",
+      "side": 1,
+      "message": "Maybe create a temp file and delete it after this is done?",
+      "revId": "6bde3fddeddde52d79ecbf3c43be55798ce6579b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be0e0985_8005db78",
+        "filename": "testing/tools/golden_fetch.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-03-12T00:58:48Z",
+      "side": 1,
+      "message": "Keep this from going over 80 columns?",
+      "revId": "6bde3fddeddde52d79ecbf3c43be55798ce6579b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
