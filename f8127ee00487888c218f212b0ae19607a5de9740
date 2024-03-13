@@ -16,6 +16,24 @@
       "message": "Seems reasonable, but can we split out an initial version that saves the page ptr in the annotlist, and then asserts that the passed value always matches it?",
       "revId": "f8127ee00487888c218f212b0ae19607a5de9740",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d48efb2_3c936b90",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-03-13T00:49:07Z",
+      "side": 1,
+      "message": "Since the only caller is the code in fpdfsdk/cpdfsdk_renderpage.cpp, it should be easy to see that it is indeed the same pointer.",
+      "parentUuid": "3de6f594_0d2d62c7",
+      "revId": "f8127ee00487888c218f212b0ae19607a5de9740",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
