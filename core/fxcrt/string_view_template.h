@@ -18,6 +18,7 @@
 #include "core/fxcrt/fx_memcpy_wrappers.h"
 #include "core/fxcrt/fx_system.h"
 #include "core/fxcrt/span.h"
+#include "core/fxcrt/terminated_ptr.h"
 
 namespace fxcrt {
 
@@ -45,10 +46,17 @@ class StringViewTemplate {
       default;
 
   // Deliberately implicit to avoid calling on every string literal.
+  // TODO(tsepez): should be UNSAFE_BUFFER_USAGE
   // NOLINTNEXTLINE(runtime/explicit)
   StringViewTemplate(const CharType* ptr) noexcept
       : m_Span(reinterpret_cast<const UnsignedType*>(ptr),
                ptr ? FXSYS_len(ptr) : 0) {}
+
+  // Deliberately implicit.
+  // NOLINTNEXTLINE(runtime/explicit)
+  StringViewTemplate(TerminatedPtr<CharType> str) noexcept
+      : m_Span(reinterpret_cast<const UnsignedType*>(str.get()),
+               str ? FXSYS_len(str) : 0) {}
 
   constexpr StringViewTemplate(const CharType* ptr, size_t size) noexcept
       : m_Span(reinterpret_cast<const UnsignedType*>(ptr), size) {}
