@@ -147,7 +147,7 @@ TEST_F(CBC_DataMatrixWriterTest, EncodeLimitAlphaNumeric) {
 
   {
     static constexpr int kExpectedDimension = 144;
-    DataVector<uint8_t> data = writer.Encode(input.c_str(), &width, &height);
+    DataVector<uint8_t> data = writer.Encode(input, &width, &height);
     EXPECT_EQ(20736u, data.size());
     EXPECT_EQ(kExpectedDimension, width);
     EXPECT_EQ(kExpectedDimension, height);
@@ -158,7 +158,7 @@ TEST_F(CBC_DataMatrixWriterTest, EncodeLimitAlphaNumeric) {
   {
     width = -1;
     height = -1;
-    DataVector<uint8_t> data = writer.Encode(input.c_str(), &width, &height);
+    DataVector<uint8_t> data = writer.Encode(input, &width, &height);
     EXPECT_EQ(0u, data.size());
     EXPECT_EQ(-1, width);
     EXPECT_EQ(-1, height);
@@ -177,7 +177,7 @@ TEST_F(CBC_DataMatrixWriterTest, EncodeLimitNumbers) {
 
   {
     static constexpr int kExpectedDimension = 144;
-    DataVector<uint8_t> data = writer.Encode(input.c_str(), &width, &height);
+    DataVector<uint8_t> data = writer.Encode(input, &width, &height);
     EXPECT_EQ(20736u, data.size());
     EXPECT_EQ(kExpectedDimension, width);
     EXPECT_EQ(kExpectedDimension, height);
@@ -188,7 +188,7 @@ TEST_F(CBC_DataMatrixWriterTest, EncodeLimitNumbers) {
   {
     width = -1;
     height = -1;
-    DataVector<uint8_t> data = writer.Encode(input.c_str(), &width, &height);
+    DataVector<uint8_t> data = writer.Encode(input, &width, &height);
     EXPECT_EQ(0u, data.size());
     EXPECT_EQ(-1, width);
     EXPECT_EQ(-1, height);
