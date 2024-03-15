@@ -780,8 +780,12 @@ int WideString::Compare(const WideString& str) const {
 }
 
 int WideString::CompareNoCase(const wchar_t* str) const {
-  if (m_pData)
-    return str ? FXSYS_wcsicmp(m_pData->m_String, str) : 1;
+  if (m_pData) {
+    return str ? FXSYS_wcsicmp(
+                     c_str(),
+                     UNSAFE_BUFFERS(TerminatedPtr<wchar_t>::Create(str)))
+               : 1;
+  }
   return (!str || str[0] == 0) ? 0 : -1;
 }
 
@@ -798,7 +802,7 @@ void WideString::TrimWhitespaceBack() {
   TrimBack(kWideTrimChars);
 }
 int WideString::GetInteger() const {
-  return m_pData ? FXSYS_wtoi(m_pData->m_String) : 0;
+  return m_pData ? FXSYS_wtoi(c_str()) : 0;
 }
 
 std::wostream& operator<<(std::wostream& os, const WideString& str) {

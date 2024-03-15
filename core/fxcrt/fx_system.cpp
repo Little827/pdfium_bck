@@ -13,6 +13,7 @@
 #include "build/build_config.h"
 #include "core/fxcrt/compiler_specific.h"
 #include "core/fxcrt/fx_extension.h"
+#include "core/fxcrt/terminated_ptr.h"
 
 namespace {
 
@@ -21,18 +22,14 @@ uint32_t g_last_error = 0;
 #endif
 
 template <typename IntType, typename CharType>
-IntType FXSYS_StrToInt(const CharType* str) {
+IntType FXSYS_StrToInt(TerminatedPtr<CharType> str) {
   if (!str)
     return 0;
 
   // Process the sign.
   bool neg = *str == '-';
   if (neg || *str == '+') {
-    // SAFETY: `str` points at the start of the string, which is a character or
-    // a terminating NUL. `*str` is non-NUL from the condition above, so `str`
-    // is pointing inside the string. Afterward, `str` may be pointing at the
-    // terminating NUL.
-    UNSAFE_BUFFERS(str++);
+    ++str;
   }
 
   IntType num = 0;
@@ -49,11 +46,7 @@ IntType FXSYS_StrToInt(const CharType* str) {
       return std::numeric_limits<IntType>::max();
     }
     num = num * 10 + val;
-
-    // SAFETY: The loop terminates if `str` is ever pointing at the terminating
-    // NUL. `str` is only moved by one character at a time, so inside the loop
-    // `str` always points inside the string.
-    UNSAFE_BUFFERS(str++);
+    ++str;
   }
   // When it is a negative value, -num should be returned. Since num may be of
   // unsigned type, use ~num + 1 to avoid the warning of applying unary minus
@@ -118,16 +111,16 @@ int FXSYS_round(double d) {
   return static_cast<int>(round(d));
 }
 
-int32_t FXSYS_atoi(const char* str) {
+int32_t FXSYS_atoi(TerminatedPtr<char> str) {
   return FXSYS_StrToInt<int32_t, char>(str);
 }
-uint32_t FXSYS_atoui(const char* str) {
+uint32_t FXSYS_atoui(TerminatedPtr<char> str) {
   return FXSYS_StrToInt<uint32_t>(str);
 }
-int32_t FXSYS_wtoi(const wchar_t* str) {
+int32_t FXSYS_wtoi(TerminatedPtr<wchar_t> str) {
   return FXSYS_StrToInt<int32_t, wchar_t>(str);
 }
-int64_t FXSYS_atoi64(const char* str) {
+int64_t FXSYS_atoi64(TerminatedPtr<char> str) {
   return FXSYS_StrToInt<int64_t, char>(str);
 }
 const char* FXSYS_i64toa(int64_t value, char* str, int radix) {
@@ -154,11 +147,11 @@ size_t FXSYS_wcsftime(wchar_t* strDest,
   return wcsftime(strDest, maxsize, format, timeptr);
 }
 
-int FXSYS_stricmp(const char* str1, const char* str2) {
+int FXSYS_stricmp(TerminatedPtr<char> str1, TerminatedPtr<char> str2) {
   return _stricmp(str1, str2);
 }
 
-int FXSYS_wcsicmp(const wchar_t* str1, const wchar_t* str2) {
+int FXSYS_wcsicmp(TerminatedPtr<wchar_t> str1, TerminatedPtr<wchar_t> str2) {
   return _wcsicmp(str1, str2);
 }
 
@@ -168,80 +161,72 @@ char* FXSYS_strlwr(char* str) {
   if (!str) {
     return nullptr;
   }
-  char* s = str;
-  while (*str) {
-    *str = tolower(*str);
-    UNSAFE_BUFFERS(str++);  // SAFETY: NUL check in while condition.
+  auto s = TerminatedPtr<char>::Create(str);
+  while (*s) {
+    *const_cast<char*>(s.get()) = tolower(*s);
+    ++s;
   }
-  return s;
+  return str;
 }
 
 char* FXSYS_strupr(char* str) {
   if (!str) {
     return nullptr;
   }
-  char* s = str;
-  while (*str) {
-    *str = toupper(*str);
-    UNSAFE_BUFFERS(str++);  // SAFETY: NUL check in while condition.
+  auto s = TerminatedPtr<char>::Create(str);
+  while (*s) {
+    *const_cast<char*>(s.get()) = toupper(*s);
+    ++s;
   }
-  return s;
+  return str;
 }
 
 wchar_t* FXSYS_wcslwr(wchar_t* str) {
   if (!str) {
     return nullptr;
   }
-  wchar_t* s = str;
-  while (*str) {
-    *str = FXSYS_towlower(*str);
-    UNSAFE_BUFFERS(str++);  // SAFETY: NUL check in while condition.
+  auto s = TerminatedPtr<wchar_t>::Create(str);
+  while (*s) {
+    *const_cast<wchar_t*>(s.get()) = FXSYS_towlower(*s);
+    ++s;
   }
-  return s;
+  return str;
 }
 
 wchar_t* FXSYS_wcsupr(wchar_t* str) {
   if (!str) {
     return nullptr;
   }
-  wchar_t* s = str;
-  while (*str) {
-    *str = FXSYS_towupper(*str);
-    UNSAFE_BUFFERS(str++);  // SAFETY: NUL check in while condition.
+  auto s = TerminatedPtr<wchar_t>::Create(str);
+  while (*s) {
+    *const_cast<wchar_t*>(s.get()) = FXSYS_towupper(*s);
+    ++s;
   }
-  return s;
+  return str;
 }
 
-int FXSYS_stricmp(const char* str1, const char* str2) {
-  int f;
-  int l;
-  do {
-    f = toupper(*str1);
-    l = toupper(*str2);
-    // SAFETY: The loop breaks when `*str1` is NUL, so `str1` is always inside
-    // its string.
-    UNSAFE_BUFFERS(++str1);
-    // SAFETY: The loop breaks when `*str1` is non-NUL but `*str2` is NUL (as
-    // checked by `f != l`), so `str2` is always inside its string.
-    UNSAFE_BUFFERS(++str2);
-  } while (f && f == l);
-  return f - l;
+int FXSYS_stricmp(TerminatedPtr<char> str1, TerminatedPtr<char> str2) {
+  while (1) {
+    int f = toupper(*str1);
+    int l = toupper(*str2);
+    if (f != l || !*str1 || !*str2) {
+      return f - l;
+    }
+    ++str1;
+    ++str2;
+  }
 }
 
-int FXSYS_wcsicmp(const wchar_t* str1, const wchar_t* str2) {
-  wchar_t f;
-  wchar_t l;
-  do {
-    f = FXSYS_towupper(*str1);
-    l = FXSYS_towupper(*str2);
-    // SAFETY: The loop breaks when `*str1` is NUL, so `str1` is always inside
-    // its string.
-    UNSAFE_BUFFERS(++str1);
-    // SAFETY: The loop breaks when `*str1` is non-NUL but `*str2` is NUL (as
-    // checked by `f != l`), so `str2` is always inside its string.
-    UNSAFE_BUFFERS(++str2);
-  } while (f && f == l);
-  return f - l;
+int FXSYS_wcsicmp(TerminatedPtr<wchar_t> str1, TerminatedPtr<wchar_t> str2) {
+  while (1) {
+    int f = FXSYS_towupper(*str1);
+    int l = FXSYS_towupper(*str2);
+    if (f != l || !*str1 || !*str2) {
+      return f - l;
+    }
+    ++str1;
+    ++str2;
+  }
 }
 
 char* FXSYS_itoa(int value, char* str, int radix) {

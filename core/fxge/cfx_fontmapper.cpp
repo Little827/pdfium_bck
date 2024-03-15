@@ -881,14 +881,18 @@ RetainPtr<CFX_Face> CFX_FontMapper::GetCachedFace(void* font_handle,
 std::optional<CFX_FontMapper::StandardFont> CFX_FontMapper::GetStandardFontName(
     ByteString* name) {
   const auto* end = std::end(kAltFontNames);
-  const auto* found =
-      std::lower_bound(std::begin(kAltFontNames), end, name->c_str(),
-                       [](const AltFontName& element, const char* name) {
-                         return FXSYS_stricmp(element.m_pName, name) < 0;
-                       });
-  if (found == end || FXSYS_stricmp(found->m_pName, name->c_str()))
+  const auto* found = std::lower_bound(
+      std::begin(kAltFontNames), end, name->c_str(),
+      [](const AltFontName& element, TerminatedPtr<char> name) {
+        return FXSYS_stricmp(
+                   UNSAFE_BUFFERS(TerminatedPtr<char>::Create(element.m_pName)),
+                   name) < 0;
+      });
+  if (found == end ||
+      FXSYS_stricmp(UNSAFE_BUFFERS(TerminatedPtr<char>::Create(found->m_pName)),
+                    name->c_str())) {
     return std::nullopt;
-
+  }
   *name = kBase14FontNames[static_cast<size_t>(found->m_Index)];
   return found->m_Index;
 }

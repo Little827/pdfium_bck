@@ -5151,15 +5151,15 @@ bool CFXJSE_FormCalcContext::IsIsoDateFormat(ByteStringView bsData,
   }
 
   char szYear[5];
-  szYear[4] = '\0';
   for (int32_t i = 0; i < 4; ++i) {
     if (!isdigit(pData[i])) {
       return false;
     }
-
     szYear[i] = pData[i];
   }
-  iYear = FXSYS_atoi(szYear);
+  szYear[4] = '\0';
+  // SAFETY: NUL-terminator set on previous line.
+  iYear = FXSYS_atoi(UNSAFE_BUFFERS(TerminatedPtr<char>::Create(szYear)));
   if (pData.size() == 4) {
     return true;
   }
@@ -5170,10 +5170,12 @@ bool CFXJSE_FormCalcContext::IsIsoDateFormat(ByteStringView bsData,
     return false;
   }
 
-  char szBuffer[3] = {};
+  char szBuffer[3];
   szBuffer[0] = pData[iPosOff];
   szBuffer[1] = pData[iPosOff + 1];
-  iMonth = FXSYS_atoi(szBuffer);
+  szBuffer[2] = '\0';
+  // SAFETY: NUL-terminator set on previous line.
+  iMonth = FXSYS_atoi(UNSAFE_BUFFERS(TerminatedPtr<char>::Create(szBuffer)));
   if (iMonth > 12 || iMonth < 1) {
     return false;
   }
@@ -5195,7 +5197,9 @@ bool CFXJSE_FormCalcContext::IsIsoDateFormat(ByteStringView bsData,
 
   szBuffer[0] = pData[iPosOff];
   szBuffer[1] = pData[iPosOff + 1];
-  iDay = FXSYS_atoi(szBuffer);
+  szBuffer[2] = '\0';
+  // SAFETY: NUL-terminator set on previous line.
+  iDay = FXSYS_atoi(UNSAFE_BUFFERS(TerminatedPtr<char>::Create(szBuffer)));
   if (iPosOff + 2 < pData.size()) {
     return false;
   }
@@ -5233,7 +5237,7 @@ bool CFXJSE_FormCalcContext::IsIsoTimeFormat(ByteStringView bsData) {
     iZone = pData.size();
   }
 
-  char szBuffer[3] = {};  // Last char always stays NUL for termination.
+  char szBuffer[3];
   State state = kHour;
   size_t iIndex = 0;
   while (iIndex + 1 < iZone) {
@@ -5242,7 +5246,10 @@ bool CFXJSE_FormCalcContext::IsIsoTimeFormat(ByteStringView bsData) {
     if (!isdigit(szBuffer[0]) || !isdigit(szBuffer[1])) {
       return false;
     }
-    int32_t value = FXSYS_atoi(szBuffer);
+    szBuffer[2] = '\0';
+    // SAFETY: NUL-terminator set on previous lone.
+    int32_t value =
+        FXSYS_atoi(UNSAFE_BUFFERS(TerminatedPtr<char>::Create(szBuffer)));
     if (state == kHour) {
       if (value >= 24) {
         return false;
@@ -5275,7 +5282,7 @@ bool CFXJSE_FormCalcContext::IsIsoTimeFormat(ByteStringView bsData) {
     }
 
     ++iIndex;
-    char szMilliSeconds[kSubSecondLength + 1] = {};
+    char szMilliSeconds[kSubSecondLength + 1];
     for (int j = 0; j < kSubSecondLength; ++j) {
       char c = pData[iIndex + j];
       if (!isdigit(c)) {
@@ -5283,7 +5290,10 @@ bool CFXJSE_FormCalcContext::IsIsoTimeFormat(ByteStringView bsData) {
       }
       szMilliSeconds[j] = c;
     }
-    if (FXSYS_atoi(szMilliSeconds) >= 1000) {
+    szMilliSeconds[kSubSecondLength] = '\0';
+    // SAFETY: NUL-terminator set on previous line.
+    if (FXSYS_atoi(UNSAFE_BUFFERS(
+            TerminatedPtr<char>::Create(szMilliSeconds))) >= 1000) {
       return false;
     }
     iIndex += kSubSecondLength;
@@ -5307,7 +5317,10 @@ bool CFXJSE_FormCalcContext::IsIsoTimeFormat(ByteStringView bsData) {
     if (!isdigit(szBuffer[0]) || !isdigit(szBuffer[1])) {
       return false;
     }
-    int32_t value = FXSYS_atoi(szBuffer);
+    szBuffer[2] = '\0';
+    // SAFETY: NUL-terminator set on previous line.
+    int32_t value =
+        FXSYS_atoi(UNSAFE_BUFFERS(TerminatedPtr<char>::Create(szBuffer)));
     if (state == kZoneHour) {
       if (value >= 24) {
         return false;

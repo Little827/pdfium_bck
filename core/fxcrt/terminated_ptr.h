@@ -39,7 +39,7 @@ namespace fxcrt {
 // overwriting the terminator can occur, leading to OOB access.
 //
 template <typename T>
-class TerminatedPtr {
+class TRIVIAL_ABI GSL_POINTER TerminatedPtr {
  public:
   UNSAFE_BUFFER_USAGE static TerminatedPtr Create(const T* arg) {
     return TerminatedPtr(arg);

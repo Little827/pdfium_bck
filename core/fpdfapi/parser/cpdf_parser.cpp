@@ -583,7 +583,9 @@ bool CPDF_Parser::ParseAndAppendCrossRefSubsectionData(
         info.pos = 0;
         info.type = ObjectType::kFree;
       } else {
-        const FX_SAFE_FILESIZE offset = FXSYS_atoi64(pEntry);
+        // TODO(tsepez): not safe?
+        const FX_SAFE_FILESIZE offset =
+            FXSYS_atoi64(UNSAFE_BUFFERS(TerminatedPtr<char>::Create(pEntry)));
         if (!offset.IsValid())
           return false;
 
@@ -598,7 +600,9 @@ bool CPDF_Parser::ParseAndAppendCrossRefSubsectionData(
 
         // TODO(art-snake): The info.gennum is uint16_t, but version may be
         // greated than max<uint16_t>. Needs solve this issue.
-        const int32_t version = FXSYS_atoi(pEntry + 11);
+        // TODO(tsepez): not safe?
+        const int32_t version = FXSYS_atoi(
+            UNSAFE_BUFFERS(TerminatedPtr<char>::Create(pEntry + 11)));
         info.gennum = version;
         info.type = ObjectType::kNormal;
       }

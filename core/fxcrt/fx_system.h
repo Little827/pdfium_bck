@@ -29,6 +29,8 @@
 #endif  // BUILDFLAG(IS_WIN)
 
 #ifdef __cplusplus
+#include "core/fxcrt/terminated_ptr.h"
+
 extern "C" {
 #endif  // __cplusplus
 
@@ -81,13 +83,13 @@ float FXSYS_sqrt2(float a, float b);
 #ifdef __cplusplus
 }  // extern "C"
 
-// C++-only section to allow future use of TerminatedPtr<>.
-int FXSYS_stricmp(const char* str1, const char* str2);
-int FXSYS_wcsicmp(const wchar_t* str1, const wchar_t* str2);
-int32_t FXSYS_atoi(const char* str);
-int32_t FXSYS_wtoi(const wchar_t* str);
-uint32_t FXSYS_atoui(const char* str);
-int64_t FXSYS_atoi64(const char* str);
+// C++-only section to allow use of TerminatedPtr<>.
+int FXSYS_stricmp(TerminatedPtr<char> str1, TerminatedPtr<char> str2);
+int FXSYS_wcsicmp(TerminatedPtr<wchar_t> str1, TerminatedPtr<wchar_t> str2);
+int32_t FXSYS_atoi(TerminatedPtr<char> str);
+int32_t FXSYS_wtoi(TerminatedPtr<wchar_t> str);
+uint32_t FXSYS_atoui(TerminatedPtr<char> str);
+int64_t FXSYS_atoi64(TerminatedPtr<char> str);
 
 #endif  // __cplusplus
 

@@ -833,7 +833,8 @@ uint32_t CPDF_SyntaxParser::GetDirectNum() {
     return 0;
 
   m_WordBuffer[m_WordSize] = 0;
-  return FXSYS_atoui(pdfium::as_chars(pdfium::make_span(m_WordBuffer)).data());
+  return FXSYS_atoui(UNSAFE_BUFFERS(TerminatedPtr<char>::Create(
+      pdfium::as_chars(pdfium::make_span(m_WordBuffer)).data())));
 }
 
 RetainPtr<CPDF_ReadValidator> CPDF_SyntaxParser::GetValidator() const {
