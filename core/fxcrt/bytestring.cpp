@@ -107,6 +107,9 @@ ByteString::ByteString(char ch) {
 ByteString::ByteString(const char* ptr)
     : ByteString(ptr, ptr ? strlen(ptr) : 0) {}
 
+ByteString::ByteString(TerminatedPtr<char> ptr)
+    : ByteString(ptr.get(), ptr ? strlen(ptr) : 0) {}
+
 ByteString::ByteString(ByteStringView bstrc) {
   if (!bstrc.IsEmpty()) {
     m_pData = StringData::Create(bstrc.span());
