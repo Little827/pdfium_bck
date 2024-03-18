@@ -31,15 +31,14 @@ bool CFXJSE_NodeHelper::CreateNodeForCondition(const WideString& wsCondition) {
   size_t i = 1;
   for (; i < szLen; ++i) {
     wchar_t ch = wsCondition[i];
-    if (ch == ' ') {
-      continue;
-    }
     if (ch == '*') {
       m_iCreateFlag = CFXJSE_Engine::ResolveResult::Type::kCreateNodeAll;
       m_iCreateCount = 1;
       return true;
     }
-    break;
+    if (ch != ' ') {
+      break;
+    }
   }
   m_iCreateFlag = CFXJSE_Engine::ResolveResult::Type::kCreateNodeOne;
   int32_t iCount = wsCondition.Substr(i, szLen - 1 - i).GetInteger();
