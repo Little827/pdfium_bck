@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b74faad_8d2f522a",
+        "filename": "fxjs/xfa/cfxjse_nodehelper.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-03-18T21:17:23Z",
+      "side": 1,
+      "message": "Skip this altogether and set `iCount` to 0 instead?",
+      "revId": "1b8bbe914c372673381c4ce0d6d00e46c0754cbf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
