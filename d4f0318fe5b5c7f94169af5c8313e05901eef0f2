@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ced2766a_a65893ed",
+        "filename": "core/fxcrt/string_view_template.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-03-18T23:52:41Z",
+      "side": 1,
+      "message": "Why the ternary operator? I though if the count is 0, then the two inputs are considered equal.",
+      "revId": "d4f0318fe5b5c7f94169af5c8313e05901eef0f2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
