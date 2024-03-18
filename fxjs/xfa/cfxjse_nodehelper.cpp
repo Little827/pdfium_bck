@@ -21,7 +21,7 @@ CFXJSE_NodeHelper::~CFXJSE_NodeHelper() = default;
 
 bool CFXJSE_NodeHelper::CreateNodeForCondition(const WideString& wsCondition) {
   size_t szLen = wsCondition.GetLength();
-  WideString wsIndex(L"0");
+  auto wsIndex = WideString::FromASCII("0");
   bool bAll = false;
   if (szLen == 0) {
     m_iCreateFlag = CFXJSE_Engine::ResolveResult::Type::kCreateNodeOne;
