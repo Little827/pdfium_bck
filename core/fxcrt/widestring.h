@@ -19,11 +19,13 @@
 #include <utility>
 
 #include "core/fxcrt/check.h"
+#include "core/fxcrt/compiler_specific.h"
 #include "core/fxcrt/retain_ptr.h"
 #include "core/fxcrt/span.h"
 #include "core/fxcrt/string_data_template.h"
 #include "core/fxcrt/string_template.h"
 #include "core/fxcrt/string_view_template.h"
+#include "core/fxcrt/terminated_ptr.h"
 
 namespace fxcrt {
 
@@ -35,9 +37,9 @@ class ByteString;
 class WideString : public StringTemplate<wchar_t> {
  public:
   [[nodiscard]] static WideString FormatInteger(int i);
-  [[nodiscard]] static WideString Format(const wchar_t* pFormat, ...);
-  [[nodiscard]] static WideString FormatV(const wchar_t* lpszFormat,
-                                          va_list argList);
+  [[nodiscard]] static WideString Format(TerminatedPtr<wchar_t> format, ...);
+  [[nodiscard]] static WideString FormatV(TerminatedPtr<wchar_t> format,
+                                          va_list arglist);
 
   WideString() = default;
   WideString(const WideString& other) = default;
@@ -53,6 +55,10 @@ class WideString : public StringTemplate<wchar_t> {
   // Deliberately implicit to avoid calling on every string literal.
   // NOLINTNEXTLINE(runtime/explicit)
   WideString(const wchar_t* ptr);
+
+  // Deliberately implicit.
+  // NOLINTNEXTLINE(runtime/explicit)
+  WideString(TerminatedPtr<wchar_t> ptr);
 
   // No implicit conversions from byte strings.
   // NOLINTNEXTLINE(runtime/explicit)
@@ -71,11 +77,15 @@ class WideString : public StringTemplate<wchar_t> {
   [[nodiscard]] static WideString FromUTF16LE(pdfium::span<const uint8_t> data);
   [[nodiscard]] static WideString FromUTF16BE(pdfium::span<const uint8_t> data);
 
-  // Explicit conversion to C-style wide string.  The result is never nullptr,
-  // and is always NUL terminated.
+  // Explicit conversion to C-style wide string (const wchar_t* equivalent).
+  // The result is never nullptr, and is always NUL terminated.
   // Note: Any subsequent modification of |this| will invalidate the result.
-  const wchar_t* c_str() const { return m_pData ? m_pData->m_String : L""; }
-
+  const TerminatedPtr<wchar_t> c_str() const {
+    // SAFETY: m_String always includes a NUL.
+    return m_pData ? UNSAFE_BUFFERS(TerminatedPtr<wchar_t>::Create(
+                         m_pData->m_String, GetLength()))
+                   : L"";
+  }
 
   size_t GetStringLength() const {
     return m_pData ? wcslen(m_pData->m_String) : 0;

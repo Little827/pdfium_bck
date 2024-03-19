@@ -732,7 +732,7 @@ WideString GetNameExpressionSinglePath(CXFA_Node* pNode) {
   const bool bIsClassIndex =
       pNode->IsUnnamed() ||
       (bIsProperty && pNode->GetElementType() != XFA_Element::PageSet);
-  const wchar_t* pszFormat;
+  TerminatedPtr<wchar_t> pszFormat;
   WideString ws;
   if (bIsClassIndex) {
     pszFormat = L"#%ls[%zu]";
@@ -742,7 +742,6 @@ WideString GetNameExpressionSinglePath(CXFA_Node* pNode) {
     ws = pNode->JSObject()->GetCData(XFA_Attribute::Name);
     ws.Replace(L".", L"\\.");
   }
-
   return WideString::Format(pszFormat, ws.c_str(),
                             pNode->GetIndex(bIsProperty, bIsClassIndex));
 }
