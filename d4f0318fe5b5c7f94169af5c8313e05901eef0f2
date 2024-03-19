@@ -16,6 +16,24 @@
       "message": "Why the ternary operator? I though if the count is 0, then the two inputs are considered equal.",
       "revId": "d4f0318fe5b5c7f94169af5c8313e05901eef0f2",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03007e80_cf26fa67",
+        "filename": "core/fxcrt/string_view_template.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-03-19T00:39:01Z",
+      "side": 1,
+      "message": "Yes, but as I read it, that doesn\u0027t necessarily allow us of the responsibility of passing in a non-null ptr.  So compare(\u0026x, \u0026y, 0) \u003d\u003d 0, but compare(nullptr, nullptr, 0) may be UB?",
+      "parentUuid": "ced2766a_a65893ed",
+      "revId": "d4f0318fe5b5c7f94169af5c8313e05901eef0f2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
