@@ -22,57 +22,69 @@ namespace {
 const char kSentinel = 0x7f;
 
 void Check32BitBase16Itoa(int32_t input, const char* expected_output) {
-  const size_t kBufLen = 11;  // "-" + 8 digits + NUL + sentinel.
-  char buf[kBufLen];
-  buf[kBufLen - 1] = kSentinel;
-  FXSYS_itoa(input, buf, 16);
-  EXPECT_STREQ(expected_output, buf);
-  EXPECT_EQ(kSentinel, buf[kBufLen - 1]);
+  UNSAFE_BUFFERS({
+    const size_t kBufLen = 11;  // "-" + 8 digits + NUL + sentinel.
+    char buf[kBufLen];
+    buf[kBufLen - 1] = kSentinel;
+    FXSYS_itoa(input, buf, 16);
+    EXPECT_STREQ(expected_output, buf);
+    EXPECT_EQ(kSentinel, buf[kBufLen - 1]);
+  });
 }
 
 void Check32BitBase10Itoa(int32_t input, const char* expected_output) {
-  const size_t kBufLen = 13;  // "-" + 10 digits + NUL + sentinel.
-  char buf[kBufLen];
-  buf[kBufLen - 1] = kSentinel;
-  FXSYS_itoa(input, buf, 10);
-  EXPECT_STREQ(expected_output, buf);
-  EXPECT_EQ(kSentinel, buf[kBufLen - 1]);
+  UNSAFE_BUFFERS({
+    const size_t kBufLen = 13;  // "-" + 10 digits + NUL + sentinel.
+    char buf[kBufLen];
+    buf[kBufLen - 1] = kSentinel;
+    FXSYS_itoa(input, buf, 10);
+    EXPECT_STREQ(expected_output, buf);
+    EXPECT_EQ(kSentinel, buf[kBufLen - 1]);
+  });
 }
 
 void Check32BitBase2Itoa(int32_t input, const char* expected_output) {
-  const size_t kBufLen = 35;  // "-" + 32 digits + NUL + sentinel.
-  char buf[kBufLen];
-  buf[kBufLen - 1] = kSentinel;
-  FXSYS_itoa(input, buf, 2);
-  EXPECT_STREQ(expected_output, buf);
-  EXPECT_EQ(kSentinel, buf[kBufLen - 1]);
+  UNSAFE_BUFFERS({
+    const size_t kBufLen = 35;  // "-" + 32 digits + NUL + sentinel.
+    char buf[kBufLen];
+    buf[kBufLen - 1] = kSentinel;
+    FXSYS_itoa(input, buf, 2);
+    EXPECT_STREQ(expected_output, buf);
+    EXPECT_EQ(kSentinel, buf[kBufLen - 1]);
+  });
 }
 
 void Check64BitBase16Itoa(int64_t input, const char* expected_output) {
-  const size_t kBufLen = 19;  // "-" + 16 digits + NUL + sentinel.
-  char buf[kBufLen];
-  buf[kBufLen - 1] = kSentinel;
-  FXSYS_i64toa(input, buf, 16);
-  EXPECT_STREQ(expected_output, buf);
-  EXPECT_EQ(kSentinel, buf[kBufLen - 1]);
+  UNSAFE_BUFFERS({
+    const size_t kBufLen = 19;  // "-" + 16 digits + NUL + sentinel.
+    char buf[kBufLen];
+    buf[kBufLen - 1] = kSentinel;
+    FXSYS_i64toa(input, buf, 16);
+    EXPECT_STREQ(expected_output, buf);
+    EXPECT_EQ(kSentinel, buf[kBufLen - 1]);
+  });
 }
 
 void Check64BitBase10Itoa(int64_t input, const char* expected_output) {
-  const size_t kBufLen = 22;  // "-" + 19 digits + NUL + sentinel.
-  char buf[kBufLen];
-  buf[kBufLen - 1] = kSentinel;
-  FXSYS_i64toa(input, buf, 10);
-  EXPECT_STREQ(expected_output, buf);
-  EXPECT_EQ(kSentinel, buf[kBufLen - 1]);
+  UNSAFE_BUFFERS({
+    const size_t kBufLen = 22;  // "-" + 19 digits + NUL + sentinel.
+    char buf[kBufLen];
+    buf[kBufLen - 1] = kSentinel;
+    FXSYS_i64toa(input, buf, 10);
+    EXPECT_STREQ(expected_output, buf);
+    EXPECT_EQ(kSentinel, buf[kBufLen - 1]);
+  });
 }
 
 void Check64BitBase2Itoa(int64_t input, const char* expected_output) {
-  const size_t kBufLen = 67;  // "-" + 64 digits + NUL + sentinel.
-  char buf[kBufLen];
-  buf[kBufLen - 1] = kSentinel;
-  FXSYS_i64toa(input, buf, 2);
-  EXPECT_STREQ(expected_output, buf);
-  EXPECT_EQ(kSentinel, buf[kBufLen - 1]);
+  UNSAFE_BUFFERS({
+    const size_t kBufLen = 67;  // "-" + 64 digits + NUL + sentinel.
+    char buf[kBufLen];
+    buf[kBufLen - 1] = kSentinel;
+    FXSYS_i64toa(input, buf, 2);
+    EXPECT_STREQ(expected_output, buf);
+    EXPECT_EQ(kSentinel, buf[kBufLen - 1]);
+  });
 }
 
 }  // namespace
