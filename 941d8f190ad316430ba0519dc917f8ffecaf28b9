@@ -16,6 +16,24 @@
       "message": "`skia_support_pdf` is always false here, so this change does not cause any builds to change, but it does remove a reference to `sfntly` which makes other uses easier to find.",
       "revId": "941d8f190ad316430ba0519dc917f8ffecaf28b9",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4036b3ae_3c4ac854",
+        "filename": "skia/BUILD.gn",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-03-19T18:22:44Z",
+      "side": 1,
+      "message": "PDFium may turn on `skia_support_pdf` at some point. Here\u0027s one such experiment: https://pdfium-review.googlesource.com/111130\n\nRemoving sfntly is fine. Somehow I forgot to do this.",
+      "parentUuid": "8fcb8d32_c274de17",
+      "revId": "941d8f190ad316430ba0519dc917f8ffecaf28b9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
