@@ -369,9 +369,12 @@ void DrawGouraud(const RetainPtr<CFX_DIBitmap>& pBitmap,
         continue;
 
       float y_dist = (y - position1.y) / (position2.y - position1.y);
-      r[nIntersects] = vertex1.r + ((vertex2.r - vertex1.r) * y_dist);
-      g[nIntersects] = vertex1.g + ((vertex2.g - vertex1.g) * y_dist);
-      b[nIntersects] = vertex1.b + ((vertex2.b - vertex1.b) * y_dist);
+      r[nIntersects] =
+          vertex1.rgb[0] + ((vertex2.rgb[0] - vertex1.rgb[0]) * y_dist);
+      g[nIntersects] =
+          vertex1.rgb[1] + ((vertex2.rgb[1] - vertex1.rgb[1]) * y_dist);
+      b[nIntersects] =
+          vertex1.rgb[2] + ((vertex2.rgb[2] - vertex1.rgb[2]) * y_dist);
       nIntersects++;
     }
     if (nIntersects != 2)
