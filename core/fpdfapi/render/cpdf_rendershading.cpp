@@ -81,12 +81,8 @@ std::array<FX_ARGB, kShadingSteps> GetShadingSteps(
       if (nresults.has_value())
         result_span = result_span.subspan(nresults.value());
     }
-    float R = 0.0f;
-    float G = 0.0f;
-    float B = 0.0f;
-    pCS->GetRGB(result_array, &R, &G, &B);
-    shading_steps[i] = ArgbEncode(alpha, FXSYS_roundf(R * 255),
-                                  FXSYS_roundf(G * 255), FXSYS_roundf(B * 255));
+    shading_steps[i] = AlphaAndColorRefToArgb(
+        alpha, pCS->GetColorRef(result_array).value_or(0));
   }
   return shading_steps;
 }
