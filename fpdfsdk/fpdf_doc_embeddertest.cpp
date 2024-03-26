@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 #include <set>
+#include <string>
 #include <vector>
 
 #include "core/fpdfapi/parser/cpdf_document.h"
@@ -681,6 +682,28 @@ TEST_F(FPDFDocEmbedderTest, DeletePageAndRender) {
                   expected.checksum);
     UnloadPage(page);
   }
+}
+
+TEST_F(FPDFDocEmbedderTest, DeletePageAndSave) {
+  ASSERT_TRUE(OpenDocument("bookmarks.pdf"));
+
+  EXPECT_EQ(2, FPDF_GetPageCount(document()));
+  FPDFPage_Delete(document(), 0);
+  EXPECT_EQ(1, FPDF_GetPageCount(document()));
+
+  ASSERT_TRUE(FPDF_SaveAsCopy(document(), this, 0));
+  const std::string& saved_data = GetString();
+  size_t pos = 0;
+  size_t count = 0;
+  while (pos < saved_data.size()) {
+    size_t found_pos = saved_data.find("/Type/Page", pos);
+    if (found_pos == std::string::npos) {
+      break;
+    }
+    ++count;
+    pos = found_pos + 1;
+  }
+  EXPECT_EQ(3u, count);
 }
 
 TEST_F(FPDFDocEmbedderTest, GetFileIdentifier) {
