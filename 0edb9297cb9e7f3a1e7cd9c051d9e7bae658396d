@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3279a24d_223cafa5",
+        "filename": "core/fxge/dib/cfx_cmyk_to_srgb.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1754,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-03-28T20:48:44Z",
+      "side": 1,
+      "message": "nit: in keeping with the above notion of a struct, maybe manually unroll this into\n```\nresults[0] \u003d int_results[0] * kToFloat;\nresults[1] \u003d int_results[1] * kToFloat;\nresults[2] \u003d int_results[2] * kToFloat;\n\n```",
+      "range": {
+        "startLine": 1752,
+        "startChar": 2,
+        "endLine": 1754,
+        "endChar": 3
+      },
+      "revId": "0edb9297cb9e7f3a1e7cd9c051d9e7bae658396d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "038071b5_edd64f64",
+        "filename": "core/fxge/dib/cfx_cmyk_to_srgb.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-03-28T20:48:44Z",
+      "side": 1,
+      "message": "yeah, sure, but maybe we want a struct { float r, float g, float b} as I suspect we are (always ???) using numeric literals to index these.  Don\u0027t we have one of these for both float and int8?",
+      "range": {
+        "startLine": 16,
+        "startChar": 1,
+        "endLine": 16,
+        "endChar": 21
+      },
+      "revId": "0edb9297cb9e7f3a1e7cd9c051d9e7bae658396d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
