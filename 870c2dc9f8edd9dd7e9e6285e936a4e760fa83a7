@@ -16,6 +16,24 @@
       "message": "Alas, MSVC bots are red.",
       "revId": "870c2dc9f8edd9dd7e9e6285e936a4e760fa83a7",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65061a8f_0d10e127",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-03-28T19:16:55Z",
+      "side": 1,
+      "message": "Looks like ICU no longer compiles against MSVC with the options specified in its BUILD.gn file, presumably a compiler roll caused it.",
+      "parentUuid": "258e5a6c_a0b34a18",
+      "revId": "870c2dc9f8edd9dd7e9e6285e936a4e760fa83a7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
