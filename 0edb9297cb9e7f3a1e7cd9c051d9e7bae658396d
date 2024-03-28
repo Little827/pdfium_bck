@@ -45,6 +45,30 @@
       },
       "revId": "0edb9297cb9e7f3a1e7cd9c051d9e7bae658396d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1adf84e_095263f5",
+        "filename": "core/fxge/dib/cfx_cmyk_to_srgb.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-03-28T22:10:36Z",
+      "side": 1,
+      "message": "e.g. https://source.chromium.org/chromium/chromium/src/+/main:third_party/pdfium/core/fxge/dib/cfx_scanlinecompositor.cpp;drc\u003d9910d3be894c8f142c977ba1023f30a656bc13fc;l\u003d27\n\n```\nstruct RGB {\n  int red;\n  int green;\n  int blue;\n};\n```\ncould move to, say, fx_dib.h, as a struct template\n\n```\nnamespace fxge {\ntemplate \u003ctypename T\u003e\nstruct RGB {\n  T red;\n  T green;\n  T blue;\n};\n\n}  // namespace\n```\n\nusage of `fxge::RGB\u003cuint8_t\u003e rgb \u003d crunch() add some type info for the reader.",
+      "parentUuid": "038071b5_edd64f64",
+      "range": {
+        "startLine": 16,
+        "startChar": 1,
+        "endLine": 16,
+        "endChar": 21
+      },
+      "revId": "0edb9297cb9e7f3a1e7cd9c051d9e7bae658396d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
