@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "320d9df6_e8444da7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-03-28T17:30:26Z",
+      "side": 1,
+      "message": "LG w/questions.",
+      "revId": "29f465c3f0624b9440b6e1b0fad7dc96dc382049",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5788b095_c58e61fb",
+        "filename": "core/fxge/agg/fx_agg_driver.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1059,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-03-28T17:30:26Z",
+      "side": 1,
+      "message": "presumably the CHECK() checks on line 1062 without this?",
+      "range": {
+        "startLine": 1058,
+        "startChar": 1,
+        "endLine": 1059,
+        "endChar": 11
+      },
+      "revId": "29f465c3f0624b9440b6e1b0fad7dc96dc382049",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77ac070f_aa961374",
+        "filename": "testing/fuzzers/xfa_codec_fuzzer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-03-28T17:30:26Z",
+      "side": 1,
+      "message": "Is there perhaps a fuzzer crash bug that this fixes that we can include in the CL description?",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 66
+      },
+      "revId": "29f465c3f0624b9440b6e1b0fad7dc96dc382049",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
