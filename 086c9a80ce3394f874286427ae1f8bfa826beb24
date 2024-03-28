@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d09d7e03_95e74d22",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-03-28T17:50:07Z",
+      "side": 1,
+      "message": "Turning on auto-submit since nothing can go wrong, right?",
+      "revId": "086c9a80ce3394f874286427ae1f8bfa826beb24",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
