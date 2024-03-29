@@ -80,6 +80,24 @@
       "message": "# Copyright 2024 The PDFium Authors",
       "revId": "e5d6c1808b061febe47a1b1a92aa6ccfc6460516",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b53b6f9_5d983b45",
+        "filename": "pdfium_unsafe_buffers_paths.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-03-29T16:56:13Z",
+      "side": 1,
+      "message": "Gah. Copied from Dana\u0027s file.",
+      "parentUuid": "007f055c_d5094c62",
+      "revId": "e5d6c1808b061febe47a1b1a92aa6ccfc6460516",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
