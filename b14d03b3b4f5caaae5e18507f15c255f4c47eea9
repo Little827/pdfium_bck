@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dc8aca0_f8976333",
+        "filename": "core/fxcrt/fx_extension.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-03-29T22:09:17Z",
+      "side": 1,
+      "message": "These 2 are no longer needed?",
+      "revId": "b14d03b3b4f5caaae5e18507f15c255f4c47eea9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ab564d8_1ff307b4",
+        "filename": "core/fxcrt/fx_extension.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-03-29T22:09:17Z",
+      "side": 1,
+      "message": "Would using std::isnan() be clearer?",
+      "revId": "b14d03b3b4f5caaae5e18507f15c255f4c47eea9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
