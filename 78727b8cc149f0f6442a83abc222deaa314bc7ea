@@ -16,6 +16,23 @@
       "message": "Needs restamp as rebasing removed a file from the CL.",
       "revId": "78727b8cc149f0f6442a83abc222deaa314bc7ea",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0862186f_814ad204",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5645
+      },
+      "writtenOn": "2024-03-29T17:03:07Z",
+      "side": 1,
+      "message": "G-account approval stamp.",
+      "revId": "78727b8cc149f0f6442a83abc222deaa314bc7ea",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
