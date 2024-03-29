@@ -69,7 +69,7 @@ class CPDFXFA_Context final : public CPDF_Document::Extension,
 
   // CPDF_Document::Extension:
   int GetPageCount() const override;
-  void DeletePage(int page_index) override;
+  void DeletePage(int page_index, bool set_to_null) override;
   bool ContainsExtensionForm() const override;
   bool ContainsExtensionFullForm() const override;
   bool ContainsExtensionForegroundForm() const override;

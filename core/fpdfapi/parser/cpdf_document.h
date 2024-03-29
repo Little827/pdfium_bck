@@ -33,7 +33,7 @@ class CPDF_Document : public Observable,
    public:
     virtual ~Extension() = default;
     virtual int GetPageCount() const = 0;
-    virtual void DeletePage(int page_index) = 0;
+    virtual void DeletePage(int page_index, bool set_to_null) = 0;
     virtual bool ContainsExtensionForm() const = 0;
     virtual bool ContainsExtensionFullForm() const = 0;
     virtual bool ContainsExtensionForegroundForm() const = 0;
@@ -99,7 +99,7 @@ class CPDF_Document : public Observable,
   RetainPtr<CPDF_Dictionary> GetInfo();
   RetainPtr<const CPDF_Array> GetFileIdentifier() const;
 
-  void DeletePage(int iPage);
+  void DeletePage(int iPage, bool set_to_null);
   bool MovePages(pdfium::span<const int> page_indices, int dest_page_index);
 
   int GetPageCount() const;
