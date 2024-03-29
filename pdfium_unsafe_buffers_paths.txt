@@ -17,3 +17,4 @@
 # See `docs/unsafe_buffers.md`.
 
 core/fxcrt/
+fpdfsdk/pwl/
