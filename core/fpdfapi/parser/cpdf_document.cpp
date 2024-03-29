@@ -15,6 +15,7 @@
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/parser/cpdf_linearized_header.h"
 #include "core/fpdfapi/parser/cpdf_name.h"
+#include "core/fpdfapi/parser/cpdf_null.h"
 #include "core/fpdfapi/parser/cpdf_number.h"
 #include "core/fpdfapi/parser/cpdf_parser.h"
 #include "core/fpdfapi/parser/cpdf_read_validator.h"
@@ -589,18 +590,43 @@ RetainPtr<const CPDF_Array> CPDF_Document::GetFileIdentifier() const {
 
 void CPDF_Document::DeletePage(int iPage) {
   RetainPtr<CPDF_Dictionary> pPages = GetMutablePagesDict();
-  if (!pPages)
+  if (!pPages) {
     return;
+  }
 
   int nPages = pPages->GetIntegerFor("Count");
-  if (iPage < 0 || iPage >= nPages)
+  if (iPage < 0 || iPage >= nPages) {
     return;
+  }
+
+  RetainPtr<const CPDF_Dictionary> page_dict = GetPageDictionary(iPage);
+  if (!page_dict) {
+    return;
+  }
 
   std::set<RetainPtr<CPDF_Dictionary>> stack = {pPages};
-  if (!InsertDeletePDFPage(std::move(pPages), iPage, nullptr, false, &stack))
+  if (!InsertDeletePDFPage(std::move(pPages), iPage, nullptr, false, &stack)) {
     return;
+  }
 
   m_PageList.erase(m_PageList.begin() + iPage);
+
+  // Load all pages so `m_PageList` has all the object numbers.
+  for (size_t i = 0; i < m_PageList.size(); ++i) {
+    GetPageDictionary(i);
+  }
+
+  // If `page_dict` is no longer in the page tree, replace it with an object of
+  // type null.
+  const uint32_t deleted_page_obj_num = page_dict->GetObjNum();
+  if (!pdfium::Contains(m_PageList, deleted_page_obj_num)) {
+    // Delete the object first, so the conditional in the replacement call
+    // always evaluates to true.
+    DeleteIndirectObject(deleted_page_obj_num);
+    const bool replaced = ReplaceIndirectObjectIfHigherGeneration(
+        deleted_page_obj_num, pdfium::MakeRetain<CPDF_Null>());
+    CHECK(replaced);
+  }
 }
 
 void CPDF_Document::SetRootForTesting(RetainPtr<CPDF_Dictionary> root) {
