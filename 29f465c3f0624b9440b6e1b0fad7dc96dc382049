@@ -58,6 +58,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "47cc94f1_489a7268",
+        "filename": "core/fxge/agg/fx_agg_driver.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1059,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-03-29T21:44:53Z",
+      "side": 1,
+      "message": "Yes. Creating a bitmap with a dimension of 0 fails.",
+      "parentUuid": "5788b095_c58e61fb",
+      "range": {
+        "startLine": 1058,
+        "startChar": 1,
+        "endLine": 1059,
+        "endChar": 11
+      },
+      "revId": "29f465c3f0624b9440b6e1b0fad7dc96dc382049",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "77ac070f_aa961374",
@@ -71,6 +95,30 @@
       "writtenOn": "2024-03-28T17:30:26Z",
       "side": 1,
       "message": "Is there perhaps a fuzzer crash bug that this fixes that we can include in the CL description?",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 66
+      },
+      "revId": "29f465c3f0624b9440b6e1b0fad7dc96dc382049",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73daba47_44e77131",
+        "filename": "testing/fuzzers/xfa_codec_fuzzer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-03-29T21:44:53Z",
+      "side": 1,
+      "message": "I don\u0027t see any.",
+      "parentUuid": "77ac070f_aa961374",
       "range": {
         "startLine": 46,
         "startChar": 0,
