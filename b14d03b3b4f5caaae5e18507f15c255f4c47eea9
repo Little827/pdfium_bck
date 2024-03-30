@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "46600253_cab39bc5",
+        "filename": "core/fxcrt/fx_extension.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-03-30T00:06:33Z",
+      "side": 1,
+      "message": "Done. But removing \u003calgorithm\u003e triggered a false presubmit warning caused by misinterpreting the local `copy` at line 35. renamed.",
+      "parentUuid": "5dc8aca0_f8976333",
+      "revId": "b14d03b3b4f5caaae5e18507f15c255f4c47eea9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ab564d8_1ff307b4",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-03-29T22:09:17Z",
       "side": 1,
       "message": "Would using std::isnan() be clearer?",
+      "revId": "b14d03b3b4f5caaae5e18507f15c255f4c47eea9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "610e078b_80b7d56b",
+        "filename": "core/fxcrt/fx_extension.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-03-30T00:06:33Z",
+      "side": 1,
+      "message": "There might have been something strange going on that caused me to do this,  but I can\u0027t remember what it was. Leaving for now.",
+      "parentUuid": "0ab564d8_1ff307b4",
       "revId": "b14d03b3b4f5caaae5e18507f15c255f4c47eea9",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
