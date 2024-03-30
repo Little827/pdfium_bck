@@ -16,6 +16,75 @@
       "message": "Will figure out namespaces later.",
       "revId": "56c04c2c76cb3cc0d3e9590c06d7079599ddeca0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf6f9497_c9072bf8",
+        "filename": "core/fxge/dib/cfx_scanlinecompositor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-03-30T02:55:21Z",
+      "side": 1,
+      "message": "nit: or just `\u003d {}`",
+      "range": {
+        "startLine": 77,
+        "startChar": 23,
+        "endLine": 77,
+        "endChar": 32
+      },
+      "revId": "56c04c2c76cb3cc0d3e9590c06d7079599ddeca0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13a871f0_89aef2ab",
+        "filename": "core/fxge/dib/cfx_scanlinecompositor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-03-30T02:55:21Z",
+      "side": 1,
+      "message": "nit: might be tempting to use designated intializers as in \n```\nFX_RGB\u003cint\u003e src \u003d {\n  .red \u003d  src_scan[2],\n  .green \u003d src_scan[1],\n  .blue \u003d src_scan[0]};\n  ```",
+      "range": {
+        "startLine": 78,
+        "startChar": 2,
+        "endLine": 78,
+        "endChar": 18
+      },
+      "revId": "56c04c2c76cb3cc0d3e9590c06d7079599ddeca0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32b5cc9e_1d09b5ec",
+        "filename": "core/fxge/dib/cfx_scanlinecompositor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-03-30T02:55:21Z",
+      "side": 1,
+      "message": "nit: here too.",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 85,
+        "endChar": 26
+      },
+      "revId": "56c04c2c76cb3cc0d3e9590c06d7079599ddeca0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
