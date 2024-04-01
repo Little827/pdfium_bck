@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c27002f_6dfa3086",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-04-01T21:24:17Z",
+      "side": 1,
+      "message": "Ideally, there is a +/- syntax coming, where all the top-level directories will be opted in, and only exceptions will be listed.  This is a rough cut to see how far there is to go.",
+      "parentUuid": "646029f0_394fc7ca",
+      "revId": "4036546e5d8c61d71921a01381e3f5e902329900",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ea8ce7df_f8119b92",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-04-01T21:05:01Z",
       "side": 1,
       "message": "Needs trailing slash, per line 10?",
+      "revId": "4036546e5d8c61d71921a01381e3f5e902329900",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bb9f0c9_9f65726a",
+        "filename": "pdfium_unsafe_buffers_paths.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-04-01T21:24:17Z",
+      "side": 1,
+      "message": "yep. done.",
+      "parentUuid": "ea8ce7df_f8119b92",
       "revId": "4036546e5d8c61d71921a01381e3f5e902329900",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
