@@ -72,6 +72,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b4ca7e1_4f0c3a3c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-04-01T23:21:24Z",
+      "side": 1,
+      "message": "Can we talk to danakj@ about that? I would love to be able to have a file that\u0027s:\n\n```\n+*\n-core/fdrm/fx_crypt.cpp\n[250 more entries to eventually remove]\n-xfa/fxfa/parser/xfa_utils_unittest.cpp\n```\n\nThen all new files have to use safe buffers by default, and the list would be 1/8 as long. While the current model treats new files as allow unsafe by default.",
+      "parentUuid": "c33dcb08_58449390",
+      "revId": "4036546e5d8c61d71921a01381e3f5e902329900",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ea8ce7df_f8119b92",
