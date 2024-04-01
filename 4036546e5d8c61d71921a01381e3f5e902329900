@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "646029f0_394fc7ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-04-01T21:05:01Z",
+      "side": 1,
+      "message": "How do we keep the list up to date?",
+      "revId": "4036546e5d8c61d71921a01381e3f5e902329900",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea8ce7df_f8119b92",
+        "filename": "pdfium_unsafe_buffers_paths.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-04-01T21:05:01Z",
+      "side": 1,
+      "message": "Needs trailing slash, per line 10?",
+      "revId": "4036546e5d8c61d71921a01381e3f5e902329900",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
