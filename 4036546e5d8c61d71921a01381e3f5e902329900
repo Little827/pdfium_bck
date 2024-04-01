@@ -92,6 +92,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "77aeaafa_4eaae143",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 9666
+      },
+      "writtenOn": "2024-04-01T23:30:40Z",
+      "side": 1,
+      "message": "Definitely agree there are some ergonomics + maintenance issues with the current approach, and we\u0027ll need to make improvements to make this deployable at larger scale in Chromium. But we haven\u0027t spec\u0027d the \"next right way\" yet and, even once we do, we need to build and roll a new Clang plugin everywhere to light it up. So probably a couple weeks out modulo other interrupts.\n\nSo it seems like there\u0027s real value to checking this file in now to \"lock in\" this set, avoid backsliding, and allow parallel effort on bringing new files into the fold while the new syntax is designed, implemented, and rolled out.\n\nAlso I have a presentation soon where it\u0027d be helpful to show we have more lines of code covered by this warning. This is a terrible reason! But maybe it can break a tie.",
+      "parentUuid": "c33dcb08_58449390",
+      "revId": "4036546e5d8c61d71921a01381e3f5e902329900",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ea8ce7df_f8119b92",
         "filename": "pdfium_unsafe_buffers_paths.txt",
         "patchSetId": 3
