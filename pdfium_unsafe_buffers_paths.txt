@@ -24,18 +24,7 @@ core/css/
 # core/fdrm/fx_crypt_sha.cpp
 # core/fdrm/fx_crypt_unittest.cpp
 # core/fpdfapi/cmaps
-# core/fpdfapi/edit/cpdf_contentstream_write_utils.cpp
-core/fpdfapi/edit/cpdf_contentstream_write_utils.h
-core/fpdfapi/edit/cpdf_creator.cpp
-core/fpdfapi/edit/cpdf_creator.h
-core/fpdfapi/edit/cpdf_creator_embeddertest.cpp
-core/fpdfapi/edit/cpdf_pagecontentgenerator.cpp
-core/fpdfapi/edit/cpdf_pagecontentgenerator.h
-core/fpdfapi/edit/cpdf_pagecontentgenerator_unittest.cpp
-core/fpdfapi/edit/cpdf_pagecontentmanager.cpp
-core/fpdfapi/edit/cpdf_pagecontentmanager.h
-core/fpdfapi/edit/cpdf_stringarchivestream.cpp
-core/fpdfapi/edit/cpdf_stringarchivestream.h
+core/fpdfapi/edit/
 # core/fpdfapi/font/cfx_cttgsubtable.cpp
 core/fpdfapi/font/cfx_cttgsubtable.h
 core/fpdfapi/font/cfx_stockfontarray.cpp
