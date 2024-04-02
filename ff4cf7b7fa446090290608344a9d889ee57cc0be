@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c8e74d1_beed5950",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 9666
+      },
+      "writtenOn": "2024-04-02T18:35:38Z",
+      "side": 1,
+      "message": "Unfortunately it might be faster to do `gn desc \u0027:*\u0027` and parse it (discarding most) instead of invoking `gn` this many times.",
+      "revId": "ff4cf7b7fa446090290608344a9d889ee57cc0be",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
