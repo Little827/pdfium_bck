@@ -16,6 +16,24 @@
       "message": "Unfortunately it might be faster to do `gn desc \u0027:*\u0027` and parse it (discarding most) instead of invoking `gn` this many times.",
       "revId": "ff4cf7b7fa446090290608344a9d889ee57cc0be",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f59b42e7_5d7949d9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-04-02T20:26:06Z",
+      "side": 1,
+      "message": "Ya, that would be faster. That\u0027s probably the best GN can do, given it can\u0027t take an arbitrary list of targets, or more sophisticated wildcards.\n\nIs it worth continuing down this path, if danakj@ might implement better filtering in the plugin next week?",
+      "parentUuid": "6c8e74d1_beed5950",
+      "revId": "ff4cf7b7fa446090290608344a9d889ee57cc0be",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
