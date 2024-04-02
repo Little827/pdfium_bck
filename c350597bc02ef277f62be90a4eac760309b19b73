@@ -18,6 +18,23 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed5c173a_f1e87a4a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-04-02T17:43:26Z",
+      "side": 1,
+      "message": "So I need to understand the old behaviour a little better.  Did V8 infer whether the property had been intercepted based upon tracking calls to set the value? Otherwise, when one of the early returns occured (from pdfium\u0027s .cpp code), was the value added to the v8-side object?  If not, and no value was added, might we want to return \"yes\" in all cases to mimic the old behaviour?",
+      "revId": "c350597bc02ef277f62be90a4eac760309b19b73",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "17507076_f94df65a",
