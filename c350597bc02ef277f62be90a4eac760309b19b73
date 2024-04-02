@@ -88,6 +88,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "403d1e84_a9ae815f",
+        "filename": "fxjs/cjs_global.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 9051
+      },
+      "writtenOn": "2024-04-02T23:33:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17507076_f94df65a",
+      "revId": "c350597bc02ef277f62be90a4eac760309b19b73",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cf7518e4_f7cc5546",
@@ -135,6 +153,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c2b90ee_0af9ffa4",
+        "filename": "fxjs/cjs_global.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 9051
+      },
+      "writtenOn": "2024-04-02T23:33:53Z",
+      "side": 1,
+      "message": "Done, thanks.",
+      "parentUuid": "9291ce30_e84c0c68",
+      "range": {
+        "startLine": 119,
+        "startChar": 28,
+        "endLine": 119,
+        "endChar": 31
+      },
+      "revId": "c350597bc02ef277f62be90a4eac760309b19b73",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a36bc3e1_2db0e83f",
@@ -154,6 +196,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b0cf2b74_0959df91",
+        "filename": "fxjs/cjs_global.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 9051
+      },
+      "writtenOn": "2024-04-02T23:33:53Z",
+      "side": 1,
+      "message": "https://source.chromium.org/chromium/_/pdfium/pdfium.git/+/e4cebef61bc684f993e130a3888080345a6c08f8:fxjs/cjs_global.cpp;l\u003d173-180;drc\u003d9108588e63f5f765e8e0b5d9c06b6e94799254f4;bpv\u003d0;bpt\u003d0\n\nhttps://source.chromium.org/chromium/_/pdfium/pdfium.git/+/e4cebef61bc684f993e130a3888080345a6c08f8:fxjs/cjs_global.h;l\u003d96;drc\u003d37935952b7e18960d9fde487350ccc0aa0e25f13;bpv\u003d0;bpt\u003d0\n\nDoesn\u0027t look like it. m_MapGlobal is just a std::map.",
+      "parentUuid": "a36bc3e1_2db0e83f",
+      "revId": "c350597bc02ef277f62be90a4eac760309b19b73",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e8cd762d_1a3d2b3d",
         "filename": "fxjs/xfa/cfxjse_class.cpp",
         "patchSetId": 1
@@ -165,6 +225,24 @@
       "writtenOn": "2024-04-02T17:29:28Z",
       "side": 1,
       "message": "This hack of returning an unexposed `v8::internal::ABSENT` value is not needed with the new API.\nJust `return v8::Intercepted::kNo;`.",
+      "revId": "c350597bc02ef277f62be90a4eac760309b19b73",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0164c06d_76dd2804",
+        "filename": "fxjs/xfa/cfxjse_class.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 9051
+      },
+      "writtenOn": "2024-04-02T23:33:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8cd762d_1a3d2b3d",
       "revId": "c350597bc02ef277f62be90a4eac760309b19b73",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
