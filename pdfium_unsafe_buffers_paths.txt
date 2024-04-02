@@ -24,18 +24,7 @@ core/css/
 # core/fdrm/fx_crypt_sha.cpp
 # core/fdrm/fx_crypt_unittest.cpp
 # core/fpdfapi/cmaps
-# core/fpdfapi/edit/cpdf_contentstream_write_utils.cpp
-core/fpdfapi/edit/cpdf_contentstream_write_utils.h
-core/fpdfapi/edit/cpdf_creator.cpp
-core/fpdfapi/edit/cpdf_creator.h
-core/fpdfapi/edit/cpdf_creator_embeddertest.cpp
-core/fpdfapi/edit/cpdf_pagecontentgenerator.cpp
-core/fpdfapi/edit/cpdf_pagecontentgenerator.h
-core/fpdfapi/edit/cpdf_pagecontentgenerator_unittest.cpp
-core/fpdfapi/edit/cpdf_pagecontentmanager.cpp
-core/fpdfapi/edit/cpdf_pagecontentmanager.h
-core/fpdfapi/edit/cpdf_stringarchivestream.cpp
-core/fpdfapi/edit/cpdf_stringarchivestream.h
+core/fpdfapi/edit/
 # core/fpdfapi/font/cfx_cttgsubtable.cpp
 core/fpdfapi/font/cfx_cttgsubtable.h
 core/fpdfapi/font/cfx_stockfontarray.cpp
@@ -760,35 +749,7 @@ fxbarcode/cfx_barcode.cpp
 fxbarcode/cfx_barcode.h
 fxbarcode/cfx_barcode_unittest.cpp
 fxbarcode/common/
-# fxbarcode/datamatrix/BC_ASCIIEncoder.cpp
-fxbarcode/datamatrix/BC_ASCIIEncoder.h
-fxbarcode/datamatrix/BC_Base256Encoder.cpp
-fxbarcode/datamatrix/BC_Base256Encoder.h
-fxbarcode/datamatrix/BC_C40Encoder.cpp
-fxbarcode/datamatrix/BC_C40Encoder.h
-fxbarcode/datamatrix/BC_DataMatrixSymbolInfo144.cpp
-fxbarcode/datamatrix/BC_DataMatrixSymbolInfo144.h
-fxbarcode/datamatrix/BC_DataMatrixWriter.cpp
-fxbarcode/datamatrix/BC_DataMatrixWriter.h
-# fxbarcode/datamatrix/BC_DataMatrixWriter_unittest.cpp
-fxbarcode/datamatrix/BC_DefaultPlacement.cpp
-fxbarcode/datamatrix/BC_DefaultPlacement.h
-fxbarcode/datamatrix/BC_EdifactEncoder.cpp
-fxbarcode/datamatrix/BC_EdifactEncoder.h
-fxbarcode/datamatrix/BC_Encoder.cpp
-fxbarcode/datamatrix/BC_Encoder.h
-fxbarcode/datamatrix/BC_EncoderContext.cpp
-fxbarcode/datamatrix/BC_EncoderContext.h
-# fxbarcode/datamatrix/BC_ErrorCorrection.cpp
-fxbarcode/datamatrix/BC_ErrorCorrection.h
-fxbarcode/datamatrix/BC_HighLevelEncoder.cpp
-fxbarcode/datamatrix/BC_HighLevelEncoder.h
-# fxbarcode/datamatrix/BC_SymbolInfo.cpp
-fxbarcode/datamatrix/BC_SymbolInfo.h
-fxbarcode/datamatrix/BC_TextEncoder.cpp
-fxbarcode/datamatrix/BC_TextEncoder.h
-fxbarcode/datamatrix/BC_X12Encoder.cpp
-fxbarcode/datamatrix/BC_X12Encoder.h
+fxbarcode/datamatrix/
 # fxbarcode/oned/BC_OneDimWriter.cpp
 fxbarcode/oned/BC_OneDimWriter.h
 # fxbarcode/oned/BC_OnedCodaBarWriter.cpp
