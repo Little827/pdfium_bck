@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "809a46a5_8f48aa97",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3293871
+      },
+      "writtenOn": "2024-04-02T18:25:38Z",
+      "side": 1,
+      "message": "With the old Api the \"not intercepted\" state can be achieved by\n - not setting the result,\n - setting the result to empty handle.\n\nSo early return means \"not intercepted\" to V8 and thus it proceeds executing the get/set/delete/etc operation beyond the interceptor. In case of \"set\" operation and a prototype chain not having read-only property it\u0027ll be added to the receiver object on V8 side.\nThe new Api requires a clear answer from the callback - whether the request was intercepted or not.",
+      "parentUuid": "cd0eab9c_a348e302",
+      "revId": "c350597bc02ef277f62be90a4eac760309b19b73",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "17507076_f94df65a",
         "filename": "fxjs/cjs_global.cpp",
         "patchSetId": 1
