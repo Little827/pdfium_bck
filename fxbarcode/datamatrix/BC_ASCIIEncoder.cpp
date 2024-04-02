@@ -45,12 +45,14 @@ size_t DetermineConsecutiveDigitCount(const WideString& msg, size_t startpos) {
   // This is faster in debug builds and helpful for fuzzers.
   // Access |data| with care.
   size_t count = 0;
-  const size_t size = msg.GetLength();
-  const wchar_t* data = msg.c_str();
-  for (size_t i = startpos; i < size; ++i) {
-    if (!FXSYS_IsDecimalDigit(data[i]))
-      break;
-    ++count;
+  if (startpos < msg.GetLength()) {
+    const auto span = msg.AsStringView().span().subspan(startpos);
+    for (const auto& wchar : span) {
+      if (!FXSYS_IsDecimalDigit(wchar)) {
+        break;
+      }
+      ++count;
+    }
   }
   return count;
 }
