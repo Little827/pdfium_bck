@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "827c5f4d_a3fab03e",
+        "filename": "fxjs/xfa/cfxjse_formcalc_context.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-04-02T20:39:05Z",
+      "side": 1,
+      "message": "NOTE: the L\"...\" form would be 17 including NUL. So OOB+1 is \u0027safe\u0027 in the old code, ugh.",
+      "range": {
+        "startLine": 66,
+        "startChar": 30,
+        "endLine": 66,
+        "endChar": 32
+      },
+      "revId": "572ad1b91a9a7d331214973516b719508b2ff1b6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
