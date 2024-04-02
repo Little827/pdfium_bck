@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e2581b2_eed3b79f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 9051
+      },
+      "writtenOn": "2024-04-02T23:32:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2c0297e_a4fecb70",
+      "revId": "6c18fd464142694013368b2ed9d7a64d0e57d363",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "41fc125f_4e42c54e",
@@ -55,6 +73,30 @@
       "side": 1,
       "message": "Maybe https://crrev.com/c/5372060 ? Even though that points to the CL review and not the commit. I don\u0027t see a shortcut URL for v8 commit positions.",
       "parentUuid": "41fc125f_4e42c54e",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 100
+      },
+      "revId": "6c18fd464142694013368b2ed9d7a64d0e57d363",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e44653d_f1cbcade",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 9051
+      },
+      "writtenOn": "2024-04-02T23:32:48Z",
+      "side": 1,
+      "message": "Done, thanks.",
+      "parentUuid": "ad4d0716_34a6a35d",
       "range": {
         "startLine": 14,
         "startChar": 0,
