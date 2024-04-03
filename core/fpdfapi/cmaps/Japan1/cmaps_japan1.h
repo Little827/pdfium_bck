@@ -11,6 +11,7 @@
 #include <stdint.h>
 
 #include "core/fpdfapi/cmaps/fpdf_cmaps.h"
+#include "core/fxcrt/span.h"
 
 namespace fxcmap {
 
@@ -36,8 +37,8 @@ extern const uint16_t kUniJIS_UTF16_H_0[];
 extern const uint16_t kUniJIS_UTF16_H_0_DWord[];
 extern const uint16_t kUniJIS_UTF16_V_0[];
 extern const uint16_t kJapan1CID2Unicode_4[15444];
-extern const CMap kJapan1_cmaps[];
-extern const size_t kJapan1_cmaps_size;
+
+extern const pdfium::span<const CMap> kJapan1_cmaps_span;
 
 }  // namespace fxcmap
 
