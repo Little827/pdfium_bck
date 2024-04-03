@@ -19,12 +19,14 @@
 #include <utility>
 
 #include "core/fxcrt/check.h"
+#include "core/fxcrt/compiler_specific.h"
 #include "core/fxcrt/fx_string_wrappers.h"
 #include "core/fxcrt/retain_ptr.h"
 #include "core/fxcrt/span.h"
 #include "core/fxcrt/string_data_template.h"
 #include "core/fxcrt/string_template.h"
 #include "core/fxcrt/string_view_template.h"
+#include "core/fxcrt/terminated_ptr.h"
 
 namespace fxcrt {
 
@@ -34,8 +36,9 @@ class ByteString : public StringTemplate<char> {
  public:
   [[nodiscard]] static ByteString FormatInteger(int i);
   [[nodiscard]] static ByteString FormatFloat(float f);
-  [[nodiscard]] static ByteString Format(const char* pFormat, ...);
-  [[nodiscard]] static ByteString FormatV(const char* pFormat, va_list argList);
+  [[nodiscard]] static ByteString Format(TerminatedPtr<char> format, ...);
+  [[nodiscard]] static ByteString FormatV(TerminatedPtr<char> format,
+                                          va_list argList);
 
   ByteString() = default;
   ByteString(const ByteString& other) = default;
@@ -49,8 +52,13 @@ class ByteString : public StringTemplate<char> {
   explicit ByteString(char ch);
 
   // Deliberately implicit to avoid calling on every string literal.
+  // TODO(tsepez): should be UNSAFE_BUFFER_USAGE.
   // NOLINTNEXTLINE(runtime/explicit)
   ByteString(const char* ptr);
+
+  // Deliberately implicit.
+  // NOLINTNEXTLINE(runtime/explicit)
+  ByteString(TerminatedPtr<char> ptr);
 
   // No implicit conversions from wide strings.
   // NOLINTNEXTLINE(runtime/explicit)
@@ -64,10 +72,14 @@ class ByteString : public StringTemplate<char> {
   ByteString(const std::initializer_list<ByteStringView>& list);
   explicit ByteString(const fxcrt::ostringstream& outStream);
 
-  // Explicit conversion to C-style string. The result is never nullptr,
-  // and is always NUL terminated.
+  // Explicit conversion to C-style string (const char* equivalent).
+  // The result is never nullptr, and is always NUL terminated.
   // Note: Any subsequent modification of |this| will invalidate the result.
-  const char* c_str() const { return m_pData ? m_pData->m_String : ""; }
+  TerminatedPtr<char> c_str() const {
+    // SAFETY: m_String always includes a NUL.
+    return UNSAFE_BUFFERS(
+        TerminatedPtr<char>::FromPtr(m_pData ? m_pData->m_String : ""));
+  }
 
   size_t GetStringLength() const {
     return m_pData ? strlen(m_pData->m_String) : 0;
