@@ -55,15 +55,15 @@ ByteString ByteString::FormatFloat(float f) {
 }
 
 // static
-ByteString ByteString::FormatV(const char* pFormat, va_list argList) {
+ByteString ByteString::FormatV(TerminatedPtr<char> format, va_list argList) {
   va_list argListCopy;
   va_copy(argListCopy, argList);
-  int nMaxLen = vsnprintf(nullptr, 0, pFormat, argListCopy);
+  int nMaxLen = vsnprintf(nullptr, 0, format, argListCopy);
   va_end(argListCopy);
 
-  if (nMaxLen <= 0)
+  if (nMaxLen <= 0) {
     return ByteString();
-
+  }
   ByteString ret;
   {
     // Span's lifetime must end before ReleaseBuffer() below.
@@ -73,7 +73,7 @@ ByteString ByteString::FormatV(const char* pFormat, va_list argList) {
     // a terminating NUL that's not included in nMaxLen.
     memset(buf.data(), 0, nMaxLen + 1);
     va_copy(argListCopy, argList);
-    vsnprintf(buf.data(), nMaxLen + 1, pFormat, argListCopy);
+    vsnprintf(buf.data(), nMaxLen + 1, format, argListCopy);
     va_end(argListCopy);
   }
   ret.ReleaseBuffer(ret.GetStringLength());
@@ -81,12 +81,11 @@ ByteString ByteString::FormatV(const char* pFormat, va_list argList) {
 }
 
 // static
-ByteString ByteString::Format(const char* pFormat, ...) {
+ByteString ByteString::Format(TerminatedPtr<char> format, ...) {
   va_list argList;
-  va_start(argList, pFormat);
-  ByteString ret = FormatV(pFormat, argList);
+  va_start(argList, format);
+  ByteString ret = FormatV(format, argList);
   va_end(argList);
-
   return ret;
 }
 
@@ -106,6 +105,9 @@ ByteString::ByteString(char ch) {
 
 ByteString::ByteString(const char* ptr)
     : ByteString(ptr, ptr ? strlen(ptr) : 0) {}
+
+ByteString::ByteString(TerminatedPtr<char> ptr)
+    : ByteString(ptr.get(), ptr ? strlen(ptr) : 0) {}
 
 ByteString::ByteString(ByteStringView bstrc) {
   if (!bstrc.IsEmpty()) {

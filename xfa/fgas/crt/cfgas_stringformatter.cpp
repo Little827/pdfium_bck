@@ -558,8 +558,14 @@ uint16_t GetWeekOfYear(uint16_t year, uint16_t month, uint16_t day) {
 }
 
 WideString NumToString(size_t fmt_size, int32_t value) {
-  return WideString::Format(
-      fmt_size == 1 ? L"%d" : fmt_size == 2 ? L"%02d" : L"%03d", value);
+  switch (fmt_size) {
+    case 1:
+      return WideString::Format(L"%d", value);
+    case 2:
+      return WideString::Format(L"%02d", value);
+    default:
+      return WideString::Format(L"%03d", value);
+  }
 }
 
 WideString DateFormat(const WideString& wsDatePattern,
