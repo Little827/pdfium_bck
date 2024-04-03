@@ -732,19 +732,14 @@ WideString GetNameExpressionSinglePath(CXFA_Node* pNode) {
   const bool bIsClassIndex =
       pNode->IsUnnamed() ||
       (bIsProperty && pNode->GetElementType() != XFA_Element::PageSet);
-  const wchar_t* pszFormat;
-  WideString ws;
+  size_t index = pNode->GetIndex(bIsProperty, bIsClassIndex);
   if (bIsClassIndex) {
-    pszFormat = L"#%ls[%zu]";
-    ws = WideString::FromASCII(pNode->GetClassName());
-  } else {
-    pszFormat = L"%ls[%zu]";
-    ws = pNode->JSObject()->GetCData(XFA_Attribute::Name);
-    ws.Replace(L".", L"\\.");
+    WideString ws = WideString::FromASCII(pNode->GetClassName());
+    return WideString::Format(L"#%ls[%zu]", ws.c_str(), index);
   }
-
-  return WideString::Format(pszFormat, ws.c_str(),
-                            pNode->GetIndex(bIsProperty, bIsClassIndex));
+  WideString ws = pNode->JSObject()->GetCData(XFA_Attribute::Name);
+  ws.Replace(L".", L"\\.");
+  return WideString::Format(L"%ls[%zu]", ws.c_str(), index);
 }
 
 void TraverseSiblings(CXFA_Node* parent,
