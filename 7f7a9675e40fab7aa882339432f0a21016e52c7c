@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adb89d25_3987a41b",
+        "filename": "fxbarcode/datamatrix/BC_ASCIIEncoder.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-04-04T19:05:04Z",
+      "side": 1,
+      "message": "Remove, as `data` is gone. Hopefully the debug build won\u0027t slow down due to this change.",
+      "revId": "7f7a9675e40fab7aa882339432f0a21016e52c7c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "453ea7a8_77d37654",
+        "filename": "fxbarcode/datamatrix/BC_ASCIIEncoder.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-04-04T19:05:04Z",
+      "side": 1,
+      "message": "Use Substr() instead of span().subspan()?",
+      "revId": "7f7a9675e40fab7aa882339432f0a21016e52c7c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
