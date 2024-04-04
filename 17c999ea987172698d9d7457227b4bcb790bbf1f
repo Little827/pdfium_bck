@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "49615131_d81affba",
+        "filename": "core/fpdfapi/cmaps/CNS1/cmaps_cns1.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-04-04T19:57:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8547a54d_371bc64c",
+      "revId": "17c999ea987172698d9d7457227b4bcb790bbf1f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c0327740_2f388a8d",
@@ -35,6 +53,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b289d3c_89ef4880",
+        "filename": "core/fpdfapi/cmaps/CNS1/cmaps_cns1.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-04-04T19:57:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0327740_2f388a8d",
+      "revId": "17c999ea987172698d9d7457227b4bcb790bbf1f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6de6119d_038d69a3",
@@ -48,6 +84,24 @@
       "writtenOn": "2024-04-04T19:11:19Z",
       "side": 1,
       "message": "More of the same in various cmap files.",
+      "revId": "17c999ea987172698d9d7457227b4bcb790bbf1f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f2019f2_3ae55020",
+        "filename": "core/fpdfapi/cmaps/GB1/cmaps_gb1.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-04-04T19:57:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6de6119d_038d69a3",
       "revId": "17c999ea987172698d9d7457227b4bcb790bbf1f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
