@@ -21,6 +21,7 @@
 #include "core/fpdfapi/parser/fpdf_parser_utility.h"
 #include "core/fxcrt/cfx_memorystream.h"
 #include "core/fxcrt/check.h"
+#include "core/fxcrt/compiler_specific.h"
 #include "core/fxcrt/containers/contains.h"
 #include "core/fxcrt/data_vector.h"
 #include "core/fxcrt/fx_stream.h"
@@ -126,9 +127,10 @@ void CPDF_Stream::SetDataFromStringstreamAndRemoveFilter(
     return;
   }
 
-  SetDataAndRemoveFilter(
-      {reinterpret_cast<const uint8_t*>(stream->str().c_str()),
-       static_cast<size_t>(stream->tellp())});
+  // SAFETY: `tellp()` is within the stream.
+  SetDataAndRemoveFilter(UNSAFE_BUFFERS(
+      pdfium::make_span(reinterpret_cast<const uint8_t*>(stream->str().c_str()),
+                        static_cast<size_t>(stream->tellp()))));
 }
 
 void CPDF_Stream::SetData(pdfium::span<const uint8_t> pData) {
@@ -147,8 +149,10 @@ void CPDF_Stream::SetDataFromStringstream(fxcrt::ostringstream* stream) {
     SetData({});
     return;
   }
-  SetData({reinterpret_cast<const uint8_t*>(stream->str().c_str()),
-           static_cast<size_t>(stream->tellp())});
+  // SAFETY: stringsream::tellp() is within the stream.
+  SetData(UNSAFE_BUFFERS(
+      pdfium::make_span(reinterpret_cast<const uint8_t*>(stream->str().c_str()),
+                        static_cast<size_t>(stream->tellp()))));
 }
 
 DataVector<uint8_t> CPDF_Stream::ReadAllRawData() const {
