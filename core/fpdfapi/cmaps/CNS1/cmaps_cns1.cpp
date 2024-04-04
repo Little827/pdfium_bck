@@ -9,6 +9,7 @@
 #include <iterator>
 
 namespace fxcmap {
+namespace {
 
 const CMap kCNS1_cmaps[] = {
     {"B5pc-H", kB5pc_H_0, nullptr, 247, 0, CMap::Type::kRange, 0},
@@ -32,6 +33,8 @@ const CMap kCNS1_cmaps[] = {
      -1},
 };
 
-const size_t kCNS1_cmaps_size = std::size(kCNS1_cmaps);
+}  // namespace
+
+const pdfium::span<const CMap> kCNS1_cmaps_span{kCNS1_cmaps};
 
 }  // namespace fxcmap
