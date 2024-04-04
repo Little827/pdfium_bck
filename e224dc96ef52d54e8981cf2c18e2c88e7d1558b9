@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1880230_38c693f2",
+        "filename": "core/fxcrt/terminated_ptr.h",
+        "patchSetId": 44
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-04-04T21:39:55Z",
+      "side": 1,
+      "message": "This is new code.",
+      "revId": "e224dc96ef52d54e8981cf2c18e2c88e7d1558b9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f04c9da_df58ef63",
+        "filename": "core/fxcrt/terminated_ptr.h",
+        "patchSetId": 44
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-04-04T21:39:55Z",
+      "side": 1,
+      "message": "grammar",
+      "range": {
+        "startLine": 34,
+        "startChar": 54,
+        "endLine": 35,
+        "endChar": 19
+      },
+      "revId": "e224dc96ef52d54e8981cf2c18e2c88e7d1558b9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7398face_1f8d822f",
+        "filename": "core/fxcrt/terminated_ptr.h",
+        "patchSetId": 44
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-04-04T21:39:55Z",
+      "side": 1,
+      "message": "What does \"lit\" mean? Literal?",
+      "range": {
+        "startLine": 55,
+        "startChar": 36,
+        "endLine": 55,
+        "endChar": 39
+      },
+      "revId": "e224dc96ef52d54e8981cf2c18e2c88e7d1558b9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63c63061_90042f1d",
+        "filename": "core/fxcrt/terminated_ptr.h",
+        "patchSetId": 44
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-04-04T21:39:55Z",
+      "side": 1,
+      "message": "- I assume code that wants to iterate a NUL-terminated string in reverse would first construct a string view of some kind using TerminatedPtr? \n- Grammar can use some touch up.",
+      "range": {
+        "startLine": 87,
+        "startChar": 19,
+        "endLine": 87,
+        "endChar": 67
+      },
+      "revId": "e224dc96ef52d54e8981cf2c18e2c88e7d1558b9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
