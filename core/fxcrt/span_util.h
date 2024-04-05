@@ -118,7 +118,15 @@ template <typename T,
 inline pdfium::span<T> reinterpret_span(pdfium::span<U> s) noexcept {
   CHECK_EQ(s.size_bytes() % sizeof(T), 0u);
   CHECK_EQ(reinterpret_cast<uintptr_t>(s.data()) % alignof(T), 0u);
-  return {reinterpret_cast<T*>(s.data()), s.size_bytes() / sizeof(T)};
+  // SAFETY: relies on correct conversion of size_bytes() result.
+  return UNSAFE_BUFFERS(pdfium::make_span(reinterpret_cast<T*>(s.data()),
+                                          s.size_bytes() / sizeof(T)));
+}
+
+template <typename T>
+inline pdfium::span<T> nonconst_span(pdfium::span<const T> s) noexcept {
+  // SAFETY: size() is unchanged when removing const.
+  return UNSAFE_BUFFERS(pdfium::make_span(const_cast<T*>(s.data()), s.size()));
 }
 
 }  // namespace fxcrt
