@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "129877f7_3dac2f6c",
+        "filename": "core/fxcrt/span_util.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-04-05T16:46:35Z",
+      "side": 1,
+      "message": "I would want to avoid remove_const_span(as_bytes(s)) which should be as_writable_bytes(s), how can we avoid that?",
+      "range": {
+        "startLine": 129,
+        "startChar": 23,
+        "endLine": 129,
+        "endChar": 40
+      },
+      "revId": "1f858d2ae9e6426408013a319a7f9b553b00ea36",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f34c7717_55764f66",
+        "filename": "core/fxcrt/span_util.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-04-05T16:46:35Z",
+      "side": 1,
+      "message": "do we not need to also preserve the size_t N (and I see a P above too)?",
+      "range": {
+        "startLine": 129,
+        "startChar": 54,
+        "endLine": 129,
+        "endChar": 61
+      },
+      "revId": "1f858d2ae9e6426408013a319a7f9b553b00ea36",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
