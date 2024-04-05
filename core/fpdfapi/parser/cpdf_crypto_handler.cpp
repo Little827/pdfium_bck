@@ -45,6 +45,7 @@ bool CPDF_CryptoHandler::IsSignatureDictionary(
   return type_obj && type_obj->GetString() == pdfium::form_fields::kSig;
 }
 
+// TODO(tsepez): should be UNSAFE_BUFFER_USAGE due to `dest_size`.
 void CPDF_CryptoHandler::EncryptContent(uint32_t objnum,
                                         uint32_t gennum,
                                         pdfium::span<const uint8_t> source,
@@ -63,7 +64,8 @@ void CPDF_CryptoHandler::EncryptContent(uint32_t objnum,
     if (m_Cipher == Cipher::kAES)
       memcpy(key1 + m_KeyLen + 5, "sAlT", 4);
     size_t len = m_Cipher == Cipher::kAES ? m_KeyLen + 9 : m_KeyLen + 5;
-    CRYPT_MD5Generate({key1, len}, realkey);
+    // TODO(tsepez): investigatge safety.
+    CRYPT_MD5Generate(UNSAFE_BUFFERS(pdfium::make_span(key1, len)), realkey);
     realkeylen = std::min(m_KeyLen + 5, sizeof(realkey));
   }
   if (m_Cipher == Cipher::kAES) {
@@ -87,9 +89,13 @@ void CPDF_CryptoHandler::EncryptContent(uint32_t objnum,
     dest_size = 32 + nblocks * 16;
   } else {
     DCHECK_EQ(dest_size, source.size());
-    if (dest_buf != source.data())
+    if (dest_buf != source.data()) {
       memcpy(dest_buf, source.data(), source.size());
-    CRYPT_ArcFourCryptBlock({dest_buf, dest_size}, {realkey, realkeylen});
+    }
+    // SAFETY: caller ensures that dest_buf points to at least dest_size bytes.
+    CRYPT_ArcFourCryptBlock(
+        UNSAFE_BUFFERS(pdfium::make_span(dest_buf, dest_size)),
+        pdfium::make_span(realkey).first(realkeylen));
   }
 }
 
@@ -119,7 +125,7 @@ void* CPDF_CryptoHandler::DecryptStart(uint32_t objnum, uint32_t gennum) {
 
   uint8_t realkey[16];
   size_t len = m_Cipher == Cipher::kAES ? m_KeyLen + 9 : m_KeyLen + 5;
-  CRYPT_MD5Generate({key1, len}, realkey);
+  CRYPT_MD5Generate(pdfium::make_span(key1).first(len), realkey);
   size_t realkeylen = std::min(m_KeyLen + 5, sizeof(realkey));
 
   if (m_Cipher == Cipher::kAES) {
@@ -130,7 +136,7 @@ void* CPDF_CryptoHandler::DecryptStart(uint32_t objnum, uint32_t gennum) {
     return pContext;
   }
   CRYPT_rc4_context* pContext = FX_Alloc(CRYPT_rc4_context, 1);
-  CRYPT_ArcFourSetup(pContext, {realkey, realkeylen});
+  CRYPT_ArcFourSetup(pContext, pdfium::make_span(realkey).first(realkeylen));
   return pContext;
 }
 

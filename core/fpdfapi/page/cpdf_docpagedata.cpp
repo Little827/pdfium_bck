@@ -76,7 +76,8 @@ ByteString GetPSNameFromTT(HDC hDC) {
   if (size != GDI_ERROR) {
     LPBYTE buffer = FX_Alloc(BYTE, size);
     ::GetFontData(hDC, 'eman', 0, buffer, size);
-    result = GetNameFromTT({buffer, size}, 6);
+    // SAFETY: `size` passed to alloc above.
+    result = GetNameFromTT(UNSAFE_BUFFERS(pdfium::make_span(buffer, size)), 6);
     FX_Free(buffer);
   }
   return result;
