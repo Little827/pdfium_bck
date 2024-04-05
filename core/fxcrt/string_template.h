@@ -47,14 +47,16 @@ class StringTemplate {
   // Explicit conversion to span.
   // Note: Any subsequent modification of |this| will invalidate the result.
   pdfium::span<const CharType> span() const {
-    return pdfium::make_span(m_pData ? m_pData->m_String : nullptr,
-                             GetLength());
+    // SAFETY: GetLength() is within m_String.
+    return UNSAFE_BUFFERS(
+        pdfium::make_span(m_pData ? m_pData->m_String : nullptr, GetLength()));
   }
 
   // Explicit conversion to spans of unsigned types.
   // Note: Any subsequent modification of |this| will invalidate the result.
   pdfium::span<const UnsignedType> unsigned_span() const {
-    return pdfium::make_span(unsigned_str(), GetLength());
+    // SAFETY: GetLength() is within m_String.
+    return UNSAFE_BUFFERS(pdfium::make_span(unsigned_str(), GetLength()));
   }
 
   // Note: Any subsequent modification of |this| will invalidate iterators.

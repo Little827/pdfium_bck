@@ -8,14 +8,14 @@
 #include <string>
 #include <vector>
 
+#include "core/fxcrt/bytestring.h"
 #include "testing/gtest/include/gtest/gtest.h"
 #include "testing/utils/hash.h"
 
 namespace {
 
 std::string CRYPT_MD5String(const char* str) {
-  return GenerateMD5Base16(
-      {reinterpret_cast<const uint8_t*>(str), strlen(str)});
+  return GenerateMD5Base16(ByteStringView(str).unsigned_span());
 }
 
 void CheckArcFourContext(const CRYPT_rc4_context& context,
@@ -331,7 +331,8 @@ TEST(FXCRYPT, CRYPT_ArcFourSetup) {
             72,  115, 0,   47,  94,  29,  45,  14,  111};
     CRYPT_rc4_context context;
     static const uint8_t kFooBar[] = "foobar";
-    CRYPT_ArcFourSetup(&context, {kFooBar, std::size(kFooBar) - 1});
+    CRYPT_ArcFourSetup(
+        &context, pdfium::make_span(kFooBar).first(std::size(kFooBar) - 1));
     CheckArcFourContext(context, 0, 0, kFoobarPermutation);
   }
 }
@@ -444,7 +445,8 @@ TEST(FXCRYPT, CRYPT_ArcFourCrypt) {
   {
     CRYPT_rc4_context context;
     static const uint8_t kFooBar[] = "foobar";
-    CRYPT_ArcFourSetup(&context, {kFooBar, std::size(kFooBar) - 1});
+    CRYPT_ArcFourSetup(
+        &context, pdfium::make_span(kFooBar).first(std::size(kFooBar) - 1));
 
     uint8_t data_short[std::size(kDataShort)];
     memcpy(data_short, kDataShort, std::size(kDataShort));
@@ -485,7 +487,8 @@ TEST(FXCRYPT, CRYPT_ArcFourCrypt) {
   {
     CRYPT_rc4_context context;
     static const uint8_t kFooBar[] = "foobar";
-    CRYPT_ArcFourSetup(&context, {kFooBar, std::size(kFooBar) - 1});
+    CRYPT_ArcFourSetup(
+        &context, pdfium::make_span(kFooBar).first(std::size(kFooBar) - 1));
 
     uint8_t data_long[std::size(kDataLong)];
     memcpy(data_long, kDataLong, std::size(kDataLong));
