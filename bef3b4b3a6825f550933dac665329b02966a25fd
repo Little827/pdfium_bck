@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cbacfee_bbf22607",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-04-08T22:59:00Z",
+      "side": 1,
+      "message": "So the latest patchset shows what it might be like with the new syntax. As I understand it, everything is opted in and we need to block certain directories and certain files.",
+      "revId": "bef3b4b3a6825f550933dac665329b02966a25fd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
