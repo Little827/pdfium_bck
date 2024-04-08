@@ -493,6 +493,29 @@ def _CheckUselessForwardDeclarations(input_api, output_api):
   return results
 
 
+def _CheckUnbalancedUnsafeBuffers(input_api, output_api):
+  """Checks that files which use START_ALLOW_UNSAFE_BUFFERS also
+     contain an END_ALLOW_UNSAFE_BUFFERS to balance it out.
+  """
+  results = []
+  for f in input_api.AffectedFiles(include_deletes=False):
+    if f.LocalPath().startswith('third_party'):
+      continue
+
+    if (not f.LocalPath().endswith('.h') and
+        not f.LocalPath().endswith('.cc') and
+        not f.LocalPath().endswith('.cpp')):
+      continue
+
+    contents = input_api.ReadFile(f)
+    if ("BEGIN_ALLOW_UNSAFE_BUFFERS" in contents and
+        not "END_ALLOW_UNSAFE_BUFFERS" in contents):
+      results.append(
+          output_api.PresubmitPromptWarning(
+              '%s: needs matching END_ALLOW_UNSAFE_BUFFERS' % (f.LocalPath())))
+  return results
+
+
 def ChecksCommon(input_api, output_api):
   results = []
 
@@ -530,6 +553,7 @@ def CheckChangeOnUpload(input_api, output_api):
   results.extend(_CheckTestDuplicates(input_api, output_api))
   results.extend(_CheckPngNames(input_api, output_api))
   results.extend(_CheckUselessForwardDeclarations(input_api, output_api))
+  results.extend(_CheckUnbalancedUnsafeBuffers(input_api, output_api))
 
   author = input_api.change.author_email
   if author and author not in _KNOWN_ROBOTS:

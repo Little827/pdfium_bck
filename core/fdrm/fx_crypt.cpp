@@ -8,7 +8,10 @@
 
 #include <utility>
 
+#include "core/fxcrt/compiler_specific.h"
 #include "core/fxcrt/span_util.h"
+
+BEGIN_ALLOW_UNSAFE_BUFFERS
 
 #define GET_UINT32(n, b, i)                            \
   {                                                    \
@@ -230,3 +233,5 @@ void CRYPT_MD5Generate(pdfium::span<const uint8_t> data, uint8_t digest[16]) {
   CRYPT_MD5Update(&ctx, data);
   CRYPT_MD5Finish(&ctx, digest);
 }
+
+END_ALLOW_UNSAFE_BUFFERS
