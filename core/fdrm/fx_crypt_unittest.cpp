@@ -8,8 +8,11 @@
 #include <string>
 #include <vector>
 
+#include "core/fxcrt/compiler_specific.h"
 #include "testing/gtest/include/gtest/gtest.h"
 #include "testing/utils/hash.h"
+
+BEGIN_ALLOW_UNSAFE_BUFFERS
 
 namespace {
 
@@ -642,3 +645,5 @@ TEST(FXCRYPT, Sha512Pad112) {
   for (size_t i = 0; i < std::size(kExpected); ++i)
     EXPECT_EQ(kExpected[i], actual[i]) << " at byte " << i;
 }
+
+END_ALLOW_UNSAFE_BUFFERS
