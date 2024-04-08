@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "f846c105_111f8947",
+        "filename": ".gitignore",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 6785
+      },
+      "writtenOn": "2024-04-08T18:00:38Z",
+      "side": 1,
+      "message": "I think we need to keep it since the old repo doesn\u0027t get removed automatically and will show up as unstaged in git.",
+      "parentUuid": "5040111a_6e6259ef",
+      "revId": "3d6935c4b67eb6a5558652b10ba2c5d2946bf1ad",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "a6ced886_5a43d7f4",
