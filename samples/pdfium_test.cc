@@ -42,6 +42,7 @@
 #include "testing/command_line_helpers.h"
 #include "testing/font_renamer.h"
 #include "testing/fx_string_testhelpers.h"
+#include "testing/test_fonts.h"
 #include "testing/test_loader.h"
 #include "testing/utils/file_util.h"
 #include "testing/utils/hash.h"
@@ -1935,11 +1936,15 @@ int main(int argc, const char* argv[]) {
   }
 #endif  // PDF_ENABLE_V8
 
+  TestFonts test_fonts;
   const char* path_array[2] = {nullptr, nullptr};
   std::optional<const char*> custom_font_path = GetCustomFontPath(options);
   if (custom_font_path.has_value()) {
     path_array[0] = custom_font_path.value();
     config.m_pUserFontPaths = path_array;
+    return 1;  // TODO: remove
+  } else {
+    config.m_pUserFontPaths = test_fonts.font_paths();
   }
 
   FPDF_InitLibraryWithConfig(&config);
