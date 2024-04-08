@@ -35,6 +35,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e9e775a_4b97adf9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-04-08T22:51:04Z",
+      "side": 1,
+      "message": "Remains to be seen. I\u0027m gravitating towards a world where the ..._paths.txt file covers larger chunks so that it need not be edited very often. I\u0027m also not sure if this CL is the right idea either vs. that centralized list. Got an opinion?",
+      "parentUuid": "c4ef1cb7_8a4569b6",
+      "revId": "9e387ebf3ec6ce3dc8a0cbbe201f6c239433636f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d21de0d9_f8e36da1",
@@ -48,6 +66,30 @@
       "writtenOn": "2024-04-08T22:22:45Z",
       "side": 1,
       "message": "manner",
+      "range": {
+        "startLine": 87,
+        "startChar": 19,
+        "endLine": 87,
+        "endChar": 24
+      },
+      "revId": "9e387ebf3ec6ce3dc8a0cbbe201f6c239433636f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bba1dae_536601b7",
+        "filename": "core/fxcrt/compiler_specific.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-04-08T22:51:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d21de0d9_f8e36da1",
       "range": {
         "startLine": 87,
         "startChar": 19,
