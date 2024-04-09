@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "374730e1_78d85fea",
+        "filename": "fpdfsdk/fpdf_attachment.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-04-09T17:04:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d2eef20_d1ddf009",
+      "range": {
+        "startLine": 47,
+        "startChar": 29,
+        "endLine": 47,
+        "endChar": 38
+      },
+      "revId": "b3ec1eaea97fc4917534c755d6605e0d30a1dd44",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "027277f7_ce13dc47",
@@ -37,6 +61,24 @@
       "writtenOn": "2024-04-09T16:29:39Z",
       "side": 1,
       "message": "Is this one intentional?",
+      "revId": "b3ec1eaea97fc4917534c755d6605e0d30a1dd44",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12e264a7_05fe3ea9",
+        "filename": "fpdfsdk/fpdf_sysfontinfo.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-04-09T17:04:08Z",
+      "side": 1,
+      "message": "yes, if the function were marked with this, then all callers would have to wrap calls in UNSAFE_BUFFERS(), because `buf_size` cant be trusted. Or spanify later. Marking it now so we don\u0027t lose track of it.",
+      "parentUuid": "027277f7_ce13dc47",
       "revId": "b3ec1eaea97fc4917534c755d6605e0d30a1dd44",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
