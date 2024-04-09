@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "173118dc_b1746a75",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-04-09T00:51:54Z",
+      "side": 1,
+      "message": "Want to split this up into smaller CLs for quicker incremental reviews?",
+      "revId": "2c5de2288300ba301c61fb6ea433349102ccfde1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27f3a76b_a797f184",
+        "filename": "core/fdrm/fx_crypt_unittest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-04-09T00:51:54Z",
+      "side": 1,
+      "message": "Do you want to merge all the duplicates in this file and changed it to `{\u0027f\u0027, \u0027o\u0027, ..., \u0027r\u0027}`, so it converts to a span without needing the first() call?",
+      "revId": "2c5de2288300ba301c61fb6ea433349102ccfde1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
