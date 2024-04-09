@@ -16,6 +16,29 @@
       "message": "We\u0027re going to need this, I am afraid, to avoid breaking G3 down the road.",
       "revId": "00cd43566bb5c63b6a70b2d06a706497e3782f8d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99320d48_0c713d8f",
+        "filename": "core/fxcrt/compiler_specific.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-04-09T20:30:40Z",
+      "side": 1,
+      "message": "Actually, defined(___clang___) is not needed, and can go away in the final version.",
+      "range": {
+        "startLine": 89,
+        "startChar": 4,
+        "endLine": 89,
+        "endChar": 25
+      },
+      "revId": "00cd43566bb5c63b6a70b2d06a706497e3782f8d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
