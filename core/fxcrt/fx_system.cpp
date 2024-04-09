@@ -260,3 +260,7 @@ uint32_t FXSYS_GetLastError() {
 float FXSYS_sqrt2(float a, float b) {
   return sqrtf(a * a + b * b);
 }
+
+#pragma clang unsafe_buffer_usage begin
+
+#pragma clang unsafe_buffer_usage end
