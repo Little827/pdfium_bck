@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c69f11c7_3de3b795",
+        "filename": "core/fdrm/fx_crypt_unittest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-04-10T22:05:00Z",
+      "side": 1,
+      "message": "these really should be string views. done.",
+      "parentUuid": "8f7dd903_d0449af0",
+      "revId": "afe2b1f4f5f321a84449bf89167e7b86d4f747b0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d59e24be_9e30bce8",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-04-10T01:12:14Z",
       "side": 1,
       "message": "Can\u0027t ReadData() also be modified to take a span instead in the future, instead of adding more annotations?",
+      "revId": "afe2b1f4f5f321a84449bf89167e7b86d4f747b0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32f7b7a2_d436a2d0",
+        "filename": "core/fxcrt/cfx_seekablestreamproxy.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-04-10T22:05:00Z",
+      "side": 1,
+      "message": "Should be done as a separate CL, as it gets messy quick since it flows into the wchar_t version below, and making the wchar_t version below take a span as it is kinda loose on what isize means.",
+      "parentUuid": "d59e24be_9e30bce8",
       "revId": "afe2b1f4f5f321a84449bf89167e7b86d4f747b0",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
