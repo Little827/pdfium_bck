@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f7dd903_d0449af0",
+        "filename": "core/fdrm/fx_crypt_unittest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-04-10T01:12:14Z",
+      "side": 1,
+      "message": "WDYT of the suggestion to combine all the constants? Or would `ByteStringView(\"foobar\").unsigned_span() work? Or borrow Chromium\u0027s base::span_from_cstring()?",
+      "revId": "afe2b1f4f5f321a84449bf89167e7b86d4f747b0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d59e24be_9e30bce8",
+        "filename": "core/fxcrt/cfx_seekablestreamproxy.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-04-10T01:12:14Z",
+      "side": 1,
+      "message": "Can\u0027t ReadData() also be modified to take a span instead in the future, instead of adding more annotations?",
+      "revId": "afe2b1f4f5f321a84449bf89167e7b86d4f747b0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
