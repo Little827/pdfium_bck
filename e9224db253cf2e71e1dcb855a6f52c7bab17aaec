@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "318857fa_70016006",
+        "filename": "core/fpdfapi/parser/fpdf_parser_decode_unittest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-04-10T23:13:54Z",
+      "side": 1,
+      "message": "Maybe later STR_IN_OUT_CASE() can create some spans instead.",
+      "range": {
+        "startLine": 288,
+        "startChar": 24,
+        "endLine": 288,
+        "endChar": 38
+      },
+      "revId": "e9224db253cf2e71e1dcb855a6f52c7bab17aaec",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d50c287_f8af5c78",
+        "filename": "core/fxcodec/cfx_codec_memory.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-04-10T23:13:54Z",
+      "side": 1,
+      "message": "Oh, I probably have an unfinished CL somewhere.",
+      "revId": "e9224db253cf2e71e1dcb855a6f52c7bab17aaec",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75b4385c_33538303",
+        "filename": "core/fxcrt/cfx_seekablestreamproxy_unittest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-04-10T23:13:54Z",
+      "side": 1,
+      "message": "More ByteString?",
+      "revId": "e9224db253cf2e71e1dcb855a6f52c7bab17aaec",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92a6daf6_6c57d871",
+        "filename": "core/fxcrt/fx_stream.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-04-10T23:13:54Z",
+      "side": 1,
+      "message": "Would using as_bytes() do the same thing with fewer characters of code?",
+      "range": {
+        "startLine": 58,
+        "startChar": 25,
+        "endLine": 58,
+        "endChar": 41
+      },
+      "revId": "e9224db253cf2e71e1dcb855a6f52c7bab17aaec",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
