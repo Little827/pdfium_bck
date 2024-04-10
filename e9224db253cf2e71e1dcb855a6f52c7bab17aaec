@@ -3,6 +3,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "da6586c1_54e6c0cb",
+        "filename": "core/fpdfapi/parser/cpdf_security_handler.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-04-10T23:31:29Z",
+      "side": 1,
+      "message": "I\u0027m surprised fuzzers haven\u0027t blown through this DCHECK.",
+      "revId": "e9224db253cf2e71e1dcb855a6f52c7bab17aaec",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "318857fa_70016006",
         "filename": "core/fpdfapi/parser/fpdf_parser_decode_unittest.cpp",
         "patchSetId": 7
@@ -77,6 +94,23 @@
         "endLine": 58,
         "endChar": 41
       },
+      "revId": "e9224db253cf2e71e1dcb855a6f52c7bab17aaec",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f931dea3_e3fe711b",
+        "filename": "core/fxcrt/string_template.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-04-10T23:31:29Z",
+      "side": 1,
+      "message": "Maybe just create the span once? All the code paths will use it.",
       "revId": "e9224db253cf2e71e1dcb855a6f52c7bab17aaec",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
