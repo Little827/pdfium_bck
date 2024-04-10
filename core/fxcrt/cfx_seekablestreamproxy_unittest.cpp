@@ -17,7 +17,7 @@ TEST(SeekableStreamProxyTest, NullStream) {
           pdfium::span<const uint8_t>()));
 
   wchar_t buffer[16];
-  EXPECT_EQ(0u, proxy_stream->ReadBlock(buffer, std::size(buffer)));
+  EXPECT_EQ(0u, proxy_stream->ReadBlock(buffer));
 }
 
 TEST(SeekableStreamProxyTest, DefaultStreamBOMNotRecognized) {
@@ -27,7 +27,7 @@ TEST(SeekableStreamProxyTest, DefaultStreamBOMNotRecognized) {
           pdfium::make_span(data).first(sizeof(data) - 1)));
 
   wchar_t buffer[16];
-  EXPECT_EQ(0u, proxy_stream->ReadBlock(buffer, std::size(buffer)));
+  EXPECT_EQ(0u, proxy_stream->ReadBlock(buffer));
 }
 
 TEST(SeekableStreamProxyTest, UTF8Stream) {
@@ -37,7 +37,7 @@ TEST(SeekableStreamProxyTest, UTF8Stream) {
           pdfium::make_span(data).first(sizeof(data) - 1)));
 
   wchar_t buffer[16];
-  EXPECT_EQ(3u, proxy_stream->ReadBlock(buffer, std::size(buffer)));
+  EXPECT_EQ(3u, proxy_stream->ReadBlock(buffer));
   EXPECT_EQ(L'*', buffer[0]);
   EXPECT_EQ(L'\u00A2', buffer[1]);
   EXPECT_EQ(L'*', buffer[2]);
@@ -50,7 +50,7 @@ TEST(SeekableStreamProxyTest, UTF16LEStream) {
           pdfium::make_span(data).first(sizeof(data) - 1)));
 
   wchar_t buffer[16];
-  EXPECT_EQ(2u, proxy_stream->ReadBlock(buffer, std::size(buffer)));
+  EXPECT_EQ(2u, proxy_stream->ReadBlock(buffer));
   EXPECT_EQ(L'A', buffer[0]);
   EXPECT_EQ(L'\u0142', buffer[1]);
 }
@@ -62,7 +62,7 @@ TEST(SeekableStreamProxyTest, UTF16BEStream) {
           pdfium::make_span(data).first(sizeof(data) - 1)));
 
   wchar_t buffer[16];
-  EXPECT_EQ(2u, proxy_stream->ReadBlock(buffer, std::size(buffer)));
+  EXPECT_EQ(2u, proxy_stream->ReadBlock(buffer));
   EXPECT_EQ(L'A', buffer[0]);
   EXPECT_EQ(L'\u0142', buffer[1]);
 }
