@@ -16,6 +16,24 @@
       "message": "So this should get bundled into the next plugin roll to continue success.  We\u0027ll need this as a starting point.  long-term I think the ..._paths.txt file becomes static (I\u0027m thinking like a .gitignore file) and the individual files are suppressed via macros.",
       "revId": "10d83ba4e067ae11366aa63b3c286222f5113f64",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02d3e810_f502fd9b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-04-10T00:38:30Z",
+      "side": 1,
+      "message": "SGTM.",
+      "parentUuid": "103aa15d_745dde5b",
+      "revId": "10d83ba4e067ae11366aa63b3c286222f5113f64",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
