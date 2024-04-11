@@ -21,7 +21,7 @@ TEST(SeekableStreamProxyTest, NullStream) {
 }
 
 TEST(SeekableStreamProxyTest, DefaultStreamBOMNotRecognized) {
-  ByteStringView data = "abcd";
+  static constexpr ByteStringView data = "abcd";
   auto proxy_stream = pdfium::MakeRetain<CFX_SeekableStreamProxy>(
       pdfium::MakeRetain<CFX_ReadOnlySpanStream>(data.unsigned_span()));
 
@@ -30,7 +30,7 @@ TEST(SeekableStreamProxyTest, DefaultStreamBOMNotRecognized) {
 }
 
 TEST(SeekableStreamProxyTest, UTF8Stream) {
-  ByteStringView data = "\xEF\xBB\xBF*\xC2\xA2*";
+  static constexpr ByteStringView data = "\xEF\xBB\xBF*\xC2\xA2*";
   auto proxy_stream = pdfium::MakeRetain<CFX_SeekableStreamProxy>(
       pdfium::MakeRetain<CFX_ReadOnlySpanStream>(data.unsigned_span()));
 
@@ -42,7 +42,7 @@ TEST(SeekableStreamProxyTest, UTF8Stream) {
 }
 
 TEST(SeekableStreamProxyTest, UTF16LEStream) {
-  ByteStringView data = "\xFF\xFE\x41\x00\x42\x01";
+  static constexpr ByteStringView data = "\xFF\xFE\x41\x00\x42\x01";
   auto proxy_stream = pdfium::MakeRetain<CFX_SeekableStreamProxy>(
       pdfium::MakeRetain<CFX_ReadOnlySpanStream>(data.unsigned_span()));
 
@@ -53,7 +53,7 @@ TEST(SeekableStreamProxyTest, UTF16LEStream) {
 }
 
 TEST(SeekableStreamProxyTest, UTF16BEStream) {
-  ByteStringView data = "\xFE\xFF\x00\x41\x01\x42";
+  static constexpr ByteStringView data = "\xFE\xFF\x00\x41\x01\x42";
   auto proxy_stream = pdfium::MakeRetain<CFX_SeekableStreamProxy>(
       pdfium::MakeRetain<CFX_ReadOnlySpanStream>(data.unsigned_span()));
 
