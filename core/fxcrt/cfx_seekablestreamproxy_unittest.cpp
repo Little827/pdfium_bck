@@ -21,20 +21,18 @@ TEST(SeekableStreamProxyTest, NullStream) {
 }
 
 TEST(SeekableStreamProxyTest, DefaultStreamBOMNotRecognized) {
-  const char data[] = "abcd";
+  ByteStringView data = "abcd";
   auto proxy_stream = pdfium::MakeRetain<CFX_SeekableStreamProxy>(
-      pdfium::MakeRetain<CFX_ReadOnlySpanStream>(pdfium::make_span(
-          reinterpret_cast<const uint8_t*>(data), sizeof(data) - 1)));
+      pdfium::MakeRetain<CFX_ReadOnlySpanStream>(data.unsigned_span()));
 
   wchar_t buffer[16];
   EXPECT_EQ(0u, proxy_stream->ReadBlock(buffer, std::size(buffer)));
 }
 
 TEST(SeekableStreamProxyTest, UTF8Stream) {
-  const char data[] = "\xEF\xBB\xBF*\xC2\xA2*";
+  ByteStringView data = "\xEF\xBB\xBF*\xC2\xA2*";
   auto proxy_stream = pdfium::MakeRetain<CFX_SeekableStreamProxy>(
-      pdfium::MakeRetain<CFX_ReadOnlySpanStream>(pdfium::make_span(
-          reinterpret_cast<const uint8_t*>(data), sizeof(data) - 1)));
+      pdfium::MakeRetain<CFX_ReadOnlySpanStream>(data.unsigned_span()));
 
   wchar_t buffer[16];
   EXPECT_EQ(3u, proxy_stream->ReadBlock(buffer, std::size(buffer)));
@@ -44,10 +42,9 @@ TEST(SeekableStreamProxyTest, UTF8Stream) {
 }
 
 TEST(SeekableStreamProxyTest, UTF16LEStream) {
-  const char data[] = "\xFF\xFE\x41\x00\x42\x01";
+  ByteStringView data = "\xFF\xFE\x41\x00\x42\x01";
   auto proxy_stream = pdfium::MakeRetain<CFX_SeekableStreamProxy>(
-      pdfium::MakeRetain<CFX_ReadOnlySpanStream>(pdfium::make_span(
-          reinterpret_cast<const uint8_t*>(data), sizeof(data) - 1)));
+      pdfium::MakeRetain<CFX_ReadOnlySpanStream>(data.unsigned_span()));
 
   wchar_t buffer[16];
   EXPECT_EQ(2u, proxy_stream->ReadBlock(buffer, std::size(buffer)));
@@ -56,10 +53,9 @@ TEST(SeekableStreamProxyTest, UTF16LEStream) {
 }
 
 TEST(SeekableStreamProxyTest, UTF16BEStream) {
-  const char data[] = "\xFE\xFF\x00\x41\x01\x42";
+  ByteStringView data = "\xFE\xFF\x00\x41\x01\x42";
   auto proxy_stream = pdfium::MakeRetain<CFX_SeekableStreamProxy>(
-      pdfium::MakeRetain<CFX_ReadOnlySpanStream>(pdfium::make_span(
-          reinterpret_cast<const uint8_t*>(data), sizeof(data) - 1)));
+      pdfium::MakeRetain<CFX_ReadOnlySpanStream>(data.unsigned_span()));
 
   wchar_t buffer[16];
   EXPECT_EQ(2u, proxy_stream->ReadBlock(buffer, std::size(buffer)));
