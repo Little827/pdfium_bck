@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f72cf0c9_b735f2cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-04-11T16:23:46Z",
+      "side": 1,
+      "message": "Had to revert one usage due to embedded nul vs. char_traits\u003c\u003e::length().",
+      "revId": "0997c76ba1d30cc4aa918d16965be649978ff81d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
