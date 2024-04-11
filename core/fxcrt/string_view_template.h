@@ -48,54 +48,46 @@ class StringViewTemplate {
 
   // Deliberately implicit to avoid calling on every string literal.
   // NOLINTNEXTLINE(runtime/explicit)
-  StringViewTemplate(const CharType* ptr) noexcept
+  constexpr StringViewTemplate(const CharType* ptr) noexcept
       // SAFETY: from length() function.
       : m_Span(UNSAFE_BUFFERS(pdfium::make_span(
-            reinterpret_cast<const UnsignedType*>(ptr),
+            ptr,
             ptr ? std::char_traits<CharType>::length(ptr) : 0))) {}
 
   UNSAFE_BUFFER_USAGE
   constexpr StringViewTemplate(const CharType* ptr, size_t size) noexcept
-      // SAFETY: propagated to caller via UNSAFE_BUFFER_USAGE.
-      : m_Span(UNSAFE_BUFFERS(
-            pdfium::make_span(reinterpret_cast<const UnsignedType*>(ptr),
-                              size))) {}
-
-  template <typename E = typename std::enable_if<
-                !std::is_same<UnsignedType, CharType>::value>::type>
-  UNSAFE_BUFFER_USAGE constexpr StringViewTemplate(const UnsignedType* ptr,
-                                                   size_t size) noexcept
-      // SAFETY: propagated to caller via UNSAFE_BUFFER_USAGE.
+      // SAFETY: required from caller, enforced via UNSAFE_BUFFER_USAGE.
       : m_Span(UNSAFE_BUFFERS(pdfium::make_span(ptr, size))) {}
 
+  // Can't be constexpr since it prohibits reinterpret_cast<>().
+  template <typename E = typename std::enable_if<
+                !std::is_same<UnsignedType, CharType>::value>::type>
+  UNSAFE_BUFFER_USAGE StringViewTemplate(const UnsignedType* ptr,
+                                         size_t size) noexcept
+      // SAFETY: required from caller, enforced via UNSAFE_BUFFER_USAGE.
+      : m_Span(fxcrt::reinterpret_span<const CharType>(
+            UNSAFE_BUFFERS(pdfium::make_span(ptr, size)))) {}
+
   explicit constexpr StringViewTemplate(
-      const pdfium::span<const CharType>& other) noexcept {
-    if (!other.empty()) {
-      m_Span = reinterpret_span<const UnsignedType>(other);
-    }
-  }
+      const pdfium::span<const CharType>& other) noexcept
+      : m_Span(other) {}
 
   template <typename E = typename std::enable_if<
                 !std::is_same<UnsignedType, CharType>::value>::type>
-  constexpr StringViewTemplate(
-      const pdfium::span<const UnsignedType>& other) noexcept {
-    if (!other.empty()) {
-      m_Span = other;
-    }
-  }
+  // Can't be constexpr since it prohibits reinterpret_cast<>().
+  StringViewTemplate(const pdfium::span<const UnsignedType>& other) noexcept
+      : m_Span(fxcrt::reinterpret_span<const CharType>(other)) {}
 
   // Deliberately implicit to avoid calling on every char literal.
   // |ch| must be an lvalue that outlives the StringViewTemplate.
   // NOLINTNEXTLINE(runtime/explicit)
   constexpr StringViewTemplate(const CharType& ch) noexcept
-      : m_Span(
-            reinterpret_span<const UnsignedType>(pdfium::span_from_ref(ch))) {}
+      : m_Span(pdfium::span_from_ref(ch)) {}
 
   StringViewTemplate& operator=(const CharType* src) {
-    // SAFETY: caller ensures `src` is nul-terminated so `length()` is correct.
-    m_Span = UNSAFE_BUFFERS(
-        pdfium::make_span(reinterpret_cast<const UnsignedType*>(src),
-                          src ? std::char_traits<CharType>::length(src) : 0));
+    // SAFETY: from `length()` function.
+    m_Span = UNSAFE_BUFFERS(pdfium::make_span(
+        src, src ? std::char_traits<CharType>::length(src) : 0));
     return *this;
   }
 
@@ -104,12 +96,8 @@ class StringViewTemplate {
     return *this;
   }
 
-  const_iterator begin() const {
-    return reinterpret_cast<const_iterator>(m_Span.begin());
-  }
-  const_iterator end() const {
-    return reinterpret_cast<const_iterator>(m_Span.end());
-  }
+  const_iterator begin() const { return m_Span.begin(); }
+  const_iterator end() const { return m_Span.end(); }
   const_reverse_iterator rbegin() const {
     return const_reverse_iterator(end());
   }
@@ -176,15 +164,13 @@ class StringViewTemplate {
     return strid << ((4 - size) * 8);
   }
 
-  pdfium::span<const UnsignedType> unsigned_span() const { return m_Span; }
-  pdfium::span<const CharType> span() const {
-    return reinterpret_span<const CharType>(m_Span);
+  pdfium::span<const CharType> span() const { return m_Span; }
+  pdfium::span<const UnsignedType> unsigned_span() const {
+    return reinterpret_span<const UnsignedType>(m_Span);
   }
+  const CharType* unterminated_c_str() const { return m_Span.data(); }
   const UnsignedType* unterminated_unsigned_str() const {
-    return m_Span.data();
-  }
-  const CharType* unterminated_c_str() const {
-    return reinterpret_cast<const CharType*>(m_Span.data());
+    return reinterpret_cast<const UnsignedType*>(m_Span.data());
   }
 
   size_t GetLength() const { return m_Span.size(); }
@@ -194,27 +180,27 @@ class StringViewTemplate {
 
   // CHECK() if index is out of range (via span's operator[]).
   const UnsignedType& operator[](const size_t index) const {
-    return m_Span[index];
+    return reinterpret_cast<const UnsignedType&>(m_Span[index]);
   }
 
   // CHECK() if index is out of range (via span's operator[]).
-  CharType CharAt(const size_t index) const {
-    return static_cast<CharType>(m_Span[index]);
-  }
+  CharType CharAt(const size_t index) const { return m_Span[index]; }
 
   // Unlike std::string_view::front(), this is always safe and returns a
   // NUL char when the string is empty.
-  UnsignedType Front() const { return !m_Span.empty() ? m_Span.front() : 0; }
+  UnsignedType Front() const {
+    return !m_Span.empty() ? static_cast<UnsignedType>(m_Span.front()) : 0;
+  }
 
   // Unlike std::string_view::back(), this is always safe and returns a
   // NUL char when the string is empty.
-  UnsignedType Back() const { return !m_Span.empty() ? m_Span.back() : 0; }
+  UnsignedType Back() const {
+    return !m_Span.empty() ? static_cast<UnsignedType>(m_Span.back()) : 0;
+  }
 
   std::optional<size_t> Find(CharType ch) const {
     const auto* found =
-        reinterpret_cast<const UnsignedType*>(std::char_traits<CharType>::find(
-            reinterpret_cast<const CharType*>(m_Span.data()), m_Span.size(),
-            ch));
+        std::char_traits<CharType>::find(m_Span.data(), m_Span.size(), ch);
 
     return found ? std::optional<size_t>(found - m_Span.data()) : std::nullopt;
   }
@@ -270,23 +256,19 @@ class StringViewTemplate {
 
   bool operator<(const StringViewTemplate& that) const {
     const size_t common_size = std::min(m_Span.size(), that.m_Span.size());
-    int result =
-        common_size ? std::char_traits<CharType>::compare(
-                          reinterpret_cast<const CharType*>(m_Span.data()),
-                          reinterpret_cast<const CharType*>(that.m_Span.data()),
-                          common_size)
-                    : 0;
+    int result = common_size
+                     ? std::char_traits<CharType>::compare(
+                           m_Span.data(), that.m_Span.data(), common_size)
+                     : 0;
     return result < 0 || (result == 0 && m_Span.size() < that.m_Span.size());
   }
 
   bool operator>(const StringViewTemplate& that) const {
     const size_t common_size = std::min(m_Span.size(), that.m_Span.size());
-    int result =
-        common_size ? std::char_traits<CharType>::compare(
-                          reinterpret_cast<const CharType*>(m_Span.data()),
-                          reinterpret_cast<const CharType*>(that.m_Span.data()),
-                          common_size)
-                    : 0;
+    int result = common_size
+                     ? std::char_traits<CharType>::compare(
+                           m_Span.data(), that.m_Span.data(), common_size)
+                     : 0;
     return result > 0 || (result == 0 && m_Span.size() > that.m_Span.size());
   }
 
@@ -294,7 +276,7 @@ class StringViewTemplate {
   // This is not a raw_span<> because StringViewTemplates must be passed by
   // value without introducing BackupRefPtr churn. Also, repeated re-assignment
   // of substrings of a StringViewTemplate to itself must avoid the same issue.
-  pdfium::span<const UnsignedType> m_Span;
+  pdfium::span<const CharType> m_Span;
 
  private:
   void* operator new(size_t) throw() { return nullptr; }
