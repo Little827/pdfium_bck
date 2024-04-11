@@ -22,6 +22,30 @@
       },
       "revId": "7ccd1abfa93f594b71d2558c82d55e035a55efcf",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a8d46cb_e31842c3",
+        "filename": "core/fxcrt/widestring_unittest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1292,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-04-11T22:59:03Z",
+      "side": 1,
+      "message": "Ah.  What appears in the source file are the utf8 bytes f0  9f  8e  a8 which is a 4-byte sequence for one supplemental code point. I suspect the compiler on windows may be doing the surrogation for us so the string passes through without us needing to apply any logic to it.",
+      "parentUuid": "dae9fa9c_349ffa7d",
+      "range": {
+        "startLine": 1292,
+        "startChar": 0,
+        "endLine": 1292,
+        "endChar": 52
+      },
+      "revId": "7ccd1abfa93f594b71d2558c82d55e035a55efcf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
