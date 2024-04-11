@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7991ba12_2f99d8bd",
+        "filename": "core/fxcrt/span.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-04-11T00:38:45Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 329,
+        "startChar": 67,
+        "endLine": 329,
+        "endChar": 73
+      },
+      "revId": "5438f105e92cef8ed44c290660c56fc4e1300352",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
