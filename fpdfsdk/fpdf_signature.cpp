@@ -11,7 +11,10 @@
 #include "core/fpdfapi/parser/cpdf_array.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/parser/cpdf_document.h"
+#include "core/fxcrt/compiler_specific.h"
 #include "core/fxcrt/numerics/safe_conversions.h"
+#include "core/fxcrt/span.h"
+#include "core/fxcrt/span_util.h"
 #include "core/fxcrt/stl_util.h"
 #include "fpdfsdk/cpdfsdk_helpers.h"
 
@@ -73,21 +76,21 @@ FPDFSignatureObj_GetContents(FPDF_SIGNATURE signature,
                              unsigned long length) {
   const CPDF_Dictionary* signature_dict =
       CPDFDictionaryFromFPDFSignature(signature);
-  if (!signature_dict)
+  if (!signature_dict) {
     return 0;
-
+  }
   RetainPtr<const CPDF_Dictionary> value_dict =
       signature_dict->GetDictFor(pdfium::form_fields::kV);
-  if (!value_dict)
+  if (!value_dict) {
     return 0;
+  }
+  // SAFETY: required from caller.
+  pdfium::span<char> result_span =
+      UNSAFE_BUFFERS(pdfium::make_span(static_cast<char*>(buffer), length));
 
   ByteString contents = value_dict->GetByteStringFor("Contents");
-  const unsigned long contents_len =
-      pdfium::checked_cast<unsigned long>(contents.GetLength());
-  if (buffer && length >= contents_len)
-    memcpy(buffer, contents.c_str(), contents_len);
-
-  return contents_len;
+  fxcrt::try_spancpy(result_span, contents.span());
+  return static_cast<unsigned long>(contents.span().size());
 }
 
 FPDF_EXPORT unsigned long FPDF_CALLCONV
