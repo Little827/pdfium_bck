@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "018a4541_2d95990a",
+        "filename": "public/fpdf_text.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 8751
+      },
+      "writtenOn": "2024-04-12T13:57:02Z",
+      "side": 1,
+      "message": "I\u0027m not quite sure what you mean by a UTF-16 value? This sounds a bit like 1 character would be counted as 1 value, regardless of whether it takes 2 or 4 bytes.\nBut to my understanding, `buflen` actually is the number of 2-byte pairs, or am I mistaken?\nBecause according to our testing, the implementation with FPDFText_GetBoundedText() continued to work as expected, i.e. `buflen*2` produced the exact number of bytes we have to allocate, as opposed to FPDFText_GetText(), which broke.",
+      "revId": "d6a4b27d80214c0c06d5d8925b21fa26b567851a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
