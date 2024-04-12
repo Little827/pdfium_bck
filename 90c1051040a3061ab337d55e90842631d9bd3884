@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c5cd546e_95d964bc",
+        "filename": "fpdfsdk/fpdf_text.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-04-12T00:33:25Z",
+      "side": 1,
+      "message": "If this line checked: char_count \u003c INT_MAX, then the make_span() call below would at most create a span of INT_MAX characters. So is the \"- 1\" part necessary?",
+      "range": {
+        "startLine": 340,
+        "startChar": 54,
+        "endLine": 340,
+        "endChar": 58
+      },
+      "revId": "90c1051040a3061ab337d55e90842631d9bd3884",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "23047188_3892b3e8",
         "filename": "public/fpdf_text.h",
         "patchSetId": 10
