@@ -25,6 +25,7 @@
 
 #include "core/fxcrt/check_op.h"
 #include "core/fxcrt/compiler_specific.h"
+#include "core/fxcrt/fx_memcpy_wrappers.h"
 #include "core/fxcrt/span.h"
 #include "public/cpp/fpdf_scopers.h"
 #include "public/fpdf_annot.h"
@@ -336,7 +337,7 @@ int ExampleDocGetFilePath(IPDF_JSPLATFORM*, void* file_path, int length) {
   static const char kPath[] = "myfile.pdf";
   constexpr int kRequired = static_cast<int>(sizeof(kPath));
   if (file_path && length >= kRequired)
-    memcpy(file_path, kPath, kRequired);
+    FXSYS_memcpy(file_path, kPath, kRequired);
   return kRequired;
 }
 
@@ -388,7 +389,7 @@ int ExampleFieldBrowse(IPDF_JSPLATFORM*, void* file_path, int length) {
   static const char kPath[] = "selected.txt";
   constexpr int kRequired = static_cast<int>(sizeof(kPath));
   if (file_path && length >= kRequired)
-    memcpy(file_path, kPath, kRequired);
+    FXSYS_memcpy(file_path, kPath, kRequired);
   return kRequired;
 }
 #endif  // PDF_ENABLE_V8

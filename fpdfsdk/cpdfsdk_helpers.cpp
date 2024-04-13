@@ -21,6 +21,7 @@
 #include "core/fpdfdoc/cpdf_interactiveform.h"
 #include "core/fpdfdoc/cpdf_metadata.h"
 #include "core/fxcrt/check.h"
+#include "core/fxcrt/fx_memcpy_wrappers.h"
 #include "core/fxcrt/numerics/safe_conversions.h"
 #include "core/fxcrt/span_util.h"
 #include "core/fxcrt/unowned_ptr.h"
@@ -305,7 +306,7 @@ unsigned long NulTerminateMaybeCopyAndReturnLength(const ByteString& text,
   const unsigned long len =
       pdfium::checked_cast<unsigned long>(text.GetLength() + 1);
   if (buffer && len <= buflen)
-    memcpy(buffer, text.c_str(), len);
+    FXSYS_memcpy(buffer, text.c_str(), len);
   return len;
 }
 
@@ -316,7 +317,7 @@ unsigned long Utf16EncodeMaybeCopyAndReturnLength(const WideString& text,
   const unsigned long len =
       pdfium::checked_cast<unsigned long>(encoded_text.GetLength());
   if (buffer && len <= buflen)
-    memcpy(buffer, encoded_text.c_str(), len);
+    FXSYS_memcpy(buffer, encoded_text.c_str(), len);
   return len;
 }
 
