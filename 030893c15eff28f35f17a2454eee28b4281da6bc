@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67607319_57067fee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-04-13T01:08:13Z",
+      "side": 1,
+      "message": "Do with as you wish while I\u0027m unavailable.",
+      "revId": "030893c15eff28f35f17a2454eee28b4281da6bc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
