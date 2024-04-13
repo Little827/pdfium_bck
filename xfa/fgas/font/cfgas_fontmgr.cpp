@@ -184,7 +184,7 @@ int32_t CALLBACK GdiFontEnumProc(ENUMLOGFONTEX* lpelfe,
   if (lf.lfFaceName[0] == L'@')
     return 1;
   FX_FONTDESCRIPTOR font;
-  memset(&font, 0, sizeof(FX_FONTDESCRIPTOR));
+  FXSYS_memset(&font, 0, sizeof(FX_FONTDESCRIPTOR));
   font.uCharSet = FX_GetCharsetFromInt(lf.lfCharSet);
   font.dwFontStyles = GetGdiFontStyles(lf);
   FXSYS_wcsncpy(font.wsFontFace, (const wchar_t*)lf.lfFaceName, 31);
@@ -205,7 +205,7 @@ std::deque<FX_FONTDESCRIPTOR> EnumGdiFonts(const wchar_t* pwsFaceName,
   }
 
   LOGFONTW lfFind;
-  memset(&lfFind, 0, sizeof(lfFind));
+  FXSYS_memset(&lfFind, 0, sizeof(lfFind));
   lfFind.lfCharSet = DEFAULT_CHARSET;
   if (pwsFaceName) {
     FXSYS_wcsncpy(lfFind.lfFaceName, pwsFaceName, 31);
@@ -267,7 +267,7 @@ const FX_FONTDESCRIPTOR* CFGAS_FontMgr::FindFont(const wchar_t* pszFontFamily,
                                                  uint32_t dwUSB,
                                                  wchar_t wUnicode) {
   FX_FONTMATCHPARAMS params;
-  memset(&params, 0, sizeof(params));
+  FXSYS_memset(&params, 0, sizeof(params));
   params.dwUSB = dwUSB;
   params.wUnicode = wUnicode;
   params.wCodePage = wCodePage;
@@ -515,7 +515,7 @@ RetainPtr<CFX_Face> LoadFace(
   // https://bugs.chromium.org/p/pdfium/issues/detail?id=690
   FXFT_StreamRec* ftStream =
       static_cast<FXFT_StreamRec*>(ft_scalloc(sizeof(FXFT_StreamRec), 1));
-  memset(ftStream, 0, sizeof(FXFT_StreamRec));
+  FXSYS_memset(ftStream, 0, sizeof(FXFT_StreamRec));
   ftStream->base = nullptr;
   ftStream->descriptor.pointer = static_cast<void*>(pFontStream.Get());
   ftStream->pos = 0;
@@ -524,7 +524,7 @@ RetainPtr<CFX_Face> LoadFace(
   ftStream->close = ftStreamClose;
 
   FT_Open_Args ftArgs;
-  memset(&ftArgs, 0, sizeof(FT_Open_Args));
+  FXSYS_memset(&ftArgs, 0, sizeof(FT_Open_Args));
   ftArgs.flags |= FT_OPEN_STREAM;
   ftArgs.stream = ftStream;
 

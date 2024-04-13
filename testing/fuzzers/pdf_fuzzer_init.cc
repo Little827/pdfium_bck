@@ -4,12 +4,13 @@
 
 #include <string.h>
 
+#include "core/fxcrt/fx_memcpy_wrappers.h"
 #include "public/fpdfview.h"
 
 // Initialize the library once for all runs of the fuzzer.
 struct TestCase {
   TestCase() {
-    memset(&config, '\0', sizeof(config));
+    FXSYS_memset(&config, '\0', sizeof(config));
     config.version = 2;
     config.m_pUserFontPaths = nullptr;
     config.m_pIsolate = nullptr;

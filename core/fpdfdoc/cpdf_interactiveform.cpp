@@ -63,7 +63,7 @@ int CALLBACK EnumFontFamExProc(ENUMLOGFONTEXA* lpelfe,
 bool RetrieveSpecificFont(FX_Charset charSet,
                           LPCSTR pcsFontName,
                           LOGFONTA& lf) {
-  memset(&lf, 0, sizeof(LOGFONTA));
+  FXSYS_memset(&lf, 0, sizeof(LOGFONTA));
   lf.lfCharSet = static_cast<int>(charSet);
   lf.lfPitchAndFamily = DEFAULT_PITCH | FF_DONTCARE;
   if (pcsFontName) {
@@ -73,7 +73,7 @@ bool RetrieveSpecificFont(FX_Charset charSet,
   }
 
   PDF_FONTDATA fd;
-  memset(&fd, 0, sizeof(PDF_FONTDATA));
+  FXSYS_memset(&fd, 0, sizeof(PDF_FONTDATA));
   HDC hDC = ::GetDC(nullptr);
   EnumFontFamiliesExA(hDC, &lf, (FONTENUMPROCA)EnumFontFamExProc, (LPARAM)&fd,
                       0);
