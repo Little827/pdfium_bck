@@ -16,6 +16,46 @@
       "message": "Do with as you wish while I\u0027m unavailable.",
       "revId": "eee56132c0fef83259de3b715a9f362147a46e92",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80e5ce28_96b6c66e",
+        "filename": "core/fxcrt/span_util.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-04-15T18:22:03Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 55,
+        "startChar": 62,
+        "endLine": 55,
+        "endChar": 69
+      },
+      "revId": "eee56132c0fef83259de3b715a9f362147a46e92",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d67a9b01_264bf474",
+        "filename": "core/fxcrt/span_util_unittest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-04-15T18:22:03Z",
+      "side": 1,
+      "message": "May be good to also add some test cases that make sure overlap is handled correctly.",
+      "revId": "eee56132c0fef83259de3b715a9f362147a46e92",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
