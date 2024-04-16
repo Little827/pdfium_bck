@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0c998fa_d490dd7e",
+        "filename": "core/fpdfapi/page/cpdf_textstate.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-04-16T01:09:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a63420a5_08a36ee4",
+      "range": {
+        "startLine": 102,
+        "startChar": 35,
+        "endLine": 102,
+        "endChar": 43
+      },
+      "revId": "48a7fc1ad3a7c141092875313b046d5d0c04ce45",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8da49586_251b6272",
@@ -108,6 +132,30 @@
       "writtenOn": "2023-10-13T16:25:51Z",
       "side": 1,
       "message": "nit: there\u0027s a better way of writing this, but I\u0027ll be darned if I know what it is :). Maybe make a temporary argb_span from argb then\n `fxcrt::spancpy(argb_span, palette.first(argb_span.size());`\n\nAlternatively if argb were std::array\u003cuint32_t, 256\u003e we might be able to\n  `fxcrt::spancpy\u003cuint32_t\u003e(argb, palette.first(argb.size());`",
+      "range": {
+        "startLine": 286,
+        "startChar": 4,
+        "endLine": 286,
+        "endChar": 54
+      },
+      "revId": "48a7fc1ad3a7c141092875313b046d5d0c04ce45",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d94dc5f1_7c9c008e",
+        "filename": "core/fxge/dib/cfx_imagetransformer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-04-16T01:09:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b33695ea_1dbaaa9e",
       "range": {
         "startLine": 286,
         "startChar": 4,
