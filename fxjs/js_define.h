@@ -70,7 +70,7 @@ void JSPropGetter(const char* prop_name_string,
                   const char* class_name_string,
                   v8::Local<v8::Name> property,
                   const v8::PropertyCallbackInfo<v8::Value>& info) {
-  auto pObj = JSGetObject<C>(info.GetIsolate(), info.Holder());
+  auto pObj = JSGetObject<C>(info.GetIsolate(), info.This());
   if (!pObj)
     return;
 
@@ -95,7 +95,7 @@ void JSPropSetter(const char* prop_name_string,
                   v8::Local<v8::Name> property,
                   v8::Local<v8::Value> value,
                   const v8::PropertyCallbackInfo<void>& info) {
-  auto pObj = JSGetObject<C>(info.GetIsolate(), info.Holder());
+  auto pObj = JSGetObject<C>(info.GetIsolate(), info.This());
   if (!pObj)
     return;
 
@@ -115,7 +115,7 @@ template <class C,
 void JSMethod(const char* method_name_string,
               const char* class_name_string,
               const v8::FunctionCallbackInfo<v8::Value>& info) {
-  auto pObj = JSGetObject<C>(info.GetIsolate(), info.Holder());
+  auto pObj = JSGetObject<C>(info.GetIsolate(), info.This());
   if (!pObj)
     return;
 

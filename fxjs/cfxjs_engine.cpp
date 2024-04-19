@@ -184,7 +184,7 @@ class CFXJS_ObjDefinition {
       fxv8::ThrowExceptionHelper(isolate, "not a dynamic object");
       return;
     }
-    v8::Local<v8::Object> holder = info.Holder();
+    v8::Local<v8::Object> holder = info.This();
     DCHECK_EQ(holder->InternalFieldCount(), 2);
     holder->SetAlignedPointerInInternalField(0, nullptr);
     holder->SetAlignedPointerInInternalField(1, nullptr);
