@@ -30,6 +30,7 @@
 #include "core/fxcrt/autorestorer.h"
 #include "core/fxcrt/check.h"
 #include "core/fxcrt/check_op.h"
+#include "core/fxcrt/containers/adapters.h"
 #include "core/fxcrt/containers/contains.h"
 #include "core/fxcrt/data_vector.h"
 #include "core/fxcrt/fx_extension.h"
@@ -387,19 +388,7 @@ bool CPDF_Parser::LoadAllCrossRefTables(FX_FILESIZE xref_offset) {
     m_CrossRefTable->SetObjectMapSize(xrefsize);
 
   FX_FILESIZE xref_stm = GetTrailer()->GetDirectIntegerFor("XRefStm");
-  if (xref_stm > 0) {
-    // In hybrid-reference files, use /Prev from the cross-reference stream and
-    // ignore the /Prev in the trailer.
-    // See ISO 32000-1:2008 spec, table 17.
-    if (!LoadAllSecondaryCrossRefStreams(xref_stm)) {
-      return false;
-    }
 
-    // Then load the reference table in the trailer.
-    return LoadCrossRefTable(xref_offset, /*skip=*/false);
-  }
-
-  // Otherwise, follow the /Prev from the trailer.
   std::vector<FX_FILESIZE> xref_list{xref_offset};
   std::vector<FX_FILESIZE> xref_stream_list{xref_stm};
   if (!FindAllCrossReferenceTablesAndStream(xref_offset, xref_list,
@@ -407,17 +396,33 @@ bool CPDF_Parser::LoadAllCrossRefTables(FX_FILESIZE xref_offset) {
     return false;
   }
 
-  for (size_t i = 0; i < xref_list.size(); ++i) {
+  if (xref_stm > 0) {
+    // Cross reference table entries as a whole take precedence over cross
+    // reference stream entries. So process all the stream entries first.
+    // See details in ISO 32000-1:2008, section 7.5.8.4.
+    //
+    // Since the LoadCrossRefStream() code will never overwrite existing
+    // entries, the cross reference streams have to be applied in reverse order,
+    // so the latest updates take precedence.
+    for (FX_FILESIZE entry : pdfium::Reversed(xref_stream_list)) {
+      if (entry > 0 && !LoadCrossRefStream(&entry, /*is_main_xref=*/false)) {
+        return false;
+      }
+    }
+  }
+
+  if (!LoadCrossRefTable(xref_list[0], /*skip=*/false)) {
+    return false;
+  }
+
+  if (!VerifyCrossRefTable()) {
+    return false;
+  }
+
+  // Unlike LoadCrossRefStream(), LoadCrossRefTable() does overwrite existing
+  // entries, so apply them in order.
+  for (size_t i = 1; i < xref_list.size(); ++i) {
     if (xref_list[i] > 0 && !LoadCrossRefTable(xref_list[i], /*skip=*/false)) {
-      return false;
-    }
-
-    if (xref_stream_list[i] > 0 &&
-        !LoadCrossRefStream(&xref_stream_list[i], /*is_main_xref=*/false)) {
-      return false;
-    }
-
-    if (i == 0 && !VerifyCrossRefTable()) {
       return false;
     }
   }
@@ -451,27 +456,30 @@ bool CPDF_Parser::LoadLinearizedAllCrossRefTable(FX_FILESIZE main_xref_offset) {
                                            kNoTrailerObjectNumber),
       std::move(m_CrossRefTable));
 
-  // Ignore /Prev for hybrid-reference files.
-  // See ISO 32000-1:2008 spec, table 17.
-  if (!xref_stm) {
-    if (!FindAllCrossReferenceTablesAndStream(main_xref_offset, xref_list,
-                                              xref_stream_list)) {
-      return false;
-    }
-  }
-
-  if (xref_stream_list[0] > 0 &&
-      !LoadCrossRefStream(&xref_stream_list[0], /*is_main_xref=*/false)) {
+  if (!FindAllCrossReferenceTablesAndStream(main_xref_offset, xref_list,
+                                            xref_stream_list)) {
     return false;
   }
 
+  if (xref_stm > 0) {
+    // Cross reference table entries as a whole take precedence over cross
+    // reference stream entries. So process all the stream entries first.
+    // See details in ISO 32000-1:2008, section 7.5.8.4.
+    //
+    // Since the LoadCrossRefStream() code will never overwrite existing
+    // entries, the cross reference streams have to be applied in reverse order,
+    // so the latest updates take precedence.
+    for (FX_FILESIZE entry : pdfium::Reversed(xref_stream_list)) {
+      if (entry > 0 && !LoadCrossRefStream(&entry, /*is_main_xref=*/false)) {
+        return false;
+      }
+    }
+  }
+
+  // Unlike LoadCrossRefStream(), LoadCrossRefTable() does overwrite existing
+  // entries, so apply them in order.
   for (size_t i = 1; i < xref_list.size(); ++i) {
     if (xref_list[i] > 0 && !LoadCrossRefTable(xref_list[i], /*skip=*/false)) {
-      return false;
-    }
-
-    if (xref_stream_list[i] > 0 &&
-        !LoadCrossRefStream(&xref_stream_list[i], /*is_main_xref=*/false)) {
       return false;
     }
   }
