@@ -217,9 +217,11 @@ SkPath BuildPath(const CFX_Path& path) {
       sk_path.cubicTo(point.x, point.y, point2.x, point2.y, point3.x, point3.y);
       i += 2;
     }
-    if (points[i].m_CloseFigure)
+    if (points[i].m_CloseFigure) {
       sk_path.close();
+    }
   }
+  Simplify(sk_path, &sk_path);
   return sk_path;
 }
 
