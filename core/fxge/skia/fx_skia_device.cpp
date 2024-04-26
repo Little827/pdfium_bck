@@ -187,7 +187,7 @@ SkFont::Edging GetFontEdgingType(const CFX_TextRenderOptions& text_options) {
   return SkFont::Edging::kSubpixelAntiAlias;
 }
 
-bool IsPathAPoint(const SkPath& path) {
+bool IsSkPathAPoint(const SkPath& path) {
   if (path.isEmpty())
     return false;
 
@@ -201,20 +201,64 @@ bool IsPathAPoint(const SkPath& path) {
   return true;
 }
 
+bool IsOpenPointOnLine(const CFX_Path::Point& begin_point,
+                       const CFX_Path::Point& maybe_middle_point,
+                       const CFX_Path::Point& end_point) {
+  if (!begin_point.IsTypeAndOpen(CFX_Path::Point::Type::kLine) ||
+      maybe_middle_point.m_CloseFigure ||
+      !end_point.IsTypeAndOpen(CFX_Path::Point::Type::kLine)) {
+    return false;
+  }
+
+  const CFX_PointF& begin = begin_point.m_Point;
+  const CFX_PointF& maybe_middle = maybe_middle_point.m_Point;
+  const CFX_PointF& end = end_point.m_Point;
+  if (begin.x == maybe_middle.x && maybe_middle.x == end.x &&
+      ((begin.y < maybe_middle.y && maybe_middle.y < end.y) ||
+       (begin.y > maybe_middle.y && maybe_middle.y > end.y))) {
+    return true;
+  }
+  if (begin.y == maybe_middle.y && maybe_middle.y == end.y &&
+      ((begin.x < maybe_middle.x && maybe_middle.x < end.x) ||
+       (begin.x > maybe_middle.x && maybe_middle.x > end.x))) {
+    return true;
+  }
+  return false;
+}
+
 SkPath BuildPath(const CFX_Path& path) {
   SkPath sk_path;
   pdfium::span<const CFX_Path::Point> points = path.GetPoints();
+  std::optional<size_t> last_used_line;
   for (size_t i = 0; i < points.size(); ++i) {
     const CFX_PointF& point = points[i].m_Point;
     CFX_Path::Point::Type point_type = points[i].m_Type;
     if (point_type == CFX_Path::Point::Type::kMove) {
+      if (i > 0 && points[i - 1] == points[i]) {
+        continue;
+      }
+
       sk_path.moveTo(point.x, point.y);
+      last_used_line = std::nullopt;
     } else if (point_type == CFX_Path::Point::Type::kLine) {
+      if (i > 0 && points[i - 1] == points[i]) {
+        continue;
+      }
+
+      if (i > 0 && i < points.size() - 1 && last_used_line.has_value) {
+        if (IsOpenPointOnLine(points[last_used_line.value()], points[i],
+                              points[i + 1])) {
+          continue;
+        }
+      }
+
       sk_path.lineTo(point.x, point.y);
+      last_used_line = i;
     } else if (point_type == CFX_Path::Point::Type::kBezier) {
       const CFX_PointF& point2 = points[i + 1].m_Point;
       const CFX_PointF& point3 = points[i + 2].m_Point;
       sk_path.cubicTo(point.x, point.y, point2.x, point2.y, point3.x, point3.y);
+      last_used_line = std::nullopt;
       i += 2;
     }
     if (points[i].m_CloseFigure)
@@ -1123,10 +1167,10 @@ bool CFX_SkiaDeviceDriver::DrawPath(
   if (stroke_alpha && do_stroke) {
     skPaint.setStyle(SkPaint::kStroke_Style);
     skPaint.setColor(stroke_color);
-    if (!skia_path.isLastContourClosed() && IsPathAPoint(skia_path)) {
+    if (!skia_path.isLastContourClosed() && IsSkPathAPoint(skia_path)) {
       DCHECK_GE(skia_path.countPoints(), 1);
       m_pCanvas->drawPoint(skia_path.getPoint(0), skPaint);
-    } else if (IsPathAPoint(skia_path) &&
+    } else if (IsSkPathAPoint(skia_path) &&
                skPaint.getStrokeCap() != SkPaint::kRound_Cap) {
       // Do nothing. A closed 0-length closed path can be rendered only if
       // its line cap type is round.

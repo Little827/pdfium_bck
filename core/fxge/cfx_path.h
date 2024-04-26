@@ -26,6 +26,8 @@ class CFX_Path {
     Point(const Point& other);
     ~Point();
 
+    bool operator==(const Point& other) const;
+
     bool IsTypeAndOpen(Type type) const {
       return m_Type == type && !m_CloseFigure;
     }
