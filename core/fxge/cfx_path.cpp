@@ -254,6 +254,11 @@ CFX_Path::Point::Point(const Point& other) = default;
 
 CFX_Path::Point::~Point() = default;
 
+bool CFX_Path::Point::operator==(const Point& other) const {
+  return m_Point == other.m_Point && m_Type == other.m_Type &&
+         m_CloseFigure == other.m_CloseFigure;
+}
+
 CFX_Path::CFX_Path() = default;
 
 CFX_Path::CFX_Path(const CFX_Path& src) = default;
