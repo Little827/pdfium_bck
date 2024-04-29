@@ -324,75 +324,69 @@ FPDF_StructElement_Attr_GetName(FPDF_STRUCTELEMENT_ATTR struct_attribute,
   return false;
 }
 
-FPDF_EXPORT FPDF_OBJECT_TYPE FPDF_CALLCONV
-FPDF_StructElement_Attr_GetType(FPDF_STRUCTELEMENT_ATTR struct_attribute,
-                                FPDF_BYTESTRING name) {
+FPDF_EXPORT FPDF_STRUCTELEMENT_ATTR_VALUE FPDF_CALLCONV
+FPDF_StructElement_Attr_GetValue(FPDF_STRUCTELEMENT_ATTR struct_attribute,
+                                 FPDF_BYTESTRING name) {
   const CPDF_Dictionary* dict =
       CPDFDictionaryFromFPDFStructElementAttr(struct_attribute);
-  if (!dict)
-    return FPDF_OBJECT_UNKNOWN;
+  if (!dict) {
+    return nullptr;
+  }
+  return FPDFStructElementAttrValueFromCPDFObject(
+      dict->GetDirectObjectFor(name));
+}
 
-  RetainPtr<const CPDF_Object> obj = dict->GetDirectObjectFor(name);
+FPDF_EXPORT FPDF_OBJECT_TYPE FPDF_CALLCONV
+FPDF_StructElement_Attr_GetType(FPDF_STRUCTELEMENT_ATTR_VALUE value) {
+  const CPDF_Object* obj = CPDFObjectFromFPDFStructElementAttrValue(value);
   return obj ? obj->GetType() : FPDF_OBJECT_UNKNOWN;
 }
 
-FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDF_StructElement_Attr_GetBooleanValue(
-    FPDF_STRUCTELEMENT_ATTR struct_attribute,
-    FPDF_BYTESTRING name,
-    FPDF_BOOL* out_value) {
-  if (!out_value)
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
+FPDF_StructElement_Attr_GetBooleanValue(FPDF_STRUCTELEMENT_ATTR_VALUE value,
+                                        FPDF_BOOL* out_value) {
+  if (!out_value) {
     return false;
+  }
 
-  const CPDF_Dictionary* dict =
-      CPDFDictionaryFromFPDFStructElementAttr(struct_attribute);
-  if (!dict)
+  const CPDF_Object* obj = CPDFObjectFromFPDFStructElementAttrValue(value);
+  if (!obj || !obj->IsBoolean()) {
     return false;
-
-  RetainPtr<const CPDF_Object> obj = dict->GetDirectObjectFor(name);
-  if (!obj || !obj->IsBoolean())
-    return false;
+  }
 
   *out_value = obj->GetInteger();
   return true;
 }
 
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
-FPDF_StructElement_Attr_GetNumberValue(FPDF_STRUCTELEMENT_ATTR struct_attribute,
-                                       FPDF_BYTESTRING name,
+FPDF_StructElement_Attr_GetNumberValue(FPDF_STRUCTELEMENT_ATTR_VALUE value,
                                        float* out_value) {
-  if (!out_value)
+  if (!out_value) {
     return false;
+  }
 
-  const CPDF_Dictionary* dict =
-      CPDFDictionaryFromFPDFStructElementAttr(struct_attribute);
-  if (!dict)
+  const CPDF_Object* obj = CPDFObjectFromFPDFStructElementAttrValue(value);
+  if (!obj || !obj->IsNumber()) {
     return false;
-
-  RetainPtr<const CPDF_Object> obj = dict->GetDirectObjectFor(name);
-  if (!obj || !obj->IsNumber())
-    return false;
+  }
 
   *out_value = obj->GetNumber();
   return true;
 }
 
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
-FPDF_StructElement_Attr_GetStringValue(FPDF_STRUCTELEMENT_ATTR struct_attribute,
-                                       FPDF_BYTESTRING name,
+FPDF_StructElement_Attr_GetStringValue(FPDF_STRUCTELEMENT_ATTR_VALUE value,
                                        void* buffer,
                                        unsigned long buflen,
                                        unsigned long* out_buflen) {
-  if (!out_buflen)
+  if (!out_buflen) {
     return false;
+  }
 
-  const CPDF_Dictionary* dict =
-      CPDFDictionaryFromFPDFStructElementAttr(struct_attribute);
-  if (!dict)
+  const CPDF_Object* obj = CPDFObjectFromFPDFStructElementAttrValue(value);
+  if (!obj || !(obj->IsString() || obj->IsName())) {
     return false;
-
-  RetainPtr<const CPDF_Object> obj = dict->GetDirectObjectFor(name);
-  if (!obj || !(obj->IsString() || obj->IsName()))
-    return false;
+  }
 
   *out_buflen = Utf16EncodeMaybeCopyAndReturnLength(
       WideString::FromUTF8(obj->GetString().AsStringView()), buffer, buflen);
@@ -400,28 +394,25 @@ FPDF_StructElement_Attr_GetStringValue(FPDF_STRUCTELEMENT_ATTR struct_attribute,
 }
 
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
-FPDF_StructElement_Attr_GetBlobValue(FPDF_STRUCTELEMENT_ATTR struct_attribute,
-                                     FPDF_BYTESTRING name,
+FPDF_StructElement_Attr_GetBlobValue(FPDF_STRUCTELEMENT_ATTR_VALUE value,
                                      void* buffer,
                                      unsigned long buflen,
                                      unsigned long* out_buflen) {
-  if (!out_buflen)
+  if (!out_buflen) {
     return false;
+  }
 
-  const CPDF_Dictionary* dict =
-      CPDFDictionaryFromFPDFStructElementAttr(struct_attribute);
-  if (!dict)
+  const CPDF_Object* obj = CPDFObjectFromFPDFStructElementAttrValue(value);
+  if (!obj || !obj->IsString()) {
     return false;
-
-  RetainPtr<const CPDF_Object> obj = dict->GetDirectObjectFor(name);
-  if (!obj || !obj->IsString())
-    return false;
+  }
 
   ByteString result = obj->GetString();
   const unsigned long len =
       pdfium::checked_cast<unsigned long>(result.GetLength());
-  if (buffer && len <= buflen)
+  if (buffer && len <= buflen) {
     memcpy(buffer, result.c_str(), len);
+  }
 
   *out_buflen = len;
   return true;

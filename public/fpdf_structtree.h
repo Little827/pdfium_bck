@@ -341,102 +341,102 @@ FPDF_StructElement_Attr_GetName(FPDF_STRUCTELEMENT_ATTR struct_attribute,
                                 void* buffer,
                                 unsigned long buflen,
                                 unsigned long* out_buflen);
+// Experimental API.
+// Function: FPDF_StructElement_Attr_GetValue
+//           Get a handle to a value for an attribute in a structure element
+//           attribute map.
+// Parameters:
+//           struct_attribute   - Handle to the struct element attribute.
+//           name               - The attribute name.
+FPDF_EXPORT FPDF_STRUCTELEMENT_ATTR_VALUE FPDF_CALLCONV
+FPDF_StructElement_Attr_GetValue(FPDF_STRUCTELEMENT_ATTR struct_attribute,
+                                 FPDF_BYTESTRING name);
 
 // Experimental API.
 // Function: FPDF_StructElement_Attr_GetType
-//          Get the type of an attribute in a structure element attribute map.
+//           Get the type of an attribute in a structure element attribute map.
 // Parameters:
-//          struct_attribute   - Handle to the struct element attribute.
-//          name               - The attribute name.
+//           value - Handle to the value.
 // Return value:
-//          Returns the type of the value, or FPDF_OBJECT_UNKNOWN in case of
-//          failure.
+//           Returns the type of the value, or FPDF_OBJECT_UNKNOWN in case of
+//           failure.
 FPDF_EXPORT FPDF_OBJECT_TYPE FPDF_CALLCONV
-FPDF_StructElement_Attr_GetType(FPDF_STRUCTELEMENT_ATTR struct_attribute,
-                                FPDF_BYTESTRING name);
+FPDF_StructElement_Attr_GetType(FPDF_STRUCTELEMENT_ATTR_VALUE value);
 
 // Experimental API.
 // Function: FPDF_StructElement_Attr_GetBooleanValue
-//          Get the value of a boolean attribute in an attribute map by name as
-//          FPDF_BOOL. FPDF_StructElement_Attr_GetType() should have returned
-//          FPDF_OBJECT_BOOLEAN for this property.
+//           Get the value of a boolean attribute in an attribute map as
+//           FPDF_BOOL. FPDF_StructElement_Attr_GetType() should have returned
+//           FPDF_OBJECT_BOOLEAN for this property.
 // Parameters:
-//          struct_attribute   - Handle to the struct element attribute.
-//          name               - The attribute name.
-//          out_value          - A pointer to variable that will receive the
-//                               value. Not filled if false is returned.
+//           value     - Handle to the value.
+//           out_value - A pointer to variable that will receive the value. Not
+//                       filled if false is returned.
 // Return value:
-//          Returns TRUE if the name maps to a boolean value, FALSE otherwise.
+//           Returns TRUE if the attribute maps to a boolean value, FALSE
+//           otherwise.
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
-FPDF_StructElement_Attr_GetBooleanValue(
-    FPDF_STRUCTELEMENT_ATTR struct_attribute,
-    FPDF_BYTESTRING name,
-    FPDF_BOOL* out_value);
+FPDF_StructElement_Attr_GetBooleanValue(FPDF_STRUCTELEMENT_ATTR_VALUE value,
+                                        FPDF_BOOL* out_value);
 
 // Experimental API.
 // Function: FPDF_StructElement_Attr_GetNumberValue
-//          Get the value of a number attribute in an attribute map by name as
-//          float. FPDF_StructElement_Attr_GetType() should have returned
-//          FPDF_OBJECT_NUMBER for this property.
+//           Get the value of a number attribute in an attribute map as float.
+//           FPDF_StructElement_Attr_GetType() should have returned
+//           FPDF_OBJECT_NUMBER for this property.
 // Parameters:
-//          struct_attribute   - Handle to the struct element attribute.
-//          name               - The attribute name.
-//          out_value          - A pointer to variable that will receive the
-//                               value. Not filled if false is returned.
+//           value     - Handle to the value.
+//           out_value - A pointer to variable that will receive the value. Not
+//                       filled if false is returned.
 // Return value:
-//          Returns TRUE if the name maps to a number value, FALSE otherwise.
+//          Returns TRUE if the attribute maps to a number value, FALSE
+//          otherwise.
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
-FPDF_StructElement_Attr_GetNumberValue(FPDF_STRUCTELEMENT_ATTR struct_attribute,
-                                       FPDF_BYTESTRING name,
+FPDF_StructElement_Attr_GetNumberValue(FPDF_STRUCTELEMENT_ATTR_VALUE value,
                                        float* out_value);
 
 // Experimental API.
 // Function: FPDF_StructElement_Attr_GetStringValue
-//          Get the value of a string attribute in an attribute map by name as
-//          string. FPDF_StructElement_Attr_GetType() should have returned
-//          FPDF_OBJECT_STRING or FPDF_OBJECT_NAME for this property.
+//           Get the value of a string attribute in an attribute map as string.
+//           FPDF_StructElement_Attr_GetType() should have returned
+//           FPDF_OBJECT_STRING or FPDF_OBJECT_NAME for this property.
 // Parameters:
-//          struct_attribute   - Handle to the struct element attribute.
-//          name               - The attribute name.
-//          buffer             - A buffer for holding the returned key in
-//                               UTF-16LE. This is only modified if |buflen| is
-//                               longer than the length of the key. Optional,
-//                               pass null to just retrieve the size of the
-//                               buffer needed.
-//          buflen             - The length of the buffer.
-//          out_buflen         - A pointer to variable that will receive the
-//                               minimum buffer size to contain the key. Not
-//                               filled if FALSE is returned.
+//           value      - Handle to the value.
+//           buffer     - A buffer for holding the returned key in UTF-16LE.
+//                        This is only modified if |buflen| is longer than the
+//                        length of the key. Optional, pass null to just
+//                        retrieve the size of the buffer needed.
+//           buflen     - The length of the buffer.
+//           out_buflen - A pointer to variable that will receive the minimum
+//                        buffer size to contain the key. Not filled if FALSE is
+//                        returned.
 // Return value:
-//          Returns TRUE if the name maps to a string value, FALSE otherwise.
+//           Returns TRUE if the attribute maps to a string value, FALSE
+//           otherwise.
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
-FPDF_StructElement_Attr_GetStringValue(FPDF_STRUCTELEMENT_ATTR struct_attribute,
-                                       FPDF_BYTESTRING name,
+FPDF_StructElement_Attr_GetStringValue(FPDF_STRUCTELEMENT_ATTR_VALUE value,
                                        void* buffer,
                                        unsigned long buflen,
                                        unsigned long* out_buflen);
 
 // Experimental API.
 // Function: FPDF_StructElement_Attr_GetBlobValue
-//          Get the value of a blob attribute in an attribute map by name as
-//          string.
+//           Get the value of a blob attribute in an attribute map as string.
 // Parameters:
-//          struct_attribute   - Handle to the struct element attribute.
-//          name               - The attribute name.
-//          buffer             - A buffer for holding the returned value. This
-//                               is only modified if |buflen| is at least as
-//                               long as the length of the value. Optional, pass
-//                               null to just retrieve the size of the buffer
-//                               needed.
-//          buflen             - The length of the buffer.
-//          out_buflen         - A pointer to variable that will receive the
-//                               minimum buffer size to contain the key. Not
-//                               filled if FALSE is returned.
+//           value      - Handle to the value.
+//           buffer     - A buffer for holding the returned value. This is only
+//                        modified if |buflen| is at least as long as the length
+//                        of the value. Optional, pass null to just retrieve the
+//                        size of the buffer needed.
+//           buflen     - The length of the buffer.
+//           out_buflen - A pointer to variable that will receive the minimum
+//                        buffer size to contain the key. Not filled if FALSE is
+//                        returned.
 // Return value:
-//          Returns TRUE if the name maps to a string value, FALSE otherwise.
+//          Returns TRUE if the attribute maps to a string value, FALSE
+//          otherwise.
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
-FPDF_StructElement_Attr_GetBlobValue(FPDF_STRUCTELEMENT_ATTR struct_attribute,
-                                     FPDF_BYTESTRING name,
+FPDF_StructElement_Attr_GetBlobValue(FPDF_STRUCTELEMENT_ATTR_VALUE value,
                                      void* buffer,
                                      unsigned long buflen,
                                      unsigned long* out_buflen);
