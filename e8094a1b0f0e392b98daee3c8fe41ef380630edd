@@ -33,6 +33,24 @@
       "message": "I think this CL is going to hit a MSVC build error. I fixed most of the MSVC issues in V8, but it does make the roll a bit harder.",
       "revId": "e8094a1b0f0e392b98daee3c8fe41ef380630edd",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "509f7c0a_2437b699",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-04-30T23:35:50Z",
+      "side": 1,
+      "message": "Yeah, ok, looks like we have to fix the deprecation warnings we hit when we roll to ToT v8.  Did you make any progress there?",
+      "parentUuid": "8143b9cd_5f25b9c3",
+      "revId": "e8094a1b0f0e392b98daee3c8fe41ef380630edd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
