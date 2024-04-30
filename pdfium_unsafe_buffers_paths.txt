@@ -24,10 +24,7 @@
 -tools/
 -v8/
 
--core/fdrm/fx_crypt.cpp
 -core/fdrm/fx_crypt_aes.cpp
--core/fdrm/fx_crypt_sha.cpp
--core/fdrm/fx_crypt_unittest.cpp
 -core/fpdfapi/cmaps/fpdf_cmaps.cpp
 -core/fpdfapi/font/cfx_cttgsubtable.cpp
 -core/fpdfapi/font/cpdf_cidfont.cpp

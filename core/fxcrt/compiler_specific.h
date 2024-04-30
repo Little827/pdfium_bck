@@ -83,17 +83,23 @@
 #define UNSAFE_BUFFER_USAGE
 #endif
 
-// clang-format off
+// Prefer UNSAFE_BUFFERS(), but provide these where an entire file needs to
+// be wrapped in a manner that is syntactically incompatible with that macro.
+#if defined(__clang__)
+#define BEGIN_ALLOW_UNSAFE_BUFFERS _Pragma("clang unsafe_buffer_usage begin")
+#define END_ALLOW_UNSAFE_BUFFERS _Pragma("clang unsafe_buffer_usage end")
+#else
+#define BEGIN_ALLOW_UNSAFE_BUFFERS
+#define END_ALLOW_UNSAFE_BUFFERS
+#endif
+
 // Formatting is off so that we can put each _Pragma on its own line, as
 // recommended by the gcc docs.
-#if defined(PDF_USE_CHROME_PLUGINS)
-#define UNSAFE_BUFFERS(...)                  \
-  _Pragma("clang unsafe_buffer_usage begin") \
-  __VA_ARGS__                                \
-  _Pragma("clang unsafe_buffer_usage end")
-#else
-#define UNSAFE_BUFFERS(...) __VA_ARGS__
-#endif
+// clang-format off
+#define UNSAFE_BUFFERS(...)                   \
+  BEGIN_ALLOW_UNSAFE_BUFFERS                  \
+  __VA_ARGS__                                 \
+  END_ALLOW_UNSAFE_BUFFERS
 // clang-format on
 
 #endif  // CORE_FXCRT_COMPILER_SPECIFIC_H_

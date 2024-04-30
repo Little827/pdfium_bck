@@ -8,6 +8,10 @@
 
 #include <string.h>
 
+#include "core/fxcrt/compiler_specific.h"
+
+BEGIN_ALLOW_UNSAFE_BUFFERS
+
 #define SHA_GET_UINT32(n, b, i)                                         \
   {                                                                     \
     (n) = ((uint32_t)(b)[(i)] << 24) | ((uint32_t)(b)[(i) + 1] << 16) | \
@@ -602,3 +606,5 @@ void CRYPT_SHA512Generate(const uint8_t* data,
   CRYPT_SHA512Update(&context, data, size);
   CRYPT_SHA512Finish(&context, digest);
 }
+
+END_ALLOW_UNSAFE_BUFFERS
