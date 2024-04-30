@@ -16,6 +16,46 @@
       "message": "Between patch sets 2 and 7, I got another related bug report, so this got reworked yet again. Hopefully for good this time.",
       "revId": "c8404c0b7e887289d9839cdeace0e04d1094aed5",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f62d07e8_b2cb91e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-04-30T16:44:12Z",
+      "side": 1,
+      "message": "Makes sense, guess we\u0027ll find out what else is impacted.",
+      "revId": "c8404c0b7e887289d9839cdeace0e04d1094aed5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c80c5263_31b21fb8",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-04-30T16:44:12Z",
+      "side": 1,
+      "message": "nit: maybe .front() to avoid any indexing and on 418",
+      "range": {
+        "startLine": 417,
+        "startChar": 15,
+        "endLine": 417,
+        "endChar": 17
+      },
+      "revId": "c8404c0b7e887289d9839cdeace0e04d1094aed5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
