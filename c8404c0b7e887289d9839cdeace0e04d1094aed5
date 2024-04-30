@@ -35,6 +35,23 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ec0b632_44e6c63f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5645
+      },
+      "writtenOn": "2024-04-30T16:44:38Z",
+      "side": 1,
+      "message": "G-account stamp.",
+      "revId": "c8404c0b7e887289d9839cdeace0e04d1094aed5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c80c5263_31b21fb8",
