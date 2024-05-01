@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b482ea6_7419b61a",
+        "filename": "public/fpdf_structtree.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-05-01T18:40:07Z",
+      "side": 1,
+      "message": "add comment about lifetime becomes invalid after what? Any modification of the document?",
+      "range": {
+        "startLine": 353,
+        "startChar": 0,
+        "endLine": 353,
+        "endChar": 72
+      },
+      "revId": "18871b65fdef2d9cecabf0a1157ea4199ea49ea0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "952018d3_13fe0a02",
+        "filename": "public/fpdfview.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-05-01T18:40:07Z",
+      "side": 1,
+      "message": "Is this now deprecated?",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 74
+      },
+      "revId": "18871b65fdef2d9cecabf0a1157ea4199ea49ea0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
