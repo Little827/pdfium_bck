@@ -5,6 +5,7 @@
 #include <iterator>
 #include <optional>
 
+#include "core/fxcrt/fx_memcpy_wrappers.h"
 #include "public/fpdf_structtree.h"
 #include "testing/embedder_test.h"
 #include "testing/fx_string_testhelpers.h"
@@ -54,7 +55,7 @@ TEST_F(FPDFStructTreeEmbedderTest, GetAltText) {
     ASSERT_EQ(24U, FPDF_StructElement_GetAltText(gchild_element, nullptr, 0));
 
     unsigned short buffer[12];
-    memset(buffer, 0, sizeof(buffer));
+    FXSYS_memset(buffer, 0, sizeof(buffer));
     // Deliberately pass in a small buffer size to make sure |buffer| remains
     // untouched.
     ASSERT_EQ(24U, FPDF_StructElement_GetAltText(gchild_element, buffer, 1));
@@ -456,7 +457,7 @@ TEST_F(FPDFStructTreeEmbedderTest, GetType) {
     ASSERT_EQ(0U, FPDF_StructElement_GetType(nullptr, nullptr, 0));
     ASSERT_EQ(18U, FPDF_StructElement_GetType(element, nullptr, 0));
 
-    memset(buffer, 0, sizeof(buffer));
+    FXSYS_memset(buffer, 0, sizeof(buffer));
     // Deliberately pass in a small buffer size to make sure |buffer| remains
     // untouched.
     ASSERT_EQ(18U, FPDF_StructElement_GetType(element, buffer, 1));
@@ -503,7 +504,7 @@ TEST_F(FPDFStructTreeEmbedderTest, GetObjType) {
 
     ASSERT_EQ(1, FPDF_StructElement_CountChildren(child));
     FPDF_STRUCTELEMENT gchild = FPDF_StructElement_GetChildAtIndex(child, 0);
-    memset(buffer, 0, sizeof(buffer));
+    FXSYS_memset(buffer, 0, sizeof(buffer));
     // Missing /Type in `gchild`
     ASSERT_EQ(0U,
               FPDF_StructElement_GetObjType(gchild, buffer, sizeof(buffer)));
@@ -574,7 +575,7 @@ TEST_F(FPDFStructTreeEmbedderTest, GetTitle) {
     ASSERT_EQ(0U, FPDF_StructElement_GetTitle(nullptr, nullptr, 0));
     ASSERT_EQ(20U, FPDF_StructElement_GetTitle(element, nullptr, 0));
 
-    memset(buffer, 0, sizeof(buffer));
+    FXSYS_memset(buffer, 0, sizeof(buffer));
     // Deliberately pass in a small buffer size to make sure |buffer| remains
     // untouched.
     ASSERT_EQ(20U, FPDF_StructElement_GetTitle(element, buffer, 1));
@@ -670,7 +671,7 @@ TEST_F(FPDFStructTreeEmbedderTest, GetAttributes) {
       EXPECT_EQ(12U, out_len);
       EXPECT_EQ(L"Table", GetPlatformWString(str_val));
 
-      memset(buffer, 0, sizeof(buffer));
+      FXSYS_memset(buffer, 0, sizeof(buffer));
       ASSERT_TRUE(FPDF_StructElement_Attr_GetName(attr, 0, buffer,
                                                   sizeof(buffer), &out_len));
       EXPECT_EQ(8U, out_len);

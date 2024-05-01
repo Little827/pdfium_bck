@@ -10,6 +10,7 @@
 
 #include "core/fxcodec/cfx_codec_memory.h"
 #include "core/fxcrt/data_vector.h"
+#include "core/fxcrt/fx_memcpy_wrappers.h"
 #include "core/fxcrt/span_util.h"
 #include "testing/gtest/include/gtest/gtest.h"
 
@@ -157,7 +158,7 @@ TEST(CFX_GifContext, ReadLocalScreenDescriptor) {
   // LSD with all the values zero'd
   {
     uint8_t lsd[sizeof(CFX_GifLocalScreenDescriptor)];
-    memset(&lsd, 0, sizeof(CFX_GifLocalScreenDescriptor));
+    FXSYS_memset(&lsd, 0, sizeof(CFX_GifLocalScreenDescriptor));
     context.SetTestInputBuffer(lsd);
 
     EXPECT_EQ(GifDecoder::Status::kSuccess,

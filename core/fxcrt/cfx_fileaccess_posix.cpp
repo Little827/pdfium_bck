@@ -12,6 +12,7 @@
 
 #include <memory>
 
+#include "core/fxcrt/fx_memcpy_wrappers.h"
 #include "core/fxcrt/fx_stream.h"
 #include "core/fxcrt/numerics/safe_conversions.h"
 
@@ -56,7 +57,7 @@ FX_FILESIZE CFX_FileAccess_Posix::GetSize() const {
     return 0;
   }
   struct stat s;
-  memset(&s, 0, sizeof(s));
+  fxcrt::spanclr(pdfium::span_from_ref(s));
   fstat(m_nFD, &s);
   return pdfium::checked_cast<FX_FILESIZE>(s.st_size);
 }

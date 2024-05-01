@@ -12,6 +12,7 @@
 #include <memory>
 #include <utility>
 
+#include "core/fxcrt/fx_memcpy_wrappers.h"
 #include "core/fxcrt/fx_safe_types.h"
 #include "core/fxcrt/ptr_util.h"
 
@@ -139,7 +140,7 @@ void LZWDecompressor::ClearTable() {
   code_size_cur_ = code_size_ + 1;
   code_next_ = code_end_ + 1;
   code_old_ = static_cast<uint16_t>(-1);
-  memset(code_table_, 0, sizeof(code_table_));
+  FXSYS_memset(code_table_, 0, sizeof(code_table_));
   for (uint16_t i = 0; i < code_clear_; i++)
     code_table_[i].suffix = static_cast<uint8_t>(i);
   decompressed_.resize(code_next_ - code_clear_ + 1);
