@@ -88,6 +88,24 @@
       "parentUuid": "e6f79a20_a0a86cb1",
       "revId": "b283f7555df1ab94d8ff8a593063e46dda3affe1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfb4e287_7a0517d9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-05-01T17:44:17Z",
+      "side": 1,
+      "message": "Yeah the pragma applies only to the file it is in.\n\nhttps://source.chromium.org/chromium/chromium/src/+/main:build/config/clang/BUILD.gn;l\u003d107;drc\u003d0cfdf31712200cbe98eea8e6273a141b14e560de",
+      "parentUuid": "c5e51dba_477d264a",
+      "revId": "b283f7555df1ab94d8ff8a593063e46dda3affe1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
