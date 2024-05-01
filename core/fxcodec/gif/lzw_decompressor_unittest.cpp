@@ -10,6 +10,7 @@
 #include <iterator>
 
 #include "core/fxcrt/data_vector.h"
+#include "core/fxcrt/fx_memcpy_wrappers.h"
 #include "testing/gmock/include/gmock/gmock.h"
 #include "testing/gtest/include/gtest/gtest.h"
 
@@ -33,7 +34,7 @@ TEST(LZWDecompressor, ExtractData) {
     *decompressed = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
     *(decompressor->DecompressedNextForTest()) = decompressed->size();
     uint8_t dest_buf[20];
-    memset(dest_buf, static_cast<uint8_t>(-1), sizeof(dest_buf));
+    FXSYS_memset(dest_buf, static_cast<uint8_t>(-1), sizeof(dest_buf));
 
     EXPECT_EQ(0u, decompressor->ExtractDataForTest(dest_buf, 0));
     for (size_t i = 0; i < std::size(dest_buf); ++i)
@@ -50,7 +51,7 @@ TEST(LZWDecompressor, ExtractData) {
     *decompressed = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
     *(decompressor->DecompressedNextForTest()) = decompressed->size();
     uint8_t dest_buf[20];
-    memset(dest_buf, static_cast<uint8_t>(-1), sizeof(dest_buf));
+    FXSYS_memset(dest_buf, static_cast<uint8_t>(-1), sizeof(dest_buf));
 
     EXPECT_EQ(5u, decompressor->ExtractDataForTest(dest_buf, 5));
     size_t i = 0;
@@ -70,7 +71,7 @@ TEST(LZWDecompressor, ExtractData) {
     *decompressed = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
     *(decompressor->DecompressedNextForTest()) = decompressed->size();
     uint8_t dest_buf[20];
-    memset(dest_buf, static_cast<uint8_t>(-1), sizeof(dest_buf));
+    FXSYS_memset(dest_buf, static_cast<uint8_t>(-1), sizeof(dest_buf));
 
     EXPECT_EQ(10u,
               decompressor->ExtractDataForTest(dest_buf, std::size(dest_buf)));
@@ -126,7 +127,7 @@ TEST(LZWDecompressor, Decode1x1SingleColour) {
 
   uint8_t expected_data[] = {0x00};
   uint8_t output_data[std::size(expected_data)];
-  memset(output_data, 0, sizeof(output_data));
+  FXSYS_memset(output_data, 0, sizeof(output_data));
   uint32_t output_size = std::size(output_data);
 
   decompressor->SetSource(image_data, image_size);
@@ -158,7 +159,7 @@ TEST(LZWDecompressor, Decode10x10SingleColour) {
       0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
       0x00, 0x00, 0x00, 0x00};
   uint8_t output_data[std::size(kExpectedData)];
-  memset(output_data, 0, sizeof(output_data));
+  FXSYS_memset(output_data, 0, sizeof(output_data));
   uint32_t output_size = std::size(output_data);
 
   decompressor->SetSource(kImageData, image_size);
@@ -192,7 +193,7 @@ TEST(LZWDecompressor, Decode10x10MultipleColour) {
       0x01, 0x01, 0x01, 0x01};
 
   uint8_t output_data[std::size(kExpectedData)];
-  memset(output_data, 0, sizeof(output_data));
+  FXSYS_memset(output_data, 0, sizeof(output_data));
   uint32_t output_size = std::size(output_data);
 
   decompressor->SetSource(kImageData, image_size);
@@ -213,14 +214,14 @@ TEST(LZWDecompressor, MultipleDecodes) {
   static constexpr uint8_t kExpectedScanline[] = {0x00, 0x00, 0x00, 0x00};
   uint8_t output_data[std::size(kExpectedScanline)];
 
-  memset(output_data, 0xFF, sizeof(output_data));
+  FXSYS_memset(output_data, 0xFF, sizeof(output_data));
   uint32_t output_size = std::size(output_data);
   EXPECT_EQ(LZWDecompressor::Status::kInsufficientDestSize,
             decompressor->Decode(output_data, &output_size));
   EXPECT_EQ(std::size(kExpectedScanline), output_size);
   EXPECT_THAT(output_data, ElementsAreArray(kExpectedScanline));
 
-  memset(output_data, 0xFF, sizeof(output_data));
+  FXSYS_memset(output_data, 0xFF, sizeof(output_data));
   output_size = std::size(output_data);
   EXPECT_EQ(LZWDecompressor::Status::kSuccess,
             decompressor->Decode(output_data, &output_size));
@@ -242,7 +243,7 @@ TEST(LZWDecompressor, HandleColourCodeOutOfPalette) {
   uint32_t image_size = std::size(kImageData);
 
   uint8_t output_data[100];  // The uncompressed data is for a 10x10 image
-  memset(output_data, 0, sizeof(output_data));
+  FXSYS_memset(output_data, 0, sizeof(output_data));
   uint32_t output_size = std::size(output_data);
 
   decompressor->SetSource(kImageData, image_size);

@@ -4,6 +4,7 @@
 
 #include "fpdfsdk/cpdfsdk_helpers.h"
 
+#include "core/fxcrt/fx_memcpy_wrappers.h"
 #include "testing/gmock/include/gmock/gmock.h"
 #include "testing/gtest/include/gtest/gtest.h"
 
@@ -21,7 +22,7 @@ TEST(CPDFSDK_HelpersTest, NulTerminateMaybeCopyAndReturnLength) {
 
     // Buffer should not change if declared length is too short.
     char buf[kExpectedToBeCopiedLen + 1];
-    memset(buf, 0x42, kExpectedToBeCopiedLen + 1);
+    FXSYS_memset(buf, 0x42, kExpectedToBeCopiedLen + 1);
     ASSERT_EQ(kExpectedToBeCopiedLen + 1,
               NulTerminateMaybeCopyAndReturnLength(to_be_copied, buf,
                                                    kExpectedToBeCopiedLen));

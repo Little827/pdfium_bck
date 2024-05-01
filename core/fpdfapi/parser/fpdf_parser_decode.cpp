@@ -25,6 +25,7 @@
 #include "core/fxcrt/compiler_specific.h"
 #include "core/fxcrt/containers/contains.h"
 #include "core/fxcrt/fx_extension.h"
+#include "core/fxcrt/fx_memcpy_wrappers.h"
 #include "core/fxcrt/fx_safe_types.h"
 #include "core/fxcrt/span.h"
 #include "core/fxcrt/span_util.h"
@@ -156,7 +157,7 @@ uint32_t A85Decode(pdfium::span<const uint8_t> src_span,
       continue;
 
     if (ch == 'z') {
-      memset(dest_buf_ptr + *dest_size, 0, 4);
+      FXSYS_memset(dest_buf_ptr + *dest_size, 0, 4);
       state = 0;
       res = 0;
       *dest_size += 4;
