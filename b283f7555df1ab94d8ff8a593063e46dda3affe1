@@ -34,6 +34,24 @@
       "parentUuid": "1bb939bb_0113626b",
       "revId": "b283f7555df1ab94d8ff8a593063e46dda3affe1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd0dc991_ae42a007",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-05-01T16:35:38Z",
+      "side": 1,
+      "message": "Ok, so I can have a single macro that expands to #pragma ... ? Because we support MSVC and other non-chromium embedders and do not want to put noise into those builds or force changes to build scripts, etc. (e.g. g3).",
+      "parentUuid": "54144989_4404a3a2",
+      "revId": "b283f7555df1ab94d8ff8a593063e46dda3affe1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
