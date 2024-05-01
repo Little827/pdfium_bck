@@ -48,6 +48,7 @@ void V8FunctionCallback_Wrapper(
   if (!pFunctionInfo)
     return;
 
+  CHECK_EQ(info.Holder(), info.This());
   pFunctionInfo->callbackProc(CFXJSE_HostObject::FromV8(info.Holder()), info);
 }
 
@@ -61,6 +62,7 @@ void V8ConstructorCallback_Wrapper(
   if (!pClassDescriptor)
     return;
 
+  CHECK_EQ(info.Holder(), info.This());
   DCHECK_EQ(info.Holder()->InternalFieldCount(), 2);
   info.Holder()->SetAlignedPointerInInternalField(0, nullptr);
   info.Holder()->SetAlignedPointerInInternalField(1, nullptr);
@@ -73,6 +75,7 @@ void Context_GlobalObjToString(
   if (!pClassDescriptor)
     return;
 
+  CHECK_EQ(info.Holder(), info.This());
   if (info.This() == info.Holder() && pClassDescriptor->name) {
     ByteString szStringVal =
         ByteString::Format("[object %s]", pClassDescriptor->name);
