@@ -16,6 +16,98 @@
       "message": "LGTM",
       "revId": "e587fc998531b27e896fef313c57e43e7a3c16cc",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5827c924_b6710091",
+        "filename": "fpdfsdk/fpdf_structtree.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-05-01T18:47:07Z",
+      "side": 1,
+      "message": "nit: maybe early return on index \u003c 0 before trying ToArray() even.",
+      "range": {
+        "startLine": 433,
+        "startChar": 16,
+        "endLine": 433,
+        "endChar": 28
+      },
+      "revId": "e587fc998531b27e896fef313c57e43e7a3c16cc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "138da9e8_c9dfe7f9",
+        "filename": "fpdfsdk/fpdf_structtree.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-05-01T18:47:07Z",
+      "side": 1,
+      "message": "I can\u0027t remember, but presumably this returns NULL on OOB index, right?",
+      "range": {
+        "startLine": 437,
+        "startChar": 50,
+        "endLine": 437,
+        "endChar": 75
+      },
+      "revId": "e587fc998531b27e896fef313c57e43e7a3c16cc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44bb6227_8a7c6330",
+        "filename": "public/fpdf_structtree.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-05-01T18:47:07Z",
+      "side": 1,
+      "message": "nit: say \"up to FPDF_StructElement_Attr_CountChildren() - 1.\" or something.",
+      "range": {
+        "startLine": 459,
+        "startChar": 0,
+        "endLine": 459,
+        "endChar": 54
+      },
+      "revId": "e587fc998531b27e896fef313c57e43e7a3c16cc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a24579b0_74fe9a6e",
+        "filename": "samples/helpers/dump.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-05-01T18:47:07Z",
+      "side": 1,
+      "message": "nit: me want switch() statement, but yeah, just a move of existing code, so as you like.",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 36
+      },
+      "revId": "e587fc998531b27e896fef313c57e43e7a3c16cc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
