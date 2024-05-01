@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe4fc12a_484f7214",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-05-01T17:44:45Z",
+      "side": 1,
+      "message": "This is rolling backwards. It looks like https://pdfium-review.googlesource.com/c/117812 got ahead of Chromium\u0027s DEPS entry for ICU, but the 1 commit it\u0027s ahead by is just a symlink change.",
+      "revId": "a11bc5ff8a8885480fd2293ef6c337bb4cd37e85",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
