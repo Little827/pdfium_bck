@@ -90,6 +90,7 @@ CFXJSE_Engine::ResolveResult::~ResolveResult() = default;
 // static
 CXFA_Object* CFXJSE_Engine::ToObject(
     const v8::FunctionCallbackInfo<v8::Value>& info) {
+  CHECK_EQ(info.Holder(), info.This());
   return ToObject(info.GetIsolate(), info.Holder());
 }
 
