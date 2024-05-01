@@ -106,6 +106,24 @@
       "parentUuid": "c5e51dba_477d264a",
       "revId": "b283f7555df1ab94d8ff8a593063e46dda3affe1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57156d96_c4fea0a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-05-01T17:47:11Z",
+      "side": 1,
+      "message": "Also, should the UNSAFE_BUFFERS() macro in compiler_specific.h now be guarded/conditionalized by the UNSAFE_BUFFERS_BUILD definition instead of ifdef clang?",
+      "parentUuid": "c5e51dba_477d264a",
+      "revId": "b283f7555df1ab94d8ff8a593063e46dda3affe1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
