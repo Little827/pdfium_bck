@@ -1169,7 +1169,7 @@ class GdiDisplayPageRenderer : public BitmapPageRenderer {
 
     // Create a BGRA DIB and select it into the in-memory DC.
     BITMAPINFO dib_info;
-    memset(&dib_info, 0, sizeof(BITMAPINFO));
+    FXSYS_memset(&dib_info, 0, sizeof(BITMAPINFO));
     dib_info.bmiHeader.biSize = sizeof(BITMAPINFOHEADER);
     dib_info.bmiHeader.biWidth = width();
     dib_info.bmiHeader.biHeight = -height();  // top-down

@@ -13,6 +13,7 @@
 #include "core/fxcrt/byteorder.h"
 #include "core/fxcrt/check.h"
 #include "core/fxcrt/fx_codepage.h"
+#include "core/fxcrt/fx_memcpy_wrappers.h"
 #include "core/fxcrt/fx_system.h"
 #include "core/fxcrt/numerics/safe_conversions.h"
 #include "core/fxcrt/raw_span.h"
@@ -196,7 +197,7 @@ void CFX_Win32FontInfo::AddInstalledFont(const LOGFONTA* plf,
 bool CFX_Win32FontInfo::EnumFontList(CFX_FontMapper* pMapper) {
   m_pMapper = pMapper;
   LOGFONTA lf;
-  memset(&lf, 0, sizeof(LOGFONTA));
+  FXSYS_memset(&lf, 0, sizeof(LOGFONTA));
   lf.lfCharSet = static_cast<int>(FX_Charset::kDefault);
   lf.lfFaceName[0] = 0;
   lf.lfPitchAndFamily = 0;

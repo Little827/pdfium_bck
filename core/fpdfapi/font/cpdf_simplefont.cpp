@@ -15,6 +15,7 @@
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/parser/cpdf_name.h"
 #include "core/fxcrt/fx_codepage.h"
+#include "core/fxcrt/fx_memcpy_wrappers.h"
 #include "core/fxge/freetype/fx_freetype.h"
 #include "core/fxge/fx_font.h"
 
@@ -36,8 +37,8 @@ void GetPredefinedEncoding(const ByteString& value, FontEncoding* basemap) {
 CPDF_SimpleFont::CPDF_SimpleFont(CPDF_Document* pDocument,
                                  RetainPtr<CPDF_Dictionary> pFontDict)
     : CPDF_Font(pDocument, std::move(pFontDict)) {
-  memset(m_CharWidth, 0xff, sizeof(m_CharWidth));
-  memset(m_GlyphIndex, 0xff, sizeof(m_GlyphIndex));
+  FXSYS_memset(m_CharWidth, 0xff, sizeof(m_CharWidth));
+  FXSYS_memset(m_GlyphIndex, 0xff, sizeof(m_GlyphIndex));
   for (size_t i = 0; i < std::size(m_CharBBox); ++i)
     m_CharBBox[i] = FX_RECT(-1, -1, -1, -1);
 }

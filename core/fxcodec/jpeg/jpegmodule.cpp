@@ -21,6 +21,7 @@
 #include "core/fxcrt/check.h"
 #include "core/fxcrt/check_op.h"
 #include "core/fxcrt/data_vector.h"
+#include "core/fxcrt/fx_memcpy_wrappers.h"
 #include "core/fxcrt/fx_safe_types.h"
 #include "core/fxcrt/raw_span.h"
 #include "core/fxge/dib/cfx_dibbase.h"
@@ -167,9 +168,9 @@ class JpegDecoder final : public ScanlineDecoder {
 };
 
 JpegDecoder::JpegDecoder() {
-  memset(&m_Cinfo, 0, sizeof(m_Cinfo));
-  memset(&m_Jerr, 0, sizeof(m_Jerr));
-  memset(&m_Src, 0, sizeof(m_Src));
+  FXSYS_memset(&m_Cinfo, 0, sizeof(m_Cinfo));
+  FXSYS_memset(&m_Jerr, 0, sizeof(m_Jerr));
+  FXSYS_memset(&m_Src, 0, sizeof(m_Src));
 }
 
 JpegDecoder::~JpegDecoder() {
@@ -415,7 +416,7 @@ bool JpegModule::JpegEncode(const RetainPtr<const CFX_DIBBase>& pSource,
   jerr.reset_error_mgr = error_do_nothing;
 
   jpeg_compress_struct cinfo;
-  memset(&cinfo, 0, sizeof(cinfo));
+  FXSYS_memset(&cinfo, 0, sizeof(cinfo));
   cinfo.err = &jerr;
   jpeg_create_compress(&cinfo);
   int Bpp = pSource->GetBPP() / 8;

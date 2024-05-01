@@ -11,6 +11,7 @@
 #include "core/fxcrt/check.h"
 #include "core/fxcrt/check_op.h"
 #include "core/fxcrt/fx_coordinates.h"
+#include "core/fxcrt/fx_memcpy_wrappers.h"
 #include "core/fxcrt/fx_system.h"
 #include "core/fxge/dib/cfx_dibbase.h"
 #include "core/fxge/dib/cfx_dibitmap.h"
@@ -46,7 +47,7 @@ bool CGdiDisplayDriver::GetDIBits(RetainPtr<CFX_DIBitmap> bitmap,
   BitBlt(hDCMemory, 0, 0, width, height, m_hDC, left, top, SRCCOPY);
   SelectObject(hDCMemory, holdbmp);
   BITMAPINFO bmi;
-  memset(&bmi, 0, sizeof bmi);
+  FXSYS_memset(&bmi, 0, sizeof bmi);
   bmi.bmiHeader.biSize = sizeof bmi.bmiHeader;
   bmi.bmiHeader.biBitCount = bitmap->GetBPP();
   bmi.bmiHeader.biHeight = -height;

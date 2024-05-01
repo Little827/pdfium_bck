@@ -29,6 +29,7 @@
 #include "core/fxcrt/check_op.h"
 #include "core/fxcrt/fixed_size_data_vector.h"
 #include "core/fxcrt/fx_extension.h"
+#include "core/fxcrt/fx_memcpy_wrappers.h"
 #include "core/fxcrt/fx_safe_types.h"
 
 namespace {
@@ -748,7 +749,7 @@ RetainPtr<CPDF_Stream> CPDF_SyntaxParser::ReadStream(
   if (len >= 0) {
     CPDF_ReadValidator::ScopedSession read_session(GetValidator());
     m_Pos += ReadEOLMarkers(GetPos());
-    memset(m_WordBuffer.data(), 0, kEndStreamStr.GetLength() + 1);
+    FXSYS_memset(m_WordBuffer.data(), 0, kEndStreamStr.GetLength() + 1);
     GetNextWordInternal();
     if (GetValidator()->has_read_problems())
       return nullptr;
@@ -807,7 +808,7 @@ RetainPtr<CPDF_Stream> CPDF_SyntaxParser::ReadStream(
     stream = pdfium::MakeRetain<CPDF_Stream>(std::move(pDict));
   }
   const FX_FILESIZE end_stream_offset = GetPos();
-  memset(m_WordBuffer.data(), 0, kEndObjStr.GetLength() + 1);
+  FXSYS_memset(m_WordBuffer.data(), 0, kEndObjStr.GetLength() + 1);
   GetNextWordInternal();
 
   // Allow whitespace after endstream and before a newline.
