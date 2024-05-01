@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "4efca839_9cc0f32e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 17
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-05-01T23:29:19Z",
+      "side": 1,
+      "message": "Can the CL description include a link to the changelog and mention the Clang version update, if any?",
+      "revId": "fd1d985b374f2fe1bff68d4c66de99b3829df08a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "ffe1bb29_52194e52",
@@ -14,6 +31,40 @@
       "writtenOn": "2024-05-01T23:03:51Z",
       "side": 1,
       "message": "Ping Lei to review this final form of the CL.",
+      "revId": "fd1d985b374f2fe1bff68d4c66de99b3829df08a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81cfaf29_88d37dea",
+        "filename": "pdfium_unsafe_buffers_paths.txt",
+        "patchSetId": 17
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-05-01T23:29:19Z",
+      "side": 1,
+      "message": "Add a comment to explain why these are excluded.",
+      "revId": "fd1d985b374f2fe1bff68d4c66de99b3829df08a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be539cec_01031c68",
+        "filename": "pdfium_unsafe_buffers_paths.txt",
+        "patchSetId": 17
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-05-01T23:29:19Z",
+      "side": 1,
+      "message": "Add a TODO to remove all the files in this section?",
       "revId": "fd1d985b374f2fe1bff68d4c66de99b3829df08a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
