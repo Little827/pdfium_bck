@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2296703c_cb397120",
+        "filename": "core/fpdfapi/parser/cpdf_parser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 680,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-05-02T16:36:32Z",
+      "side": 1,
+      "message": "follow-up: me no like in-out paramters, maybe return optional\u003cFX_FILESIZE\u003e instead?",
+      "range": {
+        "startLine": 680,
+        "startChar": 39,
+        "endLine": 680,
+        "endChar": 74
+      },
+      "revId": "678c12f38d7b23140e7323fe796487d49acec4b3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
