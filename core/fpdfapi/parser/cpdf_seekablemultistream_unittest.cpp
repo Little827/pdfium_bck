@@ -9,6 +9,8 @@
 
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/parser/cpdf_stream.h"
+#include "core/fxcrt/compiler_specific.h"
+#include "core/fxcrt/fx_memcpy_wrappers.h"
 #include "testing/gtest/include/gtest/gtest.h"
 
 TEST(CPDFSeekableMultiStreamTest, NoStreams) {
@@ -17,7 +19,8 @@ TEST(CPDFSeekableMultiStreamTest, NoStreams) {
       pdfium::MakeRetain<CPDF_SeekableMultiStream>(std::move(streams));
 
   uint8_t output_buffer[16];
-  memset(output_buffer, 0xbd, sizeof(output_buffer));
+  // TODO(tsepez): convert to span.
+  UNSAFE_BUFFERS(FXSYS_memset(output_buffer, 0xbd, sizeof(output_buffer)));
   EXPECT_FALSE(fileread->ReadBlockAtOffset(
       pdfium::make_span(output_buffer).first(0u), 0));
   EXPECT_EQ(0xbd, output_buffer[0]);
@@ -32,7 +35,8 @@ TEST(CXFAFileReadTest, EmptyStreams) {
       pdfium::MakeRetain<CPDF_SeekableMultiStream>(std::move(streams));
 
   uint8_t output_buffer[16];
-  memset(output_buffer, 0xbd, sizeof(output_buffer));
+  // TODO(tsepez): convert to span.
+  UNSAFE_BUFFERS(FXSYS_memset(output_buffer, 0xbd, sizeof(output_buffer)));
   EXPECT_FALSE(fileread->ReadBlockAtOffset(
       pdfium::make_span(output_buffer).first(0u), 0));
   EXPECT_EQ(0xbd, output_buffer[0]);
@@ -59,33 +63,39 @@ TEST(CXFAFileReadTest, NormalStreams) {
       pdfium::MakeRetain<CPDF_SeekableMultiStream>(std::move(streams));
 
   uint8_t output_buffer[16];
-  memset(output_buffer, 0xbd, sizeof(output_buffer));
+  // TODO(tsepez): convert to span.
+  UNSAFE_BUFFERS(FXSYS_memset(output_buffer, 0xbd, sizeof(output_buffer)));
   EXPECT_TRUE(fileread->ReadBlockAtOffset(
       pdfium::make_span(output_buffer).first(0u), 0));
   EXPECT_EQ(0xbd, output_buffer[0]);
 
-  memset(output_buffer, 0xbd, sizeof(output_buffer));
+  // TODO(tsepez): convert to span.
+  UNSAFE_BUFFERS(FXSYS_memset(output_buffer, 0xbd, sizeof(output_buffer)));
   EXPECT_TRUE(fileread->ReadBlockAtOffset(
       pdfium::make_span(output_buffer).first(0u), 1));
   EXPECT_EQ(0xbd, output_buffer[0]);
 
-  memset(output_buffer, 0xbd, sizeof(output_buffer));
+  // TODO(tsepez): convert to span.
+  UNSAFE_BUFFERS(FXSYS_memset(output_buffer, 0xbd, sizeof(output_buffer)));
   EXPECT_TRUE(fileread->ReadBlockAtOffset(
       pdfium::make_span(output_buffer).first(1u), 0));
   EXPECT_EQ(0, memcmp(output_buffer, "o", 1));
   EXPECT_EQ(0xbd, output_buffer[1]);
 
-  memset(output_buffer, 0xbd, sizeof(output_buffer));
+  // TODO(tsepez): convert to span.
+  UNSAFE_BUFFERS(FXSYS_memset(output_buffer, 0xbd, sizeof(output_buffer)));
   EXPECT_TRUE(fileread->ReadBlockAtOffset(output_buffer, 0));
   EXPECT_EQ(0, memcmp(output_buffer, "one two three!!!", 16));
 
-  memset(output_buffer, 0xbd, sizeof(output_buffer));
+  // TODO(tsepez): convert to span.
+  UNSAFE_BUFFERS(FXSYS_memset(output_buffer, 0xbd, sizeof(output_buffer)));
   EXPECT_TRUE(fileread->ReadBlockAtOffset(
       pdfium::make_span(output_buffer).first(10u), 2));
   EXPECT_EQ(0, memcmp(output_buffer, "e two thre", 10));
   EXPECT_EQ(0xbd, output_buffer[11]);
 
-  memset(output_buffer, 0xbd, sizeof(output_buffer));
+  // TODO(tsepez): convert to span.
+  UNSAFE_BUFFERS(FXSYS_memset(output_buffer, 0xbd, sizeof(output_buffer)));
   EXPECT_FALSE(fileread->ReadBlockAtOffset(output_buffer, 1));
   EXPECT_EQ(0, memcmp(output_buffer, "ne two three!!!", 15));
   EXPECT_EQ(0xbd, output_buffer[15]);

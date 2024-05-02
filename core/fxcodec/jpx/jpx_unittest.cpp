@@ -39,12 +39,12 @@ TEST(fxcodec, DecodeDataNullStream) {
   uint8_t buffer[16];
 
   // Reads of size 0 do nothing but return an error code.
-  memset(buffer, 0xbd, sizeof(buffer));
+  FXSYS_memset(buffer, 0xbd, sizeof(buffer));
   EXPECT_EQ(kReadError, opj_read_from_memory(buffer, 0, &dd));
   EXPECT_EQ(0xbd, buffer[0]);
 
   // Reads of nonzero size do nothing but return an error code.
-  memset(buffer, 0xbd, sizeof(buffer));
+  FXSYS_memset(buffer, 0xbd, sizeof(buffer));
   EXPECT_EQ(kReadError, opj_read_from_memory(buffer, sizeof(buffer), &dd));
   EXPECT_EQ(0xbd, buffer[0]);
 
@@ -66,12 +66,12 @@ TEST(fxcodec, DecodeDataZeroSize) {
   uint8_t buffer[16];
 
   // Reads of size 0 do nothing but return an error code.
-  memset(buffer, 0xbd, sizeof(buffer));
+  FXSYS_memset(buffer, 0xbd, sizeof(buffer));
   EXPECT_EQ(kReadError, opj_read_from_memory(buffer, 0, &dd));
   EXPECT_EQ(0xbd, buffer[0]);
 
   // Reads of nonzero size do nothing but return an error code.
-  memset(buffer, 0xbd, sizeof(buffer));
+  FXSYS_memset(buffer, 0xbd, sizeof(buffer));
   EXPECT_EQ(kReadError, opj_read_from_memory(buffer, sizeof(buffer), &dd));
   EXPECT_EQ(0xbd, buffer[0]);
 
@@ -94,7 +94,7 @@ TEST(fxcodec, DecodeDataReadInBounds) {
     DecodeData dd(stream_data, sizeof(stream_data));
 
     // Exact sized read in a single call.
-    memset(buffer, 0xbd, sizeof(buffer));
+    FXSYS_memset(buffer, 0xbd, sizeof(buffer));
     EXPECT_EQ(8u, opj_read_from_memory(buffer, sizeof(buffer), &dd));
     EXPECT_EQ(0x00, buffer[0]);
     EXPECT_EQ(0x01, buffer[1]);
@@ -110,19 +110,19 @@ TEST(fxcodec, DecodeDataReadInBounds) {
     DecodeData dd(stream_data, sizeof(stream_data));
 
     // Simple read.
-    memset(buffer, 0xbd, sizeof(buffer));
+    FXSYS_memset(buffer, 0xbd, sizeof(buffer));
     EXPECT_EQ(2u, opj_read_from_memory(buffer, 2, &dd));
     EXPECT_EQ(0x00, buffer[0]);
     EXPECT_EQ(0x01, buffer[1]);
     EXPECT_EQ(0xbd, buffer[2]);
 
     // Read of size 0 doesn't affect things.
-    memset(buffer, 0xbd, sizeof(buffer));
+    FXSYS_memset(buffer, 0xbd, sizeof(buffer));
     EXPECT_EQ(0u, opj_read_from_memory(buffer, 0, &dd));
     EXPECT_EQ(0xbd, buffer[0]);
 
     // Read exactly up to end of data.
-    memset(buffer, 0xbd, sizeof(buffer));
+    FXSYS_memset(buffer, 0xbd, sizeof(buffer));
     EXPECT_EQ(6u, opj_read_from_memory(buffer, 6, &dd));
     EXPECT_EQ(0x02, buffer[0]);
     EXPECT_EQ(0x03, buffer[1]);
@@ -133,7 +133,7 @@ TEST(fxcodec, DecodeDataReadInBounds) {
     EXPECT_EQ(0xbd, buffer[6]);
 
     // Read of size 0 at EOF is still an error.
-    memset(buffer, 0xbd, sizeof(buffer));
+    FXSYS_memset(buffer, 0xbd, sizeof(buffer));
     EXPECT_EQ(kReadError, opj_read_from_memory(buffer, 0, &dd));
     EXPECT_EQ(0xbd, buffer[0]);
   }
@@ -145,7 +145,7 @@ TEST(fxcodec, DecodeDataReadBeyondBounds) {
     DecodeData dd(stream_data, sizeof(stream_data));
 
     // Read beyond bounds in a single step.
-    memset(buffer, 0xbd, sizeof(buffer));
+    FXSYS_memset(buffer, 0xbd, sizeof(buffer));
     EXPECT_EQ(8u, opj_read_from_memory(buffer, sizeof(buffer) + 1, &dd));
     EXPECT_EQ(0x00, buffer[0]);
     EXPECT_EQ(0x01, buffer[1]);
@@ -161,7 +161,7 @@ TEST(fxcodec, DecodeDataReadBeyondBounds) {
     DecodeData dd(stream_data, sizeof(stream_data));
 
     // Read well beyond bounds in a single step.
-    memset(buffer, 0xbd, sizeof(buffer));
+    FXSYS_memset(buffer, 0xbd, sizeof(buffer));
     EXPECT_EQ(8u, opj_read_from_memory(
                       buffer, std::numeric_limits<OPJ_SIZE_T>::max(), &dd));
     EXPECT_EQ(0x00, buffer[0]);
@@ -179,7 +179,7 @@ TEST(fxcodec, DecodeDataReadBeyondBounds) {
 
     // Read of size 6 gets first 6 bytes.
     // rest of buffer intact.
-    memset(buffer, 0xbd, sizeof(buffer));
+    FXSYS_memset(buffer, 0xbd, sizeof(buffer));
     EXPECT_EQ(6u, opj_read_from_memory(buffer, 6, &dd));
     EXPECT_EQ(0x00, buffer[0]);
     EXPECT_EQ(0x01, buffer[1]);
@@ -190,14 +190,14 @@ TEST(fxcodec, DecodeDataReadBeyondBounds) {
     EXPECT_EQ(0xbd, buffer[6]);
 
     // Read of size 6 gets remaining two bytes.
-    memset(buffer, 0xbd, sizeof(buffer));
+    FXSYS_memset(buffer, 0xbd, sizeof(buffer));
     EXPECT_EQ(2u, opj_read_from_memory(buffer, 6, &dd));
     EXPECT_EQ(0x86, buffer[0]);
     EXPECT_EQ(0x87, buffer[1]);
     EXPECT_EQ(0xbd, buffer[2]);
 
     // Read of 6 more gets nothing and leaves rest of buffer intact.
-    memset(buffer, 0xbd, sizeof(buffer));
+    FXSYS_memset(buffer, 0xbd, sizeof(buffer));
     EXPECT_EQ(kReadError, opj_read_from_memory(buffer, 6, &dd));
     EXPECT_EQ(0xbd, buffer[0]);
   }
@@ -211,28 +211,28 @@ TEST(fxcodec, DecodeDataSkip) {
     DecodeData dd(stream_data, sizeof(stream_data));
 
     // Skiping within buffer is allowed.
-    memset(buffer, 0xbd, sizeof(buffer));
+    FXSYS_memset(buffer, 0xbd, sizeof(buffer));
     EXPECT_EQ(1u, opj_skip_from_memory(1, &dd));
     EXPECT_EQ(1u, opj_read_from_memory(buffer, 1, &dd));
     EXPECT_EQ(0x01, buffer[0]);
     EXPECT_EQ(0xbd, buffer[1]);
 
     // Skiping 0 bytes changes nothing.
-    memset(buffer, 0xbd, sizeof(buffer));
+    FXSYS_memset(buffer, 0xbd, sizeof(buffer));
     EXPECT_EQ(0, opj_skip_from_memory(0, &dd));
     EXPECT_EQ(1u, opj_read_from_memory(buffer, 1, &dd));
     EXPECT_EQ(0x02, buffer[0]);
     EXPECT_EQ(0xbd, buffer[1]);
 
     // Skiping to EOS-1 is possible.
-    memset(buffer, 0xbd, sizeof(buffer));
+    FXSYS_memset(buffer, 0xbd, sizeof(buffer));
     EXPECT_EQ(4u, opj_skip_from_memory(4, &dd));
     EXPECT_EQ(1u, opj_read_from_memory(buffer, 1, &dd));
     EXPECT_EQ(0x87, buffer[0]);
     EXPECT_EQ(0xbd, buffer[1]);
 
     // Next read fails.
-    memset(buffer, 0xbd, sizeof(buffer));
+    FXSYS_memset(buffer, 0xbd, sizeof(buffer));
     EXPECT_EQ(kReadError, opj_read_from_memory(buffer, 1, &dd));
     EXPECT_EQ(0xbd, buffer[0]);
   }
@@ -240,7 +240,7 @@ TEST(fxcodec, DecodeDataSkip) {
     DecodeData dd(stream_data, sizeof(stream_data));
 
     // Skiping directly to EOS is allowed.
-    memset(buffer, 0xbd, sizeof(buffer));
+    FXSYS_memset(buffer, 0xbd, sizeof(buffer));
     EXPECT_EQ(8u, opj_skip_from_memory(8, &dd));
 
     // Next read fails.
@@ -251,7 +251,7 @@ TEST(fxcodec, DecodeDataSkip) {
     DecodeData dd(stream_data, sizeof(stream_data));
 
     // Skipping beyond end of stream is allowed and returns full distance.
-    memset(buffer, 0xbd, sizeof(buffer));
+    FXSYS_memset(buffer, 0xbd, sizeof(buffer));
     EXPECT_EQ(9u, opj_skip_from_memory(9, &dd));
 
     // Next read fails.
@@ -263,7 +263,7 @@ TEST(fxcodec, DecodeDataSkip) {
 
     // Skipping way beyond EOS is allowd, doesn't wrap, and returns
     // full distance.
-    memset(buffer, 0xbd, sizeof(buffer));
+    FXSYS_memset(buffer, 0xbd, sizeof(buffer));
     EXPECT_EQ(4u, opj_skip_from_memory(4, &dd));
     EXPECT_EQ(std::numeric_limits<OPJ_OFF_T>::max(),
               opj_skip_from_memory(std::numeric_limits<OPJ_OFF_T>::max(), &dd));
@@ -276,7 +276,7 @@ TEST(fxcodec, DecodeDataSkip) {
     DecodeData dd(stream_data, sizeof(stream_data));
 
     // Negative skip within buffer not is allowed, position unchanged.
-    memset(buffer, 0xbd, sizeof(buffer));
+    FXSYS_memset(buffer, 0xbd, sizeof(buffer));
     EXPECT_EQ(4u, opj_skip_from_memory(4, &dd));
     EXPECT_EQ(kSkipError, opj_skip_from_memory(-2, &dd));
 
@@ -286,7 +286,7 @@ TEST(fxcodec, DecodeDataSkip) {
     EXPECT_EQ(0xbd, buffer[1]);
 
     // Negative skip before buffer is not allowed, position unchanged.
-    memset(buffer, 0xbd, sizeof(buffer));
+    FXSYS_memset(buffer, 0xbd, sizeof(buffer));
     EXPECT_EQ(kSkipError, opj_skip_from_memory(-4, &dd));
 
     // Next read succeeds as if nothing has happenned.
@@ -298,7 +298,7 @@ TEST(fxcodec, DecodeDataSkip) {
     DecodeData dd(stream_data, sizeof(stream_data));
 
     // Negative skip way before buffer is not allowed, doesn't wrap
-    memset(buffer, 0xbd, sizeof(buffer));
+    FXSYS_memset(buffer, 0xbd, sizeof(buffer));
     EXPECT_EQ(4u, opj_skip_from_memory(4, &dd));
     EXPECT_EQ(kSkipError,
               opj_skip_from_memory(std::numeric_limits<OPJ_OFF_T>::min(), &dd));
@@ -312,7 +312,7 @@ TEST(fxcodec, DecodeDataSkip) {
     DecodeData dd(stream_data, sizeof(stream_data));
 
     // Negative skip after EOS isn't alowed, still EOS.
-    memset(buffer, 0xbd, sizeof(buffer));
+    FXSYS_memset(buffer, 0xbd, sizeof(buffer));
     EXPECT_EQ(8u, opj_skip_from_memory(8, &dd));
     EXPECT_EQ(kSkipError, opj_skip_from_memory(-4, &dd));
 
@@ -327,21 +327,21 @@ TEST(fxcodec, DecodeDataSeek) {
   DecodeData dd(stream_data, sizeof(stream_data));
 
   // Seeking within buffer is allowed and read succeeds
-  memset(buffer, 0xbd, sizeof(buffer));
+  FXSYS_memset(buffer, 0xbd, sizeof(buffer));
   EXPECT_TRUE(opj_seek_from_memory(1, &dd));
   EXPECT_EQ(1u, opj_read_from_memory(buffer, 1, &dd));
   EXPECT_EQ(0x01, buffer[0]);
   EXPECT_EQ(0xbd, buffer[1]);
 
   // Seeking before start returns error leaving position unchanged.
-  memset(buffer, 0xbd, sizeof(buffer));
+  FXSYS_memset(buffer, 0xbd, sizeof(buffer));
   EXPECT_FALSE(opj_seek_from_memory(-1, &dd));
   EXPECT_EQ(1u, opj_read_from_memory(buffer, 1, &dd));
   EXPECT_EQ(0x02, buffer[0]);
   EXPECT_EQ(0xbd, buffer[1]);
 
   // Seeking way before start returns error leaving position unchanged.
-  memset(buffer, 0xbd, sizeof(buffer));
+  FXSYS_memset(buffer, 0xbd, sizeof(buffer));
   EXPECT_FALSE(
       opj_seek_from_memory(std::numeric_limits<OPJ_OFF_T>::min(), &dd));
   EXPECT_EQ(1u, opj_read_from_memory(buffer, 1, &dd));
@@ -349,33 +349,33 @@ TEST(fxcodec, DecodeDataSeek) {
   EXPECT_EQ(0xbd, buffer[1]);
 
   // Seeking exactly to EOS is allowed but read fails.
-  memset(buffer, 0xbd, sizeof(buffer));
+  FXSYS_memset(buffer, 0xbd, sizeof(buffer));
   EXPECT_TRUE(opj_seek_from_memory(8, &dd));
   EXPECT_EQ(kReadError, opj_read_from_memory(buffer, 1, &dd));
   EXPECT_EQ(0xbd, buffer[0]);
 
   // Seeking back to zero offset is allowed and read succeeds.
-  memset(buffer, 0xbd, sizeof(buffer));
+  FXSYS_memset(buffer, 0xbd, sizeof(buffer));
   EXPECT_TRUE(opj_seek_from_memory(0, &dd));
   EXPECT_EQ(1u, opj_read_from_memory(buffer, 1, &dd));
   EXPECT_EQ(0x00, buffer[0]);
   EXPECT_EQ(0xbd, buffer[1]);
 
   // Seeking beyond end of stream is allowed but read fails.
-  memset(buffer, 0xbd, sizeof(buffer));
+  FXSYS_memset(buffer, 0xbd, sizeof(buffer));
   EXPECT_TRUE(opj_seek_from_memory(16, &dd));
   EXPECT_EQ(kReadError, opj_read_from_memory(buffer, 1, &dd));
   EXPECT_EQ(0xbd, buffer[0]);
 
   // Seeking within buffer after seek past EOF restores good state.
-  memset(buffer, 0xbd, sizeof(buffer));
+  FXSYS_memset(buffer, 0xbd, sizeof(buffer));
   EXPECT_TRUE(opj_seek_from_memory(4, &dd));
   EXPECT_EQ(1u, opj_read_from_memory(buffer, 1, &dd));
   EXPECT_EQ(0x84, buffer[0]);
   EXPECT_EQ(0xbd, buffer[1]);
 
   // Seeking way beyond EOS is allowed, doesn't wrap, and read fails.
-  memset(buffer, 0xbd, sizeof(buffer));
+  FXSYS_memset(buffer, 0xbd, sizeof(buffer));
   EXPECT_TRUE(opj_seek_from_memory(std::numeric_limits<OPJ_OFF_T>::max(), &dd));
   EXPECT_EQ(kReadError, opj_read_from_memory(buffer, 1, &dd));
   EXPECT_EQ(0xbd, buffer[0]);
@@ -383,7 +383,7 @@ TEST(fxcodec, DecodeDataSeek) {
 
 TEST(fxcodec, YUV420ToRGB) {
   opj_image_comp_t u;
-  memset(&u, 0, sizeof(u));
+  FXSYS_memset(&u, 0, sizeof(u));
   u.dx = 1;
   u.dy = 1;
   u.w = 16;
@@ -391,7 +391,7 @@ TEST(fxcodec, YUV420ToRGB) {
   u.prec = 8;
   u.bpp = 8;
   opj_image_comp_t v;
-  memset(&v, 0, sizeof(v));
+  FXSYS_memset(&v, 0, sizeof(v));
   v.dx = 1;
   v.dy = 1;
   v.w = 16;
@@ -399,13 +399,13 @@ TEST(fxcodec, YUV420ToRGB) {
   v.prec = 8;
   v.bpp = 8;
   opj_image_comp_t y;
-  memset(&y, 0, sizeof(y));
+  FXSYS_memset(&y, 0, sizeof(y));
   y.dx = 1;
   y.dy = 1;
   y.prec = 8;
   y.bpp = 8;
   opj_image_t img;
-  memset(&img, 0, sizeof(img));
+  FXSYS_memset(&img, 0, sizeof(img));
   img.numcomps = 3;
   img.color_space = OPJ_CLRSPC_SYCC;
   img.comps = FX_Alloc(opj_image_comp_t, 3);
