@@ -302,22 +302,28 @@ FS_MATRIX FSMatrixFromCFXMatrix(const CFX_Matrix& matrix) {
 unsigned long NulTerminateMaybeCopyAndReturnLength(const ByteString& text,
                                                    void* buffer,
                                                    unsigned long buflen) {
-  const unsigned long len =
-      pdfium::checked_cast<unsigned long>(text.GetLength() + 1);
-  if (buffer && len <= buflen)
-    memcpy(buffer, text.c_str(), len);
-  return len;
+  // SAFETY: required from caller, enforced by UNSAFE_BUFFER_USAGE om
+  // declartation in header file.
+  pdfium::span<char> result_span =
+      UNSAFE_BUFFERS(pdfium::make_span(static_cast<char*>(buffer), buflen));
+
+  pdfium::span<const char> text_span = text.span_with_terminator();
+  fxcrt::try_spancpy(result_span, text_span);
+  return pdfium::checked_cast<unsigned long>(text_span.size());
 }
 
 unsigned long Utf16EncodeMaybeCopyAndReturnLength(const WideString& text,
                                                   void* buffer,
                                                   unsigned long buflen) {
+  // SAFETY: required from caller, enforced by UNSAFE_BUFFER_USAGE om
+  // declartation in header file.
+  pdfium::span<char> result_span =
+      UNSAFE_BUFFERS(pdfium::make_span(static_cast<char*>(buffer), buflen));
+
   ByteString encoded_text = text.ToUTF16LE();
-  const unsigned long len =
-      pdfium::checked_cast<unsigned long>(encoded_text.GetLength());
-  if (buffer && len <= buflen)
-    memcpy(buffer, encoded_text.c_str(), len);
-  return len;
+  pdfium::span<const char> encoded_text_span = encoded_text.span();
+  fxcrt::try_spancpy(result_span, encoded_text_span);
+  return pdfium::checked_cast<unsigned long>(encoded_text_span.size());
 }
 
 unsigned long GetRawStreamMaybeCopyAndReturnLength(
