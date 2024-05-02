@@ -19,6 +19,7 @@
 #include "core/fxcrt/compiler_specific.h"
 #include "core/fxcrt/data_vector.h"
 #include "core/fxcrt/fx_coordinates.h"
+#include "core/fxcrt/fx_memcpy_wrappers.h"
 #include "core/fxcrt/fx_safe_types.h"
 #include "core/fxcrt/notreached.h"
 #include "core/fxcrt/numerics/safe_conversions.h"
@@ -80,8 +81,8 @@ bool CFX_DIBitmap::Copy(RetainPtr<const CFX_DIBBase> source) {
 
   SetPalette(source->GetPaletteSpan());
   for (int row = 0; row < source->GetHeight(); row++) {
-    memcpy(m_pBuffer.Get() + row * m_Pitch, source->GetScanline(row).data(),
-           m_Pitch);
+    FXSYS_memcpy(m_pBuffer.Get() + row * m_Pitch,
+                 source->GetScanline(row).data(), m_Pitch);
   }
   return true;
 }
@@ -171,7 +172,7 @@ void CFX_DIBitmap::Clear(uint32_t color) {
           pBuffer[byte_pos++] = r;
         }
         for (int row = 1; row < m_Height; row++) {
-          memcpy(pBuffer + row * m_Pitch, pBuffer, m_Pitch);
+          FXSYS_memcpy(pBuffer + row * m_Pitch, pBuffer, m_Pitch);
         }
       }
       break;
@@ -187,7 +188,7 @@ void CFX_DIBitmap::Clear(uint32_t color) {
       for (int i = 0; i < m_Width; i++)
         reinterpret_cast<uint32_t*>(pBuffer)[i] = color;
       for (int row = 1; row < m_Height; row++)
-        memcpy(pBuffer + row * m_Pitch, pBuffer, m_Pitch);
+        FXSYS_memcpy(pBuffer + row * m_Pitch, pBuffer, m_Pitch);
       break;
     }
     default:
@@ -271,7 +272,7 @@ void CFX_DIBitmap::TransferWithMultipleBPP(int dest_left,
         m_pBuffer.Get() + (dest_top + row) * m_Pitch + dest_left * Bpp;
     const uint8_t* src_scan =
         source->GetScanline(src_top + row).subspan(src_left * Bpp).data();
-    memcpy(dest_scan, src_scan, width * Bpp);
+    FXSYS_memcpy(dest_scan, src_scan, width * Bpp);
   }
 }
 

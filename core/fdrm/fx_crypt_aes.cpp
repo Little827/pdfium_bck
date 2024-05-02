@@ -12,6 +12,7 @@
 #include "core/fxcrt/check.h"
 #include "core/fxcrt/check_op.h"
 #include "core/fxcrt/compiler_specific.h"
+#include "core/fxcrt/fx_memcpy_wrappers.h"
 
 #define mulby2(x) (((x & 0x7F) << 1) ^ (x & 0x80 ? 0x1B : 0))
 
@@ -590,7 +591,7 @@ void CRYPT_AESDecrypt(CRYPT_aes_context* ctx,
   unsigned int ct[4];
   int i;
   CHECK_EQ((size & 15), 0);
-  memcpy(iv, ctx->iv, sizeof(iv));
+  FXSYS_memcpy(iv, ctx->iv, sizeof(iv));
   while (size != 0) {
     for (i = 0; i < 4; i++) {
       // TODO(tsepez): Create actual span.
@@ -608,7 +609,7 @@ void CRYPT_AESDecrypt(CRYPT_aes_context* ctx,
     src += 16;
     size -= 16;
   }
-  memcpy(ctx->iv, iv, sizeof(iv));
+  FXSYS_memcpy(ctx->iv, iv, sizeof(iv));
 }
 
 void CRYPT_AESEncrypt(CRYPT_aes_context* ctx,
@@ -618,7 +619,7 @@ void CRYPT_AESEncrypt(CRYPT_aes_context* ctx,
   unsigned int iv[4];
   int i;
   CHECK_EQ((size & 15), 0);
-  memcpy(iv, ctx->iv, sizeof(iv));
+  FXSYS_memcpy(iv, ctx->iv, sizeof(iv));
   while (size != 0) {
     for (i = 0; i < 4; i++) {
       // TODO(tsepez): use an actual span.
@@ -635,5 +636,5 @@ void CRYPT_AESEncrypt(CRYPT_aes_context* ctx,
     src += 16;
     size -= 16;
   }
-  memcpy(ctx->iv, iv, sizeof(iv));
+  FXSYS_memcpy(ctx->iv, iv, sizeof(iv));
 }
