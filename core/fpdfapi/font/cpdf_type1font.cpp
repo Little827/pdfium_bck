@@ -12,6 +12,7 @@
 
 #include "build/build_config.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
+#include "core/fxcrt/fx_memcpy_wrappers.h"
 #include "core/fxcrt/fx_system.h"
 #include "core/fxcrt/span_util.h"
 #include "core/fxge/cfx_fontmapper.h"
@@ -164,7 +165,7 @@ void CPDF_Type1Font::LoadGlyphMap() {
       if (bGotOne) {
 #if BUILDFLAG(IS_APPLE)
         if (!bCoreText)
-          memcpy(m_ExtGID, m_GlyphIndex, sizeof(m_ExtGID));
+          FXSYS_memcpy(m_ExtGID, m_GlyphIndex, sizeof(m_ExtGID));
 #endif
         return;
       }
@@ -277,7 +278,7 @@ void CPDF_Type1Font::LoadGlyphMap() {
     }
 #if BUILDFLAG(IS_APPLE)
     if (!bCoreText)
-      memcpy(m_ExtGID, m_GlyphIndex, sizeof(m_ExtGID));
+      FXSYS_memcpy(m_ExtGID, m_GlyphIndex, sizeof(m_ExtGID));
 #endif
     return;
   }
@@ -305,7 +306,7 @@ void CPDF_Type1Font::LoadGlyphMap() {
   }
 #if BUILDFLAG(IS_APPLE)
   if (!bCoreText)
-    memcpy(m_ExtGID, m_GlyphIndex, sizeof(m_ExtGID));
+    FXSYS_memcpy(m_ExtGID, m_GlyphIndex, sizeof(m_ExtGID));
 #endif
 }
 
