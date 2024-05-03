@@ -90,22 +90,22 @@ void CPDF_FontGlobals::Clear(CPDF_Document* pDoc) {
 
 void CPDF_FontGlobals::LoadEmbeddedGB1CMaps() {
   SetEmbeddedCharset(CIDSET_GB1, fxcmap::kGB1_cmaps_span);
-  SetEmbeddedToUnicode(CIDSET_GB1, fxcmap::kGB1CID2Unicode_5);
+  SetEmbeddedToUnicode(CIDSET_GB1, fxcmap::kGB1CID2Unicode);
 }
 
 void CPDF_FontGlobals::LoadEmbeddedCNS1CMaps() {
   SetEmbeddedCharset(CIDSET_CNS1, fxcmap::kCNS1_cmaps_span);
-  SetEmbeddedToUnicode(CIDSET_CNS1, fxcmap::kCNS1CID2Unicode_5);
+  SetEmbeddedToUnicode(CIDSET_CNS1, fxcmap::kCNS1CID2Unicode);
 }
 
 void CPDF_FontGlobals::LoadEmbeddedJapan1CMaps() {
   SetEmbeddedCharset(CIDSET_JAPAN1, fxcmap::kJapan1_cmaps_span);
-  SetEmbeddedToUnicode(CIDSET_JAPAN1, fxcmap::kJapan1CID2Unicode_4);
+  SetEmbeddedToUnicode(CIDSET_JAPAN1, fxcmap::kJapan1CID2Unicode);
 }
 
 void CPDF_FontGlobals::LoadEmbeddedKorea1CMaps() {
   SetEmbeddedCharset(CIDSET_KOREA1, fxcmap::kKorea1_cmaps_span);
-  SetEmbeddedToUnicode(CIDSET_KOREA1, fxcmap::kKorea1CID2Unicode_2);
+  SetEmbeddedToUnicode(CIDSET_KOREA1, fxcmap::kKorea1CID2Unicode);
 }
 
 RetainPtr<const CPDF_CMap> CPDF_FontGlobals::GetPredefinedCMap(
