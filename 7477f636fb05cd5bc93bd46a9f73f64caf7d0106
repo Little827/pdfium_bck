@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb1b6ee8_d3e8600a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-05-03T20:38:18Z",
+      "side": 1,
+      "message": "BTW, I manually verified in the debugger that the spans have the same size as the hard-coded magic number.",
+      "revId": "7477f636fb05cd5bc93bd46a9f73f64caf7d0106",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
