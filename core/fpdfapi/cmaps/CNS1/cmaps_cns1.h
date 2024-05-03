@@ -9,6 +9,8 @@
 
 #include <stdint.h>
 
+#include <array>
+
 #include "core/fpdfapi/cmaps/fpdf_cmaps.h"
 #include "core/fxcrt/span.h"
 
@@ -29,7 +31,7 @@ extern const DWordCIDMap kCNS_EUC_V_0_DWord[];
 extern const uint16_t kUniCNS_UCS2_H_3[];
 extern const uint16_t kUniCNS_UCS2_V_3[];
 extern const uint16_t kUniCNS_UTF16_H_0[];
-extern const uint16_t kCNS1CID2Unicode_5[19088];
+extern const std::array<uint16_t, 19088> kCNS1CID2Unicode_5;
 
 extern const pdfium::span<const CMap> kCNS1_cmaps_span;
 
