@@ -360,6 +360,7 @@ bool CPDF_RenderStatus::ProcessForm(const CPDF_FormObject* pFormObj,
   CFX_Matrix matrix = pFormObj->form_matrix() * mtObj2Device;
   RetainPtr<const CPDF_Dictionary> pResources =
       pFormObj->form()->GetDict()->GetDictFor("Resources");
+  int32_t alpha = static_cast<int32_t>(m_InitialStates.general_state().GetFillAlpha() * 255);
   CPDF_RenderStatus status(m_pContext, m_pDevice);
   status.SetOptions(m_Options);
   status.SetStopObject(m_pStopObj);
@@ -373,6 +374,19 @@ bool CPDF_RenderStatus::ProcessForm(const CPDF_FormObject* pFormObj,
     status.RenderObjectList(pFormObj->form(), matrix);
     m_bStopped = status.m_bStopped;
   }
+
+  if (alpha < 255) {
+    auto mask = pdfium::MakeRetain<CFX_DIBitmap>();
+    if (mask->Create(m_pDevice->GetWidth(), m_pDevice->GetHeight(), FXDIB_Format::k8bppMask)) {
+      auto rect = pFormObj->GetTransformedBBox(mtObj2Device);
+      rect.Intersect(m_pDevice->GetClipBox());
+      if (!rect.IsEmpty()) {
+        mask->CompositeRect(rect.left, rect.top, rect.Width(), rect.Height(), ArgbEncode(alpha, 0, 0, 0));
+        m_pDevice->MultiplyAlphaMask(mask);
+      }
+    }
+  }
+
   return true;
 }
 
