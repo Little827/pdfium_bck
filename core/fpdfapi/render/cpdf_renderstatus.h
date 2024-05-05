@@ -180,6 +180,7 @@ class CPDF_RenderStatus {
   FX_ARGB GetStrokeArgb(CPDF_PageObject* pObj) const;
   FX_RECT GetObjectClippedRect(const CPDF_PageObject* pObj,
                                const CFX_Matrix& mtObj2Device) const;
+  void ApplyAlphaToRenderDevice(const FX_RECT& rect, uint8_t alpha);
 
   CPDF_RenderOptions m_Options;
   RetainPtr<const CPDF_Dictionary> m_pFormResource;
