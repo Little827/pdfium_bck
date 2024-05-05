@@ -373,7 +373,40 @@ bool CPDF_RenderStatus::ProcessForm(const CPDF_FormObject* pFormObj,
     status.RenderObjectList(pFormObj->form(), matrix);
     m_bStopped = status.m_bStopped;
   }
+
+  uint8_t alpha = static_cast<uint8_t>(
+      m_InitialStates.general_state().GetFillAlpha() * 255);
+  if (alpha < 255) {
+    auto rect = pFormObj->GetTransformedBBox(mtObj2Device);
+    rect.Intersect(m_pDevice->GetClipBox());
+    ApplyAlphaToRenderDevice(rect, alpha);
+  }
+
   return true;
+}
+
+void CPDF_RenderStatus::ApplyAlphaToRenderDevice(const FX_RECT& rect,
+                                                 uint8_t alpha) {
+  if (rect.IsEmpty()) {
+    return;
+  }
+  auto mask = pdfium::MakeRetain<CFX_DIBitmap>();
+  if (!mask->Create(m_pDevice->GetWidth(), m_pDevice->GetHeight(),
+                    FXDIB_Format::k8bppMask)) {
+    return;
+  }
+  for (int row = 0; row < m_pDevice->GetHeight(); row++) {
+    uint8_t* dest = mask->GetWritableScanline(row).data();
+    for (int col = 0; col < m_pDevice->GetWidth(); col++) {
+      if (row >= rect.top && row <= rect.bottom && col >= rect.left &&
+          col <= rect.right) {
+        dest[col] = alpha;
+      } else {
+        dest[col] = 0xff;
+      }
+    }
+  }
+  m_pDevice->MultiplyAlphaMask(mask);
 }
 
 bool CPDF_RenderStatus::ProcessPath(CPDF_PathObject* path_obj,
