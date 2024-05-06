@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3693826f_9c279a6d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-05-06T22:53:57Z",
+      "side": 1,
+      "message": "Needs restamp due to loss of paths.txt file.",
+      "revId": "2ac060309b458b1e7bd1629be348d61df6205bb5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
