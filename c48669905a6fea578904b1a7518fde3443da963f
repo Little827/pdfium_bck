@@ -54,6 +54,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "51377ae0_ec46edce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-05-06T17:47:40Z",
+      "side": 1,
+      "message": "Please add yourself to the AUTHORS file.",
+      "revId": "c48669905a6fea578904b1a7518fde3443da963f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9f509d55_c821fa45",
         "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
         "patchSetId": 1
