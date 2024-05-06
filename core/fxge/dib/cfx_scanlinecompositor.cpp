@@ -13,6 +13,7 @@
 #include "core/fxcrt/check.h"
 #include "core/fxcrt/check_op.h"
 #include "core/fxcrt/compiler_specific.h"
+#include "core/fxcrt/fx_memcpy_wrappers.h"
 #include "core/fxcrt/span_util.h"
 #include "core/fxge/dib/blend.h"
 #include "core/fxge/dib/fx_dib.h"
@@ -241,7 +242,7 @@ void CompositeRow_Argb2Argb(pdfium::span<uint8_t> dest_span,
         FXARGB_SetDIB(dest_scan,
                       (FXARGB_GetDIB(src_scan) & 0xffffff) | (src_alpha << 24));
       } else {
-        memcpy(dest_scan, src_scan, 4);
+        FXSYS_memcpy(dest_scan, src_scan, 4);
       }
       dest_scan += kOffset;
       src_scan += kOffset;
@@ -332,7 +333,7 @@ void CompositeRow_Rgb2Argb_Blend_Clip(pdfium::span<uint8_t> dest_span,
     int src_alpha = *clip_scan++;
     uint8_t back_alpha = dest_scan[3];
     if (back_alpha == 0) {
-      memcpy(dest_scan, src_scan, 3);
+      FXSYS_memcpy(dest_scan, src_scan, 3);
       dest_scan += 3;
       src_scan += src_Bpp;
       dest_scan++;
@@ -375,7 +376,7 @@ void CompositeRow_Rgb2Argb_NoBlend_Clip(pdfium::span<uint8_t> dest_span,
   for (int col = 0; col < width; col++) {
     int src_alpha = clip_scan[col];
     if (src_alpha == 255) {
-      memcpy(dest_scan, src_scan, 3);
+      FXSYS_memcpy(dest_scan, src_scan, 3);
       dest_scan += 3;
       *dest_scan++ = 255;
       src_scan += src_Bpp;
@@ -476,7 +477,7 @@ void CompositeRow_Argb2Rgb_NoBlend(pdfium::span<uint8_t> dest_span,
       src_alpha = src_scan[3];
     }
     if (src_alpha == 255) {
-      memcpy(dest_scan, src_scan, 3);
+      FXSYS_memcpy(dest_scan, src_scan, 3);
       dest_scan += dest_Bpp;
       src_scan += 4;
       continue;
@@ -574,11 +575,11 @@ void CompositeRow_Rgb2Rgb_NoBlend_NoClip(pdfium::span<uint8_t> dest_span,
   uint8_t* dest_scan = dest_span.data();
   const uint8_t* src_scan = src_span.data();
   if (dest_Bpp == src_Bpp) {
-    memcpy(dest_scan, src_scan, width * dest_Bpp);
+    FXSYS_memcpy(dest_scan, src_scan, width * dest_Bpp);
     return;
   }
   for (int col = 0; col < width; col++) {
-    memcpy(dest_scan, src_scan, 3);
+    FXSYS_memcpy(dest_scan, src_scan, 3);
     dest_scan += dest_Bpp;
     src_scan += src_Bpp;
   }
@@ -596,7 +597,7 @@ void CompositeRow_Rgb2Rgb_NoBlend_Clip(pdfium::span<uint8_t> dest_span,
   for (int col = 0; col < width; col++) {
     int src_alpha = clip_scan[col];
     if (src_alpha == 255) {
-      memcpy(dest_scan, src_scan, 3);
+      FXSYS_memcpy(dest_scan, src_scan, 3);
     } else if (src_alpha) {
       *dest_scan = FXDIB_ALPHA_MERGE(*dest_scan, *src_scan, src_alpha);
       dest_scan++;
