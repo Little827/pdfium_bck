@@ -41,7 +41,7 @@
 -core/fpdfapi/font/cpdf_font.cpp
 -core/fpdfapi/font/cpdf_fontencoding.cpp
 -core/fpdfapi/font/cpdf_fontencoding.h
--core/fpdfapi/font/cpdf_simplefont.cpp
+
 -core/fpdfapi/font/cpdf_truetypefont.cpp
 -core/fpdfapi/font/cpdf_type1font.cpp
 -core/fpdfapi/page/cpdf_colorspace.cpp
