@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d51a4584_770bd729",
+        "filename": "core/fpdfapi/font/cpdf_simplefont.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-05-06T19:52:59Z",
+      "side": 1,
+      "message": "Stuningly, this gives better code in my out/Release build since the compiler doesn\u0027t have to honor the individual calls to memset(), instead it notices that, co-inidentally, these three members are adjacent to each other and that the rect of -1,-1,-1,-1 is also 0xff in every byte, so it get glommed together into one large memset() across all three members.",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 43
+      },
+      "revId": "fed75d2f051c01fac3a2de0e26c91270a2a69a58",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
