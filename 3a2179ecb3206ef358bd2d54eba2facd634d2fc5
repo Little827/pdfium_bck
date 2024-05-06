@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25f19e37_c83dc928",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-05-06T18:25:48Z",
+      "side": 1,
+      "message": "Need restamp after removing pdfium_test.cc from the set.",
+      "revId": "3a2179ecb3206ef358bd2d54eba2facd634d2fc5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
