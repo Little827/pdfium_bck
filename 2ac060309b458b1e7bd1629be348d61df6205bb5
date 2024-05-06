@@ -16,6 +16,23 @@
       "message": "Needs restamp due to loss of paths.txt file.",
       "revId": "2ac060309b458b1e7bd1629be348d61df6205bb5",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f54dad64_3bcbb773",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5645
+      },
+      "writtenOn": "2024-05-06T23:11:02Z",
+      "side": 1,
+      "message": "G-account re-stamp",
+      "revId": "2ac060309b458b1e7bd1629be348d61df6205bb5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
