@@ -77,6 +77,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5f538977_31fe6a2e",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-05-06T17:46:28Z",
+      "side": 1,
+      "message": "Can this be declared closer to line 378?",
+      "revId": "c48669905a6fea578904b1a7518fde3443da963f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7418ddab_ce210646",
         "filename": "testing/resources/pixel/bug_2106.pdf",
         "patchSetId": 1
@@ -88,6 +105,24 @@
       "writtenOn": "2024-05-06T16:41:11Z",
       "side": 1,
       "message": "Unfortunately, this test case is too large and contains too much binary data to be acceptable. You\u0027d need to hand-minimize such a test first.",
+      "revId": "c48669905a6fea578904b1a7518fde3443da963f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "634c9d2e_5b418a64",
+        "filename": "testing/resources/pixel/bug_2106.pdf",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-05-06T17:46:28Z",
+      "side": 1,
+      "message": "It would be great if this can be a \".in\" file instead. See the existing ones in the directory for example. If you need help making the .in file, please let me know and I can help create one.",
+      "parentUuid": "7418ddab_ce210646",
       "revId": "c48669905a6fea578904b1a7518fde3443da963f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
