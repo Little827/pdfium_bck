@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d16decc_e2d3ad6b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-05-06T18:14:41Z",
+      "side": 1,
+      "message": "Probably need to couple this with an update to DEPS to roll PA (but thanks for the heads-up).",
+      "revId": "07db631fcad7c0d09d9ca01f865932dc52a6dd14",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
