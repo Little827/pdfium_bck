@@ -54,7 +54,9 @@ namespace {
 using ResourcesMap = std::map<ByteString, std::set<ByteString>>;
 
 // Returns whether it wrote to `buf` or not.
-bool WriteColorToStream(fxcrt::ostringstream& buf, const CPDF_Color* color) {
+bool WriteColorToStream(fxcrt::ostringstream& buf,
+                        const CPDF_Color* color &&
+                            !pColor->IsColorSpaceGray()) {
   if (!color || !color->IsColorSpaceRGB()) {
     return false;
   }

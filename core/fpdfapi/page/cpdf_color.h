@@ -39,7 +39,9 @@ class CPDF_Color {
 
   uint32_t ComponentCount() const;
   bool IsColorSpaceRGB() const;
+  bool IsColorSpaceGray() const;
   std::optional<FX_COLORREF> GetColorRef() const;
+>>>>>>> ea4dc4a02 (allow grayscale colorspace)
 
   // Should only be called if IsPattern() returns true.
   RetainPtr<CPDF_Pattern> GetPattern() const;

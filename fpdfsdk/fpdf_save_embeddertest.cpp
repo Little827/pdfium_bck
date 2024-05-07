@@ -98,6 +98,45 @@ TEST_F(FPDFSaveEmbedderTest, SaveCopiedDoc) {
   UnloadPage(page);
 }
 
+TEST_F(FPDFSaveEmbedderTest, Bug2116) {
+  // open document
+  ASSERT_TRUE(OpenDocument("bug_2116.pdf"));
+  FPDF_PAGE page = LoadPage(0);
+  ASSERT_TRUE(page);
+  int old_count = FPDFPage_CountObjects(page);
+  EXPECT_EQ(144, old_count);
+
+  // arbitrarily remove first page object
+  FPDF_PAGEOBJECT obj = FPDFPage_GetObject(page, 0);
+  ASSERT_TRUE(FPDFPage_RemoveObject(page, obj));
+
+  // regenerate dirty stream
+  ASSERT_TRUE(FPDFPage_GenerateContent(page));
+  UnloadPage(page);
+  EXPECT_TRUE(FPDF_SaveAsCopy(document(), this, 0));
+
+  // open saved doc
+  ASSERT_TRUE(OpenSavedDocument());
+  page = LoadPage(0);
+  ASSERT_TRUE(page);
+  int new_count = FPDFPage_CountObjects(page);
+  EXPECT_EQ(13, new_count);
+  for (int i = 0; i < new_count; i++) {
+    obj = FPDFPage_GetObject(page, i);
+    // make sure doc has no black paths
+    if (FPDFPageObj_GetType(obj) == FPDF_PAGEOBJ_PATH) {
+      unsigned int r, g, b, a;
+      FPDFPageObj_GetFillColor(obj, &r, &g, &b, &a);
+      EXPECT_FALSE(r == 0);
+      EXPECT_FALSE(g == 0);
+      EXPECT_FALSE(b == 0);
+    }
+  }
+
+  UnloadPage(page);
+  CloseSavedDocument();
+}
+
 TEST_F(FPDFSaveEmbedderTest, SaveLinearizedDoc) {
   const int kPageCount = 3;
   std::string original_md5[kPageCount];
