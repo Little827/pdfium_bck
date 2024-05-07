@@ -12,7 +12,6 @@
 #include "core/fxcodec/flate/flatemodule.h"
 
 #include <stdint.h>
-#include <string.h>
 
 #include <algorithm>
 #include <limits>

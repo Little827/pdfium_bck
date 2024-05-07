@@ -10,11 +10,11 @@
 #endif
 
 #include "core/fdrm/fx_crypt_sha.h"
-#include "core/fxcrt/stl_util.h"
 
-#include <string.h>
+#include <stdint.h>
 
 #include "core/fxcrt/fx_memcpy_wrappers.h"
+#include "core/fxcrt/stl_util.h"
 
 #define SHA_GET_UINT32(n, b, i)                                         \
   {                                                                     \

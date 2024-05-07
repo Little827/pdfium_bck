@@ -11,8 +11,6 @@
 
 #include "core/fxge/cfx_cliprgn.h"
 
-#include <string.h>
-
 #include <utility>
 
 #include "core/fxcrt/check_op.h"

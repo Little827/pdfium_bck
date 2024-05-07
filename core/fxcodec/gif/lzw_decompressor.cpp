@@ -11,7 +11,7 @@
 
 #include "core/fxcodec/gif/lzw_decompressor.h"
 
-#include <string.h>
+#include <stdint.h>
 
 #include <algorithm>
 #include <memory>
