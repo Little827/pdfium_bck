@@ -73,6 +73,11 @@ class StringTemplate {
     return reinterpret_span<const UnsignedType>(span_with_terminator());
   }
 
+  // Return length as determined by the location of the first embedded NUL.
+  size_t GetStringLength() const {
+    return m_pData ? m_pData->GetStringLength() : 0;
+  }
+
   // Note: Any subsequent modification of |this| will invalidate iterators.
   const_iterator begin() const {
     return m_pData ? m_pData->span().begin() : nullptr;

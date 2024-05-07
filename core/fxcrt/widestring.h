@@ -10,7 +10,6 @@
 #include <stdarg.h>
 #include <stddef.h>
 #include <stdint.h>
-#include <wchar.h>
 
 #include <functional>
 #include <iosfwd>
@@ -75,11 +74,6 @@ class WideString : public StringTemplate<wchar_t> {
   // and is always NUL terminated.
   // Note: Any subsequent modification of |this| will invalidate the result.
   const wchar_t* c_str() const { return m_pData ? m_pData->m_String : L""; }
-
-
-  size_t GetStringLength() const {
-    return m_pData ? wcslen(m_pData->m_String) : 0;
-  }
 
   WideString& operator=(const wchar_t* str);
   WideString& operator=(WideStringView str);

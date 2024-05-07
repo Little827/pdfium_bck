@@ -10,7 +10,6 @@
 #include <stdarg.h>
 #include <stddef.h>
 #include <stdint.h>
-#include <string.h>
 
 #include <functional>
 #include <iosfwd>
@@ -68,10 +67,6 @@ class ByteString : public StringTemplate<char> {
   // and is always NUL terminated.
   // Note: Any subsequent modification of |this| will invalidate the result.
   const char* c_str() const { return m_pData ? m_pData->m_String : ""; }
-
-  size_t GetStringLength() const {
-    return m_pData ? strlen(m_pData->m_String) : 0;
-  }
 
   int Compare(ByteStringView str) const;
   bool EqualNoCase(ByteStringView str) const;
