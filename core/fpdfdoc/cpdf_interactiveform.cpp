@@ -60,9 +60,7 @@ int CALLBACK EnumFontFamExProc(ENUMLOGFONTEXA* lpelfe,
     return 1;
 
   PDF_FONTDATA* pData = (PDF_FONTDATA*)lParam;
-  // TODO(tsepez): investigate safety.
-  UNSAFE_BUFFERS(
-      FXSYS_memcpy(&pData->lf, &lpelfe->elfLogFont, sizeof(LOGFONTA)));
+  pData->lf = lpelfe->elfLogFont;
   pData->bFind = true;
   return 0;
 }
@@ -70,7 +68,7 @@ int CALLBACK EnumFontFamExProc(ENUMLOGFONTEXA* lpelfe,
 bool RetrieveSpecificFont(FX_Charset charSet,
                           LPCSTR pcsFontName,
                           LOGFONTA& lf) {
-  memset(&lf, 0, sizeof(LOGFONTA));
+  lf = {};
   lf.lfCharSet = static_cast<int>(charSet);
   lf.lfPitchAndFamily = DEFAULT_PITCH | FF_DONTCARE;
   if (pcsFontName) {
@@ -79,8 +77,7 @@ bool RetrieveSpecificFont(FX_Charset charSet,
     strcpy(lf.lfFaceName, pcsFontName);
   }
 
-  PDF_FONTDATA fd;
-  memset(&fd, 0, sizeof(PDF_FONTDATA));
+  PDF_FONTDATA fd = {};
   HDC hDC = ::GetDC(nullptr);
   EnumFontFamiliesExA(hDC, &lf, (FONTENUMPROCA)EnumFontFamExProc, (LPARAM)&fd,
                       0);
