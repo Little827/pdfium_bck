@@ -121,7 +121,7 @@ void PDFiumFuzzerHelper::RenderPdf(const char* data, size_t len) {
       GetRenderingAndFormFlagFromData(data, len);
 
   IPDF_JSPLATFORM platform_callbacks;
-  memset(&platform_callbacks, '\0', sizeof(platform_callbacks));
+  FXSYS_memset(&platform_callbacks, '\0', sizeof(platform_callbacks));
   platform_callbacks.version = 3;
   platform_callbacks.app_alert = ExampleAppAlert;
   platform_callbacks.app_response = ExampleAppResponse;
@@ -129,25 +129,25 @@ void PDFiumFuzzerHelper::RenderPdf(const char* data, size_t len) {
   platform_callbacks.Doc_mail = ExampleDocMail;
 
   FPDF_FORMFILLINFO form_callbacks;
-  memset(&form_callbacks, '\0', sizeof(form_callbacks));
+  FXSYS_memset(&form_callbacks, '\0', sizeof(form_callbacks));
   form_callbacks.version = GetFormCallbackVersion();
   form_callbacks.m_pJsPlatform = &platform_callbacks;
 
   // SAFETY: trusted arguments from fuzzer,
   FuzzerTestLoader loader(UNSAFE_BUFFERS(pdfium::make_span(data, len)));
   FPDF_FILEACCESS file_access;
-  memset(&file_access, '\0', sizeof(file_access));
+  FXSYS_memset(&file_access, '\0', sizeof(file_access));
   file_access.m_FileLen = static_cast<unsigned long>(len);
   file_access.m_GetBlock = FuzzerTestLoader::GetBlock;
   file_access.m_Param = &loader;
 
   FX_FILEAVAIL file_avail;
-  memset(&file_avail, '\0', sizeof(file_avail));
+  FXSYS_memset(&file_avail, '\0', sizeof(file_avail));
   file_avail.version = 1;
   file_avail.IsDataAvail = Is_Data_Avail;
 
   FX_DOWNLOADHINTS hints;
-  memset(&hints, '\0', sizeof(hints));
+  FXSYS_memset(&hints, '\0', sizeof(hints));
   hints.version = 1;
   hints.AddSegment = Add_Segment;
 
