@@ -13,6 +13,7 @@
 #include <string.h>
 
 #include "core/fxcrt/retain_ptr.h"
+#include "core/fxcrt/stl_util.h"
 #include "testing/gtest/include/gtest/gtest.h"
 
 TEST(CPDF_CalGray, TranslateImageLine) {
@@ -23,7 +24,7 @@ TEST(CPDF_CalGray, TranslateImageLine) {
   ASSERT_TRUE(pCal);
 
   uint8_t dst[12];
-  memset(dst, 0xbd, sizeof(dst));
+  fxcrt::Fill(dst, 0xbd);
   // `bTransMask` only applies to CYMK colorspaces.
   pCal->TranslateImageLine(dst, kSrc, 4, 4, 1, /*bTransMask=*/false);
   for (size_t i = 0; i < 12; ++i)
@@ -39,7 +40,7 @@ TEST(CPDF_CalRGB, TranslateImageLine) {
   ASSERT_TRUE(pCal);
 
   uint8_t dst[12];
-  memset(dst, 0xbd, sizeof(dst));
+  fxcrt::Fill(dst, 0xbd);
   // `bTransMask` only applies to CYMK colorspaces.
   pCal->TranslateImageLine(dst, kSrc, 4, 4, 1, /*bTransMask=*/false);
   for (size_t i = 0; i < 12; ++i)

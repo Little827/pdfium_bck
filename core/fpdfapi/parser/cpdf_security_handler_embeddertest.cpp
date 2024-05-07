@@ -176,8 +176,7 @@ TEST_F(CPDFSecurityHandlerEmbedderTest, PasswordAfterGenerateSave) {
     UnloadPage(page);
   }
   std::string new_file = GetString();
-  FPDF_FILEACCESS file_access;
-  memset(&file_access, 0, sizeof(file_access));
+  FPDF_FILEACCESS file_access = {};
   file_access.m_FileLen = new_file.size();
   file_access.m_GetBlock = GetBlockFromString;
   file_access.m_Param = &new_file;
