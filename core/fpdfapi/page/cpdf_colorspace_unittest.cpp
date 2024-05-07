@@ -12,6 +12,7 @@
 #include <stdint.h>
 #include <string.h>
 
+#include "core/fxcrt/fx_memcpy_wrappers.h"
 #include "core/fxcrt/retain_ptr.h"
 #include "core/fxcrt/stl_util.h"
 #include "testing/gtest/include/gtest/gtest.h"

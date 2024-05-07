@@ -258,7 +258,7 @@ TEST(fxcodec, DecodeDataSkip) {
     DecodeData dd(stream_data, sizeof(stream_data));
 
     // Skipping beyond end of stream is allowed and returns full distance.
-    fxcrt::Fill(buffer, 0xbd);
+    FXSYS_memset(buffer, 0xbd, sizeof(buffer));
     EXPECT_EQ(9u, opj_skip_from_memory(9, &dd));
 
     // Next read fails.
