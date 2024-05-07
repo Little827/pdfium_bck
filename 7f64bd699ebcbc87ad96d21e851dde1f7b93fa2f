@@ -16,6 +16,23 @@
       "message": "please see https://pdfium-review.googlesource.com/c/pdfium/+/118890 for repro test",
       "revId": "7f64bd699ebcbc87ad96d21e851dde1f7b93fa2f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d91b2370_3b2cb242",
+        "filename": "core/fpdfapi/page/cpdf_color.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-05-07T18:30:50Z",
+      "side": 1,
+      "message": "Got a merge conflict here.",
+      "revId": "7f64bd699ebcbc87ad96d21e851dde1f7b93fa2f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
