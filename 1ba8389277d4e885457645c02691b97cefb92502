@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f5590b4_e4ecfecb",
+        "filename": "core/fxcodec/gif/lzw_decompressor.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-05-07T22:43:33Z",
+      "side": 1,
+      "message": "\u003e \"Aggreate\" is a possible misspelling of \"Aggregate\".\n\nPlease fix.",
+      "parentUuid": "36a27f18_0ab02040",
+      "range": {
+        "startLine": 149,
+        "startChar": 45,
+        "endLine": 149,
+        "endChar": 53
+      },
+      "revId": "1ba8389277d4e885457645c02691b97cefb92502",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
