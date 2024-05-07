@@ -23,6 +23,30 @@
       },
       "revId": "1ba8389277d4e885457645c02691b97cefb92502",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbcc122a_559261d3",
+        "filename": "core/fxcodec/gif/lzw_decompressor.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-05-07T22:56:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f5590b4_e4ecfecb",
+      "range": {
+        "startLine": 149,
+        "startChar": 45,
+        "endLine": 149,
+        "endChar": 53
+      },
+      "revId": "1ba8389277d4e885457645c02691b97cefb92502",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
