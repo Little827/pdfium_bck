@@ -54,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "db70aaa1_e9b8df6e",
+        "filename": "fpdfsdk/fpdf_save_embeddertest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 9186
+      },
+      "writtenOn": "2024-05-07T13:41:49Z",
+      "side": 1,
+      "message": "please see repro test in this CL: https://pdfium-review.googlesource.com/c/pdfium/+/118890",
+      "parentUuid": "5c399ff2_7a91b8b4",
+      "revId": "ea4dc4a02030fafabd6bfe0a791143b75f49ce34",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "74031120_49aab2ff",
         "filename": "fpdfsdk/fpdf_save_embeddertest.cpp",
         "patchSetId": 4
@@ -65,6 +83,24 @@
       "writtenOn": "2024-01-25T23:14:08Z",
       "side": 1,
       "message": "No need to add a comment to say OpenDocument() opens the document.",
+      "revId": "ea4dc4a02030fafabd6bfe0a791143b75f49ce34",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db61669c_3ef166b1",
+        "filename": "fpdfsdk/fpdf_save_embeddertest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 9186
+      },
+      "writtenOn": "2024-05-07T13:41:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74031120_49aab2ff",
       "revId": "ea4dc4a02030fafabd6bfe0a791143b75f49ce34",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -152,6 +188,24 @@
       "side": 1,
       "message": "This file is a bit wonky, and FPDF_SaveAsCopy() does not deal with it well. That\u0027s a separate issue. Using a small, targeted test PDF sidesteps this issue.",
       "parentUuid": "b104e306_b0ba8d09",
+      "revId": "ea4dc4a02030fafabd6bfe0a791143b75f49ce34",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2a33ab5_4fbad4d7",
+        "filename": "testing/resources/bug_2116.pdf",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 9186
+      },
+      "writtenOn": "2024-05-07T13:41:49Z",
+      "side": 1,
+      "message": "okay, we can tackle that over in the CL with the reproduction test https://pdfium-review.googlesource.com/c/pdfium/+/118890",
+      "parentUuid": "106b3d9d_bd006553",
       "revId": "ea4dc4a02030fafabd6bfe0a791143b75f49ce34",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
