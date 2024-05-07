@@ -16,6 +16,7 @@
 #include "core/fxcodec/cfx_codec_memory.h"
 #include "core/fxcrt/data_vector.h"
 #include "core/fxcrt/span_util.h"
+#include "core/fxcrt/stl_util.h"
 #include "testing/gtest/include/gtest/gtest.h"
 
 namespace fxcodec {
