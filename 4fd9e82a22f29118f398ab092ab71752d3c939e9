@@ -34,6 +34,91 @@
       "parentUuid": "070e4d31_d7836892",
       "revId": "4fd9e82a22f29118f398ab092ab71752d3c939e9",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04b10b47_65459fec",
+        "filename": "fpdfsdk/fpdf_save_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-05-07T20:16:06Z",
+      "side": 1,
+      "message": "Does `obj` need to be freed after this?",
+      "revId": "4fd9e82a22f29118f398ab092ab71752d3c939e9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "069a6df5_f7ce727f",
+        "filename": "fpdfsdk/fpdf_save_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-05-07T20:16:06Z",
+      "side": 1,
+      "message": "See https://pdfium-review.googlesource.com/c/pdfium/+/115330/comment/301ebaf6_e9217969/",
+      "revId": "4fd9e82a22f29118f398ab092ab71752d3c939e9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0ff2bd4_33a35759",
+        "filename": "fpdfsdk/fpdf_save_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-05-07T20:16:06Z",
+      "side": 1,
+      "message": "Declare 1 variable per line.",
+      "revId": "4fd9e82a22f29118f398ab092ab71752d3c939e9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9dc3a42_56cf71a4",
+        "filename": "fpdfsdk/fpdf_save_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-05-07T20:16:06Z",
+      "side": 1,
+      "message": "Use EXPECT_EQ().",
+      "revId": "4fd9e82a22f29118f398ab092ab71752d3c939e9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f874e0d5_d7d42a1e",
+        "filename": "fpdfsdk/fpdf_save_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-05-07T20:16:06Z",
+      "side": 1,
+      "message": "Instead of having this commented out, write a TODO comment on line 130 to explain what\u0027s going on.",
+      "revId": "4fd9e82a22f29118f398ab092ab71752d3c939e9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
