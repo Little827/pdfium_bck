@@ -10,6 +10,7 @@
 #include <iterator>
 #include <optional>
 
+#include "core/fxcrt/stl_util.h"
 #include "public/fpdf_structtree.h"
 #include "testing/embedder_test.h"
 #include "testing/fx_string_testhelpers.h"
@@ -58,8 +59,7 @@ TEST_F(FPDFStructTreeEmbedderTest, GetAltText) {
     EXPECT_EQ(-1, FPDF_StructElement_GetMarkedContentID(gchild_element));
     ASSERT_EQ(24U, FPDF_StructElement_GetAltText(gchild_element, nullptr, 0));
 
-    unsigned short buffer[12];
-    memset(buffer, 0, sizeof(buffer));
+    unsigned short buffer[12] = {};
     // Deliberately pass in a small buffer size to make sure |buffer| remains
     // untouched.
     ASSERT_EQ(24U, FPDF_StructElement_GetAltText(gchild_element, buffer, 1));
@@ -456,18 +456,18 @@ TEST_F(FPDFStructTreeEmbedderTest, GetType) {
     ASSERT_TRUE(element);
 
     // test nullptr inputs
-    unsigned short buffer[12];
+    unsigned short buffer[12] = {};
     ASSERT_EQ(0U, FPDF_StructElement_GetType(nullptr, buffer, sizeof(buffer)));
     ASSERT_EQ(0U, FPDF_StructElement_GetType(nullptr, nullptr, 0));
     ASSERT_EQ(18U, FPDF_StructElement_GetType(element, nullptr, 0));
 
-    memset(buffer, 0, sizeof(buffer));
     // Deliberately pass in a small buffer size to make sure |buffer| remains
     // untouched.
+    fxcrt::Fill(buffer, 0xbdfcu);
     ASSERT_EQ(18U, FPDF_StructElement_GetType(element, buffer, 1));
-    for (size_t i = 0; i < std::size(buffer); ++i)
-      EXPECT_EQ(0U, buffer[i]);
-
+    for (const auto b : buffer) {
+      EXPECT_EQ(0xbdfcu, b);
+    }
     ASSERT_EQ(18U, FPDF_StructElement_GetType(element, buffer, sizeof(buffer)));
     EXPECT_EQ(L"Document", GetPlatformWString(buffer));
   }
@@ -508,14 +508,15 @@ TEST_F(FPDFStructTreeEmbedderTest, GetObjType) {
 
     ASSERT_EQ(1, FPDF_StructElement_CountChildren(child));
     FPDF_STRUCTELEMENT gchild = FPDF_StructElement_GetChildAtIndex(child, 0);
-    memset(buffer, 0, sizeof(buffer));
+
+    fxcrt::Fill(buffer, 0xbdfcu);
     // Missing /Type in `gchild`
     ASSERT_EQ(0U,
               FPDF_StructElement_GetObjType(gchild, buffer, sizeof(buffer)));
     // Buffer is untouched.
-    for (size_t i = 0; i < std::size(buffer); ++i)
-      EXPECT_EQ(0U, buffer[i]);
-
+    for (const auto b : buffer) {
+      EXPECT_EQ(0xbdfcu, b);
+    }
     ASSERT_EQ(1, FPDF_StructElement_CountChildren(gchild));
     FPDF_STRUCTELEMENT ggchild = FPDF_StructElement_GetChildAtIndex(gchild, 0);
     ASSERT_EQ(28U,
@@ -574,21 +575,21 @@ TEST_F(FPDFStructTreeEmbedderTest, GetTitle) {
     ASSERT_TRUE(element);
 
     // test nullptr inputs
-    unsigned short buffer[13];
+    unsigned short buffer[13] = {};
     ASSERT_EQ(0U, FPDF_StructElement_GetTitle(nullptr, buffer, sizeof(buffer)));
     ASSERT_EQ(0U, FPDF_StructElement_GetTitle(nullptr, nullptr, 0));
     ASSERT_EQ(20U, FPDF_StructElement_GetTitle(element, nullptr, 0));
 
-    memset(buffer, 0, sizeof(buffer));
     // Deliberately pass in a small buffer size to make sure |buffer| remains
     // untouched.
+    fxcrt::Fill(buffer, 0xbdfcu);
     ASSERT_EQ(20U, FPDF_StructElement_GetTitle(element, buffer, 1));
-    for (size_t i = 0; i < std::size(buffer); ++i)
-      EXPECT_EQ(0U, buffer[i]);
+    for (const auto b : buffer) {
+      EXPECT_EQ(0xbdfcu, b);
+    }
 
     ASSERT_EQ(20U,
               FPDF_StructElement_GetTitle(element, buffer, sizeof(buffer)));
-
     EXPECT_EQ(L"TitleText", GetPlatformWString(buffer));
 
     ASSERT_EQ(1, FPDF_StructElement_CountChildren(element));
@@ -675,7 +676,7 @@ TEST_F(FPDFStructTreeEmbedderTest, GetAttributes) {
       EXPECT_EQ(12U, out_len);
       EXPECT_EQ(L"Table", GetPlatformWString(str_val));
 
-      memset(buffer, 0, sizeof(buffer));
+      fxcrt::Fill(buffer, 0u);
       ASSERT_TRUE(FPDF_StructElement_Attr_GetName(attr, 0, buffer,
                                                   sizeof(buffer), &out_len));
       EXPECT_EQ(8U, out_len);
