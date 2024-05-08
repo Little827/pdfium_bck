@@ -56,6 +56,40 @@
       },
       "revId": "01a309f59880b9c2f0f54bd3bd2050ee345a6aa1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57428937_d6b24d44",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-05-08T19:29:55Z",
+      "side": 1,
+      "message": "Since this is trying to set `alpha` in a rectangle, can the `row` start at `rect.top`? Instead of interating through `col`, can the relevant part of the entire row be set all at once?",
+      "revId": "01a309f59880b9c2f0f54bd3bd2050ee345a6aa1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66819a54_47dc2a91",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-05-08T19:29:55Z",
+      "side": 1,
+      "message": "WDYT about clearing `mask` to initialize all pixels to 0xff first? Then there\u0027s no need to do this 1 pixel at a time.",
+      "revId": "01a309f59880b9c2f0f54bd3bd2050ee345a6aa1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
