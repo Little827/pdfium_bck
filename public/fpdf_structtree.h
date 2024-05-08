@@ -445,6 +445,28 @@ FPDF_StructElement_Attr_GetBlobValue(FPDF_STRUCTELEMENT_ATTR_VALUE value,
                                      unsigned long* out_buflen);
 
 // Experimental API.
+// Function: FPDF_StructElement_Attr_CountChildren
+//           Count the number of children values in an attribute.
+// Parameters:
+//           value - Handle to the value.
+// Return value:
+//           The number of children, or -1 on error.
+FPDF_EXPORT int FPDF_CALLCONV
+FPDF_StructElement_Attr_CountChildren(FPDF_STRUCTELEMENT_ATTR_VALUE value);
+
+// Experimental API.
+// Function: FPDF_StructElement_Attr_GetChildAtIndex
+//           Get a child from an attribute.
+// Parameters:
+//           value - Handle to the value.
+//           index - The index for the child, 0-based.
+// Return value:
+//          The child at the n-th index or NULL on error.
+FPDF_EXPORT FPDF_STRUCTELEMENT_ATTR_VALUE FPDF_CALLCONV
+FPDF_StructElement_Attr_GetChildAtIndex(FPDF_STRUCTELEMENT_ATTR_VALUE value,
+                                        int index);
+
+// Experimental API.
 // Function: FPDF_StructElement_GetMarkedContentIdCount
 //          Get the count of marked content ids for a given element.
 // Parameters:
