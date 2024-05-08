@@ -1084,6 +1084,12 @@ TEST_F(FPDFEditEmbedderTest, RemoveTextObject) {
     CompareBitmap(page_bitmap.get(), 200, 200, HelloWorldChecksum());
   }
 
+  // Check the initial state of the text page as well.
+  ScopedFPDFTextPage original_text_page(FPDFText_LoadPage(page));
+  ASSERT_TRUE(original_text_page);
+  EXPECT_EQ(30, FPDFText_CountChars(original_text_page.get()));
+  EXPECT_EQ(0, FPDFText_GetFontWeight(original_text_page.get(), 0));
+
   // Get the "Hello, world!" text object and remove it.
   ASSERT_EQ(2, FPDFPage_CountObjects(page));
   {
@@ -1099,6 +1105,17 @@ TEST_F(FPDFEditEmbedderTest, RemoveTextObject) {
     ScopedFPDFBitmap page_bitmap = RenderPage(page);
     CompareBitmap(page_bitmap.get(), 200, 200, FirstRemovedChecksum());
   }
+
+  // Note that `original_text_page` is out of date. Accessing it is actually not
+  // guaranteed to be safe. e.g. Calling FPDFText_GetFontWeight() on it results
+  // in a UAF.
+  EXPECT_EQ(30, FPDFText_CountChars(original_text_page.get()));
+
+  // Whereas a newly created FPDF_TEXTPAGE will work as expected.
+  ScopedFPDFTextPage modified_text_page(FPDFText_LoadPage(page));
+  ASSERT_TRUE(modified_text_page);
+  EXPECT_EQ(15, FPDFText_CountChars(modified_text_page.get()));
+  EXPECT_EQ(0, FPDFText_GetFontWeight(modified_text_page.get(), 0));
 
   // Verify the rendering again after calling FPDFPage_GenerateContent().
   ASSERT_TRUE(FPDFPage_GenerateContent(page));
