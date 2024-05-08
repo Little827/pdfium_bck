@@ -419,16 +419,13 @@ FPDF_StructElement_Attr_GetBlobValue(FPDF_STRUCTELEMENT_ATTR struct_attribute,
   if (!obj || !obj->IsString())
     return false;
 
-  ByteString result = obj->GetString();
-  const unsigned long len =
-      pdfium::checked_cast<unsigned long>(result.GetLength());
+  // SAFETY: required from caller.
+  pdfium::span<char> result_span =
+      UNSAFE_BUFFERS(pdfium::make_span(static_cast<char*>(buffer), buflen));
 
-  // TODO(tsepez): convert to span.
-  if (buffer && len <= buflen) {
-    // SAFETY: check above.
-    UNSAFE_BUFFERS(FXSYS_memcpy(buffer, result.c_str(), len));
-  }
-  *out_buflen = len;
+  ByteString blob_value = obj->GetString();
+  fxcrt::try_spancpy(result_span, blob_value.span());
+  *out_buflen = pdfium::checked_cast<unsigned long>(blob_value.span().size());
   return true;
 }
 
