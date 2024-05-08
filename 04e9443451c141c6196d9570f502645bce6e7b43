@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ef4bcbb_96b735d4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-05-08T00:37:16Z",
+      "side": 1,
+      "message": "Want to update //README.md with s/sample/test/ for the references to pdfium_test?",
+      "revId": "04e9443451c141c6196d9570f502645bce6e7b43",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c2edb2c_49207dcc",
+        "filename": "testing/BUILD.gn",
+        "patchSetId": 5
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-05-08T00:37:16Z",
+      "side": 1,
+      "message": "Update the comment here.",
+      "revId": "04e9443451c141c6196d9570f502645bce6e7b43",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
