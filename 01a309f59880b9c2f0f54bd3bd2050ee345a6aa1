@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6ed0ecd2_99faccbb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-05-08T20:17:18Z",
+      "side": 1,
+      "message": "Please add https://pdfium-gold.skia.org/img/images/6c78e8610171140de3efec65facca211.png as testing/resources/pixel/bug_2106_expected_skia.pdf.0.png.",
+      "revId": "01a309f59880b9c2f0f54bd3bd2050ee345a6aa1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ec34bb92_8b500ec4",
         "filename": "AUTHORS",
         "patchSetId": 3
@@ -88,6 +105,23 @@
       "writtenOn": "2024-05-08T19:29:55Z",
       "side": 1,
       "message": "WDYT about clearing `mask` to initialize all pixels to 0xff first? Then there\u0027s no need to do this 1 pixel at a time.",
+      "revId": "01a309f59880b9c2f0f54bd3bd2050ee345a6aa1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1494c9c_b0142459",
+        "filename": "testing/resources/pixel/bug_2106_expected.pdf.0.png",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-05-08T20:17:18Z",
+      "side": 1,
+      "message": "If you have access to `optipng`, then please run it on all the new PNG files to minimize their size.",
       "revId": "01a309f59880b9c2f0f54bd3bd2050ee345a6aa1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
