@@ -16,6 +16,23 @@
       "message": "Longstanding irritation.",
       "revId": "69cb9cf140570c453b6dfc573ae2a17ce0fdd9cf",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "edbb146c_95427858",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5645
+      },
+      "writtenOn": "2024-05-08T19:42:21Z",
+      "side": 1,
+      "message": "G-account stamp.",
+      "revId": "69cb9cf140570c453b6dfc573ae2a17ce0fdd9cf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
