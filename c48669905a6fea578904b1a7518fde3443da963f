@@ -109,6 +109,48 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cf3faa7_057c450d",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 3428039
+      },
+      "writtenOn": "2024-05-08T15:43:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f538977_31fe6a2e",
+      "revId": "c48669905a6fea578904b1a7518fde3443da963f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "224ce440_c21f1a9d",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 3428039
+      },
+      "writtenOn": "2024-05-08T15:43:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f509d55_c821fa45",
+      "range": {
+        "startLine": 363,
+        "startChar": 0,
+        "endLine": 363,
+        "endChar": 2
+      },
+      "revId": "c48669905a6fea578904b1a7518fde3443da963f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7418ddab_ce210646",
@@ -140,6 +182,24 @@
       "side": 1,
       "message": "It would be great if this can be a \".in\" file instead. See the existing ones in the directory for example. If you need help making the .in file, please let me know and I can help create one.",
       "parentUuid": "7418ddab_ce210646",
+      "revId": "c48669905a6fea578904b1a7518fde3443da963f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35ead19b_bf30b6df",
+        "filename": "testing/resources/pixel/bug_2106.pdf",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3428039
+      },
+      "writtenOn": "2024-05-08T15:43:36Z",
+      "side": 1,
+      "message": "simplify and changed bug_2106.pdf into bug_2106.in.",
+      "parentUuid": "634c9d2e_5b418a64",
       "revId": "c48669905a6fea578904b1a7518fde3443da963f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }

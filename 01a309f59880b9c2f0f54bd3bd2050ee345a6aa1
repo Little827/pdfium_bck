@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02d044c5_5ed6fa45",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 3428039
+      },
+      "writtenOn": "2024-05-08T15:43:36Z",
+      "side": 1,
+      "message": "write alpha mask directly just like elsewhere in the source code since i found CFX_DIBitmap::CompositeRect produce an incorrect mask\n\nsince CFX_DIBitmap::Create create a mask with all value \u003d\u003d 0, I also tried to call CFX_DIBitmap::Clear(0xff000000) before calling CFX_DIBitmap::CompositeRect, but the mask is still incorrect",
+      "range": {
+        "startLine": 382,
+        "startChar": 4,
+        "endLine": 382,
+        "endChar": 42
+      },
+      "revId": "01a309f59880b9c2f0f54bd3bd2050ee345a6aa1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
