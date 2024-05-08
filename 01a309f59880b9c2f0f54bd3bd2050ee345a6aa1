@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ec34bb92_8b500ec4",
+        "filename": "AUTHORS",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-05-08T19:24:33Z",
+      "side": 1,
+      "message": "Please keep the list sorted alphabetically. (Move up 1 line.)",
+      "revId": "01a309f59880b9c2f0f54bd3bd2050ee345a6aa1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "02d044c5_5ed6fa45",
         "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
         "patchSetId": 3

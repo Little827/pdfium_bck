@@ -69,6 +69,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5f479a1_3bd696bd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-05-08T19:24:33Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "51377ae0_ec46edce",
+      "revId": "c48669905a6fea578904b1a7518fde3443da963f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9f509d55_c821fa45",
@@ -200,6 +218,24 @@
       "side": 1,
       "message": "simplify and changed bug_2106.pdf into bug_2106.in.",
       "parentUuid": "634c9d2e_5b418a64",
+      "revId": "c48669905a6fea578904b1a7518fde3443da963f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7be2514a_1ad33ea9",
+        "filename": "testing/resources/pixel/bug_2106.pdf",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-05-08T19:24:33Z",
+      "side": 1,
+      "message": "Thanks for doing this, though testing/resources/pixel/bug_2106.in still shows up as a binary blob in Gerrit due to the binary stream in object 9 0. Can you change the filter to `/Filter [/ASCII85Decode /DCTDecode]` and use testing/tools/encode_pdf_filter.py to encode the stream?",
+      "parentUuid": "35ead19b_bf30b6df",
       "revId": "c48669905a6fea578904b1a7518fde3443da963f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
