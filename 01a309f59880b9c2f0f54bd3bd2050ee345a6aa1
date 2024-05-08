@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "11070836_ca59e0a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3428039
+      },
+      "writtenOn": "2024-05-08T15:48:17Z",
+      "side": 1,
+      "message": "The black rectangle in bug_2106_expected.pdf.0.png has the expected alpha value, although it cannot be seen on Gerrit.",
+      "revId": "01a309f59880b9c2f0f54bd3bd2050ee345a6aa1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "02d044c5_5ed6fa45",
