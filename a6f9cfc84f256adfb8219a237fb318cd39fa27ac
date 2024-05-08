@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1718ae33_e66be591",
+        "filename": "core/fxcrt/bytestring_unittest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-05-08T23:43:25Z",
+      "side": 1,
+      "message": "Maybe ASSERT_EQ(), and then check `empty_span_with_terminator[0]` is NUL?",
+      "revId": "a6f9cfc84f256adfb8219a237fb318cd39fa27ac",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
