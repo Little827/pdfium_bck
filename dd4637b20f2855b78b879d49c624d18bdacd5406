@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9a8ab1d_dea5f4e9",
+        "filename": "fpdfsdk/cpdfsdk_helpers.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-05-08T23:34:19Z",
+      "side": 1,
+      "message": "Throughout, we keep the length doesn\u0027t matter if buffer \u003d\u003d NULL behaviour intact. Though it seems wrong for non-zero length for buflen in this case.",
+      "range": {
+        "startLine": 308,
+        "startChar": 0,
+        "endLine": 308,
+        "endChar": 15
+      },
+      "revId": "dd4637b20f2855b78b879d49c624d18bdacd5406",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56b784e7_a46d1971",
+        "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 701,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-05-08T23:34:19Z",
+      "side": 1,
+      "message": "I have half a mind to change all these nullptr test to pass a bad length like {nullptr, 1000} to prove that the length is ignored when the buffer is null, but only half a mind.",
+      "range": {
+        "startLine": 701,
+        "startChar": 67,
+        "endLine": 701,
+        "endChar": 68
+      },
+      "revId": "dd4637b20f2855b78b879d49c624d18bdacd5406",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
