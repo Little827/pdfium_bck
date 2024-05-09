@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c462773_73d67315",
+        "filename": "core/fxcrt/bytestring_unittest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-05-09T00:29:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1718ae33_e66be591",
+      "revId": "a6f9cfc84f256adfb8219a237fb318cd39fa27ac",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "636bea0c_a3514ebb",
@@ -54,6 +72,54 @@
       "writtenOn": "2024-05-08T23:48:02Z",
       "side": 1,
       "message": "Pre-existing: IWYU.",
+      "range": {
+        "startLine": 87,
+        "startChar": 44,
+        "endLine": 87,
+        "endChar": 53
+      },
+      "revId": "a6f9cfc84f256adfb8219a237fb318cd39fa27ac",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80e0c5c3_0309ee8e",
+        "filename": "core/fxcrt/string_template.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-05-09T00:29:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "636bea0c_a3514ebb",
+      "range": {
+        "startLine": 87,
+        "startChar": 21,
+        "endLine": 87,
+        "endChar": 35
+      },
+      "revId": "a6f9cfc84f256adfb8219a237fb318cd39fa27ac",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf25e346_fb78045d",
+        "filename": "core/fxcrt/string_template.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-05-09T00:29:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d2c5d16_dad41e85",
       "range": {
         "startLine": 87,
         "startChar": 44,
