@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2ba17ec_92feb1e9",
+        "filename": "core/fpdfapi/page/cpdf_psengine.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-05-09T18:12:52Z",
+      "side": 1,
+      "message": "NOTE: these are theoretically safe given iterator hardening in libc++, but it still gives me pause ...",
+      "range": {
+        "startLine": 439,
+        "startChar": 2,
+        "endLine": 441,
+        "endChar": 54
+      },
+      "revId": "d01097168a774357dd5f99da7faea50222d5183d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
