@@ -4,11 +4,6 @@
 
 // Original code copyright 2014 Foxit Software Inc. http://www.foxitsoftware.com
 
-#if defined(UNSAFE_BUFFERS_BUILD)
-// TODO(crbug.com/pdfium/2153): resolve buffer safety issues.
-#pragma allow_unsafe_buffers
-#endif
-
 #include "xfa/fxfa/parser/cxfa_color.h"
 
 #include "core/fxcrt/fx_extension.h"
@@ -37,8 +32,8 @@ FX_ARGB CXFA_Color::StringToFXARGB(WideStringView view) {
   if (view.IsEmpty())
     return kDefaultValue;
 
-  const wchar_t* str = view.unterminated_c_str();
-  size_t len = view.GetLength();
+  pdfium::span<const wchar_t> str = view.span();
+  size_t len = str.size();
   size_t cc = 0;
   while (cc < len && FXSYS_iswspace(str[cc]))
     cc++;
