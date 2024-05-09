@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c18cb82_d754ca04",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-05-09T20:46:49Z",
+      "side": 1,
+      "message": "Someday the bots might run. In the mean time, if you have any objections ...",
+      "revId": "cd30ce575878313beb7ff6e8ad33289e618ff909",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
