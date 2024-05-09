@@ -105,10 +105,9 @@ class CPDF_StreamContentParser {
   // Makes a matrix from {GetNumber(5), ..., GetNumber(0)}.
   CFX_Matrix GetMatrix() const;
   void OnOperator(ByteStringView op);
-  void AddTextObject(const ByteString* pStrs,
+  void AddTextObject(pdfium::span<const ByteString> pStrs,
                      float fInitKerning,
-                     const std::vector<float>& kernings,
-                     size_t nSegs);
+                     pdfium::span<const float> kernings);
   float GetHorizontalTextSize(float fKerning) const;
   float GetVerticalTextSize(float fKerning) const;
 

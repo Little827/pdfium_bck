@@ -1244,10 +1244,10 @@ RetainPtr<CPDF_ShadingPattern> CPDF_StreamContentParser::FindShading(
       ->GetShading(std::move(pPattern), m_pCurStates->parent_matrix());
 }
 
-void CPDF_StreamContentParser::AddTextObject(const ByteString* pStrs,
-                                             float fInitKerning,
-                                             const std::vector<float>& kernings,
-                                             size_t nSegs) {
+void CPDF_StreamContentParser::AddTextObject(
+    pdfium::span<const ByteString> pStrs,
+    float fInitKerning,
+    pdfium::span<const float> kernings) {
   RetainPtr<CPDF_Font> pFont = m_pCurStates->text_state().GetFont();
   if (!pFont)
     return;
@@ -1259,6 +1259,7 @@ void CPDF_StreamContentParser::AddTextObject(const ByteString* pStrs,
       m_pCurStates->IncrementTextPositionX(
           -GetHorizontalTextSize(fInitKerning));
   }
+  size_t nSegs = pStrs.size();
   if (nSegs == 0)
     return;
 
@@ -1278,7 +1279,7 @@ void CPDF_StreamContentParser::AddTextObject(const ByteString* pStrs,
       text_ctm[2] = ctm.b;
       text_ctm[3] = ctm.d;
     }
-    pText->SetSegments(pStrs, kernings, nSegs);
+    pText->SetSegments(pStrs, kernings);
     pText->SetPosition(m_mtContentToUser.Transform(
         m_pCurStates->GetTransformedTextPosition()));
 
@@ -1317,8 +1318,9 @@ int32_t CPDF_StreamContentParser::GetCurrentStreamIndex() {
 
 void CPDF_StreamContentParser::Handle_ShowText() {
   ByteString str = GetString(0);
-  if (!str.IsEmpty())
-    AddTextObject(&str, 0, std::vector<float>(), 1);
+  if (!str.IsEmpty()) {
+    AddTextObject(pdfium::span_from_ref(str), 0, std::vector<float>());
+  }
 }
 
 void CPDF_StreamContentParser::Handle_ShowText_Positioning() {
@@ -1364,7 +1366,8 @@ void CPDF_StreamContentParser::Handle_ShowText_Positioning() {
         kernings[iSegment - 1] += num;
     }
   }
-  AddTextObject(strs.data(), fInitKerning, kernings, iSegment);
+  AddTextObject(pdfium::make_span(strs).first(iSegment), fInitKerning,
+                kernings);
 }
 
 void CPDF_StreamContentParser::Handle_SetTextLeading() {
