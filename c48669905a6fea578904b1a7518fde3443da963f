@@ -238,6 +238,24 @@
       "parentUuid": "35ead19b_bf30b6df",
       "revId": "c48669905a6fea578904b1a7518fde3443da963f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22559e66_d44c4358",
+        "filename": "testing/resources/pixel/bug_2106.pdf",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-05-09T18:11:02Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "7be2514a_1ad33ea9",
+      "revId": "c48669905a6fea578904b1a7518fde3443da963f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
