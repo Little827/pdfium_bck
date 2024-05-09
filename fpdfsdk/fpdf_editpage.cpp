@@ -4,11 +4,6 @@
 
 // Original code copyright 2014 Foxit Software Inc. http://www.foxitsoftware.com
 
-#if defined(UNSAFE_BUFFERS_BUILD)
-// TODO(crbug.com/pdfium/2153): resolve buffer safety issues.
-#pragma allow_unsafe_buffers
-#endif
-
 #include "public/fpdf_edit.h"
 
 #include <algorithm>
@@ -38,10 +33,12 @@
 #include "core/fpdfapi/render/cpdf_docrenderdata.h"
 #include "core/fpdfdoc/cpdf_annot.h"
 #include "core/fpdfdoc/cpdf_annotlist.h"
+#include "core/fxcrt/compiler_specific.h"
 #include "core/fxcrt/fx_extension.h"
 #include "core/fxcrt/fx_memcpy_wrappers.h"
 #include "core/fxcrt/numerics/safe_conversions.h"
 #include "core/fxcrt/span.h"
+#include "core/fxcrt/span_util.h"
 #include "core/fxcrt/stl_util.h"
 #include "fpdfsdk/cpdfsdk_helpers.h"
 #include "public/fpdf_formfill.h"
@@ -367,12 +364,13 @@ FPDFPageObjMark_GetName(FPDF_PAGEOBJECTMARK mark,
                         unsigned long* out_buflen) {
   const CPDF_ContentMarkItem* pMarkItem =
       CPDFContentMarkItemFromFPDFPageObjectMark(mark);
-  if (!pMarkItem || !out_buflen)
+  if (!pMarkItem || !out_buflen) {
     return false;
-
-  *out_buflen = Utf16EncodeMaybeCopyAndReturnLength(
+  }
+  // SAFETY: required from caller.
+  *out_buflen = UNSAFE_BUFFERS(Utf16EncodeMaybeCopyAndReturnLength(
       WideString::FromUTF8(pMarkItem->GetName().AsStringView()), buffer,
-      buflen);
+      buflen));
   return true;
 }
 
@@ -403,8 +401,9 @@ FPDFPageObjMark_GetParamKey(FPDF_PAGEOBJECTMARK mark,
   CPDF_DictionaryLocker locker(pParams);
   for (auto& it : locker) {
     if (index == 0) {
-      *out_buflen = Utf16EncodeMaybeCopyAndReturnLength(
-          WideString::FromUTF8(it.first.AsStringView()), buffer, buflen);
+      // SAFETY: required from caller.
+      *out_buflen = UNSAFE_BUFFERS(Utf16EncodeMaybeCopyAndReturnLength(
+          WideString::FromUTF8(it.first.AsStringView()), buffer, buflen));
       return true;
     }
     --index;
@@ -460,8 +459,9 @@ FPDFPageObjMark_GetParamStringValue(FPDF_PAGEOBJECTMARK mark,
   if (!pObj || !pObj->IsString())
     return false;
 
-  *out_buflen = Utf16EncodeMaybeCopyAndReturnLength(
-      WideString::FromUTF8(pObj->GetString().AsStringView()), buffer, buflen);
+  // SAFETY: required from caller.
+  *out_buflen = UNSAFE_BUFFERS(Utf16EncodeMaybeCopyAndReturnLength(
+      WideString::FromUTF8(pObj->GetString().AsStringView()), buffer, buflen));
   return true;
 }
 
@@ -482,14 +482,14 @@ FPDFPageObjMark_GetParamBlobValue(FPDF_PAGEOBJECTMARK mark,
   if (!pObj || !pObj->IsString())
     return false;
 
-  ByteString result = pObj->GetString();
-  const unsigned long len =
-      pdfium::checked_cast<unsigned long>(result.GetLength());
-
-  if (buffer && len <= buflen)
-    FXSYS_memcpy(buffer, result.c_str(), len);
-
-  *out_buflen = len;
+  ByteString value = pObj->GetString();
+  if (buffer) {
+    // SAFETY: required from caller.
+    pdfium::span<char> result_span =
+        UNSAFE_BUFFERS(pdfium::make_span(static_cast<char*>(buffer), buflen));
+    fxcrt::try_spancpy(result_span, value.span());
+  }
+  *out_buflen = pdfium::checked_cast<unsigned long>(value.span().size());
   return true;
 }
 
@@ -985,17 +985,18 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
 FPDFPageObj_GetDashArray(FPDF_PAGEOBJECT page_object,
                          float* dash_array,
                          size_t dash_count) {
+  if (!dash_array) {
+    return false;
+  }
   auto* pPageObj = CPDFPageObjectFromFPDFPageObject(page_object);
-  if (!pPageObj || !dash_array)
+  if (!pPageObj) {
     return false;
+  }
 
+  // SAFETY: required from caller.
+  auto result_span = UNSAFE_BUFFERS(pdfium::make_span(dash_array, dash_count));
   auto dash_vector = pPageObj->graph_state().GetLineDashArray();
-  if (dash_vector.size() > dash_count)
-    return false;
-
-  FXSYS_memcpy(dash_array, dash_vector.data(),
-               dash_vector.size() * sizeof(float));
-  return true;
+  return fxcrt::try_spancpy(result_span, pdfium::make_span(dash_vector));
 }
 
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
@@ -1013,11 +1014,10 @@ FPDFPageObj_SetDashArray(FPDF_PAGEOBJECT page_object,
   std::vector<float> dashes;
   if (dash_count > 0) {
     dashes.reserve(dash_count);
-    dashes.assign(dash_array, dash_array + dash_count);
+    // TODO(crbug.com/pdfium/2155): resolve safety issues.
+    dashes.assign(dash_array, UNSAFE_BUFFERS(dash_array + dash_count));
   }
-
   pPageObj->mutable_graph_state().SetLineDash(dashes, phase, 1.0f);
-
   pPageObj->SetDirty(true);
   return true;
 }

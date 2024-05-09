@@ -2,11 +2,6 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#if defined(UNSAFE_BUFFERS_BUILD)
-// TODO(crbug.com/pdfium/2153): resolve buffer safety issues.
-#pragma allow_unsafe_buffers
-#endif
-
 #include <map>
 #include <memory>
 #include <sstream>
@@ -34,6 +29,7 @@
 #include "core/fpdftext/cpdf_textpage.h"
 #include "core/fxcrt/check.h"
 #include "core/fxcrt/check_op.h"
+#include "core/fxcrt/compiler_specific.h"
 #include "core/fxcrt/containers/contains.h"
 #include "core/fxcrt/fx_extension.h"
 #include "core/fxcrt/fx_memcpy_wrappers.h"
@@ -621,7 +617,8 @@ FPDFText_SetCharcodes(FPDF_PAGEOBJECT text_object,
   ByteString byte_text;
   if (charcodes) {
     for (size_t i = 0; i < count; ++i) {
-      pTextObj->GetFont()->AppendChar(&byte_text, charcodes[i]);
+      // TODO(crbug.com/pdfium/2155): investigate safety issues.
+      pTextObj->GetFont()->AppendChar(&byte_text, UNSAFE_BUFFERS(charcodes[i]));
     }
   }
   pTextObj->SetText(byte_text);
@@ -638,8 +635,8 @@ FPDF_EXPORT FPDF_FONT FPDF_CALLCONV FPDFText_LoadFont(FPDF_DOCUMENT document,
       (font_type != FPDF_FONT_TYPE1 && font_type != FPDF_FONT_TRUETYPE)) {
     return nullptr;
   }
-
-  auto span = pdfium::make_span(data, size);
+  // SAFETY: required from caller.
+  auto span = UNSAFE_BUFFERS(pdfium::make_span(data, size));
   auto pFont = std::make_unique<CFX_Font>();
 
   // TODO(npm): Maybe use FT_Get_X11_Font_Format to check format? Otherwise, we
@@ -678,8 +675,8 @@ FPDFText_LoadCidType2Font(FPDF_DOCUMENT document,
       cid_to_gid_map_data_size == 0) {
     return nullptr;
   }
-
-  auto font_span = pdfium::make_span(font_data, font_data_size);
+  // SAFETY: required from caller.
+  auto font_span = UNSAFE_BUFFERS(pdfium::make_span(font_data, font_data_size));
   auto font = std::make_unique<CFX_Font>();
 
   // TODO(thestig): Consider checking the font format. See similar comment in
@@ -727,7 +724,9 @@ FPDFTextObj_GetText(FPDF_PAGEOBJECT text_object,
     return 0;
 
   WideString text = pTextPage->GetTextByObject(pTextObj);
-  return Utf16EncodeMaybeCopyAndReturnLength(text, buffer, length);
+  // SAFETY: required from caller.
+  return UNSAFE_BUFFERS(
+      Utf16EncodeMaybeCopyAndReturnLength(text, buffer, length));
 }
 
 FPDF_EXPORT FPDF_BITMAP FPDF_CALLCONV
@@ -856,14 +855,15 @@ FPDFFont_GetFontName(FPDF_FONT font, char* buffer, unsigned long length) {
   if (!pFont)
     return 0;
 
-  CFX_Font* pCfxFont = pFont->GetFont();
-  ByteString name = pCfxFont->GetFamilyName();
-  const unsigned long dwStringLen =
-      pdfium::checked_cast<unsigned long>(name.GetLength() + 1);
-  if (buffer && length >= dwStringLen)
-    FXSYS_memcpy(buffer, name.c_str(), dwStringLen);
-
-  return dwStringLen;
+  ByteString name = pFont->GetFont()->GetFamilyName();
+  pdfium::span<const char> name_span = name.span_with_terminator();
+  if (buffer) {
+    // SAFETY: required from caller.
+    pdfium::span<char> result_span =
+        UNSAFE_BUFFERS(pdfium::make_span(buffer, length));
+    fxcrt::try_spancpy(result_span, name_span);
+  }
+  return static_cast<unsigned long>(name_span.size());
 }
 
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFFont_GetFontData(FPDF_FONT font,
@@ -874,9 +874,13 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFFont_GetFontData(FPDF_FONT font,
   if (!cfont || !out_buflen)
     return false;
 
-  pdfium::span<uint8_t> data = cfont->GetFont()->GetFontSpan();
-  if (buffer && buflen >= data.size())
-    fxcrt::spancpy(pdfium::make_span(buffer, buflen), data);
+  pdfium::span<const uint8_t> data = cfont->GetFont()->GetFontSpan();
+  if (buffer) {
+    // SAFETY: required from caller.
+    pdfium::span<uint8_t> result_span =
+        UNSAFE_BUFFERS(pdfium::make_span(buffer, buflen));
+    fxcrt::try_spancpy(result_span, data);
+  }
   *out_buflen = data.size();
   return true;
 }

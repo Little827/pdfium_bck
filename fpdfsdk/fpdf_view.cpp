@@ -4,11 +4,6 @@
 
 // Original code copyright 2014 Foxit Software Inc. http://www.foxitsoftware.com
 
-#if defined(UNSAFE_BUFFERS_BUILD)
-// TODO(crbug.com/pdfium/2153): resolve buffer safety issues.
-#pragma allow_unsafe_buffers
-#endif
-
 #include "public/fpdfview.h"
 
 #include <memory>
@@ -38,6 +33,7 @@
 #include "core/fxcrt/cfx_read_only_span_stream.h"
 #include "core/fxcrt/cfx_timer.h"
 #include "core/fxcrt/check_op.h"
+#include "core/fxcrt/compiler_specific.h"
 #include "core/fxcrt/fx_memcpy_wrappers.h"
 #include "core/fxcrt/fx_safe_types.h"
 #include "core/fxcrt/fx_stream.h"
@@ -348,21 +344,22 @@ FPDF_LoadMemDocument(const void* data_buf, int size, FPDF_BYTESTRING password) {
   if (size < 0) {
     return nullptr;
   }
-
-  return LoadDocumentImpl(
-      pdfium::MakeRetain<CFX_ReadOnlySpanStream>(pdfium::make_span(
-          static_cast<const uint8_t*>(data_buf), static_cast<size_t>(size))),
-      password);
+  // SAFETY: required from caller.
+  auto data_span = UNSAFE_BUFFERS(pdfium::make_span(
+      static_cast<const uint8_t*>(data_buf), static_cast<size_t>(size)));
+  return LoadDocumentImpl(pdfium::MakeRetain<CFX_ReadOnlySpanStream>(data_span),
+                          password);
 }
 
 FPDF_EXPORT FPDF_DOCUMENT FPDF_CALLCONV
 FPDF_LoadMemDocument64(const void* data_buf,
                        size_t size,
                        FPDF_BYTESTRING password) {
-  return LoadDocumentImpl(
-      pdfium::MakeRetain<CFX_ReadOnlySpanStream>(
-          pdfium::make_span(static_cast<const uint8_t*>(data_buf), size)),
-      password);
+  // SAFETY: required from caller.
+  auto data_span = UNSAFE_BUFFERS(
+      pdfium::make_span(static_cast<const uint8_t*>(data_buf), size));
+  return LoadDocumentImpl(pdfium::MakeRetain<CFX_ReadOnlySpanStream>(data_span),
+                          password);
 }
 
 FPDF_EXPORT FPDF_DOCUMENT FPDF_CALLCONV
@@ -1106,10 +1103,12 @@ FPDF_VIEWERREF_GetName(FPDF_DOCUMENT document,
 
   CPDF_ViewerPreferences viewRef(pDoc);
   std::optional<ByteString> bsVal = viewRef.GenericName(key);
-  if (!bsVal.has_value())
+  if (!bsVal.has_value()) {
     return 0;
-
-  return NulTerminateMaybeCopyAndReturnLength(bsVal.value(), buffer, length);
+  }
+  // SAFETY: required from caller.
+  return UNSAFE_BUFFERS(
+      NulTerminateMaybeCopyAndReturnLength(bsVal.value(), buffer, length));
 }
 
 FPDF_EXPORT FPDF_DWORD FPDF_CALLCONV
@@ -1187,13 +1186,18 @@ FPDF_EXPORT FPDF_RESULT FPDF_CALLCONV FPDF_BStr_Set(FPDF_BSTR* bstr,
     return 0;
   }
 
-  if (bstr->str && bstr->len < length)
-    bstr->str = FX_Realloc(char, bstr->str, length + 1);
-  else if (!bstr->str)
+  if (!bstr->str) {
     bstr->str = FX_Alloc(char, length + 1);
+  } else if (bstr->len < length) {
+    bstr->str = FX_Realloc(char, bstr->str, length + 1);
+  }
 
-  bstr->str[length] = 0;
-  FXSYS_memcpy(bstr->str, cstr, length);
+  // SAFETY: only alloc/realloc is performed above and will ensure at least
+  // length + 1 bytes are available.
+  UNSAFE_BUFFERS({
+    bstr->str[length] = 0;
+    FXSYS_memcpy(bstr->str, cstr, length);
+  });
   bstr->len = length;
   return 0;
 }
@@ -1275,7 +1279,10 @@ FPDF_EXPORT FPDF_DEST FPDF_CALLCONV FPDF_GetNamedDest(FPDF_DOCUMENT document,
   if (!buffer) {
     *buflen = len;
   } else if (len <= *buflen) {
-    FXSYS_memcpy(buffer, utf16Name.c_str(), len);
+    // SAFETY: required from caller.
+    auto buffer_span =
+        UNSAFE_BUFFERS(pdfium::make_span(static_cast<char*>(buffer), *buflen));
+    fxcrt::spancpy(buffer_span, utf16Name.span());
     *buflen = len;
   } else {
     *buflen = -1;
@@ -1303,11 +1310,12 @@ FPDF_GetXFAPacketName(FPDF_DOCUMENT document,
 
   std::vector<XFAPacket> xfa_packets =
       GetXFAPackets(GetXFAEntryFromDocument(doc));
-  if (static_cast<size_t>(index) >= xfa_packets.size())
+  if (static_cast<size_t>(index) >= xfa_packets.size()) {
     return 0;
-
-  return NulTerminateMaybeCopyAndReturnLength(xfa_packets[index].name, buffer,
-                                              buflen);
+  }
+  // TODO(crbug.com/pdfium/2155): resolve safety issues.
+  return UNSAFE_BUFFERS(NulTerminateMaybeCopyAndReturnLength(
+      xfa_packets[index].name, buffer, buflen));
 }
 
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV
@@ -1347,7 +1355,8 @@ FPDF_GetTrailerEnds(FPDF_DOCUMENT document,
   const unsigned long trailer_ends_len =
       fxcrt::CollectionSize<unsigned long>(trailer_ends);
   if (buffer && length >= trailer_ends_len) {
-    fxcrt::spancpy(pdfium::make_span(buffer, length),
+    // SAFETY: required from caller.
+    fxcrt::spancpy(UNSAFE_BUFFERS(pdfium::make_span(buffer, length)),
                    pdfium::make_span(trailer_ends));
   }
 
