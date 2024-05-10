@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2b1f530_63f29d54",
+        "filename": "core/fpdfapi/font/cpdf_cmapparser.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-05-10T20:39:50Z",
+      "side": 0,
+      "message": "If `CIDSET_NUM_SETS` increases, will std::array complain?",
+      "revId": "9e67709fb358aa9bf1c5906007e92b918d819944",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
