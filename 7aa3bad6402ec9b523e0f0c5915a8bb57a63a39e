@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "db638177_ff8217db",
+        "filename": "xfa/fxfa/parser/cxfa_color.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-05-10T22:37:55Z",
+      "side": 1,
+      "message": "Deleted. Probably optimizes better to have a check of str.size() adjacent to str[x].",
+      "parentUuid": "c78d6738_22a3a9f7",
+      "revId": "7aa3bad6402ec9b523e0f0c5915a8bb57a63a39e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "e842beac_4cff0d91",
         "filename": "xfa/fxfa/parser/cxfa_localemgr.cpp",
         "patchSetId": 4
@@ -31,6 +49,24 @@
       "writtenOn": "2024-05-10T22:32:09Z",
       "side": 1,
       "message": "I need to finish converting FlateOrLZWDecode() to return a vector.",
+      "revId": "7aa3bad6402ec9b523e0f0c5915a8bb57a63a39e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "873583c8_8393b09c",
+        "filename": "xfa/fxfa/parser/cxfa_localemgr.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1080,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-05-10T22:37:55Z",
+      "side": 1,
+      "message": "Yeah, I been poking around there.  I may get to it soon,",
+      "parentUuid": "e842beac_4cff0d91",
       "revId": "7aa3bad6402ec9b523e0f0c5915a8bb57a63a39e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
