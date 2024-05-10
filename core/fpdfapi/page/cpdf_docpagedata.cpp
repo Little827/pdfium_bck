@@ -4,14 +4,10 @@
 
 // Original code copyright 2014 Foxit Software Inc. http://www.foxitsoftware.com
 
-#if defined(UNSAFE_BUFFERS_BUILD)
-// TODO(crbug.com/pdfium/2153): resolve buffer safety issues.
-#pragma allow_unsafe_buffers
-#endif
-
 #include "core/fpdfapi/page/cpdf_docpagedata.h"
 
 #include <algorithm>
+#include <array>
 #include <memory>
 #include <set>
 #include <utility>
@@ -538,7 +534,8 @@ RetainPtr<CPDF_Font> CPDF_DocPageData::AddFont(std::unique_ptr<CFX_Font> pFont,
     } else {
       size_t i = CalculateEncodingDict(charset, pBaseDict.Get());
       if (i < std::size(kFX_CharsetUnicodes)) {
-        const uint16_t* pUnicodes = kFX_CharsetUnicodes[i].m_pUnicodes;
+        pdfium::span<const uint16_t> pUnicodes =
+            kFX_CharsetUnicodes[i].m_pUnicodes;
         for (int j = 0; j < 128; j++) {
           int glyph_index = pEncoding->GlyphFromCharCode(pUnicodes[j]);
           int char_width = pFont->GetGlyphWidth(glyph_index);
@@ -566,12 +563,12 @@ RetainPtr<CPDF_Font> CPDF_DocPageData::AddFont(std::unique_ptr<CFX_Font> pFont,
   if (pFont->GetSubstFont()) {
     nStemV = pFont->GetSubstFont()->m_Weight / 5;
   } else {
-    static const char stem_chars[] = {'i', 'I', '!', '1'};
-    const size_t count = std::size(stem_chars);
-    uint32_t glyph = pEncoding->GlyphFromCharCode(stem_chars[0]);
+    static const std::array<char, 4> kStemChars = {{'i', 'I', '!', '1'}};
+    const size_t count = std::size(kStemChars);
+    uint32_t glyph = pEncoding->GlyphFromCharCode(kStemChars[0]);
     nStemV = pFont->GetGlyphWidth(glyph);
     for (size_t i = 1; i < count; i++) {
-      glyph = pEncoding->GlyphFromCharCode(stem_chars[i]);
+      glyph = pEncoding->GlyphFromCharCode(kStemChars[i]);
       int width = pFont->GetGlyphWidth(glyph);
       if (width > 0 && width < nStemV)
         nStemV = width;
@@ -624,8 +621,8 @@ RetainPtr<CPDF_Font> CPDF_DocPageData::AddWindowsFont(LOGFONTA* pLogFont) {
   int ascend = ptm->otmrcFontBox.top;
   int descend = ptm->otmrcFontBox.bottom;
   int capheight = ptm->otmsCapEmHeight;
-  int bbox[4] = {ptm->otmrcFontBox.left, ptm->otmrcFontBox.bottom,
-                 ptm->otmrcFontBox.right, ptm->otmrcFontBox.top};
+  std::array<int, 4> bbox = {{ptm->otmrcFontBox.left, ptm->otmrcFontBox.bottom,
+                              ptm->otmrcFontBox.right, ptm->otmrcFontBox.top}};
   FX_Free(tm_buf);
   basefont.Replace(" ", "");
   auto pBaseDict = GetDocument()->NewIndirect<CPDF_Dictionary>();
@@ -639,8 +636,8 @@ RetainPtr<CPDF_Font> CPDF_DocPageData::AddWindowsFont(LOGFONTA* pLogFont) {
     } else {
       CalculateEncodingDict(eCharset, pBaseDict.Get());
     }
-    int char_widths[224];
-    GetCharWidth(hDC, 32, 255, char_widths);
+    std::array<int, 224> char_widths;
+    GetCharWidth(hDC, 32, 255, char_widths.data());
     auto pWidths = pdfium::MakeRetain<CPDF_Array>();
     for (size_t i = 0; i < 224; i++)
       pWidths->AppendNew<CPDF_Number>(char_widths[i]);
@@ -686,7 +683,7 @@ size_t CPDF_DocPageData::CalculateEncodingDict(FX_Charset charset,
   auto pArray = pEncodingDict->SetNewFor<CPDF_Array>("Differences");
   pArray->AppendNew<CPDF_Number>(128);
 
-  const uint16_t* pUnicodes = kFX_CharsetUnicodes[i].m_pUnicodes;
+  pdfium::span<const uint16_t> pUnicodes = kFX_CharsetUnicodes[i].m_pUnicodes;
   for (int j = 0; j < 128; j++) {
     ByteString name = AdobeNameFromUnicode(pUnicodes[j]);
     pArray->AppendNew<CPDF_Name>(name.IsEmpty() ? ".notdef" : name);
