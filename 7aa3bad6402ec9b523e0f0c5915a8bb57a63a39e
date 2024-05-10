@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c78d6738_22a3a9f7",
+        "filename": "xfa/fxfa/parser/cxfa_color.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-05-10T22:32:09Z",
+      "side": 1,
+      "message": "const, or just delete.",
+      "revId": "7aa3bad6402ec9b523e0f0c5915a8bb57a63a39e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e842beac_4cff0d91",
+        "filename": "xfa/fxfa/parser/cxfa_localemgr.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1080,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-05-10T22:32:09Z",
+      "side": 1,
+      "message": "I need to finish converting FlateOrLZWDecode() to return a vector.",
+      "revId": "7aa3bad6402ec9b523e0f0c5915a8bb57a63a39e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
