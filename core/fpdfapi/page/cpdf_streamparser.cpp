@@ -91,15 +91,15 @@ uint32_t DecodeInlineStream(pdfium::span<const uint8_t> src_span,
   DCHECK(decoder != "LZW");
   DCHECK(decoder != "RL");
 
+  DataVector<uint8_t> ignored_vector;
   std::unique_ptr<uint8_t, FxFreeDeleter> ignored_result;
   uint32_t ignored_size;
   if (decoder == "FlateDecode") {
     return FlateOrLZWDecode(false, src_span, pParam.Get(), orig_size,
-                            &ignored_result, &ignored_size);
+                            &ignored_vector);
   }
   if (decoder == "LZWDecode") {
-    return FlateOrLZWDecode(true, src_span, pParam.Get(), 0, &ignored_result,
-                            &ignored_size);
+    return FlateOrLZWDecode(true, src_span, pParam.Get(), 0, &ignored_vector);
   }
   if (decoder == "DCTDecode") {
     std::unique_ptr<ScanlineDecoder> pDecoder = JpegModule::CreateDecoder(

@@ -68,8 +68,7 @@ uint32_t FlateOrLZWDecode(bool bLZW,
                           pdfium::span<const uint8_t> src_span,
                           const CPDF_Dictionary* pParams,
                           uint32_t estimated_size,
-                          std::unique_ptr<uint8_t, FxFreeDeleter>* dest_buf,
-                          uint32_t* dest_size);
+                          DataVector<uint8_t>* dest_buf);
 
 // Returns std::nullopt if the filter in |pDict| is the wrong type or an
 // invalid decoder pipeline.

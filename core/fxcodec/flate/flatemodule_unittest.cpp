@@ -39,21 +39,15 @@ TEST(FlateModule, Decode) {
 
   for (size_t i = 0; i < std::size(flate_decode_cases); ++i) {
     const pdfium::DecodeTestData& data = flate_decode_cases[i];
-    std::unique_ptr<uint8_t, FxFreeDeleter> buf;
-    uint32_t buf_size;
-    EXPECT_EQ(
-        data.processed_size,
-        FlateModule::FlateOrLZWDecode(
-            false,
-            UNSAFE_BUFFERS(pdfium::make_span(data.input, data.input_size)),
-            false, 0, 0, 0, 0, 0, &buf, &buf_size))
+    DataVector<uint8_t> buf;
+    EXPECT_EQ(data.processed_size,
+              FlateModule::FlateOrLZWDecode(false,
+                                            UNSAFE_BUFFERS(pdfium::make_span(
+                                                data.input, data.input_size)),
+                                            false, 0, 0, 0, 0, 0, &buf))
         << " for case " << i;
-    ASSERT_TRUE(buf);
-    EXPECT_EQ(data.expected_size, buf_size) << " for case " << i;
-    if (data.expected_size != buf_size) {
-      continue;
-    }
-    EXPECT_EQ(0, memcmp(data.expected, buf.get(), data.expected_size))
+    ASSERT_EQ(data.expected_size, buf.size()) << " for case " << i;
+    EXPECT_EQ(0, memcmp(data.expected, buf.data(), data.expected_size))
         << " for case " << i;
   }
 }

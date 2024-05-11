@@ -32,17 +32,15 @@ class FlateModule {
       int BitsPerComponent,
       int Columns);
 
-  static uint32_t FlateOrLZWDecode(
-      bool bLZW,
-      pdfium::span<const uint8_t> src_span,
-      bool bEarlyChange,
-      int predictor,
-      int Colors,
-      int BitsPerComponent,
-      int Columns,
-      uint32_t estimated_size,
-      std::unique_ptr<uint8_t, FxFreeDeleter>* dest_buf,
-      uint32_t* dest_size);
+  static uint32_t FlateOrLZWDecode(bool bLZW,
+                                   pdfium::span<const uint8_t> src_span,
+                                   bool bEarlyChange,
+                                   int predictor,
+                                   int Colors,
+                                   int BitsPerComponent,
+                                   int Columns,
+                                   uint32_t estimated_size,
+                                   /*IN-OUT*/ DataVector<uint8_t>* dest_buf);
 
   static DataVector<uint8_t> Encode(pdfium::span<const uint8_t> src_span);
 

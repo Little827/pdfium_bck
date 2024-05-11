@@ -349,8 +349,7 @@ uint32_t FlateOrLZWDecode(bool bLZW,
                           pdfium::span<const uint8_t> src_span,
                           const CPDF_Dictionary* pParams,
                           uint32_t estimated_size,
-                          std::unique_ptr<uint8_t, FxFreeDeleter>* dest_buf,
-                          uint32_t* dest_size) {
+                          DataVector<uint8_t>* dest_buf) {
   int predictor = 0;
   int Colors = 0;
   int BitsPerComponent = 0;
@@ -367,7 +366,7 @@ uint32_t FlateOrLZWDecode(bool bLZW,
   }
   return FlateModule::FlateOrLZWDecode(bLZW, src_span, bEarlyChange, predictor,
                                        Colors, BitsPerComponent, Columns,
-                                       estimated_size, dest_buf, dest_size);
+                                       estimated_size, dest_buf);
 }
 
 std::optional<DecoderArray> GetDecoderArray(
@@ -433,11 +432,23 @@ bool PDF_DataDecode(pdfium::span<const uint8_t> src_span,
         *pImageParams = std::move(pParam);
         return true;
       }
-      offset = FlateOrLZWDecode(false, last_span, pParam, estimated_size,
-                                &new_buf, &new_size);
+      DataVector<uint8_t> new_data;
+      offset =
+          FlateOrLZWDecode(false, last_span, pParam, estimated_size, &new_data);
+      // TODO(tsepez): avoid copy
+      new_size = new_data.size();
+      new_buf =
+          std::unique_ptr<uint8_t, FxFreeDeleter>(FX_Alloc(uint8_t, new_size));
+      FXSYS_memcpy(new_buf.get(), new_data.data(), new_size);
     } else if (decoder == "LZWDecode" || decoder == "LZW") {
-      offset = FlateOrLZWDecode(true, last_span, pParam, estimated_size,
-                                &new_buf, &new_size);
+      DataVector<uint8_t> new_data;
+      offset =
+          FlateOrLZWDecode(true, last_span, pParam, estimated_size, &new_data);
+      // TODO(tsepez): avoid copy
+      new_size = new_data.size();
+      new_buf =
+          std::unique_ptr<uint8_t, FxFreeDeleter>(FX_Alloc(uint8_t, new_size));
+      FXSYS_memcpy(new_buf.get(), new_data.data(), new_size);
     } else if (decoder == "ASCII85Decode" || decoder == "A85") {
       offset = A85Decode(last_span, &new_buf, &new_size);
     } else if (decoder == "ASCIIHexDecode" || decoder == "AHx") {
