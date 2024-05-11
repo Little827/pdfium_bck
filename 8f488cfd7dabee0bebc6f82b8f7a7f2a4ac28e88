@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "036b434c_ae07e2da",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-05-11T00:49:34Z",
+      "side": 1,
+      "message": "2153?",
+      "range": {
+        "startLine": 9,
+        "startChar": 12,
+        "endLine": 9,
+        "endChar": 16
+      },
+      "revId": "8f488cfd7dabee0bebc6f82b8f7a7f2a4ac28e88",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30833fa6_5252ea60",
+        "filename": "core/fpdfapi/page/cpdf_docpagedata.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-05-11T00:49:34Z",
+      "side": 1,
+      "message": "constexpr",
+      "range": {
+        "startLine": 566,
+        "startChar": 11,
+        "endLine": 566,
+        "endChar": 16
+      },
+      "revId": "8f488cfd7dabee0bebc6f82b8f7a7f2a4ac28e88",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a07a8d4a_025e9f58",
+        "filename": "core/fpdfapi/page/cpdf_docpagedata.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-05-11T00:49:34Z",
+      "side": 1,
+      "message": "Iterate over a subspan?",
+      "revId": "8f488cfd7dabee0bebc6f82b8f7a7f2a4ac28e88",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "592e30a8_3f062b4a",
+        "filename": "core/fpdfapi/page/cpdf_docpagedata.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 642,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-05-11T00:49:34Z",
+      "side": 1,
+      "message": "Use range-based for-loop.",
+      "revId": "8f488cfd7dabee0bebc6f82b8f7a7f2a4ac28e88",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "547c8b93_1e69d4e8",
+        "filename": "core/fpdfapi/page/cpdf_docpagedata.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 654,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-05-11T00:49:34Z",
+      "side": 1,
+      "message": "Use range-based for-loop.",
+      "revId": "8f488cfd7dabee0bebc6f82b8f7a7f2a4ac28e88",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "748ed2fe_76297d7f",
+        "filename": "core/fxcrt/fx_codepage.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-05-11T00:49:34Z",
+      "side": 1,
+      "message": "No longer needed.",
+      "revId": "8f488cfd7dabee0bebc6f82b8f7a7f2a4ac28e88",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
