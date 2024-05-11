@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab7dbd71_3a3fe0a1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5645
+      },
+      "writtenOn": "2024-05-11T03:43:24Z",
+      "side": 1,
+      "message": "G-account stamp.",
+      "revId": "dceb6078b34fb597b13959f8adc1cfae90206284",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7be281cf_42767a06",
+        "filename": "DEPS",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 5645
+      },
+      "writtenOn": "2024-05-11T03:43:24Z",
+      "side": 1,
+      "message": "NOTE: Confirmed host is in chromium DEPS.",
+      "range": {
+        "startLine": 213,
+        "startChar": 41,
+        "endLine": 213,
+        "endChar": 75
+      },
+      "revId": "dceb6078b34fb597b13959f8adc1cfae90206284",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
