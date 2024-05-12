@@ -36,6 +36,23 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "966fa6ec_01ec2b8c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 9186
+      },
+      "writtenOn": "2024-05-12T00:43:03Z",
+      "side": 1,
+      "message": "submitting small fixes now, will also update the test file shortly",
+      "revId": "4fd9e82a22f29118f398ab092ab71752d3c939e9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "04b10b47_65459fec",
@@ -49,6 +66,24 @@
       "writtenOn": "2024-05-07T20:16:06Z",
       "side": 1,
       "message": "Does `obj` need to be freed after this?",
+      "revId": "4fd9e82a22f29118f398ab092ab71752d3c939e9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c5ffbf2_ba33fcba",
+        "filename": "fpdfsdk/fpdf_save_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 9186
+      },
+      "writtenOn": "2024-05-12T00:43:03Z",
+      "side": 1,
+      "message": "no, as far as I understand",
+      "parentUuid": "04b10b47_65459fec",
       "revId": "4fd9e82a22f29118f398ab092ab71752d3c939e9",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -70,6 +105,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "26bbf5bf_824ddc34",
+        "filename": "fpdfsdk/fpdf_save_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 9186
+      },
+      "writtenOn": "2024-05-12T00:43:03Z",
+      "side": 1,
+      "message": "thanks, done",
+      "parentUuid": "069a6df5_f7ce727f",
+      "revId": "4fd9e82a22f29118f398ab092ab71752d3c939e9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b0ff2bd4_33a35759",
@@ -83,6 +136,24 @@
       "writtenOn": "2024-05-07T20:16:06Z",
       "side": 1,
       "message": "Declare 1 variable per line.",
+      "revId": "4fd9e82a22f29118f398ab092ab71752d3c939e9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f81140ad_a69917e6",
+        "filename": "fpdfsdk/fpdf_save_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 9186
+      },
+      "writtenOn": "2024-05-12T00:43:03Z",
+      "side": 1,
+      "message": "ok",
+      "parentUuid": "b0ff2bd4_33a35759",
       "revId": "4fd9e82a22f29118f398ab092ab71752d3c939e9",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -117,6 +188,24 @@
       "writtenOn": "2024-05-07T20:16:06Z",
       "side": 1,
       "message": "Instead of having this commented out, write a TODO comment on line 130 to explain what\u0027s going on.",
+      "revId": "4fd9e82a22f29118f398ab092ab71752d3c939e9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d07463d8_7743914b",
+        "filename": "fpdfsdk/fpdf_save_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 9186
+      },
+      "writtenOn": "2024-05-12T00:43:03Z",
+      "side": 1,
+      "message": "roger that",
+      "parentUuid": "f874e0d5_d7d42a1e",
       "revId": "4fd9e82a22f29118f398ab092ab71752d3c939e9",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
