@@ -4,15 +4,12 @@
 
 // Original code copyright 2014 Foxit Software Inc. http://www.foxitsoftware.com
 
-#if defined(UNSAFE_BUFFERS_BUILD)
-// TODO(crbug.com/pdfium/2153): resolve buffer safety issues.
-#pragma allow_unsafe_buffers
-#endif
-
 #ifndef XFA_FGAS_GRAPHICS_CFGAS_GESHADING_H_
 #define XFA_FGAS_GRAPHICS_CFGAS_GESHADING_H_
 
 #include <stddef.h>
+
+#include <array>
 
 #include "core/fxcrt/fx_coordinates.h"
 #include "core/fxge/dib/fx_dib.h"
@@ -62,7 +59,7 @@ class CFGAS_GEShading final {
   const float m_endRadius;
   const bool m_isExtendedBegin;
   const bool m_isExtendedEnd;
-  FX_ARGB m_argbArray[kSteps];
+  std::array<FX_ARGB, kSteps> m_argbArray;
 };
 
 #endif  // XFA_FGAS_GRAPHICS_CFGAS_GESHADING_H_
