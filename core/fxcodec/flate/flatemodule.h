@@ -18,6 +18,7 @@
 namespace fxcodec {
 
 class ScanlineDecoder;
+struct CodecDecodeResult;
 
 class FlateModule {
  public:
@@ -32,7 +33,7 @@ class FlateModule {
       int BitsPerComponent,
       int Columns);
 
-  static uint32_t FlateOrLZWDecode(
+  static CodecDecodeResult FlateOrLZWDecode(
       bool bLZW,
       pdfium::span<const uint8_t> src_span,
       bool bEarlyChange,
@@ -40,9 +41,7 @@ class FlateModule {
       int Colors,
       int BitsPerComponent,
       int Columns,
-      uint32_t estimated_size,
-      std::unique_ptr<uint8_t, FxFreeDeleter>* dest_buf,
-      uint32_t* dest_size);
+      uint32_t estimated_size);
 
   static DataVector<uint8_t> Encode(pdfium::span<const uint8_t> src_span);
 
