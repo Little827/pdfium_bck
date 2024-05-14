@@ -53,17 +53,12 @@ std::unique_ptr<fxcodec::ScanlineDecoder> CreateFlateDecoder(
     int bpc,
     const CPDF_Dictionary* pParams);
 
-uint32_t RunLengthDecode(pdfium::span<const uint8_t> src_span,
-                         std::unique_ptr<uint8_t, FxFreeDeleter>* dest_buf,
-                         uint32_t* dest_size);
+fxcodec::CodecDecodeResult RunLengthDecode(
+    pdfium::span<const uint8_t> src_span);
 
-uint32_t A85Decode(pdfium::span<const uint8_t> src_span,
-                   std::unique_ptr<uint8_t, FxFreeDeleter>* dest_buf,
-                   uint32_t* dest_size);
+fxcodec::CodecDecodeResult A85Decode(pdfium::span<const uint8_t> src_span);
 
-uint32_t HexDecode(pdfium::span<const uint8_t> src_span,
-                   std::unique_ptr<uint8_t, FxFreeDeleter>* dest_buf,
-                   uint32_t* dest_size);
+fxcodec::CodecDecodeResult HexDecode(pdfium::span<const uint8_t> src_span);
 
 fxcodec::CodecDecodeResult FlateOrLZWDecode(
     bool use_lzw,
