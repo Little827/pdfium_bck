@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddbe2773_39f82779",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-05-14T20:06:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52896277_b29b04fa",
+      "range": {
+        "startLine": 7,
+        "startChar": 22,
+        "endLine": 7,
+        "endChar": 28
+      },
+      "revId": "56ecaf2da6dd874aa3d74951701d85441661cbdc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c9bd31e_00a99534",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-05-14T20:01:49Z",
       "side": 1,
       "message": "Consistently use `1u` here.",
+      "range": {
+        "startLine": 154,
+        "startChar": 16,
+        "endLine": 154,
+        "endChar": 17
+      },
+      "revId": "56ecaf2da6dd874aa3d74951701d85441661cbdc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e081184_7ebdeb18",
+        "filename": "core/fpdfapi/font/cfx_cttgsubtable.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-05-14T20:06:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c9bd31e_00a99534",
       "range": {
         "startLine": 154,
         "startChar": 16,
@@ -64,6 +112,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "189f08f3_6a30bec9",
+        "filename": "core/fpdfapi/font/cfx_cttgsubtable.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-05-14T20:06:31Z",
+      "side": 1,
+      "message": "ack.",
+      "parentUuid": "ff698f70_e405e2ee",
+      "revId": "56ecaf2da6dd874aa3d74951701d85441661cbdc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4dad9daf_20f6cdb5",
@@ -77,6 +143,30 @@
       "writtenOn": "2024-05-14T20:01:49Z",
       "side": 1,
       "message": "4u",
+      "range": {
+        "startLine": 216,
+        "startChar": 47,
+        "endLine": 216,
+        "endChar": 48
+      },
+      "revId": "56ecaf2da6dd874aa3d74951701d85441661cbdc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc92dccb_769a9566",
+        "filename": "core/fpdfapi/font/cfx_cttgsubtable.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-05-14T20:06:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4dad9daf_20f6cdb5",
       "range": {
         "startLine": 216,
         "startChar": 47,
