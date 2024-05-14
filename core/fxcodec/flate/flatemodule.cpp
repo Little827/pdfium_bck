@@ -549,17 +549,19 @@ bool TIFF_Predictor(int Colors,
   return true;
 }
 
-void FlateUncompress(pdfium::span<const uint8_t> src_buf,
-                     uint32_t orig_size,
-                     std::unique_ptr<uint8_t, FxFreeDeleter>* dest_buf,
-                     uint32_t* dest_size,
-                     uint32_t* offset) {
-  dest_buf->reset();
-  *dest_size = 0;
+struct FlateUncompressResult {
+  // TODO(crbug.com/pdfium/1872): Replace with DataVector.
+  std::unique_ptr<uint8_t, FxFreeDeleter> data;
+  uint32_t size;
+  uint32_t offset;
+};
 
+FlateUncompressResult FlateUncompress(pdfium::span<const uint8_t> src_buf,
+                                      uint32_t orig_size) {
   std::unique_ptr<z_stream, FlateDeleter> context(FlateInit());
-  if (!context)
-    return;
+  if (!context) {
+    return {nullptr, 0u, 0u};
+  }
 
   FlateInput(context.get(), src_buf);
 
@@ -595,17 +597,16 @@ void FlateUncompress(pdfium::span<const uint8_t> src_buf,
   // The TotalOut size returned from the library may not be big enough to
   // handle the content the library returns. We can only handle items
   // up to 4GB in size.
-  *dest_size = FlateGetPossiblyTruncatedTotalOut(context.get());
-  *offset = FlateGetPossiblyTruncatedTotalIn(context.get());
+  const uint32_t dest_size = FlateGetPossiblyTruncatedTotalOut(context.get());
+  const uint32_t offset = FlateGetPossiblyTruncatedTotalIn(context.get());
   if (result_tmp_bufs.size() == 1) {
-    *dest_buf = std::move(result_tmp_bufs[0]);
-    return;
+    return {std::move(result_tmp_bufs.front()), dest_size, offset};
   }
 
   std::unique_ptr<uint8_t, FxFreeDeleter> result_buf(
-      FX_Alloc(uint8_t, *dest_size));
+      FX_Alloc(uint8_t, dest_size));
   uint32_t result_pos = 0;
-  uint32_t remaining = *dest_size;
+  uint32_t remaining = dest_size;
   for (size_t i = 0; i < result_tmp_bufs.size(); i++) {
     std::unique_ptr<uint8_t, FxFreeDeleter> tmp_buf =
         std::move(result_tmp_bufs[i]);
@@ -618,7 +619,7 @@ void FlateUncompress(pdfium::span<const uint8_t> src_buf,
     result_pos += cp_size;
     remaining -= cp_size;
   }
-  *dest_buf = std::move(result_buf);
+  return {std::move(result_buf), dest_size, offset};
 }
 
 enum class PredictorType : uint8_t { kNone, kFlate, kPng };
@@ -869,7 +870,10 @@ uint32_t FlateModule::FlateOrLZWDecode(
     *dest_size = decoder->GetDestSize();
     *dest_buf = decoder->TakeDestBuf();
   } else {
-    FlateUncompress(src_span, estimated_size, dest_buf, dest_size, &offset);
+    FlateUncompressResult result = FlateUncompress(src_span, estimated_size);
+    *dest_buf = std::move(result.data);
+    *dest_size = result.size;
+    offset = result.offset;
   }
 
   bool ret = false;
