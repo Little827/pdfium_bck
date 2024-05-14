@@ -346,12 +346,10 @@ std::unique_ptr<ScanlineDecoder> CreateFlateDecoder(
                                     Columns);
 }
 
-uint32_t FlateOrLZWDecode(bool bLZW,
-                          pdfium::span<const uint8_t> src_span,
-                          const CPDF_Dictionary* pParams,
-                          uint32_t estimated_size,
-                          std::unique_ptr<uint8_t, FxFreeDeleter>* dest_buf,
-                          uint32_t* dest_size) {
+CodecDecodeResult FlateOrLZWDecode(bool use_lzw,
+                                   pdfium::span<const uint8_t> src_span,
+                                   const CPDF_Dictionary* pParams,
+                                   uint32_t estimated_size) {
   int predictor = 0;
   int Colors = 0;
   int BitsPerComponent = 0;
@@ -364,14 +362,11 @@ uint32_t FlateOrLZWDecode(bool bLZW,
     BitsPerComponent = pParams->GetIntegerFor("BitsPerComponent", 8);
     Columns = pParams->GetIntegerFor("Columns", 1);
     if (!CheckFlateDecodeParams(Colors, BitsPerComponent, Columns))
-      return FX_INVALID_OFFSET;
+      return {nullptr, 0u, FX_INVALID_OFFSET};
   }
-  CodecDecodeResult result = FlateModule::FlateOrLZWDecode(
-      bLZW, src_span, bEarlyChange, predictor, Colors, BitsPerComponent,
-      Columns, estimated_size);
-  *dest_buf = std::move(result.data);
-  *dest_size = result.size;
-  return result.offset;
+  return FlateModule::FlateOrLZWDecode(use_lzw, src_span, bEarlyChange,
+                                       predictor, Colors, BitsPerComponent,
+                                       Columns, estimated_size);
 }
 
 std::optional<DecoderArray> GetDecoderArray(
@@ -437,11 +432,17 @@ bool PDF_DataDecode(pdfium::span<const uint8_t> src_span,
         *pImageParams = std::move(pParam);
         return true;
       }
-      offset = FlateOrLZWDecode(false, last_span, pParam, estimated_size,
-                                &new_buf, &new_size);
+      CodecDecodeResult decode_result = FlateOrLZWDecode(
+          /*use_lzw=*/false, last_span, pParam, estimated_size);
+      new_buf = std::move(decode_result.data);
+      new_size = decode_result.size;
+      offset = decode_result.offset;
     } else if (decoder == "LZWDecode" || decoder == "LZW") {
-      offset = FlateOrLZWDecode(true, last_span, pParam, estimated_size,
-                                &new_buf, &new_size);
+      CodecDecodeResult decode_result =
+          FlateOrLZWDecode(/*use_lzw=*/true, last_span, pParam, estimated_size);
+      new_buf = std::move(decode_result.data);
+      new_size = decode_result.size;
+      offset = decode_result.offset;
     } else if (decoder == "ASCII85Decode" || decoder == "A85") {
       offset = A85Decode(last_span, &new_buf, &new_size);
     } else if (decoder == "ASCIIHexDecode" || decoder == "AHx") {

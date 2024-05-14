@@ -26,6 +26,7 @@ class CPDF_Object;
 
 namespace fxcodec {
 class ScanlineDecoder;
+struct CodecDecodeResult;
 }
 
 // Indexed by 8-bit char code, contains unicode code points.
@@ -64,12 +65,11 @@ uint32_t HexDecode(pdfium::span<const uint8_t> src_span,
                    std::unique_ptr<uint8_t, FxFreeDeleter>* dest_buf,
                    uint32_t* dest_size);
 
-uint32_t FlateOrLZWDecode(bool bLZW,
-                          pdfium::span<const uint8_t> src_span,
-                          const CPDF_Dictionary* pParams,
-                          uint32_t estimated_size,
-                          std::unique_ptr<uint8_t, FxFreeDeleter>* dest_buf,
-                          uint32_t* dest_size);
+fxcodec::CodecDecodeResult FlateOrLZWDecode(
+    bool use_lzw,
+    pdfium::span<const uint8_t> src_span,
+    const CPDF_Dictionary* pParams,
+    uint32_t estimated_size);
 
 // Returns std::nullopt if the filter in |pDict| is the wrong type or an
 // invalid decoder pipeline.
