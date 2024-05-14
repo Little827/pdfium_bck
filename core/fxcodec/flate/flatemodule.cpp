@@ -19,6 +19,7 @@
 #include <utility>
 #include <vector>
 
+#include "core/fxcodec/codec_decode_result.h"
 #include "core/fxcodec/scanlinedecoder.h"
 #include "core/fxcrt/check.h"
 #include "core/fxcrt/data_vector.h"
@@ -549,15 +550,8 @@ bool TIFF_Predictor(int Colors,
   return true;
 }
 
-struct FlateUncompressResult {
-  // TODO(crbug.com/pdfium/1872): Replace with DataVector.
-  std::unique_ptr<uint8_t, FxFreeDeleter> data;
-  uint32_t size;
-  uint32_t offset;
-};
-
-FlateUncompressResult FlateUncompress(pdfium::span<const uint8_t> src_buf,
-                                      uint32_t orig_size) {
+CodecDecodeResult FlateUncompress(pdfium::span<const uint8_t> src_buf,
+                                  uint32_t orig_size) {
   std::unique_ptr<z_stream, FlateDeleter> context(FlateInit());
   if (!context) {
     return {nullptr, 0u, 0u};
@@ -846,7 +840,7 @@ std::unique_ptr<ScanlineDecoder> FlateModule::CreateDecoder(
 }
 
 // static
-uint32_t FlateModule::FlateOrLZWDecode(
+CodecDecodeResult FlateModule::FlateOrLZWDecode(
     bool bLZW,
     pdfium::span<const uint8_t> src_span,
     bool bEarlyChange,
@@ -854,42 +848,46 @@ uint32_t FlateModule::FlateOrLZWDecode(
     int Colors,
     int BitsPerComponent,
     int Columns,
-    uint32_t estimated_size,
-    std::unique_ptr<uint8_t, FxFreeDeleter>* dest_buf,
-    uint32_t* dest_size) {
-  dest_buf->reset();
-  uint32_t offset = 0;
+    uint32_t estimated_size) {
+  std::unique_ptr<uint8_t, FxFreeDeleter> dest_buf;
+  uint32_t dest_size = 0;
+  uint32_t offset = FX_INVALID_OFFSET;
   PredictorType predictor_type = GetPredictor(predictor);
 
   if (bLZW) {
     auto decoder = std::make_unique<CLZWDecoder>(src_span, bEarlyChange);
-    if (!decoder->Decode())
-      return FX_INVALID_OFFSET;
+    if (!decoder->Decode()) {
+      return {std::move(dest_buf), dest_size, offset};
+    }
 
+    dest_buf = decoder->TakeDestBuf();
+    dest_size = decoder->GetDestSize();
     offset = decoder->GetSrcSize();
-    *dest_size = decoder->GetDestSize();
-    *dest_buf = decoder->TakeDestBuf();
   } else {
-    FlateUncompressResult result = FlateUncompress(src_span, estimated_size);
-    *dest_buf = std::move(result.data);
-    *dest_size = result.size;
+    CodecDecodeResult result = FlateUncompress(src_span, estimated_size);
+    dest_buf = std::move(result.data);
+    dest_size = result.size;
     offset = result.offset;
   }
 
   bool ret = false;
   switch (predictor_type) {
     case PredictorType::kNone:
-      return offset;
+      ret = true;
+      break;
     case PredictorType::kPng:
-      ret =
-          PNG_Predictor(Colors, BitsPerComponent, Columns, dest_buf, dest_size);
+      ret = PNG_Predictor(Colors, BitsPerComponent, Columns, &dest_buf,
+                          &dest_size);
       break;
     case PredictorType::kFlate:
-      ret = TIFF_Predictor(Colors, BitsPerComponent, Columns, dest_buf,
-                           dest_size);
+      ret = TIFF_Predictor(Colors, BitsPerComponent, Columns, &dest_buf,
+                           &dest_size);
       break;
   }
-  return ret ? offset : FX_INVALID_OFFSET;
+  if (!ret) {
+    offset = FX_INVALID_OFFSET;
+  }
+  return {std::move(dest_buf), dest_size, offset};
 }
 
 // static
