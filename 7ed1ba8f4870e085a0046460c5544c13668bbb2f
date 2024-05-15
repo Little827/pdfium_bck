@@ -16,6 +16,23 @@
       "message": "Adding internal G-account approval stamp.",
       "revId": "7ed1ba8f4870e085a0046460c5544c13668bbb2f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8b8f4cf_b2a5a596",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5645
+      },
+      "writtenOn": "2024-05-15T17:05:35Z",
+      "side": 1,
+      "message": "+Lei for second approval.",
+      "revId": "7ed1ba8f4870e085a0046460c5544c13668bbb2f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
