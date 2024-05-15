@@ -103,8 +103,6 @@ uint32_t DecodeInlineStream(pdfium::span<const uint8_t> src_span,
         /*use_lzw=*/true, src_span, pParam.Get(), /*estimated_size=*/0);
     return result.bytes_consumed;
   }
-  std::unique_ptr<uint8_t, FxFreeDeleter> ignored_result;
-  uint32_t ignored_size;
   if (decoder == "DCTDecode") {
     std::unique_ptr<ScanlineDecoder> pDecoder = JpegModule::CreateDecoder(
         src_span, width, height, 0,
@@ -117,12 +115,18 @@ uint32_t DecodeInlineStream(pdfium::span<const uint8_t> src_span,
     return DecodeAllScanlines(std::move(pDecoder));
   }
 
-  if (decoder == "ASCII85Decode")
-    return A85Decode(src_span, &ignored_result, &ignored_size);
-  if (decoder == "ASCIIHexDecode")
-    return HexDecode(src_span, &ignored_result, &ignored_size);
-  if (decoder == "RunLengthDecode")
-    return RunLengthDecode(src_span, &ignored_result, &ignored_size);
+  if (decoder == "ASCII85Decode") {
+    DataAndBytesConsumed result = A85Decode(src_span);
+    return result.bytes_consumed;
+  }
+  if (decoder == "ASCIIHexDecode") {
+    DataAndBytesConsumed result = HexDecode(src_span);
+    return result.bytes_consumed;
+  }
+  if (decoder == "RunLengthDecode") {
+    DataAndBytesConsumed result = RunLengthDecode(src_span);
+    return result.bytes_consumed;
+  }
 
   return FX_INVALID_OFFSET;
 }
