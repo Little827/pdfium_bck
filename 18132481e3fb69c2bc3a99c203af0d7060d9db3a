@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5962d9cc_d1b84660",
+        "filename": "core/fxcodec/data_and_bytes_consumed.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-05-15T16:59:52Z",
+      "side": 1,
+      "message": "This class is from a prior DataVector CL that never landed. It\u0027s been updated to have this 3-param ctor instead of the default ctor.",
+      "revId": "18132481e3fb69c2bc3a99c203af0d7060d9db3a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
