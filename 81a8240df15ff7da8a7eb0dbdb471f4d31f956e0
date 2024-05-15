@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4cfd708d_446b5353",
+        "filename": "core/fxcodec/flate/flatemodule.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-05-15T22:51:16Z",
+      "side": 1,
+      "message": "This is the declaration of a function that returns the forward declare type, so the incomplete type is ok. It the function definition that requires the type to be defined.",
+      "parentUuid": "877ccd8b_e064a364",
+      "range": {
+        "startLine": 36,
+        "startChar": 9,
+        "endLine": 36,
+        "endChar": 29
+      },
+      "revId": "81a8240df15ff7da8a7eb0dbdb471f4d31f956e0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2512ba0d_17caa8ae",
         "filename": "core/fxcodec/flate/flatemodule_unittest.cpp",
         "patchSetId": 3
@@ -37,6 +61,30 @@
       "writtenOn": "2024-05-15T17:21:11Z",
       "side": 1,
       "message": "needs // TODO(crbug.com/pdfium/2155): resolve safety issues.",
+      "range": {
+        "startLine": 44,
+        "startChar": 15,
+        "endLine": 44,
+        "endChar": 29
+      },
+      "revId": "81a8240df15ff7da8a7eb0dbdb471f4d31f956e0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1010c82_adf93e65",
+        "filename": "core/fxcodec/flate/flatemodule_unittest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-05-15T22:51:16Z",
+      "side": 1,
+      "message": "I\u0027ll switch to UNSAFE_TODO() after your CLs land.",
+      "parentUuid": "2512ba0d_17caa8ae",
       "range": {
         "startLine": 44,
         "startChar": 15,
