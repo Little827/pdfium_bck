@@ -4,11 +4,6 @@
 
 // Original code copyright 2014 Foxit Software Inc. http://www.foxitsoftware.com
 
-#if defined(UNSAFE_BUFFERS_BUILD)
-// TODO(crbug.com/pdfium/2153): resolve buffer safety issues.
-#pragma allow_unsafe_buffers
-#endif
-
 #include "core/fdrm/fx_crypt_aes.h"
 
 #include "core/fxcrt/byteorder.h"
@@ -428,20 +423,21 @@ const unsigned int D3[256] = {
     0xcb84617b, 0x32b670d5, 0x6c5c7448, 0xb85742d0,
 };
 
-#define ADD_ROUND_KEY_4()                                                     \
-  (block[0] ^= *keysched++, block[1] ^= *keysched++, block[2] ^= *keysched++, \
-   block[3] ^= *keysched++)
-#define MOVEWORD(i) (block[i] = newstate[i])
-#define FMAKEWORD(i)                                        \
-  (newstate[i] = (E0[(block[i] >> 24) & 0xFF] ^             \
-                  E1[(block[(i + C1) % Nb] >> 16) & 0xFF] ^ \
-                  E2[(block[(i + C2) % Nb] >> 8) & 0xFF] ^  \
-                  E3[block[(i + C3) % Nb] & 0xFF]))
-#define LASTWORD(i)                                                  \
-  (newstate[i] = (Sbox[(block[i] >> 24) & 0xFF] << 24) |             \
-                 (Sbox[(block[(i + C1) % Nb] >> 16) & 0xFF] << 16) | \
-                 (Sbox[(block[(i + C2) % Nb] >> 8) & 0xFF] << 8) |   \
-                 (Sbox[(block[(i + C3) % Nb]) & 0xFF]))
+#define ADD_ROUND_KEY_4()                                        \
+  UNSAFE_TODO((block[0] ^= *keysched++, block[1] ^= *keysched++, \
+               block[2] ^= *keysched++, block[3] ^= *keysched++))
+#define MOVEWORD(i) UNSAFE_TODO((block[i] = newstate[i]))
+#define FMAKEWORD(i)                                                    \
+  UNSAFE_TODO((newstate[i] = (E0[(block[i] >> 24) & 0xFF] ^             \
+                              E1[(block[(i + C1) % Nb] >> 16) & 0xFF] ^ \
+                              E2[(block[(i + C2) % Nb] >> 8) & 0xFF] ^  \
+                              E3[block[(i + C3) % Nb] & 0xFF])))
+#define LASTWORD(i)                                                      \
+  UNSAFE_TODO(                                                           \
+      (newstate[i] = (Sbox[(block[i] >> 24) & 0xFF] << 24) |             \
+                     (Sbox[(block[(i + C1) % Nb] >> 16) & 0xFF] << 16) | \
+                     (Sbox[(block[(i + C2) % Nb] >> 8) & 0xFF] << 8) |   \
+                     (Sbox[(block[(i + C3) % Nb]) & 0xFF])))
 
 void aes_encrypt_nb_4(CRYPT_aes_context* ctx, unsigned int* block) {
   int i;
@@ -474,18 +470,18 @@ void aes_encrypt_nb_4(CRYPT_aes_context* ctx, unsigned int* block) {
   ADD_ROUND_KEY_4();
 }
 #undef FMAKEWORD
+#define FMAKEWORD(i)                                                    \
+  UNSAFE_TODO((newstate[i] = (D0[(block[i] >> 24) & 0xFF] ^             \
+                              D1[(block[(i + C1) % Nb] >> 16) & 0xFF] ^ \
+                              D2[(block[(i + C2) % Nb] >> 8) & 0xFF] ^  \
+                              D3[block[(i + C3) % Nb] & 0xFF])))
 #undef LASTWORD
-
-#define FMAKEWORD(i)                                        \
-  (newstate[i] = (D0[(block[i] >> 24) & 0xFF] ^             \
-                  D1[(block[(i + C1) % Nb] >> 16) & 0xFF] ^ \
-                  D2[(block[(i + C2) % Nb] >> 8) & 0xFF] ^  \
-                  D3[block[(i + C3) % Nb] & 0xFF]))
-#define LASTWORD(i)                                                     \
-  (newstate[i] = (Sboxinv[(block[i] >> 24) & 0xFF] << 24) |             \
-                 (Sboxinv[(block[(i + C1) % Nb] >> 16) & 0xFF] << 16) | \
-                 (Sboxinv[(block[(i + C2) % Nb] >> 8) & 0xFF] << 8) |   \
-                 (Sboxinv[(block[(i + C3) % Nb]) & 0xFF]))
+#define LASTWORD(i)                                                         \
+  UNSAFE_TODO(                                                              \
+      (newstate[i] = (Sboxinv[(block[i] >> 24) & 0xFF] << 24) |             \
+                     (Sboxinv[(block[(i + C1) % Nb] >> 16) & 0xFF] << 16) | \
+                     (Sboxinv[(block[(i + C2) % Nb] >> 8) & 0xFF] << 8) |   \
+                     (Sboxinv[(block[(i + C3) % Nb]) & 0xFF])))
 
 void aes_decrypt_nb_4(CRYPT_aes_context* ctx, unsigned int* block) {
   int i;
@@ -526,62 +522,65 @@ void CRYPT_AESSetKey(CRYPT_aes_context* ctx,
                      const uint8_t* key,
                      uint32_t keylen) {
   DCHECK(keylen == 16 || keylen == 24 || keylen == 32);
-  auto keyspan = pdfium::make_span(key, keylen);
+  auto keyspan = UNSAFE_TODO(pdfium::make_span(key, keylen));
   int Nk = keylen / 4;
   ctx->Nb = 4;
   ctx->Nr = 6 + (ctx->Nb > Nk ? ctx->Nb : Nk);
   int rconst = 1;
   for (int i = 0; i < (ctx->Nr + 1) * ctx->Nb; i++) {
-    if (i < Nk) {
-      ctx->keysched[i] = fxcrt::GetUInt32MSBFirst(keyspan.subspan(4 * i));
-    } else {
-      unsigned int temp = ctx->keysched[i - 1];
-      if (i % Nk == 0) {
-        int a = (temp >> 16) & 0xFF;
-        int b = (temp >> 8) & 0xFF;
-        int c = (temp >> 0) & 0xFF;
-        int d = (temp >> 24) & 0xFF;
-        temp = Sbox[a] ^ rconst;
-        temp = (temp << 8) | Sbox[b];
-        temp = (temp << 8) | Sbox[c];
-        temp = (temp << 8) | Sbox[d];
-        rconst = mulby2(rconst);
-      } else if (i % Nk == 4 && Nk > 6) {
-        int a = (temp >> 24) & 0xFF;
-        int b = (temp >> 16) & 0xFF;
-        int c = (temp >> 8) & 0xFF;
-        int d = (temp >> 0) & 0xFF;
-        temp = Sbox[a];
-        temp = (temp << 8) | Sbox[b];
-        temp = (temp << 8) | Sbox[c];
-        temp = (temp << 8) | Sbox[d];
+    UNSAFE_TODO({
+      if (i < Nk) {
+        ctx->keysched[i] = fxcrt::GetUInt32MSBFirst(keyspan.subspan(4 * i));
+      } else {
+        unsigned int temp = ctx->keysched[i - 1];
+        if (i % Nk == 0) {
+          int a = (temp >> 16) & 0xFF;
+          int b = (temp >> 8) & 0xFF;
+          int c = (temp >> 0) & 0xFF;
+          int d = (temp >> 24) & 0xFF;
+          temp = Sbox[a] ^ rconst;
+          temp = (temp << 8) | Sbox[b];
+          temp = (temp << 8) | Sbox[c];
+          temp = (temp << 8) | Sbox[d];
+          rconst = mulby2(rconst);
+        } else if (i % Nk == 4 && Nk > 6) {
+          int a = (temp >> 24) & 0xFF;
+          int b = (temp >> 16) & 0xFF;
+          int c = (temp >> 8) & 0xFF;
+          int d = (temp >> 0) & 0xFF;
+          temp = Sbox[a];
+          temp = (temp << 8) | Sbox[b];
+          temp = (temp << 8) | Sbox[c];
+          temp = (temp << 8) | Sbox[d];
+        }
+        ctx->keysched[i] = ctx->keysched[i - Nk] ^ temp;
       }
-      ctx->keysched[i] = ctx->keysched[i - Nk] ^ temp;
-    }
+    });
   }
   for (int i = 0; i <= ctx->Nr; i++) {
     for (int j = 0; j < ctx->Nb; j++) {
-      unsigned int temp;
-      temp = ctx->keysched[(ctx->Nr - i) * ctx->Nb + j];
-      if (i != 0 && i != ctx->Nr) {
-        int a = (temp >> 24) & 0xFF;
-        int b = (temp >> 16) & 0xFF;
-        int c = (temp >> 8) & 0xFF;
-        int d = (temp >> 0) & 0xFF;
-        temp = D0[Sbox[a]];
-        temp ^= D1[Sbox[b]];
-        temp ^= D2[Sbox[c]];
-        temp ^= D3[Sbox[d]];
-      }
+      UNSAFE_TODO({
+        unsigned int temp = ctx->keysched[(ctx->Nr - i) * ctx->Nb + j];
+        if (i != 0 && i != ctx->Nr) {
+          int a = (temp >> 24) & 0xFF;
+          int b = (temp >> 16) & 0xFF;
+          int c = (temp >> 8) & 0xFF;
+          int d = (temp >> 0) & 0xFF;
+          temp = D0[Sbox[a]];
+          temp ^= D1[Sbox[b]];
+          temp ^= D2[Sbox[c]];
+          temp ^= D3[Sbox[d]];
+        }
       ctx->invkeysched[i * ctx->Nb + j] = temp;
     }
+    });
   }
 }
 
 void CRYPT_AESSetIV(CRYPT_aes_context* ctx, const uint8_t* iv) {
   for (int i = 0; i < ctx->Nb; i++) {
-    // TODO(tsepez): Pass actual span.
-    ctx->iv[i] = fxcrt::GetUInt32MSBFirst(pdfium::make_span(iv + 4 * i, 4u));
+    UNSAFE_TODO(ctx->iv[i] = fxcrt::GetUInt32MSBFirst(
+                    pdfium::make_span(iv + 4 * i, 4u)));
   }
 }
 
@@ -594,23 +593,25 @@ void CRYPT_AESDecrypt(CRYPT_aes_context* ctx,
   unsigned int ct[4];
   int i;
   CHECK_EQ((size & 15), 0);
-  FXSYS_memcpy(iv, ctx->iv, sizeof(iv));
-  while (size != 0) {
-    for (i = 0; i < 4; i++) {
-      x[i] = ct[i] = fxcrt::GetUInt32MSBFirst(
-          UNSAFE_TODO(pdfium::make_span(src + 4 * i, 4u)));
+  UNSAFE_TODO({
+    FXSYS_memcpy(iv, ctx->iv, sizeof(iv));
+    while (size != 0) {
+      for (i = 0; i < 4; i++) {
+        x[i] = ct[i] =
+            fxcrt::GetUInt32MSBFirst(pdfium::make_span(src + 4 * i, 4u));
+      }
+      aes_decrypt_nb_4(ctx, x);
+      for (i = 0; i < 4; i++) {
+        fxcrt::PutUInt32MSBFirst(iv[i] ^ x[i],
+                                 pdfium::make_span(dest + 4 * i, 4u));
+        iv[i] = ct[i];
+      }
+      dest += 16;
+      src += 16;
+      size -= 16;
     }
-    aes_decrypt_nb_4(ctx, x);
-    for (i = 0; i < 4; i++) {
-      fxcrt::PutUInt32MSBFirst(
-          iv[i] ^ x[i], UNSAFE_TODO(pdfium::make_span(dest + 4 * i, 4u)));
-      iv[i] = ct[i];
-    }
-    dest += 16;
-    src += 16;
-    size -= 16;
-  }
-  FXSYS_memcpy(ctx->iv, iv, sizeof(iv));
+    FXSYS_memcpy(ctx->iv, iv, sizeof(iv));
+  });
 }
 
 void CRYPT_AESEncrypt(CRYPT_aes_context* ctx,
@@ -620,20 +621,20 @@ void CRYPT_AESEncrypt(CRYPT_aes_context* ctx,
   unsigned int iv[4];
   int i;
   CHECK_EQ((size & 15), 0);
-  FXSYS_memcpy(iv, ctx->iv, sizeof(iv));
-  while (size != 0) {
-    for (i = 0; i < 4; i++) {
-      iv[i] ^= fxcrt::GetUInt32MSBFirst(
-          UNSAFE_TODO(pdfium::make_span(src + 4 * i, 4u)));
+  UNSAFE_TODO({
+    FXSYS_memcpy(iv, ctx->iv, sizeof(iv));
+    while (size != 0) {
+      for (i = 0; i < 4; i++) {
+        iv[i] ^= fxcrt::GetUInt32MSBFirst(pdfium::make_span(src + 4 * i, 4u));
+      }
+      aes_encrypt_nb_4(ctx, iv);
+      for (i = 0; i < 4; i++) {
+        fxcrt::PutUInt32MSBFirst(iv[i], pdfium::make_span(dest + 4 * i, 4u));
+      }
+      dest += 16;
+      src += 16;
+      size -= 16;
     }
-    aes_encrypt_nb_4(ctx, iv);
-    for (i = 0; i < 4; i++) {
-      fxcrt::PutUInt32MSBFirst(
-          iv[i], UNSAFE_TODO(pdfium::make_span(dest + 4 * i, 4u)));
-    }
-    dest += 16;
-    src += 16;
-    size -= 16;
-  }
-  FXSYS_memcpy(ctx->iv, iv, sizeof(iv));
+    FXSYS_memcpy(ctx->iv, iv, sizeof(iv));
+  });
 }
