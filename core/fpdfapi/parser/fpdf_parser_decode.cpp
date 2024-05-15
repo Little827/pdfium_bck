@@ -23,6 +23,7 @@
 #include "core/fpdfapi/parser/cpdf_array.h"
 #include "core/fpdfapi/parser/cpdf_dictionary.h"
 #include "core/fpdfapi/parser/fpdf_parser_utility.h"
+#include "core/fxcodec/data_and_bytes_consumed.h"
 #include "core/fxcodec/fax/faxmodule.h"
 #include "core/fxcodec/flate/flatemodule.h"
 #include "core/fxcodec/scanlinedecoder.h"
@@ -365,9 +366,12 @@ uint32_t FlateOrLZWDecode(bool bLZW,
     if (!CheckFlateDecodeParams(Colors, BitsPerComponent, Columns))
       return FX_INVALID_OFFSET;
   }
-  return FlateModule::FlateOrLZWDecode(bLZW, src_span, bEarlyChange, predictor,
-                                       Colors, BitsPerComponent, Columns,
-                                       estimated_size, dest_buf, dest_size);
+  DataAndBytesConsumed result = FlateModule::FlateOrLZWDecode(
+      bLZW, src_span, bEarlyChange, predictor, Colors, BitsPerComponent,
+      Columns, estimated_size);
+  *dest_buf = std::move(result.data);
+  *dest_size = result.size;
+  return result.bytes_consumed;
 }
 
 std::optional<DecoderArray> GetDecoderArray(
