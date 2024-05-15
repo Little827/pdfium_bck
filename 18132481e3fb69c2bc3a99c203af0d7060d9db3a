@@ -16,6 +16,69 @@
       "message": "This class is from a prior DataVector CL that never landed. It\u0027s been updated to have this 3-param ctor instead of the default ctor.",
       "revId": "18132481e3fb69c2bc3a99c203af0d7060d9db3a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f419f473_b429b067",
+        "filename": "core/fxcodec/data_and_bytes_consumed.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-05-15T17:16:39Z",
+      "side": 1,
+      "message": "Nit: Can this just be an aggregate? Or do we run afoul of the external default constructor required chrome clang plugin rule?",
+      "range": {
+        "startLine": 17,
+        "startChar": 1,
+        "endLine": 25,
+        "endChar": 0
+      },
+      "revId": "18132481e3fb69c2bc3a99c203af0d7060d9db3a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f273609_3823e410",
+        "filename": "core/fxcodec/data_and_bytes_consumed.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-05-15T17:16:39Z",
+      "side": 1,
+      "message": "nit: \u003d 0; maybe?",
+      "range": {
+        "startLine": 28,
+        "startChar": 10,
+        "endLine": 28,
+        "endChar": 16
+      },
+      "revId": "18132481e3fb69c2bc3a99c203af0d7060d9db3a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7083db48_e66eb9d7",
+        "filename": "core/fxcodec/data_and_bytes_consumed.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-05-15T17:16:39Z",
+      "side": 1,
+      "message": "nit: \u003d 0; maybe?",
+      "revId": "18132481e3fb69c2bc3a99c203af0d7060d9db3a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
