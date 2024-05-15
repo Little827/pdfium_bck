@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a118566e_26200e0b",
+        "filename": "core/fpdfapi/parser/cpdf_crypto_handler.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-05-15T20:51:30Z",
+      "side": 1,
+      "message": "NOTE: me contemplating adding UNSAFE_TODO() macro to avoid stock comments.",
+      "range": {
+        "startLine": 339,
+        "startChar": 0,
+        "endLine": 339,
+        "endChar": 69
+      },
+      "revId": "03d84cfee9fc3be750aade16bdc3c9f5b2a2585c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
