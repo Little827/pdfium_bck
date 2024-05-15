@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22cd6b12_eed23049",
+        "filename": "core/fpdfapi/page/cpdf_streamparser.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-05-15T17:24:10Z",
+      "side": 1,
+      "message": "nit: local not needed.",
+      "range": {
+        "startLine": 96,
+        "startChar": 25,
+        "endLine": 96,
+        "endChar": 31
+      },
+      "revId": "5206b4ea4620945136bf6d40920b8f785312a811",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d70fdef_a9d47a9c",
+        "filename": "core/fpdfapi/page/cpdf_streamparser.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-05-15T17:24:10Z",
+      "side": 1,
+      "message": "nit: local not needed",
+      "range": {
+        "startLine": 102,
+        "startChar": 25,
+        "endLine": 102,
+        "endChar": 31
+      },
+      "revId": "5206b4ea4620945136bf6d40920b8f785312a811",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d32d2a78_268b1eee",
+        "filename": "core/fpdfapi/parser/fpdf_parser_decode.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-05-15T17:24:10Z",
+      "side": 1,
+      "message": "Again, not sure how this is OK for the compiler to not know size from forwrad decl only.",
+      "range": {
+        "startLine": 68,
+        "startChar": 9,
+        "endLine": 68,
+        "endChar": 29
+      },
+      "revId": "5206b4ea4620945136bf6d40920b8f785312a811",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
