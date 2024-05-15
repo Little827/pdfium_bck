@@ -72,6 +72,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb23756c_1050757c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-05-15T23:40:04Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "73d4c251_453c458b",
+      "revId": "ed735b455f448ba66c106664169d3464ca44df9b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df531946_3f60192a",
@@ -109,6 +127,30 @@
       "side": 1,
       "message": "Looks unnecessary. Since the height of FX_RECT is calculated as [bottom - top], the pixel on the bottom line is actually outside the rect.",
       "parentUuid": "df531946_3f60192a",
+      "range": {
+        "startLine": 407,
+        "startChar": 32,
+        "endLine": 407,
+        "endChar": 54
+      },
+      "revId": "ed735b455f448ba66c106664169d3464ca44df9b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "282a205e_4a65153a",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-05-15T23:40:04Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "f025c1c8_79bc20c7",
       "range": {
         "startLine": 407,
         "startChar": 32,
