@@ -52,6 +52,47 @@
       "parentUuid": "7beb2ca1_ec717ad3",
       "revId": "ed735b455f448ba66c106664169d3464ca44df9b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73d4c251_453c458b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-05-15T10:33:12Z",
+      "side": 1,
+      "message": "Yes, if they are the same, then bug_2106_expected_skia.pdf.0.png is unnecessary. I suggested adding it because it was necessary for patch set 3.",
+      "parentUuid": "9eb5bca6_ff2c67e8",
+      "revId": "ed735b455f448ba66c106664169d3464ca44df9b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df531946_3f60192a",
+        "filename": "core/fpdfapi/render/cpdf_renderstatus.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-05-15T10:33:12Z",
+      "side": 1,
+      "message": "Should this comparison use \u003c\u003d, to get the bottom row in the rect?",
+      "range": {
+        "startLine": 407,
+        "startChar": 32,
+        "endLine": 407,
+        "endChar": 54
+      },
+      "revId": "ed735b455f448ba66c106664169d3464ca44df9b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
