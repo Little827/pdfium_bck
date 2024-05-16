@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b9b71a5_78d31ede",
+        "filename": "core/fpdfapi/page/cpdf_streamparser.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-05-16T05:46:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22cd6b12_eed23049",
+      "range": {
+        "startLine": 96,
+        "startChar": 25,
+        "endLine": 96,
+        "endChar": 31
+      },
+      "revId": "5206b4ea4620945136bf6d40920b8f785312a811",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d70fdef_a9d47a9c",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-05-15T17:24:10Z",
       "side": 1,
       "message": "nit: local not needed",
+      "range": {
+        "startLine": 102,
+        "startChar": 25,
+        "endLine": 102,
+        "endChar": 31
+      },
+      "revId": "5206b4ea4620945136bf6d40920b8f785312a811",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30850728_8fb11c8c",
+        "filename": "core/fpdfapi/page/cpdf_streamparser.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-05-16T05:46:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d70fdef_a9d47a9c",
       "range": {
         "startLine": 102,
         "startChar": 25,
