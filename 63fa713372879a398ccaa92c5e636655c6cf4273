@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3c54141_0aaae3b9",
+        "filename": "core/fpdfapi/font/cpdf_cidfont.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-05-16T18:13:41Z",
+      "side": 1,
+      "message": "Extra parens.",
+      "range": {
+        "startLine": 541,
+        "startChar": 26,
+        "endLine": 541,
+        "endChar": 27
+      },
+      "revId": "63fa713372879a398ccaa92c5e636655c6cf4273",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "481bdd93_f24287d8",
