@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bca3ba1_08fd7bbf",
+        "filename": "core/fxcodec/flate/flatemodule.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 799,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-05-16T23:10:38Z",
+      "side": 1,
+      "message": "The size is always `m_PredictPitch`. I will switch `m_PredictBuffer` to a FixedSizeDataVector later.",
+      "range": {
+        "startLine": 799,
+        "startChar": 25,
+        "endLine": 799,
+        "endChar": 40
+      },
+      "revId": "0a7e393c8b238c16fe2f2e94a4a8ce580af40ea7",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
