@@ -53,30 +53,36 @@ bool CPDF_DeviceCS::GetRGB(pdfium::span<const float> pBuf,
                            float* B) const {
   switch (GetFamily()) {
     case Family::kDeviceGray:
-      *R = NormalizeChannel(pBuf[0]);
+      *R = NormalizeChannel(pBuf.front());
       *G = *R;
       *B = *R;
       return true;
-    case Family::kDeviceRGB:
-      *R = NormalizeChannel(pBuf[0]);
-      *G = NormalizeChannel(pBuf[1]);
-      *B = NormalizeChannel(pBuf[2]);
+    case Family::kDeviceRGB: {
+      auto rgb = fxcrt::reinterpret_span<const FX_RGB_STRUCT<float>>(pBuf);
+      *R = NormalizeChannel(rgb.front().red);
+      *G = NormalizeChannel(rgb.front().green);
+      *B = NormalizeChannel(rgb.front().blue);
       return true;
-    case Family::kDeviceCMYK:
+    }
+    case Family::kDeviceCMYK: {
+      auto cmyk = fxcrt::reinterpret_span<const FX_CMYK_STRUCT<float>>(pBuf);
       if (IsStdConversionEnabled()) {
-        float k = pBuf[3];
-        *R = 1.0f - std::min(1.0f, pBuf[0] + k);
-        *G = 1.0f - std::min(1.0f, pBuf[1] + k);
-        *B = 1.0f - std::min(1.0f, pBuf[2] + k);
+        float k = cmyk.front().key;
+        *R = 1.0f - std::min(1.0f, cmyk.front().cyan + k);
+        *G = 1.0f - std::min(1.0f, cmyk.front().magenta + k);
+        *B = 1.0f - std::min(1.0f, cmyk.front().yellow + k);
       } else {
-        FX_RGB_STRUCT<float> rgb = AdobeCMYK_to_sRGB(
-            NormalizeChannel(pBuf[0]), NormalizeChannel(pBuf[1]),
-            NormalizeChannel(pBuf[2]), NormalizeChannel(pBuf[3]));
+        FX_RGB_STRUCT<float> rgb =
+            AdobeCMYK_to_sRGB(NormalizeChannel(cmyk.front().cyan),
+                              NormalizeChannel(cmyk.front().magenta),
+                              NormalizeChannel(cmyk.front().yellow),
+                              NormalizeChannel(cmyk.front().key));
         *R = rgb.red;
         *G = rgb.green;
         *B = rgb.blue;
       }
       return true;
+    }
     default:
       NOTREACHED_NORETURN();
   }
