@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3453e5e_ac6960ba",
+        "filename": "core/fxcodec/flate/flatemodule.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 883,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-05-16T20:49:39Z",
+      "side": 1,
+      "message": "should we be returning an umodified dest_buf on error?",
+      "range": {
+        "startLine": 883,
+        "startChar": 24,
+        "endLine": 883,
+        "endChar": 34
+      },
+      "revId": "d56ec32f6970f920c48380a5de4686a73b304391",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
