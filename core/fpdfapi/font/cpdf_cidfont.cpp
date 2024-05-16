@@ -4,11 +4,6 @@
 
 // Original code copyright 2014 Foxit Software Inc. http://www.foxitsoftware.com
 
-#if defined(UNSAFE_BUFFERS_BUILD)
-// TODO(crbug.com/pdfium/2154): resolve buffer safety issues.
-#pragma allow_unsafe_buffers
-#endif
-
 #include "core/fpdfapi/font/cpdf_cidfont.h"
 
 #include <algorithm>
@@ -207,7 +202,7 @@ void UseCIDCharmap(const RetainPtr<CFX_Face>& face, CIDCoding coding) {
 }
 
 bool IsMetricForCID(const int* pEntry, uint16_t cid) {
-  return pEntry[0] <= cid && pEntry[1] >= cid;
+  return UNSAFE_TODO(pEntry[0] <= cid && pEntry[1] >= cid);
 }
 
 void LoadMetricsArray(RetainPtr<const CPDF_Array> pArray,
@@ -541,11 +536,14 @@ int CPDF_CIDFont::GetCharWidthF(uint32_t charcode) {
   uint16_t cid = CIDFromCharCode(charcode);
   size_t size = m_WidthList.size();
   const int* pList = m_WidthList.data();
-  for (size_t i = 0; i < size; i += 3) {
-    const int* pEntry = pList + i;
-    if (IsMetricForCID(pEntry, cid))
-      return pEntry[2];
-  }
+  UNSAFE_TODO({
+    for (size_t i = 0; i < size; i += 3) {
+      const int* pEntry = (pList + i);
+      if (IsMetricForCID(pEntry, cid)) {
+        return pEntry[2];
+      }
+    }
+  });
   return m_DefaultWidth;
 }
 
@@ -553,11 +551,14 @@ int16_t CPDF_CIDFont::GetVertWidth(uint16_t cid) const {
   size_t vertsize = m_VertMetrics.size() / 5;
   if (vertsize) {
     const int* pTable = m_VertMetrics.data();
-    for (size_t i = 0; i < vertsize; i++) {
-      const int* pEntry = pTable + (i * 5);
-      if (IsMetricForCID(pEntry, cid))
-        return static_cast<int16_t>(pEntry[2]);
-    }
+    UNSAFE_TODO({
+      for (size_t i = 0; i < vertsize; i++) {
+        const int* pEntry = pTable + (i * 5);
+        if (IsMetricForCID(pEntry, cid)) {
+          return static_cast<int16_t>(pEntry[2]);
+        }
+      }
+    });
   }
   return m_DefaultW1;
 }
@@ -566,24 +567,28 @@ CFX_Point16 CPDF_CIDFont::GetVertOrigin(uint16_t cid) const {
   size_t vertsize = m_VertMetrics.size() / 5;
   if (vertsize) {
     const int* pTable = m_VertMetrics.data();
-    for (size_t i = 0; i < vertsize; i++) {
-      const int* pEntry = pTable + (i * 5);
-      if (IsMetricForCID(pEntry, cid)) {
-        return {static_cast<int16_t>(pEntry[3]),
-                static_cast<int16_t>(pEntry[4])};
+    UNSAFE_TODO({
+      for (size_t i = 0; i < vertsize; i++) {
+        const int* pEntry = pTable + (i * 5);
+        if (IsMetricForCID(pEntry, cid)) {
+          return {static_cast<int16_t>(pEntry[3]),
+                  static_cast<int16_t>(pEntry[4])};
+        }
       }
-    }
+    });
   }
   int width = m_DefaultWidth;
   size_t size = m_WidthList.size();
   const int* pList = m_WidthList.data();
-  for (size_t i = 0; i < size; i += 3) {
-    const int* pEntry = pList + i;
-    if (IsMetricForCID(pEntry, cid)) {
-      width = pEntry[2];
-      break;
+  UNSAFE_TODO({
+    for (size_t i = 0; i < size; i += 3) {
+      const int* pEntry = pList + i;
+      if (IsMetricForCID(pEntry, cid)) {
+        width = pEntry[2];
+        break;
+      }
     }
-  }
+  });
   return {static_cast<int16_t>(width / 2), m_DefaultVY};
 }
 
@@ -809,7 +814,7 @@ void CPDF_CIDFont::LoadSubstFont() {
   safeStemV *= 5;
   m_Font.LoadSubst(m_BaseFontName, m_FontType == CIDFontType::kTrueType,
                    m_Flags, safeStemV.ValueOrDefault(FXFONT_FW_NORMAL),
-                   m_ItalicAngle, kCharsetCodePages[m_Charset],
+                   m_ItalicAngle, UNSAFE_TODO(kCharsetCodePages[m_Charset]),
                    IsVertWriting());
 }
 
