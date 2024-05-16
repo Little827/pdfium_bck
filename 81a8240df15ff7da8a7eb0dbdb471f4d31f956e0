@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "55d39527_29ad5b5a",
+        "filename": "core/fpdfapi/parser/fpdf_parser_decode.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-05-16T05:43:05Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "b5b40524_66b25cd4",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 49
+      },
+      "revId": "81a8240df15ff7da8a7eb0dbdb471f4d31f956e0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d8b588c2_ef36e330",
@@ -47,6 +71,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c850269_b0a21115",
+        "filename": "core/fpdfapi/parser/fpdf_parser_decode.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-05-16T05:43:05Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "d8b588c2_ef36e330",
+      "range": {
+        "startLine": 369,
+        "startChar": 2,
+        "endLine": 369,
+        "endChar": 29
+      },
+      "revId": "81a8240df15ff7da8a7eb0dbdb471f4d31f956e0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a7153d16_1a7f5f6a",
@@ -60,6 +108,30 @@
       "writtenOn": "2024-05-15T23:19:18Z",
       "side": 1,
       "message": "Then remove this as well, return 0 say.\n\nThen see if it compiles.",
+      "range": {
+        "startLine": 372,
+        "startChar": 3,
+        "endLine": 374,
+        "endChar": 31
+      },
+      "revId": "81a8240df15ff7da8a7eb0dbdb471f4d31f956e0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e39b498_eba82b83",
+        "filename": "core/fpdfapi/parser/fpdf_parser_decode.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-05-16T05:43:05Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "a7153d16_1a7f5f6a",
       "range": {
         "startLine": 372,
         "startChar": 3,
@@ -131,6 +203,30 @@
       "side": 1,
       "message": "Wouldn\u0027t the caller also need the complete type?  If the caller is to do anything with the result, then it likely includes the full definition. But if the caller was to, say, ignore the result, including only this file, does that work?",
       "parentUuid": "4cfd708d_446b5353",
+      "range": {
+        "startLine": 36,
+        "startChar": 9,
+        "endLine": 36,
+        "endChar": 29
+      },
+      "revId": "81a8240df15ff7da8a7eb0dbdb471f4d31f956e0",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08f4c91c_01c7e5b7",
+        "filename": "core/fxcodec/flate/flatemodule.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-05-16T05:43:05Z",
+      "side": 1,
+      "message": "All callers need the complete type whether they use the result or ignore it. Though there\u0027s no good reason to call this and ignore the result, aside from maybe a fuzzer.",
+      "parentUuid": "23e0f00d_8905dd5f",
       "range": {
         "startLine": 36,
         "startChar": 9,
