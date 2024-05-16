@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ead3122c_f4972be0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-05-16T23:07:16Z",
+      "side": 1,
+      "message": "I missed the memo from the Infra team to use recursivedeps.",
+      "revId": "64d6843e01400e4ae1c8fab00a495f9e0286716a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
