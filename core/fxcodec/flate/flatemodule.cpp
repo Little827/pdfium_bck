@@ -476,8 +476,8 @@ bool TIFF_Predictor(int Colors,
   return true;
 }
 
-DataVectorAndBytesConsumed FlateUncompress(pdfium::span<const uint8_t> src_buf,
-                                           uint32_t orig_size) {
+DataAndBytesConsumed FlateUncompress(pdfium::span<const uint8_t> src_buf,
+                                     uint32_t orig_size) {
   std::unique_ptr<z_stream, FlateDeleter> context(FlateInit());
   if (!context) {
     return {DataVector<uint8_t>(), 0u};
@@ -780,7 +780,7 @@ std::unique_ptr<ScanlineDecoder> FlateModule::CreateDecoder(
 }
 
 // static
-DataVectorAndBytesConsumed FlateModule::FlateOrLZWDecode(
+DataAndBytesConsumed FlateModule::FlateOrLZWDecode(
     bool bLZW,
     pdfium::span<const uint8_t> src_span,
     bool bEarlyChange,
@@ -802,8 +802,7 @@ DataVectorAndBytesConsumed FlateModule::FlateOrLZWDecode(
     dest_buf = decoder->TakeDestBuf();
     bytes_consumed = decoder->GetSrcSize();
   } else {
-    DataVectorAndBytesConsumed result =
-        FlateUncompress(src_span, estimated_size);
+    DataAndBytesConsumed result = FlateUncompress(src_span, estimated_size);
     dest_buf = std::move(result.data);
     bytes_consumed = result.bytes_consumed;
   }
