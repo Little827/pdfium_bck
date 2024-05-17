@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31a04b31_5cc2e6aa",
+        "filename": "core/fxcodec/flate/flatemodule.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-05-17T16:04:46Z",
+      "side": 1,
+      "message": "There\u0027s existing potential for this to underflowed. https://pdfium-review.googlesource.com/119315 later in the CL chain will get rid of most of these calculation.",
+      "revId": "a9387dce19895c750b2cca9ec33c99fb7c2be8dc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
