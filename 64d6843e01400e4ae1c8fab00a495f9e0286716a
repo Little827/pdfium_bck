@@ -16,6 +16,23 @@
       "message": "I missed the memo from the Infra team to use recursivedeps.",
       "revId": "64d6843e01400e4ae1c8fab00a495f9e0286716a",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce68fce9_b8b19cf8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5645
+      },
+      "writtenOn": "2024-05-17T16:47:55Z",
+      "side": 1,
+      "message": "G-account stamp.",
+      "revId": "64d6843e01400e4ae1c8fab00a495f9e0286716a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
