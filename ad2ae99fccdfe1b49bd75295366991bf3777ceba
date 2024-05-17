@@ -60,6 +60,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "36d351e5_06e6197b",
+        "filename": "core/fxcodec/flate/flatemodule.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-05-17T22:58:18Z",
+      "side": 1,
+      "message": "Doesn\u0027t seem to make a difference in my local build. If there\u0027s a performance issue and `inline` helps, we can always add it later.",
+      "parentUuid": "bf2e9aa6_3819ab00",
+      "range": {
+        "startLine": 305,
+        "startChar": 0,
+        "endLine": 305,
+        "endChar": 7
+      },
+      "revId": "ad2ae99fccdfe1b49bd75295366991bf3777ceba",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "09481b40_da40c4a4",
         "filename": "core/fxcodec/flate/flatemodule.cpp",
         "patchSetId": 2
