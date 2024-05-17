@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e6ad57e_04adbcce",
+        "filename": "core/fxcodec/flate/flatemodule.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-05-17T22:05:16Z",
+      "side": 1,
+      "message": "maybe pull this out into an actual function describing what it does in the name?",
+      "range": {
+        "startLine": 505,
+        "startChar": 28,
+        "endLine": 506,
+        "endChar": 61
+      },
+      "revId": "8ad341f15131ebf61d148ba78d81dcba057eec47",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
