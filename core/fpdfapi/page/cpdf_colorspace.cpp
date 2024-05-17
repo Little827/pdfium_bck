@@ -481,7 +481,8 @@ PatternValue::PatternValue(const PatternValue& that) = default;
 PatternValue::~PatternValue() = default;
 
 void PatternValue::SetComps(pdfium::span<const float> comps) {
-  fxcrt::spancpy(pdfium::make_span(m_Comps), comps);
+  m_Comps = pdfium::make_span(m_CompStorage).first(comps.size());
+  fxcrt::spancpy(m_Comps, comps);
 }
 
 // static

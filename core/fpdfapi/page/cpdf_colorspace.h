@@ -47,7 +47,8 @@ class PatternValue {
 
  private:
   RetainPtr<CPDF_Pattern> m_pRetainedPattern;
-  std::array<float, kMaxPatternColorComps> m_Comps = {};
+  pdfium::span<float> m_Comps;
+  std::array<float, kMaxPatternColorComps> m_CompStorage = {};
 };
 
 class CPDF_ColorSpace : public Retainable, public Observable {
