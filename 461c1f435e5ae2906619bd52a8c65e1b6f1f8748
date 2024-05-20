@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5dfad06f_bed848c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-05-20T18:50:13Z",
+      "side": 1,
+      "message": "This is starting to come together nicely.",
+      "revId": "461c1f435e5ae2906619bd52a8c65e1b6f1f8748",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98a1ce44_fb901546",
+        "filename": "fpdfsdk/fpdf_attachment.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-05-20T18:50:13Z",
+      "side": 1,
+      "message": "Pre: Follow-on: let\u0027s not store binary data in strings here, must be a better type nowadays.",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 10
+      },
+      "revId": "461c1f435e5ae2906619bd52a8c65e1b6f1f8748",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
