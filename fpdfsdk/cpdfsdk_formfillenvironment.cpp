@@ -399,20 +399,19 @@ void CPDFSDK_FormFillEnvironment::OnSetFieldInputFocusInternal(
 
 void CPDFSDK_FormFillEnvironment::OnCalculate(
     ObservedPtr<CPDFSDK_Annot>& pAnnot) {
-  CPDFSDK_Widget* pWidget = ToCPDFSDKWidget(pAnnot.Get());
-  if (pWidget)
+  ObservedPtr<CPDFSDK_Widget> pWidget(ToCPDFSDKWidget(pAnnot.Get()));
+  if (pWidget) {
     m_pInteractiveForm->OnCalculate(pWidget->GetFormField());
+  }
 }
 
 void CPDFSDK_FormFillEnvironment::OnFormat(ObservedPtr<CPDFSDK_Annot>& pAnnot) {
-  CPDFSDK_Widget* pWidget = ToCPDFSDKWidget(pAnnot.Get());
-  DCHECK(pWidget);
-
+  ObservedPtr<CPDFSDK_Widget> pWidget(ToCPDFSDKWidget(pAnnot.Get()));
   std::optional<WideString> sValue =
       m_pInteractiveForm->OnFormat(pWidget->GetFormField());
-  if (!pAnnot)
+  if (!pWidget) {
     return;
-
+  }
   if (sValue.has_value()) {
     m_pInteractiveForm->ResetFieldAppearance(pWidget->GetFormField(), sValue);
     m_pInteractiveForm->UpdateField(pWidget->GetFormField());
@@ -787,10 +786,10 @@ bool CPDFSDK_FormFillEnvironment::KillFocusAnnot(Mask<FWL_EVENTFLAG> nFlags) {
     return false;
 
   if (pFocusAnnot->GetAnnotSubtype() == CPDF_Annot::Subtype::WIDGET) {
-    CPDFSDK_Widget* pWidget = ToCPDFSDKWidget(pFocusAnnot.Get());
-    FormFieldType fieldType = pWidget->GetFieldType();
-    if (fieldType == FormFieldType::kTextField ||
-        fieldType == FormFieldType::kComboBox) {
+    const FormFieldType field_type =
+        ToCPDFSDKWidget(pFocusAnnot.Get())->GetFieldType();
+    if (field_type == FormFieldType::kTextField ||
+        field_type == FormFieldType::kComboBox) {
       OnSetFieldInputFocusInternal(WideString(), false);
     }
   }
