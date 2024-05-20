@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "da4176f7_d23dda5b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-05-20T18:00:36Z",
+      "side": 1,
+      "message": "thanks, good spotting on some I missed.",
+      "revId": "a00e36f975bd368328fcaef02d4f8c3cd8d29b8b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d7cdce2_cafb9c2a",
@@ -14,6 +31,24 @@
       "writtenOn": "2024-05-20T17:18:36Z",
       "side": 1,
       "message": "Swap with next line.",
+      "revId": "a00e36f975bd368328fcaef02d4f8c3cd8d29b8b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0895d076_987e5bb1",
+        "filename": "fpdfsdk/cpdfsdk_pageview.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-05-20T18:00:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d7cdce2_cafb9c2a",
       "revId": "a00e36f975bd368328fcaef02d4f8c3cd8d29b8b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -35,6 +70,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d40de4e_ccafe35d",
+        "filename": "fpdfsdk/cpdfsdk_widget.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1062,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-05-20T18:00:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8e6a288_7dd1f3b6",
+      "revId": "a00e36f975bd368328fcaef02d4f8c3cd8d29b8b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "82b34d7b_8cf1155c",
@@ -48,6 +101,30 @@
       "writtenOn": "2024-05-20T17:18:36Z",
       "side": 1,
       "message": "Existing: just set to false.",
+      "range": {
+        "startLine": 305,
+        "startChar": 30,
+        "endLine": 305,
+        "endChar": 36
+      },
+      "revId": "a00e36f975bd368328fcaef02d4f8c3cd8d29b8b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4954697_bd0a21d1",
+        "filename": "fpdfsdk/pwl/cpwl_combo_box.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-05-20T18:00:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82b34d7b_8cf1155c",
       "range": {
         "startLine": 305,
         "startChar": 30,
@@ -81,6 +158,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d568df6_f236ad98",
+        "filename": "fpdfsdk/pwl/cpwl_combo_box.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-05-20T18:00:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9504dc95_565c3211",
+      "range": {
+        "startLine": 323,
+        "startChar": 6,
+        "endLine": 323,
+        "endChar": 21
+      },
+      "revId": "a00e36f975bd368328fcaef02d4f8c3cd8d29b8b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "82547c97_bd08325b",
@@ -94,6 +195,30 @@
       "writtenOn": "2024-05-20T17:18:36Z",
       "side": 1,
       "message": "this_observed-\u003e ??",
+      "range": {
+        "startLine": 327,
+        "startChar": 33,
+        "endLine": 327,
+        "endChar": 58
+      },
+      "revId": "a00e36f975bd368328fcaef02d4f8c3cd8d29b8b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c98f8b9_99dfa322",
+        "filename": "fpdfsdk/pwl/cpwl_combo_box.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-05-20T18:00:36Z",
+      "side": 1,
+      "message": "Yeah, I suppose so, though it looks funny.",
+      "parentUuid": "82547c97_bd08325b",
       "range": {
         "startLine": 327,
         "startChar": 33,
@@ -127,6 +252,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "03230b38_61a19d9a",
+        "filename": "fpdfsdk/pwl/cpwl_combo_box.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-05-20T18:00:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6f4c7ce_1db5e9c4",
+      "range": {
+        "startLine": 340,
+        "startChar": 52,
+        "endLine": 340,
+        "endChar": 67
+      },
+      "revId": "a00e36f975bd368328fcaef02d4f8c3cd8d29b8b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef2aaedf_baf7853b",
@@ -150,6 +299,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ed0d0a6_db4c7c13",
+        "filename": "fpdfsdk/pwl/cpwl_scroll_bar.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-05-20T18:00:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef2aaedf_baf7853b",
+      "range": {
+        "startLine": 381,
+        "startChar": 20,
+        "endLine": 381,
+        "endChar": 30
+      },
+      "revId": "a00e36f975bd368328fcaef02d4f8c3cd8d29b8b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "66fa38ed_8549cd50",
@@ -163,6 +336,30 @@
       "writtenOn": "2024-05-20T17:21:57Z",
       "side": 1,
       "message": "this_observed-\u003e",
+      "range": {
+        "startLine": 290,
+        "startChar": 24,
+        "endLine": 290,
+        "endChar": 32
+      },
+      "revId": "a00e36f975bd368328fcaef02d4f8c3cd8d29b8b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ade1e4ba_edf81075",
+        "filename": "fpdfsdk/pwl/cpwl_wnd.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-05-20T18:00:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66fa38ed_8549cd50",
       "range": {
         "startLine": 290,
         "startChar": 24,
