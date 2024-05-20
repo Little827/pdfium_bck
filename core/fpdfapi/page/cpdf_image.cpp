@@ -14,6 +14,7 @@
 #include <stdint.h>
 
 #include <algorithm>
+#include <array>
 #include <memory>
 #include <utility>
 
@@ -225,19 +226,11 @@ void CPDF_Image::SetImage(const RetainPtr<CFX_DIBitmap>& pBitmap) {
       pCS->AppendNew<CPDF_Name>("Indexed");
       pCS->AppendNew<CPDF_Name>("DeviceRGB");
       pCS->AppendNew<CPDF_Number>(1);
-      ByteString ct;
-      {
-        // Span's lifetime must end before ReleaseBuffer() below.
-        pdfium::span<char> pBuf = ct.GetBuffer(6);
-        pBuf[0] = static_cast<char>(reset_r);
-        pBuf[1] = static_cast<char>(reset_g);
-        pBuf[2] = static_cast<char>(reset_b);
-        pBuf[3] = static_cast<char>(set_r);
-        pBuf[4] = static_cast<char>(set_g);
-        pBuf[5] = static_cast<char>(set_b);
-      }
-      ct.ReleaseBuffer(6);
-      pCS->AppendNew<CPDF_String>(ct, true);
+      const std::array<uint8_t, 6> ct = {
+          static_cast<uint8_t>(reset_r), static_cast<uint8_t>(reset_g),
+          static_cast<uint8_t>(reset_b), static_cast<uint8_t>(set_r),
+          static_cast<uint8_t>(set_g),   static_cast<uint8_t>(set_b)};
+      pCS->AppendNew<CPDF_String>(ct);
     }
     pDict->SetNewFor<CPDF_Number>("BitsPerComponent", 1);
     dest_pitch = (BitmapWidth + 7) / 8;
