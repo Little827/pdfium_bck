@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a72443c_f9e8171f",
+        "filename": "core/fxcodec/flate/flatemodule.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 815,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-05-20T18:06:10Z",
+      "side": 1,
+      "message": "nit: UNSAFE_TODO()",
+      "range": {
+        "startLine": 815,
+        "startChar": 4,
+        "endLine": 815,
+        "endChar": 16
+      },
+      "revId": "67143c288739ffae1b013f90a8a102db58f190da",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
