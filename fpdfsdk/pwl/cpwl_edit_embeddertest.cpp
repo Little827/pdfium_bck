@@ -432,11 +432,15 @@ TEST_F(CPWLEditEmbedderTest, ReplaceAndKeepSelection) {
   GetCPWLEdit()->ReplaceAndKeepSelection(L"xyz");
   EXPECT_EQ(L"AxyzDEFGHIJ", GetCPWLEdit()->GetText());
   EXPECT_EQ(L"xyz", GetCPWLEdit()->GetSelectedText());
-  EXPECT_EQ(GetCPWLEdit()->GetSelection(), std::make_pair(1, 4));
+  CPWL_EditSelection selection = GetCPWLEdit()->GetSelection();
+  EXPECT_EQ(selection.start_index, 1);
+  EXPECT_EQ(selection.end_index, 4);
 
   GetCPWLEdit()->SetSelection(4, 1);
   GetCPWLEdit()->ReplaceAndKeepSelection(L"12");
   EXPECT_EQ(L"A12DEFGHIJ", GetCPWLEdit()->GetText());
   EXPECT_EQ(L"12", GetCPWLEdit()->GetSelectedText());
-  EXPECT_EQ(GetCPWLEdit()->GetSelection(), std::make_pair(1, 3));
+  selection = GetCPWLEdit()->GetSelection();
+  EXPECT_EQ(selection.start_index, 1);
+  EXPECT_EQ(selection.end_index, 3);
 }

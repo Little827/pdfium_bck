@@ -9,7 +9,6 @@
 
 #include <deque>
 #include <memory>
-#include <utility>
 #include <vector>
 
 #include "core/fpdfdoc/cpvt_variabletext.h"
@@ -18,6 +17,7 @@
 #include "core/fxcrt/fx_codepage_forward.h"
 #include "core/fxcrt/unowned_ptr.h"
 #include "core/fxge/dib/fx_dib.h"
+#include "fpdfsdk/pwl/cpwl_edit_selection.h"
 #include "fpdfsdk/pwl/ipwl_fillernotify.h"
 
 class CFX_RenderDevice;
@@ -116,7 +116,7 @@ class CPWL_EditImpl {
   CFX_FloatRect GetContentRect() const;
   WideString GetRangeText(const CPVT_WordRange& range) const;
   void SetSelection(int32_t nStartChar, int32_t nEndChar);
-  std::pair<int32_t, int32_t> GetSelection() const;
+  CPWL_EditSelection GetSelection() const;
   void SelectAll();
   void SelectNone();
   bool IsSelected() const;

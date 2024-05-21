@@ -261,12 +261,11 @@ CPVT_WordRange CPWL_Edit::GetSelectWordRange() const {
   if (!m_pEditImpl->IsSelected())
     return CPVT_WordRange();
 
-  int32_t nStart;
-  int32_t nEnd;
-  std::tie(nStart, nEnd) = m_pEditImpl->GetSelection();
+  CPWL_EditSelection selection = m_pEditImpl->GetSelection();
 
-  CPVT_WordPlace wpStart = m_pEditImpl->WordIndexToWordPlace(nStart);
-  CPVT_WordPlace wpEnd = m_pEditImpl->WordIndexToWordPlace(nEnd);
+  CPVT_WordPlace wpStart =
+      m_pEditImpl->WordIndexToWordPlace(selection.start_index);
+  CPVT_WordPlace wpEnd = m_pEditImpl->WordIndexToWordPlace(selection.end_index);
   return CPVT_WordRange(wpStart, wpEnd);
 }
 
@@ -336,16 +335,14 @@ bool CPWL_Edit::OnKeyDown(FWL_VKEYCODE nKeyCode, Mask<FWL_EVENTFLAG> nFlag) {
   if (nKeyCode == FWL_VKEY_Delete) {
     WideString strChange;
     WideString strChangeEx;
-    int nSelStart;
-    int nSelEnd;
-    std::tie(nSelStart, nSelEnd) = this_observed->GetSelection();
-    if (nSelStart == nSelEnd) {
-      nSelEnd = nSelStart + 1;
+    CPWL_EditSelection selection = this_observed->GetSelection();
+    if (selection.start_index == selection.end_index) {
+      selection.end_index = selection.start_index + 1;
     }
     IPWL_FillerNotify::BeforeKeystrokeResult result =
         this_observed->GetFillerNotify()->OnBeforeKeyStroke(
-            this_observed->GetAttachedData(), strChange, strChangeEx, nSelStart,
-            nSelEnd, true, nFlag);
+            this_observed->GetAttachedData(), strChange, strChangeEx,
+            selection.start_index, selection.end_index, true, nFlag);
 
     if (!this_observed) {
       return false;
@@ -790,7 +787,7 @@ void CPWL_Edit::SetSelection(int32_t nStartChar, int32_t nEndChar) {
   m_pEditImpl->SetSelection(nStartChar, nEndChar);
 }
 
-std::pair<int32_t, int32_t> CPWL_Edit::GetSelection() const {
+CPWL_EditSelection CPWL_Edit::GetSelection() const {
   return m_pEditImpl->GetSelection();
 }
 

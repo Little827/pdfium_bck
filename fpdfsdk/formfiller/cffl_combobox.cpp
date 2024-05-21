@@ -121,7 +121,9 @@ void CFFL_ComboBox::GetActionData(const CPDFSDK_PageView* pPageView,
       if (CPWL_ComboBox* pComboBox = GetPWLComboBox(pPageView)) {
         if (CPWL_Edit* pEdit = pComboBox->GetEdit()) {
           fa.bFieldFull = pEdit->IsTextFull();
-          std::tie(fa.nSelStart, fa.nSelEnd) = pEdit->GetSelection();
+          CPWL_EditSelection selection = pEdit->GetSelection();
+          fa.nSelStart = selection.start_index;
+          fa.nSelEnd = selection.end_index;
           fa.sValue = pEdit->GetText();
           fa.sChangeEx = GetSelectExportText();
 
@@ -176,7 +178,9 @@ void CFFL_ComboBox::SavePWLWindowState(const CPDFSDK_PageView* pPageView) {
   if (!pEdit)
     return;
 
-  std::tie(m_State.nStart, m_State.nEnd) = pEdit->GetSelection();
+  CPWL_EditSelection selection = pEdit->GetSelection();
+  m_State.nStart = selection.start_index;
+  m_State.nEnd = selection.end_index;
   m_State.sValue = pEdit->GetText();
 }
 

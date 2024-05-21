@@ -803,20 +803,20 @@ void CPWL_EditImpl::SetSelection(const CPVT_WordPlace& begin,
   SetCaretInfo();
 }
 
-std::pair<int32_t, int32_t> CPWL_EditImpl::GetSelection() const {
+CPWL_EditSelection CPWL_EditImpl::GetSelection() const {
   if (!m_pVT->IsValid())
-    return std::make_pair(-1, -1);
+    return {-1, -1};
 
   if (m_SelState.IsEmpty()) {
-    return std::make_pair(m_pVT->WordPlaceToWordIndex(m_wpCaret),
-                          m_pVT->WordPlaceToWordIndex(m_wpCaret));
+    return {m_pVT->WordPlaceToWordIndex(m_wpCaret),
+            m_pVT->WordPlaceToWordIndex(m_wpCaret)};
   }
   if (m_SelState.BeginPos < m_SelState.EndPos) {
-    return std::make_pair(m_pVT->WordPlaceToWordIndex(m_SelState.BeginPos),
-                          m_pVT->WordPlaceToWordIndex(m_SelState.EndPos));
+    return {m_pVT->WordPlaceToWordIndex(m_SelState.BeginPos),
+            m_pVT->WordPlaceToWordIndex(m_SelState.EndPos)};
   }
-  return std::make_pair(m_pVT->WordPlaceToWordIndex(m_SelState.EndPos),
-                        m_pVT->WordPlaceToWordIndex(m_SelState.BeginPos));
+  return {m_pVT->WordPlaceToWordIndex(m_SelState.EndPos),
+          m_pVT->WordPlaceToWordIndex(m_SelState.BeginPos)};
 }
 
 int32_t CPWL_EditImpl::GetCaret() const {

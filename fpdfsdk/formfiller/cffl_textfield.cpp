@@ -217,7 +217,9 @@ void CFFL_TextField::SavePWLWindowState(const CPDFSDK_PageView* pPageView) {
   if (!pWnd)
     return;
 
-  std::tie(m_State.nStart, m_State.nEnd) = pWnd->GetSelection();
+  CPWL_EditSelection selection = pWnd->GetSelection();
+  m_State.nStart = selection.start_index;
+  m_State.nStart = selection.end_index;
   m_State.sValue = pWnd->GetText();
 }
 

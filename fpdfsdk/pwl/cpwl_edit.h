@@ -8,12 +8,12 @@
 #define FPDFSDK_PWL_CPWL_EDIT_H_
 
 #include <memory>
-#include <utility>
 
 #include "core/fpdfdoc/cpvt_wordrange.h"
 #include "core/fxcrt/fx_codepage.h"
 #include "core/fxcrt/unowned_ptr.h"
 #include "core/fxcrt/widestring.h"
+#include "fpdfsdk/pwl/cpwl_edit_selection.h"
 #include "fpdfsdk/pwl/cpwl_wnd.h"
 #include "fpdfsdk/pwl/ipwl_fillernotify.h"
 
@@ -72,7 +72,7 @@ class CPWL_Edit final : public CPWL_Wnd {
   bool Redo() override;
 
   void SetSelection(int32_t nStartChar, int32_t nEndChar);
-  std::pair<int32_t, int32_t> GetSelection() const;
+  CPWL_EditSelection GetSelection() const;
   void ClearSelection();
 
   CFX_PointF GetScrollPos() const;
