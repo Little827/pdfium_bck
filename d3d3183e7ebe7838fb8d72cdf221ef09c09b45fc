@@ -16,6 +16,29 @@
       "message": "pdfium::make_byte_span() didn\u0027t work. Issue for another day.",
       "revId": "d3d3183e7ebe7838fb8d72cdf221ef09c09b45fc",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5552bff5_dcc765b1",
+        "filename": "core/fpdfapi/parser/cpdf_string.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-05-21T23:59:15Z",
+      "side": 1,
+      "message": "I\u0027d like it if we had a dummy third parameter along the lines of some enum type that says kHexRepresentation. Otherwise CPDF_String(str) and CPDF_String(str.span()) give different results.  It doesn\u0027t have to do anyting with the parameter, and no other value besides kHexRepresentation need be defined.  Just a readability thing.",
+      "range": {
+        "startLine": 36,
+        "startChar": 73,
+        "endLine": 36,
+        "endChar": 77
+      },
+      "revId": "d3d3183e7ebe7838fb8d72cdf221ef09c09b45fc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
