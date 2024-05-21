@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6583729_f95ab3fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-05-21T15:33:41Z",
+      "side": 1,
+      "message": "I was going to suggest that you could direct land this if you wanted, bypassing the CQ, in order to save resources if this was blocking a roll, but it looks like you have an in-scope run available for re-use.",
+      "revId": "c6dc726a727d12c4ff078999b1385f8b72937a66",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
