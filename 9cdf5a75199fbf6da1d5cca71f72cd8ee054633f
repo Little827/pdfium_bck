@@ -16,6 +16,41 @@
       "message": "On Windows, it\u0027s crashing at a NOTREACHED_NORETURN() in CGdiDeviceDriver::MultiplyAlphaMask(). Let me see what we can do here...",
       "revId": "9cdf5a75199fbf6da1d5cca71f72cd8ee054633f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e6802db_fe172521",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-05-22T03:12:35Z",
+      "side": 1,
+      "message": "I think one possible solution to try is to get ProcessTransparency() to handle the MultiplyAlphaMask() work, like it does for other cases. Then for the test PDF, the mask only has to apply to the 20x20 object, and not to the entire device.",
+      "parentUuid": "801a06bb_c655a65d",
+      "revId": "9cdf5a75199fbf6da1d5cca71f72cd8ee054633f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcfd46c1_86d74061",
+        "filename": "testing/resources/pixel/bug_2106.in",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-05-22T03:12:35Z",
+      "side": 1,
+      "message": "If you would like to check the test in first, please split it into its own change list. In that CL, add an entry to testing/SUPPRESSIONS.",
+      "revId": "9cdf5a75199fbf6da1d5cca71f72cd8ee054633f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
