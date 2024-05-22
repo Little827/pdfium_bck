@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1afeebf0_e84b76b4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 9186
+      },
+      "writtenOn": "2024-05-22T02:17:50Z",
+      "side": 1,
+      "message": "I\u0027m rebuilding now with the suggested changes and will submit momentarily\n\nI wouldn\u0027t mind help producing the required input PDF with a grayscale path page object within the content stream (using \"G\"/\"g\")\n\nI know you\u0027re busy though so I will also try to create one.",
+      "revId": "43d373fb1af984367fbef031c583d5b49ffe5843",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
