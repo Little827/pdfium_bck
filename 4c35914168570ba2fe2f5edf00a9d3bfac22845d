@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2243d8f_d3b7ad5b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-05-22T18:53:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "405a75cb_9d43c5f7",
+      "revId": "4c35914168570ba2fe2f5edf00a9d3bfac22845d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bfd04e49_fc570270",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-05-22T18:43:08Z",
       "side": 1,
       "message": "Annoyingly, StringViewTemplate has TrimmedRight(), but no TrimmedLeft(). Should we add that and not reply on this?",
+      "revId": "4c35914168570ba2fe2f5edf00a9d3bfac22845d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2344a52e_960062ab",
+        "filename": "xfa/fgas/crt/cfgas_decimal.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-05-22T18:53:06Z",
+      "side": 1,
+      "message": "Let\u0027s do as a follow-on.  I also want to change the names to TrimmedFront() and TrimmedBack() given RTL languages ...",
+      "parentUuid": "bfd04e49_fc570270",
       "revId": "4c35914168570ba2fe2f5edf00a9d3bfac22845d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
