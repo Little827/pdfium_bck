@@ -28,6 +28,7 @@
 #include "core/fxcodec/jpeg/jpegmodule.h"
 #include "core/fxcodec/scanlinedecoder.h"
 #include "core/fxcrt/check.h"
+#include "core/fxcrt/compiler_specific.h"
 #include "core/fxcrt/data_vector.h"
 #include "core/fxcrt/fx_extension.h"
 #include "core/fxcrt/fx_safe_types.h"
@@ -259,7 +260,7 @@ CPDF_StreamParser::ElementType CPDF_StreamParser::ParseNextElement() {
   bool bIsNumber = true;
   while (true) {
     if (m_WordSize < kMaxWordLength)
-      m_WordBuffer[m_WordSize++] = ch;
+      UNSAFE_TODO(m_WordBuffer[m_WordSize++]) = ch;
 
     if (!PDFCharIsNumeric(ch))
       bIsNumber = false;
@@ -275,7 +276,7 @@ CPDF_StreamParser::ElementType CPDF_StreamParser::ParseNextElement() {
     }
   }
 
-  m_WordBuffer[m_WordSize] = 0;
+  UNSAFE_TODO(m_WordBuffer[m_WordSize]) = 0;
   if (bIsNumber)
     return ElementType::kNumber;
 
@@ -311,7 +312,7 @@ RetainPtr<CPDF_Object> CPDF_StreamParser::ReadNextObject(
     return nullptr;
 
   if (bIsNumber) {
-    m_WordBuffer[m_WordSize] = 0;
+    UNSAFE_TODO(m_WordBuffer[m_WordSize]) = 0;
     return pdfium::MakeRetain<CPDF_Number>(GetWord());
   }
 
@@ -408,7 +409,7 @@ void CPDF_StreamParser::GetNextWord(bool& bIsNumber) {
 
   if (PDFCharIsDelimiter(ch)) {
     bIsNumber = false;
-    m_WordBuffer[m_WordSize++] = ch;
+    UNSAFE_TODO(m_WordBuffer[m_WordSize++]) = ch;
     if (ch == '/') {
       while (true) {
         if (!PositionIsInBounds())
@@ -419,14 +420,14 @@ void CPDF_StreamParser::GetNextWord(bool& bIsNumber) {
           return;
         }
         if (m_WordSize < kMaxWordLength)
-          m_WordBuffer[m_WordSize++] = ch;
+          UNSAFE_TODO(m_WordBuffer[m_WordSize++]) = ch;
       }
     } else if (ch == '<') {
       if (!PositionIsInBounds())
         return;
       ch = m_pBuf[m_Pos++];
       if (ch == '<')
-        m_WordBuffer[m_WordSize++] = ch;
+        UNSAFE_TODO(m_WordBuffer[m_WordSize++]) = ch;
       else
         m_Pos--;
     } else if (ch == '>') {
@@ -434,7 +435,7 @@ void CPDF_StreamParser::GetNextWord(bool& bIsNumber) {
         return;
       ch = m_pBuf[m_Pos++];
       if (ch == '>')
-        m_WordBuffer[m_WordSize++] = ch;
+        UNSAFE_TODO(m_WordBuffer[m_WordSize++]) = ch;
       else
         m_Pos--;
     }
@@ -443,7 +444,7 @@ void CPDF_StreamParser::GetNextWord(bool& bIsNumber) {
 
   while (true) {
     if (m_WordSize < kMaxWordLength)
-      m_WordBuffer[m_WordSize++] = ch;
+      UNSAFE_TODO(m_WordBuffer[m_WordSize++]) = ch;
     if (!PDFCharIsNumeric(ch))
       bIsNumber = false;
     if (!PositionIsInBounds())
