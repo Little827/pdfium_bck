@@ -18,6 +18,23 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "98885bd3_cea77135",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-05-22T18:04:49Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "c75e586aff1b1251d828695d98f504090e8578c3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d97f6092_89b0c18a",
@@ -31,6 +48,30 @@
       "writtenOn": "2024-05-22T17:09:34Z",
       "side": 1,
       "message": "Dana - why is this not triggering warnings? Hmmm.",
+      "range": {
+        "startLine": 474,
+        "startChar": 1,
+        "endLine": 486,
+        "endChar": 1
+      },
+      "revId": "c75e586aff1b1251d828695d98f504090e8578c3",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2da781ff_69aa107c",
+        "filename": "xfa/fgas/crt/cfgas_decimal.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 9516
+      },
+      "writtenOn": "2024-05-22T18:04:49Z",
+      "side": 1,
+      "message": "probably because they are constant indexes into an array of known size and it verified them? https://github.com/llvm/llvm-project/blob/cc3b6c3ba9c0dd7df0fd7ac23c8609c4675dd62a/clang/lib/Analysis/UnsafeBufferUsage.cpp#L415-L444",
+      "parentUuid": "d97f6092_89b0c18a",
       "range": {
         "startLine": 474,
         "startChar": 1,
