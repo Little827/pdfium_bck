@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "053c3b12_df8dc9f5",
+        "filename": "core/fpdfapi/parser/cpdf_string.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-05-22T00:23:10Z",
+      "side": 1,
+      "message": "I added a single value enum. Does that work?",
+      "parentUuid": "5293db09_67329b19",
+      "range": {
+        "startLine": 36,
+        "startChar": 73,
+        "endLine": 36,
+        "endChar": 77
+      },
+      "revId": "d3d3183e7ebe7838fb8d72cdf221ef09c09b45fc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5f88ff27_5b12fcbd",
         "filename": "core/fpdfapi/parser/cpdf_string.h",
         "patchSetId": 5
@@ -78,6 +102,30 @@
       "writtenOn": "2024-05-22T00:14:40Z",
       "side": 1,
       "message": "pre: as long as we\u0027re mucking about with this, can we call this m_bPrintInHex or something since I\u0027ve always hated this name.",
+      "range": {
+        "startLine": 42,
+        "startChar": 7,
+        "endLine": 42,
+        "endChar": 13
+      },
+      "revId": "d3d3183e7ebe7838fb8d72cdf221ef09c09b45fc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bd477cc_e100e544",
+        "filename": "core/fpdfapi/parser/cpdf_string.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-05-22T00:23:10Z",
+      "side": 1,
+      "message": "I\u0027ll do a follow-up CL.",
+      "parentUuid": "5f88ff27_5b12fcbd",
       "range": {
         "startLine": 42,
         "startChar": 7,
