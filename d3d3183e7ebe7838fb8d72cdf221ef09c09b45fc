@@ -39,6 +39,53 @@
       },
       "revId": "d3d3183e7ebe7838fb8d72cdf221ef09c09b45fc",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5293db09_67329b19",
+        "filename": "core/fpdfapi/parser/cpdf_string.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-05-22T00:14:40Z",
+      "side": 1,
+      "message": "Actually, looking along the lines of std::nullopt, maybe we want\n\nstruct PrintAsHex_t {};\nstatic inline constexpr PrintAsHex_t PrintAsHex{};",
+      "parentUuid": "5552bff5_dcc765b1",
+      "range": {
+        "startLine": 36,
+        "startChar": 73,
+        "endLine": 36,
+        "endChar": 77
+      },
+      "revId": "d3d3183e7ebe7838fb8d72cdf221ef09c09b45fc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f88ff27_5b12fcbd",
+        "filename": "core/fpdfapi/parser/cpdf_string.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-05-22T00:14:40Z",
+      "side": 1,
+      "message": "pre: as long as we\u0027re mucking about with this, can we call this m_bPrintInHex or something since I\u0027ve always hated this name.",
+      "range": {
+        "startLine": 42,
+        "startChar": 7,
+        "endLine": 42,
+        "endChar": 13
+      },
+      "revId": "d3d3183e7ebe7838fb8d72cdf221ef09c09b45fc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
