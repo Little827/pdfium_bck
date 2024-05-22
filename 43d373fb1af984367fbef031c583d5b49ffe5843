@@ -16,6 +16,23 @@
       "message": "I\u0027m rebuilding now with the suggested changes and will submit momentarily\n\nI wouldn\u0027t mind help producing the required input PDF with a grayscale path page object within the content stream (using \"G\"/\"g\")\n\nI know you\u0027re busy though so I will also try to create one.",
       "revId": "43d373fb1af984367fbef031c583d5b49ffe5843",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7939de5d_b4131203",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 9186
+      },
+      "writtenOn": "2024-05-22T02:59:37Z",
+      "side": 1,
+      "message": "For some reason, when I use `LoadSavedPage(0)`, it returns null, but when I use `LoadPage(0)` the test works fine\n\nfor reference, I\u0027m copying nearly the exact same syntax as test FPDFSaveEmbedderTest::Bug1409\n\nNeeds some further investigation on my part",
+      "revId": "43d373fb1af984367fbef031c583d5b49ffe5843",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
