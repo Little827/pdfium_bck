@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d381ee1a_430cb2fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 9186
+      },
+      "writtenOn": "2024-05-22T07:06:40Z",
+      "side": 1,
+      "message": "I\u0027ve uploaded cleaner documents - I\u0027m not totally sure how this is usually done - should I only upload the .in file but not the PDF?\n\n\nFurthermore, I think I\u0027m a bit confused on how to use LoadSavedPage()... I am copying the syntax of FPDFSaveEmbedderTest::Bug1409 (as well as essentially the same input file) but I get an error when trying to \"load a saved page\":\n\n```\nunknown file: error: SEH exception with code 0xc0000005 thrown in the test body.\nStack trace:\n\n\n..\\..\\testing\\embedder_test.cpp(286): error: Expected equality of these values:\n  0U\n    Which is: 0\n  saved_page_map_.size()\n    Which is: 1\n\n[  FAILED  ] FPDFSaveEmbedderTest.Bug2116 (17 ms)\n[----------] 1 test from FPDFSaveEmbedderTest (18 ms total)\n\n[----------] Global test environment tear-down\n[\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d] 1 test from 1 test suite ran. (104 ms total)\n[  PASSED  ] 0 tests.\n[  FAILED  ] 1 test, listed below:\n[  FAILED  ] FPDFSaveEmbedderTest.Bug2116\n```",
+      "revId": "6b387e9211674808edd4275bea5ca02bce69a499",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
