@@ -89,6 +89,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "22a5d3bb_9315a0b9",
+        "filename": "core/fpdfapi/parser/cpdf_string.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-05-22T00:42:29Z",
+      "side": 1,
+      "message": "Should be OK, too.",
+      "parentUuid": "053c3b12_df8dc9f5",
+      "range": {
+        "startLine": 36,
+        "startChar": 73,
+        "endLine": 36,
+        "endChar": 77
+      },
+      "revId": "d3d3183e7ebe7838fb8d72cdf221ef09c09b45fc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5f88ff27_5b12fcbd",
