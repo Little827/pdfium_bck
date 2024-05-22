@@ -4,11 +4,6 @@
 
 // Original code copyright 2014 Foxit Software Inc. http://www.foxitsoftware.com
 
-#if defined(UNSAFE_BUFFERS_BUILD)
-// TODO(crbug.com/pdfium/2154): resolve buffer safety issues.
-#pragma allow_unsafe_buffers
-#endif
-
 #include "core/fpdfapi/page/cpdf_streamcontentparser.h"
 
 #include <algorithm>
@@ -43,6 +38,7 @@
 #include "core/fxcrt/autonuller.h"
 #include "core/fxcrt/bytestring.h"
 #include "core/fxcrt/check.h"
+#include "core/fxcrt/compiler_specific.h"
 #include "core/fxcrt/containers/contains.h"
 #include "core/fxcrt/fx_safe_types.h"
 #include "core/fxcrt/notreached.h"
@@ -1691,7 +1687,7 @@ void CPDF_StreamContentParser::ParsePathObject() {
           break;
 
         FX_Number number(m_pSyntax->GetWord());
-        params[nParams++] = number.GetFloat();
+        UNSAFE_TODO(params[nParams++]) = number.GetFloat();
         break;
       }
       default:
