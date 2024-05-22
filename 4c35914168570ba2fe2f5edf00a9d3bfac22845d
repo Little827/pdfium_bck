@@ -69,6 +69,24 @@
       "parentUuid": "bfd04e49_fc570270",
       "revId": "4c35914168570ba2fe2f5edf00a9d3bfac22845d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e6d6485_d42fad8f",
+        "filename": "xfa/fgas/crt/cfgas_decimal.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-05-22T20:54:23Z",
+      "side": 1,
+      "message": "Even more annoyingly, TrimmedRight() only occurs in tests.\n\n$ git grep TrimmedRight\ncore/fxcrt/bytestring_unittest.cpp:TEST(ByteStringView, TrimmedRight) {\ncore/fxcrt/bytestring_unittest.cpp:  EXPECT_EQ(\"FRED\", fred.TrimmedRight(\u0027E\u0027));\ncore/fxcrt/bytestring_unittest.cpp:  EXPECT_EQ(\"FRE\", fred.TrimmedRight(\u0027D\u0027));\ncore/fxcrt/bytestring_unittest.cpp:  EXPECT_EQ(\"FRE\", fredd.TrimmedRight(\u0027D\u0027));\ncore/fxcrt/string_view_template.h:  StringViewTemplate TrimmedRight(CharType ch) const {\ncore/fxcrt/widestring_unittest.cpp:TEST(WideStringView, TrimmedRight) {\ncore/fxcrt/widestring_unittest.cpp:  EXPECT_EQ(L\"FRED\", fred.TrimmedRight(L\u0027E\u0027));\ncore/fxcrt/widestring_unittest.cpp:  EXPECT_EQ(L\"FRE\", fred.TrimmedRight(L\u0027D\u0027));\ncore/fxcrt/widestring_unittest.cpp:  EXPECT_EQ(L\"FRE\", fredd.TrimmedRight(L\u0027D\u0027));",
+      "parentUuid": "2344a52e_960062ab",
+      "revId": "4c35914168570ba2fe2f5edf00a9d3bfac22845d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
