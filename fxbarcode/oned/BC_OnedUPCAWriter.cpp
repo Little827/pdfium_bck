@@ -136,7 +136,8 @@ bool CBC_OnedUPCAWriter::ShowChars(WideStringView contents,
   device->FillRect(re, kBackgroundColor);
   float strWidth = kWidth * m_outputHScale;
 
-  CalcTextInfo(tempStr, &charpos[1], m_pFont, strWidth, iFontSize, blank);
+  CalcTextInfo(tempStr, pdfium::make_span(charpos).subspan(1), m_pFont,
+               strWidth, iFontSize, blank);
   {
     CFX_Matrix affine_matrix1(1.0, 0.0, 0.0, -1.0,
                               kLeftPosition * m_outputHScale,
@@ -148,7 +149,8 @@ bool CBC_OnedUPCAWriter::ShowChars(WideStringView contents,
   }
   tempStr = str.Substr(6, 5);
   length = tempStr.GetLength();
-  CalcTextInfo(tempStr, &charpos[6], m_pFont, strWidth, iFontSize, blank);
+  CalcTextInfo(tempStr, pdfium::make_span(charpos).subspan(6), m_pFont,
+               strWidth, iFontSize, blank);
   {
     CFX_Matrix affine_matrix1(1.0, 0.0, 0.0, -1.0,
                               (kLeftPosition + 40) * m_outputHScale,
@@ -162,7 +164,7 @@ bool CBC_OnedUPCAWriter::ShowChars(WideStringView contents,
   length = tempStr.GetLength();
   strWidth = 7 * m_outputHScale;
 
-  CalcTextInfo(tempStr, charpos.data(), m_pFont, strWidth, iFontSize, blank);
+  CalcTextInfo(tempStr, charpos, m_pFont, strWidth, iFontSize, blank);
   {
     CFX_Matrix affine_matrix1(1.0, 0.0, 0.0, -1.0, 0,
                               (float)(m_Height - iTextHeight + iFontSize));
@@ -173,7 +175,8 @@ bool CBC_OnedUPCAWriter::ShowChars(WideStringView contents,
   }
   tempStr = str.Substr(11, 1);
   length = tempStr.GetLength();
-  CalcTextInfo(tempStr, &charpos[11], m_pFont, strWidth, iFontSize, blank);
+  CalcTextInfo(tempStr, pdfium::make_span(charpos).subspan(11), m_pFont,
+               strWidth, iFontSize, blank);
   {
     CFX_Matrix affine_matrix1(1.0, 0.0, 0.0, -1.0,
                               (kLeftPosition + 85) * m_outputHScale,

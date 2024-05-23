@@ -147,8 +147,7 @@ bool CBC_OnedEAN8Writer::ShowChars(WideStringView contents,
   device->FillRect(re, kBackgroundColor);
   int32_t strWidth = static_cast<int32_t>(kWidth * m_outputHScale);
 
-  CalcTextInfo(tempStr, charpos.data(), m_pFont, (float)strWidth, iFontSize,
-               blank);
+  CalcTextInfo(tempStr, charpos, m_pFont, (float)strWidth, iFontSize, blank);
   {
     CFX_Matrix affine_matrix1(1.0, 0.0, 0.0, -1.0,
                               kLeftPosition * m_outputHScale,
@@ -160,8 +159,8 @@ bool CBC_OnedEAN8Writer::ShowChars(WideStringView contents,
   }
   tempStr = str.Substr(4, 4);
   iLen = tempStr.GetLength();
-  CalcTextInfo(tempStr, &charpos[4], m_pFont, (float)strWidth, iFontSize,
-               blank);
+  CalcTextInfo(tempStr, pdfium::make_span(charpos).subspan(4), m_pFont,
+               (float)strWidth, iFontSize, blank);
   {
     CFX_Matrix affine_matrix1(1.0, 0.0, 0.0, -1.0,
                               (kLeftPosition + 33) * m_outputHScale,
