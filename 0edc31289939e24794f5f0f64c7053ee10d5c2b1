@@ -16,6 +16,24 @@
       "message": "Would it be slightly better to make a span, and then get subspans from it, instead of calling `pdfium::make_span(charpos).subspan(N)` multiple times?",
       "revId": "0edc31289939e24794f5f0f64c7053ee10d5c2b1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92d0347a_83b4fa03",
+        "filename": "fxbarcode/oned/BC_OnedEAN13Writer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-05-23T17:21:42Z",
+      "side": 1,
+      "message": "Yes, assuming charpos doesnt\u0027 change.",
+      "parentUuid": "267dad48_6f8b7a84",
+      "revId": "0edc31289939e24794f5f0f64c7053ee10d5c2b1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
