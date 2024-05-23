@@ -535,8 +535,8 @@ uint16_t GetSolarMonthDays(uint16_t year, uint16_t month) {
 }
 
 uint16_t GetWeekDay(uint16_t year, uint16_t month, uint16_t day) {
-  static constexpr auto kMonthDay =
-      fxcrt::ToArray<const uint8_t>({0, 3, 3, 6, 1, 4, 6, 2, 5, 0, 3, 5});
+  static constexpr std::array<const uint8_t, 12> kMonthDay = {
+      {0, 3, 3, 6, 1, 4, 6, 2, 5, 0, 3, 5}};
   uint16_t nDays =
       (year - 1) % 7 + (year - 1) / 4 - (year - 1) / 100 + (year - 1) / 400;
   nDays += kMonthDay[month - 1] + day;
