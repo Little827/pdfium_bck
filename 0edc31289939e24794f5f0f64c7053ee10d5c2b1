@@ -34,6 +34,24 @@
       "parentUuid": "267dad48_6f8b7a84",
       "revId": "0edc31289939e24794f5f0f64c7053ee10d5c2b1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adb1fee1_d043badf",
+        "filename": "fxbarcode/oned/BC_OnedEAN13Writer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-05-23T17:34:21Z",
+      "side": 1,
+      "message": "Also fxbarcode/oned/BC_OnedEAN8Writer.cpp?",
+      "parentUuid": "92d0347a_83b4fa03",
+      "revId": "0edc31289939e24794f5f0f64c7053ee10d5c2b1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
