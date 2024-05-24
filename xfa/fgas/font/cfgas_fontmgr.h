@@ -4,11 +4,6 @@
 
 // Original code copyright 2014 Foxit Software Inc. http://www.foxitsoftware.com
 
-#if defined(UNSAFE_BUFFERS_BUILD)
-// TODO(crbug.com/pdfium/2154): resolve buffer safety issues.
-#pragma allow_unsafe_buffers
-#endif
-
 #ifndef XFA_FGAS_FONT_CFGAS_FONTMGR_H_
 #define XFA_FGAS_FONT_CFGAS_FONTMGR_H_
 
@@ -20,6 +15,7 @@
 #include <vector>
 
 #include "build/build_config.h"
+#include "core/fxcrt/compiler_specific.h"
 #include "core/fxcrt/fx_codepage_forward.h"
 #include "core/fxcrt/retain_ptr.h"
 #include "core/fxcrt/widestring.h"
@@ -36,9 +32,11 @@ struct FX_FONTSIGNATURE {
 
 inline bool operator==(const FX_FONTSIGNATURE& left,
                        const FX_FONTSIGNATURE& right) {
-  return left.fsUsb[0] == right.fsUsb[0] && left.fsUsb[1] == right.fsUsb[1] &&
-         left.fsUsb[2] == right.fsUsb[2] && left.fsUsb[3] == right.fsUsb[3] &&
-         left.fsCsb[0] == right.fsCsb[0] && left.fsCsb[1] == right.fsCsb[1];
+  // SAFETY: fixed sized arrays above.
+  return UNSAFE_BUFFERS(
+      left.fsUsb[0] == right.fsUsb[0] && left.fsUsb[1] == right.fsUsb[1] &&
+      left.fsUsb[2] == right.fsUsb[2] && left.fsUsb[3] == right.fsUsb[3] &&
+      left.fsCsb[0] == right.fsCsb[0] && left.fsCsb[1] == right.fsCsb[1]);
 }
 
 struct FX_FONTDESCRIPTOR {
