@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb5a99f5_6372b52f",
+        "filename": "fxbarcode/oned/BC_OnedEAN13Writer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-05-24T23:14:03Z",
+      "side": 1,
+      "message": "I\u0027m at a loss as to why git cl format wrote this table one per line, but the next table 4 per line.",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 4
+      },
+      "revId": "c2cc18c5e89c3cd2a0ee01f642ec640df673c375",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
