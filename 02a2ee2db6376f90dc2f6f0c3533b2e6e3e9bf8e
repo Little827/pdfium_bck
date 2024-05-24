@@ -16,6 +16,24 @@
       "message": "Can this move into fxbarcode/oned/BC_OnedCode39Writer.cpp?",
       "revId": "02a2ee2db6376f90dc2f6f0c3533b2e6e3e9bf8e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24fab175_c1e512f4",
+        "filename": "fxbarcode/oned/BC_OnedCode39Writer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-05-24T23:25:43Z",
+      "side": 1,
+      "message": "probably, but would like to re-use bots.",
+      "parentUuid": "9aac3949_6249e3c6",
+      "revId": "02a2ee2db6376f90dc2f6f0c3533b2e6e3e9bf8e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
