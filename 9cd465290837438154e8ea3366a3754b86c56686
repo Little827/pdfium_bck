@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7a1c3fb_9d1c0102",
+        "filename": "core/fxcodec/jpx/cjpx_decoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-05-24T21:55:09Z",
+      "side": 1,
+      "message": "Can\u0027t fail, since `opj_setup_decoder(m_Codec, ...)` just succeeded. If it does fail, I would like to know about it.",
+      "revId": "9cd465290837438154e8ea3366a3754b86c56686",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
