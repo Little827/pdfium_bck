@@ -26,6 +26,7 @@
 #include "core/fxcrt/check.h"
 #include "core/fxcrt/check_op.h"
 #include "core/fxcrt/fx_memcpy_wrappers.h"
+#include "core/fxcrt/span_util.h"
 
 namespace {
 
@@ -323,16 +324,16 @@ size_t CPDF_CryptoHandler::EncryptGetSize(
 }
 
 CPDF_CryptoHandler::CPDF_CryptoHandler(Cipher cipher,
-                                       const uint8_t* key,
-                                       size_t keylen)
-    : m_KeyLen(std::min<size_t>(keylen, 32)), m_Cipher(cipher) {
-  DCHECK(cipher != Cipher::kAES || keylen == 16 || keylen == 24 ||
-         keylen == 32);
-  DCHECK(cipher != Cipher::kAES2 || keylen == 32);
-  DCHECK(cipher != Cipher::kRC4 || (keylen >= 5 && keylen <= 16));
+                                       pdfium::span<const uint8_t> key)
+    : m_KeyLen(std::min<size_t>(key.size(), 32)), m_Cipher(cipher) {
+  DCHECK(cipher != Cipher::kAES || m_KeyLen == 16 || m_KeyLen == 24 ||
+         m_KeyLen == 32);
+  DCHECK(cipher != Cipher::kAES2 || m_KeyLen == 32);
+  DCHECK(cipher != Cipher::kRC4 || (m_KeyLen >= 5 && m_KeyLen <= 16));
 
   if (m_Cipher != Cipher::kNone) {
-    UNSAFE_TODO(FXSYS_memcpy(m_EncryptKey.data(), key, m_KeyLen));
+    fxcrt::spancpy(pdfium::as_writable_byte_span(m_EncryptKey),
+                   key.first(m_KeyLen));
   }
   if (m_Cipher == Cipher::kAES) {
     m_pAESContext.reset(FX_Alloc(CRYPT_aes_context, 1));
