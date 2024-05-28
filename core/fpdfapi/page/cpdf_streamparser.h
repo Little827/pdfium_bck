@@ -11,6 +11,7 @@
 
 #include <array>
 
+#include "core/fxcrt/compiler_specific.h"
 #include "core/fxcrt/data_vector.h"
 #include "core/fxcrt/raw_span.h"
 #include "core/fxcrt/retain_ptr.h"
@@ -34,7 +35,7 @@ class CPDF_StreamParser {
 
   ElementType ParseNextElement();
   ByteStringView GetWord() const {
-    return ByteStringView(m_WordBuffer.data(), m_WordSize);
+    return UNSAFE_TODO(ByteStringView::Create(m_WordBuffer.data(), m_WordSize));
   }
   uint32_t GetPos() const { return m_Pos; }
   void SetPos(uint32_t pos) { m_Pos = pos; }

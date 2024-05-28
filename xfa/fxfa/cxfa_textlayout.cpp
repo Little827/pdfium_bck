@@ -12,6 +12,7 @@
 #include <utility>
 
 #include "core/fxcrt/check.h"
+#include "core/fxcrt/compiler_specific.h"
 #include "core/fxcrt/css/cfx_csscomputedstyle.h"
 #include "core/fxcrt/css/cfx_cssstyleselector.h"
 #include "core/fxcrt/notreached.h"
@@ -805,7 +806,7 @@ bool CXFA_TextLayout::LoadRichText(const CFX_XMLNode* pXMLNode,
         if (bIsOl)
           wsText = WideString::Format(L"%d.  ", iLiCount);
         else
-          wsText = 0x00B7 + WideStringView(L"  ", 1);
+          wsText = 0x00B7 + UNSAFE_TODO(WideStringView::Create(L"  ", 1));
       } else if (!bContentNode) {
         if (iTabCount > 0) {
           while (iTabCount-- > 0)
