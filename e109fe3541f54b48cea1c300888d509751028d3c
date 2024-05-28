@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1962a8c_589fcbf7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-05-28T18:59:27Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 13,
+        "startChar": 8,
+        "endLine": 13,
+        "endChar": 16
+      },
+      "revId": "e109fe3541f54b48cea1c300888d509751028d3c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73b5c6e0_84326217",
+        "filename": "fxbarcode/qrcode/BC_QRCoderECBlockData.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-05-28T18:59:27Z",
+      "side": 1,
+      "message": "Maybe upgrade to 1st `class` someday.",
+      "revId": "e109fe3541f54b48cea1c300888d509751028d3c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
