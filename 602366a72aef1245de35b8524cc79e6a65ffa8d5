@@ -39,6 +39,30 @@
       },
       "revId": "602366a72aef1245de35b8524cc79e6a65ffa8d5",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "619fe474_26f6b81b",
+        "filename": "build_overrides/partition_alloc.gni",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-05-28T18:11:54Z",
+      "side": 1,
+      "message": "Ok, we can go with what works and refine it later.",
+      "parentUuid": "356c0932_df6ed738",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 36
+      },
+      "revId": "602366a72aef1245de35b8524cc79e6a65ffa8d5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
