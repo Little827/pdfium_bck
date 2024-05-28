@@ -14,6 +14,7 @@
 #include <utility>
 
 #include "core/fdrm/fx_crypt.h"
+#include "core/fxcrt/compiler_specific.h"
 #include "core/fxcrt/fx_memcpy_wrappers.h"
 #include "core/fxcrt/numerics/safe_conversions.h"
 #include "core/fxcrt/stl_util.h"
@@ -308,7 +309,7 @@ bool CFX_GlobalData::LoadGlobalPersistentVariablesFromBuffer(
     if (p + dwNameLen > buffer.end())
       break;
 
-    ByteString sEntry = ByteString(p, dwNameLen);
+    ByteString sEntry = UNSAFE_TODO(ByteString::Create(p, dwNameLen));
     p += sizeof(char) * dwNameLen;
 
     uint16_t wDataType = 0;
@@ -350,7 +351,8 @@ bool CFX_GlobalData::LoadGlobalPersistentVariablesFromBuffer(
         if (p + dwLength > buffer.end())
           break;
 
-        SetGlobalVariableString(sEntry, ByteString(p, dwLength));
+        SetGlobalVariableString(sEntry,
+                                UNSAFE_TODO(ByteString::Create(p, dwLength)));
         SetGlobalVariablePersistent(sEntry, true);
         p += sizeof(char) * dwLength;
       } break;
