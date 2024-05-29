@@ -1,6 +1,40 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc80c786_6779afa4",
+        "filename": "core/fdrm/fx_crypt_sha.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-05-29T21:33:30Z",
+      "side": 1,
+      "message": "For later?",
+      "revId": "d169f8b1b72ac17675ac98cdd9a3bb1ee585506d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a750942a_f114e8f1",
+        "filename": "core/fdrm/fx_crypt_sha.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-05-29T21:33:30Z",
+      "side": 1,
+      "message": "Maybe this should become the return result? (Later?)",
+      "revId": "d169f8b1b72ac17675ac98cdd9a3bb1ee585506d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "baaf321e_6681706d",
