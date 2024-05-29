@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45f762d9_97e2a839",
+        "filename": "core/fdrm/fx_crypt.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-05-29T20:52:00Z",
+      "side": 1,
+      "message": "needs to remain for the moment due to ptr arithmetic, casts, etc.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 21
+      },
+      "revId": "d95d37d8509aaa0522456173135fa2bcb44cfad4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
