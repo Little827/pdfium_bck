@@ -75,6 +75,23 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cac6b615_a387f244",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 9296
+      },
+      "writtenOn": "2024-05-29T08:45:12Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "602366a72aef1245de35b8524cc79e6a65ffa8d5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "356c0932_df6ed738",
@@ -160,6 +177,30 @@
       "side": 1,
       "message": "But the words \"cast\" and \"cronet\" do not appear in this file? I suspect this list can be trimmed down a bit.",
       "parentUuid": "3a469b67_f98ae71b",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 36
+      },
+      "revId": "602366a72aef1245de35b8524cc79e6a65ffa8d5",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39b673c2_4c4eaa44",
+        "filename": "build_overrides/partition_alloc.gni",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 9296
+      },
+      "writtenOn": "2024-05-29T08:45:12Z",
+      "side": 1,
+      "message": "This file is imported by partition_alloc. The variable defined by those files are used.\n\nAt some point, I might \"namespace\" more variable with some \"partition_alloc_\" equivalent, and then do some:\n```\nimport(\"//build/config/cast.gni\")\npartition_alloc_is_cast_android \u003d is_cast_android\n```\n\n(Unsure if this is worth doing)",
+      "parentUuid": "a17178eb_cf8e8090",
       "range": {
         "startLine": 5,
         "startChar": 0,
