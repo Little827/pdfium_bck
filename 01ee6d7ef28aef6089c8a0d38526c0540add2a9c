@@ -3,6 +3,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "a7f9b6d6_3e1b7e06",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5645
+      },
+      "writtenOn": "2024-05-30T15:49:36Z",
+      "side": 1,
+      "message": "Second approval.",
+      "revId": "01ee6d7ef28aef6089c8a0d38526c0540add2a9c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "9e4dc222_d0f5c91d",
         "filename": "fxbarcode/pdf417/BC_PDF417.cpp",
         "patchSetId": 1
