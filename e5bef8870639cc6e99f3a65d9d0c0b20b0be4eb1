@@ -33,6 +33,23 @@
       "message": "Verified by pulling openjpeg-2.5.2.zip from https://github.com/uclouvain/openjpeg/archive/refs/tags/v2.5.2.zip and applying remaining patches after pulling this CL.",
       "revId": "e5bef8870639cc6e99f3a65d9d0c0b20b0be4eb1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "226edd64_1cd1a056",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 27
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5645
+      },
+      "writtenOn": "2024-05-30T17:30:18Z",
+      "side": 1,
+      "message": "G-approval",
+      "revId": "e5bef8870639cc6e99f3a65d9d0c0b20b0be4eb1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
