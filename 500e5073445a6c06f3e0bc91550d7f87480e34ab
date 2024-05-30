@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32693caa_fae2d4e1",
+        "filename": "core/fxge/cfx_cliprgn.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-05-30T23:53:13Z",
+      "side": 1,
+      "message": "Should the 3 scan variable here all take subspans, and then the for-loop can iterate from 0 to (new_box.right - new_box.left)? Follow-up?",
+      "revId": "500e5073445a6c06f3e0bc91550d7f87480e34ab",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a1611c0_60a30190",
+        "filename": "core/fxge/cfx_path.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-05-30T23:53:13Z",
+      "side": 1,
+      "message": "IWYU",
+      "revId": "500e5073445a6c06f3e0bc91550d7f87480e34ab",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
