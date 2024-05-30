@@ -33,6 +33,29 @@
       "message": "`n` becomes the first char in `sb`.\n`sb` is unnecessarily copied into `dataCodewords`.\n`dataCodewords` becomes the front of `fullCodewords`.\nEntries in `fullCodewords` are used as indices to `kCodewordTable`.",
       "revId": "01ee6d7ef28aef6089c8a0d38526c0540add2a9c",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be393876_22189c3c",
+        "filename": "fxbarcode/pdf417/BC_PDF417.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-05-30T15:49:15Z",
+      "side": 1,
+      "message": "follow-up: I canz be DataVector? (avoid binary data in strings).",
+      "range": {
+        "startLine": 398,
+        "startChar": 2,
+        "endLine": 398,
+        "endChar": 16
+      },
+      "revId": "01ee6d7ef28aef6089c8a0d38526c0540add2a9c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
