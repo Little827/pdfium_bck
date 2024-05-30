@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "244713ab_612f9d27",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-05-30T15:55:46Z",
+      "side": 1,
+      "message": "LG/W nit.  Not sure if it matters.",
+      "revId": "67e6647540f757a76263a95ffa95ebb18116db92",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0666dd13_66835dc4",
+        "filename": "core/fpdfapi/page/cpdf_dib.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-05-30T15:55:46Z",
+      "side": 1,
+      "message": "nit: I wish the name of this helper said why this test mattered or what its larger purpose was rather than just describing its mechanics.",
+      "range": {
+        "startLine": 125,
+        "startChar": 5,
+        "endLine": 125,
+        "endChar": 42
+      },
+      "revId": "67e6647540f757a76263a95ffa95ebb18116db92",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
