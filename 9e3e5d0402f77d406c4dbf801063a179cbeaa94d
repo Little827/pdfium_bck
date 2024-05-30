@@ -16,6 +16,23 @@
       "message": "I think this is right.",
       "revId": "9e3e5d0402f77d406c4dbf801063a179cbeaa94d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb98f518_6143a15e",
+        "filename": "xfa/fxfa/layout/cxfa_contentlayoutprocessor.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-05-30T22:39:19Z",
+      "side": 1,
+      "message": "Maybe add `using LineLayoutItem \u003d std::vector\u003ccppgc::Persistent\u003cCXFA_ContentLayoutItem\u003e\u003e;`, so the types can be simpler everywhere in this file?",
+      "revId": "9e3e5d0402f77d406c4dbf801063a179cbeaa94d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
