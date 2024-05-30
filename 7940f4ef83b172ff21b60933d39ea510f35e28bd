@@ -16,6 +16,23 @@
       "message": "Expecting this to pass.",
       "revId": "7940f4ef83b172ff21b60933d39ea510f35e28bd",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0080972_ce54676e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5645
+      },
+      "writtenOn": "2024-05-30T16:30:09Z",
+      "side": 1,
+      "message": "G-approved",
+      "revId": "7940f4ef83b172ff21b60933d39ea510f35e28bd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
