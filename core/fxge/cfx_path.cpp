@@ -4,11 +4,6 @@
 
 // Original code copyright 2014 Foxit Software Inc. http://www.foxitsoftware.com
 
-#if defined(UNSAFE_BUFFERS_BUILD)
-// TODO(crbug.com/pdfium/2154): resolve buffer safety issues.
-#pragma allow_unsafe_buffers
-#endif
-
 #include "core/fxge/cfx_path.h"
 
 #include <math.h>
@@ -422,7 +417,7 @@ std::optional<CFX_FloatRect> CFX_Path::GetRect(const CFX_Matrix* matrix) const {
   if (!IsRectPreTransform(path_points))
     return std::nullopt;
 
-  CFX_PointF points[5];
+  std::array<CFX_PointF, 5> points;
   for (size_t i = 0; i < path_points.size(); ++i) {
     points[i] = matrix->Transform(path_points[i].m_Point);
 
