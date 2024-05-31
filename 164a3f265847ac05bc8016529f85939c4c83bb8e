@@ -16,6 +16,24 @@
       "message": "I didn\u0027t manage to find any `v8::FunctionTemplate`s created with signatures and I didn\u0027t find any `v8::Signature::New(..)` usages in PDFium. For this case `info.Holder()` is equal to `info.This()` (see https://source.chromium.org/chromium/chromium/src/+/main:v8/include/v8-function-callback.h;l\u003d125;drc\u003d2b8b8c15ea96feadd34e04ca947e5f05069e3b24;bpv\u003d1;bpt\u003d1).\n\nso, LGTM\n\nAre there other `info.Holder()` usages?",
       "revId": "164a3f265847ac05bc8016529f85939c4c83bb8e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be75e8d7_4afcd033",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3293871
+      },
+      "writtenOn": "2024-05-31T21:31:10Z",
+      "side": 1,
+      "message": "Answering my own question. Here are they (only left in PDFium): https://source.chromium.org/chromium/chromium/src/+/main:v8/include/v8-function-callback.h;l\u003d589;drc\u003d2b8b8c15ea96feadd34e04ca947e5f05069e3b24;bpv\u003d1;bpt\u003d1",
+      "parentUuid": "1af9e372_bcb24f1d",
+      "revId": "164a3f265847ac05bc8016529f85939c4c83bb8e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
