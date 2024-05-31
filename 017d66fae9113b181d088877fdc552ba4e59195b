@@ -33,6 +33,23 @@
       "message": "                                                                                   CPDF_Document owned by embedder\tacross public API\nCPDF_DocPageData owned by CPDF_Document\tas a PageDataIface.\nHence no cycles.",
       "revId": "017d66fae9113b181d088877fdc552ba4e59195b",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3640cafa_e206b502",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-05-31T18:36:20Z",
+      "side": 1,
+      "message": "CPDF_Document owned by embedder across public API.\nCPDF_DocPageData owned by CPDF_Document as a PageDataIface.\nHence no cycles.",
+      "revId": "017d66fae9113b181d088877fdc552ba4e59195b",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
