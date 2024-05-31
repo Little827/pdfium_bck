@@ -16,6 +16,24 @@
       "message": "Please take another look at delta between PS3 and PS2.",
       "revId": "01e18b7a6085a131564e765456bceb0b5d481bdf",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8835e208_ec9b2dd8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-05-31T16:29:06Z",
+      "side": 1,
+      "message": "Still LGTM",
+      "parentUuid": "0f58285b_8c1ba7af",
+      "revId": "01e18b7a6085a131564e765456bceb0b5d481bdf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
