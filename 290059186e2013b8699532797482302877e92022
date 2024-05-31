@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c4bbe73_182cf5e4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-05-31T16:21:45Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 7,
+        "startChar": 27,
+        "endLine": 7,
+        "endChar": 46
+      },
+      "revId": "290059186e2013b8699532797482302877e92022",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e1bf7be_9a223ddb",
+        "filename": "core/fpdfapi/render/cpdf_rendershading.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-05-31T16:21:45Z",
+      "side": 1,
+      "message": "Would it help to take the first(width)?",
+      "revId": "290059186e2013b8699532797482302877e92022",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adde6651_ee7ffa6a",
+        "filename": "core/fpdfapi/render/cpdf_rendershading.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-05-31T16:21:45Z",
+      "side": 1,
+      "message": "IWYU",
+      "revId": "290059186e2013b8699532797482302877e92022",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
