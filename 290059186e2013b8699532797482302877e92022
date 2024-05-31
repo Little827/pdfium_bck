@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a28efbd5_d1008849",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-05-31T16:48:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c4bbe73_182cf5e4",
+      "range": {
+        "startLine": 7,
+        "startChar": 27,
+        "endLine": 7,
+        "endChar": 46
+      },
+      "revId": "290059186e2013b8699532797482302877e92022",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e1bf7be_9a223ddb",
@@ -41,6 +65,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6497187d_dec81457",
+        "filename": "core/fpdfapi/render/cpdf_rendershading.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-05-31T16:48:30Z",
+      "side": 1,
+      "message": "and then iterate from 0..dib_buf.size() ? I guess so... but better as a range-based for-loop over a span, even.",
+      "parentUuid": "3e1bf7be_9a223ddb",
+      "revId": "290059186e2013b8699532797482302877e92022",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "adde6651_ee7ffa6a",
@@ -54,6 +96,24 @@
       "writtenOn": "2024-05-31T16:21:45Z",
       "side": 1,
       "message": "IWYU",
+      "revId": "290059186e2013b8699532797482302877e92022",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12a51481_07e1bd20",
+        "filename": "core/fpdfapi/render/cpdf_rendershading.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-05-31T16:48:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "adde6651_ee7ffa6a",
       "revId": "290059186e2013b8699532797482302877e92022",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
