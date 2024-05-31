@@ -87,6 +87,24 @@
       "parentUuid": "0827585d_9a079557",
       "revId": "164a3f265847ac05bc8016529f85939c4c83bb8e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1397d9a3_82edfe2f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3293871
+      },
+      "writtenOn": "2024-05-31T23:36:21Z",
+      "side": 1,
+      "message": "I found signature usages: https://source.chromium.org/chromium/chromium/src/+/main:third_party/pdfium/fxjs/cfxjs_engine.cpp;drc\u003d2b8b8c15ea96feadd34e04ca947e5f05069e3b24;bpv\u003d1;bpt\u003d1;l\u003d210\n\nSo, the question is whether we ever use that for install properties on global objects?\n\nThe main \"observable\" differences between `This/Holder` for global object are:\n1) they might have different values of internal fields,\n2) they belong to different places in the prototype chain (holder will be one step higher), so if the Api function tries to `GetPrototype()` then there will be a difference.\n\nI see the following ways of fixing the potential issues:\nFix1) we should ensure that we install the same values into global object and its direct prototype,\nFix2) we should use `v8::Object::GetPrototypeV2()`, it\u0027ll skip JSGlobalObject and equalize `info.Holder().GetPrototype()` with `info.This().GetPrototypeV2()`.\n\nFrom the JavaScript property getting/setting perspective there are no differences between This() and Holder().",
+      "parentUuid": "042c4e42_6fb91930",
+      "revId": "164a3f265847ac05bc8016529f85939c4c83bb8e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
