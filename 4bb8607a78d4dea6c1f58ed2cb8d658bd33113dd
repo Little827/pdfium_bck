@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a507d98c_7ad4ae94",
+        "filename": "core/fpdfapi/font/cpdf_font.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-05-31T23:46:48Z",
+      "side": 1,
+      "message": "This AppendChar(), which has an override, probably should eventually take a fixed buf of size 4 and return a span of that buf.",
+      "revId": "4bb8607a78d4dea6c1f58ed2cb8d658bd33113dd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
