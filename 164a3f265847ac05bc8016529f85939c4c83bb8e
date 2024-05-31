@@ -69,6 +69,24 @@
       "message": "Cleanup of these 4 usages at https://pdfium-review.googlesource.com/c/pdfium/+/119950?forceReload\u003dtrue while we try to progress on the others.",
       "revId": "164a3f265847ac05bc8016529f85939c4c83bb8e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "042c4e42_6fb91930",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3293871
+      },
+      "writtenOn": "2024-05-31T23:07:52Z",
+      "side": 1,
+      "message": "Holder() for Api functions callbacks is different (and simpler) than a Holder() for property or interceptor callbacks. For functions Holder() is literally either `This()` or, if the function was created with `v8::Signature` matching global object (V8\u0027s JSGlobalProxy), a global object\u0027s prototype (V8\u0027s JSGlobalObject).\n\nI believe we are falling into the former category (no functions with `v8::Signatures`).",
+      "parentUuid": "0827585d_9a079557",
+      "revId": "164a3f265847ac05bc8016529f85939c4c83bb8e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
