@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ad423fc_b0ebc102",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-05-31T23:50:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "752e1d10_31166a9e",
+      "revId": "e380fb280eec2706c0402b2344334b21d550e2b8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9a6b0b2c_4cfd9858",
@@ -31,6 +49,30 @@
       "writtenOn": "2024-05-31T23:31:06Z",
       "side": 1,
       "message": "Remove?",
+      "range": {
+        "startLine": 76,
+        "startChar": 6,
+        "endLine": 76,
+        "endChar": 32
+      },
+      "revId": "e380fb280eec2706c0402b2344334b21d550e2b8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc647e1f_e94c7375",
+        "filename": "fxjs/xfa/cfxjse_class.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-05-31T23:50:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a6b0b2c_4cfd9858",
       "range": {
         "startLine": 76,
         "startChar": 6,
