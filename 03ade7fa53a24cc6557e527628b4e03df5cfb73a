@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5049b3c_a70eb87d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-05-31T00:12:55Z",
+      "side": 1,
+      "message": "\u003e \"suppresions\" is a possible misspelling of \"suppressions\".\n\nPlease fix.",
+      "parentUuid": "5654d87d_41ca050e",
+      "range": {
+        "startLine": 7,
+        "startChar": 30,
+        "endLine": 7,
+        "endChar": 41
+      },
+      "revId": "03ade7fa53a24cc6557e527628b4e03df5cfb73a",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
