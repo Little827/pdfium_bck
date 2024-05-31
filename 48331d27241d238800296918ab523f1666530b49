@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d2e0246_798f1d6f",
+        "filename": "core/fpdfapi/page/cpdf_docpagedata.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-05-31T17:59:14Z",
+      "side": 0,
+      "message": "Why did https://pdfium-review.googlesource.com/96054 cause a performance drop? Because now nobody is holding the CPDF_Font.",
+      "revId": "48331d27241d238800296918ab523f1666530b49",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
