@@ -35,6 +35,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "836953d4_c00c0493",
+        "filename": "xfa/fxfa/layout/cxfa_contentlayoutprocessor.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-05-31T16:59:58Z",
+      "side": 1,
+      "message": "Done. Also rename dto ContentLayoutItemVector as Line seems kinda misleading.",
+      "parentUuid": "9c144b26_342534e5",
+      "revId": "08bb9f73071bf5c3b7fa38064df86c142f59368d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "18e6d121_99467091",
@@ -48,6 +66,24 @@
       "writtenOn": "2024-05-30T23:22:52Z",
       "side": 1,
       "message": "Can update this too. My cheat sheet: https://pdfium-review.googlesource.com/c/pdfium/+/119831",
+      "revId": "08bb9f73071bf5c3b7fa38064df86c142f59368d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2ce5323_abf9a965",
+        "filename": "xfa/fxfa/layout/cxfa_contentlayoutprocessor.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-05-31T16:59:58Z",
+      "side": 1,
+      "message": "Nope.  This is vector of member, the other is vector of persistent.",
+      "parentUuid": "18e6d121_99467091",
       "revId": "08bb9f73071bf5c3b7fa38064df86c142f59368d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
