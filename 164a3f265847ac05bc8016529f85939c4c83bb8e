@@ -105,6 +105,24 @@
       "parentUuid": "042c4e42_6fb91930",
       "revId": "164a3f265847ac05bc8016529f85939c4c83bb8e",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3e42acc_a0422950",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-06-01T00:16:35Z",
+      "side": 1,
+      "message": "Looking at this, I\u0027m not entirely sure why we are using signatures here.",
+      "parentUuid": "1397d9a3_82edfe2f",
+      "revId": "164a3f265847ac05bc8016529f85939c4c83bb8e",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
