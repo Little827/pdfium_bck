@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e802c6e_7715c710",
+        "filename": "core/fpdfapi/page/cpdf_indexedcs.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-06-01T00:01:00Z",
+      "side": 1,
+      "message": "nit: `DataVector\u003cuint8_t\u003e(str_span.begin(), str_span.end());` might read better as there\u0027s a lot of construction going on.",
+      "range": {
+        "startLine": 87,
+        "startChar": 20,
+        "endLine": 87,
+        "endChar": 55
+      },
+      "revId": "27d027a51f1686e1edecd9cb756b5142eea8b3a4",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
