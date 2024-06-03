@@ -35,6 +35,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e1af352_11259bd6",
+        "filename": "core/fpdfapi/edit/cpdf_pagecontentgenerator.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 9186
+      },
+      "writtenOn": "2024-06-03T01:25:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c968c984_42ab6f81",
+      "revId": "7f64bd699ebcbc87ad96d21e851dde1f7b93fa2f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d91b2370_3b2cb242",
@@ -48,6 +66,24 @@
       "writtenOn": "2024-05-07T18:30:50Z",
       "side": 1,
       "message": "Got a merge conflict here.",
+      "revId": "7f64bd699ebcbc87ad96d21e851dde1f7b93fa2f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c88f968_d71eb156",
+        "filename": "core/fpdfapi/page/cpdf_color.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 9186
+      },
+      "writtenOn": "2024-06-03T01:25:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d91b2370_3b2cb242",
       "revId": "7f64bd699ebcbc87ad96d21e851dde1f7b93fa2f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
@@ -69,6 +105,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a2e535e_ec454063",
+        "filename": "fpdfsdk/fpdf_save_embeddertest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 9186
+      },
+      "writtenOn": "2024-06-03T01:25:22Z",
+      "side": 1,
+      "message": "no, according to my experience and the documentation, I don\u0027t think freeing is necessary (only when creating new objs, see FPDFPageObj_Destroy)",
+      "parentUuid": "65408362_874a0e15",
+      "revId": "7f64bd699ebcbc87ad96d21e851dde1f7b93fa2f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9209f8bd_2c62fd94",
@@ -86,6 +140,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "62a246b1_e4535efe",
+        "filename": "fpdfsdk/fpdf_save_embeddertest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 9186
+      },
+      "writtenOn": "2024-06-03T01:25:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9209f8bd_2c62fd94",
+      "revId": "7f64bd699ebcbc87ad96d21e851dde1f7b93fa2f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9fb57d43_dad987f8",
@@ -99,6 +171,24 @@
       "writtenOn": "2024-05-07T20:09:40Z",
       "side": 1,
       "message": "Use EXPECT_NE() here and below.",
+      "revId": "7f64bd699ebcbc87ad96d21e851dde1f7b93fa2f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c57332f_ed63d757",
+        "filename": "fpdfsdk/fpdf_save_embeddertest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 9186
+      },
+      "writtenOn": "2024-06-03T01:25:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fb57d43_dad987f8",
       "revId": "7f64bd699ebcbc87ad96d21e851dde1f7b93fa2f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
