@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a02f822d_75e9c12d",
+        "filename": "xfa/fgas/crt/cfgas_stringformatter.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-06-03T20:11:10Z",
+      "side": 1,
+      "message": "Next patch set rewrites this comment as \n// Sets `*iPattern` to one beyond the char that ended the parse, or to\n// `spPattern.size()` if no such char occurs. Parsing should resume at\n// that position.\n\nBut I didn\u0027t want to rerun the bots just yet.",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 76
+      },
+      "revId": "c9a80176fb246542a07e2642adcf6db5e97130d6",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
