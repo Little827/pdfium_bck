@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "24af450a_f6f40197",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2024-06-03T18:34:08Z",
+      "side": 1,
+      "message": "This is more easily understood by people scanning CL summaries if it is a description of the actual issue.  E.g., something more like \"Add test for colorspace handling of regenerated streams\"?",
+      "range": {
+        "startLine": 7,
+        "startChar": 13,
+        "endLine": 7,
+        "endChar": 28
+      },
+      "revId": "972254b373bc397bb986917183da156cb85adbac",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9895f217_9607d290",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2024-06-03T18:34:08Z",
+      "side": 1,
+      "message": "The PDFium issue tracker has migrated from Monorail to Buganizer.  This is now simply `42271133`.  For new content added post-migration we are striving to use just the new issue numbers.\n\nThis would apply to the test name and test filenames as well.",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 16
+      },
+      "revId": "972254b373bc397bb986917183da156cb85adbac",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "f6f74832_77e37304",
@@ -31,6 +77,52 @@
       "writtenOn": "2024-06-02T16:03:55Z",
       "side": 1,
       "message": "added Alan to reviewers - not sure if I should remove the .pdf file from the CL or not\n\nonce this is submitted I will submit the CL to fix the demonstrated issue",
+      "revId": "972254b373bc397bb986917183da156cb85adbac",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df839262_29f9362b",
+        "filename": "fpdfsdk/fpdf_save_embeddertest.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2024-06-03T18:34:08Z",
+      "side": 1,
+      "message": "Nit: Comments should be proper sentences, capitalized and with ending punctuation.  Similarly throughout.",
+      "range": {
+        "startLine": 106,
+        "startChar": 2,
+        "endLine": 106,
+        "endChar": 41
+      },
+      "revId": "972254b373bc397bb986917183da156cb85adbac",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f0cef23_b6344017",
+        "filename": "fpdfsdk/fpdf_save_embeddertest.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 7704
+      },
+      "writtenOn": "2024-06-03T18:34:08Z",
+      "side": 1,
+      "message": "It is usually best for `TODO` to contain a bug number, as that helps direct a reader to be able to find more context on the issue.  If a person is planning or actively working on that issue, then that can be reflected by assigning the bug to themselves and updating the status.  If the person can\u0027t get to it in the end, then removing themselves from it to make it available for someone else doesn\u0027t require updating a TODO in the source code.\nAlso, no space between the `TODO` and the parenthesis.\nhttps://google.github.io/styleguide/cppguide#TODO_Comments",
+      "range": {
+        "startLine": 129,
+        "startChar": 5,
+        "endLine": 129,
+        "endChar": 18
+      },
       "revId": "972254b373bc397bb986917183da156cb85adbac",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
