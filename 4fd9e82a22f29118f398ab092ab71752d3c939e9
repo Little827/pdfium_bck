@@ -162,6 +162,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "65b5ef3b_9a2a4113",
+        "filename": "fpdfsdk/fpdf_save_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-06-04T07:55:04Z",
+      "side": 1,
+      "message": "Pretty sure it needs to be removed. Otherwise, this produces a memory leak. Please review the FPDFPage_RemoveObject() documentation.",
+      "parentUuid": "2c5ffbf2_ba33fcba",
+      "revId": "4fd9e82a22f29118f398ab092ab71752d3c939e9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "069a6df5_f7ce727f",
         "filename": "fpdfsdk/fpdf_save_embeddertest.cpp",
         "patchSetId": 2

@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e50d9148_9b0243bf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-06-04T07:55:04Z",
+      "side": 1,
+      "message": "If you are going with the new bug # here, then would you like to also update the actual test name in fpdfsdk/fpdf_save_embeddertest.cpp as well? And once you do that, testing/resources/bug_2116.* might as well get renamed too.",
+      "range": {
+        "startLine": 11,
+        "startChar": 28,
+        "endLine": 11,
+        "endChar": 39
+      },
+      "revId": "ba572af06b22fd7651307984ce10abaa05cb6148",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "c2e829f7_b0677d66",
@@ -14,6 +37,58 @@
       "writtenOn": "2024-06-04T01:34:20Z",
       "side": 1,
       "message": "I have formatted the comments and updated the issue number. Please confirm if I should remove the .pdf file from test resources and only leave the .in file.",
+      "revId": "ba572af06b22fd7651307984ce10abaa05cb6148",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07895e69_071df692",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-06-04T07:55:04Z",
+      "side": 1,
+      "message": "Leave both the .in file and the .pdf.",
+      "parentUuid": "c2e829f7_b0677d66",
+      "revId": "ba572af06b22fd7651307984ce10abaa05cb6148",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2734d752_3a912617",
+        "filename": "fpdfsdk/fpdf_save_embeddertest.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-06-04T07:55:04Z",
+      "side": 1,
+      "message": "`// TODO(crbug.com/42271133): Change to EXPECT_NE().`\n\n- Update the bug number.\n- Use the preferred TODO format. See other TODOs for example.\n- Referring to function-like things with the extra parenthesis makes it more obvious that\u0027s what it is.",
+      "revId": "ba572af06b22fd7651307984ce10abaa05cb6148",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1dd28e15_6fe2d0dd",
+        "filename": "testing/resources/bug_2116.in",
+        "patchSetId": 12
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-06-04T07:55:04Z",
+      "side": 1,
+      "message": "The angle brackets are unbalanced here.",
       "revId": "ba572af06b22fd7651307984ce10abaa05cb6148",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
