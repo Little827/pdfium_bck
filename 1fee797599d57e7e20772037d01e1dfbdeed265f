@@ -16,6 +16,23 @@
       "message": "ping?",
       "revId": "1fee797599d57e7e20772037d01e1dfbdeed265f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6243fa72_9adf36f8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-06-04T23:15:10Z",
+      "side": 1,
+      "message": "I think to make the last bot pass, this CL needs to grab the actual results from the failing bot and add it as testing/resources/pixel/bug_2106_expected_gdi.pdf.0.png. I think https://pdfium-gold.skia.org/img/images/36910f9784e61bdb194c147cfe948b2b.png is the right file.",
+      "revId": "1fee797599d57e7e20772037d01e1dfbdeed265f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
