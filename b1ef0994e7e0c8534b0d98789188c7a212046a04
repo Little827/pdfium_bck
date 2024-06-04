@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5fa2421_029749fd",
+        "filename": "core/fxcodec/bmp/bmp_decoder.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-06-04T22:00:55Z",
+      "side": 1,
+      "message": "No longer needed.",
+      "revId": "b1ef0994e7e0c8534b0d98789188c7a212046a04",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e507d9f2_2c8ec3e2",
+        "filename": "core/fxcodec/progressive_decoder.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 714,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-06-04T22:00:55Z",
+      "side": 1,
+      "message": "spancpy() uses `src.size_bytes()` internally, but it is not clear what the size of `palette` is here?",
+      "revId": "b1ef0994e7e0c8534b0d98789188c7a212046a04",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
