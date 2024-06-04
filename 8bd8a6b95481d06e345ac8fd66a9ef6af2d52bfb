@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e03398c2_19a4888d",
+        "filename": "core/fxcodec/jbig2/JBig2_HtrdProc.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-06-04T19:31:22Z",
+      "side": 1,
+      "message": "IWYU",
+      "range": {
+        "startLine": 30,
+        "startChar": 14,
+        "endLine": 30,
+        "endChar": 18
+      },
+      "revId": "8bd8a6b95481d06e345ac8fd66a9ef6af2d52bfb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03919441_f1683082",
+        "filename": "core/fxcodec/jbig2/JBig2_SddProc.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-06-04T19:31:22Z",
+      "side": 1,
+      "message": "No longer used.",
+      "revId": "8bd8a6b95481d06e345ac8fd66a9ef6af2d52bfb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
