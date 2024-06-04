@@ -18,6 +18,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5747e737_60985c6a",
+        "filename": "core/fxcodec/bmp/bmp_decoder.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-06-04T23:10:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5fa2421_029749fd",
+      "revId": "b1ef0994e7e0c8534b0d98789188c7a212046a04",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e507d9f2_2c8ec3e2",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-06-04T22:00:55Z",
       "side": 1,
       "message": "spancpy() uses `src.size_bytes()` internally, but it is not clear what the size of `palette` is here?",
+      "revId": "b1ef0994e7e0c8534b0d98789188c7a212046a04",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d654fb5_41c0c27d",
+        "filename": "core/fxcodec/progressive_decoder.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 714,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-06-04T23:10:01Z",
+      "side": 1,
+      "message": "So, I removed all the discrete size parameters which seemed to have been shadowing/duplicating container sizes. I think this reads safely now.",
+      "parentUuid": "e507d9f2_2c8ec3e2",
       "revId": "b1ef0994e7e0c8534b0d98789188c7a212046a04",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
