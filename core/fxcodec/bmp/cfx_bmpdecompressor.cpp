@@ -21,14 +21,10 @@
 #include "core/fxcrt/numerics/safe_math.h"
 #include "core/fxcrt/span_util.h"
 #include "core/fxge/calculate_pitch.h"
-#include "core/fxge/dib/fx_dib.h"
 
 namespace fxcodec {
 
 namespace {
-
-#define BMP_PAL_ENCODE(a, r, g, b) \
-  (((uint32_t)(a) << 24) | ((r) << 16) | ((g) << 8) | (b))
 
 constexpr size_t kBmpCoreHeaderSize = 12;
 constexpr size_t kBmpInfoHeaderSize = 40;
@@ -293,22 +289,22 @@ BmpDecoder::Status CFX_BmpDecompressor::ReadBmpPalette() {
     int32_t src_pal_index = 0;
     if (pal_type_ == PalType::kOld) {
       auto src_pal_data =
-          fxcrt::truncating_reinterpret_span<FX_RGB_STRUCT<uint8_t>, uint8_t>(
+          fxcrt::truncating_reinterpret_span<FX_BGR_STRUCT<uint8_t>, uint8_t>(
               src_pal);
       while (src_pal_index < pal_num_) {
         const auto& entry = src_pal_data.front();
         palette_[src_pal_index++] =
-            BMP_PAL_ENCODE(0x00, entry.blue, entry.green, entry.red);
+            ArgbEncode(0x00, entry.red, entry.green, entry.blue);
         src_pal_data = src_pal_data.subspan(1);
       }
     } else {
       auto src_pal_data =
-          fxcrt::truncating_reinterpret_span<FX_RGBA_STRUCT<uint8_t>, uint8_t>(
+          fxcrt::truncating_reinterpret_span<FX_BGRA_STRUCT<uint8_t>, uint8_t>(
               src_pal);
       while (src_pal_index < pal_num_) {
         const auto& entry = src_pal_data.front();
         palette_[src_pal_index++] =
-            BMP_PAL_ENCODE(entry.alpha, entry.blue, entry.green, entry.red);
+            ArgbEncode(entry.alpha, entry.red, entry.green, entry.blue);
         src_pal_data = src_pal_data.subspan(1);
       }
     }
