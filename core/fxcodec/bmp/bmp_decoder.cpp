@@ -13,7 +13,6 @@
 #include "core/fxcodec/fx_codec.h"
 #include "core/fxcodec/fx_codec_def.h"
 #include "core/fxcrt/check.h"
-#include "core/fxge/dib/fx_dib.h"
 
 namespace fxcodec {
 
@@ -31,7 +30,7 @@ BmpDecoder::Status BmpDecoder::ReadHeader(
     bool* tb_flag,
     int32_t* components,
     int32_t* pal_num,
-    const std::vector<uint32_t>** palette,
+    pdfium::span<const FX_ARGB>* palette,
     CFX_DIBAttribute* pAttribute) {
   DCHECK(pAttribute);
 

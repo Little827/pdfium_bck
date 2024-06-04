@@ -649,7 +649,7 @@ bool ProgressiveDecoder::BmpDetectImageTypeInBuffer(
       BmpDecoder::StartDecode(this);
   BmpDecoder::Input(pBmpContext.get(), m_pCodecMemory);
 
-  const std::vector<uint32_t>* palette;
+  pdfium::span<const FX_ARGB> palette;
   BmpDecoder::Status read_result = BmpDecoder::ReadHeader(
       pBmpContext.get(), &m_SrcWidth, &m_SrcHeight, &m_BmpIsTopBottom,
       &m_SrcComponents, &m_SrcPaletteNumber, &palette, pAttribute);
@@ -711,8 +711,7 @@ bool ProgressiveDecoder::BmpDetectImageTypeInBuffer(
   m_pBmpContext = std::move(pBmpContext);
   if (m_SrcPaletteNumber) {
     m_SrcPalette.resize(m_SrcPaletteNumber);
-    FXSYS_memcpy(m_SrcPalette.data(), palette->data(),
-                 m_SrcPaletteNumber * sizeof(FX_ARGB));
+    fxcrt::spancpy(pdfium::make_span(m_SrcPalette), palette);
   } else {
     m_SrcPalette.clear();
   }
