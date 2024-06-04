@@ -785,11 +785,11 @@ bool CFX_RenderDevice::DrawFillStrokePath(
     return false;
 
   if (bitmap->IsAlphaFormat()) {
-    backdrop->Copy(bitmap);
+    backdrop->CopyFrom(bitmap);
   } else {
     if (!m_pDeviceDriver->GetDIBits(bitmap, rect.left, rect.top))
       return false;
-    backdrop->Copy(bitmap);
+    backdrop->CopyFrom(bitmap);
   }
   CFX_DefaultRenderDevice bitmap_device;
   bitmap_device.AttachWithBackdropAndGroupKnockout(bitmap, std::move(backdrop),
