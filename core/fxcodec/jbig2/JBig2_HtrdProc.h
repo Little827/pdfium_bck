@@ -25,9 +25,10 @@ class CJBig2_HTRDProc {
   CJBig2_HTRDProc();
   ~CJBig2_HTRDProc();
 
-  std::unique_ptr<CJBig2_Image> DecodeArith(CJBig2_ArithDecoder* pArithDecoder,
-                                            JBig2ArithCtx* gbContext,
-                                            PauseIndicatorIface* pPause);
+  std::unique_ptr<CJBig2_Image> DecodeArith(
+      CJBig2_ArithDecoder* pArithDecoder,
+      pdfium::span<JBig2ArithCtx> gbContext,
+      PauseIndicatorIface* pPause);
 
   std::unique_ptr<CJBig2_Image> DecodeMMR(CJBig2_BitStream* pStream);
 

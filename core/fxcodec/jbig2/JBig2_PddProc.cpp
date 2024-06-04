@@ -14,7 +14,7 @@
 
 std::unique_ptr<CJBig2_PatternDict> CJBig2_PDDProc::DecodeArith(
     CJBig2_ArithDecoder* pArithDecoder,
-    JBig2ArithCtx* gbContext,
+    pdfium::span<JBig2ArithCtx> gbContext,
     PauseIndicatorIface* pPause) {
   std::unique_ptr<CJBig2_GRDProc> pGRD = CreateGRDProc();
   if (!pGRD)

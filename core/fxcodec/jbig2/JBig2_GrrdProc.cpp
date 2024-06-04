@@ -19,7 +19,7 @@ CJBig2_GRRDProc::~CJBig2_GRRDProc() = default;
 
 std::unique_ptr<CJBig2_Image> CJBig2_GRRDProc::Decode(
     CJBig2_ArithDecoder* pArithDecoder,
-    JBig2ArithCtx* grContext) {
+    pdfium::span<JBig2ArithCtx> grContext) {
   if (!CJBig2_Image::IsValidImageSize(GRW, GRH))
     return std::make_unique<CJBig2_Image>(GRW, GRH);
 
@@ -40,7 +40,7 @@ std::unique_ptr<CJBig2_Image> CJBig2_GRRDProc::Decode(
 
 std::unique_ptr<CJBig2_Image> CJBig2_GRRDProc::DecodeTemplate0Unopt(
     CJBig2_ArithDecoder* pArithDecoder,
-    JBig2ArithCtx* grContext) {
+    pdfium::span<JBig2ArithCtx> grContext) {
   auto GRREG = std::make_unique<CJBig2_Image>(GRW, GRH);
   if (!GRREG->data())
     return nullptr;
@@ -149,7 +149,7 @@ void CJBig2_GRRDProc::DecodeTemplate0UnoptSetPixel(CJBig2_Image* GRREG,
 
 std::unique_ptr<CJBig2_Image> CJBig2_GRRDProc::DecodeTemplate0Opt(
     CJBig2_ArithDecoder* pArithDecoder,
-    JBig2ArithCtx* grContext) {
+    pdfium::span<JBig2ArithCtx> grContext) {
   if (!GRREFERENCE->data())
     return nullptr;
 
@@ -303,7 +303,7 @@ std::unique_ptr<CJBig2_Image> CJBig2_GRRDProc::DecodeTemplate0Opt(
 
 std::unique_ptr<CJBig2_Image> CJBig2_GRRDProc::DecodeTemplate1Unopt(
     CJBig2_ArithDecoder* pArithDecoder,
-    JBig2ArithCtx* grContext) {
+    pdfium::span<JBig2ArithCtx> grContext) {
   auto GRREG = std::make_unique<CJBig2_Image>(GRW, GRH);
   if (!GRREG->data())
     return nullptr;
@@ -412,7 +412,7 @@ std::unique_ptr<CJBig2_Image> CJBig2_GRRDProc::DecodeTemplate1Unopt(
 
 std::unique_ptr<CJBig2_Image> CJBig2_GRRDProc::DecodeTemplate1Opt(
     CJBig2_ArithDecoder* pArithDecoder,
-    JBig2ArithCtx* grContext) {
+    pdfium::span<JBig2ArithCtx> grContext) {
   if (!GRREFERENCE->data())
     return nullptr;
 

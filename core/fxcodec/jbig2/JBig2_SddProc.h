@@ -30,13 +30,13 @@ class CJBig2_SDDProc {
 
   std::unique_ptr<CJBig2_SymbolDict> DecodeArith(
       CJBig2_ArithDecoder* pArithDecoder,
-      std::vector<JBig2ArithCtx>* gbContext,
-      std::vector<JBig2ArithCtx>* grContext);
+      pdfium::span<JBig2ArithCtx> gbContext,
+      pdfium::span<JBig2ArithCtx> grContext);
 
   std::unique_ptr<CJBig2_SymbolDict> DecodeHuffman(
       CJBig2_BitStream* pStream,
-      std::vector<JBig2ArithCtx>* gbContext,
-      std::vector<JBig2ArithCtx>* grContext);
+      pdfium::span<JBig2ArithCtx> gbContext,
+      pdfium::span<JBig2ArithCtx> grContext);
 
   bool SDHUFF;
   bool SDREFAGG;

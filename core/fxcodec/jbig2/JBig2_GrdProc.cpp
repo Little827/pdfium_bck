@@ -5,12 +5,13 @@
 // Original code copyright 2014 Foxit Software Inc. http://www.foxitsoftware.com
 
 #if defined(UNSAFE_BUFFERS_BUILD)
-// TODO(crbug.com/pdfium/2154): resolve buffer safety issues.
+// TODO(crbug.com/40284755): Remove this and spanify to fix the errors.
 #pragma allow_unsafe_buffers
 #endif
 
 #include "core/fxcodec/jbig2/JBig2_GrdProc.h"
 
+#include <array>
 #include <functional>
 #include <memory>
 #include <utility>
@@ -24,18 +25,30 @@
 namespace {
 
 // TODO(npm): Name this constants better or merge some together.
-constexpr uint16_t kOptConstant1[] = {0x9b25, 0x0795, 0x00e5};
-constexpr uint16_t kOptConstant2[] = {0x0006, 0x0004, 0x0001};
-constexpr uint16_t kOptConstant3[] = {0xf800, 0x1e00, 0x0380};
-constexpr uint16_t kOptConstant4[] = {0x0000, 0x0001, 0x0003};
-constexpr uint16_t kOptConstant5[] = {0x07f0, 0x01f8, 0x007c};
-constexpr uint16_t kOptConstant6[] = {0x7bf7, 0x0efb, 0x01bd};
-constexpr uint16_t kOptConstant7[] = {0x0800, 0x0200, 0x0080};
-constexpr uint16_t kOptConstant8[] = {0x0010, 0x0008, 0x0004};
-constexpr uint16_t kOptConstant9[] = {0x000c, 0x0009, 0x0007};
-constexpr uint16_t kOptConstant10[] = {0x0007, 0x000f, 0x0007};
-constexpr uint16_t kOptConstant11[] = {0x001f, 0x001f, 0x000f};
-constexpr uint16_t kOptConstant12[] = {0x000f, 0x0007, 0x0003};
+constexpr std::array<const uint16_t, 3> kOptConstant1 = {
+    {0x9b25, 0x0795, 0x00e5}};
+constexpr std::array<const uint16_t, 3> kOptConstant2 = {
+    {0x0006, 0x0004, 0x0001}};
+constexpr std::array<const uint16_t, 3> kOptConstant3 = {
+    {0xf800, 0x1e00, 0x0380}};
+constexpr std::array<const uint16_t, 3> kOptConstant4 = {
+    {0x0000, 0x0001, 0x0003}};
+constexpr std::array<const uint16_t, 3> kOptConstant5 = {
+    {0x07f0, 0x01f8, 0x007c}};
+constexpr std::array<const uint16_t, 3> kOptConstant6 = {
+    {0x7bf7, 0x0efb, 0x01bd}};
+constexpr std::array<const uint16_t, 3> kOptConstant7 = {
+    {0x0800, 0x0200, 0x0080}};
+constexpr std::array<const uint16_t, 3> kOptConstant8 = {
+    {0x0010, 0x0008, 0x0004}};
+constexpr std::array<const uint16_t, 3> kOptConstant9 = {
+    {0x000c, 0x0009, 0x0007}};
+constexpr std::array<const uint16_t, 3> kOptConstant10 = {
+    {0x0007, 0x000f, 0x0007}};
+constexpr std::array<const uint16_t, 3> kOptConstant11 = {
+    {0x001f, 0x001f, 0x000f}};
+constexpr std::array<const uint16_t, 3> kOptConstant12 = {
+    {0x000f, 0x0007, 0x0003}};
 
 }  // namespace
 
@@ -65,7 +78,7 @@ bool CJBig2_GRDProc::UseTemplate23Opt3() const {
 
 std::unique_ptr<CJBig2_Image> CJBig2_GRDProc::DecodeArith(
     CJBig2_ArithDecoder* pArithDecoder,
-    JBig2ArithCtx* gbContext) {
+    pdfium::span<JBig2ArithCtx> gbContext) {
   if (!CJBig2_Image::IsValidImageSize(GBW, GBH))
     return std::make_unique<CJBig2_Image>(GBW, GBH);
 
@@ -91,7 +104,7 @@ std::unique_ptr<CJBig2_Image> CJBig2_GRDProc::DecodeArith(
 
 std::unique_ptr<CJBig2_Image> CJBig2_GRDProc::DecodeArithOpt3(
     CJBig2_ArithDecoder* pArithDecoder,
-    JBig2ArithCtx* gbContext,
+    pdfium::span<JBig2ArithCtx> gbContext,
     int OPT) {
   auto GBREG = std::make_unique<CJBig2_Image>(GBW, GBH);
   if (!GBREG->data())
@@ -197,7 +210,7 @@ std::unique_ptr<CJBig2_Image> CJBig2_GRDProc::DecodeArithOpt3(
 
 std::unique_ptr<CJBig2_Image> CJBig2_GRDProc::DecodeArithTemplateUnopt(
     CJBig2_ArithDecoder* pArithDecoder,
-    JBig2ArithCtx* gbContext,
+    pdfium::span<JBig2ArithCtx> gbContext,
     int UNOPT) {
   auto GBREG = std::make_unique<CJBig2_Image>(GBW, GBH);
   if (!GBREG->data())
@@ -259,7 +272,7 @@ std::unique_ptr<CJBig2_Image> CJBig2_GRDProc::DecodeArithTemplateUnopt(
 
 std::unique_ptr<CJBig2_Image> CJBig2_GRDProc::DecodeArithTemplate3Opt3(
     CJBig2_ArithDecoder* pArithDecoder,
-    JBig2ArithCtx* gbContext) {
+    pdfium::span<JBig2ArithCtx> gbContext) {
   auto GBREG = std::make_unique<CJBig2_Image>(GBW, GBH);
   if (!GBREG->data())
     return nullptr;
@@ -344,7 +357,7 @@ std::unique_ptr<CJBig2_Image> CJBig2_GRDProc::DecodeArithTemplate3Opt3(
 
 std::unique_ptr<CJBig2_Image> CJBig2_GRDProc::DecodeArithTemplate3Unopt(
     CJBig2_ArithDecoder* pArithDecoder,
-    JBig2ArithCtx* gbContext) {
+    pdfium::span<JBig2ArithCtx> gbContext) {
   auto GBREG = std::make_unique<CJBig2_Image>(GBW, GBH);
   if (!GBREG->data())
     return nullptr;
@@ -487,7 +500,7 @@ FXCODEC_STATUS CJBig2_GRDProc::ContinueDecode(
 FXCODEC_STATUS CJBig2_GRDProc::ProgressiveDecodeArithTemplate0Opt3(
     ProgressiveArithDecodeState* pState) {
   CJBig2_Image* pImage = pState->pImage->get();
-  JBig2ArithCtx* gbContext = pState->gbContext;
+  pdfium::span<JBig2ArithCtx> gbContext = pState->gbContext;
   CJBig2_ArithDecoder* pArithDecoder = pState->pArithDecoder;
   if (!m_pLine)
     m_pLine = pImage->data();
@@ -590,7 +603,7 @@ FXCODEC_STATUS CJBig2_GRDProc::ProgressiveDecodeArithTemplate0Opt3(
 FXCODEC_STATUS CJBig2_GRDProc::ProgressiveDecodeArithTemplate0Unopt(
     ProgressiveArithDecodeState* pState) {
   CJBig2_Image* pImage = pState->pImage->get();
-  JBig2ArithCtx* gbContext = pState->gbContext;
+  pdfium::span<JBig2ArithCtx> gbContext = pState->gbContext;
   CJBig2_ArithDecoder* pArithDecoder = pState->pArithDecoder;
   for (; m_loopIndex < GBH; m_loopIndex++) {
     if (TPGDON) {
@@ -648,7 +661,7 @@ FXCODEC_STATUS CJBig2_GRDProc::ProgressiveDecodeArithTemplate0Unopt(
 FXCODEC_STATUS CJBig2_GRDProc::ProgressiveDecodeArithTemplate1Opt3(
     ProgressiveArithDecodeState* pState) {
   CJBig2_Image* pImage = pState->pImage->get();
-  JBig2ArithCtx* gbContext = pState->gbContext;
+  pdfium::span<JBig2ArithCtx> gbContext = pState->gbContext;
   CJBig2_ArithDecoder* pArithDecoder = pState->pArithDecoder;
   if (!m_pLine)
     m_pLine = pImage->data();
@@ -749,7 +762,7 @@ FXCODEC_STATUS CJBig2_GRDProc::ProgressiveDecodeArithTemplate1Opt3(
 FXCODEC_STATUS CJBig2_GRDProc::ProgressiveDecodeArithTemplate1Unopt(
     ProgressiveArithDecodeState* pState) {
   CJBig2_Image* pImage = pState->pImage->get();
-  JBig2ArithCtx* gbContext = pState->gbContext;
+  pdfium::span<JBig2ArithCtx> gbContext = pState->gbContext;
   CJBig2_ArithDecoder* pArithDecoder = pState->pArithDecoder;
   for (uint32_t h = 0; h < GBH; h++) {
     if (TPGDON) {
@@ -803,7 +816,7 @@ FXCODEC_STATUS CJBig2_GRDProc::ProgressiveDecodeArithTemplate1Unopt(
 FXCODEC_STATUS CJBig2_GRDProc::ProgressiveDecodeArithTemplate2Opt3(
     ProgressiveArithDecodeState* pState) {
   CJBig2_Image* pImage = pState->pImage->get();
-  JBig2ArithCtx* gbContext = pState->gbContext;
+  pdfium::span<JBig2ArithCtx> gbContext = pState->gbContext;
   CJBig2_ArithDecoder* pArithDecoder = pState->pArithDecoder;
   if (!m_pLine)
     m_pLine = pImage->data();
@@ -905,7 +918,7 @@ FXCODEC_STATUS CJBig2_GRDProc::ProgressiveDecodeArithTemplate2Opt3(
 FXCODEC_STATUS CJBig2_GRDProc::ProgressiveDecodeArithTemplate2Unopt(
     ProgressiveArithDecodeState* pState) {
   CJBig2_Image* pImage = pState->pImage->get();
-  JBig2ArithCtx* gbContext = pState->gbContext;
+  pdfium::span<JBig2ArithCtx> gbContext = pState->gbContext;
   CJBig2_ArithDecoder* pArithDecoder = pState->pArithDecoder;
   for (; m_loopIndex < GBH; m_loopIndex++) {
     if (TPGDON) {
@@ -959,7 +972,7 @@ FXCODEC_STATUS CJBig2_GRDProc::ProgressiveDecodeArithTemplate2Unopt(
 FXCODEC_STATUS CJBig2_GRDProc::ProgressiveDecodeArithTemplate3Opt3(
     ProgressiveArithDecodeState* pState) {
   CJBig2_Image* pImage = pState->pImage->get();
-  JBig2ArithCtx* gbContext = pState->gbContext;
+  pdfium::span<JBig2ArithCtx> gbContext = pState->gbContext;
   CJBig2_ArithDecoder* pArithDecoder = pState->pArithDecoder;
   if (!m_pLine)
     m_pLine = pImage->data();
@@ -1046,7 +1059,7 @@ FXCODEC_STATUS CJBig2_GRDProc::ProgressiveDecodeArithTemplate3Opt3(
 FXCODEC_STATUS CJBig2_GRDProc::ProgressiveDecodeArithTemplate3Unopt(
     ProgressiveArithDecodeState* pState) {
   CJBig2_Image* pImage = pState->pImage->get();
-  JBig2ArithCtx* gbContext = pState->gbContext;
+  pdfium::span<JBig2ArithCtx> gbContext = pState->gbContext;
   CJBig2_ArithDecoder* pArithDecoder = pState->pArithDecoder;
   for (; m_loopIndex < GBH; m_loopIndex++) {
     if (TPGDON) {

@@ -19,7 +19,7 @@ CJBig2_HTRDProc::~CJBig2_HTRDProc() = default;
 
 std::unique_ptr<CJBig2_Image> CJBig2_HTRDProc::DecodeArith(
     CJBig2_ArithDecoder* pArithDecoder,
-    JBig2ArithCtx* gbContext,
+    pdfium::span<JBig2ArithCtx> gbContext,
     PauseIndicatorIface* pPause) {
   std::unique_ptr<CJBig2_Image> HSKIP;
   if (HENABLESKIP == 1) {
