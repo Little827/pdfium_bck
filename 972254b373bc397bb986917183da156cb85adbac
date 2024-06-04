@@ -24,6 +24,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe2a16a3_76261b5a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 9186
+      },
+      "writtenOn": "2024-06-04T01:34:20Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "24af450a_f6f40197",
+      "range": {
+        "startLine": 7,
+        "startChar": 13,
+        "endLine": 7,
+        "endChar": 28
+      },
+      "revId": "972254b373bc397bb986917183da156cb85adbac",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9895f217_9607d290",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-06-03T18:34:08Z",
       "side": 1,
       "message": "The PDFium issue tracker has migrated from Monorail to Buganizer.  This is now simply `42271133`.  For new content added post-migration we are striving to use just the new issue numbers.\n\nThis would apply to the test name and test filenames as well.",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 16
+      },
+      "revId": "972254b373bc397bb986917183da156cb85adbac",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9ea6d67_b293af4b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 9186
+      },
+      "writtenOn": "2024-06-04T01:34:20Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "9895f217_9607d290",
       "range": {
         "startLine": 15,
         "startChar": 5,
@@ -104,6 +152,30 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "98844ad2_457163a4",
+        "filename": "fpdfsdk/fpdf_save_embeddertest.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 9186
+      },
+      "writtenOn": "2024-06-04T01:34:20Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "df839262_29f9362b",
+      "range": {
+        "startLine": 106,
+        "startChar": 2,
+        "endLine": 106,
+        "endChar": 41
+      },
+      "revId": "972254b373bc397bb986917183da156cb85adbac",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f0cef23_b6344017",
@@ -117,6 +189,30 @@
       "writtenOn": "2024-06-03T18:34:08Z",
       "side": 1,
       "message": "It is usually best for `TODO` to contain a bug number, as that helps direct a reader to be able to find more context on the issue.  If a person is planning or actively working on that issue, then that can be reflected by assigning the bug to themselves and updating the status.  If the person can\u0027t get to it in the end, then removing themselves from it to make it available for someone else doesn\u0027t require updating a TODO in the source code.\nAlso, no space between the `TODO` and the parenthesis.\nhttps://google.github.io/styleguide/cppguide#TODO_Comments",
+      "range": {
+        "startLine": 129,
+        "startChar": 5,
+        "endLine": 129,
+        "endChar": 18
+      },
+      "revId": "972254b373bc397bb986917183da156cb85adbac",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e92a8328_7de9b2bf",
+        "filename": "fpdfsdk/fpdf_save_embeddertest.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 9186
+      },
+      "writtenOn": "2024-06-04T01:34:20Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "4f0cef23_b6344017",
       "range": {
         "startLine": 129,
         "startChar": 5,

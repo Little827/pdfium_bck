@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2e829f7_b0677d66",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 9186
+      },
+      "writtenOn": "2024-06-04T01:34:20Z",
+      "side": 1,
+      "message": "I have formatted the comments and updated the issue number. Please confirm if I should remove the .pdf file from test resources and only leave the .in file.",
+      "revId": "ba572af06b22fd7651307984ce10abaa05cb6148",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
