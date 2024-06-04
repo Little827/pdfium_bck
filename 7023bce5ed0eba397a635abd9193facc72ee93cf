@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8d0d29f_f065197e",
+        "filename": "core/fxcodec/bmp/cfx_bmpdecompressor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-06-04T20:41:42Z",
+      "side": 1,
+      "message": "Does `for (auto\u0026 pal_entry : palette_) { ... }` work here? Then get rid of `src_pal_index`.",
+      "revId": "7023bce5ed0eba397a635abd9193facc72ee93cf",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
