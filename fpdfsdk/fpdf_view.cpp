@@ -909,12 +909,19 @@ FPDF_EXPORT FPDF_BITMAP FPDF_CALLCONV FPDFBitmap_CreateEx(int width,
       return nullptr;
   }
 
-  // Ensure external memory is good at least for the duration of this call.
-  UnownedPtr<uint8_t> pChecker(static_cast<uint8_t*>(first_scan));
-  auto pBitmap = pdfium::MakeRetain<CFX_DIBitmap>();
-  if (!pBitmap->Create(width, height, fx_format, pChecker, stride))
+  FX_SAFE_SIZE_T safe_size = stride;
+  safe_size *= height;
+  if (!safe_size.IsValid()) {
     return nullptr;
+  }
 
+  // SAFETY: required from caller across public API.
+  auto extern_memory = UNSAFE_BUFFERS(pdfium::make_span(
+      static_cast<uint8_t*>(first_scan), safe_size.ValueOrDie()));
+  auto pBitmap = pdfium::MakeRetain<CFX_DIBitmap>();
+  if (!pBitmap->Create(width, height, fx_format, extern_memory, stride)) {
+    return nullptr;
+  }
   return FPDFBitmapFromCFXDIBitmap(pBitmap.Leak());
 }
 
