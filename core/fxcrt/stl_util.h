@@ -49,6 +49,11 @@ void Fill(T& container, const V& value) {
   std::fill(std::begin(container), std::end(container), value);
 }
 
+template <typename T, typename V>
+void Fill(T&& container, const V& value) {
+  std::fill(std::begin(container), std::end(container), value);
+}
+
 // ToArray<>() implementation as taken from chromium /base. Replace with
 // std::to_array<>() when C++20 becomes available.
 //

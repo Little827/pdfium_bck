@@ -13,8 +13,7 @@
 #include <optional>
 
 #include "core/fxcrt/compiler_specific.h"
-#include "core/fxcrt/fx_memory_wrappers.h"
-#include "core/fxcrt/maybe_owned.h"
+#include "core/fxcrt/fixed_size_data_vector.h"
 #include "core/fxcrt/retain_ptr.h"
 #include "core/fxcrt/span.h"
 #include "core/fxge/dib/cfx_dibbase.h"
@@ -30,13 +29,13 @@ class CFX_DIBitmap final : public CFX_DIBBase {
   CONSTRUCT_VIA_MAKE_RETAIN;
 
   [[nodiscard]] bool Create(int width, int height, FXDIB_Format format);
-  [[nodiscard]] bool Create(int width,
-                            int height,
-                            FXDIB_Format format,
-                            uint8_t* pBuffer,
-                            uint32_t pitch);
+  UNSAFE_BUFFER_USAGE [[nodiscard]] bool Create(int width,
+                                                int height,
+                                                FXDIB_Format format,
+                                                uint8_t* pBuffer,
+                                                uint32_t pitch);
 
-  bool Copy(RetainPtr<const CFX_DIBBase> source);
+  bool CopyFrom(RetainPtr<const CFX_DIBBase> source);
 
   // CFX_DIBBase
   pdfium::span<const uint8_t> GetScanline(int line) const override;
@@ -185,7 +184,8 @@ class CFX_DIBitmap final : public CFX_DIBBase {
                                   int src_left,
                                   int src_top);
 
-  MaybeOwned<uint8_t, FxFreeDeleter> m_pBuffer;
+  FixedSizeDataVector<uint8_t> m_BackingStore;  // Must outlive `m_pBuffer`.
+  pdfium::span<uint8_t> m_pBuffer;
 #if defined(PDF_USE_SKIA)
   Format m_nFormat = Format::kCleared;
 #endif
