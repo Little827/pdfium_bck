@@ -14,6 +14,7 @@
 #include "core/fxcrt/fx_system.h"
 #include "core/fxcrt/retain_ptr.h"
 #include "core/fxcrt/span.h"
+#include "core/fxge/dib/fx_dib.h"
 
 #ifndef PDF_ENABLE_XFA_BMP
 #error "BMP must be enabled"
@@ -42,7 +43,7 @@ class BmpDecoder {
                            bool* tb_flag,
                            int32_t* components,
                            int32_t* pal_num,
-                           const std::vector<uint32_t>** palette,
+                           pdfium::span<const FX_ARGB>* palette,
                            CFX_DIBAttribute* pAttribute);
   static Status LoadImage(ProgressiveDecoderIface::Context* pContext);
   static FX_FILESIZE GetAvailInput(ProgressiveDecoderIface::Context* pContext);
