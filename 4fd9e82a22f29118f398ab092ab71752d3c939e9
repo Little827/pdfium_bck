@@ -180,6 +180,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "82b1e2b8_1143c088",
+        "filename": "fpdfsdk/fpdf_save_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-06-05T17:37:42Z",
+      "side": 1,
+      "message": "See the LeakSanitizer (LSAN) bot results here, which shows failure due to the leak: https://ci.chromium.org/ui/p/pdfium/builders/try/linux_asan_lsan/25249/overview",
+      "parentUuid": "65b5ef3b_9a2a4113",
+      "revId": "4fd9e82a22f29118f398ab092ab71752d3c939e9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "069a6df5_f7ce727f",
         "filename": "fpdfsdk/fpdf_save_embeddertest.cpp",
         "patchSetId": 2
