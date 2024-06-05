@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fac4882c_55034c92",
+        "filename": "fxjs/cfxjs_engine.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-06-05T18:49:10Z",
+      "side": 1,
+      "message": "Wrap in backticks.",
+      "range": {
+        "startLine": 80,
+        "startChar": 7,
+        "endLine": 80,
+        "endChar": 11
+      },
+      "revId": "ed439bb8e3fd96c137ab5841b0d8ecb1277822b9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a01ffe1c_d9842e4f",
+        "filename": "fxjs/cfxjs_engine.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-06-05T18:49:10Z",
+      "side": 1,
+      "message": "Rename to \"prototype\"?",
+      "range": {
+        "startLine": 82,
+        "startChar": 25,
+        "endLine": 82,
+        "endChar": 28
+      },
+      "revId": "ed439bb8e3fd96c137ab5841b0d8ecb1277822b9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fe9091e_7e6cb6ad",
+        "filename": "fxjs/cfxjs_engine.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-06-05T18:49:10Z",
+      "side": 1,
+      "message": "Can this CHECK(), or is it better to just return nullptr as-is?",
+      "revId": "ed439bb8e3fd96c137ab5841b0d8ecb1277822b9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b4f1d99_8a0878f9",
+        "filename": "fxjs/cfxjs_engine.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-06-05T18:49:10Z",
+      "side": 1,
+      "message": "`explicit` keyword no longer needed.",
+      "range": {
+        "startLine": 100,
+        "startChar": 2,
+        "endLine": 100,
+        "endChar": 10
+      },
+      "revId": "ed439bb8e3fd96c137ab5841b0d8ecb1277822b9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28581891_fe6c7fe1",
+        "filename": "fxjs/cfxjs_engine.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-06-05T18:49:10Z",
+      "side": 1,
+      "message": "const",
+      "revId": "ed439bb8e3fd96c137ab5841b0d8ecb1277822b9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
