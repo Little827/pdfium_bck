@@ -16,6 +16,23 @@
       "message": "G-account approval",
       "revId": "a1c787c2c9213dfe943609b38a8171ec76df90fb",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1275ba6_4a6c3e9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-06-05T20:51:59Z",
+      "side": 1,
+      "message": "Lei, need new +1 after dropping changes .gn file.",
+      "revId": "a1c787c2c9213dfe943609b38a8171ec76df90fb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
