@@ -70,7 +70,15 @@ class CFXJS_PerObjectData {
   }
 
   static CFXJS_PerObjectData* GetFromObject(v8::Local<v8::Object> pObj) {
-    if (pObj.IsEmpty() || pObj->InternalFieldCount() != 2 ||
+    if (pObj.IsEmpty()) {
+      return nullptr;
+    }
+    if (pObj->InternalFieldCount() != 2 ||
+        pObj->GetAlignedPointerFromInternalField(0) !=
+            GetAlignedPointerForPerObjectDataTag()) {
+      pObj = pObj->GetPrototype().As<v8::Object>();
+    }
+    if (pObj->InternalFieldCount() != 2 ||
         pObj->GetAlignedPointerFromInternalField(0) !=
             GetAlignedPointerForPerObjectDataTag()) {
       return nullptr;
@@ -184,7 +192,7 @@ class CFXJS_ObjDefinition {
       fxv8::ThrowExceptionHelper(isolate, "not a dynamic object");
       return;
     }
-    v8::Local<v8::Object> holder = info.Holder();
+    v8::Local<v8::Object> holder = info.This();
     DCHECK_EQ(holder->InternalFieldCount(), 2);
     holder->SetAlignedPointerInInternalField(0, nullptr);
     holder->SetAlignedPointerInInternalField(1, nullptr);
@@ -504,7 +512,8 @@ void CFXJS_Engine::InitializeEngine() {
   v8::Local<v8::Context> v8Context = v8::Context::New(
       GetIsolate(), nullptr, GetGlobalObjectTemplate(GetIsolate()));
 
-  // May not have the internal fields when called from tests.
+  // May not have the internal fields when called from tests, so clear these
+  // in case we don't process a FXJSOBJTYPE_GLOBAL below.
   v8::Local<v8::Object> pThisProxy = v8Context->Global();
   if (pThisProxy->InternalFieldCount() == 2) {
     pThisProxy->SetAlignedPointerInInternalField(0, nullptr);
@@ -534,6 +543,7 @@ void CFXJS_Engine::InitializeEngine() {
       }
     }
   }
+
   m_V8Context.Reset(GetIsolate(), v8Context);
 }
 
