@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3814b62f_22b22453",
+        "filename": ".gn",
+        "patchSetId": 9
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 3293871
+      },
+      "writtenOn": "2024-06-05T19:03:31Z",
+      "side": 0,
+      "message": "Please consider keeping this for now since I\u0027m planning to land V8_DEPRECATE_SOON warnings for `PropertyCallbackInfo::Holder()` and for `Object::GetPrototype/SetPrototype()` too.",
+      "revId": "4d445d7e6882e85c976e5df8681f8f1f10a98ee2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
