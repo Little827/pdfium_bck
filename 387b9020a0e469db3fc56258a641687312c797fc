@@ -16,6 +16,24 @@
       "message": "No UNSAFE_TODO() like line 163?",
       "revId": "387b9020a0e469db3fc56258a641687312c797fc",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "804b977e_10117a55",
+        "filename": "fxbarcode/pdf417/BC_PDF417HighLevelEncoder_unittest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-06-06T23:10:10Z",
+      "side": 1,
+      "message": "Done.  But the whole file is suppressed on line 4.  Nonetheless, we can make it easier to remove that by doing it per-line.",
+      "parentUuid": "634984e5_a217ecf2",
+      "revId": "387b9020a0e469db3fc56258a641687312c797fc",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
