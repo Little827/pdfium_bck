@@ -71,6 +71,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "238e3276_96861452",
+        "filename": "core/fxcrt/bytestring_unittest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1225,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-06-06T17:45:34Z",
+      "side": 1,
+      "message": "https://crbug.com/345487698",
+      "parentUuid": "e2ad175c_b23d7d6e",
+      "revId": "84de9724fbed0e33060e85eaf048b1b10d15e6cb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ec68031_96fa7886",
@@ -149,6 +167,24 @@
       "side": 1,
       "message": "No, has embedded NUL which would trip up strlen() called under the covers in one-arg form.",
       "parentUuid": "068baa5c_e21b6ade",
+      "revId": "84de9724fbed0e33060e85eaf048b1b10d15e6cb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccb6f0e3_68c60510",
+        "filename": "xfa/fgas/layout/cfgas_rtfbreak_unittest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-06-06T17:45:34Z",
+      "side": 1,
+      "message": "*squints*",
+      "parentUuid": "7df328fb_2d822083",
       "revId": "84de9724fbed0e33060e85eaf048b1b10d15e6cb",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
