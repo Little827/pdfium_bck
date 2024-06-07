@@ -12,7 +12,10 @@
 #include <stdint.h>
 
 #include "core/fxcrt/data_vector.h"
+#include "testing/gmock/include/gmock/gmock.h"
 #include "testing/gtest/include/gtest/gtest.h"
+
+using ::testing::ElementsAreArray;
 
 class CBC_PDF417WriterTest : public testing::Test {
  public:
@@ -418,11 +421,9 @@ TEST_F(CBC_PDF417WriterTest, Encode) {
         0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 0, 1, 0, 0, 1,
         1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 1};
     CBC_PDF417Writer::EncodeResult result = writer.Encode(L"");
-    ASSERT_EQ(std::size(kExpectedData), result.data.size());
     ASSERT_EQ(kExpectedWidth, result.width);
     ASSERT_EQ(kExpectedHeight, result.height);
-    for (size_t i = 0; i < std::size(kExpectedData); ++i)
-      EXPECT_EQ(kExpectedData[i], result.data[i]) << i;
+    EXPECT_THAT(result.data, ElementsAreArray(kExpectedData));
   }
   {
     static constexpr int kExpectedWidth = 579;
@@ -818,7 +819,6 @@ TEST_F(CBC_PDF417WriterTest, Encode) {
     ASSERT_EQ(std::size(kExpectedData), result.data.size());
     ASSERT_EQ(kExpectedWidth, result.width);
     ASSERT_EQ(kExpectedHeight, result.height);
-    for (size_t i = 0; i < std::size(kExpectedData); ++i)
-      EXPECT_EQ(kExpectedData[i], result.data[i]) << i;
+    EXPECT_THAT(result.data, ElementsAreArray(kExpectedData));
   }
 }
