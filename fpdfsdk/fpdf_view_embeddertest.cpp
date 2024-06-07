@@ -2,11 +2,6 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#if defined(UNSAFE_BUFFERS_BUILD)
-// TODO(crbug.com/pdfium/2154): resolve buffer safety issues.
-#pragma allow_unsafe_buffers
-#endif
-
 #include <math.h>
 
 #include <algorithm>
@@ -1281,40 +1276,42 @@ TEST_F(FPDFViewEmbedderTest, FPDF_GetPageSizeByIndex) {
 }
 
 TEST_F(FPDFViewEmbedderTest, GetXFAArrayData) {
-  ASSERT_TRUE(OpenDocument("simple_xfa.pdf"));
-
   static constexpr struct {
+    int index;
     const char* name;
     size_t content_length;
     const char* content_checksum;
   } kExpectedResults[]{
-      {"preamble", 124u, "71be364e53292596412242bfcdb46eab"},
-      {"config", 642u, "bcd1ca1d420ee31a561273a54a06435f"},
-      {"template", 541u, "0f48cb2fa1bb9cbf9eee802d66e81bf4"},
-      {"localeSet", 3455u, "bb1f253d3e5c719ac0da87d055bc164e"},
-      {"postamble", 11u, "6b79e25da35d86634ea27c38f64cf243"},
+      {0, "preamble", 124u, "71be364e53292596412242bfcdb46eab"},
+      {1, "config", 642u, "bcd1ca1d420ee31a561273a54a06435f"},
+      {2, "template", 541u, "0f48cb2fa1bb9cbf9eee802d66e81bf4"},
+      {3, "localeSet", 3455u, "bb1f253d3e5c719ac0da87d055bc164e"},
+      {4, "postamble", 11u, "6b79e25da35d86634ea27c38f64cf243"},
   };
 
+  ASSERT_TRUE(OpenDocument("simple_xfa.pdf"));
   ASSERT_EQ(static_cast<int>(std::size(kExpectedResults)),
             FPDF_GetXFAPacketCount(document()));
-  for (size_t i = 0; i < std::size(kExpectedResults); ++i) {
+
+  for (const auto& expected : kExpectedResults) {
     char name_buffer[20] = {};
-    ASSERT_EQ(strlen(kExpectedResults[i].name) + 1,
-              FPDF_GetXFAPacketName(document(), i, nullptr, 0));
-    EXPECT_EQ(
-        strlen(kExpectedResults[i].name) + 1,
-        FPDF_GetXFAPacketName(document(), i, name_buffer, sizeof(name_buffer)));
-    EXPECT_STREQ(kExpectedResults[i].name, name_buffer);
+    ASSERT_EQ(strlen(expected.name) + 1,
+              FPDF_GetXFAPacketName(document(), expected.index, nullptr, 0));
+    EXPECT_EQ(strlen(expected.name) + 1,
+              FPDF_GetXFAPacketName(document(), expected.index, name_buffer,
+                                    sizeof(name_buffer)));
+    EXPECT_STREQ(expected.name, name_buffer);
 
     unsigned long buflen;
-    ASSERT_TRUE(FPDF_GetXFAPacketContent(document(), i, nullptr, 0, &buflen));
-    ASSERT_EQ(kExpectedResults[i].content_length, buflen);
+    ASSERT_TRUE(FPDF_GetXFAPacketContent(document(), expected.index, nullptr, 0,
+                                         &buflen));
+    ASSERT_EQ(expected.content_length, buflen);
     std::vector<uint8_t> data_buffer(buflen);
-    EXPECT_TRUE(FPDF_GetXFAPacketContent(document(), i, data_buffer.data(),
-                                         data_buffer.size(), &buflen));
-    EXPECT_EQ(kExpectedResults[i].content_length, buflen);
-    EXPECT_EQ(kExpectedResults[i].content_checksum,
-              GenerateMD5Base16(data_buffer));
+    EXPECT_TRUE(FPDF_GetXFAPacketContent(document(), expected.index,
+                                         data_buffer.data(), data_buffer.size(),
+                                         &buflen));
+    EXPECT_EQ(expected.content_length, buflen);
+    EXPECT_EQ(expected.content_checksum, GenerateMD5Base16(data_buffer));
   }
 
   // Test bad parameters.
