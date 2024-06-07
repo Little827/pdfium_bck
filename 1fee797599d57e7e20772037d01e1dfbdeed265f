@@ -87,6 +87,24 @@
       "parentUuid": "c1c5f024_b71f51de",
       "revId": "1fee797599d57e7e20772037d01e1dfbdeed265f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91ae2a42_eb6c8c64",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-06-07T18:06:37Z",
+      "side": 1,
+      "message": "I think the testing scripts wants testing/resources/pixel/bug_2106_expected_gdi.pdf.0.png to be renamed to testing/resources/pixel/bug_2106_expected_gdi_skia.pdf.0.png",
+      "parentUuid": "dadf5bec_1d37f508",
+      "revId": "1fee797599d57e7e20772037d01e1dfbdeed265f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
