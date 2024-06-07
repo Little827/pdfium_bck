@@ -16,6 +16,24 @@
       "message": "Shortens to https://crrev.com/c/5607486",
       "revId": "92dd247089efb41d99c962609782316d904769b2",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71d8028d_037fe9c5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-06-07T18:18:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5846259b_31496fe4",
+      "revId": "92dd247089efb41d99c962609782316d904769b2",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
