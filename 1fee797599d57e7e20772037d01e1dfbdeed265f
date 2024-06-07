@@ -51,6 +51,24 @@
       "parentUuid": "6243fa72_9adf36f8",
       "revId": "1fee797599d57e7e20772037d01e1dfbdeed265f",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1c5f024_b71f51de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3428039
+      },
+      "writtenOn": "2024-06-07T17:15:56Z",
+      "side": 1,
+      "message": "bot win_xfa_skia_gdi fail without bug_2106_expected_gdi.pdf.0.png while bot win_xfa_gdi fail with it\nMaybe i need to add another *.png to fix this?",
+      "parentUuid": "1d2d6f6a_e9171a46",
+      "revId": "1fee797599d57e7e20772037d01e1dfbdeed265f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
