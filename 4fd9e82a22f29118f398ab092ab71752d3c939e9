@@ -196,6 +196,24 @@
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aabfa24a_267f133a",
+        "filename": "fpdfsdk/fpdf_save_embeddertest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 9186
+      },
+      "writtenOn": "2024-06-08T01:28:31Z",
+      "side": 1,
+      "message": "I\u0027m amazed I managed to use this incorrectly for so long. Thanks for informing me...\n\n\"Call FPDFPageObj_Destroy() to free it.\"  /facepalm",
+      "parentUuid": "82b1e2b8_1143c088",
+      "revId": "4fd9e82a22f29118f398ab092ab71752d3c939e9",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "069a6df5_f7ce727f",
