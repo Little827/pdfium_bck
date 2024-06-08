@@ -124,9 +124,15 @@ TEST_F(FPDFSaveEmbedderTest, Bug42271133) {
   unsigned int a;
   ASSERT_TRUE(FPDFPageObj_GetFillColor(path_obj, &r, &g, &b, &a));
   // TODO(crbug.com/42271133): Change the assertion to EXPECT_NE().
+<<<<<<< PATCH SET (ea9514 Allow Grayscale Colorspaces for Bug 42271133)
+  EXPECT_NE(0u, r);
+  EXPECT_NE(0u, g);
+  EXPECT_NE(0u, b);
+=======
   EXPECT_EQ(0u, r);
   EXPECT_EQ(0u, g);
   EXPECT_EQ(0u, b);
+>>>>>>> BASE      (d29ddc Use std::unique_ptr in CJPX_Decoder)
 
   CloseSavedPage(saved_page);
   CloseSavedDocument();
