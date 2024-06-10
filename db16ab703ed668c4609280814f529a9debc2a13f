@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f313f31_250b6db3",
+        "filename": "fpdfsdk/fpdf_view_embeddertest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1299,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-06-10T18:29:36Z",
+      "side": 1,
+      "message": "More like, testcase.index? Rename kExpectedResults accordingly?",
+      "range": {
+        "startLine": 1299,
+        "startChar": 48,
+        "endLine": 1299,
+        "endChar": 62
+      },
+      "revId": "db16ab703ed668c4609280814f529a9debc2a13f",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
