@@ -96,7 +96,6 @@ class CPDF_PSProc {
 
   // These methods are exposed for testing.
   void AddOperatorForTesting(ByteStringView word);
-  size_t num_operators() const { return m_Operators.size(); }
   const std::unique_ptr<CPDF_PSOP>& last_operator() {
     return m_Operators.back();
   }
