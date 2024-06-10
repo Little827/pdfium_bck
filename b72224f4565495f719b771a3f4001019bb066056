@@ -22,6 +22,30 @@
       },
       "revId": "b72224f4565495f719b771a3f4001019bb066056",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2659e41_0e108858",
+        "filename": "core/fxge/agg/fx_agg_driver.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-06-10T20:48:36Z",
+      "side": 1,
+      "message": "Yeah, indeed!",
+      "parentUuid": "d5289d3e_bcac26bd",
+      "range": {
+        "startLine": 79,
+        "startChar": 2,
+        "endLine": 79,
+        "endChar": 16
+      },
+      "revId": "b72224f4565495f719b771a3f4001019bb066056",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
