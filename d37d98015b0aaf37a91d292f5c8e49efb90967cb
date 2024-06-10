@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "afbf4668_325a8735",
+        "filename": "core/fxcodec/progressive_decoder.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1822,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-06-10T20:00:56Z",
+      "side": 0,
+      "message": "NOTE: MSVC won\u0027t allow ifdef in middle of UNSAFE_TODO macro expansion.",
+      "revId": "d37d98015b0aaf37a91d292f5c8e49efb90967cb",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
