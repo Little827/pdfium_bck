@@ -24,25 +24,20 @@ CPDF_Bookmark::CPDF_Bookmark(RetainPtr<const CPDF_Dictionary> pDict)
 CPDF_Bookmark::~CPDF_Bookmark() = default;
 
 WideString CPDF_Bookmark::GetTitle() const {
-  if (!m_pDict)
+  if (!m_pDict) {
     return WideString();
-
+  }
   RetainPtr<const CPDF_String> pString =
       ToString(m_pDict->GetDirectObjectFor("Title"));
-  if (!pString)
+  if (!pString) {
     return WideString();
-
-  WideString title = pString->GetUnicodeText();
-  size_t len = title.GetLength();
-  if (!len)
-    return WideString();
-
-  DataVector<wchar_t> buf(len);
-  for (size_t i = 0; i < len; i++) {
-    wchar_t w = title[i];
-    buf[i] = w > 0x20 ? w : 0x20;
   }
-  return UNSAFE_TODO(WideString::Create(buf.data(), len));
+  WideString result;
+  WideString title = pString->GetUnicodeText();
+  for (const wchar_t wc : title) {
+    result += wc > 0x20 ? wc : 0x20;
+  }
+  return result;
 }
 
 CPDF_Dest CPDF_Bookmark::GetDest(CPDF_Document* pDocument) const {
