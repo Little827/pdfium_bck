@@ -517,13 +517,14 @@ bool CJPX_Decoder::StartDecode() {
     color_sycc_to_rgb(m_Image);
 
   if (m_Image->icc_profile_buf) {
-    // TODO(palmer): Using |opj_free| here resolves the crash described in
-    // https://crbug.com/737033, but ultimately we need to harmonize the
-    // memory allocation strategy across OpenJPEG and its PDFium callers.
-#if !defined(USE_SYSTEM_LIBOPENJPEG2)
-    opj_free(m_Image->icc_profile_buf);
-#else
+#if defined(USE_SYSTEM_LIBOPENJPEG2)
+    // Since opj_free() is an internal function within OpenJPEG, do not assume
+    // it exists and call free() here.
     free(m_Image->icc_profile_buf);
+#else
+    // Memory is allocated with opj_malloc() inside OpenJPEG, so call opj_free()
+    // to match that. The bundled copy of OpenJPEG is known to have opj_free().
+    opj_free(m_Image->icc_profile_buf);
 #endif
     m_Image->icc_profile_buf = nullptr;
     m_Image->icc_profile_len = 0;
