@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f61de013_c2b37682",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-06-11T01:16:18Z",
+      "side": 1,
+      "message": "Wrap at 72 columns.",
+      "revId": "2c4726cd3d2f754508d8fb991635fab7cb02b2af",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
