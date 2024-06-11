@@ -34,6 +34,24 @@
       "parentUuid": "a84b57bd_cca518dc",
       "revId": "4d3fe0dddf3be3f7f7bdedf3ed6264100f763e11",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ceaff9b9_a205c56b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-06-11T02:21:18Z",
+      "side": 1,
+      "message": "Because I ran `git cl description`, and that workflow doesn\u0027t properly sign the CL. It\u0027s a KI.",
+      "parentUuid": "a261dcd8_d5c71762",
+      "revId": "4d3fe0dddf3be3f7f7bdedf3ed6264100f763e11",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
