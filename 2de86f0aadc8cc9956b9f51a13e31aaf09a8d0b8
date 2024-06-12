@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9aed0458_f4f5ccf2",
+        "filename": "testing/resources/pixel/type3_xobject.in",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-06-12T19:53:35Z",
+      "side": 1,
+      "message": "Combining testing/resources/pixel/type3.in with some Skia SkPDF generated fonts.",
+      "revId": "2de86f0aadc8cc9956b9f51a13e31aaf09a8d0b8",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
