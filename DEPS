@@ -212,6 +212,9 @@ allowed_hosts = [
   'chromium.googlesource.com',
   'pdfium.googlesource.com',
   'skia.googlesource.com',
+
+   # TODO(337061377): Move into a separate allowed gcs bucket list.
+  'chromium-browser-clang',
 ]
 
 deps = {
@@ -363,6 +366,55 @@ deps = {
   'third_party/libpng':
     Var('chromium_git') + '/chromium/src/third_party/libpng.git@' +
         Var('libpng_revision'),
+
+  'third_party/llvm-build/Release+Asserts': {
+    'dep_type': 'gcs',
+    'bucket': 'chromium-browser-clang',
+    'objects': [
+      {
+        'object_name': 'Linux_x64/clang-llvmorg-19-init-10646-g084e2b53-57.tar.xz',
+        'sha256sum': '2c95e921b2a26b968e5f2160560ed1f35559f5cc8a64a4f87974d51eff8eea8b',
+        'size_bytes': 50869256,
+        'generation': 1717767135920224,
+        'condition': 'host_os == "linux" and non_git_source',
+      },
+      {
+        'object_name': 'Mac/clang-llvmorg-19-init-10646-g084e2b53-57.tar.xz',
+        'sha256sum': '6e21ef43878368e499c009f6c383cebf318a109ed7c68a77017d1f898ac6ebd1',
+        'size_bytes': 45828024,
+        'generation': 1717767137856220,
+        'condition': 'host_os == "mac" and host_cpu == "x64"',
+      },
+      {
+        'object_name': 'Mac/clang-mac-runtime-library-llvmorg-19-init-10646-g084e2b53-57.tar.xz',
+        'sha256sum': '70d8f252b65542c474f7b909767f70a6ca7e39396f0d8b2f9d3a74f065e0c241',
+        'size_bytes': 842840,
+        'generation': 1717767144188942,
+        'condition': 'checkout_mac and not host_os == "mac"',
+      },
+      {
+        'object_name': 'Mac_arm64/clang-llvmorg-19-init-10646-g084e2b53-57.tar.xz',
+        'sha256sum': '81cf4c48c346e7332cd83917d3f82660634d1123ab53fc93740f80fabd37de2e',
+        'size_bytes': 41487688,
+        'generation': 1717767147110695,
+        'condition': 'host_os == "mac" and host_cpu == "arm64"',
+      },
+      {
+        'object_name': 'Win/clang-llvmorg-19-init-10646-g084e2b53-57.tar.xz',
+        'sha256sum': '5b42a3e8f5847e9333263af5faa002ccd798893caf2ff47734a047e098bbb284',
+        'size_bytes': 40135748,
+        'generation': 1717767156694710,
+        'condition': 'host_os == "win"',
+      },
+      {
+        'object_name': 'Win/clang-win-runtime-library-llvmorg-19-init-10646-g084e2b53-57.tar.xz',
+        'sha256sum': 'f8609347334a99b0363dd14d43b84d4db139630b43a8eefc8f8d4ec5b4b0fa49',
+        'size_bytes': 2804644,
+        'generation': 1717767164441105,
+        'condition': 'checkout_win and not host_os == "win"',
+      },
+    ]
+  },
 
   'third_party/markupsafe':
     Var('chromium_git') + '/chromium/src/third_party/markupsafe.git@' +
@@ -586,14 +638,6 @@ hooks = [
                 '--bucket', 'chromium-browser-clang',
                 '-s', 'tools/clang/dsymutil/bin/dsymutil.x64.sha1',
                 '-o', 'tools/clang/dsymutil/bin/dsymutil',
-    ],
-  },
-  {
-    # Note: On Win, this should run after win_toolchain, as it may use it.
-    'name': 'clang',
-    'pattern': '.',
-    'action': ['python3',
-               'tools/clang/scripts/update.py'
     ],
   },
   {
