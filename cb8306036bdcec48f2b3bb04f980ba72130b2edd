@@ -39,6 +39,30 @@
       },
       "revId": "cb8306036bdcec48f2b3bb04f980ba72130b2edd",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "521ff5ad_a40317d4",
+        "filename": "DEPS",
+        "patchSetId": 3
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-06-12T23:46:34Z",
+      "side": 1,
+      "message": "I don\u0027t see a way to get these via recursive DEPS, so I think so? I pointed out this CL to the ChOps folks that are requesting this change. So if I\u0027m going at this the wrong way, they can chime in with a better solution.",
+      "parentUuid": "f6250e75_ed846b79",
+      "range": {
+        "startLine": 375,
+        "startChar": 7,
+        "endLine": 379,
+        "endChar": 49
+      },
+      "revId": "cb8306036bdcec48f2b3bb04f980ba72130b2edd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
