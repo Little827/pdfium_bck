@@ -16,6 +16,29 @@
       "message": "Values are from https://chromium.googlesource.com/chromium/src/+/229e06d1284d029d31ff8dafe3eaf16a8592e248/DEPS#784",
       "revId": "cb8306036bdcec48f2b3bb04f980ba72130b2edd",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6250e75_ed846b79",
+        "filename": "DEPS",
+        "patchSetId": 3
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-06-12T23:43:14Z",
+      "side": 1,
+      "message": "So are we going to need to slurp these values periodically from Chromium to stay up-to-date?",
+      "range": {
+        "startLine": 375,
+        "startChar": 7,
+        "endLine": 379,
+        "endChar": 49
+      },
+      "revId": "cb8306036bdcec48f2b3bb04f980ba72130b2edd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
