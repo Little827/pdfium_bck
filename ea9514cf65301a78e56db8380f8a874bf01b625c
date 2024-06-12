@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbd3cf5a_6d04216b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-06-12T00:18:59Z",
+      "side": 1,
+      "message": "Now that https://pdfium-review.googlesource.com/118890 has been committed, please rebase this CL on top of the main branch.",
+      "revId": "ea9514cf65301a78e56db8380f8a874bf01b625c",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
