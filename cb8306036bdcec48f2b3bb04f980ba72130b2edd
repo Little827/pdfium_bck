@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbcef023_29fa82c7",
+        "filename": "DEPS",
+        "patchSetId": 3
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-06-12T22:54:35Z",
+      "side": 1,
+      "message": "Values are from https://chromium.googlesource.com/chromium/src/+/229e06d1284d029d31ff8dafe3eaf16a8592e248/DEPS#784",
+      "revId": "cb8306036bdcec48f2b3bb04f980ba72130b2edd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
