@@ -24,11 +24,11 @@ while (( "$#" )); do
     SEND_EVENTS="--send-events"
   fi
   FONT_DIR=`readlink -f third_party/test_fonts`
-  out/Debug/pdfium_test $SEND_EVENTS --time=$TEST_SEED_TIME --png \
+  out/gnskia/pdfium_test $SEND_EVENTS --time=$TEST_SEED_TIME --png \
       --croscore-font-names --font-dir=$FONT_DIR $INFILE
   RESULTS="$INFILE.*.png"
   for RESULT in $RESULTS ; do
-    EXPECTED=`echo -n $RESULT | sed 's/[.]pdf[.]/_expected.pdf./'`
+    EXPECTED=`echo -n $RESULT | sed 's/[.]pdf[.]/_expected_skia.pdf./'`
     mv $RESULT $EXPECTED
     if [ -n "$PNGOPTIMIZER" ]; then
       "$PNGOPTIMIZER" $EXPECTED
