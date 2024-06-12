@@ -517,14 +517,6 @@ cmsIOHANDLER* CMSEXPORT cmsGetProfileIOhandler(cmsHPROFILE hProfile)
     return Icc->IOhandler;
 }
 
-#ifdef _WIN32_WCE
-time_t wceex_time(time_t *timer);
-struct tm * wceex_gmtime(const time_t *timer);
-
-#define time wceex_time
-#define gmtime wceex_gmtime
-#endif
-
 // Creates an empty structure holding all required parameters
 cmsHPROFILE CMSEXPORT cmsCreateProfilePlaceholder(cmsContext ContextID)
 {
@@ -538,7 +530,21 @@ cmsHPROFILE CMSEXPORT cmsCreateProfilePlaceholder(cmsContext ContextID)
 
     // Set default version
     Icc ->Version =  0x02100000;
-    
+
+    // Set default CMM (that's me!)
+    Icc ->CMM = lcmsSignature;
+
+    // Set default creator
+    // Created by LittleCMS (that's me!)
+    Icc ->creator = lcmsSignature;
+
+    // Set default platform
+#ifdef CMS_IS_WINDOWS_
+    Icc ->platform = cmsSigMicrosoft;
+#else
+    Icc ->platform = cmsSigMacintosh;
+#endif
+
     // Set default device class
     Icc->DeviceClass = cmsSigDisplayClass;
 
@@ -623,14 +629,6 @@ int _cmsSearchTag(_cmsICCPROFILE* Icc, cmsTagSignature sig, cmsBool lFollowLinks
 
         // Yes, follow link
         if (LinkedSig != (cmsTagSignature) 0) {
-            // fix bug mantis id#0055942
-            // assume that TRCTag and ColorantTag can't be linked.
-            // Xiaochuan Liu 2014-04-23
-            if ((sig == cmsSigRedTRCTag || sig == cmsSigGreenTRCTag || sig == cmsSigBlueTRCTag) && 
-                (LinkedSig == cmsSigRedColorantTag || LinkedSig == cmsSigGreenColorantTag || LinkedSig == cmsSigBlueColorantTag))
-            {
-                return n;
-            }
             sig = LinkedSig;
         }
 
@@ -800,16 +798,18 @@ cmsBool _cmsReadHeader(_cmsICCPROFILE* Icc)
     }
 
     // Adjust endianness of the used parameters
+    Icc -> CMM             = _cmsAdjustEndianess32(Header.cmmId);
     Icc -> DeviceClass     = (cmsProfileClassSignature) _cmsAdjustEndianess32(Header.deviceClass);
     Icc -> ColorSpace      = (cmsColorSpaceSignature)   _cmsAdjustEndianess32(Header.colorSpace);
     Icc -> PCS             = (cmsColorSpaceSignature)   _cmsAdjustEndianess32(Header.pcs);
    
     Icc -> RenderingIntent = _cmsAdjustEndianess32(Header.renderingIntent);
+    Icc -> platform        = (cmsPlatformSignature)_cmsAdjustEndianess32(Header.platform);
     Icc -> flags           = _cmsAdjustEndianess32(Header.flags);
     Icc -> manufacturer    = _cmsAdjustEndianess32(Header.manufacturer);
     Icc -> model           = _cmsAdjustEndianess32(Header.model);
     Icc -> creator         = _cmsAdjustEndianess32(Header.creator);
-    
+
     _cmsAdjustEndianess64(&Icc -> attributes, &Header.attributes);
     Icc -> Version         = _cmsAdjustEndianess32(_validatedVersion(Header.version));
 
@@ -869,8 +869,7 @@ cmsBool _cmsReadHeader(_cmsICCPROFILE* Icc)
         for (j=0; j < Icc ->TagCount; j++) {
            
             if ((Icc ->TagOffsets[j] == Tag.offset) &&
-                (Icc ->TagSizes[j]   == Tag.size) &&
-                (Icc ->TagNames[j]   == Tag.sig)) {
+                (Icc ->TagSizes[j]   == Tag.size)) {
 
                 // Check types. 
                 if (CompatibleTypes(_cmsGetTagDescriptor(Icc->ContextID, Icc->TagNames[j]),
@@ -910,7 +909,7 @@ cmsBool _cmsWriteHeader(_cmsICCPROFILE* Icc, cmsUInt32Number UsedSpace)
     cmsUInt32Number Count;
 
     Header.size        = _cmsAdjustEndianess32(UsedSpace);
-    Header.cmmId       = _cmsAdjustEndianess32(lcmsSignature);
+    Header.cmmId       = _cmsAdjustEndianess32(Icc ->CMM);
     Header.version     = _cmsAdjustEndianess32(Icc ->Version);
 
     Header.deviceClass = (cmsProfileClassSignature) _cmsAdjustEndianess32(Icc -> DeviceClass);
@@ -922,11 +921,7 @@ cmsBool _cmsWriteHeader(_cmsICCPROFILE* Icc, cmsUInt32Number UsedSpace)
 
     Header.magic       = _cmsAdjustEndianess32(cmsMagicNumber);
 
-#ifdef CMS_IS_WINDOWS_
-    Header.platform    = (cmsPlatformSignature) _cmsAdjustEndianess32(cmsSigMicrosoft);
-#else
-    Header.platform    = (cmsPlatformSignature) _cmsAdjustEndianess32(cmsSigMacintosh);
-#endif
+    Header.platform    = (cmsPlatformSignature) _cmsAdjustEndianess32(Icc -> platform);
 
     Header.flags        = _cmsAdjustEndianess32(Icc -> flags);
     Header.manufacturer = _cmsAdjustEndianess32(Icc -> manufacturer);
@@ -942,8 +937,7 @@ cmsBool _cmsWriteHeader(_cmsICCPROFILE* Icc, cmsUInt32Number UsedSpace)
     Header.illuminant.Y = (cmsS15Fixed16Number) _cmsAdjustEndianess32((cmsUInt32Number) _cmsDoubleTo15Fixed16(cmsD50_XYZ()->Y));
     Header.illuminant.Z = (cmsS15Fixed16Number) _cmsAdjustEndianess32((cmsUInt32Number) _cmsDoubleTo15Fixed16(cmsD50_XYZ()->Z));
 
-    // Created by LittleCMS (that's me!)
-    Header.creator      = _cmsAdjustEndianess32(lcmsSignature);
+    Header.creator      = _cmsAdjustEndianess32(Icc ->creator);
 
     memset(&Header.reserved, 0, sizeof(Header.reserved));
 
@@ -1498,12 +1492,6 @@ Error:
     return 0;
 }
 
-#ifdef _WIN32_WCE
-int wceex_unlink(const char *filename);
-#ifndef remove
-#   define remove wceex_unlink
-#endif
-#endif
 
 // Low-level save to disk.
 cmsBool  CMSEXPORT cmsSaveProfileToFile(cmsHPROFILE hProfile, const char* FileName)
