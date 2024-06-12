@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5168c7b2_fef9f465",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-06-12T21:31:54Z",
+      "side": 1,
+      "message": "Much of the size is indentation changes from clang-format.",
+      "revId": "296eaf17891e8f635b167bddbb79aa0e5affbade",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
