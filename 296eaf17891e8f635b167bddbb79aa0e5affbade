@@ -16,6 +16,29 @@
       "message": "Much of the size is indentation changes from clang-format.",
       "revId": "296eaf17891e8f635b167bddbb79aa0e5affbade",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7437044_028f1f29",
+        "filename": "core/fpdfapi/page/cpdf_colorspace.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 784,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-06-12T22:36:34Z",
+      "side": 1,
+      "message": "Maybe make a std::size(foo) -\u003e foo.size() pass later.",
+      "range": {
+        "startLine": 784,
+        "startChar": 27,
+        "endLine": 784,
+        "endChar": 45
+      },
+      "revId": "296eaf17891e8f635b167bddbb79aa0e5affbade",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
