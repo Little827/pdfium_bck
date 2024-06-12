@@ -33,6 +33,23 @@
       "message": "Sure HFTB.",
       "revId": "6cc4d51c0ae6e6271a6b9705faf38c08de3f7cb1",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8de906d_4337e4c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5645
+      },
+      "writtenOn": "2024-06-12T23:44:25Z",
+      "side": 1,
+      "message": "G-approval",
+      "revId": "6cc4d51c0ae6e6271a6b9705faf38c08de3f7cb1",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
