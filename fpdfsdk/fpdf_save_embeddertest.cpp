@@ -123,10 +123,9 @@ TEST_F(FPDFSaveEmbedderTest, Bug42271133) {
   unsigned int b;
   unsigned int a;
   ASSERT_TRUE(FPDFPageObj_GetFillColor(path_obj, &r, &g, &b, &a));
-  // TODO(crbug.com/42271133): Change the assertion to EXPECT_NE().
-  EXPECT_EQ(0u, r);
-  EXPECT_EQ(0u, g);
-  EXPECT_EQ(0u, b);
+  EXPECT_NE(0u, r);
+  EXPECT_NE(0u, g);
+  EXPECT_NE(0u, b);
 
   CloseSavedPage(saved_page);
   CloseSavedDocument();
