@@ -16,6 +16,24 @@
       "message": "Would it make more sense for AppendChar() to return a ByteString, instead of writing to one passed in as an out-parameter?",
       "revId": "b5bb1074e195c18ea2f0be8d330827a614ff6a43",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6878bab2_a43bf32b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-06-13T18:03:07Z",
+      "side": 1,
+      "message": "Not from an efficiency point of view.  It was using [] to avoid double string allocs.",
+      "parentUuid": "b652c568_eea0957b",
+      "revId": "b5bb1074e195c18ea2f0be8d330827a614ff6a43",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
