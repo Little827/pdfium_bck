@@ -104,6 +104,30 @@
       },
       "revId": "cb8306036bdcec48f2b3bb04f980ba72130b2edd",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e3ea83c_2ffae5f7",
+        "filename": "DEPS",
+        "patchSetId": 3
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-06-13T01:47:16Z",
+      "side": 1,
+      "message": "FWIW, rolling gcs-based DEPS in Chromium already look like this. e.g. https://chromium-review.googlesource.com/c/chromium/src/+/5597214/16/DEPS",
+      "parentUuid": "607b6256_a7de83b8",
+      "range": {
+        "startLine": 375,
+        "startChar": 7,
+        "endLine": 379,
+        "endChar": 49
+      },
+      "revId": "cb8306036bdcec48f2b3bb04f980ba72130b2edd",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
