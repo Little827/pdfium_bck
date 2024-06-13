@@ -221,10 +221,11 @@ const PredefinedCMap* GetPredefinedCMap(ByteStringView cmapid) {
 
 std::vector<bool> LoadLeadingSegments(const PredefinedCMap& map) {
   std::vector<bool> segments(256);
-  for (uint32_t i = 0; i < map.m_LeadingSegCount; ++i) {
-    const ByteRange& seg = UNSAFE_TODO(map.m_LeadingSegs[i]);
-    for (int b = seg.m_First; b <= seg.m_Last; ++b)
+  const auto seg_span = pdfium::make_span(map.m_LeadingSegs);
+  for (const ByteRange& seg : seg_span.first(map.m_LeadingSegCount)) {
+    for (int b = seg.m_First; b <= seg.m_Last; ++b) {
       segments[b] = true;
+    }
   }
   return segments;
 }
