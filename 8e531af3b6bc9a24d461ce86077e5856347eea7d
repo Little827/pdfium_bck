@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdb48a1a_2b19240a",
+        "filename": "fpdfsdk/cpdfsdk_appstream.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-06-13T20:55:38Z",
+      "side": 1,
+      "message": "But this is not a const variable.",
+      "range": {
+        "startLine": 191,
+        "startChar": 26,
+        "endLine": 191,
+        "endChar": 37
+      },
+      "revId": "8e531af3b6bc9a24d461ce86077e5856347eea7d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    }
+  ]
+}
