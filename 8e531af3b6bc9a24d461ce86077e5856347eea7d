@@ -22,6 +22,30 @@
       },
       "revId": "8e531af3b6bc9a24d461ce86077e5856347eea7d",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85360ef6_11d4aa89",
+        "filename": "fpdfsdk/cpdfsdk_appstream.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 5495
+      },
+      "writtenOn": "2024-06-13T21:02:48Z",
+      "side": 1,
+      "message": "right.  It gets multiplied at line 212, so cant be const.  Also there\u0027s no requirment that std::array be const.  Am I missing something\u003e",
+      "parentUuid": "bdb48a1a_2b19240a",
+      "range": {
+        "startLine": 191,
+        "startChar": 26,
+        "endLine": 191,
+        "endChar": 37
+      },
+      "revId": "8e531af3b6bc9a24d461ce86077e5856347eea7d",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
