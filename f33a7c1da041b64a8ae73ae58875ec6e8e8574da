@@ -46,6 +46,30 @@
       },
       "revId": "f33a7c1da041b64a8ae73ae58875ec6e8e8574da",
       "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee16d9f5_f21629a7",
+        "filename": "core/fpdfapi/font/cpdf_cmap.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 5045
+      },
+      "writtenOn": "2024-06-13T18:58:41Z",
+      "side": 1,
+      "message": "I chained https://pdfium-review.googlesource.com/120470 to this CL.",
+      "parentUuid": "376983f6_36a65878",
+      "range": {
+        "startLine": 224,
+        "startChar": 49,
+        "endLine": 224,
+        "endChar": 66
+      },
+      "revId": "f33a7c1da041b64a8ae73ae58875ec6e8e8574da",
+      "serverId": "fca2d64a-0420-3532-b200-12848c95a47b"
     }
   ]
 }
