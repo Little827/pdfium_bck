@@ -6,12 +6,13 @@
 
 #include <stdint.h>
 
+#include <array>
 #include <utility>
 
 #include "core/fxcodec/cfx_codec_memory.h"
-#include "core/fxcrt/compiler_specific.h"
 #include "core/fxcrt/data_vector.h"
 #include "core/fxcrt/span_util.h"
+#include "core/fxcrt/stl_util.h"
 #include "testing/gtest/include/gtest/gtest.h"
 
 namespace fxcodec {
@@ -55,8 +56,8 @@ TEST(CFX_GifContext, ReadAllOrNone) {
   context.SetTestInputBuffer({});
   EXPECT_FALSE(context.ReadAllOrNone(pdfium::span<uint8_t>()));
 
-  uint8_t src_buffer[] = {0x00, 0x01, 0x02, 0x03, 0x04,
-                          0x05, 0x06, 0x07, 0x08, 0x09};
+  auto src_buffer = fxcrt::ToArray<uint8_t>(
+      {0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09});
 
   DataVector<uint8_t> dest_buffer(sizeof(src_buffer));
   auto dest_span = pdfium::make_span(dest_buffer);
@@ -70,12 +71,12 @@ TEST(CFX_GifContext, ReadAllOrNone) {
   context.SetTestInputBuffer(src_buffer);
   EXPECT_TRUE(context.ReadAllOrNone(dest_span.first(sizeof(src_buffer))));
   for (size_t i = 0; i < sizeof(src_buffer); i++) {
-    UNSAFE_TODO(EXPECT_EQ(src_buffer[i], dest_buffer[i]));
+    EXPECT_EQ(src_buffer[i], dest_buffer[i]);
   }
   context.SetTestInputBuffer(src_buffer);
   for (size_t i = 0; i < sizeof(src_buffer); i++) {
     EXPECT_TRUE(context.ReadAllOrNone(dest_span.first(1u)));
-    UNSAFE_TODO(EXPECT_EQ(src_buffer[i], dest_buffer[0]));
+    EXPECT_EQ(src_buffer[i], dest_buffer[0]);
   }
 }
 
